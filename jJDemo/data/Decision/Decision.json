@@ -1,0 +1,202 @@
+[
+  {
+    "id": "seed_decision_319",
+    "heldBy": "AGENT",
+    "dueAt": null,
+    "authorityThreshold": "",
+    "selectedOption": null,
+    "approvedAt": null,
+    "queueMetaLabel": null,
+    "agentRecommendation": null,
+    "dueLabel": null,
+    "dueTagClass": null,
+    "functionsLabel": null,
+    "ctaEmphasis": null,
+    "finding": {
+      "id": "seed_finding_319"
+    },
+    "owner": {
+      "id": "seed_person_hf"
+    }
+  },
+  {
+    "id": "seed_decision_344",
+    "heldBy": "ESCALATED",
+    "dueAt": null,
+    "authorityThreshold": "",
+    "selectedOption": null,
+    "approvedAt": null,
+    "queueMetaLabel": null,
+    "agentRecommendation": null,
+    "dueLabel": null,
+    "dueTagClass": null,
+    "functionsLabel": null,
+    "ctaEmphasis": null,
+    "finding": {
+      "id": "seed_finding_344"
+    },
+    "owner": {
+      "id": "seed_person_board"
+    }
+  },
+  {
+    "id": "seed_decision_351",
+    "heldBy": "DELEGATED",
+    "dueAt": null,
+    "authorityThreshold": "",
+    "selectedOption": null,
+    "approvedAt": null,
+    "queueMetaLabel": null,
+    "agentRecommendation": null,
+    "dueLabel": null,
+    "dueTagClass": null,
+    "functionsLabel": null,
+    "ctaEmphasis": null,
+    "finding": {
+      "id": "seed_finding_351"
+    },
+    "owner": {
+      "id": "seed_person_hf"
+    }
+  },
+  {
+    "id": "seed_decision_359",
+    "heldBy": "DELEGATED",
+    "dueAt": null,
+    "authorityThreshold": "",
+    "selectedOption": null,
+    "approvedAt": null,
+    "queueMetaLabel": null,
+    "agentRecommendation": null,
+    "dueLabel": null,
+    "dueTagClass": null,
+    "functionsLabel": null,
+    "ctaEmphasis": null,
+    "finding": {
+      "id": "seed_finding_359"
+    },
+    "owner": {
+      "id": "seed_person_hf"
+    }
+  },
+  {
+    "id": "seed_decision_365",
+    "heldBy": "ESCALATED",
+    "dueAt": null,
+    "authorityThreshold": "",
+    "selectedOption": null,
+    "approvedAt": null,
+    "queueMetaLabel": null,
+    "agentRecommendation": null,
+    "dueLabel": null,
+    "dueTagClass": null,
+    "functionsLabel": null,
+    "ctaEmphasis": null,
+    "finding": {
+      "id": "seed_finding_365"
+    },
+    "owner": {
+      "id": "seed_person_sl"
+    }
+  },
+  {
+    "id": "seed_decision_371",
+    "heldBy": "USER",
+    "dueAt": "2026-09-18T00:00:00",
+    "authorityThreshold": "design-input signature",
+    "selectedOption": null,
+    "approvedAt": null,
+    "queueMetaLabel": "OCTARAY G2 · G2 Design Freeze · 12 of 14 inputs signed · +14 days if unsigned",
+    "agentRecommendation": "IEC 62366 usability and ASTM D4169 transit summaries already drafted and traced to the input matrix",
+    "dueLabel": "Due 18 Sep",
+    "dueTagClass": "risk",
+    "functionsLabel": "R&D · Quality",
+    "ctaEmphasis": "secondary",
+    "finding": {
+      "id": "seed_finding_371"
+    },
+    "owner": {
+      "id": "seed_person_hf"
+    }
+  },
+  {
+    "id": "seed_decision_388",
+    "heldBy": "USER",
+    "dueAt": "2026-09-16T00:00:00",
+    "authorityThreshold": "supply architecture",
+    "selectedOption": null,
+    "approvedAt": null,
+    "queueMetaLabel": "OCTARAY G2 and 3 others · G2 Design Freeze · 19 days float · €6.2M if realised",
+    "agentRecommendation": "Agent recommends activating the second source before G2 — after the gate the same move costs 11 weeks",
+    "dueLabel": "Due 16 Sep",
+    "dueTagClass": "risk",
+    "functionsLabel": "Sourcing",
+    "ctaEmphasis": "secondary",
+    "finding": {
+      "id": "seed_finding_388"
+    },
+    "owner": {
+      "id": "seed_person_hf"
+    }
+  },
+  {
+    "id": "seed_decision_402",
+    "heldBy": "USER",
+    "dueAt": "2026-09-13T00:00:00",
+    "authorityThreshold": "€1.5M write-off",
+    "selectedOption": null,
+    "approvedAt": null,
+    "queueMetaLabel": "VARIPULSE G2 · G4 CE Certificate · €2.8M write-off exposure · above your €1.5M authority",
+    "agentRecommendation": "Agent recommends a phased 2,600 units — caps exposure at €1.7M and holds the G5 date",
+    "dueLabel": "Due 13 Sep",
+    "dueTagClass": "crit",
+    "functionsLabel": "Manufacturing · Finance",
+    "ctaEmphasis": "primary",
+    "finding": {
+      "id": "seed_finding_402"
+    },
+    "owner": {
+      "id": "seed_person_hf"
+    }
+  },
+  {
+    "id": "seed_decision_412",
+    "heldBy": "USER",
+    "dueAt": "2026-09-17T00:00:00",
+    "authorityThreshold": "line-stop authorisation",
+    "selectedOption": null,
+    "approvedAt": null,
+    "queueMetaLabel": "VARIPULSE G2 · G3 Submission Commit · 4 of 12 lots out of spec · +6 days if line 3 held",
+    "agentRecommendation": "Agent recommends stopping Heraeus line 3 and rerouting to line 5 — contains the out-of-spec lots without moving G3",
+    "dueLabel": "Due 17 Sep",
+    "dueTagClass": "risk",
+    "functionsLabel": "Quality · Manufacturing",
+    "ctaEmphasis": "secondary",
+    "finding": {
+      "id": "seed_finding_412"
+    },
+    "owner": {
+      "id": "seed_person_hf"
+    }
+  },
+  {
+    "id": "seed_decision_417",
+    "heldBy": "USER",
+    "dueAt": "2026-09-11T17:00:00",
+    "authorityThreshold": "€250k / no gate move",
+    "selectedOption": null,
+    "approvedAt": null,
+    "queueMetaLabel": "VARIPULSE G2 · G3 Submission Commit · +47 days · €18.4M at risk",
+    "agentRecommendation": "Agent recommends dual-source to Sterigenics — recovers 38 of the 47 days · 3 options modelled",
+    "dueLabel": "Due today · 17:00",
+    "dueTagClass": "crit",
+    "functionsLabel": "Sourcing · Quality · Regulatory",
+    "ctaEmphasis": "primary",
+    "finding": {
+      "id": "seed_finding_417"
+    },
+    "owner": {
+      "id": "seed_person_hf"
+    }
+  }
+]

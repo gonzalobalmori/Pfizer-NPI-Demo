@@ -1,0 +1,722 @@
+[
+  {
+    "id": "seed_gate_dualto_g1",
+    "code": "G1",
+    "name": "NPI Readiness Gate",
+    "baselineDate": "2023-10-24",
+    "forecastDate": "2023-10-24",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_dualto"
+    },
+    "phase": {
+      "id": "seed_phase_p1"
+    }
+  },
+  {
+    "id": "seed_gate_dualto_g2",
+    "code": "G2",
+    "name": "Design Freeze",
+    "baselineDate": "2024-04-01",
+    "forecastDate": "2024-04-01",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_dualto"
+    },
+    "phase": {
+      "id": "seed_phase_p2"
+    }
+  },
+  {
+    "id": "seed_gate_dualto_g3",
+    "code": "G3",
+    "name": "Submission Commit",
+    "baselineDate": "2024-09-08",
+    "forecastDate": "2024-09-08",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_dualto"
+    },
+    "phase": {
+      "id": "seed_phase_p3"
+    }
+  },
+  {
+    "id": "seed_gate_dualto_g4",
+    "code": "G4",
+    "name": "Clearance / CE Certificate",
+    "baselineDate": "2025-02-15",
+    "forecastDate": "2025-02-15",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_dualto"
+    },
+    "phase": {
+      "id": "seed_phase_p4"
+    }
+  },
+  {
+    "id": "seed_gate_dualto_g5",
+    "code": "G5",
+    "name": "Launch Go / No-Go — First Ship",
+    "baselineDate": "2026-08-12",
+    "forecastDate": "2026-08-12",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_dualto"
+    },
+    "phase": {
+      "id": "seed_phase_p5"
+    }
+  },
+  {
+    "id": "seed_gate_dualto_bau",
+    "code": "BAU",
+    "name": "BAU handover",
+    "baselineDate": "2026-10-30",
+    "forecastDate": "2026-10-30",
+    "slipDays": 0,
+    "status": "no",
+    "launch": {
+      "id": "seed_launch_dualto"
+    },
+    "phase": {
+      "id": "seed_phase_p6"
+    }
+  },
+  {
+    "id": "seed_gate_embotrap_iv_g1",
+    "code": "G1",
+    "name": "NPI Readiness Gate",
+    "baselineDate": "2024-12-25",
+    "forecastDate": "2024-12-25",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_embotrap_iv"
+    },
+    "phase": {
+      "id": "seed_phase_p1"
+    }
+  },
+  {
+    "id": "seed_gate_embotrap_iv_g2",
+    "code": "G2",
+    "name": "Design Freeze",
+    "baselineDate": "2025-06-03",
+    "forecastDate": "2025-06-03",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_embotrap_iv"
+    },
+    "phase": {
+      "id": "seed_phase_p2"
+    }
+  },
+  {
+    "id": "seed_gate_embotrap_iv_g3",
+    "code": "G3",
+    "name": "Submission Commit",
+    "baselineDate": "2025-11-10",
+    "forecastDate": "2025-11-10",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_embotrap_iv"
+    },
+    "phase": {
+      "id": "seed_phase_p3"
+    }
+  },
+  {
+    "id": "seed_gate_embotrap_iv_g4",
+    "code": "G4",
+    "name": "Clearance / CE Certificate",
+    "baselineDate": "2026-04-19",
+    "forecastDate": "2026-04-19",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_embotrap_iv"
+    },
+    "phase": {
+      "id": "seed_phase_p4"
+    }
+  },
+  {
+    "id": "seed_gate_embotrap_iv_g5",
+    "code": "G5",
+    "name": "Launch Go / No-Go — First Ship",
+    "baselineDate": "2026-09-17",
+    "forecastDate": "2026-09-26",
+    "slipDays": 9,
+    "status": "late",
+    "launch": {
+      "id": "seed_launch_embotrap_iv"
+    },
+    "phase": {
+      "id": "seed_phase_p5"
+    }
+  },
+  {
+    "id": "seed_gate_embotrap_iv_bau",
+    "code": "BAU",
+    "name": "BAU handover",
+    "baselineDate": "2026-10-30",
+    "forecastDate": "2026-10-30",
+    "slipDays": 0,
+    "status": "no",
+    "launch": {
+      "id": "seed_launch_embotrap_iv"
+    },
+    "phase": {
+      "id": "seed_phase_p6"
+    }
+  },
+  {
+    "id": "seed_gate_ethicon_4000_g1",
+    "code": "G1",
+    "name": "NPI Readiness Gate",
+    "baselineDate": "2025-11-20",
+    "forecastDate": "2025-11-20",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_ethicon_4000"
+    },
+    "phase": {
+      "id": "seed_phase_p1"
+    }
+  },
+  {
+    "id": "seed_gate_ethicon_4000_g2",
+    "code": "G2",
+    "name": "Design Freeze",
+    "baselineDate": "2026-04-29",
+    "forecastDate": "2026-04-29",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_ethicon_4000"
+    },
+    "phase": {
+      "id": "seed_phase_p2"
+    }
+  },
+  {
+    "id": "seed_gate_ethicon_4000_g3",
+    "code": "G3",
+    "name": "Submission Commit",
+    "baselineDate": "2026-10-06",
+    "forecastDate": "2026-10-06",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_ethicon_4000"
+    },
+    "phase": {
+      "id": "seed_phase_p3"
+    }
+  },
+  {
+    "id": "seed_gate_ethicon_4000_g4",
+    "code": "G4",
+    "name": "Clearance / CE Certificate",
+    "baselineDate": "2026-10-12",
+    "forecastDate": "2026-11-02",
+    "slipDays": 21,
+    "status": "late",
+    "launch": {
+      "id": "seed_launch_ethicon_4000"
+    },
+    "phase": {
+      "id": "seed_phase_p4"
+    }
+  },
+  {
+    "id": "seed_gate_ethicon_4000_g5",
+    "code": "G5",
+    "name": "Launch Go / No-Go — First Ship",
+    "baselineDate": "2026-12-14",
+    "forecastDate": "2026-12-14",
+    "slipDays": 0,
+    "status": "no",
+    "launch": {
+      "id": "seed_launch_ethicon_4000"
+    },
+    "phase": {
+      "id": "seed_phase_p5"
+    }
+  },
+  {
+    "id": "seed_gate_impella_ecp_g1",
+    "code": "G1",
+    "name": "NPI Readiness Gate",
+    "baselineDate": "2026-08-22",
+    "forecastDate": "2026-08-22",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_impella_ecp"
+    },
+    "phase": {
+      "id": "seed_phase_p1"
+    }
+  },
+  {
+    "id": "seed_gate_impella_ecp_g2",
+    "code": "G2",
+    "name": "Design Freeze",
+    "baselineDate": "2027-01-29",
+    "forecastDate": "2027-01-29",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_impella_ecp"
+    },
+    "phase": {
+      "id": "seed_phase_p2"
+    }
+  },
+  {
+    "id": "seed_gate_impella_ecp_g3",
+    "code": "G3",
+    "name": "Submission Commit",
+    "baselineDate": "2027-07-08",
+    "forecastDate": "2027-07-08",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_impella_ecp"
+    },
+    "phase": {
+      "id": "seed_phase_p3"
+    }
+  },
+  {
+    "id": "seed_gate_impella_ecp_g4",
+    "code": "G4",
+    "name": "Clearance / CE Certificate",
+    "baselineDate": "2027-12-15",
+    "forecastDate": "2027-12-15",
+    "slipDays": 0,
+    "status": "no",
+    "launch": {
+      "id": "seed_launch_impella_ecp"
+    },
+    "phase": {
+      "id": "seed_phase_p4"
+    }
+  },
+  {
+    "id": "seed_gate_impella_ecp_g5",
+    "code": "G5",
+    "name": "Launch Go / No-Go — First Ship",
+    "baselineDate": "2028-05-23",
+    "forecastDate": "2028-05-23",
+    "slipDays": 0,
+    "status": "no",
+    "launch": {
+      "id": "seed_launch_impella_ecp"
+    },
+    "phase": {
+      "id": "seed_phase_p5"
+    }
+  },
+  {
+    "id": "seed_gate_javelin_xl_g1",
+    "code": "G1",
+    "name": "NPI Readiness Gate",
+    "baselineDate": "2026-03-15",
+    "forecastDate": "2026-03-15",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_javelin_xl"
+    },
+    "phase": {
+      "id": "seed_phase_p1"
+    }
+  },
+  {
+    "id": "seed_gate_javelin_xl_g2",
+    "code": "G2",
+    "name": "Design Freeze",
+    "baselineDate": "2026-08-22",
+    "forecastDate": "2026-08-22",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_javelin_xl"
+    },
+    "phase": {
+      "id": "seed_phase_p2"
+    }
+  },
+  {
+    "id": "seed_gate_javelin_xl_g3",
+    "code": "G3",
+    "name": "Submission Commit",
+    "baselineDate": "2027-01-29",
+    "forecastDate": "2027-01-29",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_javelin_xl"
+    },
+    "phase": {
+      "id": "seed_phase_p3"
+    }
+  },
+  {
+    "id": "seed_gate_javelin_xl_g4",
+    "code": "G4",
+    "name": "Clearance / CE Certificate",
+    "baselineDate": "2027-07-08",
+    "forecastDate": "2027-07-08",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_javelin_xl"
+    },
+    "phase": {
+      "id": "seed_phase_p4"
+    }
+  },
+  {
+    "id": "seed_gate_javelin_xl_g5",
+    "code": "G5",
+    "name": "Launch Go / No-Go — First Ship",
+    "baselineDate": "2027-12-15",
+    "forecastDate": "2027-12-15",
+    "slipDays": 0,
+    "status": "no",
+    "launch": {
+      "id": "seed_launch_javelin_xl"
+    },
+    "phase": {
+      "id": "seed_phase_p5"
+    }
+  },
+  {
+    "id": "seed_gate_javelin_xl_bau",
+    "code": "BAU",
+    "name": "BAU handover",
+    "baselineDate": "2028-05-23",
+    "forecastDate": "2028-05-23",
+    "slipDays": 0,
+    "status": "no",
+    "launch": {
+      "id": "seed_launch_javelin_xl"
+    },
+    "phase": {
+      "id": "seed_phase_p6"
+    }
+  },
+  {
+    "id": "seed_gate_octaray_g2_g1",
+    "code": "G1",
+    "name": "NPI Readiness Gate",
+    "baselineDate": "2027-02-05",
+    "forecastDate": "2027-02-05",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "phase": {
+      "id": "seed_phase_p1"
+    }
+  },
+  {
+    "id": "seed_gate_octaray_g2_g2",
+    "code": "G2",
+    "name": "Design Freeze",
+    "baselineDate": "2026-09-16",
+    "forecastDate": "2026-09-30",
+    "slipDays": 14,
+    "status": "late",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "phase": {
+      "id": "seed_phase_p2"
+    }
+  },
+  {
+    "id": "seed_gate_octaray_g2_g3",
+    "code": "G3",
+    "name": "Submission Commit",
+    "baselineDate": "2027-03-15",
+    "forecastDate": "2027-03-15",
+    "slipDays": 0,
+    "status": "no",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "phase": {
+      "id": "seed_phase_p3"
+    }
+  },
+  {
+    "id": "seed_gate_octaray_g2_g4",
+    "code": "G4",
+    "name": "Clearance / CE Certificate",
+    "baselineDate": "2027-08-15",
+    "forecastDate": "2027-08-15",
+    "slipDays": 0,
+    "status": "no",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "phase": {
+      "id": "seed_phase_p4"
+    }
+  },
+  {
+    "id": "seed_gate_octaray_g2_g5",
+    "code": "G5",
+    "name": "Launch Go / No-Go — First Ship",
+    "baselineDate": "2028-11-06",
+    "forecastDate": "2028-11-06",
+    "slipDays": 0,
+    "status": "no",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "phase": {
+      "id": "seed_phase_p5"
+    }
+  },
+  {
+    "id": "seed_gate_ottava_g1",
+    "code": "G1",
+    "name": "NPI Readiness Gate",
+    "baselineDate": "2027-06-30",
+    "forecastDate": "2027-06-30",
+    "slipDays": 0,
+    "status": "no",
+    "launch": {
+      "id": "seed_launch_ottava"
+    },
+    "phase": {
+      "id": "seed_phase_p1"
+    }
+  },
+  {
+    "id": "seed_gate_ottava_g2",
+    "code": "G2",
+    "name": "Design Freeze",
+    "baselineDate": "2027-12-07",
+    "forecastDate": "2027-12-07",
+    "slipDays": 0,
+    "status": "no",
+    "launch": {
+      "id": "seed_launch_ottava"
+    },
+    "phase": {
+      "id": "seed_phase_p2"
+    }
+  },
+  {
+    "id": "seed_gate_ottava_g3",
+    "code": "G3",
+    "name": "Submission Commit",
+    "baselineDate": "2028-05-15",
+    "forecastDate": "2028-05-15",
+    "slipDays": 0,
+    "status": "no",
+    "launch": {
+      "id": "seed_launch_ottava"
+    },
+    "phase": {
+      "id": "seed_phase_p3"
+    }
+  },
+  {
+    "id": "seed_gate_ottava_g4",
+    "code": "G4",
+    "name": "Clearance / CE Certificate",
+    "baselineDate": "2028-10-22",
+    "forecastDate": "2028-10-22",
+    "slipDays": 0,
+    "status": "no",
+    "launch": {
+      "id": "seed_launch_ottava"
+    },
+    "phase": {
+      "id": "seed_phase_p4"
+    }
+  },
+  {
+    "id": "seed_gate_ottava_g5",
+    "code": "G5",
+    "name": "Launch Go / No-Go — First Ship",
+    "baselineDate": "2029-03-31",
+    "forecastDate": "2029-03-31",
+    "slipDays": 0,
+    "status": "no",
+    "launch": {
+      "id": "seed_launch_ottava"
+    },
+    "phase": {
+      "id": "seed_phase_p5"
+    }
+  },
+  {
+    "id": "seed_gate_puresee_g1",
+    "code": "G1",
+    "name": "NPI Readiness Gate",
+    "baselineDate": "2026-11-14",
+    "forecastDate": "2026-11-14",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_puresee"
+    },
+    "phase": {
+      "id": "seed_phase_p1"
+    }
+  },
+  {
+    "id": "seed_gate_puresee_g2",
+    "code": "G2",
+    "name": "Design Freeze",
+    "baselineDate": "2027-04-23",
+    "forecastDate": "2027-04-23",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_puresee"
+    },
+    "phase": {
+      "id": "seed_phase_p2"
+    }
+  },
+  {
+    "id": "seed_gate_puresee_g3",
+    "code": "G3",
+    "name": "Submission Commit",
+    "baselineDate": "2026-11-03",
+    "forecastDate": "2026-11-14",
+    "slipDays": 11,
+    "status": "late",
+    "launch": {
+      "id": "seed_launch_puresee"
+    },
+    "phase": {
+      "id": "seed_phase_p3"
+    }
+  },
+  {
+    "id": "seed_gate_puresee_g4",
+    "code": "G4",
+    "name": "Clearance / CE Certificate",
+    "baselineDate": "2027-06-15",
+    "forecastDate": "2027-06-15",
+    "slipDays": 0,
+    "status": "no",
+    "launch": {
+      "id": "seed_launch_puresee"
+    },
+    "phase": {
+      "id": "seed_phase_p4"
+    }
+  },
+  {
+    "id": "seed_gate_puresee_g5",
+    "code": "G5",
+    "name": "Launch Go / No-Go — First Ship",
+    "baselineDate": "2028-08-15",
+    "forecastDate": "2028-08-15",
+    "slipDays": 0,
+    "status": "no",
+    "launch": {
+      "id": "seed_launch_puresee"
+    },
+    "phase": {
+      "id": "seed_phase_p5"
+    }
+  },
+  {
+    "id": "seed_gate_varipulse_g1",
+    "code": "G1",
+    "name": "NPI Readiness Gate",
+    "baselineDate": "2024-09-24",
+    "forecastDate": "2024-09-24",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "phase": {
+      "id": "seed_phase_p1"
+    }
+  },
+  {
+    "id": "seed_gate_varipulse_g2",
+    "code": "G2",
+    "name": "Design Freeze",
+    "baselineDate": "2026-06-19",
+    "forecastDate": "2026-06-19",
+    "slipDays": 0,
+    "status": "ok",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "phase": {
+      "id": "seed_phase_p2"
+    }
+  },
+  {
+    "id": "seed_gate_varipulse_g3",
+    "code": "G3",
+    "name": "Submission Commit",
+    "baselineDate": "2026-11-04",
+    "forecastDate": "2026-12-21",
+    "slipDays": 47,
+    "status": "late",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "phase": {
+      "id": "seed_phase_p3"
+    }
+  },
+  {
+    "id": "seed_gate_varipulse_g4",
+    "code": "G4",
+    "name": "Clearance / CE Certificate",
+    "baselineDate": "2027-05-18",
+    "forecastDate": "2027-05-18",
+    "slipDays": 0,
+    "status": "no",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "phase": {
+      "id": "seed_phase_p4"
+    }
+  },
+  {
+    "id": "seed_gate_varipulse_g5",
+    "code": "G5",
+    "name": "Launch Go / No-Go — First Ship",
+    "baselineDate": "2027-06-29",
+    "forecastDate": "2027-06-29",
+    "slipDays": 0,
+    "status": "no",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "phase": {
+      "id": "seed_phase_p5"
+    }
+  }
+]

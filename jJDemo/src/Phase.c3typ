@@ -1,0 +1,29 @@
+/**
+ * One of the six NPI phases every MedTech launch moves through:
+ * P1 Feasibility & strategic definition, P2 Design inputs & supply architecture,
+ * P3 Design V&V + supplier qualification, P4 Reg review/transfer/at-risk build,
+ * P5 Launch readiness, P6 Post-market & BAU transfer.
+ *
+ * A phase is closed by exactly one {@link Gate} and groups many
+ * {@link Activity}s. Model invariant §3.6.2: a {@link Finding} has exactly one
+ * phase, and every view shows that same phase.
+ */
+entity type Phase mixes SeedData {
+  /** Phase code, "P1"–"P6". */
+  code: !string
+
+  /** Phase name, e.g. "Design V&V + Supplier Qualification". */
+  name: !string
+
+  /** Human-readable calendar window, e.g. "Jun 2026 – Nov 2026". */
+  window: string
+
+  /** Lifecycle state of the phase. */
+  state: string enum('closed', 'live', 'queued')
+
+  /** Activities that sit in this phase. Inverse of {@link Activity#phase}. */
+  activities: [Activity](phase)
+
+  /** Gates that close this phase (one per launch). Inverse of {@link Gate#phase}. */
+  gates: [Gate](phase)
+}

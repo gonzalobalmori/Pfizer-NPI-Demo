@@ -1,0 +1,23 @@
+/**
+ * A part on a launch's bill of materials. The ring electrode subassembly is the
+ * one that matters: single-source on Heraeus across four Biosense Webster
+ * catheters, on a BOM that freezes at G2 — the substance of finding NPI-0388.
+ *
+ * An item belongs to one {@link Launch} and is supplied by one {@link Supplier}.
+ */
+entity type BillOfMaterialItem mixes SeedData {
+  /** Part name, e.g. "Ring electrode subassembly". */
+  partName: !string
+
+  /** Sourcing mode. */
+  sourcingMode: string enum('SINGLE_SOURCE', 'DUAL_SOURCE', 'MULTI_SOURCE')
+
+  /** Gate code at which the item is frozen on the BOM, e.g. "G2". */
+  frozenAtGate: string
+
+  /** The launch this item belongs to. */
+  launch: Launch
+
+  /** The supplier that supplies this item. */
+  supplier: Supplier
+}

@@ -1,0 +1,47 @@
+{
+  "vault": "jnjmedtech-qms.veevavault.com",
+  "object": "quality_comment__c",
+  "extracted_at": "2026-09-11T08:30:00Z",
+  "records": [
+    {
+      "id": "CMT-0148-01",
+      "capa_number__v": "CAPA-2026-0148",
+      "author__c": "M. Okafor",
+      "author_role__c": "Sourcing",
+      "comment_ts__c": "2026-09-10T19:40:00",
+      "is_system_check__c": "N",
+      "sources_read__c": "",
+      "body__c": "Steris have cancelled our 12 Oct slot. I pushed back on the phone — they have a genuine chamber deviation and cannot hold it. Nothing earlier across Venlo, Petten or Daventry. Escalating because this is the validation lot, not a routine cycle."
+    },
+    {
+      "id": "CMT-0148-02",
+      "capa_number__v": "CAPA-2026-0148",
+      "author__c": "Sourcing agent",
+      "author_role__c": "Automated check",
+      "comment_ts__c": "2026-09-11T06:05:00",
+      "is_system_check__c": "Y",
+      "sources_read__c": "master agreement clause 7.3, Approved Supplier List, audit validity",
+      "body__c": "Checked the master agreement: the booking was a non-committed capacity reservation, clause 7.3 permits reallocation on 30 days notice. No contractual claim and no penalty available. Scanned the ASL for EO alternatives — Sterigenics Grand Rapids is approved, audit current to Mar 2028, already qualified for OCTARAY G2 and EMBOTRAP IV, and has capacity from 29 Sep."
+    },
+    {
+      "id": "CMT-0148-03",
+      "capa_number__v": "CAPA-2026-0148",
+      "author__c": "A. Kowalski",
+      "author_role__c": "Quality",
+      "comment_ts__c": "2026-09-11T07:12:00",
+      "is_system_check__c": "N",
+      "sources_read__c": "",
+      "body__c": "If we move site, it is a half-cycle revalidation, not a full one, because the modality is unchanged. Realistically 21 days of protocol plus execution. I would want the protocol drafted against the OCTARAY G2 precedent so we are not writing it from scratch. Flagging that cycle development on a new chamber has overrun 5–8 days on two of our last seven transfers."
+    },
+    {
+      "id": "CMT-0148-04",
+      "capa_number__v": "CAPA-2026-0148",
+      "author__c": "S. Lindqvist",
+      "author_role__c": "Regulatory",
+      "comment_ts__c": "2026-09-11T08:04:00",
+      "is_system_check__c": "N",
+      "sources_read__c": "",
+      "body__c": "The bigger risk is not the 47 days, it is the BSI review slot. We hold a Q4 window. If the dossier is not complete by mid-November we lose it and the next confirmed slot is February — that is another 31 days on top. Please treat the BSI date as the real deadline."
+    }
+  ]
+}

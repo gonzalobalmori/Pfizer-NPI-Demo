@@ -1,0 +1,35 @@
+{
+  "vault": "jnjmedtech-qms.veevavault.com",
+  "object": "capa__v",
+  "extracted_at": "2026-09-11T06:15:00Z",
+  "records": [
+    {
+      "id": "V0Q0000000148",
+      "document_number__v": "CAPA-2026-0148",
+      "name__v": "EO sterilisation capacity loss — NPI-0417",
+      "state__v": "Open",
+      "quality_event_type__c": "CAPA",
+      "process_area__c": "Supplier-managed EO sterilisation (Steris Venlo)",
+      "initiated_by__c": "Quality agent",
+      "initiated_date__c": "2026-09-11",
+      "containment_action__c": "Dual-source the validation lot to Sterigenics Grand Rapids (half-cycle revalidation).",
+      "corrective_action__c": "Qualify Sterigenics permanently as second source; replace the non-committed reservation with a committed-capacity clause.",
+      "effectiveness_due__c": "2026-11-06",
+      "npi_ref__c": "NPI-0417"
+    },
+    {
+      "id": "V0Q0000000151",
+      "document_number__v": "CAPA-2026-0151",
+      "name__v": "EO sterilisation capacity loss — NPI-0359",
+      "state__v": "Containment Complete",
+      "quality_event_type__c": "CAPA",
+      "process_area__c": "Transit packaging (ASTM D4169 Seq. D)",
+      "initiated_by__c": "Quality agent",
+      "initiated_date__c": "2026-09-06",
+      "containment_action__c": "Redesign the thermoform insert; re-test 14 Sep.",
+      "corrective_action__c": "",
+      "effectiveness_due__c": "",
+      "npi_ref__c": "NPI-0359"
+    }
+  ]
+}

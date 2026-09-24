@@ -1,0 +1,55 @@
+/**
+ * One entry in Helena's own decision record — the History pane of My Actions
+ * (§2.1). This is deliberately NOT the fleet's action log (§6 anti-goal: never
+ * merge the user's decision history with the fleet's action log): it holds only
+ * the decisions she took and the escalations she raised, with their outcome and,
+ * where someone else closed it, that person's own words.
+ *
+ * Seven events are seeded (the last 90 days), of which the pane headline counts
+ * "23 decisions in 90 days". Four of the seven reference findings/launches no
+ * longer on the live board — they are closed history — so this is a standalone
+ * reference type rather than a projection of {@link Finding}.
+ */
+entity type DecisionHistoryEvent mixes SeedData {
+  /** Stable event id, e.g. "hist_0417". */
+  id: !string
+
+  /** The NPI display id the event concerns, e.g. "NPI-0417". */
+  npiId: string
+
+  /**
+   * Kind of event: MY = a decision Helena took, ESC = an escalation she raised.
+   * Drives the "Decisions taken / Escalations raised" filter (§2.1).
+   */
+  kind: string enum('MY', 'ESC')
+
+  /**
+   * Outcome chip shown on the row: RUNNING = pending action (amber),
+   * RESOLVED = closed (green), ESCALATED = still with someone else.
+   */
+  status: string enum('RUNNING', 'RESOLVED', 'ESCALATED')
+
+  /** The event label — what she did, e.g. "You signed the IEC 62366 usability engineering report". */
+  label: string
+
+  /** The sub-line under the label, e.g. "13 of 14 G2 design inputs now closed." */
+  subLine: string
+
+  /** Absolute time the event occurred (the row shows a relative age off this). */
+  occurredAt: datetime
+
+  /** Author of the closing note, where someone else closed it, e.g. "A. Kowalski". */
+  noteAuthor: string
+
+  /** The note author's function/role, e.g. "Quality". */
+  noteRole: string
+
+  /** Absolute time of the closing note. */
+  noteAt: datetime
+
+  /** The closing note body — that person's own words. Empty where the row does not expand. */
+  noteBody: string
+
+  /** Display order within the pane (newest first = smallest). */
+  sortOrder: int
+}

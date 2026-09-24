@@ -1,0 +1,90 @@
+/**
+ * The portfolio metrics layer (§3.5). Every figure shown on the Cockpit, the
+ * Agent-orchestration KPI row and the Portfolio lenses is derived here from the
+ * model — never stored as a display string (model invariant §3.6.1). The UI
+ * reads these methods through {@code c3Action}; it does not aggregate records
+ * itself.
+ *
+ * Each method returns a small structured result (value plus the trend / target /
+ * delta the specification calls for) so the UI can render a KPI card without any
+ * further computation. This is a stateless computation type — it holds no data of
+ * its own.
+ */
+entity type LaunchControlMetrics {
+  /**
+   * Portfolio gate readiness — the share of the criteria on each launch's next
+   * open gate that are met, averaged across the fleet. Returns {@code value}
+   * (percent), {@code target} (85), {@code deltaPts} (30-day trend, −6) and the
+   * per-launch breakdown.
+   */
+  portfolioGateReadiness: function(): json js
+
+  /**
+   * Launch health distribution — the nine launches counted by
+   * {@link Launch#healthStatus} (5 on plan / 3 at risk / 1 off track). Returns a
+   * map of status → count plus the launch ids in each bucket.
+   */
+  launchHealthDistribution: function(): json js
+
+  /**
+   * Revenue at risk with its 30-day delta (§3.5). Sums {@link Launch#revenueAtRisk}
+   * across the fleet; returns {@code value} (€30.5M), {@code delta30d} (+€11.2M),
+   * {@code pctOfPortfolio} (of €412M) and the exposure by launch.
+   */
+  revenueAtRisk: function(): json js
+
+  /**
+   * Average slip at gate close (§3.5) — mean {@link Gate#slipDays} across gates
+   * still to close, with {@code target} (≤5) and {@code worst} (47).
+   */
+  averageSlipAtGateClose: function(): json js
+
+  /**
+   * Activities complete by domain — completed {@link Activity}s grouped by the
+   * twelve {@link FunctionalDomain}s, each with complete / total.
+   */
+  activitiesCompleteByDomain: function(): json js
+
+  /**
+   * Autonomous execution rate — share of {@link Activity}s in autonomy class A
+   * (95 of 107). Returns {@code value} (percent) and the A / R / H counts.
+   */
+  autonomousExecutionRate: function(): json js
+
+  /**
+   * Human touch rate — share of {@link Activity}s that need a human (recommend +
+   * human classes, 12 of 107), the complement of the autonomous rate.
+   */
+  humanTouchRate: function(): json js
+
+  /**
+   * Mean time from detection to decision — average hours from
+   * {@link Finding#detectedAt} to the decision being approved, across findings
+   * whose decision Helena has taken.
+   */
+  meanTimeDetectionToDecision: function(): json js
+
+  /**
+   * Guardrail breach count over a trailing window (§default 90 days) — the number
+   * of {@link GuardrailCheck}s with result BREACH. Zero in 90 days is the headline.
+   */
+  guardrailBreachCount: function(trailingDays: int): json js
+
+  /**
+   * Handoffs per chain — total {@link Handoff}s divided by the number of
+   * {@link Chain}s, plus the max and the per-chain counts.
+   */
+  handoffsPerChain: function(): json js
+
+  /**
+   * Decisions Helena has taken in a trailing window (§default 90 days) — the count
+   * of {@link Decision}s with an {@code approvedAt} in range. Drives the History view.
+   */
+  decisionsTakenTrailing90Days: function(trailingDays: int): json js
+
+  /**
+   * Open findings by outcome — the twelve open {@link Finding}s counted by
+   * {@link Finding#outcome} (USER / HELD / AUTO / RUNNING = 5 / 2 / 3 / 2).
+   */
+  openFindingsByOutcome: function(): json js
+}

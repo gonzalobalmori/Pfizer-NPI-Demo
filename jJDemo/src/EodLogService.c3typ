@@ -1,0 +1,91 @@
+/**
+ * EodLogService — the conversational capture channel that lets a domain owner
+ * leave an "End-of-Day log" and have it become real {@link Finding} records,
+ * so a risk gets visibility in the control tower without anyone filling in a
+ * form. It is the answer to "how does the orchestrator find out there is a
+ * problem if nothing is written down": the owner talks, the service structures
+ * it, the owner confirms, and the same {@link Finding} table that feeds the
+ * Open-issues list and the Agent tower is the single source of truth.
+ *
+ * Two capture modes, both text-only (voice is a deliberate later phase):
+ *   • Free dump — the owner types everything that happened; the service
+ *     extracts and classifies each sentence into a candidate signal.
+ *   • Guided — {@link #guidedPrompts} reads the domain's own open gates and
+ *     open findings and returns targeted questions ("G3 on VARIPULSE is +47d
+ *     late — any change today?"), so the owner is prompted about the specific
+ *     work in flight instead of facing a blank box.
+ *
+ * Extraction runs on the platform LLM ({@link GenaiCore.Llm.Completion.Client})
+ * and degrades to a deterministic keyword extractor when no completion client
+ * is provisioned (as in the offline sandbox), so the capture→review→commit
+ * circuit always works. Nothing is written until the owner approves: extraction
+ * only returns drafts, and {@link #commitSignals} is the sole path that creates
+ * {@link Finding}s. Committed findings land as {@code outcome='RUNNING'} with
+ * {@code signalSource='eod-log'} so the tower shows them as fresh, human-sourced
+ * signals in flight — never auto-resolved and never attributed to a marketed
+ * device (data rule §4.3.2).
+ *
+ * Stateless computation type — it holds no data of its own; it reads the launch
+ * plan / gates / findings and writes new findings. The UI calls it via
+ * {@code c3Action}.
+ */
+entity type EodLogService {
+  /**
+   * The set of functional domains an owner can log against, each with the
+   * {@link Agent} that will be credited as the detector of anything committed
+   * from that domain's log. Drives the domain picker at the top of the
+   * End-of-Day log screen. Returns the twelve {@link FunctionalDomain}s plus an
+   * "all" pseudo-domain for a cross-functional log.
+   */
+  domains: function(): json py
+
+  /**
+   * The guided-mode question set for one domain. Reads the domain's live state —
+   * the open {@link Gate}s that are slipping and the open {@link Finding}s that
+   * are still waiting — and turns each into a specific, answerable prompt
+   * ("G3 Submission Commit on VARIPULSE is +47d late — any change today?").
+   * This is what stops the "I didn't log anything because I didn't know what to
+   * say" failure: the owner is asked about the exact work in flight.
+   *
+   * @param domain the {@link FunctionalDomain#code} to build prompts for, or
+   *   "all" for a cross-functional set.
+   */
+  guidedPrompts: function(domain: string): json py
+
+  /**
+   * Turn a raw end-of-day narrative (free dump and/or answers to the guided
+   * prompts) into a list of structured draft signals — WITHOUT persisting
+   * anything. Each draft carries a classified kind (risk / delay / blocker /
+   * decision / evidence / status-change), a proposed headline and description,
+   * the launch and category it most likely maps to, and a confidence score, so
+   * the owner can review, edit and approve before anything is committed.
+   *
+   * Uses the platform LLM to classify when a completion client is available and
+   * falls back to a deterministic keyword extractor otherwise, so the circuit
+   * works even offline. Low-confidence drafts are flagged for review, never
+   * silently committed.
+   *
+   * @param domain    the {@link FunctionalDomain#code} the log belongs to.
+   * @param freeText  the owner's free-form narrative (may be empty).
+   * @param answers   guided-mode answers as a JSON array of
+   *   {@code {promptId, question, answer}} objects (may be empty).
+   */
+  extractSignals: function(domain: string, freeText: string, answers: json): json py
+
+  /**
+   * Commit the drafts the owner approved: create one real {@link Finding} per
+   * draft and return the created ids so the UI can link straight into the
+   * resolution workspace / tower. This is the ONLY method that writes. Each
+   * finding is created with a fresh id and NPI display id, {@code outcome='RUNNING'}
+   * (a fresh signal in flight, not auto-closed), {@code signalSource='eod-log'},
+   * {@code detectedBy} set to the logging domain's {@link Agent}, and
+   * {@code detectedAt} stamped now — so it appears immediately on the Open-issues
+   * list and the Agent tower as a human-captured risk.
+   *
+   * @param approvedDrafts a JSON array of approved draft objects (the shape
+   *   {@link #extractSignals} returns, after any owner edits): each needs at
+   *   least {@code headline}, {@code description}, {@code category} and
+   *   {@code launchId}; {@code phaseId} and {@code domain} are optional.
+   */
+  commitSignals: function(approvedDrafts: json): json py
+}

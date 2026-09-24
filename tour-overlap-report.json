@@ -1,0 +1,179 @@
+[
+  {
+    "step": "1 / 16",
+    "marks": 3,
+    "spots": 3,
+    "issues": []
+  },
+  {
+    "step": "2 / 16",
+    "marks": 3,
+    "spots": 3,
+    "issues": [
+      {
+        "label": "worst case: 47 days",
+        "cls": "below",
+        "covers": "CAPA-2026-0148",
+        "tag": "SPAN"
+      }
+    ]
+  },
+  {
+    "step": "3 / 16",
+    "marks": 2,
+    "spots": 2,
+    "issues": [
+      {
+        "label": "four lenses, one screen",
+        "cls": "below",
+        "covers": "Pipeline by Product",
+        "tag": "DIV"
+      },
+      {
+        "label": "VARIPULSE Gen 2 · P3 · +47d, w",
+        "cls": "below",
+        "covers": "ETHICON 4000+ StaplerEthicon · Class II ",
+        "tag": "BUTTON"
+      }
+    ]
+  },
+  {
+    "step": "4 / 16",
+    "marks": 3,
+    "spots": 3,
+    "issues": [
+      {
+        "label": "6 launches · 1 off track · €24",
+        "cls": "below",
+        "covers": "Open risks in this market",
+        "tag": "DIV"
+      },
+      {
+        "label": "and the record behind it: NPI-",
+        "cls": "",
+        "covers": "Open risks in this market",
+        "tag": "DIV"
+      }
+    ]
+  },
+  {
+    "step": "5 / 16",
+    "marks": 2,
+    "spots": 2,
+    "issues": [
+      {
+        "label": "pending · escalated · her own ",
+        "cls": "below",
+        "covers": "My decisions",
+        "tag": "DIV"
+      }
+    ]
+  },
+  {
+    "step": "6 / 16",
+    "marks": 1,
+    "spots": 1,
+    "issues": [
+      {
+        "label": "agent, action, and the time it",
+        "cls": "below",
+        "covers": "See the chain the fleet ran",
+        "tag": "BUTTON"
+      }
+    ]
+  },
+  {
+    "step": "7 / 16",
+    "marks": 2,
+    "spots": 2,
+    "issues": [
+      {
+        "label": "stopped and waiting on her",
+        "cls": "below",
+        "covers": "FranchiseAllBiosense WebsterEthiconJ&J V",
+        "tag": "DIV"
+      },
+      {
+        "label": "closed with no human at all",
+        "cls": "below",
+        "covers": "FranchiseAllBiosense WebsterEthiconJ&J V",
+        "tag": "DIV"
+      }
+    ]
+  },
+  {
+    "step": "8 / 16",
+    "marks": 2,
+    "spots": 2,
+    "issues": []
+  },
+  {
+    "step": "9 / 16",
+    "marks": 3,
+    "spots": 3,
+    "issues": []
+  },
+  {
+    "step": "10 / 16",
+    "marks": 1,
+    "spots": 1,
+    "issues": []
+  },
+  {
+    "step": "11 / 16",
+    "marks": 1,
+    "spots": 1,
+    "issues": []
+  },
+  {
+    "step": "12 / 16",
+    "marks": 1,
+    "spots": 1,
+    "issues": [
+      {
+        "label": "click this, then press Next",
+        "cls": "",
+        "covers": "Ask agent to run",
+        "tag": "BUTTON"
+      }
+    ]
+  },
+  {
+    "step": "13 / 16",
+    "marks": 3,
+    "spots": 3,
+    "issues": []
+  },
+  {
+    "step": "14 / 16",
+    "marks": 1,
+    "spots": 1,
+    "issues": [
+      {
+        "label": "her decisions, with their outc",
+        "cls": "below",
+        "covers": "Live7 of your own · last one 28 minutes ",
+        "tag": "DIV"
+      }
+    ]
+  },
+  {
+    "step": "15 / 16",
+    "marks": 2,
+    "spots": 2,
+    "issues": [
+      {
+        "label": "her approval, newest line",
+        "cls": "below",
+        "covers": "11 Sep 08:41",
+        "tag": "SPAN"
+      }
+    ]
+  },
+  {
+    "step": "16 / 16",
+    "marks": 2,
+    "spots": 3,
+    "issues": []
+  }
+]

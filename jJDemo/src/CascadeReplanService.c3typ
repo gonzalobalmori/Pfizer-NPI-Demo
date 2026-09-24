@@ -1,0 +1,48 @@
+/**
+ * CascadeReplanService — the connected-milestone / dynamic-cascade-replan
+ * behaviour (SCENARIO 1). When an outside authority moves a
+ * {@link RegulatoryMilestone}, this service fans the impact across every
+ * downstream {@link CascadeImpactItem} — manufacturing schedule, loaner-kit
+ * deployment, commercial comms, and carrying-cost visibility — auto-adjusting
+ * what it safely can and surfacing only the items that genuinely need a human.
+ * The result is an exception dashboard ("N auto-adjusted, M require a human
+ * decision") instead of the legacy multi-day manual rework.
+ *
+ * Stateless computation type: it holds no data of its own, reading and mutating
+ * {@link RegulatoryMilestone} / {@link CascadeImpactItem} records at call time
+ * and returning plain JSON the React view renders directly.
+ */
+entity type CascadeReplanService {
+  /**
+   * The replan dashboard for a launch (default OTTAVA when no id given): the
+   * milestone with its baseline/current dates and slip, the full list of
+   * downstream impact items split into auto-adjusted vs. awaiting-a-human, and
+   * the rolled-up working-capital cost leadership sees. Read-only — reflects
+   * whatever state the milestone is currently in.
+   */
+  plan: function(launchId: string): json js
+
+  /**
+   * The cascade (SCENARIO 1 core). Moves {@link RegulatoryMilestone#currentDate}
+   * to {@code newDateIso}, recomputes the slip, then walks every downstream
+   * {@link CascadeImpactItem}: AUTO items are re-timed / held and stamped
+   * AUTO_ADJUSTED with their {@link CascadeImpactItem#autoAction}; HUMAN items are
+   * moved to AWAITING_DECISION. Returns the same bundle as {@link #plan} plus a
+   * summary ({@code autoAdjusted}, {@code needDecision}, cost roll-up).
+   * Idempotent — re-running with the same date is a no-op on already-adjusted items.
+   */
+  cascadeReplan: function(milestoneId: string, newDateIso: string): json js
+
+  /**
+   * Resolve one HUMAN {@link CascadeImpactItem}: record the owner's chosen option,
+   * apply its cost/day impact, and stamp it RESOLVED. Returns the refreshed plan
+   * bundle so the dashboard's "needs a human" count ticks down live.
+   */
+  resolveImpact: function(itemId: string, optionLabel: string): json js
+
+  /**
+   * Restore the milestone and all its impact items to their pre-slip baseline so
+   * the scenario can be demoed repeatedly. Returns the refreshed plan bundle.
+   */
+  reset: function(milestoneId: string): json js
+}

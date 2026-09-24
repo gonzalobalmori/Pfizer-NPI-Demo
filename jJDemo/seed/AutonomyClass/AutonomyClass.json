@@ -1,0 +1,16 @@
+[
+  {
+    "id": "seed_autonomy_a",
+    "code": "A",
+    "shortLabel": "Autonomous",
+    "description": "Agent decides and executes, inside guardrails",
+    "requiresHumanDecision": false
+  },
+  {
+    "id": "seed_autonomy_r",
+    "code": "R",
+    "shortLabel": "Recommend",
+    "description": "Agent recommends, human decides",
+    "requiresHumanDecision": true
+  }
+]

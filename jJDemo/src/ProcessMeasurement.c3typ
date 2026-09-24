@@ -1,0 +1,47 @@
+/**
+ * A single in-process SPC (statistical process control) measurement streamed
+ * from the MES for a {@link Lot}. For the Heraeus contrasting case these are the
+ * ring-electrode outer-diameter readings (parameter `ring_electrode_od_mm`,
+ * nominal 2.50mm, spec 2.45–2.55): ~150 per lot, ~1,800 in total, with the four
+ * out-of-spec lots breaking SPC rule 2 (four consecutive points on one side of
+ * the mean) — the signal that lets the Line-Monitor agent open a finding without
+ * a human watching.
+ *
+ * Operational type — upserted on every MES micro-batch, so it lives in `data/`.
+ * Its business key is {@link ProcessMeasurement#measId}.
+ */
+entity type ProcessMeasurement {
+  /** MES measurement id, e.g. "M0000123". The idempotency key. */
+  measId: !string
+
+  /** The lot this reading belongs to. */
+  lot: Lot
+
+  /** The measured parameter, e.g. "ring_electrode_od_mm". */
+  parameter: string
+
+  /** Measured value in the parameter's units (mm here). */
+  measValue: double
+
+  /** Upper spec limit. */
+  usl: double
+
+  /** Lower spec limit. */
+  lsl: double
+
+  /** Nominal / target value. */
+  nominal: double
+
+  /** SPC rule violated by this reading, if any: "RULE_1" (beyond a spec limit),
+   * "RULE_2" (four consecutive on one side), or empty. */
+  spcRuleViolated: string
+
+  /** Equipment / line the reading came from. */
+  equipmentId: string
+
+  /** Mould cavity number (1–8), for cavity-level root cause. */
+  cavity: int
+
+  /** Timestamp of the measurement. */
+  measTs: datetime
+}

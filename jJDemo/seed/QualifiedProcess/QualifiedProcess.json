@@ -1,0 +1,29 @@
+[
+  {
+    "id": "seed_qp_grandrapids_eo",
+    "processType": "EO sterilisation",
+    "qualifiedForLaunches": "OCTARAY G2, EMBOTRAP IV",
+    "qualificationDepth": "half-cycle",
+    "site": {
+      "id": "seed_site_grandrapids"
+    }
+  },
+  {
+    "id": "seed_qp_venlo_eo",
+    "processType": "EO sterilisation",
+    "qualifiedForLaunches": "VARIPULSE G2",
+    "qualificationDepth": "full",
+    "site": {
+      "id": "seed_site_venlo"
+    }
+  },
+  {
+    "id": "seed_qp_neuss_electrode",
+    "processType": "Ring electrode subassembly",
+    "qualifiedForLaunches": "VARIPULSE G2, OCTARAY G2",
+    "qualificationDepth": "full",
+    "site": {
+      "id": "seed_site_neuss"
+    }
+  }
+]

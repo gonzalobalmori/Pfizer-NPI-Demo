@@ -1,0 +1,40 @@
+/**
+ * A geographic market the portfolio launches into. Twenty-two are modelled in
+ * two tiers: twelve LAUNCH markets (US, CA, BR, UK, ES, FR, DE, IT, IN, CN, JP,
+ * AU) and ten REGISTRATION markets (MX, AR, NL, SE, PL, TR, AE, ZA, KR, SG).
+ * Each carries its real regulatory body — never a generic substitute (§4.1).
+ *
+ * A market hosts many {@link MarketLaunch}es (its rollouts of individual
+ * launches) and drives the world-map lens of the portfolio.
+ */
+entity type Market mixes SeedData {
+  /** ISO-style short code used on the map, e.g. "DE", "US". */
+  code: !string
+
+  /** Country name, e.g. "Germany". */
+  name: !string
+
+  /** Real regulatory body/route, e.g. "EU MDR · G-BA appraisal · hospital tenders". */
+  regulatoryBody: string
+
+  /** Regulatory route summary where distinct from {@link Market#regulatoryBody}. */
+  regulatoryRoute: string
+
+  /** Market tier. */
+  tier: string enum('LAUNCH', 'REGISTRATION')
+
+  /** Human-readable tender / listing windows, e.g. "Q2 and Q4". */
+  tenderWindows: string
+
+  /** Wave label for registration markets, e.g. "Wave 2 · from Q1 2028". */
+  wave: string
+
+  /** Latitude for the world map. */
+  latitude: double
+
+  /** Longitude for the world map. */
+  longitude: double
+
+  /** The per-launch rollouts into this market. Inverse of {@link MarketLaunch#market}. */
+  marketLaunches: [MarketLaunch](market)
+}

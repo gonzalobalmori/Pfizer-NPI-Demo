@@ -1,0 +1,27 @@
+/**
+ * The rollout of one {@link Launch} into one {@link Market} — the join that
+ * carries the per-market first-ship quarter, status, reimbursement position and
+ * revenue exposure. The German Q2 2027 tender collision and the €18.4M exposure
+ * on VARIPULSE G2 both live here.
+ *
+ * A market launch can raise {@link Finding}s specific to that market.
+ */
+entity type MarketLaunch mixes SeedData, HasExposure {
+  /** The launch being rolled out. */
+  launch: Launch
+
+  /** The market it is rolled out into. */
+  market: Market
+
+  /** First-ship quarter in this market, e.g. "Q2 27" or "live". */
+  firstShipQuarter: string
+
+  /** Rollout status in this market. */
+  status: string enum('ok', 'rk', 'ct')
+
+  /** Reimbursement position in this market, e.g. "existing CPT", "no code". */
+  reimbursementStatus: string
+
+  /** Findings specific to this market rollout. Inverse of {@link Finding#marketLaunch}. */
+  findings: [Finding](marketLaunch)
+}

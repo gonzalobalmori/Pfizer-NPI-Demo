@@ -1,0 +1,32 @@
+/**
+ * A comment in an escalation thread or on an activity — the human and agent
+ * commentary in time order that answers "why is this mine?" (§2.4 section 4).
+ * Agent entries are labelled as automated checks and carry what they read
+ * (contract clauses, the approved-supplier list, audit validity). A comment
+ * belongs to either an {@link Activity} or a {@link Decision}.
+ */
+entity type Comment mixes SeedData {
+  /** Author, e.g. "M. Okafor", "Sourcing agent". */
+  author: string
+
+  /** Author's function/role, e.g. "Sourcing", or "Automated check" for agent entries. */
+  authorRole: string
+
+  /** Absolute time of the comment. */
+  commentedAt: datetime
+
+  /** The comment body. */
+  body: string
+
+  /** True where the entry is an automated agent check rather than a human comment. */
+  isAutomatedCheck: boolean
+
+  /** For automated checks, the sources read, e.g. "master agreement clause 7.3, ASL". */
+  sourcesRead: string
+
+  /** The activity this comment is on, where it is on an activity. */
+  activity: Activity
+
+  /** The decision this comment is on, where it is on a decision. */
+  decision: Decision
+}

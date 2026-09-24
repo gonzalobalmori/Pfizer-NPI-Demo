@@ -1,0 +1,22 @@
+/**
+ * A configured guardrail rule — the inspectable boundary the fleet operates
+ * inside (§1, §6). Referenced by the {@link GuardrailCheck}s that evaluate it.
+ * "Zero breaches in 90 days" is a headline figure derived from these records,
+ * not stored (acceptance criterion §2.4.6, metric {@link Guardrail#breachCount}).
+ */
+entity type Guardrail mixes SeedData {
+  /** Guardrail name, e.g. "Gate-date movement authority". */
+  name: !string
+
+  /** The rule in plain language, e.g. "Any move of a gate date requires a human decision". */
+  rule: string
+
+  /** Scope the rule applies to, e.g. "All launches", "Sourcing". */
+  scope: string
+
+  /** Number of times this guardrail has been breached (derived from checks; 0 across the seed). */
+  breachCount: int
+
+  /** The checks that evaluated this guardrail. Inverse of {@link GuardrailCheck#guardrail}. */
+  checks: [GuardrailCheck](guardrail)
+}

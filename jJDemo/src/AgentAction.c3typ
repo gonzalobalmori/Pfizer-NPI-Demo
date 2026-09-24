@@ -1,0 +1,47 @@
+/**
+ * A single step an {@link Agent} executed inside a {@link Chain}. The building
+ * block of the traceability view (§2.2): each step records the agent, the verb
+ * (what it did), the detail, and the absolute clock time it happened
+ * (08:14, 08:16, 08:20, 08:23 in the anchor case).
+ *
+ * Model invariant §3.6.5: {@link AgentAction#occurredAt} is an absolute
+ * timestamp. Durations are derived from it, never stored. The activity log
+ * (§2.3) is a reverse-chronological feed of completed actions only.
+ */
+entity type AgentAction mixes SeedData {
+  /** Ordinal position of the step within its chain, 1-based. */
+  sequence: int
+
+  /** Absolute timestamp at which the step occurred. Durations are derived from this. */
+  occurredAt: datetime
+
+  /** The verb — what the agent did, e.g. "DETECTED", "ASSESSED", "3 OPTIONS MODELLED". */
+  verb: string
+
+  /** The detail of the step (the raw signal, the assessment, the guardrail result). */
+  detail: string
+
+  /** The stage/state label carried on the finding card, e.g. "GUARDRAIL PASS". */
+  stateLabel: string
+
+  /** The handoff prompt to the next agent, e.g. "find a qualified alternative inside 38 days". */
+  handoffPrompt: string
+
+  /** Value before the step, for delta rows, e.g. "04 Nov". */
+  deltaBefore: string
+
+  /** Value after the step, for delta rows, e.g. "21 Dec". */
+  deltaAfter: string
+
+  /** Outcome of a completed action, for the activity log, e.g. "PO issued", "CAPA drafted". */
+  outcome: string
+
+  /** True once the action has completed — only completed actions appear in the activity log (§2.3). */
+  completed: boolean
+
+  /** The chain this action belongs to. */
+  chain: Chain
+
+  /** The agent that performed this action. */
+  agent: Agent
+}

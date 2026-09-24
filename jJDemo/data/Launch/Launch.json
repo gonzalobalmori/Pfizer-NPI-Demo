@@ -1,0 +1,266 @@
+[
+  {
+    "id": "seed_launch_varipulse_g2",
+    "deviceName": "VARIPULSE Gen 2 PFA Catheter",
+    "franchise": {
+      "id": "seed_franchise_biosense"
+    },
+    "deviceClass": "Class III",
+    "regulatoryRoute": "PMA + EU MDR",
+    "leadMarket": {
+      "id": "seed_market_de"
+    },
+    "currentPhase": {
+      "id": "seed_phase_p3"
+    },
+    "healthStatus": "OFF_TRACK",
+    "revenueAtRisk": 21200000,
+    "firstShipDate": "2027-06-29",
+    "readinessPct": 83,
+    "launchValue": 96000000,
+    "sterilisationMethod": "EO",
+    "manufactureSite": "Irvine + CMO",
+    "registrationsFiled": 11,
+    "registrationsTotal": 14,
+    "launchBuildUnits": 4200,
+    "fieldForceCertified": 62,
+    "fieldForceTotal": 78,
+    "vacApprovalsFiled": 9,
+    "vacApprovalsTotal": 22
+  },
+  {
+    "id": "seed_launch_octaray_g2",
+    "deviceName": "OCTARAY Gen 2 Mapping Catheter",
+    "franchise": {
+      "id": "seed_franchise_biosense"
+    },
+    "deviceClass": "Class III",
+    "regulatoryRoute": "PMA + EU MDR",
+    "leadMarket": {
+      "id": "seed_market_de"
+    },
+    "currentPhase": {
+      "id": "seed_phase_p2"
+    },
+    "healthStatus": "AT_RISK",
+    "revenueAtRisk": 6200000,
+    "firstShipDate": "2027-07-15",
+    "readinessPct": 86,
+    "launchValue": 42000000,
+    "sterilisationMethod": "EO",
+    "manufactureSite": "Irvine + CMO",
+    "registrationsFiled": 8,
+    "registrationsTotal": 14,
+    "launchBuildUnits": 3100,
+    "fieldForceCertified": 40,
+    "fieldForceTotal": 60,
+    "vacApprovalsFiled": 6,
+    "vacApprovalsTotal": 20
+  },
+  {
+    "id": "seed_launch_embotrap_iv",
+    "deviceName": "EMBOTRAP IV Revascularisation Device",
+    "franchise": {
+      "id": "seed_franchise_cerenovus"
+    },
+    "deviceClass": "Class III",
+    "regulatoryRoute": "PMA + EU MDR",
+    "leadMarket": {
+      "id": "seed_market_de"
+    },
+    "currentPhase": {
+      "id": "seed_phase_p5"
+    },
+    "healthStatus": "AT_RISK",
+    "revenueAtRisk": 3100000,
+    "firstShipDate": "2026-09-26",
+    "readinessPct": 67,
+    "launchValue": 55000000,
+    "sterilisationMethod": "Gamma",
+    "manufactureSite": "Galway",
+    "registrationsFiled": 12,
+    "registrationsTotal": 14,
+    "launchBuildUnits": 5200,
+    "fieldForceCertified": 55,
+    "fieldForceTotal": 70,
+    "vacApprovalsFiled": 12,
+    "vacApprovalsTotal": 24
+  },
+  {
+    "id": "seed_launch_impella_ecp",
+    "deviceName": "Impella ECP+ Console v3",
+    "franchise": {
+      "id": "seed_franchise_abiomed"
+    },
+    "deviceClass": "Class III",
+    "regulatoryRoute": "PMA",
+    "leadMarket": {
+      "id": "seed_market_us"
+    },
+    "currentPhase": {
+      "id": "seed_phase_p4"
+    },
+    "healthStatus": "ON_PLAN",
+    "revenueAtRisk": 0,
+    "firstShipDate": "2027-12-15",
+    "readinessPct": 92,
+    "scheduleFloatDays": 31,
+    "launchValue": 120000000,
+    "sterilisationMethod": "N/A (capital)",
+    "manufactureSite": "Danvers",
+    "registrationsFiled": 6,
+    "registrationsTotal": 8,
+    "launchBuildUnits": 900,
+    "fieldForceCertified": 70,
+    "fieldForceTotal": 80,
+    "vacApprovalsFiled": 15,
+    "vacApprovalsTotal": 28
+  },
+  {
+    "id": "seed_launch_javelin_xl",
+    "deviceName": "Javelin XL IVL Catheter",
+    "franchise": {
+      "id": "seed_franchise_shockwave"
+    },
+    "deviceClass": "Class III",
+    "regulatoryRoute": "PMA + EU MDR",
+    "leadMarket": {
+      "id": "seed_market_us"
+    },
+    "currentPhase": {
+      "id": "seed_phase_p5"
+    },
+    "healthStatus": "ON_PLAN",
+    "revenueAtRisk": 0,
+    "firstShipDate": "2027-12-15",
+    "readinessPct": 88,
+    "scheduleFloatDays": 18,
+    "launchValue": 88000000,
+    "sterilisationMethod": "e-beam",
+    "manufactureSite": "Santa Clara",
+    "registrationsFiled": 5,
+    "registrationsTotal": 6,
+    "launchBuildUnits": 6400,
+    "fieldForceCertified": 66,
+    "fieldForceTotal": 72,
+    "vacApprovalsFiled": 18,
+    "vacApprovalsTotal": 26
+  },
+  {
+    "id": "seed_launch_ethicon_4000",
+    "deviceName": "ETHICON 4000+ Stapler",
+    "franchise": {
+      "id": "seed_franchise_ethicon"
+    },
+    "deviceClass": "Class II",
+    "regulatoryRoute": "510(k) + EU MDR",
+    "leadMarket": {
+      "id": "seed_market_us"
+    },
+    "currentPhase": {
+      "id": "seed_phase_p4"
+    },
+    "healthStatus": "AT_RISK",
+    "revenueAtRisk": 7800000,
+    "firstShipDate": "2027-03-15",
+    "readinessPct": 80,
+    "launchValue": 74000000,
+    "sterilisationMethod": "EO",
+    "manufactureSite": "Cincinnati + CMO",
+    "registrationsFiled": 9,
+    "registrationsTotal": 14,
+    "launchBuildUnits": 8800,
+    "fieldForceCertified": 48,
+    "fieldForceTotal": 90,
+    "vacApprovalsFiled": 14,
+    "vacApprovalsTotal": 30
+  },
+  {
+    "id": "seed_launch_dualto",
+    "deviceName": "DUALTO Energy System",
+    "franchise": {
+      "id": "seed_franchise_ethicon"
+    },
+    "deviceClass": "Class II",
+    "regulatoryRoute": "EU MDR",
+    "leadMarket": {
+      "id": "seed_market_us"
+    },
+    "currentPhase": {
+      "id": "seed_phase_p6"
+    },
+    "healthStatus": "LAUNCHED",
+    "revenueAtRisk": 0,
+    "firstShipDate": "2026-01-01",
+    "readinessPct": 100,
+    "launchValue": 210000000,
+    "sterilisationMethod": "N/A (capital)",
+    "manufactureSite": "Cincinnati",
+    "registrationsFiled": 14,
+    "registrationsTotal": 14,
+    "launchBuildUnits": 320,
+    "fieldForceCertified": 88,
+    "fieldForceTotal": 88,
+    "vacApprovalsFiled": 26,
+    "vacApprovalsTotal": 26
+  },
+  {
+    "id": "seed_launch_ottava",
+    "deviceName": "OTTAVA Robotic Platform Kit",
+    "franchise": {
+      "id": "seed_franchise_digital_surgery"
+    },
+    "deviceClass": "Class II",
+    "regulatoryRoute": "EU MDR",
+    "leadMarket": {
+      "id": "seed_market_de"
+    },
+    "currentPhase": {
+      "id": "seed_phase_p1"
+    },
+    "healthStatus": "PRE_MARKET",
+    "revenueAtRisk": 0,
+    "firstShipDate": "2027-06-30",
+    "readinessPct": 95,
+    "scheduleFloatDays": 24,
+    "launchValue": 260000000,
+    "sterilisationMethod": "N/A (capital)",
+    "manufactureSite": "Santa Clara",
+    "registrationsFiled": 3,
+    "registrationsTotal": 12,
+    "launchBuildUnits": 40,
+    "fieldForceCertified": 20,
+    "fieldForceTotal": 40,
+    "vacApprovalsFiled": 4,
+    "vacApprovalsTotal": 18
+  },
+  {
+    "id": "seed_launch_puresee",
+    "deviceName": "TECNIS PureSee Toric IOL",
+    "franchise": {
+      "id": "seed_franchise_vision"
+    },
+    "deviceClass": "Class III",
+    "regulatoryRoute": "PMA + EU MDR",
+    "leadMarket": {
+      "id": "seed_market_de"
+    },
+    "currentPhase": {
+      "id": "seed_phase_p3"
+    },
+    "healthStatus": "AT_RISK",
+    "revenueAtRisk": 2300000,
+    "firstShipDate": "2027-09-30",
+    "readinessPct": 83,
+    "launchValue": 64000000,
+    "sterilisationMethod": "Autoclave",
+    "manufactureSite": "Groningen",
+    "registrationsFiled": 9,
+    "registrationsTotal": 14,
+    "launchBuildUnits": 12000,
+    "fieldForceCertified": 44,
+    "fieldForceTotal": 58,
+    "vacApprovalsFiled": 10,
+    "vacApprovalsTotal": 22
+  }
+]

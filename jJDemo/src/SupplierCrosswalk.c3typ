@@ -1,0 +1,44 @@
+/**
+ * The reference-data mapping that resolves one real-world supplier to its many
+ * source-system identities. The same supplier appears as an SAP vendor number
+ * (`LIFNR`), an Ariba supplier id, a QMS audit subject and a free-text name on a
+ * certificate — the pipeline joins them here rather than by a shared primary key
+ * (which does not exist across SAP, Veeva and Ariba).
+ *
+ * The demo deliberately plants three imperfections so the exception path is
+ * showable (see {@link SupplierCrosswalk#resolutionState}):
+ *  - Sterigenics: certificate name "Sterigenics US LLC" disagrees with the Ariba
+ *    name — a fuzzy-match miss resolved by a MANUAL crosswalk entry;
+ *  - Heraeus: no D&B/DUNS match — PARTIAL resolution (resolves as a supplier but
+ *    the financial-risk rating is flagged missing);
+ *  - one SAP vendor key arrives with trailing whitespace and must trim-and-still-resolve.
+ *
+ * Reference data (not operational, not locked seed): it maps rather than
+ * mutates, so it lives in `data/`. Keyed on {@link SupplierCrosswalk#supplierId}.
+ */
+entity type SupplierCrosswalk {
+  /** The canonical {@link Supplier#id} this row resolves to, e.g. "seed_supplier_sterigenics". */
+  supplierId: !string
+
+  /** Canonical supplier name, for readback in the lineage view. */
+  canonicalName: string
+
+  /** SAP vendor number (LFA1.LIFNR), 10-char zero-padded. */
+  sapVendor: string
+
+  /** Ariba supplier id, e.g. "AN02-STERIGENICS-GR". */
+  aribaSupplierId: string
+
+  /** QMS audit subject key, e.g. "SUP-STG-GR". */
+  qmsAuditSubject: string
+
+  /** Free-text name as it appears on the sterilisation certificate. */
+  certificateName: string
+
+  /** D&B DUNS number; empty where no D&B match exists (Heraeus). */
+  dunsNumber: string
+
+  /** How this identity was resolved: AUTO (all keys agree), MANUAL (a curator
+   * reconciled a name mismatch), or PARTIAL (resolves but a source is missing). */
+  resolutionState: string enum('AUTO', 'MANUAL', 'PARTIAL')
+}

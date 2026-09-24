@@ -1,0 +1,5 @@
+sample_id,test_code,method_ref,analyst_id,result,units,result_state,result_date,product
+VPG2-VAL-03,ISO11135-EO-VAL,ISO 11135:2014 half-cycle,AK,,SAL,Pending,,VARIPULSE Gen 2 PFA Catheter
+VPG2-BIO-11,BIOBURDEN,ISO 11737-1,JT,42,CFU/device,Approved,2026-08-20,VARIPULSE Gen 2 PFA Catheter
+PSEE-TRN-D,ASTM-D4169-DC13,ASTM D4169 Seq. D,JT,FAIL,pass/fail,Approved,2026-09-06,TECNIS PureSee Toric IOL
+OCT-BIO-07,BIOBURDEN,ISO 11737-1,JT,31,CFU/device,Approved,02/09/2026,OCTARAY Gen 2 Mapping Catheter

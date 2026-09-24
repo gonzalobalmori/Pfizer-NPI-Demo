@@ -1,0 +1,30 @@
+/**
+ * A named person in the programme — Helena Fossi (Global NPI Lead) and the
+ * function leads she works with (M. Okafor, A. Kowalski, S. Lindqvist,
+ * K. Tanaka, L. Haugen, A. Patel, T. Bergmann, D. Moreau, R. Mehta, J. Thomson,
+ * R. Devi, J. Ruiz), plus the Launch Board as a collective decision body.
+ *
+ * A person owns {@link Activity}s, {@link Decision}s and {@link Escalation}s.
+ */
+entity type Person mixes SeedData {
+  /** Person name, e.g. "Helena Fossi", or a body name, e.g. "Launch Board". */
+  name: !string
+
+  /** Role title, e.g. "Global NPI Lead" or "Sourcing Lead". */
+  role: string
+
+  /** The function this person leads, e.g. "Sourcing". */
+  functionName: string
+
+  /** Initials shown on avatars, e.g. "HF", "MO". */
+  initials: string
+
+  /** True for a collective decision body such as the Launch Board. */
+  isBoard: boolean
+
+  /** Activities owned by this person. Inverse of {@link Activity#owningPerson}. */
+  ownedActivities: [Activity](owningPerson)
+
+  /** Decisions owned by this person. Inverse of {@link Decision#owner}. */
+  ownedDecisions: [Decision](owner)
+}

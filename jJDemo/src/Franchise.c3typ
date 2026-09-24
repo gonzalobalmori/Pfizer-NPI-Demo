@@ -1,0 +1,18 @@
+/**
+ * A J&J MedTech product franchise (e.g. Biosense Webster, Cerenovus, Abiomed,
+ * Shockwave, Ethicon, Digital Surgery, J&J Vision). A franchise belongs to one
+ * {@link Segment} and owns the device {@link Launch}es under it.
+ *
+ * Franchise is a first-class filter dimension across the application: the
+ * Live control board and the activity log share a franchise filter (§2.2).
+ */
+entity type Franchise mixes SeedData {
+  /** Franchise name as the business names it, e.g. "Biosense Webster". */
+  name: !string
+
+  /** The segment this franchise rolls up to. */
+  segment: Segment
+
+  /** The device launches governed under this franchise. Inverse of {@link Launch#franchise}. */
+  launches: [Launch](franchise)
+}

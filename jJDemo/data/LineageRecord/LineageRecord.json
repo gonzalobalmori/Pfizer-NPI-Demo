@@ -1,0 +1,42 @@
+[
+  {
+    "id": "Gate__seed_gate_varipulse_g3",
+    "targetType": "Gate",
+    "targetId": "seed_gate_varipulse_g3",
+    "feedCode": "PPM_GATE",
+    "sourceFile": "ppm/PPM_GATE_20260911.csv",
+    "sourceRowKey": "G-VARIPULSE_G3",
+    "transform": "SrcPpmGate-Gate",
+    "loadedAt": "2026-09-11T08:42:00"
+  },
+  {
+    "id": "Finding__seed_finding_417",
+    "targetType": "Finding",
+    "targetId": "seed_finding_417",
+    "feedCode": "PORTAL_CHAMBER",
+    "sourceFile": "portal/PORTAL_CHAMBER_BOOKING_20260911_08.json",
+    "sourceRowKey": "BK-STERIS-VNL-20261012",
+    "transform": "(agent trigger — Quality agent raised finding)",
+    "loadedAt": "2026-09-11T08:42:00"
+  },
+  {
+    "id": "CAPA__seed_capa_0148",
+    "targetType": "CAPA",
+    "targetId": "seed_capa_0148",
+    "feedCode": "QMS_CAPA",
+    "sourceFile": "veeva_qms/QMS_CAPA_20260911.json",
+    "sourceRowKey": "CAPA-2026-0148",
+    "transform": "SrcQmsCapa-CAPA",
+    "loadedAt": "2026-09-11T08:42:00"
+  },
+  {
+    "id": "Finding__seed_finding_412",
+    "targetType": "Finding",
+    "targetId": "seed_finding_412",
+    "feedCode": "MES_SPC",
+    "sourceFile": "mes/MES_SPC_20260911_08.csv",
+    "sourceRowKey": "HRS-RE-2609-09 (first RULE_1 breach)",
+    "transform": "(line agent — SPC rule violation on lot 09)",
+    "loadedAt": "2026-09-11T08:42:00"
+  }
+]

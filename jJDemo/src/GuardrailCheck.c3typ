@@ -1,0 +1,31 @@
+/**
+ * A guardrail evaluation that ran on a {@link Finding} *before* any option was
+ * proposed (§2.4 section 6). The anchor case ran six, none breached. Each check
+ * records the threshold, what was observed, and the result — the evidence behind
+ * the "zero breaches in 90 days" headline.
+ */
+entity type GuardrailCheck mixes SeedData {
+  /** Check name, e.g. "BSI Q4 review window holds a 9-day shift". */
+  name: !string
+
+  /** The threshold evaluated, e.g. "≤ 14 days dossier shift". */
+  threshold: string
+
+  /** What was observed, e.g. "9-day shift". */
+  observed: string
+
+  /** Result of the check. */
+  result: string enum('PASS', 'BREACH')
+
+  /** When the check was evaluated. */
+  evaluatedAt: datetime
+
+  /** The finding this check ran on. */
+  finding: Finding
+
+  /** The guardrail rule this check evaluated. */
+  guardrail: Guardrail
+
+  /** The agent that ran the check. */
+  runBy: Agent
+}

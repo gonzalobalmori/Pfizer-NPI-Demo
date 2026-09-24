@@ -1,0 +1,326 @@
+[
+  {
+    "id": "seed_comment_417_1",
+    "author": "M. Okafor",
+    "authorRole": "Sourcing",
+    "commentedAt": "2026-09-10T19:40:00",
+    "body": "Steris have cancelled our 12 Oct slot. I pushed back on the phone — they have a genuine chamber deviation and cannot hold it. Nothing earlier across Venlo, Petten or Daventry. Escalating because this is the validation lot, not a routine cycle.",
+    "isAutomatedCheck": false,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_comment_417_2",
+    "author": "Sourcing agent",
+    "authorRole": "Automated check",
+    "commentedAt": "2026-09-11T06:05:00",
+    "body": "Checked the master agreement: the booking was a non-committed capacity reservation, clause 7.3 permits reallocation on 30 days notice. No contractual claim and no penalty available. Scanned the ASL for EO alternatives — Sterigenics Grand Rapids is approved, audit current to Mar 2028, already qualified for OCTARAY G2 and EMBOTRAP IV, and has capacity from 29 Sep.",
+    "isAutomatedCheck": true,
+    "sourcesRead": "master agreement clause 7.3, Approved Supplier List, audit validity",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_comment_417_3",
+    "author": "A. Kowalski",
+    "authorRole": "Quality",
+    "commentedAt": "2026-09-11T07:12:00",
+    "body": "If we move site, it is a half-cycle revalidation, not a full one, because the modality is unchanged. Realistically 21 days of protocol plus execution. I would want the protocol drafted against the OCTARAY G2 precedent so we are not writing it from scratch. Flagging that cycle development on a new chamber has overrun 5–8 days on two of our last seven transfers.",
+    "isAutomatedCheck": false,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_comment_417_4",
+    "author": "S. Lindqvist",
+    "authorRole": "Regulatory",
+    "commentedAt": "2026-09-11T08:04:00",
+    "body": "The bigger risk is not the 47 days, it is the BSI review slot. We hold a Q4 window. If the dossier is not complete by mid-November we lose it and the next confirmed slot is February — that is another 31 days on top. Please treat the BSI date as the real deadline.",
+    "isAutomatedCheck": false,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_comment_319_1",
+    "author": "Commercial agent",
+    "authorRole": "Automated check",
+    "commentedAt": "2026-09-08T06:30:00",
+    "body": "Iberia field-force certification at 91% against a 95% target. 14 reps pending a lab session. Rebooked all 14 into the 22 Sep cohort, which puts the region at 97% well before first ship.",
+    "isAutomatedCheck": true,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_319"
+    }
+  },
+  {
+    "id": "seed_comment_319_2",
+    "author": "T. Bergmann",
+    "authorRole": "Commercial",
+    "commentedAt": "2026-09-08T10:40:00",
+    "body": "Good. Keep the 22 Sep cohort protected — I do not want those slots reallocated.",
+    "isAutomatedCheck": false,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_319"
+    }
+  },
+  {
+    "id": "seed_comment_344_1",
+    "author": "D. Moreau",
+    "authorRole": "Market Access",
+    "commentedAt": "2026-09-04T15:50:00",
+    "body": "We missed the AMA panel cycle. Next submission window is February, decision September 2027 — six months after first ship. There is no route that recovers this.",
+    "isAutomatedCheck": false,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_344"
+    }
+  },
+  {
+    "id": "seed_comment_344_2",
+    "author": "H. Fossi",
+    "authorRole": "NPI Lead",
+    "commentedAt": "2026-09-05T08:40:00",
+    "body": "Escalating to the Launch Board. Launching in the US without a code, or holding the US back, is a commercial policy call — it is not mine and it is not the agent's.",
+    "isAutomatedCheck": false,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_344"
+    }
+  },
+  {
+    "id": "seed_comment_344_3",
+    "author": "Market Access agent",
+    "authorRole": "Automated check",
+    "commentedAt": "2026-09-08T07:02:00",
+    "body": "Both scenarios prepared for the Board pack. Launch without a code: miscellaneous J-code billing, 40% of target accounts likely to defer. Hold the US: €7.8M deferred to FY28, EU launch unaffected.",
+    "isAutomatedCheck": true,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_344"
+    }
+  },
+  {
+    "id": "seed_comment_351_1",
+    "author": "Supply Chain agent",
+    "authorRole": "Automated check",
+    "commentedAt": "2026-09-09T05:12:00",
+    "body": "340 of 520 loaner sets are still awaiting their final sterilisation cycle. The 3PL is running a 6-day turnaround against a 4-day plan. At the current rate first-case coverage is short by 11 days.",
+    "isAutomatedCheck": true,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_351"
+    }
+  },
+  {
+    "id": "seed_comment_351_2",
+    "author": "R. Devi",
+    "authorRole": "Logistics",
+    "commentedAt": "2026-09-09T08:30:00",
+    "body": "Pricing a second lane at Neuss. The alternative is shipping first cases with a reduced set count, which the proctors will push back on. I will have a number by the 12th.",
+    "isAutomatedCheck": false,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_351"
+    }
+  },
+  {
+    "id": "seed_comment_359_1",
+    "author": "Quality agent",
+    "authorRole": "Automated check",
+    "commentedAt": "2026-09-06T16:44:00",
+    "body": "Sequence D of the ASTM D4169 battery produced visible deformation of the secondary carton on 3 of 12 units. Sterile barrier integrity held on all twelve. The protocol cannot be signed as-is.",
+    "isAutomatedCheck": true,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_359"
+    }
+  },
+  {
+    "id": "seed_comment_359_2",
+    "author": "K. Tanaka",
+    "authorRole": "R&D",
+    "commentedAt": "2026-09-07T09:05:00",
+    "body": "Agreed, and I would not want to go to the Notified Body with a concession request on packaging. Redesigning the insert — it is a tooling change on the thermoform, not a device change. Re-test booked for the 14th.",
+    "isAutomatedCheck": false,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_359"
+    }
+  },
+  {
+    "id": "seed_comment_365_1",
+    "author": "Regulatory agent",
+    "authorRole": "Automated check",
+    "commentedAt": "2026-09-07T22:15:00",
+    "body": "Second query cycle opened on the clinical evaluation section. Response pack assembled from the CER and the equivalence rationale — 14 pages, every query answered with a traced source. The 21-day clock-stop started 07 Sep. I cannot submit without a qualified signatory.",
+    "isAutomatedCheck": true,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_365"
+    }
+  },
+  {
+    "id": "seed_comment_365_2",
+    "author": "H. Fossi",
+    "authorRole": "NPI Lead",
+    "commentedAt": "2026-09-08T11:20:00",
+    "body": "Escalating. The pack has been complete since the 7th and every day of delay is a day of G4. Sofia, please review and sign.",
+    "isAutomatedCheck": false,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_365"
+    }
+  },
+  {
+    "id": "seed_comment_365_3",
+    "author": "H. Fossi",
+    "authorRole": "NPI Lead",
+    "commentedAt": "2026-09-09T16:30:00",
+    "body": "No response to the reminder. Raising to the Regulatory Director — this is now the single largest controllable risk on the programme.",
+    "isAutomatedCheck": false,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_365"
+    }
+  },
+  {
+    "id": "seed_comment_371_1",
+    "author": "K. Tanaka",
+    "authorRole": "R&D",
+    "commentedAt": "2026-09-05T08:20:00",
+    "body": "Twelve of fourteen design inputs are signed. The two outstanding are the usability report and the transit summary, both of which the agent has drafted from the test data. I have reviewed both and I am content technically.",
+    "isAutomatedCheck": false,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_371"
+    }
+  },
+  {
+    "id": "seed_comment_371_2",
+    "author": "Quality agent",
+    "authorRole": "Automated check",
+    "commentedAt": "2026-09-05T08:31:00",
+    "body": "Both drafts traced to the design input matrix, no acceptance criteria waived. IEC 62366 summative passed with zero use errors in the critical tasks. ASTM D4169 Sequences A to D passed with the sterile barrier intact. Ready for signature.",
+    "isAutomatedCheck": true,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_371"
+    }
+  },
+  {
+    "id": "seed_comment_388_1",
+    "author": "Sourcing agent",
+    "authorRole": "Automated check",
+    "commentedAt": "2026-09-07T06:12:00",
+    "body": "Heraeus downgraded to High financial risk — 34-day payables extension, second consecutive quarter. They are single source on the ring electrode subassembly across VARIPULSE G2, OCTARAY G2 and two other Biosense Webster catheters.",
+    "isAutomatedCheck": true,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_388"
+    }
+  },
+  {
+    "id": "seed_comment_388_2",
+    "author": "M. Okafor",
+    "authorRole": "Sourcing",
+    "commentedAt": "2026-09-07T09:40:00",
+    "body": "The second source is qualified and has capacity. The problem is timing: the BOM freezes at G2 on 30 Sep, so activating now is a document change. After the freeze it is a design change, and that is 11 weeks of change control across four launches.",
+    "isAutomatedCheck": false,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_388"
+    }
+  },
+  {
+    "id": "seed_comment_388_3",
+    "author": "T. Bergmann",
+    "authorRole": "Finance",
+    "commentedAt": "2026-09-08T14:12:00",
+    "body": "Supporting activation. The premium is small against €6.2M of exposure, and we carry the same supplier on two other programmes.",
+    "isAutomatedCheck": false,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_388"
+    }
+  },
+  {
+    "id": "seed_comment_412_1",
+    "author": "Line Monitor agent",
+    "authorRole": "Automated check",
+    "commentedAt": "2026-09-15T08:14:00",
+    "body": "VARIPULSE runs commercial output on lines 3 and 5. SPC rule 2 broken on line 3 — pulled and re-measured the commercial batches in the window and confirmed 3 out of spec on the dimensional check. For context, V&V produces 3 batches as the norm (a validation run was 12 at one site), so 3 affected commercial batches is a full run's worth of supply. Line 5 is unaffected. Raised without anyone asking it to look.",
+    "isAutomatedCheck": true,
+    "sourcesRead": "Line 3 MES, SPC control chart, commercial batch dimensional records",
+    "decision": {
+      "id": "seed_decision_412"
+    }
+  },
+  {
+    "id": "seed_comment_412_2",
+    "author": "A. Kowalski",
+    "authorRole": "Quality",
+    "commentedAt": "2026-09-15T09:30:00",
+    "body": "Line 5 is holding commercial supply for now, so this is not a stoppage question — it is a volume question. There is already a CAPA open on line 3 for the dimensional drift, and it is overdue: the DMAIC behind it is still in progress. Measure and Analyse are done and the drift points at tool wear, but Improve and Control are not signed, so I cannot re-qualify line 3 for commercial output yet. Until that closes we are producing fewer commercial batches than the launch plan assumed.",
+    "isAutomatedCheck": false,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_412"
+    }
+  },
+  {
+    "id": "seed_comment_412_3",
+    "author": "Planning agent",
+    "authorRole": "Automated check",
+    "commentedAt": "2026-09-15T10:05:00",
+    "body": "Modelled the shortfall against the launch plan. Losing line 3's 3 commercial batches leaves the launch quantity short, so either the volume is redistributed across markets (protect the lead markets, defer the lower-priority ones) or commercial output moves to another qualified site on the same modality. Checked the alternate-site option: a same-modality transfer avoids a requalification, but it is contingent on two confirmations — regulatory/engineering clearance for the site, and that the site actually has open capacity in the window. Both hold G3; the difference is where the reduced volume lands.",
+    "isAutomatedCheck": true,
+    "sourcesRead": "Launch plan, commercial allocation model, qualified-site register, site capacity calendar",
+    "decision": {
+      "id": "seed_decision_412"
+    }
+  },
+  {
+    "id": "seed_comment_412_4",
+    "author": "L. Haugen",
+    "authorRole": "Manufacturing",
+    "commentedAt": "2026-09-15T10:40:00",
+    "body": "So the real choice is between three moves. Re-prioritise markets and redistribute the reduced commercial volume — cleanest, and it keeps the lead-market quantities whole. Push the DMAICs to close the line-3 CAPA fast so we re-operate line 3 and recover the batches. Or move commercial output to another site on the same modality, once the agents confirm it is OK on regulatory/engineering and that the capacity is actually there. All three hold G3. This is above my line because prioritising markets is a commercial and planning trade-off, not a manufacturing one.",
+    "isAutomatedCheck": false,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_412"
+    }
+  },
+  {
+    "id": "seed_comment_402_1",
+    "author": "L. Haugen",
+    "authorRole": "Manufacturing",
+    "commentedAt": "2026-09-09T11:05:00",
+    "body": "Tooling and line time are booked from 02 Nov. If we do not release the build in the next week the slot goes to the Irvine transfer and we lose eight weeks. I cannot authorise this volume myself — the exposure is over the delegated limit.",
+    "isAutomatedCheck": false,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_402"
+    }
+  },
+  {
+    "id": "seed_comment_402_2",
+    "author": "Finance agent",
+    "authorRole": "Automated check",
+    "commentedAt": "2026-09-09T11:22:00",
+    "body": "Modelled three volumes against P50 demand. 4,200 units: €2.8M exposure, full launch cover. 2,600: €1.7M, covers the first 9 weeks in DE and FR and holds the G5 date. 1,400: €0.9M, stocks out in week 5. Recommending 2,600.",
+    "isAutomatedCheck": true,
+    "sourcesRead": "",
+    "decision": {
+      "id": "seed_decision_402"
+    }
+  }
+]

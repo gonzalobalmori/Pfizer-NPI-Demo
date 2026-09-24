@@ -1,0 +1,82 @@
+[
+  {
+    "id": "seed_cascade_ottava_run2",
+    "milestone": { "id": "seed_milestone_ottava_fda" },
+    "sortOrder": 1,
+    "domain": "MANUFACTURING",
+    "domainLabel": "Manufacturing",
+    "targetLabel": "Production Run 2 (launch-stock top-up)",
+    "detail": "Launch stock from Run 1 is already built. Run 2 was scheduled to top up for go-live; with clearance six weeks out it would build inventory that only accrues carrying cost.",
+    "resolution": "AUTO",
+    "autoAction": "Held Run 2 six weeks; freed the Santa Clara line window and notified Manufacturing (L. Haugen). Run 1 stock re-earmarked to cover the shifted go-live.",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING"
+  },
+  {
+    "id": "seed_cascade_ottava_kits",
+    "milestone": { "id": "seed_milestone_ottava_fda" },
+    "sortOrder": 2,
+    "domain": "LOGISTICS",
+    "domainLabel": "Loaner kits / 3PL",
+    "targetLabel": "Loaner-kit deployment — US geographies",
+    "detail": "Loaner kits are staged at the 3PL awaiting deployment on the original date. Deployment is re-timed to the new clearance date so kits are not shipped into the field ahead of an approved device.",
+    "resolution": "AUTO",
+    "autoAction": "Delayed geography rollout six weeks; kept kits at the 3PL on the existing staging agreement. Field-ops deployment calendar re-issued automatically.",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING"
+  },
+  {
+    "id": "seed_cascade_ottava_comms",
+    "milestone": { "id": "seed_milestone_ottava_fda" },
+    "sortOrder": 3,
+    "domain": "COMMERCIAL",
+    "domainLabel": "Commercial comms",
+    "targetLabel": "KOL pre-announcement accounts",
+    "detail": "Commercial pre-announced go-live to KOL accounts on the original date. The platform flags the exact accounts that were told a date that has now moved and need proactive outreach.",
+    "resolution": "AUTO",
+    "autoAction": "Flagged 7 KOL accounts already pre-announced; drafted revised-timing outreach and queued it for Commercial (T. Bergmann) to send. No account left on a stale date.",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING"
+  },
+  {
+    "id": "seed_cascade_ottava_storage",
+    "milestone": { "id": "seed_milestone_ottava_fda" },
+    "sortOrder": 4,
+    "domain": "FINANCE",
+    "domainLabel": "Working capital",
+    "targetLabel": "Finished-goods storage & carrying cost",
+    "detail": "Six extra weeks of finished-goods storage at the 3PL is a working-capital call: extend the current 3PL storage agreement, or repatriate launch stock to the regional DC to cut carrying cost at the price of a re-stage before go-live.",
+    "resolution": "HUMAN",
+    "decisionPrompt": "Extend 3PL storage six weeks, or repatriate launch stock to the regional DC?",
+    "decisionOptions": [
+      "Extend 3PL storage +6 weeks (+€48k carrying cost, zero re-stage risk)",
+      "Repatriate to regional DC (+€12k move, saves €36k, adds a 9-day re-stage before go-live)"
+    ],
+    "owner": { "id": "seed_person_jr" },
+    "costImpact": 48000,
+    "dayShift": 0,
+    "status": "PENDING"
+  },
+  {
+    "id": "seed_cascade_ottava_field",
+    "milestone": { "id": "seed_milestone_ottava_fda" },
+    "sortOrder": 5,
+    "domain": "COMMERCIAL",
+    "domainLabel": "Field readiness",
+    "targetLabel": "Field certification currency",
+    "detail": "The field is trained and certified against the original go-live. A six-week slip pushes some certifications past their 90-day currency window — recertify now and risk a second lapse, or schedule a refresh close to the new date.",
+    "resolution": "HUMAN",
+    "decisionPrompt": "Recertify the field now, or schedule a refresh close to the new go-live?",
+    "decisionOptions": [
+      "Recertify now (keeps everyone current today, risks a second lapse if clearance moves again)",
+      "Schedule a refresh two weeks before the new go-live (single touch, tighter margin)"
+    ],
+    "owner": { "id": "seed_person_tb" },
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING"
+  }
+]

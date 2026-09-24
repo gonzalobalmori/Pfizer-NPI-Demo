@@ -1,0 +1,19 @@
+/**
+ * A manufacturing/sterilisation process qualified at a {@link Site}. The anchor
+ * case hinges on this: Sterigenics Grand Rapids already holds a qualified EO
+ * sterilisation process (qualified for OCTARAY G2 and EMBOTRAP IV), so moving to
+ * it is a half-cycle revalidation (~21 days) rather than a full one.
+ */
+entity type QualifiedProcess mixes SeedData {
+  /** Process type, e.g. "EO sterilisation", "X-ray sterilisation". */
+  processType: !string
+
+  /** Launches this process is already qualified for, e.g. "OCTARAY G2, EMBOTRAP IV". */
+  qualifiedForLaunches: string
+
+  /** Qualification depth — a "half-cycle" existing qualification is what makes revalidation fast. */
+  qualificationDepth: string enum('full', 'half-cycle')
+
+  /** The site at which this process is qualified. */
+  site: Site
+}

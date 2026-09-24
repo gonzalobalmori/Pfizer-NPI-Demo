@@ -1,0 +1,45 @@
+/**
+ * The freshness contract and load bookmark for one source feed. Every feed in
+ * the architecture (SAP_LFA1, QMS_COMMENT, MES_SPC, PORTAL_CHAMBER, …) has one
+ * watermark row recording where the last incremental load stopped and what the
+ * feed's expected arrival cadence is.
+ *
+ * Two jobs use it:
+ *  - incremental loads read {@link DataFeedWatermark#lastWatermark} to pull only
+ *    rows newer than the last run (append-only feeds) — the "watermark handling"
+ *    the brief asks for;
+ *  - the freshness monitor compares {@link DataFeedWatermark#lastLoadedAt} against
+ *    {@link DataFeedWatermark#expectedEverySeconds} so a stale feed renders as
+ *    "we don't know yet" rather than a confident but old number (§5 freshness,
+ *    demo 3 "break a feed").
+ *
+ * Operational bookkeeping type → `data/`. Keyed on {@link DataFeedWatermark#feedCode}.
+ */
+entity type DataFeedWatermark {
+  /** Feed code, e.g. "MES_SPC", matching the manifest and the SourceCollection. */
+  feedCode: !string
+
+  /** The source system this feed comes from, e.g. "MES (Opcenter)". */
+  sourceSystem: string
+
+  /** The ontology type(s) this feed lands on, e.g. "ProcessMeasurement -> Lot". */
+  targetType: string
+
+  /** The last load's high-water value (a timestamp or monotonic key) for incremental pulls. */
+  lastWatermark: string
+
+  /** Wall-clock time the feed last loaded successfully. */
+  lastLoadedAt: datetime
+
+  /** Row count from the last successful load, for the row-count tolerance check. */
+  lastRowCount: int
+
+  /** Expected cadence in seconds; the freshness monitor flags the feed stale past this. */
+  expectedEverySeconds: int
+
+  /** Load status of the last run: FRESH, STALE (missed its window) or FAILED (DQ/parse error). */
+  status: string enum('FRESH', 'STALE', 'FAILED')
+
+  /** Human note on the last run — the DQ message when FAILED, else blank. */
+  note: string
+}

@@ -1,0 +1,90 @@
+/**
+ * PortfolioService — read-side projections for the non-Execution screens (§5):
+ * the Cockpit, the four Portfolio lenses, the Open-issues list and the full
+ * Launch record. Like {@link ExecutionService} it derives every bundle from the
+ * model at call time and returns plain JSON the React pages render directly. No
+ * display strings are persisted beyond the attested J&J copy already on the
+ * domain types (model invariant §3.6.1).
+ *
+ * This is a stateless computation type — it holds no data of its own.
+ */
+entity type PortfolioService {
+  /**
+   * The Cockpit bundle (§5): the four headline KPIs (portfolio gate readiness,
+   * launch health, revenue exposed, schedule discipline) each with value, trend
+   * and target; the "launches needing attention" list sorted worst-first; and the
+   * "gates closing in 120 days" list. Every figure is derived via
+   * {@link LaunchControlMetrics}; nothing is typed.
+   */
+  cockpit: function(): json js
+
+  /**
+   * Portfolio · Product lens (§5) — one row per {@link Launch}, always sorted
+   * worst-first, carrying its phase blocks (P1–P6 with state), its gate markers
+   * (G1–G5 with slip) and its health, revenue exposure and franchise. The single
+   * source the other lenses re-project.
+   */
+  portfolioProduct: function(): json js
+
+  /**
+   * Portfolio · Market lens (§5) — the twenty-two {@link Market}s with the number
+   * of {@link MarketLaunch}es each hosts, a rolled-up status colour, lat/long for
+   * the world map, and a per-quarter first-ship timeline.
+   */
+  portfolioMarket: function(): json js
+
+  /**
+   * Portfolio · Business-unit lens (§5) — the {@link Segment} → {@link Franchise}
+   * → {@link Launch} rollup, each level carrying its launch count and health mix.
+   */
+  portfolioBusinessUnit: function(): json js
+
+  /**
+   * Portfolio · Timeline lens (§5) — per launch, each open {@link Gate}'s baseline
+   * versus forecast date with the slip between them, for the baseline-vs-forecast
+   * bars. Shares the period filter with the other lenses (handled UI-side).
+   */
+  portfolioTimeline: function(): json js
+
+  /**
+   * Open issues (§5) — every open {@link Finding} with its waiting-on dimension
+   * (you / a named person / an agent), franchise, phase, exposure and category,
+   * for the filterable issue list. Distinct from the fleet log: this is the
+   * problem list, keyed on who the next step waits on.
+   */
+  openIssues: function(): json js
+
+  /**
+   * Time impact / schedule recovery (§5) — the read-side of the critical-path
+   * story. Of all the calendar days the open {@link Finding}s are holding on the
+   * portfolio's critical path, how many are *recoverable* by acting (a
+   * {@link Finding#dependency} of SELF / TEAM / AGENT — your own organisation,
+   * agents included since they only run when you launch them) versus a fixed wait
+   * on an outside body (REGULATOR — FDA, a Notified Body, a reimbursement
+   * authority) that acting faster cannot compress. Returns portfolio totals
+   * (daysAtStake, recoverableDays, regulatorDays, pctRecoverable) and a
+   * per-launch breakdown, worst-first, for the Cockpit time-recovery chart. Uses
+   * the same open-definition as {@link PortfolioService#openIssues} so the
+   * figures reconcile across the Cockpit, the Open-issues list and the Timeline.
+   */
+  timeImpact: function(): json js
+
+  /**
+   * The full Launch record (§5) for one launch: the Overview (device facts,
+   * health, gates, exposure), the Workflow detail (all its {@link Activity}s
+   * grouped into the six phase columns with the gate at the foot of each and the
+   * domain/status tallies for the recounting filters) and the Documents register
+   * (the launch's {@link Document}s grouped into their eight groups, missing ones
+   * flagged).
+   *
+   * @param launchId the {@link Launch#id} of the launch to open.
+   */
+  launchRecord: function(launchId: string): json js
+
+  /**
+   * The launch picker (§5) — the nine {@link Launch}es with id, device name,
+   * short name, franchise, phase and health, sorted worst-first, for the record
+   * index / navigation.
+   */
+  launchIndex: function(): json js
+}

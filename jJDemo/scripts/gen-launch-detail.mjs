@@ -1,0 +1,332 @@
+/*
+ * Reproducible generator for the Product-detail data layer, so EVERY launch's
+ * drill-down page is as complete and connected as VARIPULSE's.
+ *
+ * It writes four files, deterministically (no randomness → re-running is a
+ * no-op diff):
+ *   1. data/Launch/Launch.json      — augments each launch with attested scope
+ *                                     fields (launch value, build units, field
+ *                                     force, VAC, registrations, sterilisation,
+ *                                     manufacture site).
+ *   2. data/Gate/Gate.json          — completes each launch's G1..G5 (+BAU where
+ *                                     it ships) ladder so phases behind the
+ *                                     current one read "closed" and future ones
+ *                                     "pending", consistent with currentPhase.
+ *   3. seed/GateCriterion/…         — criteria for each launch's ACTIVE gate
+ *                                     (the one the center table shows). A late
+ *                                     (amber) gate surfaces unmet criteria WITH
+ *                                     an outstanding reason (the "risks"); a
+ *                                     clean gate shows criteria met / in-hand
+ *                                     with no risk flag. met count tracks the
+ *                                     launch's readinessPct.
+ *   4. seed/Activity/Activity.json  — a full VARIPULSE-shaped activity board for
+ *                                     every launch, statuses shifted to each
+ *                                     launch's phase (closed behind, in-flight
+ *                                     at, not-started ahead).
+ *
+ * INVARIANTS honoured:
+ *   - VARIPULSE (seed_launch_varipulse_g2) is preserved VERBATIM across gates,
+ *     its 6 G3 criteria (incl. seed_gc_varipulse_g3_sterilisation → evidence
+ *     seed_doc_varipulse_44) and its 107 authored activities (the reconciliation
+ *     fixture §3.6.7–8). We only ADD scope fields to its Launch record.
+ *   - Gate ids stay stable (seed_gate_<slug>_<code>) so the idempotent
+ *     SrcPpmGate→Gate transform still keys correctly.
+ *   - Risk profile is driven by GATE STATUS, not health, matching the manager's
+ *     rule: "for the products at risk and the yellow-gate ones, the risks must
+ *     appear … if the product is not at risk, no item should appear at risk."
+ *
+ * RUN: node scripts/gen-launch-detail.mjs   (from the jJDemo package root)
+ */
+import { readFileSync, writeFileSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { dirname, join } from 'node:path';
+
+const HERE = dirname(fileURLToPath(import.meta.url));
+const ROOT = join(HERE, '..');
+const P_LAUNCH = join(ROOT, 'data', 'Launch', 'Launch.json');
+const P_GATE = join(ROOT, 'data', 'Gate', 'Gate.json');
+const P_CRIT = join(ROOT, 'seed', 'GateCriterion', 'GateCriterion.json');
+const P_ACT = join(ROOT, 'seed', 'Activity', 'Activity.json');
+
+const VARIPULSE = 'seed_launch_varipulse_g2';
+
+/* ── launch registry ─────────────────────────────────────────────── */
+/*
+ * slug drives the SCOPE table + activity/criteria id prefixes. gslug drives
+ * GATE ids and MUST equal the launch id minus the "seed_launch_" prefix so the
+ * generated gate ids EXACTLY match the pre-existing seeded gate ids
+ * (seed_gate_ethicon_4000_g4, …). Changing them would (a) create orphan
+ * duplicate gates on upsert and (b) break the idempotent SrcPpmGate→Gate
+ * transform, which keys on those ids. cur = phase index the launch executes.
+ */
+const LAUNCHES = [
+  { id: VARIPULSE, slug: 'varipulse', gslug: 'varipulse', cur: 3, health: 'OFF_TRACK' },
+  { id: 'seed_launch_octaray_g2', slug: 'octaray', gslug: 'octaray_g2', cur: 2, health: 'AT_RISK' },
+  { id: 'seed_launch_embotrap_iv', slug: 'embotrap', gslug: 'embotrap_iv', cur: 5, health: 'AT_RISK' },
+  { id: 'seed_launch_impella_ecp', slug: 'impella', gslug: 'impella_ecp', cur: 4, health: 'ON_PLAN' },
+  { id: 'seed_launch_javelin_xl', slug: 'javelin', gslug: 'javelin_xl', cur: 5, health: 'ON_PLAN' },
+  { id: 'seed_launch_ethicon_4000', slug: 'ethicon', gslug: 'ethicon_4000', cur: 4, health: 'AT_RISK' },
+  { id: 'seed_launch_dualto', slug: 'dualto', gslug: 'dualto', cur: 6, health: 'LAUNCHED' },
+  { id: 'seed_launch_ottava', slug: 'ottava', gslug: 'ottava', cur: 1, health: 'PRE_MARKET' },
+  { id: 'seed_launch_puresee', slug: 'puresee', gslug: 'puresee', cur: 3, health: 'ON_PLAN' },
+];
+const BY_ID = Object.fromEntries(LAUNCHES.map((l) => [l.id, l]));
+
+/* attested per-launch launch scope (device-appropriate, hand-set). */
+const SCOPE = {
+  varipulse: { launchValue: 96000000, launchBuildUnits: 4200, fieldForceCertified: 62, fieldForceTotal: 78, vacApprovalsFiled: 9, vacApprovalsTotal: 22, registrationsFiled: 11, registrationsTotal: 14, sterilisationMethod: 'EO', manufactureSite: 'Irvine + CMO' },
+  octaray: { launchValue: 42000000, launchBuildUnits: 3100, fieldForceCertified: 40, fieldForceTotal: 60, vacApprovalsFiled: 6, vacApprovalsTotal: 20, registrationsFiled: 8, registrationsTotal: 14, sterilisationMethod: 'EO', manufactureSite: 'Irvine + CMO' },
+  embotrap: { launchValue: 55000000, launchBuildUnits: 5200, fieldForceCertified: 55, fieldForceTotal: 70, vacApprovalsFiled: 12, vacApprovalsTotal: 24, registrationsFiled: 12, registrationsTotal: 14, sterilisationMethod: 'Gamma', manufactureSite: 'Galway' },
+  impella: { launchValue: 120000000, launchBuildUnits: 900, fieldForceCertified: 70, fieldForceTotal: 80, vacApprovalsFiled: 15, vacApprovalsTotal: 28, registrationsFiled: 6, registrationsTotal: 8, sterilisationMethod: 'N/A (capital)', manufactureSite: 'Danvers' },
+  javelin: { launchValue: 88000000, launchBuildUnits: 6400, fieldForceCertified: 66, fieldForceTotal: 72, vacApprovalsFiled: 18, vacApprovalsTotal: 26, registrationsFiled: 5, registrationsTotal: 6, sterilisationMethod: 'e-beam', manufactureSite: 'Santa Clara' },
+  ethicon: { launchValue: 74000000, launchBuildUnits: 8800, fieldForceCertified: 48, fieldForceTotal: 90, vacApprovalsFiled: 14, vacApprovalsTotal: 30, registrationsFiled: 9, registrationsTotal: 14, sterilisationMethod: 'EO', manufactureSite: 'Cincinnati + CMO' },
+  dualto: { launchValue: 210000000, launchBuildUnits: 320, fieldForceCertified: 88, fieldForceTotal: 88, vacApprovalsFiled: 26, vacApprovalsTotal: 26, registrationsFiled: 14, registrationsTotal: 14, sterilisationMethod: 'N/A (capital)', manufactureSite: 'Cincinnati' },
+  ottava: { launchValue: 260000000, launchBuildUnits: 40, fieldForceCertified: 20, fieldForceTotal: 40, vacApprovalsFiled: 4, vacApprovalsTotal: 18, registrationsFiled: 3, registrationsTotal: 12, sterilisationMethod: 'N/A (capital)', manufactureSite: 'Santa Clara' },
+  puresee: { launchValue: 64000000, launchBuildUnits: 12000, fieldForceCertified: 44, fieldForceTotal: 58, vacApprovalsFiled: 10, vacApprovalsTotal: 22, registrationsFiled: 9, registrationsTotal: 14, sterilisationMethod: 'Autoclave', manufactureSite: 'Groningen' },
+};
+
+/* ── gate metadata ───────────────────────────────────────────────── */
+const GATE_META = {
+  G1: { name: 'NPI Readiness Gate', phase: 'seed_phase_p1', idx: 1 },
+  G2: { name: 'Design Freeze', phase: 'seed_phase_p2', idx: 2 },
+  G3: { name: 'Submission Commit', phase: 'seed_phase_p3', idx: 3 },
+  G4: { name: 'Clearance / CE Certificate', phase: 'seed_phase_p4', idx: 4 },
+  G5: { name: 'Launch Go / No-Go — First Ship', phase: 'seed_phase_p5', idx: 5 },
+  BAU: { name: 'BAU handover', phase: 'seed_phase_p6', idx: 6 },
+};
+function activeCode(cur) { return cur === 6 ? 'BAU' : 'G' + cur; }
+
+/*
+ * Authored gate states — the hand-set slip/late narrative for each launch's
+ * ACTIVE gate (and other authored gates), keyed "slug|code". These are the
+ * source of truth so re-running never loses a late gate to file drift. Missing
+ * gates are generated as clean (ok if behind the current phase, no if ahead).
+ */
+const AUTHORED = {
+  'varipulse|G1': { status: 'ok', baselineDate: '2024-09-24', forecastDate: '2024-09-24', slipDays: 0 },
+  'varipulse|G2': { status: 'ok', baselineDate: '2026-06-19', forecastDate: '2026-06-19', slipDays: 0 },
+  'varipulse|G3': { status: 'late', baselineDate: '2026-11-04', forecastDate: '2026-12-21', slipDays: 47 },
+  'varipulse|G4': { status: 'no', baselineDate: '2027-05-18', forecastDate: '2027-05-18', slipDays: 0 },
+  'varipulse|G5': { status: 'no', baselineDate: '2027-06-29', forecastDate: '2027-06-29', slipDays: 0 },
+  'octaray|G2': { status: 'late', baselineDate: '2026-09-16', forecastDate: '2026-09-30', slipDays: 14 },
+  'octaray|G3': { status: 'no', baselineDate: '2027-03-15', forecastDate: '2027-03-15', slipDays: 0 },
+  'octaray|G4': { status: 'no', baselineDate: '2027-08-15', forecastDate: '2027-08-15', slipDays: 0 },
+  'embotrap|G5': { status: 'late', baselineDate: '2026-09-17', forecastDate: '2026-09-26', slipDays: 9 },
+  'embotrap|BAU': { status: 'no', baselineDate: '2026-10-30', forecastDate: '2026-10-30', slipDays: 0 },
+  'ethicon|G4': { status: 'late', baselineDate: '2026-10-12', forecastDate: '2026-11-02', slipDays: 21 },
+  'ethicon|G5': { status: 'no', baselineDate: '2026-12-14', forecastDate: '2026-12-14', slipDays: 0 },
+  'puresee|G3': { status: 'late', baselineDate: '2026-11-03', forecastDate: '2026-11-14', slipDays: 11 },
+  'puresee|G4': { status: 'no', baselineDate: '2027-06-15', forecastDate: '2027-06-15', slipDays: 0 },
+  'dualto|G5': { status: 'ok', baselineDate: '2026-08-12', forecastDate: '2026-08-12', slipDays: 0 },
+  'dualto|BAU': { status: 'no', baselineDate: '2026-10-30', forecastDate: '2026-10-30', slipDays: 0 },
+};
+
+/* ── criteria templates per gate code ────────────────────────────── */
+const CRITERIA = {
+  G1: ['Business case approved', 'Design & Development Plan baselined', 'Regulatory strategy and pathway defined', 'Project RACI and budget approved', 'Feasibility risk assessment complete', 'Clinical strategy outlined'],
+  G2: ['Design inputs frozen', 'Design FMEA complete', 'Requirements traceability established', 'Design review minutes signed off', 'Risk management file drafted', 'Verification protocols approved'],
+  G3: ['Design verification complete', 'Design validation complete', 'Clinical evaluation report approved', 'EU MDR Technical Documentation complete', 'Risk management file current', 'Sterilisation validation report approved'],
+  G4: ['Regulatory submission accepted for review', 'Design transfer to manufacturing complete', 'Process validation (IQ/OQ/PQ) complete', 'Notified Body / FDA queries closed', 'Labelling and IFU finalised', 'QMS audit readiness confirmed'],
+  G5: ['Regulatory clearance / CE certificate received', 'Launch build complete and released', 'Field force trained and certified', 'Distribution and 3PL agreements signed', 'Value Analysis Committee approvals secured', 'Post-market surveillance plan in place'],
+  BAU: ['Launch KPIs meeting target', 'Complaint handling in steady state', 'PMCF plan active', 'Supply chain at safety stock', 'Commercial ramp on plan', 'Programme handed to BAU owner'],
+};
+/* short outstanding reasons keyed by "<code>#<criterion index>" for late gates. */
+function reasonFor(code, name) {
+  const R = {
+    'Sterilisation validation report approved': 'Sterilisation validation slot slipped; report awaiting site data',
+    'EU MDR Technical Documentation complete': 'Technical documentation at 96%; two annexes outstanding with the Notified Body',
+    'Design Freeze': 'Design inputs not yet frozen; late change request under review',
+    'Design inputs frozen': 'Late change request under review; freeze held pending disposition',
+    'Verification protocols approved': 'Two verification protocols awaiting sign-off',
+    'Regulatory submission accepted for review': 'Submission returned with deficiency questions; response in preparation',
+    'Notified Body / FDA queries closed': 'Open Notified Body queries on biocompatibility not yet closed',
+    'Process validation (IQ/OQ/PQ) complete': 'PQ run held for equipment qualification',
+    'Regulatory clearance / CE certificate received': 'Certificate pending — Notified Body review slot at risk',
+    'Field force trained and certified': 'Field-force certification behind plan',
+    'Value Analysis Committee approvals secured': 'VAC approvals behind target across key accounts',
+  };
+  return R[name] || `${name} outstanding — action open`;
+}
+
+/* ── deterministic helpers ───────────────────────────────────────── */
+function hash(s) {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) & 0x7fffffff;
+  return h;
+}
+function isoDate(d) {
+  return d.toISOString().slice(0, 10);
+}
+function addDays(baseIso, days) {
+  const d = new Date(baseIso.slice(0, 10) + 'T00:00:00Z');
+  d.setUTCDate(d.getUTCDate() + days);
+  return isoDate(d);
+}
+
+/* ════════════════════════ 1. LAUNCH SCOPE ═══════════════════════ */
+const launches = JSON.parse(readFileSync(P_LAUNCH, 'utf8'));
+for (const l of launches) {
+  const meta = BY_ID[l.id];
+  if (!meta) continue;
+  Object.assign(l, SCOPE[meta.slug]);
+}
+writeFileSync(P_LAUNCH, JSON.stringify(launches, null, 2) + '\n');
+const shipById = Object.fromEntries(launches.map((l) => [l.id, l.firstShipDate]));
+const readinessById = Object.fromEntries(launches.map((l) => [l.id, l.readinessPct]));
+
+/* ════════════════════════ 2. GATE LADDER ════════════════════════ */
+const outGates = [];
+const gateByKey = {};
+for (const L of LAUNCHES) {
+  const codes = ['G1', 'G2', 'G3', 'G4', 'G5'].concat(L.cur >= 5 ? ['BAU'] : []);
+  const ship = shipById[L.id];
+  for (const code of codes) {
+    const meta = GATE_META[code];
+    const authored = AUTHORED[`${L.slug}|${code}`];
+    let status, baselineDate, forecastDate, slipDays;
+    if (authored) {
+      // hand-set narrative gate (late/slip preserved verbatim)
+      status = authored.status;
+      baselineDate = authored.baselineDate;
+      forecastDate = authored.forecastDate;
+      slipDays = authored.slipDays;
+    } else {
+      // generated: closed behind current phase, pending ahead. Dates spaced
+      // ~160d/phase around the launch's first-ship date.
+      status = meta.idx < L.cur ? 'ok' : 'no';
+      const offset = (meta.idx - L.cur) * 160;
+      baselineDate = addDays(ship, offset);
+      forecastDate = baselineDate;
+      slipDays = 0;
+    }
+    const g = {
+      id: `seed_gate_${L.gslug}_${code.toLowerCase()}`,
+      code,
+      name: meta.name,
+      baselineDate,
+      forecastDate,
+      slipDays,
+      status,
+      launch: { id: L.id },
+      phase: { id: meta.phase },
+    };
+    outGates.push(g);
+    gateByKey[`${L.id}|${code}`] = g;
+  }
+}
+outGates.sort((a, b) => {
+  const la = a.launch.id, lb = b.launch.id;
+  if (la !== lb) return la < lb ? -1 : 1;
+  return GATE_META[a.code].idx - GATE_META[b.code].idx;
+});
+writeFileSync(P_GATE, JSON.stringify(outGates, null, 2) + '\n');
+
+/* ════════════════════════ 3. GATE CRITERIA ══════════════════════ */
+const existingCrit = JSON.parse(readFileSync(P_CRIT, 'utf8'));
+/* preserve VARIPULSE's 6 authored criteria verbatim (incl. evidence link). */
+const varipulseCrit = existingCrit.filter((c) => c.gate && c.gate.id === 'seed_gate_varipulse_g3');
+if (varipulseCrit.length !== 6) {
+  throw new Error(`Expected 6 VARIPULSE criteria to preserve, found ${varipulseCrit.length}`);
+}
+const outCrit = [...varipulseCrit];
+
+for (const L of LAUNCHES) {
+  if (L.slug === 'varipulse') continue; // preserved above
+  const code = activeCode(L.cur);
+  const gateId = gateByKey[`${L.id}|${code}`].id;
+  const gate = outGates.find((g) => g.id === gateId);
+  const late = gate && gate.status === 'late';
+  const names = CRITERIA[code];
+  const readiness = readinessById[L.id] != null ? readinessById[L.id] : 80;
+  let metCount = Math.round((readiness / 100) * names.length);
+  if (metCount > names.length) metCount = names.length;
+  // A late (amber) gate must surface at least one unmet criterion (the risk).
+  if (late && metCount >= names.length) metCount = names.length - 1;
+  names.forEach((name, i) => {
+    const met = i < metCount;
+    const row = {
+      id: `seed_gc_${L.slug}_${code.toLowerCase()}_${i + 1}`,
+      name,
+      met,
+      gate: { id: gateId },
+    };
+    // Only a late gate's unmet criteria are risks (carry an outstanding reason).
+    // A clean/pending gate's unmet criteria are simply in progress — no flag.
+    if (!met && late) row.outstandingReason = reasonFor(code, name);
+    outCrit.push(row);
+  });
+}
+writeFileSync(P_CRIT, JSON.stringify(outCrit, null, 2) + '\n');
+
+/* ════════════════════════ 4. ACTIVITIES ═════════════════════════ */
+const existingActs = JSON.parse(readFileSync(P_ACT, 'utf8'));
+const varipulseActs = existingActs.filter((a) => a.launch && a.launch.id === VARIPULSE);
+if (varipulseActs.length !== 107) {
+  throw new Error(`Expected 107 VARIPULSE activities to preserve, found ${varipulseActs.length}`);
+}
+const outActs = [...varipulseActs];
+
+const PHASE_IDX = { seed_phase_p1: 1, seed_phase_p2: 2, seed_phase_p3: 3, seed_phase_p4: 4, seed_phase_p5: 5, seed_phase_p6: 6 };
+const STATUS_TEXT = { ok: 'Complete', run: 'In progress', rk: 'At risk', late: 'Late', no: 'Not started' };
+
+function deriveStatus(L, phaseIdx, seed, gateLate) {
+  if (phaseIdx < L.cur) return 'ok';
+  if (phaseIdx > L.cur) return 'no';
+  // current phase
+  if (L.health === 'LAUNCHED') return 'ok';
+  const base = seed % 4 === 0 ? 'run' : 'ok';
+  if (gateLate) {
+    if (seed % 11 === 0) return 'late';
+    if (seed % 6 === 0) return 'rk';
+  }
+  return base;
+}
+function detailFor(statusCode, seed) {
+  if (statusCode === 'ok') return 'complete';
+  if (statusCode === 'run') return 'in progress';
+  if (statusCode === 'rk') return 'holding for input';
+  if (statusCode === 'late') return `${7 + (seed % 40)} days late`;
+  return '';
+}
+
+for (const L of LAUNCHES) {
+  if (L.slug === 'varipulse') continue;
+  const activeGate = gateByKey[`${L.id}|${activeCode(L.cur)}`];
+  const gateLate = activeGate && activeGate.status === 'late';
+  for (const tmpl of varipulseActs) {
+    const phaseId = tmpl.phase ? tmpl.phase.id : null;
+    const phaseIdx = phaseId ? PHASE_IDX[phaseId] : 0;
+    const id = tmpl.id.replace('varipulse', L.slug);
+    const seed = hash(id);
+    const sc = deriveStatus(L, phaseIdx, seed, gateLate);
+    outActs.push({
+      id,
+      name: tmpl.name,
+      status: STATUS_TEXT[sc],
+      statusCode: sc,
+      detail: detailFor(sc, seed),
+      phase: tmpl.phase,
+      domain: tmpl.domain,
+      launch: { id: L.id },
+      autonomyClass: tmpl.autonomyClass,
+      owningPerson: tmpl.owningPerson || null,
+      owningAgent: tmpl.owningAgent || null,
+    });
+  }
+}
+writeFileSync(P_ACT, JSON.stringify(outActs, null, 2) + '\n');
+
+/* ── summary ── */
+console.log(`Launches: ${launches.length} (scope fields added)`);
+console.log(`Gates: ${outGates.length}`);
+console.log(`Criteria: ${outCrit.length}`);
+console.log(`Activities: ${outActs.length} (varipulse ${varipulseActs.length} preserved)`);
+const critByLaunch = {};
+for (const L of LAUNCHES) {
+  const code = activeCode(L.cur);
+  const rows = outCrit.filter((c) => c.gate.id.includes(`_${L.slug}_`) || (L.slug === 'varipulse' && c.gate.id === 'seed_gate_varipulse_g3'));
+  const met = rows.filter((r) => r.met).length;
+  const risks = rows.filter((r) => r.outstandingReason).length;
+  critByLaunch[L.slug] = `${code}: ${met}/${rows.length} met, ${risks} risk(s)`;
+}
+console.table(critByLaunch);

@@ -1,0 +1,273 @@
+[
+  {
+    "id": "seed_finding_412",
+    "displayId": "NPI-0412",
+    "headline": "Commercial batches at risk on line 3?",
+    "description": "Manufacturing at-risk commercial batches — VARIPULSE runs commercial output on lines 3 and 5, and line 3 has produced 3 batches out of spec on the dimensional check. V&V produces 3 batches as the norm, so the 3 affected batches are a full validation run's worth of commercial supply. An overdue CAPA is open on line 3 with a DMAIC still in progress.",
+    "signalSource": "Line 3 — 3 commercial batches out of spec on the dimensional check; CAPA overdue, DMAIC in progress",
+    "detectedAt": null,
+    "outcome": "USER",
+    "category": "rk",
+    "dependency": "SELF",
+    "daysAtStake": 6,
+    "phase": {
+      "id": "seed_phase_p3"
+    },
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "otherLaunches": [
+      {
+        "id": "seed_launch_octaray_g2"
+      },
+      {
+        "id": "seed_launch_embotrap_iv"
+      }
+    ],
+    "detectedBy": {
+      "id": "seed_agent_line"
+    }
+  },
+  {
+    "id": "seed_finding_417",
+    "displayId": "NPI-0417",
+    "headline": "Dual-source to Sterigenics?",
+    "description": "EO sterilisation validation slot cancelled",
+    "signalSource": "10 Sep 19:40 · M. Okafor",
+    "detectedAt": "2026-09-10T19:40:00",
+    "outcome": "USER",
+    "category": "ct",
+    "dependency": "SELF",
+    "daysAtStake": 12,
+    "exposure": 18400000,
+    "exposureCause": "G3 Submission Commit slip — full VARIPULSE first-year launch revenue at risk if the EO sterilisation window is missed",
+    "phase": {
+      "id": "seed_phase_p3"
+    },
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "otherLaunches": [],
+    "detectedBy": {
+      "id": "seed_agent_qua"
+    }
+  },
+  {
+    "id": "seed_finding_388",
+    "displayId": "NPI-0388",
+    "headline": "Activate the second source before G2?",
+    "description": "Single-source ring electrode supplier at High financial risk",
+    "signalSource": "07 Sep 06:12 · agent",
+    "detectedAt": "2026-09-07T06:12:00",
+    "outcome": "USER",
+    "category": "ct",
+    "dependency": "SELF",
+    "daysAtStake": 9,
+    "exposure": 6200000,
+    "exposureCause": "Single-source ring electrode supplier — OCTARAY G2 Design Freeze exposure if the second source is not activated before the gate",
+    "phase": {
+      "id": "seed_phase_p2"
+    },
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "otherLaunches": [
+      {
+        "id": "seed_launch_varipulse_g2"
+      },
+      {
+        "id": "seed_launch_embotrap_iv"
+      },
+      {
+        "id": "seed_launch_javelin_xl"
+      }
+    ],
+    "detectedBy": {
+      "id": "seed_agent_src"
+    }
+  },
+  {
+    "id": "seed_finding_371",
+    "displayId": "NPI-0371",
+    "headline": "Sign the two reports?",
+    "description": "G2 Design Freeze — 2 of 14 design inputs unsigned",
+    "signalSource": "05 Sep 08:20 · K. Tanaka",
+    "detectedAt": "2026-09-05T08:20:00",
+    "outcome": "USER",
+    "category": "rk",
+    "dependency": "SELF",
+    "daysAtStake": 4,
+    "phase": {
+      "id": "seed_phase_p2"
+    },
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "otherLaunches": [],
+    "detectedBy": {
+      "id": "seed_agent_rnd"
+    }
+  },
+  {
+    "id": "seed_finding_359",
+    "displayId": "NPI-0359",
+    "headline": "Redesigning the thermoform insert",
+    "description": "Transit validation failure at the conditioning step",
+    "signalSource": "06 Sep 16:44 · agent",
+    "detectedAt": "2026-09-06T16:44:00",
+    "outcome": "RUNNING",
+    "category": "rk",
+    "dependency": "AGENT",
+    "daysAtStake": 5,
+    "exposure": 2300000,
+    "exposureCause": "Transit-validation failure at the conditioning step — TECNIS PureSee G3 first-year launch revenue at risk until the thermoform insert redesign passes",
+    "phase": {
+      "id": "seed_phase_p3"
+    },
+    "launch": {
+      "id": "seed_launch_puresee"
+    },
+    "otherLaunches": [],
+    "detectedBy": {
+      "id": "seed_agent_qua"
+    }
+  },
+  {
+    "id": "seed_finding_351",
+    "displayId": "NPI-0351",
+    "headline": "Pricing a second sterilisation lane",
+    "description": "Loaner instrument sets not certified for first-case coverage",
+    "signalSource": "09 Sep 05:12 · agent",
+    "detectedAt": "2026-09-09T05:12:00",
+    "outcome": "RUNNING",
+    "category": "ct",
+    "dependency": "AGENT",
+    "daysAtStake": 8,
+    "exposure": 3100000,
+    "exposureCause": "Loaner instrument sets not certified for first-case coverage — EMBOTRAP G5 launch revenue at risk until a second sterilisation lane is priced",
+    "phase": {
+      "id": "seed_phase_p5"
+    },
+    "launch": {
+      "id": "seed_launch_embotrap_iv"
+    },
+    "otherLaunches": [],
+    "detectedBy": {
+      "id": "seed_agent_sc"
+    }
+  },
+  {
+    "id": "seed_finding_365",
+    "displayId": "NPI-0365",
+    "headline": "Routed it for signature and chased twice",
+    "description": "Notified Body query cycle 2 — clinical evaluation section",
+    "signalSource": "08 Sep 11:20 · you",
+    "detectedAt": "2026-09-08T11:20:00",
+    "outcome": "HELD",
+    "category": "rk",
+    "dependency": "TEAM",
+    "daysAtStake": 15,
+    "phase": {
+      "id": "seed_phase_p4"
+    },
+    "launch": {
+      "id": "seed_launch_ethicon_4000"
+    },
+    "otherLaunches": [],
+    "detectedBy": {
+      "id": "seed_agent_reg"
+    }
+  },
+  {
+    "id": "seed_finding_402",
+    "displayId": "NPI-0402",
+    "headline": "Release 2,600 units at risk?",
+    "description": "At-risk build authorisation above delegated authority",
+    "signalSource": "09 Sep 11:05 · L. Haugen",
+    "detectedAt": "2026-09-09T11:05:00",
+    "outcome": "USER",
+    "category": "ct",
+    "dependency": "SELF",
+    "daysAtStake": 7,
+    "exposure": 2800000,
+    "exposureCause": "At-risk build write-off exposure — 2,600 VARIPULSE units authorised above delegated authority ahead of G4 CE Certificate",
+    "phase": {
+      "id": "seed_phase_p4"
+    },
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "otherLaunches": [],
+    "detectedBy": {
+      "id": "seed_agent_mfg"
+    }
+  },
+  {
+    "id": "seed_finding_344",
+    "displayId": "NPI-0344",
+    "headline": "Costed both scenarios for the Board",
+    "description": "CPT code application pending — no US reimbursement path",
+    "signalSource": "05 Sep 08:40 · you",
+    "detectedAt": "2026-09-05T08:40:00",
+    "outcome": "HELD",
+    "category": "rk",
+    "dependency": "TEAM",
+    "daysAtStake": 20,
+    "exposure": 7800000,
+    "exposureCause": "CPT code application pending — no US reimbursement path for the ETHICON 4000+ Stapler puts the full first-year US launch revenue at risk until a code is granted",
+    "phase": {
+      "id": "seed_phase_p4"
+    },
+    "launch": {
+      "id": "seed_launch_ethicon_4000"
+    },
+    "otherLaunches": [],
+    "detectedBy": {
+      "id": "seed_agent_ma"
+    }
+  },
+  {
+    "id": "seed_finding_319",
+    "displayId": "NPI-0319",
+    "headline": "Rebooked all 14 into the 22 Sep cohort",
+    "description": "Field-force certification 91% against a 95% target, Iberia",
+    "signalSource": "08 Sep 06:30 · agent",
+    "detectedAt": "2026-09-08T06:30:00",
+    "outcome": "AUTO",
+    "category": "ok",
+    "dependency": "AGENT",
+    "daysAtStake": null,
+    "phase": {
+      "id": "seed_phase_p5"
+    },
+    "launch": {
+      "id": "seed_launch_javelin_xl"
+    },
+    "otherLaunches": [],
+    "detectedBy": {
+      "id": "seed_agent_com"
+    }
+  },
+  {
+    "id": "seed_finding_420",
+    "displayId": "NPI-0420",
+    "headline": "Awaiting FDA deficiency-letter response",
+    "description": "PMA under FDA review — deficiency letter open; no approval until the agency responds",
+    "signalSource": "11 Sep 09:15 · agent",
+    "detectedAt": "2026-09-11T09:15:00",
+    "outcome": "HELD",
+    "category": "ct",
+    "dependency": "REGULATOR",
+    "daysAtStake": 45,
+    "phase": {
+      "id": "seed_phase_p4"
+    },
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "otherLaunches": [],
+    "detectedBy": {
+      "id": "seed_agent_reg"
+    }
+  }
+]

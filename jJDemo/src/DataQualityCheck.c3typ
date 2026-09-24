@@ -1,0 +1,143 @@
+/**
+ * The data-quality layer — the app's "does this data deserve trust?" gate, and
+ * what populates the Data Validation story in a demo. Each method is one rule
+ * that reads a source extract (or the loaded ontology) and returns a structured
+ * verdict: which feed/field it checked, how many rows it looked at, how many
+ * failed, a PASS / WARN / FAIL status, and the offending keys — so a reviewer
+ * (or the UI) never has to eyeball a file.
+ *
+ * The rules are authored FAILING-FIRST against the synthetic extracts, which
+ * carry deliberate, bounded dirt (§4): one trailing-whitespace key, one
+ * duplicate row, one alternate date format, and one supplier with no D&B number.
+ * A rule that catches its planted defect proves the rule actually works rather
+ * than vacuously passing — see {@code test/js-rhino/unit/test_DataQuality.js}.
+ *
+ * Two families:
+ *   - DQ-* rules run against the RAW source files (meta://) and find the dirt.
+ *   - RECON-* rules run against the LOADED ontology and prove it is internally
+ *     consistent (SPC breaches confined to held lots; the escalation thread
+ *     matches the locked golden copy byte-for-byte).
+ *
+ * Stateless computation type — holds no data of its own. The UI reads these via
+ * {@code c3Action}.
+ */
+entity type DataQualityCheck {
+  /**
+   * DQ-KEY-01 — Key hygiene on SAP_LFA1.LIFNR: a business key must have no
+   * leading/trailing whitespace (a whitespace key silently fails every join).
+   * Expected FAIL with 1 offender (the padded Sterigenics vendor number).
+   */
+  checkKeyHygiene: function(): json js
+
+  /**
+   * DQ-UNIQ-01 — Uniqueness on SAP_LFA1.LIFNR: a vendor may appear once. A
+   * duplicate row double-counts on load. Expected FAIL with 1 offender (BSI,
+   * emitted twice by the source system).
+   */
+  checkUniqueness: function(): json js
+
+  /**
+   * DQ-DATE-01 — Date conformance on LIMS_RESULT.result_date: every non-empty
+   * date must be ISO {@code yyyy-MM-dd}. Expected FAIL with 1 offender (a LIMS
+   * row emitted as {@code dd/MM/yyyy}).
+   */
+  checkDateFormat: function(): json js
+
+  /**
+   * DQ-REF-01 — Referential integrity on the supplier crosswalk: flag any
+   * supplier whose D&B key (DUNS) is missing, so a credit-risk lookup cannot
+   * resolve it. Expected FAIL with 1 offender (Heraeus, deliberately un-DUNSed).
+   */
+  checkReferentialIntegrity: function(): json js
+
+  /**
+   * DQ-COMPLETE-01 — Completeness on SAP_LFA1.STCEG (EU VAT id): reports the null
+   * rate. Bounded nulls are tolerated here (many small suppliers have no EU VAT),
+   * so this returns WARN with the count, never FAIL — it informs, it does not block.
+   */
+  checkCompleteness: function(): json js
+
+  /**
+   * RECON-SPC-01 — SPC breaches must be confined to lots on HOLD. Reads
+   * {@link ProcessMeasurement} + {@link Lot} and asserts every out-of-spec
+   * reading belongs to a HOLD lot (no breach hides inside a released lot).
+   * Expected PASS.
+   */
+  checkSpcConfinement: function(): json js
+
+  /**
+   * RECON-THREAD-01 — Thread-integrity regression. Delegates to
+   * {@link PipelineOrchestrator#reconcileThread}: the staged QMS_COMMENT feed must
+   * match the locked golden {@link Comment} thread for NPI-0417 byte-for-byte.
+   * Expected PASS. This is the guard that a future load never disturbs the demo's
+   * escalation thread.
+   */
+  checkThreadIntegrity: function(): json js
+
+  /**
+   * DQ-GATE-01 — the admission gate on the supplier feed (SAP_LFA1). Unlike the
+   * DQ-* rules above, which only report, a GATE rule ENFORCES: it decides, row by
+   * row, what is allowed into the ontology. This is how the app supports "only
+   * the clean subset of the data" honestly — every row lands in exactly one of
+   * three buckets, none silently:
+   *
+   *   - ADMITTED   — clean rows that load as-is.
+   *   - CLEANSED   — rows the gate could repair inline (a key padded with
+   *                  whitespace is trimmed and then admitted, with a note).
+   *   - QUARANTINED — rows the gate refuses (a missing key, or a duplicate that
+   *                  would double-count on load); set aside with a reason,
+   *                  never loaded and never lost.
+   *
+   * Returns the three buckets plus counts, so a reviewer can see "56 admitted,
+   * 1 repaired, 1 quarantined" and the exact reason for each exception. Status is
+   * {@code GATED} when anything was quarantined, {@code PASS} when nothing was.
+   */
+  supplierAdmissionGate: function(): json js
+
+  /**
+   * Runs every rule and returns a scoreboard: total rules, counts of PASS / WARN
+   * / FAIL, and each rule's verdict. This is the single call behind a
+   * data-quality dashboard.
+   */
+  runAll: function(): json js
+
+  /**
+   * Register (idempotently) the subset of the DQ rules above that run over the
+   * LOADED ontology as native platform {@link DataValidation.Rule} objects, so
+   * they appear and are editable in Studio's <b>Configure → Data Fusion → Data
+   * Validation</b> screen (not just as {@code c3Action} methods on this type).
+   *
+   * Each rule is a {@link DataValidation.Rule.Lambda}: a per-record {@code map}
+   * lambda over a real entity {@code targetType} (run by MapReduce) that emits
+   * offending rows into a typed {@code detailsType}, plus a {@code summarize}
+   * lambda that decides PASS / FAIL from the offender count. The human-readable
+   * source is also stored in {@code userCode} so the Data Validation editor
+   * shows and can re-save it. Existing rules with the same id are replaced, so
+   * this is safe to call on every (re-)provision to keep the rules present.
+   *
+   * The registered set (targetType → intent):
+   *   - Supplier          — financial risk rating present (DQ-KEY analogue)
+   *   - Supplier          — approval status present
+   *   - Supplier          — quality audit current (auditValidUntil not expired)
+   *   - Supplier          — single-source AND High risk (resilience gap; FAILs)
+   *   - Lot               — lot state present and clean (no blank/padded state)
+   *   - ProcessMeasurement — SPC breaches confined to spcViolation-flagged lots
+   *
+   * Note: the raw-file DQ-* rules (DQ-UNIQ/DATE/COMPLETE and the admission gate)
+   * read source extracts (meta:// CSVs), not MapReduce-able entity types, so
+   * they remain {@code c3Action} methods on this type and are not registered here.
+   *
+   * @return a summary: how many rules were registered and their ids.
+   */
+  registerValidationRules: function(): json js
+
+  /**
+   * Convenience: {@link #registerValidationRules} and then execute every
+   * registered {@link DataValidation.Rule}, returning each rule's id and the
+   * resulting {@link DataValidation.Run} status (e.g. PASSED / FAILED_MODERATE /
+   * FAILED_CRITICAL). Used to smoke-test the native rules end-to-end.
+   *
+   * @return an array of {@code { id, name, targetType, status }} verdicts.
+   */
+  runValidationRules: function(): json js
+}

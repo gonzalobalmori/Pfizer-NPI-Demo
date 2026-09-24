@@ -1,0 +1,114 @@
+[
+  {
+    "id": "seed_person_hf",
+    "name": "Helena Fossi",
+    "role": "Global NPI Lead",
+    "functionName": "Governance",
+    "initials": "HF",
+    "isBoard": false
+  },
+  {
+    "id": "seed_person_mo",
+    "name": "M. Okafor",
+    "role": "Sourcing Lead",
+    "functionName": "Sourcing",
+    "initials": "MO",
+    "isBoard": false
+  },
+  {
+    "id": "seed_person_ak",
+    "name": "A. Kowalski",
+    "role": "Quality Lead",
+    "functionName": "Quality",
+    "initials": "AK",
+    "isBoard": false
+  },
+  {
+    "id": "seed_person_sl",
+    "name": "S. Lindqvist",
+    "role": "Regulatory Affairs",
+    "functionName": "Regulatory",
+    "initials": "SL",
+    "isBoard": false
+  },
+  {
+    "id": "seed_person_kt",
+    "name": "K. Tanaka",
+    "role": "R&D Lead",
+    "functionName": "R&D / Design",
+    "initials": "KT",
+    "isBoard": false
+  },
+  {
+    "id": "seed_person_lh",
+    "name": "L. Haugen",
+    "role": "Manufacturing Lead",
+    "functionName": "Manufacturing",
+    "initials": "LH",
+    "isBoard": false
+  },
+  {
+    "id": "seed_person_ap",
+    "name": "A. Patel",
+    "role": "Supply Chain Lead",
+    "functionName": "Supply Chain",
+    "initials": "AP",
+    "isBoard": false
+  },
+  {
+    "id": "seed_person_tb",
+    "name": "T. Bergmann",
+    "role": "Commercial & Finance",
+    "functionName": "Commercial",
+    "initials": "TB",
+    "isBoard": false
+  },
+  {
+    "id": "seed_person_dm",
+    "name": "D. Moreau",
+    "role": "Market Access Lead",
+    "functionName": "Market Access",
+    "initials": "DM",
+    "isBoard": false
+  },
+  {
+    "id": "seed_person_rm",
+    "name": "R. Mehta",
+    "role": "IT / Digital Lead",
+    "functionName": "IT / Digital",
+    "initials": "RM",
+    "isBoard": false
+  },
+  {
+    "id": "seed_person_jt",
+    "name": "J. Thomson",
+    "role": "Clinical Lead",
+    "functionName": "Clinical",
+    "initials": "JT",
+    "isBoard": false
+  },
+  {
+    "id": "seed_person_rd",
+    "name": "R. Devi",
+    "role": "Logistics Lead",
+    "functionName": "Supply Chain",
+    "initials": "RD",
+    "isBoard": false
+  },
+  {
+    "id": "seed_person_jr",
+    "name": "J. Ruiz",
+    "role": "Legal Counsel",
+    "functionName": "Finance",
+    "initials": "JR",
+    "isBoard": false
+  },
+  {
+    "id": "seed_person_board",
+    "name": "the Launch Board",
+    "role": "Collective decision body",
+    "functionName": "Governance",
+    "initials": "●",
+    "isBoard": true
+  }
+]

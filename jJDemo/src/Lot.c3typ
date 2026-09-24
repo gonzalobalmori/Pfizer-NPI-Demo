@@ -1,0 +1,39 @@
+/**
+ * A manufacturing lot produced on a supplier or internal production line, as
+ * reported by the MES (Siemens Opcenter). Lots are the unit the Line-Monitor
+ * agent watches: the Heraeus contrasting case turns on twelve ring-electrode
+ * lots (`HRS-RE-2609-01`…`-12`), the last four of which drift out of spec and
+ * are placed on {@link Lot#lotState} `HOLD`.
+ *
+ * A lot carries many {@link ProcessMeasurement}s (its in-process SPC readings)
+ * and is an operational type — the pipeline upserts it on every MES micro-batch,
+ * so it lives in `data/`, not locked seed.
+ */
+entity type Lot {
+  /** MES lot identifier, e.g. "HRS-RE-2609-09". The business key the feed is idempotent on. */
+  lotId: !string
+
+  /** SAP material number this lot builds, 18-char zero-padded (e.g. "000000000000100200"). */
+  materialNo: string
+
+  /** The manufacturing operation, e.g. "OP40-RING-ELECTRODE". */
+  operation: string
+
+  /** Equipment / line identifier, e.g. "CASHEL-L4". */
+  equipmentId: string
+
+  /** Lot quantity (units produced). */
+  lotQty: int
+
+  /** Lot disposition as reported by MES: "Released" or "HOLD" (SPC breach). */
+  lotState: string enum('Released', 'HOLD', 'Scrapped')
+
+  /** Timestamp the lot started, from the MES StartTs column. */
+  startTs: datetime
+
+  /** True where this lot violated an SPC rule (rolled up from its measurements). */
+  spcViolation: boolean
+
+  /** In-process SPC measurements for this lot. Inverse of {@link ProcessMeasurement#lot}. */
+  measurements: [ProcessMeasurement](lot)
+}

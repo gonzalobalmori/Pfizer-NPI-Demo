@@ -1,0 +1,14 @@
+WorkerId,samAccountName,LegalName,JobFunction,BusinessTitle,ManagerId,DelegatedAuthorityEUR,Active
+WD100200,hf@its.jnj.com,Helena Fossi,Global NPI Lead,Global NPI Lead,,5000000,Y
+WD100201,mo@its.jnj.com,M. Okafor,Sourcing Lead,Sourcing Lead,WD100200,250000,Y
+WD100202,ak@its.jnj.com,A. Kowalski,Quality Lead,Quality Lead,WD100200,250000,Y
+WD100203,sl@its.jnj.com,S. Lindqvist,Regulatory Affairs,Regulatory Affairs,WD100200,150000,Y
+WD100204,kt@its.jnj.com,K. Tanaka,R&D Lead,R&D Lead,WD100200,100000,Y
+WD100205,lh@its.jnj.com,L. Haugen,Manufacturing Lead,Manufacturing Lead,WD100200,100000,Y
+WD100206,ap@its.jnj.com,A. Patel,Supply Chain Lead,Supply Chain Lead,WD100200,100000,Y
+WD100207,tb@its.jnj.com,T. Bergmann,Commercial & Finance,Commercial & Finance,WD100200,1500000,Y
+WD100208,dm@its.jnj.com,D. Moreau,Market Access Lead,Market Access Lead,WD100200,50000,Y
+WD100209,rm@its.jnj.com,R. Mehta,IT / Digital Lead,IT / Digital Lead,WD100200,50000,Y
+WD100210,jt@its.jnj.com,J. Thomson,Clinical Lead,Clinical Lead,WD100200,50000,Y
+WD100211,rd@its.jnj.com,R. Devi,Logistics Lead,Logistics Lead,WD100200,50000,Y
+WD100212,jr@its.jnj.com,J. Ruiz,Legal Counsel,Legal Counsel,WD100200,50000,Y

@@ -1,0 +1,22 @@
+/**
+ * A single append-only event on an {@link Escalation}'s upward path — the
+ * "Assigned → in progress → signed → submitted" / "Raised → accepted → on the
+ * agenda → decided" progression shown on the Escalated pane (§2.1). Events are
+ * never removed and never move the work back down (model invariant §3.6.4).
+ */
+entity type EscalationEvent mixes SeedData {
+  /** Ordinal position in the path, 1-based. */
+  sequence: int
+
+  /** Event label, e.g. "in progress", "on the agenda". */
+  label: string
+
+  /** State of this step. */
+  state: string enum('done', 'now', 'pending')
+
+  /** When the event occurred, where recorded. */
+  occurredAt: datetime
+
+  /** The escalation this event belongs to. */
+  escalation: Escalation
+}

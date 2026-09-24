@@ -1,0 +1,31 @@
+/**
+ * A task the chosen {@link DecisionOption} implies (§2.4 section 7). The anchor
+ * case seeds seven for Option A, four of which an agent can run unattended. On
+ * approval the tasks are assigned to their owners and the agent-runnable ones are
+ * dispatched — part of the atomic cascade.
+ */
+entity type ActionPlanTask {
+  /** Task description, e.g. "Book the 29 Sep chamber slot at Sterigenics and issue the capacity PO". */
+  name: !string
+
+  /** Owner — an agent code or a person's initials, e.g. "Sourcing agent", "M. Okafor". */
+  owner: string
+
+  /** Supporting detail / conditions, e.g. "within guardrails · reversible for 24h". */
+  detail: string
+
+  /** True when an agent can run this task unattended (4 of 7 for Option A). */
+  agentRunnable: boolean
+
+  /** Which option this task belongs to, "a" / "b" / "c" — the plan is rebuilt per option. */
+  optionKey: string
+
+  /** Task status. Set to Assigned/Dispatched by the approve transaction. */
+  status: string enum('Not started', 'Assigned', 'Dispatched', 'Done')
+
+  /** Due date for the task, e.g. "16 Sep". */
+  dueDate: datetime
+
+  /** The decision this task belongs to. */
+  decision: Decision
+}

@@ -1,0 +1,18 @@
+/**
+ * Shared behaviour for records that carry a monetary exposure figure.
+ *
+ * Data rule §4.3.4 requires every exposure to be attributable to a named
+ * gate, market or supplier — never a free-floating amount. Types that mix
+ * {@link HasExposure} therefore carry both the figure and the cause that
+ * makes it defensible in front of a Notified Body auditor.
+ */
+type HasExposure {
+  /** Revenue exposed by this record, in euros. */
+  exposure: double
+
+  /**
+   * The named cause the exposure is attributable to — a gate code, a market
+   * code or a supplier name. Satisfies model invariant §4.3.4.
+   */
+  exposureCause: string
+}

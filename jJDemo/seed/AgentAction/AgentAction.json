@@ -1,0 +1,703 @@
+[
+  {
+    "id": "seed_chain_chn09_a1",
+    "sequence": 1,
+    "occurredAt": "2026-09-11T08:14:00",
+    "verb": "DETECTED",
+    "detail": "Steris Venlo cancelled the 12 Oct EO chamber slot booked for validation lot VPG2-VAL-03. Picked up from the supplier portal feed, not from a person.",
+    "stateLabel": "DETECTED",
+    "handoffPrompt": "Planning agent — “what does this do to the gate plan?”",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_chn09"
+    },
+    "agent": {
+      "id": "seed_agent_qua"
+    }
+  },
+  {
+    "id": "seed_chain_chn09_a2",
+    "sequence": 2,
+    "occurredAt": "2026-09-11T08:16:00",
+    "verb": "ASSESSED",
+    "detail": "Recomputed the critical path from the activity dependency graph. The validation report is the only predecessor of the last open dossier section.",
+    "stateLabel": "ASSESSED",
+    "handoffPrompt": "Sourcing agent — “find a qualified alternative inside 38 days”",
+    "completed": true,
+    "deltaBefore": "ISO 11135 validation report: 24 Oct; G3 Submission Commit: 04 Nov",
+    "deltaAfter": "ISO 11135 validation report: 19 Dec (+56 d); G3 Submission Commit: 21 Dec (+47 d)",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_chn09"
+    },
+    "agent": {
+      "id": "seed_agent_gov"
+    }
+  },
+  {
+    "id": "seed_chain_chn09_a3",
+    "sequence": 3,
+    "occurredAt": "2026-09-11T08:20:00",
+    "verb": "3 OPTIONS MODELLED",
+    "detail": "Screened six sites on the approved supplier list against EO capability and audit status. Three survived. Sterigenics Grand Rapids dominates on days recovered per euro.",
+    "stateLabel": "3 OPTIONS MODELLED",
+    "handoffPrompt": "Regulatory agent — “does the dossier survive a 9-day shift?”",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_chn09"
+    },
+    "agent": {
+      "id": "seed_agent_src"
+    }
+  },
+  {
+    "id": "seed_chain_chn09_a4",
+    "sequence": 4,
+    "occurredAt": "2026-09-11T08:23:00",
+    "verb": "GUARDRAIL PASS",
+    "detail": "The BSI Q4 review slot holds a nine-day dossier shift. Section 4.3 is the only open section. Six guardrail checks run, none breached.",
+    "stateLabel": "GUARDRAIL PASS",
+    "handoffPrompt": "Orchestrator",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_chn09"
+    },
+    "agent": {
+      "id": "seed_agent_reg"
+    }
+  },
+  {
+    "id": "seed_chain_chn09_a5",
+    "sequence": 5,
+    "occurredAt": "2026-09-11T08:24:00",
+    "verb": "HANDED TO YOU · HIGH URGENCY",
+    "detail": "Above the autonomous band on two counts: €18.4M exposed and a gate date moves. Notified M. Okafor, A. Kowalski and S. Lindqvist · 3 Teams cards · entry written to the DHF.",
+    "stateLabel": "HANDED TO YOU · HIGH URGENCY",
+    "handoffPrompt": "",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "USER",
+    "chain": {
+      "id": "seed_chain_chn09"
+    },
+    "agent": {
+      "id": "seed_agent_orc"
+    }
+  },
+  {
+    "id": "seed_chain_chn08_a1",
+    "sequence": 1,
+    "occurredAt": "2026-09-09T08:42:00",
+    "verb": "DETECTED",
+    "detail": "Tooling and line time are booked from 02 Nov. Without a release decision the slot is reallocated and eight weeks are lost.",
+    "stateLabel": "DETECTED",
+    "handoffPrompt": "Finance agent — “price the exposure”",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_chn08"
+    },
+    "agent": {
+      "id": "seed_agent_mfg"
+    }
+  },
+  {
+    "id": "seed_chain_chn08_a2",
+    "sequence": 2,
+    "occurredAt": "2026-09-09T08:42:00",
+    "verb": "3 VOLUMES MODELLED",
+    "detail": "Modelled 4,200 / 2,600 / 1,400 units against P50 demand. 2,600 covers the first nine weeks in Germany and France and holds the G5 date.",
+    "stateLabel": "3 VOLUMES MODELLED",
+    "handoffPrompt": "Supply Chain agent — “can the 3PLs hold it?”",
+    "completed": true,
+    "deltaBefore": "Write-off exposure: €2.8M",
+    "deltaAfter": "Write-off exposure: €1.7M (−39%)",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_chn08"
+    },
+    "agent": {
+      "id": "seed_agent_fin"
+    }
+  },
+  {
+    "id": "seed_chain_chn08_a3",
+    "sequence": 3,
+    "occurredAt": "2026-09-09T08:42:00",
+    "verb": "GUARDRAIL PASS",
+    "detail": "Pre-positioning 2,600 units across six EU DCs is inside the agreed carrying envelope. No excursion risk on the validated lanes.",
+    "stateLabel": "GUARDRAIL PASS",
+    "handoffPrompt": "Orchestrator",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_chn08"
+    },
+    "agent": {
+      "id": "seed_agent_sc"
+    }
+  },
+  {
+    "id": "seed_chain_chn08_a4",
+    "sequence": 4,
+    "occurredAt": "2026-09-09T08:43:00",
+    "verb": "HANDED TO YOU",
+    "detail": "€1.7M of write-off exposure is above your €1.5M delegated authority, so the agent cannot release the build. Notified L. Haugen and T. Bergmann.",
+    "stateLabel": "HANDED TO YOU",
+    "handoffPrompt": "",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "USER",
+    "chain": {
+      "id": "seed_chain_chn08"
+    },
+    "agent": {
+      "id": "seed_agent_orc"
+    }
+  },
+  {
+    "id": "seed_chain_chn07_a1",
+    "sequence": 1,
+    "occurredAt": "2026-09-07T08:42:00",
+    "verb": "DETECTED",
+    "detail": "Credit monitoring downgraded Heraeus Medical Components to High financial risk after a 34-day payables extension — second consecutive quarter.",
+    "stateLabel": "DETECTED",
+    "handoffPrompt": "Design agent — “what does the BOM say?”",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_chn07"
+    },
+    "agent": {
+      "id": "seed_agent_src"
+    }
+  },
+  {
+    "id": "seed_chain_chn07_a2",
+    "sequence": 2,
+    "occurredAt": "2026-09-07T08:42:00",
+    "verb": "ASSESSED",
+    "detail": "The ring electrode subassembly is single-source across four Biosense Webster catheters and sits on a BOM that freezes at G2 on 30 Sep.",
+    "stateLabel": "ASSESSED",
+    "handoffPrompt": "Finance agent — “cost it before and after the freeze”",
+    "completed": true,
+    "deltaBefore": "Change control after G2: document change",
+    "deltaAfter": "Change control after G2: 11 weeks (4 launches)",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_chn07"
+    },
+    "agent": {
+      "id": "seed_agent_rnd"
+    }
+  },
+  {
+    "id": "seed_chain_chn07_a3",
+    "sequence": 3,
+    "occurredAt": "2026-09-07T08:44:00",
+    "verb": "ASSESSED",
+    "detail": "The second-source premium is small against €6.2M of exposure across the four launches. The same supplier is carried on two other programmes.",
+    "stateLabel": "ASSESSED",
+    "handoffPrompt": "Orchestrator",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_chn07"
+    },
+    "agent": {
+      "id": "seed_agent_fin"
+    }
+  },
+  {
+    "id": "seed_chain_chn07_a4",
+    "sequence": 4,
+    "occurredAt": "2026-09-07T08:45:00",
+    "verb": "HANDED TO YOU",
+    "detail": "Activating a second source changes the supply architecture, which is not in the autonomous band. Nineteen days of float remain before the freeze.",
+    "stateLabel": "HANDED TO YOU",
+    "handoffPrompt": "",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "USER",
+    "chain": {
+      "id": "seed_chain_chn07"
+    },
+    "agent": {
+      "id": "seed_agent_orc"
+    }
+  },
+  {
+    "id": "seed_chain_chn06_a1",
+    "sequence": 1,
+    "occurredAt": "2026-09-05T08:42:00",
+    "verb": "DETECTED",
+    "detail": "Twelve of fourteen G2 design inputs are signed. The usability report and the transit summary are outstanding.",
+    "stateLabel": "DETECTED",
+    "handoffPrompt": "Quality agent — “draft them from the test data”",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_chn06"
+    },
+    "agent": {
+      "id": "seed_agent_rnd"
+    }
+  },
+  {
+    "id": "seed_chain_chn06_a2",
+    "sequence": 2,
+    "occurredAt": "2026-09-05T08:42:00",
+    "verb": "DRAFTED & CHECKED",
+    "detail": "Both written from the test data and traced to the design input matrix. IEC 62366 summative passed with zero use errors on critical tasks; ASTM D4169 Sequences A to D passed with the sterile barrier intact. No acceptance criteria waived.",
+    "stateLabel": "DRAFTED & CHECKED",
+    "handoffPrompt": "Orchestrator",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_chn06"
+    },
+    "agent": {
+      "id": "seed_agent_qua"
+    }
+  },
+  {
+    "id": "seed_chain_chn06_a3",
+    "sequence": 3,
+    "occurredAt": "2026-09-05T08:43:00",
+    "verb": "HANDED TO YOU",
+    "detail": "A design input needs a qualified signature. The agent can write the report; it cannot sign it.",
+    "stateLabel": "HANDED TO YOU",
+    "handoffPrompt": "",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "USER",
+    "chain": {
+      "id": "seed_chain_chn06"
+    },
+    "agent": {
+      "id": "seed_agent_orc"
+    }
+  },
+  {
+    "id": "seed_chain_chn05_a1",
+    "sequence": 1,
+    "occurredAt": "2026-09-07T08:42:00",
+    "verb": "DETECTED",
+    "detail": "Second query cycle opened on the clinical evaluation section. A 21-day clock-stop started on 07 Sep.",
+    "stateLabel": "DETECTED",
+    "handoffPrompt": "Clinical agent — “assemble the evidence”",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_chn05"
+    },
+    "agent": {
+      "id": "seed_agent_reg"
+    }
+  },
+  {
+    "id": "seed_chain_chn05_a2",
+    "sequence": 2,
+    "occurredAt": "2026-09-07T08:42:00",
+    "verb": "ASSEMBLED",
+    "detail": "Response pack built from the CER and the equivalence rationale — 14 pages, every query answered with a traced source.",
+    "stateLabel": "ASSEMBLED",
+    "handoffPrompt": "Orchestrator",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_chn05"
+    },
+    "agent": {
+      "id": "seed_agent_cli"
+    }
+  },
+  {
+    "id": "seed_chain_chn05_a3",
+    "sequence": 3,
+    "occurredAt": "2026-09-07T08:44:00",
+    "verb": "STOPPED ON A HUMAN",
+    "detail": "Cannot submit without a qualified signatory. With S. Lindqvist since 07 Sep; reminder sent 08 Sep; escalated to their manager the same day.",
+    "stateLabel": "STOPPED ON A HUMAN",
+    "handoffPrompt": "",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "HELD",
+    "chain": {
+      "id": "seed_chain_chn05"
+    },
+    "agent": {
+      "id": "seed_agent_orc"
+    }
+  },
+  {
+    "id": "seed_chain_chn04_a1",
+    "sequence": 1,
+    "occurredAt": "2026-09-05T08:42:00",
+    "verb": "DETECTED",
+    "detail": "The AMA CPT panel cycle closed before the application window. Next submission February, decision September 2027.",
+    "stateLabel": "DETECTED",
+    "handoffPrompt": "Commercial agent — “what does that do to adoption?”",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_chn04"
+    },
+    "agent": {
+      "id": "seed_agent_ma"
+    }
+  },
+  {
+    "id": "seed_chain_chn04_a2",
+    "sequence": 2,
+    "occurredAt": "2026-09-05T08:42:00",
+    "verb": "ASSESSED",
+    "detail": "Without a product-specific code, billing falls to a miscellaneous J-code. Around 40% of target accounts are likely to defer.",
+    "stateLabel": "ASSESSED",
+    "handoffPrompt": "Finance agent — “cost both scenarios”",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_chn04"
+    },
+    "agent": {
+      "id": "seed_agent_com"
+    }
+  },
+  {
+    "id": "seed_chain_chn04_a3",
+    "sequence": 3,
+    "occurredAt": "2026-09-05T08:44:00",
+    "verb": "2 SCENARIOS MODELLED",
+    "detail": "Launch without a code, or hold the US to Q1 2028 and defer €7.8M to FY28 with the EU launch unaffected.",
+    "stateLabel": "2 SCENARIOS MODELLED",
+    "handoffPrompt": "Orchestrator",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_chn04"
+    },
+    "agent": {
+      "id": "seed_agent_fin"
+    }
+  },
+  {
+    "id": "seed_chain_chn04_a4",
+    "sequence": 4,
+    "occurredAt": "2026-09-05T08:45:00",
+    "verb": "STOPPED ON A HUMAN",
+    "detail": "A commercial policy call above any single owner. With the Launch Board, tabled for 24 Sep; both scenarios in the Board pack.",
+    "stateLabel": "STOPPED ON A HUMAN",
+    "handoffPrompt": "",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "HELD",
+    "chain": {
+      "id": "seed_chain_chn04"
+    },
+    "agent": {
+      "id": "seed_agent_orc"
+    }
+  },
+  {
+    "id": "seed_chain_chn03_a1",
+    "sequence": 1,
+    "occurredAt": "2026-09-08T08:42:00",
+    "verb": "DETECTED",
+    "detail": "Two minor findings from the Heraeus audit remain open past their due date.",
+    "stateLabel": "DETECTED",
+    "handoffPrompt": "Sourcing agent — “is there a route that does not need a site visit?”",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_chn03"
+    },
+    "agent": {
+      "id": "seed_agent_qua"
+    }
+  },
+  {
+    "id": "seed_chain_chn03_a2",
+    "sequence": 2,
+    "occurredAt": "2026-09-08T08:42:00",
+    "verb": "ASSESSED",
+    "detail": "No. Closure of a minor finding requires an on-site lead auditor signature under the quality agreement. Not delegable.",
+    "stateLabel": "ASSESSED",
+    "handoffPrompt": "Orchestrator",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_chn03"
+    },
+    "agent": {
+      "id": "seed_agent_src"
+    }
+  },
+  {
+    "id": "seed_chain_chn03_a3",
+    "sequence": 3,
+    "occurredAt": "2026-09-08T08:42:00",
+    "verb": "STOPPED ON A HUMAN",
+    "detail": "With A. Kowalski; on-site visit booked for 19 Sep. No gate impact yet.",
+    "stateLabel": "STOPPED ON A HUMAN",
+    "handoffPrompt": "",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "HELD",
+    "chain": {
+      "id": "seed_chain_chn03"
+    },
+    "agent": {
+      "id": "seed_agent_orc"
+    }
+  },
+  {
+    "id": "seed_chain_iz412_a1",
+    "sequence": 1,
+    "occurredAt": "2026-09-11T08:40:00",
+    "verb": "Flagged the dimensional drift",
+    "detail": "SPC rule 2 broken on 4 consecutive lots",
+    "stateLabel": "Flagged the dimensional drift",
+    "handoffPrompt": "",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_iz412"
+    },
+    "agent": {
+      "id": "seed_agent_line"
+    }
+  },
+  {
+    "id": "seed_chain_iz412_a2",
+    "sequence": 2,
+    "occurredAt": "2026-09-11T08:40:00",
+    "verb": "Pulled and re-measured all 12 lots",
+    "detail": "4 confirmed out of tolerance",
+    "stateLabel": "Pulled and re-measured all 12 lots",
+    "handoffPrompt": "",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_iz412"
+    },
+    "agent": {
+      "id": "seed_agent_qua"
+    }
+  },
+  {
+    "id": "seed_chain_iz412_a3",
+    "sequence": 3,
+    "occurredAt": "2026-09-11T08:41:00",
+    "verb": "Checked the qualified alternatives",
+    "detail": "2 approved sites, 1 with capacity",
+    "stateLabel": "Checked the qualified alternatives",
+    "handoffPrompt": "",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_iz412"
+    },
+    "agent": {
+      "id": "seed_agent_src"
+    }
+  },
+  {
+    "id": "seed_chain_iz412_a4",
+    "sequence": 4,
+    "occurredAt": "2026-09-11T08:41:00",
+    "verb": "Re-baselined the affected gates",
+    "detail": "G3 holds if the line stops inside 5 days",
+    "stateLabel": "Re-baselined the affected gates",
+    "handoffPrompt": "",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_iz412"
+    },
+    "agent": {
+      "id": "seed_agent_gov"
+    }
+  },
+  {
+    "id": "seed_chain_iz412_a5",
+    "sequence": 5,
+    "occurredAt": "2026-09-11T08:42:00",
+    "verb": "Stop line 3 at Heraeus?",
+    "detail": "quarantine 4 lots and switch to Neuss",
+    "stateLabel": "Stop line 3 at Heraeus?",
+    "handoffPrompt": "",
+    "completed": false,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_iz412"
+    },
+    "agent": null
+  },
+  {
+    "id": "seed_chain_iz359_a1",
+    "sequence": 1,
+    "occurredAt": "2026-09-06T08:42:00",
+    "verb": "Logged the Sequence D failure",
+    "detail": "3 of 12 cartons deformed, barrier intact",
+    "stateLabel": "Logged the Sequence D failure",
+    "handoffPrompt": "",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_iz359"
+    },
+    "agent": {
+      "id": "seed_agent_qua"
+    }
+  },
+  {
+    "id": "seed_chain_iz359_a2",
+    "sequence": 2,
+    "occurredAt": "2026-09-11T08:42:00",
+    "verb": "Redesigning the thermoform insert",
+    "detail": "re-test booked 14 Sep",
+    "stateLabel": "Redesigning the thermoform insert",
+    "handoffPrompt": "",
+    "completed": false,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_iz359"
+    },
+    "agent": {
+      "id": "seed_agent_rnd"
+    }
+  },
+  {
+    "id": "seed_chain_iz351_a1",
+    "sequence": 1,
+    "occurredAt": "2026-09-09T08:42:00",
+    "verb": "Compared 3PL turnaround against plan",
+    "detail": "6 days against a 4-day plan",
+    "stateLabel": "Compared 3PL turnaround against plan",
+    "handoffPrompt": "",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_iz351"
+    },
+    "agent": {
+      "id": "seed_agent_sc"
+    }
+  },
+  {
+    "id": "seed_chain_iz351_a2",
+    "sequence": 2,
+    "occurredAt": "2026-09-11T08:42:00",
+    "verb": "Pricing a second sterilisation lane",
+    "detail": "number due 12 Sep",
+    "stateLabel": "Pricing a second sterilisation lane",
+    "handoffPrompt": "",
+    "completed": false,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_iz351"
+    },
+    "agent": {
+      "id": "seed_agent_sc"
+    }
+  },
+  {
+    "id": "seed_chain_iz319_a1",
+    "sequence": 1,
+    "occurredAt": "2026-09-08T08:42:00",
+    "verb": "Found 14 reps short of certification",
+    "detail": "lab session pending",
+    "stateLabel": "Found 14 reps short of certification",
+    "handoffPrompt": "",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "",
+    "chain": {
+      "id": "seed_chain_iz319"
+    },
+    "agent": {
+      "id": "seed_agent_com"
+    }
+  },
+  {
+    "id": "seed_chain_iz319_a2",
+    "sequence": 2,
+    "occurredAt": "2026-09-08T08:42:00",
+    "verb": "Rebooked all 14 into the 22 Sep cohort",
+    "detail": "clears 97% before first ship",
+    "stateLabel": "Rebooked all 14 into the 22 Sep cohort",
+    "handoffPrompt": "",
+    "completed": true,
+    "deltaBefore": "",
+    "deltaAfter": "",
+    "outcome": "AUTO",
+    "chain": {
+      "id": "seed_chain_iz319"
+    },
+    "agent": {
+      "id": "seed_agent_sc"
+    }
+  }
+]

@@ -1,0 +1,24 @@
+/**
+ * A single criterion that must be met for a {@link Gate} to close. G3 Submission
+ * Commit for VARIPULSE G2 stands at "5 of 6 criteria met" — the ISO 11135
+ * sterilisation validation is the only one outstanding, which is precisely what
+ * holds the gate in the anchor case.
+ *
+ * A criterion is evidenced by a {@link Document} (e.g. the validation report).
+ */
+entity type GateCriterion mixes SeedData {
+  /** Criterion name, e.g. "Sterilisation validation report (ISO 11135)". */
+  name: !string
+
+  /** Whether the criterion is currently met. */
+  met: boolean
+
+  /** If unmet, the plain-language reason it is outstanding. */
+  outstandingReason: string
+
+  /** The gate this criterion belongs to. */
+  gate: Gate
+
+  /** The document that evidences this criterion, where one exists. */
+  evidence: Document
+}

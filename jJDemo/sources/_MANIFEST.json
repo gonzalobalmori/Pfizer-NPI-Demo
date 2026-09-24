@@ -1,0 +1,214 @@
+{
+  "generated_for": "J&J MedTech NPI Launch Control — synthetic source extracts (illustrative only; not real J&J data)",
+  "demo_clock": "Friday 11 September 2026 08:42 CET",
+  "seed": "0x1a2b3c4d (deterministic — re-runs are byte-identical)",
+  "feeds": [
+    {
+      "system": "sap",
+      "feed": "SAP_LFA1",
+      "file": "sap/SAP_LFA1_VENDOR_20260911.csv",
+      "format": "csv",
+      "rows": 57,
+      "frequency": "daily",
+      "arrivalWindow": "02:00 CET",
+      "target": "Supplier (via crosswalk)"
+    },
+    {
+      "system": "sap",
+      "feed": "SAP_MARA",
+      "file": "sap/SAP_MARA_MATERIAL_20260911.csv",
+      "format": "csv",
+      "rows": 9,
+      "frequency": "daily",
+      "arrivalWindow": "02:00 CET",
+      "target": "Launch / BillOfMaterialItem"
+    },
+    {
+      "system": "sap",
+      "feed": "SAP_REVPLAN",
+      "file": "sap/SAP_REVPLAN_20260911.csv",
+      "format": "csv",
+      "rows": 24,
+      "frequency": "daily",
+      "arrivalWindow": "02:30 CET",
+      "target": "derived exposure (metrics layer)"
+    },
+    {
+      "system": "ariba",
+      "feed": "ARIBA_SUPPLIER",
+      "file": "ariba/ARIBA_SUPPLIER_20260911.json",
+      "format": "json",
+      "rows": 4,
+      "frequency": "weekly",
+      "arrivalWindow": "Mon 04:00 CET",
+      "target": "Supplier / QualifiedProcess (via crosswalk)"
+    },
+    {
+      "system": "srm",
+      "feed": "SRM_CONTRACT",
+      "file": "srm/SRM_CONTRACT_TERM_20260911.csv",
+      "format": "csv",
+      "rows": 40,
+      "frequency": "weekly + event",
+      "arrivalWindow": "Mon 04:00 CET",
+      "target": "ContractTerm (via crosswalk)"
+    },
+    {
+      "system": "dnb",
+      "feed": "DNB_RISK",
+      "file": "dnb/DNB_RISK_RATING_20260911.csv",
+      "format": "csv",
+      "rows": 3,
+      "frequency": "event",
+      "arrivalWindow": "on rating change",
+      "target": "Supplier.financialRiskRating (via crosswalk)"
+    },
+    {
+      "system": "reference",
+      "feed": "SUPPLIER_XWALK",
+      "file": "reference/SUPPLIER_CROSSWALK_20260911.csv",
+      "format": "csv",
+      "rows": 4,
+      "frequency": "reference",
+      "arrivalWindow": "maintained",
+      "target": "Supplier identity resolution"
+    },
+    {
+      "system": "veeva_qms",
+      "feed": "QMS_CAPA",
+      "file": "veeva_qms/QMS_CAPA_20260911.json",
+      "format": "json",
+      "rows": 3,
+      "frequency": "near-real-time (micro-batch 15 min)",
+      "arrivalWindow": "continuous",
+      "target": "CAPA / Finding"
+    },
+    {
+      "system": "veeva_qms",
+      "feed": "QMS_AUDIT",
+      "file": "veeva_qms/QMS_AUDIT_20260911.json",
+      "format": "json",
+      "rows": 4,
+      "frequency": "near-real-time",
+      "arrivalWindow": "continuous",
+      "target": "Supplier audit validity (via crosswalk)"
+    },
+    {
+      "system": "veeva_qms",
+      "feed": "QMS_COMMENT",
+      "file": "veeva_qms/QMS_COMMENT_20260911.json",
+      "format": "json",
+      "rows": 4,
+      "frequency": "near-real-time",
+      "arrivalWindow": "continuous",
+      "target": "Comment (NPI-0417 escalation thread — verbatim)"
+    },
+    {
+      "system": "veeva_rim",
+      "feed": "RIM_REG",
+      "file": "veeva_rim/RIM_REGISTRATION_20260911.csv",
+      "format": "csv",
+      "rows": 46,
+      "frequency": "daily",
+      "arrivalWindow": "03:00 CET",
+      "target": "Market / MarketLaunch"
+    },
+    {
+      "system": "veeva_rim",
+      "feed": "RIM_DOSSIER",
+      "file": "veeva_rim/RIM_DOSSIER_SECTION_20260911.csv",
+      "format": "csv",
+      "rows": 5,
+      "frequency": "daily",
+      "arrivalWindow": "03:00 CET",
+      "target": "Gate criterion evidence (G3)"
+    },
+    {
+      "system": "veeva_rim",
+      "feed": "RIM_NB",
+      "file": "veeva_rim/RIM_NB_INTERACTION_20260911.csv",
+      "format": "csv",
+      "rows": 1,
+      "frequency": "daily",
+      "arrivalWindow": "03:00 CET",
+      "target": "BSI review window (guardrail check)"
+    },
+    {
+      "system": "lims",
+      "feed": "LIMS_RESULT",
+      "file": "lims/LIMS_RESULT_20260911.csv",
+      "format": "csv",
+      "rows": 4,
+      "frequency": "near-real-time",
+      "arrivalWindow": "continuous",
+      "target": "GateCriterion result / validation report status"
+    },
+    {
+      "system": "mes",
+      "feed": "MES_LOT",
+      "file": "mes/MES_LOT_20260911_08.csv",
+      "format": "csv",
+      "rows": 12,
+      "frequency": "streaming (5-min micro-batch)",
+      "arrivalWindow": "continuous",
+      "target": "Lot"
+    },
+    {
+      "system": "mes",
+      "feed": "MES_SPC",
+      "file": "mes/MES_SPC_20260911_08.csv",
+      "format": "csv",
+      "rows": 1817,
+      "frequency": "streaming (5-min micro-batch)",
+      "arrivalWindow": "continuous",
+      "target": "ProcessMeasurement → Heraeus Finding"
+    },
+    {
+      "system": "ppm",
+      "feed": "PPM_ACTIVITY",
+      "file": "ppm/PPM_ACTIVITY_20260911.csv",
+      "format": "csv",
+      "rows": 107,
+      "frequency": "daily",
+      "arrivalWindow": "01:00 CET",
+      "target": "Activity / Phase"
+    },
+    {
+      "system": "ppm",
+      "feed": "PPM_GATE",
+      "file": "ppm/PPM_GATE_20260911.csv",
+      "format": "csv",
+      "rows": 22,
+      "frequency": "daily",
+      "arrivalWindow": "01:00 CET",
+      "target": "Gate"
+    },
+    {
+      "system": "workday",
+      "feed": "HR_WORKER",
+      "file": "workday/HR_WORKER_20260911.csv",
+      "format": "csv",
+      "rows": 13,
+      "frequency": "weekly",
+      "arrivalWindow": "Sun 22:00 CET",
+      "target": "Person / Decision.authorityThreshold"
+    },
+    {
+      "system": "portal",
+      "feed": "PORTAL_CHAMBER",
+      "file": "portal/PORTAL_CHAMBER_BOOKING_20260911_08.json",
+      "format": "json",
+      "rows": 1,
+      "frequency": "hourly poll",
+      "arrivalWindow": "hourly :00",
+      "target": "trigger → Quality-agent Finding (NPI-0417)"
+    }
+  ],
+  "intentional_data_quality_issues": [
+    "SAP LFA1: LIFNR 0001007988 emitted with trailing whitespace (DQ: trim + still resolve).",
+    "SAP LFA1: one duplicate vendor row (DQ: de-dupe on LIFNR).",
+    "D&B: Heraeus Medical Components intentionally has NO DUNS match (partial resolution — resolves as Supplier, flags missing risk rating).",
+    "Crosswalk: Sterigenics certificate name \"Sterigenics US LLC\" ≠ Ariba \"Sterigenics Grand Rapids\" (fuzzy-name miss → manual crosswalk entry resolves on stage).",
+    "LIMS: sample OCT-BIO-07 result_date in DD/MM/YYYY (02/09/2026) not ISO (DQ: normalise date format)."
+  ]
+}

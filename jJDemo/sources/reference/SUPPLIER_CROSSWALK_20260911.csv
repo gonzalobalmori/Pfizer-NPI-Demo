@@ -1,0 +1,5 @@
+supplier_id,canonical_name,sap_vendor,ariba_supplier_id,qms_audit_subject,certificate_name,duns_number,resolution_state
+seed_supplier_steris,Steris Venlo,0001007731,AN01-STERIS-VENLO,SUP-STERIS-VNL,Steris Venlo,40-123-8890,AUTO
+seed_supplier_sterigenics,Sterigenics Grand Rapids,0001007988,AN02-STERIGENICS-GR,SUP-STG-GR,Sterigenics US LLC,07-836-4421,MANUAL
+seed_supplier_heraeus,Heraeus Medical Components,0001004412,AN05-HERAEUS-MC,SUP-HRS-MC,Heraeus Medical Components,,PARTIAL
+seed_supplier_bsi,BSI (Notified Body),0001009003,AN09-BSI-NB,SUP-BSI-NB,BSI Group,21-004-1177,AUTO

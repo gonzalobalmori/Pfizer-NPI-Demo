@@ -1,0 +1,25 @@
+/**
+ * The autonomy class of an {@link Activity} — the configured, inspectable rule
+ * that fixes the boundary of what the fleet does without a human (§1, §6).
+ *
+ * Two classes: A (agent decides and executes inside guardrails) and
+ * R (agent recommends, human decides — the human is in the lead). Every activity
+ * that is not fully autonomous falls under R, so the split is a clean
+ * agent-executes vs. human-decides dichotomy.
+ */
+entity type AutonomyClass mixes SeedData {
+  /** Class code: "A" or "R". */
+  code: !string
+
+  /** Full description of what the class permits. */
+  description: string
+
+  /** Short label shown on activity cards, e.g. "Agent decides and executes". */
+  shortLabel: string
+
+  /** Whether an activity in this class requires a human decision (true for R). */
+  requiresHumanDecision: boolean
+
+  /** Activities that carry this autonomy class. Inverse of {@link Activity#autonomyClass}. */
+  activities: [Activity](autonomyClass)
+}

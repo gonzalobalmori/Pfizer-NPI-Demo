@@ -1,0 +1,51 @@
+[
+  {
+    "id": "seed_franchise_biosense",
+    "name": "Biosense Webster",
+    "segment": {
+      "id": "seed_segment_cardiovascular"
+    }
+  },
+  {
+    "id": "seed_franchise_cerenovus",
+    "name": "Cerenovus",
+    "segment": {
+      "id": "seed_segment_cardiovascular"
+    }
+  },
+  {
+    "id": "seed_franchise_abiomed",
+    "name": "Abiomed",
+    "segment": {
+      "id": "seed_segment_cardiovascular"
+    }
+  },
+  {
+    "id": "seed_franchise_shockwave",
+    "name": "Shockwave",
+    "segment": {
+      "id": "seed_segment_cardiovascular"
+    }
+  },
+  {
+    "id": "seed_franchise_ethicon",
+    "name": "Ethicon",
+    "segment": {
+      "id": "seed_segment_surgery"
+    }
+  },
+  {
+    "id": "seed_franchise_digital_surgery",
+    "name": "Digital Surgery",
+    "segment": {
+      "id": "seed_segment_surgery"
+    }
+  },
+  {
+    "id": "seed_franchise_vision",
+    "name": "J&J Vision",
+    "segment": {
+      "id": "seed_segment_vision"
+    }
+  }
+]

@@ -1,0 +1,268 @@
+[
+  {
+    "id": "seed_chain_chn09_h1",
+    "fromAgent": {
+      "id": "seed_agent_qua"
+    },
+    "toAgent": {
+      "id": "seed_agent_gov"
+    },
+    "reasonAsked": "Planning agent — “what does this do to the gate plan?”",
+    "handedAt": "2026-09-11T08:14:00",
+    "chain": {
+      "id": "seed_chain_chn09"
+    }
+  },
+  {
+    "id": "seed_chain_chn09_h2",
+    "fromAgent": {
+      "id": "seed_agent_gov"
+    },
+    "toAgent": {
+      "id": "seed_agent_src"
+    },
+    "reasonAsked": "Sourcing agent — “find a qualified alternative inside 38 days”",
+    "handedAt": "2026-09-11T08:16:00",
+    "chain": {
+      "id": "seed_chain_chn09"
+    }
+  },
+  {
+    "id": "seed_chain_chn09_h3",
+    "fromAgent": {
+      "id": "seed_agent_src"
+    },
+    "toAgent": {
+      "id": "seed_agent_reg"
+    },
+    "reasonAsked": "Regulatory agent — “does the dossier survive a 9-day shift?”",
+    "handedAt": "2026-09-11T08:20:00",
+    "chain": {
+      "id": "seed_chain_chn09"
+    }
+  },
+  {
+    "id": "seed_chain_chn09_h4",
+    "fromAgent": {
+      "id": "seed_agent_reg"
+    },
+    "toAgent": {
+      "id": "seed_agent_orc"
+    },
+    "reasonAsked": "Orchestrator",
+    "handedAt": "2026-09-11T08:23:00",
+    "chain": {
+      "id": "seed_chain_chn09"
+    }
+  },
+  {
+    "id": "seed_chain_chn08_h1",
+    "fromAgent": {
+      "id": "seed_agent_mfg"
+    },
+    "toAgent": {
+      "id": "seed_agent_fin"
+    },
+    "reasonAsked": "Finance agent — “price the exposure”",
+    "handedAt": "2026-09-09T08:42:00",
+    "chain": {
+      "id": "seed_chain_chn08"
+    }
+  },
+  {
+    "id": "seed_chain_chn08_h2",
+    "fromAgent": {
+      "id": "seed_agent_fin"
+    },
+    "toAgent": {
+      "id": "seed_agent_sc"
+    },
+    "reasonAsked": "Supply Chain agent — “can the 3PLs hold it?”",
+    "handedAt": "2026-09-09T08:42:00",
+    "chain": {
+      "id": "seed_chain_chn08"
+    }
+  },
+  {
+    "id": "seed_chain_chn08_h3",
+    "fromAgent": {
+      "id": "seed_agent_sc"
+    },
+    "toAgent": {
+      "id": "seed_agent_orc"
+    },
+    "reasonAsked": "Orchestrator",
+    "handedAt": "2026-09-09T08:42:00",
+    "chain": {
+      "id": "seed_chain_chn08"
+    }
+  },
+  {
+    "id": "seed_chain_chn07_h1",
+    "fromAgent": {
+      "id": "seed_agent_src"
+    },
+    "toAgent": {
+      "id": "seed_agent_rnd"
+    },
+    "reasonAsked": "Design agent — “what does the BOM say?”",
+    "handedAt": "2026-09-07T08:42:00",
+    "chain": {
+      "id": "seed_chain_chn07"
+    }
+  },
+  {
+    "id": "seed_chain_chn07_h2",
+    "fromAgent": {
+      "id": "seed_agent_rnd"
+    },
+    "toAgent": {
+      "id": "seed_agent_fin"
+    },
+    "reasonAsked": "Finance agent — “cost it before and after the freeze”",
+    "handedAt": "2026-09-07T08:42:00",
+    "chain": {
+      "id": "seed_chain_chn07"
+    }
+  },
+  {
+    "id": "seed_chain_chn07_h3",
+    "fromAgent": {
+      "id": "seed_agent_fin"
+    },
+    "toAgent": {
+      "id": "seed_agent_orc"
+    },
+    "reasonAsked": "Orchestrator",
+    "handedAt": "2026-09-08T08:42:00",
+    "chain": {
+      "id": "seed_chain_chn07"
+    }
+  },
+  {
+    "id": "seed_chain_chn06_h1",
+    "fromAgent": {
+      "id": "seed_agent_rnd"
+    },
+    "toAgent": {
+      "id": "seed_agent_qua"
+    },
+    "reasonAsked": "Quality agent — “draft them from the test data”",
+    "handedAt": "2026-09-05T08:42:00",
+    "chain": {
+      "id": "seed_chain_chn06"
+    }
+  },
+  {
+    "id": "seed_chain_chn06_h2",
+    "fromAgent": {
+      "id": "seed_agent_qua"
+    },
+    "toAgent": {
+      "id": "seed_agent_orc"
+    },
+    "reasonAsked": "Orchestrator",
+    "handedAt": "2026-09-05T08:42:00",
+    "chain": {
+      "id": "seed_chain_chn06"
+    }
+  },
+  {
+    "id": "seed_chain_chn05_h1",
+    "fromAgent": {
+      "id": "seed_agent_reg"
+    },
+    "toAgent": {
+      "id": "seed_agent_cli"
+    },
+    "reasonAsked": "Clinical agent — “assemble the evidence”",
+    "handedAt": "2026-09-07T08:42:00",
+    "chain": {
+      "id": "seed_chain_chn05"
+    }
+  },
+  {
+    "id": "seed_chain_chn05_h2",
+    "fromAgent": {
+      "id": "seed_agent_cli"
+    },
+    "toAgent": {
+      "id": "seed_agent_orc"
+    },
+    "reasonAsked": "Orchestrator",
+    "handedAt": "2026-09-07T08:42:00",
+    "chain": {
+      "id": "seed_chain_chn05"
+    }
+  },
+  {
+    "id": "seed_chain_chn04_h1",
+    "fromAgent": {
+      "id": "seed_agent_ma"
+    },
+    "toAgent": {
+      "id": "seed_agent_com"
+    },
+    "reasonAsked": "Commercial agent — “what does that do to adoption?”",
+    "handedAt": "2026-09-05T08:42:00",
+    "chain": {
+      "id": "seed_chain_chn04"
+    }
+  },
+  {
+    "id": "seed_chain_chn04_h2",
+    "fromAgent": {
+      "id": "seed_agent_com"
+    },
+    "toAgent": {
+      "id": "seed_agent_fin"
+    },
+    "reasonAsked": "Finance agent — “cost both scenarios”",
+    "handedAt": "2026-09-05T08:42:00",
+    "chain": {
+      "id": "seed_chain_chn04"
+    }
+  },
+  {
+    "id": "seed_chain_chn04_h3",
+    "fromAgent": {
+      "id": "seed_agent_fin"
+    },
+    "toAgent": {
+      "id": "seed_agent_orc"
+    },
+    "reasonAsked": "Orchestrator",
+    "handedAt": "2026-09-06T08:42:00",
+    "chain": {
+      "id": "seed_chain_chn04"
+    }
+  },
+  {
+    "id": "seed_chain_chn03_h1",
+    "fromAgent": {
+      "id": "seed_agent_qua"
+    },
+    "toAgent": {
+      "id": "seed_agent_src"
+    },
+    "reasonAsked": "Sourcing agent — “is there a route that does not need a site visit?”",
+    "handedAt": "2026-09-08T08:42:00",
+    "chain": {
+      "id": "seed_chain_chn03"
+    }
+  },
+  {
+    "id": "seed_chain_chn03_h2",
+    "fromAgent": {
+      "id": "seed_agent_src"
+    },
+    "toAgent": {
+      "id": "seed_agent_orc"
+    },
+    "reasonAsked": "Orchestrator",
+    "handedAt": "2026-09-08T08:42:00",
+    "chain": {
+      "id": "seed_chain_chn03"
+    }
+  }
+]

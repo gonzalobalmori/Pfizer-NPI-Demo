@@ -1,0 +1,22 @@
+/**
+ * A handoff between two agents inside a {@link Chain} — the "work travels up"
+ * record. In the anchor case there are four: Quality → Planning → Sourcing →
+ * Regulatory → Orchestrator. Each carries the question the receiving agent was
+ * asked to answer.
+ */
+entity type Handoff mixes SeedData {
+  /** The agent handing the work off. */
+  fromAgent: Agent
+
+  /** The agent receiving the work. */
+  toAgent: Agent
+
+  /** Absolute time of the handoff. */
+  handedAt: datetime
+
+  /** The question asked at handoff, e.g. "does the dossier survive a 9-day shift?". */
+  reasonAsked: string
+
+  /** The chain this handoff belongs to. */
+  chain: Chain
+}

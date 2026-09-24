@@ -1,0 +1,6 @@
+{
+  "type": "FileSourceCollection",
+  "name": "PpmGateFeed",
+  "sourceSystem": { "type": "FileSourceSystem", "name": "NpiSourceFiles" },
+  "source": "SrcPpmGate"
+}

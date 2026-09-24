@@ -1,0 +1,99 @@
+/**
+ * A signal raised in the programme — the unit of work on the Live control board
+ * and the thing a {@link Decision} is made about. Twelve open findings are
+ * modelled across the fleet, exactly as authored in the prototype: 5 reach Helena
+ * (USER), 2 held by a person (HELD), 3 closed by the fleet (AUTO), 2 in flight
+ * (RUNNING) — see {@link LaunchControlMetrics#openFindingsByOutcome}.
+ *
+ * Model invariant §3.6.2: a finding has exactly one {@link Phase}, and every
+ * view shows that same phase. A finding is detected by one {@link Agent}, hits
+ * one or more {@link Launch}es and {@link Market}s, and has one {@link Chain}.
+ */
+entity type Finding mixes HasExposure {
+  /** Finding id — the NPI number, e.g. "417" for NPI-0417. */
+  id: !string
+
+  /** Full display id, e.g. "NPI-0417". */
+  displayId: string
+
+  /** When the signal was detected. */
+  detectedAt: datetime
+
+  /** Where the signal came from, e.g. "Supplier portal feed", "MES/SPC". */
+  signalSource: string
+
+  /** Short headline of what was found — the action in flight (§2.2). */
+  headline: string
+
+  /** Plain-language description of the finding. */
+  description: string
+
+  /**
+   * Ownership outcome — where the finding currently sits. Drives the queue panes,
+   * the board status chips and the KPI row. Single-valued (model invariant §3.6.3).
+   */
+  outcome: string enum('USER', 'HELD', 'AUTO', 'RUNNING')
+
+  /** Severity/category for the board and issue list: ct (blocking a gate), rk (float), ok (monitored). */
+  category: string enum('ct', 'rk', 'ok')
+
+  /**
+   * Who the next step depends on — the axis that separates schedule time you can
+   * still pull in from time you cannot. `SELF` = your own decision/sign-off;
+   * `TEAM` = a named person in the organisation; `AGENT` = an in-flight agent
+   * action; `REGULATOR` = a body outside J&J (FDA, a Notified Body, a
+   * reimbursement authority). Agent and team work resolve on the organisation's
+   * own clock, so for the time-recovery maths (see {@link Finding#daysAtStake})
+   * `SELF`/`TEAM`/`AGENT` are all treated as *recoverable* — you can accelerate
+   * them — while `REGULATOR` time is *fixed*: you are waiting on a third party
+   * and acting faster upstream buys you nothing. Drives the Cockpit
+   * time-recovery chart and the Open-issues "accelerable vs waiting on authority"
+   * split.
+   */
+  dependency: string enum('SELF', 'TEAM', 'AGENT', 'REGULATOR')
+
+  /**
+   * Calendar days this finding is adding to (or holding on) the launch's critical
+   * path — the schedule cost of the issue, not the effort to fix it. Feeds the
+   * time-impact projection: when {@link Finding#dependency} is `REGULATOR` these
+   * days are counted as fixed (a wait you cannot compress); otherwise they are
+   * counted as recoverable (time you get back by acting). Null when the finding
+   * carries no schedule cost (e.g. a monitored `ok` item).
+   */
+  daysAtStake: int
+
+  /** The phase this finding sits in — the single phase shown everywhere. */
+  phase: Phase
+
+  /** The launch this finding is raised against. */
+  launch: Launch
+
+  /** Additional launches the finding hits (e.g. NPI-0388 hits four catheters). */
+  otherLaunches: [Launch]
+
+  /** The market rollout the finding is specific to, where applicable. */
+  marketLaunch: MarketLaunch
+
+  /**
+   * The market codes this finding touches, e.g. ["DE","FR","ES"]. Drives the
+   * shared franchise/market filter on the Agent-orchestration board and log
+   * (§2.2, §2.3). The pseudo-codes "Global" and "EU" always match any market
+   * selection, exactly as the prototype's filter behaves.
+   */
+  marketCodes: [string]
+
+  /** The agent that detected the finding. */
+  detectedBy: Agent
+
+  /** The chain of agent actions that worked this finding. Inverse of {@link Chain#finding}. */
+  chain: Chain
+
+  /** The decision made (or pending) on this finding. Inverse of {@link Decision#finding}. */
+  decision: Decision
+
+  /** The CAPA opened from this finding, where one was opened. Inverse of {@link CAPA#finding}. */
+  capa: CAPA
+
+  /** Guardrail checks that ran on this finding before anything was proposed. Inverse of {@link GuardrailCheck#finding}. */
+  guardrailChecks: [GuardrailCheck](finding)
+}

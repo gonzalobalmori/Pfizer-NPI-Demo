@@ -1,0 +1,20 @@
+[
+  {
+    "id": "seed_segment_surgery",
+    "name": "Surgery",
+    "revenueScale": "~$12B",
+    "growthRate": 0.05
+  },
+  {
+    "id": "seed_segment_cardiovascular",
+    "name": "Cardiovascular",
+    "revenueScale": "~$9B",
+    "growthRate": 0.15
+  },
+  {
+    "id": "seed_segment_vision",
+    "name": "Vision",
+    "revenueScale": "~$5.5B",
+    "growthRate": 0.03
+  }
+]

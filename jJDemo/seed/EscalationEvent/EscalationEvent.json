@@ -1,0 +1,102 @@
+[
+  {
+    "id": "seed_escevent_365_1",
+    "sequence": 1,
+    "label": "Raised by you",
+    "state": "done",
+    "occurredAt": "2026-09-08T11:20:00",
+    "escalation": {
+      "id": "seed_escalation_365"
+    }
+  },
+  {
+    "id": "seed_escevent_365_2",
+    "sequence": 2,
+    "label": "Accepted by S. Lindqvist",
+    "state": "done",
+    "occurredAt": "2026-09-08T14:05:00",
+    "escalation": {
+      "id": "seed_escalation_365"
+    }
+  },
+  {
+    "id": "seed_escevent_365_3",
+    "sequence": 3,
+    "label": "Reminder sent",
+    "state": "done",
+    "occurredAt": "2026-09-09T09:00:00",
+    "escalation": {
+      "id": "seed_escalation_365"
+    }
+  },
+  {
+    "id": "seed_escevent_365_4",
+    "sequence": 4,
+    "label": "Escalated to their manager",
+    "state": "now",
+    "occurredAt": "2026-09-09T16:30:00",
+    "escalation": {
+      "id": "seed_escalation_365"
+    }
+  },
+  {
+    "id": "seed_escevent_365_5",
+    "sequence": 5,
+    "label": "Signed and submitted",
+    "state": "pending",
+    "occurredAt": null,
+    "escalation": {
+      "id": "seed_escalation_365"
+    }
+  },
+  {
+    "id": "seed_escevent_344_1",
+    "sequence": 1,
+    "label": "Raised by you",
+    "state": "done",
+    "occurredAt": "2026-09-05T08:40:00",
+    "escalation": {
+      "id": "seed_escalation_344"
+    }
+  },
+  {
+    "id": "seed_escevent_344_2",
+    "sequence": 2,
+    "label": "Accepted by the Board secretary",
+    "state": "done",
+    "occurredAt": "2026-09-06T10:15:00",
+    "escalation": {
+      "id": "seed_escalation_344"
+    }
+  },
+  {
+    "id": "seed_escevent_344_3",
+    "sequence": 3,
+    "label": "Both scenarios prepared by the agent",
+    "state": "done",
+    "occurredAt": "2026-09-08T07:02:00",
+    "escalation": {
+      "id": "seed_escalation_344"
+    }
+  },
+  {
+    "id": "seed_escevent_344_4",
+    "sequence": 4,
+    "label": "On the agenda for 24 Sep",
+    "state": "now",
+    "occurredAt": null,
+    "escalation": {
+      "id": "seed_escalation_344"
+    }
+  },
+  {
+    "id": "seed_escevent_344_5",
+    "sequence": 5,
+    "label": "Decided",
+    "state": "pending",
+    "occurredAt": null,
+    "escalation": {
+      "id": "seed_escalation_344"
+    }
+  }
+]

@@ -1,0 +1,91 @@
+/**
+ * The decision on a {@link Finding} — the core domain object of the Execution
+ * branch. Model invariant §3.6.3: a decision has exactly one
+ * {@link Decision#heldBy}, and ownership is single-valued, always.
+ *
+ * {@link Decision#heldBy} drives the whole queue (§2.1): USER means Helena
+ * decides (full workspace); ESCALATED / DELEGATED / AGENT are read-only. The
+ * approve transaction ({@link Decision#approve}) is the most important behaviour
+ * in the application — it must atomically re-baseline the gate, release the
+ * exposure, dispatch tasks, notify, write the CAPA closure and append to the DHF
+ * (§2.4), and reject a second run.
+ */
+entity type Decision {
+  /** Decision id, e.g. "DEC-0417". */
+  id: !string
+
+  /**
+   * Who currently holds the next step. USER = Helena decides; ESCALATED = a named
+   * person now holds it (work travels up, never back); DELEGATED = the owning
+   * function holds it; AGENT = an agent is handling it inside guardrails.
+   */
+  heldBy: !string enum('USER', 'ESCALATED', 'DELEGATED', 'AGENT')
+
+  /** When the decision is due, e.g. today 17:00 for the anchor case. */
+  dueAt: datetime
+
+  /** The authority threshold that routed it to a human, e.g. "> €1.5M or moves a gate date". */
+  authorityThreshold: string
+
+  /**
+   * The queue-card meta line for the Pending pane (§2.1) — the attested J&J
+   * phrasing that varies per card, e.g. "VARIPULSE G2 · G3 Submission Commit ·
+   * +47 days · €18.4M at risk" or "above your €1.5M authority". Curated content,
+   * not a derived display string.
+   */
+  queueMetaLabel: string
+
+  /** The agent-recommendation one-liner on the queue card, e.g. "Agent recommends dual-source to Sterigenics — recovers 38 of the 47 days · 3 options modelled". */
+  agentRecommendation: string
+
+  /** The due-tag text on the queue card, e.g. "Due today · 17:00", "Due 16 Sep". */
+  dueLabel: string
+
+  /** Due-tag severity class: crit (blocking a gate) or risk (consuming float). */
+  dueTagClass: string enum('crit', 'risk')
+
+  /** The functions line on the queue card, e.g. "Sourcing · Quality · Regulatory". */
+  functionsLabel: string
+
+  /** Call-to-action emphasis on the queue card: primary (act now) or secondary. */
+  ctaEmphasis: string enum('primary', 'secondary')
+
+  /** Label of the option selected on approval, e.g. "Option A". */
+  selectedOption: string
+
+  /** When the decision was approved. Null until approved; set atomically by approve. */
+  approvedAt: datetime
+
+  /** The finding this decision resolves. */
+  finding: Finding
+
+  /** The person (or board) who owns this decision. */
+  owner: Person
+
+  /** The modelled alternatives. Inverse of {@link DecisionOption#decision}. */
+  options: [DecisionOption](decision)
+
+  /** The escalation, where the decision was escalated. Inverse of {@link Escalation#decision}. */
+  escalation: Escalation
+
+  /** The action-plan tasks the chosen option implies. Inverse of {@link ActionPlanTask#decision}. */
+  tasks: [ActionPlanTask](decision)
+
+  /** Commentary — the escalation thread. Inverse of {@link Comment#decision}. */
+  comments: [Comment](decision)
+
+  /** Notifications the plan fires on approval. Inverse of {@link Notification#decision}. */
+  notifications: [Notification](decision)
+
+  /**
+   * Atomic approve transaction (§2.4). Records the decision, re-baselines the gate,
+   * releases the exposure, assigns and dispatches tasks, fires notifications,
+   * writes the CAPA containment closure and appends an immutable DHF entry —
+   * all-or-nothing. Rejects if the decision is not held by the user, or is already
+   * approved.
+   */
+  approve: member function(optionLabel: string): Decision js
+
+  /** Reject any attempt to approve a decision not held by the user, at the service layer. */
+  assertUserCanDecide: member function(): boolean js
+}

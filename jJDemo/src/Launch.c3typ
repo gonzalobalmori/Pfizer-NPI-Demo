@@ -1,0 +1,129 @@
+/**
+ * A single MedTech device launch — the central programme object. Nine are
+ * modelled, exactly the real next-generation J&J programme designations from
+ * the specification (VARIPULSE Gen 2, OCTARAY Gen 2, EMBOTRAP IV, Impella ECP+,
+ * Javelin XL, ETHICON 4000+, DUALTO, OTTAVA, TECNIS PureSee Toric).
+ *
+ * A launch is a regulated programme of {@link Activity}s across six
+ * {@link Phase}s and five {@link Gate}s, rolled out into many {@link Market}s
+ * via {@link MarketLaunch}. It belongs to one {@link Franchise}.
+ */
+entity type Launch mixes HasExposure {
+  /** Programme id, e.g. "NPI-VPG2". */
+  id: !string
+
+  /** Full device name, e.g. "VARIPULSE Gen 2 PFA Catheter". */
+  deviceName: !string
+
+  /**
+   * Short board/pill label, e.g. "VARIPULSE G2". Used on the Live board cards
+   * and the Activity log rows (§2.2, §2.3) where the full {@link Launch#deviceName}
+   * is too long. Kept as attested data, not derived, so the label matches the
+   * prototype exactly.
+   */
+  shortName: string
+
+  /** Regulatory device class, e.g. "Class III". */
+  deviceClass: string
+
+  /** Regulatory route, e.g. "PMA + EU MDR". */
+  regulatoryRoute: string
+
+  /** The lead market this launch files into first. */
+  leadMarket: Market
+
+  /** The phase the launch is currently executing in. */
+  currentPhase: Phase
+
+  /** Programme health, driving the worst-first sort on the portfolio. */
+  healthStatus: string enum('ON_PLAN', 'AT_RISK', 'OFF_TRACK', 'LAUNCHED', 'PRE_MARKET')
+
+  /** Revenue at risk on this launch, in euros. Attributable via {@link HasExposure#exposureCause}. */
+  revenueAtRisk: double
+
+  /** Planned first commercial ship date. */
+  firstShipDate: datetime
+
+  /**
+   * Launch readiness, 0–100, as attested on the Business-unit roll-up (§2.3):
+   * the share of the next gate's criteria in hand. Kept as attested data so the
+   * card's progress bar matches the prototype exactly (e.g. VARIPULSE 83%,
+   * OTTAVA 95%, DUALTO 100%).
+   */
+  readinessPct: int
+
+  /**
+   * Schedule float in days for an on-plan launch — the slack before the next
+   * gate turns critical (§2.3 shows "31d float", "18d float", "24d float").
+   * Null for launches that are already slipping (they show a "+Nd" slip pill
+   * derived from {@link Gate#slipDays} instead) or already launched.
+   */
+  scheduleFloatDays: int
+
+  /**
+   * Total commercial value of the launch, in euros — the denominator the
+   * Product-detail header shows the {@link Launch#revenueAtRisk} against
+   * ("€X.YM at risk of €ZM launch value"). Attested per programme so the ratio
+   * is real rather than a single hard-coded figure across every product.
+   */
+  launchValue: double
+
+  /**
+   * Terminal sterilisation method for the device, e.g. "EO" (ethylene oxide),
+   * "Gamma", "e-beam", or "N/A" for a non-sterile capital device. Shown on the
+   * Product-detail Device card; drives, for VARIPULSE, the EO steriliser-slot
+   * risk narrative.
+   */
+  sterilisationMethod: string
+
+  /**
+   * Manufacturing site(s) building the device, e.g. "Irvine + CMO". A plain
+   * attested label shown on the Product-detail Device card.
+   */
+  manufactureSite: string
+
+  /** Country registrations filed so far (numerator of "N of M" on the scope card). */
+  registrationsFiled: int
+
+  /** Total country registrations planned for wave 1 (denominator of "N of M"). */
+  registrationsTotal: int
+
+  /** Units in the launch build plan, e.g. 4200 — shown as "Launch build". */
+  launchBuildUnits: int
+
+  /** Field-force members certified to date (numerator of "N certified / M"). */
+  fieldForceCertified: int
+
+  /** Total field-force members to certify for launch (denominator). */
+  fieldForceTotal: int
+
+  /** Value-Analysis-Committee approvals secured, in accounts (numerator of "N of M accounts"). */
+  vacApprovalsFiled: int
+
+  /** Total target accounts requiring a VAC approval (denominator). */
+  vacApprovalsTotal: int
+
+  /** The franchise this launch belongs to. */
+  franchise: Franchise
+
+  /** The five gates that punctuate this launch. Inverse of {@link Gate#launch}. */
+  gates: [Gate](launch)
+
+  /** Every activity in this launch's programme. Inverse of {@link Activity#launch}. */
+  activities: [Activity](launch)
+
+  /** The per-market rollouts of this launch. Inverse of {@link MarketLaunch#launch}. */
+  marketLaunches: [MarketLaunch](launch)
+
+  /** Findings raised against this launch. Inverse of {@link Finding#launch}. */
+  findings: [Finding](launch)
+
+  /** Documents filed for this launch. Inverse of {@link Document#launch}. */
+  documents: [Document](launch)
+
+  /** The launch's Design History File — an immutable, append-only audit trail. Inverse of {@link DesignHistoryFileEntry#launch}. */
+  dhfEntries: [DesignHistoryFileEntry](launch)
+
+  /** Bill-of-material items for this launch. Inverse of {@link BillOfMaterialItem#launch}. */
+  bomItems: [BillOfMaterialItem](launch)
+}

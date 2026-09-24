@@ -1,0 +1,27 @@
+/**
+ * A contractual term held with a {@link Supplier}. This is not decoration
+ * (§3.2): {@link ContractTerm#capacityCommitment} is the root cause of the
+ * anchor case. Clause 7.3 of the Steris master agreement was a NON_COMMITTED
+ * reservation, reallocable on 30 days notice with no claim and no penalty — and
+ * the corrective action replaces it with a COMMITTED-capacity clause.
+ */
+entity type ContractTerm mixes SeedData {
+  /** Clause reference, e.g. "7.3". */
+  clauseRef: !string
+
+  /** Whether the booked capacity is contractually committed. The COMMITTED/NON_COMMITTED
+      distinction is the object the corrective action changes. */
+  capacityCommitment: string enum('COMMITTED', 'NON_COMMITTED')
+
+  /** Notice period in days under which capacity can be reallocated, e.g. 30. */
+  noticePeriodDays: int
+
+  /** Whether a penalty is available if the supplier reallocates. False for the Steris clause. */
+  penaltyAvailable: boolean
+
+  /** Plain-language summary of the clause. */
+  summary: string
+
+  /** The supplier this term is held with. */
+  supplier: Supplier
+}

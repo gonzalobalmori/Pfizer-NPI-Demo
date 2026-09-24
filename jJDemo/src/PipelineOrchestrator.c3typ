@@ -1,0 +1,69 @@
+/**
+ * The pipeline orchestration layer — the single place the app answers three
+ * operational questions about its own data supply chain, so the UI and the demo
+ * runbooks never have to aggregate raw records themselves:
+ *
+ *   1. "Are my feeds fresh?"        {@link #feedHealth} reads every
+ *      {@link DataFeedWatermark} and marks each FRESH / STALE / FAILED against
+ *      its expected cadence — this is what lights up when a feed is broken
+ *      (demo 3).
+ *   2. "Which supplier is this?"    {@link #resolveSupplier} walks the
+ *      {@link SupplierCrosswalk} to turn any source-system key (an SAP vendor
+ *      number, an Ariba supplier id, a QMS audit subject) into the one canonical
+ *      supplier id — including the deliberate mismatches (a missing DUNS, a
+ *      MANUAL/PARTIAL resolution) so the demo can show key-resolution honestly.
+ *   3. "Where did this number come from?"  {@link #lineageFor} returns the
+ *      {@link LineageRecord} breadcrumb (feed → file → row → transform) behind a
+ *      loaded ontology object (demo 1, trace-to-source).
+ *
+ * Plus {@link #reconcileThread}: the NPI-0417 escalation thread lives in a
+ * LOCKED {@code SeedData} type ({@link Comment}), so no load can alter it. The
+ * QMS_COMMENT feed is therefore staged and reconciled against that golden thread
+ * rather than written over it; this method proves the staged copy still matches
+ * the locked original byte-for-byte (the thread-integrity guarantee).
+ *
+ * Stateless computation type — it holds no data of its own; it reads the
+ * bookkeeping types the pipeline maintains. The UI reads these via {@code c3Action}.
+ */
+entity type PipelineOrchestrator {
+  /**
+   * Feed freshness report. Reads every {@link DataFeedWatermark} and returns, per
+   * feed, its source system, target, last load time, row count and a computed
+   * status (FRESH / STALE / FAILED) relative to {@link DataFeedWatermark#expectedEverySeconds}.
+   * Drives the pipeline-health panel and demo 3 ("break a feed, watch DQ fire").
+   */
+  feedHealth: function(): json js
+
+  /**
+   * Resolve a source-system key to the canonical supplier. Given a key kind
+   * ("sapVendor" | "aribaSupplierId" | "qmsAuditSubject" | "dunsNumber") and its
+   * value, walks {@link SupplierCrosswalk} and returns the matching canonical
+   * supplier id, its canonical name and resolution state — or a not-resolved
+   * result naming why (e.g. Heraeus has no DUNS, so a D&B lookup cannot match).
+   */
+  resolveSupplier: function(keyKind: string, keyValue: string): json js
+
+  /**
+   * The full crosswalk with every planted mismatch surfaced: which suppliers are
+   * AUTO vs MANUAL vs PARTIAL, and which source keys are missing. Feeds the
+   * key-resolution view and the DQ reconciliation.
+   */
+  crosswalkReport: function(): json js
+
+  /**
+   * Provenance for one loaded object. Given a target type and id (e.g. "Gate",
+   * "seed_gate_varipulse_g3"), returns its {@link LineageRecord} — feed, source
+   * file, source row key and transform — so the UI can walk "this number" back to
+   * the exact source row (demo 1).
+   */
+  lineageFor: function(targetType: string, targetId: string): json js
+
+  /**
+   * Thread-integrity reconciliation for NPI-0417. Compares the staged QMS_COMMENT
+   * copy against the locked golden {@link Comment} thread (author, role, timestamp
+   * and body, in time order) and returns {@code match} plus any per-entry diffs.
+   * A passing result is the guarantee that the new backend did not disturb the
+   * escalation thread the demo depends on.
+   */
+  reconcileThread: function(): json js
+}

@@ -1,0 +1,36 @@
+[
+  {
+    "id": "seed_capa_0412",
+    "capaId": "CAPA-2026-0149",
+    "openedAgainstProcess": "VARIPULSE commercial-batch manufacturing — line 3 (ring-electrode assembly)",
+    "openedBy": "Quality agent",
+    "openedAt": "2026-09-15T08:20:00",
+    "containmentAction": "Hold the 3 out-of-spec line-3 batches; continue commercial supply from line 5.",
+    "correctiveAction": "DMAIC open and in progress on the line-3 dimensional drift — Measure and Analyse complete, Improve in progress; Control not yet signed. The CAPA is overdue pending the DMAIC close.",
+    "effectivenessCheck": "Line 3 is re-qualified for commercial output only after the DMAIC Control phase signs off and a confirmatory run passes the 100% dimensional check.",
+    "effectivenessDueDate": "2026-09-20",
+    "status": "CORRECTIVE_IN_PROGRESS",
+    "finding": {
+      "id": "seed_finding_412"
+    },
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "closedByDecision": null
+  },
+  {
+    "id": "seed_capa_0151",
+    "capaId": "CAPA-2026-0151",
+    "openedAgainstProcess": "Transit packaging (ASTM D4169 Seq. D)",
+    "openedBy": "Quality agent",
+    "openedAt": "2026-09-06T16:44:00",
+    "containmentAction": "Redesign the thermoform insert; re-test 14 Sep.",
+    "status": "CONTAINED",
+    "finding": {
+      "id": "seed_finding_359"
+    },
+    "launch": {
+      "id": "seed_launch_puresee"
+    }
+  }
+]

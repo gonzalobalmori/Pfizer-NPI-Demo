@@ -1,0 +1,63 @@
+/**
+ * Read-side service for the Execution branch UI (§2). Stateless: every method
+ * derives its result from the model and returns a small structured {@code json}
+ * bundle the React pages render directly — so the UI makes one grounded call per
+ * screen instead of stitching many fetches together, and no display strings are
+ * stored (model invariant §3.6.1).
+ *
+ * These are all read-only projections. The one write in the Execution branch —
+ * the atomic approve — lives on {@link Decision#approve}, not here.
+ */
+entity type ExecutionService {
+  /**
+   * My Actions — Pending pane (§2.1): the decisions held by the USER, as queue
+   * cards (id, title, launch, gate, slip, exposure, agent recommendation, due,
+   * functions, category). Service-layer filtered on {@link Decision#heldBy} = USER.
+   */
+  pendingQueue: function(): json js
+
+  /**
+   * My Actions — Escalated pane (§2.1): decisions held by another person or body
+   * (ESCALATED / DELEGATED), read-only, with their progress pips and the assignee.
+   */
+  escalatedQueue: function(): json js
+
+  /**
+   * My Actions — History pane (§2.1): Helena's own decision record from
+   * {@link DecisionHistoryEvent}, reverse-chronological, with the KPI band values.
+   * Distinct from the fleet's action log (§6 anti-goal).
+   */
+  decisionHistory: function(): json js
+
+  /**
+   * Agent orchestration — Live board (§2.2): the KPI row plus the six phase
+   * columns of {@link Finding} cards (each with its chain's ordered
+   * {@link AgentAction} steps and absolute timestamps). Optional franchise/market
+   * filter is applied server-side so the board and log share one predicate.
+   */
+  liveBoard: function(franchise: string, market: string): json js
+
+  /**
+   * Agent orchestration — Activity log (§2.3): completed {@link AgentAction}s
+   * only, reverse-chronological, excluding decision ("you") steps and any
+   * still-running last step. Returns the "{n} actions by {m} agents" header
+   * counts and the rows (timestamp, agent, verb, detail, product/phase/franchise,
+   * outcome, finding id). Shares the franchise/market filter with the board.
+   */
+  activityLog: function(franchise: string, market: string): json js
+
+  /**
+   * Resolution workspace (§2.4): the full deep-dive bundle for one finding —
+   * header/meta, the problem, the "if nothing changes" impact rows, the
+   * escalation thread, the guardrail checks, the modelled options, the action
+   * plan and the sticky-bar summaries. One grounded call for the whole page.
+   */
+  resolutionWorkspace: function(findingId: string): json js
+
+  /**
+   * Copilot (§2.5): the eight grounded {@link CopilotPrompt}s with their answers,
+   * plus the fixed refusal payload the UI shows when a free-text query matches no
+   * prompt. §6 forbids softening the refusal.
+   */
+  copilot: function(): json js
+}

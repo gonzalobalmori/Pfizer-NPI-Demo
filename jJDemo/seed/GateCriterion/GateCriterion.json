@@ -1,0 +1,443 @@
+[
+  {
+    "id": "seed_gc_varipulse_g3_sterilisation",
+    "name": "ISO 11135 sterilisation validation report",
+    "met": false,
+    "outstandingReason": "EO sterilisation validation slot cancelled; report slips to 19 Dec (NPI-0417)",
+    "gate": {
+      "id": "seed_gate_varipulse_g3"
+    },
+    "evidence": {
+      "id": "seed_doc_varipulse_44"
+    }
+  },
+  {
+    "id": "seed_gc_varipulse_g3_1",
+    "name": "Design verification complete",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_varipulse_g3"
+    }
+  },
+  {
+    "id": "seed_gc_varipulse_g3_2",
+    "name": "Design validation complete",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_varipulse_g3"
+    }
+  },
+  {
+    "id": "seed_gc_varipulse_g3_3",
+    "name": "Clinical evaluation report approved",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_varipulse_g3"
+    }
+  },
+  {
+    "id": "seed_gc_varipulse_g3_4",
+    "name": "EU MDR Technical Documentation 96% complete",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_varipulse_g3"
+    }
+  },
+  {
+    "id": "seed_gc_varipulse_g3_5",
+    "name": "Risk management file current",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_varipulse_g3"
+    }
+  },
+  {
+    "id": "seed_gc_octaray_g2_1",
+    "name": "Design inputs frozen",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_octaray_g2_g2"
+    }
+  },
+  {
+    "id": "seed_gc_octaray_g2_2",
+    "name": "Design FMEA complete",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_octaray_g2_g2"
+    }
+  },
+  {
+    "id": "seed_gc_octaray_g2_3",
+    "name": "Requirements traceability established",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_octaray_g2_g2"
+    }
+  },
+  {
+    "id": "seed_gc_octaray_g2_4",
+    "name": "Design review minutes signed off",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_octaray_g2_g2"
+    }
+  },
+  {
+    "id": "seed_gc_octaray_g2_5",
+    "name": "Risk management file drafted",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_octaray_g2_g2"
+    }
+  },
+  {
+    "id": "seed_gc_octaray_g2_6",
+    "name": "Verification protocols approved",
+    "met": false,
+    "gate": {
+      "id": "seed_gate_octaray_g2_g2"
+    },
+    "outstandingReason": "Two verification protocols awaiting sign-off"
+  },
+  {
+    "id": "seed_gc_embotrap_g5_1",
+    "name": "Regulatory clearance / CE certificate received",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_embotrap_iv_g5"
+    }
+  },
+  {
+    "id": "seed_gc_embotrap_g5_2",
+    "name": "Launch build complete and released",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_embotrap_iv_g5"
+    }
+  },
+  {
+    "id": "seed_gc_embotrap_g5_3",
+    "name": "Field force trained and certified",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_embotrap_iv_g5"
+    }
+  },
+  {
+    "id": "seed_gc_embotrap_g5_4",
+    "name": "Distribution and 3PL agreements signed",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_embotrap_iv_g5"
+    }
+  },
+  {
+    "id": "seed_gc_embotrap_g5_5",
+    "name": "Value Analysis Committee approvals secured",
+    "met": false,
+    "gate": {
+      "id": "seed_gate_embotrap_iv_g5"
+    },
+    "outstandingReason": "VAC approvals behind target across key accounts"
+  },
+  {
+    "id": "seed_gc_embotrap_g5_6",
+    "name": "Post-market surveillance plan in place",
+    "met": false,
+    "gate": {
+      "id": "seed_gate_embotrap_iv_g5"
+    },
+    "outstandingReason": "Post-market surveillance plan in place outstanding — action open"
+  },
+  {
+    "id": "seed_gc_impella_g4_1",
+    "name": "Regulatory submission accepted for review",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_impella_ecp_g4"
+    }
+  },
+  {
+    "id": "seed_gc_impella_g4_2",
+    "name": "Design transfer to manufacturing complete",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_impella_ecp_g4"
+    }
+  },
+  {
+    "id": "seed_gc_impella_g4_3",
+    "name": "Process validation (IQ/OQ/PQ) complete",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_impella_ecp_g4"
+    }
+  },
+  {
+    "id": "seed_gc_impella_g4_4",
+    "name": "Notified Body / FDA queries closed",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_impella_ecp_g4"
+    }
+  },
+  {
+    "id": "seed_gc_impella_g4_5",
+    "name": "Labelling and IFU finalised",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_impella_ecp_g4"
+    }
+  },
+  {
+    "id": "seed_gc_impella_g4_6",
+    "name": "QMS audit readiness confirmed",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_impella_ecp_g4"
+    }
+  },
+  {
+    "id": "seed_gc_javelin_g5_1",
+    "name": "Regulatory clearance / CE certificate received",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_javelin_xl_g5"
+    }
+  },
+  {
+    "id": "seed_gc_javelin_g5_2",
+    "name": "Launch build complete and released",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_javelin_xl_g5"
+    }
+  },
+  {
+    "id": "seed_gc_javelin_g5_3",
+    "name": "Field force trained and certified",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_javelin_xl_g5"
+    }
+  },
+  {
+    "id": "seed_gc_javelin_g5_4",
+    "name": "Distribution and 3PL agreements signed",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_javelin_xl_g5"
+    }
+  },
+  {
+    "id": "seed_gc_javelin_g5_5",
+    "name": "Value Analysis Committee approvals secured",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_javelin_xl_g5"
+    }
+  },
+  {
+    "id": "seed_gc_javelin_g5_6",
+    "name": "Post-market surveillance plan in place",
+    "met": false,
+    "gate": {
+      "id": "seed_gate_javelin_xl_g5"
+    }
+  },
+  {
+    "id": "seed_gc_ethicon_g4_1",
+    "name": "Regulatory submission accepted for review",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_ethicon_4000_g4"
+    }
+  },
+  {
+    "id": "seed_gc_ethicon_g4_2",
+    "name": "Design transfer to manufacturing complete",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_ethicon_4000_g4"
+    }
+  },
+  {
+    "id": "seed_gc_ethicon_g4_3",
+    "name": "Process validation (IQ/OQ/PQ) complete",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_ethicon_4000_g4"
+    }
+  },
+  {
+    "id": "seed_gc_ethicon_g4_4",
+    "name": "Notified Body / FDA queries closed",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_ethicon_4000_g4"
+    }
+  },
+  {
+    "id": "seed_gc_ethicon_g4_5",
+    "name": "Labelling and IFU finalised",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_ethicon_4000_g4"
+    }
+  },
+  {
+    "id": "seed_gc_ethicon_g4_6",
+    "name": "QMS audit readiness confirmed",
+    "met": false,
+    "gate": {
+      "id": "seed_gate_ethicon_4000_g4"
+    },
+    "outstandingReason": "QMS audit readiness confirmed outstanding — action open"
+  },
+  {
+    "id": "seed_gc_dualto_bau_1",
+    "name": "Launch KPIs meeting target",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_dualto_bau"
+    }
+  },
+  {
+    "id": "seed_gc_dualto_bau_2",
+    "name": "Complaint handling in steady state",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_dualto_bau"
+    }
+  },
+  {
+    "id": "seed_gc_dualto_bau_3",
+    "name": "PMCF plan active",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_dualto_bau"
+    }
+  },
+  {
+    "id": "seed_gc_dualto_bau_4",
+    "name": "Supply chain at safety stock",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_dualto_bau"
+    }
+  },
+  {
+    "id": "seed_gc_dualto_bau_5",
+    "name": "Commercial ramp on plan",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_dualto_bau"
+    }
+  },
+  {
+    "id": "seed_gc_dualto_bau_6",
+    "name": "Programme handed to BAU owner",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_dualto_bau"
+    }
+  },
+  {
+    "id": "seed_gc_ottava_g1_1",
+    "name": "Business case approved",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_ottava_g1"
+    }
+  },
+  {
+    "id": "seed_gc_ottava_g1_2",
+    "name": "Design & Development Plan baselined",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_ottava_g1"
+    }
+  },
+  {
+    "id": "seed_gc_ottava_g1_3",
+    "name": "Regulatory strategy and pathway defined",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_ottava_g1"
+    }
+  },
+  {
+    "id": "seed_gc_ottava_g1_4",
+    "name": "Project RACI and budget approved",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_ottava_g1"
+    }
+  },
+  {
+    "id": "seed_gc_ottava_g1_5",
+    "name": "Feasibility risk assessment complete",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_ottava_g1"
+    }
+  },
+  {
+    "id": "seed_gc_ottava_g1_6",
+    "name": "Clinical strategy outlined",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_ottava_g1"
+    }
+  },
+  {
+    "id": "seed_gc_puresee_g3_1",
+    "name": "Design verification complete",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_puresee_g3"
+    }
+  },
+  {
+    "id": "seed_gc_puresee_g3_2",
+    "name": "Design validation complete",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_puresee_g3"
+    }
+  },
+  {
+    "id": "seed_gc_puresee_g3_3",
+    "name": "Clinical evaluation report approved",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_puresee_g3"
+    }
+  },
+  {
+    "id": "seed_gc_puresee_g3_4",
+    "name": "EU MDR Technical Documentation complete",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_puresee_g3"
+    }
+  },
+  {
+    "id": "seed_gc_puresee_g3_5",
+    "name": "Risk management file current",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_puresee_g3"
+    }
+  },
+  {
+    "id": "seed_gc_puresee_g3_6",
+    "name": "Sterilisation validation report approved",
+    "met": false,
+    "gate": {
+      "id": "seed_gate_puresee_g3"
+    },
+    "outstandingReason": "Sterilisation validation slot slipped; report awaiting site data"
+  }
+]

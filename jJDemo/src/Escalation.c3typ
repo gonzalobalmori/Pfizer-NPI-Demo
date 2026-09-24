@@ -1,0 +1,57 @@
+/**
+ * An escalation raised on a {@link Decision}. Model invariant §3.6.4: an
+ * escalation is append-only and directionally upward — there is no un-escalate.
+ * When a decision is ESCALATED the workspace is read-only and Helena may push
+ * (remind, escalate higher, add to a board pack) but never withdraw or decide it
+ * herself (§2.1). NPI-0365 (with S. Lindqvist) and NPI-0344 (with the Launch
+ * Board) are the two seeded escalations.
+ */
+entity type Escalation mixes SeedData {
+  /** Who raised the escalation (Helena, in the seed). */
+  raisedBy: Person
+
+  /** When it was raised. */
+  raisedAt: datetime
+
+  /** The person or body it is now assigned to. */
+  assignedTo: Person
+
+  /** The role of the assignee, e.g. "Regulatory Affairs", "Launch Board". */
+  assigneeRole: string
+
+  /** Why it was escalated. */
+  reason: string
+
+  /** The escalated-card title (§2.1), e.g. "Notified Body response drafted but unsigned". */
+  cardTitle: string
+
+  /** The escalated-card meta line, e.g. "With S. Lindqvist · Regulatory Affairs · raised by you 08 Sep · every day costs one day of G4". */
+  cardMetaLabel: string
+
+  /** The one-line progress summary under the pips, e.g. "Assigned → in progress → signed → submitted · reminder sent 09 Sep, no reply". */
+  progressSummary: string
+
+  /** The status tag text, e.g. "Blocking G4", "On the agenda". */
+  tagLabel: string
+
+  /** Status-tag severity class: crit, auto, risk. */
+  tagClass: string enum('crit', 'auto', 'risk')
+
+  /** The owning function shown on the card, e.g. "Regulatory", "Market Access". */
+  functionLabel: string
+
+  /** Call-to-action emphasis on the escalated card: primary or secondary. */
+  ctaEmphasis: string enum('primary', 'secondary')
+
+  /** Progress status through the upward path, e.g. "in progress", "on the agenda". */
+  status: string
+
+  /** True — escalations are immutably upward; this flag documents the invariant. */
+  immutableUpward: boolean
+
+  /** The decision this escalation belongs to. */
+  decision: Decision
+
+  /** The ordered events on the escalation path. Inverse of {@link EscalationEvent#escalation}. */
+  events: [EscalationEvent](escalation)
+}

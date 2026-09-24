@@ -1,0 +1,121 @@
+[
+  {
+    "id": "seed_gcheck_417_1",
+    "name": "Gate date moves?",
+    "threshold": "no autonomous gate move",
+    "observed": "G3 shifts 9 days — routed to a human",
+    "result": "PASS",
+    "evaluatedAt": "2026-09-11T08:23:00",
+    "finding": {
+      "id": "seed_finding_417"
+    },
+    "guardrail": {
+      "id": "seed_guardrail_gate_date"
+    },
+    "runBy": {
+      "id": "seed_agent_reg"
+    }
+  },
+  {
+    "id": "seed_gcheck_417_2",
+    "name": "Spend within authority?",
+    "threshold": "≤ delegated authority",
+    "observed": "€340k — routed to a human",
+    "result": "PASS",
+    "evaluatedAt": "2026-09-11T08:23:00",
+    "finding": {
+      "id": "seed_finding_417"
+    },
+    "guardrail": {
+      "id": "seed_guardrail_spend"
+    },
+    "runBy": {
+      "id": "seed_agent_reg"
+    }
+  },
+  {
+    "id": "seed_gcheck_417_3",
+    "name": "Second site approved & audited?",
+    "threshold": "approved + audit current",
+    "observed": "Sterigenics approved, audit to Mar 2028",
+    "result": "PASS",
+    "evaluatedAt": "2026-09-11T08:23:00",
+    "finding": {
+      "id": "seed_finding_417"
+    },
+    "guardrail": {
+      "id": "seed_guardrail_supply_arch"
+    },
+    "runBy": {
+      "id": "seed_agent_reg"
+    }
+  },
+  {
+    "id": "seed_gcheck_417_4",
+    "name": "Modality unchanged?",
+    "threshold": "same modality",
+    "observed": "EO unchanged — half-cycle revalidation",
+    "result": "PASS",
+    "evaluatedAt": "2026-09-11T08:23:00",
+    "finding": {
+      "id": "seed_finding_417"
+    },
+    "guardrail": {
+      "id": "seed_guardrail_dossier"
+    },
+    "runBy": {
+      "id": "seed_agent_reg"
+    }
+  },
+  {
+    "id": "seed_gcheck_417_5",
+    "name": "BSI review window holds?",
+    "threshold": "dossier complete before slot",
+    "observed": "holds at +9 days",
+    "result": "PASS",
+    "evaluatedAt": "2026-09-11T08:23:00",
+    "finding": {
+      "id": "seed_finding_417"
+    },
+    "guardrail": {
+      "id": "seed_guardrail_dossier"
+    },
+    "runBy": {
+      "id": "seed_agent_reg"
+    }
+  },
+  {
+    "id": "seed_gcheck_417_6",
+    "name": "Action reversible & logged?",
+    "threshold": "reversible 24h",
+    "observed": "reversible for 24h, logged",
+    "result": "PASS",
+    "evaluatedAt": "2026-09-11T08:23:00",
+    "finding": {
+      "id": "seed_finding_417"
+    },
+    "guardrail": {
+      "id": "seed_guardrail_reversible"
+    },
+    "runBy": {
+      "id": "seed_agent_reg"
+    }
+  },
+  {
+    "id": "seed_gcheck_319_1",
+    "name": "Known root cause + dated fix?",
+    "threshold": "both present",
+    "observed": "both present — inside guardrails",
+    "result": "PASS",
+    "evaluatedAt": "2026-09-10T20:00:00",
+    "finding": {
+      "id": "seed_finding_319"
+    },
+    "guardrail": {
+      "id": "seed_guardrail_reversible"
+    },
+    "runBy": {
+      "id": "seed_agent_com"
+    }
+  }
+]

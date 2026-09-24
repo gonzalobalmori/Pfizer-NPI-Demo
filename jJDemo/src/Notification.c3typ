@@ -1,0 +1,22 @@
+/**
+ * A notification the action plan fires on approval (§2.4). Each is logged: the
+ * anchor case notifies M. Okafor, A. Kowalski and S. Lindqvist (3 Teams cards).
+ * The approve transaction creates these and logs each one — part of the atomic
+ * cascade.
+ */
+entity type Notification {
+  /** Recipient, e.g. "M. Okafor". */
+  recipient: string
+
+  /** Channel, e.g. "Teams", "email". */
+  channel: string
+
+  /** When it was sent. Set by the approve transaction. */
+  sentAt: datetime
+
+  /** Subject line, e.g. "Option A approved — half-cycle revalidation protocol to draft". */
+  subject: string
+
+  /** The decision this notification belongs to. */
+  decision: Decision
+}

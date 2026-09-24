@@ -1,0 +1,72 @@
+/**
+ * One downstream commitment that must react when a {@link RegulatoryMilestone}
+ * moves — a single line on the cascade-replan exception dashboard.
+ *
+ * Each item names a workstream ({@link #domain}) and the concrete plan object it
+ * governs ({@link #targetLabel}, e.g. "Manufacturing Run 2", "Loaner-kit
+ * deployment — US geographies", "KOL pre-announcement accounts", "Finished-goods
+ * carrying cost"). The scenario's whole point is that these do NOT all need a
+ * human: an item is either {@link #resolution} = {@code AUTO} — the platform can
+ * safely re-time or hold it and simply records what it did ({@link #autoAction})
+ * — or {@code HUMAN} — a judgement call that surfaces to the owner with the
+ * options they must weigh ({@link #decisionPrompt}). The dashboard Jordan/Helena
+ * sees is "N auto-adjusted, M require a human decision".
+ *
+ * Operational type (its {@link #status}/{@link #resolvedAt} flip when the cascade
+ * runs), so no {@code SeedData} mixin — records live in {@code data/}.
+ */
+entity type CascadeImpactItem {
+  /** Item id, e.g. "seed_cascade_ottava_run2". */
+  id: !string
+
+  /** The milestone whose slip drives this item. */
+  milestone: RegulatoryMilestone
+
+  /** Ordering on the dashboard (lowest first). */
+  sortOrder: int
+
+  /** Workstream this item belongs to. */
+  domain: !string enum('MANUFACTURING', 'LOGISTICS', 'COMMERCIAL', 'FINANCE', 'QUALITY', 'REGULATORY')
+
+  /** Short workstream label for display, e.g. "Manufacturing". */
+  domainLabel: string
+
+  /** The concrete plan object being re-timed, e.g. "Production Run 2 (launch stock top-up)". */
+  targetLabel: !string
+
+  /** One-line description of the commitment and why the slip touches it. */
+  detail: string
+
+  /**
+   * How the item resolves under the cascade: {@code AUTO} — the platform re-times
+   * or holds it without a human; {@code HUMAN} — it needs a person's decision.
+   */
+  resolution: !string enum('AUTO', 'HUMAN')
+
+  /** For {@code AUTO} items: the action the platform takes (past-tense, for the log), e.g. "Held Run 2; released line for VARIPULSE top-up". */
+  autoAction: string
+
+  /** For {@code HUMAN} items: the question put to the owner, e.g. "Extend 3PL storage 6 weeks or repatriate kits?". */
+  decisionPrompt: string
+
+  /** For {@code HUMAN} items: the choices, in order, e.g. ["Extend storage (+€48k)", "Repatriate to DC (+€12k, 9-day re-stage)"]. */
+  decisionOptions: [string]
+
+  /** The person who owns a {@code HUMAN} item. */
+  owner: Person
+
+  /** Working-capital / carrying-cost delta this item carries, in euros (may be 0). Feeds the leadership cost roll-up. */
+  costImpact: double
+
+  /** Days this item shifts (positive = later). Mirrors the milestone slip for AUTO re-times; may differ for HUMAN options. */
+  dayShift: int
+
+  /** Item state through the cascade. */
+  status: string enum('PENDING', 'AUTO_ADJUSTED', 'AWAITING_DECISION', 'RESOLVED')
+
+  /** For HUMAN items, the option label the owner approved (null until resolved). */
+  resolvedOption: string
+
+  /** When the item was auto-adjusted or the human decision was taken. */
+  resolvedAt: datetime
+}

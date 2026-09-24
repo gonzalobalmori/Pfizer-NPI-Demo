@@ -1,0 +1,98 @@
+[
+  {
+    "id": "seed_domain_gov",
+    "code": "gov",
+    "name": "Governance",
+    "agent": {
+      "id": "seed_agent_gov"
+    }
+  },
+  {
+    "id": "seed_domain_rnd",
+    "code": "rnd",
+    "name": "R&D / Design",
+    "agent": {
+      "id": "seed_agent_rnd"
+    }
+  },
+  {
+    "id": "seed_domain_cli",
+    "code": "cli",
+    "name": "Clinical",
+    "agent": {
+      "id": "seed_agent_cli"
+    }
+  },
+  {
+    "id": "seed_domain_reg",
+    "code": "reg",
+    "name": "Regulatory",
+    "agent": {
+      "id": "seed_agent_reg"
+    }
+  },
+  {
+    "id": "seed_domain_qua",
+    "code": "qua",
+    "name": "Quality",
+    "agent": {
+      "id": "seed_agent_qua"
+    }
+  },
+  {
+    "id": "seed_domain_mfg",
+    "code": "mfg",
+    "name": "Manufacturing",
+    "agent": {
+      "id": "seed_agent_mfg"
+    }
+  },
+  {
+    "id": "seed_domain_src",
+    "code": "src",
+    "name": "Sourcing",
+    "agent": {
+      "id": "seed_agent_src"
+    }
+  },
+  {
+    "id": "seed_domain_sc",
+    "code": "sc",
+    "name": "Supply Chain",
+    "agent": {
+      "id": "seed_agent_sc"
+    }
+  },
+  {
+    "id": "seed_domain_com",
+    "code": "com",
+    "name": "Commercial",
+    "agent": {
+      "id": "seed_agent_com"
+    }
+  },
+  {
+    "id": "seed_domain_ma",
+    "code": "ma",
+    "name": "Market Access",
+    "agent": {
+      "id": "seed_agent_ma"
+    }
+  },
+  {
+    "id": "seed_domain_it",
+    "code": "it",
+    "name": "IT / Digital",
+    "agent": {
+      "id": "seed_agent_it"
+    }
+  },
+  {
+    "id": "seed_domain_fin",
+    "code": "fin",
+    "name": "Finance",
+    "agent": {
+      "id": "seed_agent_fin"
+    }
+  }
+]

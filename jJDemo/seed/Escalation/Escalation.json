@@ -1,0 +1,50 @@
+[
+  {
+    "id": "seed_escalation_365",
+    "raisedBy": {
+      "id": "seed_person_hf"
+    },
+    "raisedAt": "2026-09-08T00:00:00",
+    "assignedTo": {
+      "id": "seed_person_sl"
+    },
+    "assigneeRole": "Regulatory Affairs",
+    "reason": "A qualified signatory is required — the agent cannot sign a Notified Body response.",
+    "cardTitle": "Notified Body response drafted but unsigned",
+    "cardMetaLabel": "With S. Lindqvist · Regulatory Affairs · raised by you 08 Sep · every day costs one day of G4",
+    "progressSummary": "Assigned → in progress → signed → submitted · reminder sent 09 Sep, no reply",
+    "tagLabel": "Blocking G4",
+    "tagClass": "crit",
+    "functionLabel": "Regulatory",
+    "ctaEmphasis": "primary",
+    "status": "Open",
+    "immutableUpward": true,
+    "decision": {
+      "id": "seed_decision_365"
+    }
+  },
+  {
+    "id": "seed_escalation_344",
+    "raisedBy": {
+      "id": "seed_person_hf"
+    },
+    "raisedAt": "2026-09-05T00:00:00",
+    "assignedTo": {
+      "id": "seed_person_board"
+    },
+    "assigneeRole": "tabled for 24 Sep",
+    "reason": "Launching without a reimbursement code is a commercial policy call above any single owner.",
+    "cardTitle": "Launch without a reimbursement code — go / no-go",
+    "cardMetaLabel": "With the Launch Board · tabled for 24 Sep · raised by you 05 Sep · a commercial policy call above any single owner",
+    "progressSummary": "Raised → accepted → both scenarios prepared by the agent · on the agenda for 24 Sep",
+    "tagLabel": "On the agenda",
+    "tagClass": "auto",
+    "functionLabel": "Market Access",
+    "ctaEmphasis": "secondary",
+    "status": "Open",
+    "immutableUpward": true,
+    "decision": {
+      "id": "seed_decision_344"
+    }
+  }
+]

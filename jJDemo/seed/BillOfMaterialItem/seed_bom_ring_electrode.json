@@ -1,0 +1,50 @@
+[
+  {
+    "id": "seed_bom_ring_electrode_varipulse",
+    "partName": "Ring electrode subassembly",
+    "sourcingMode": "SINGLE_SOURCE",
+    "frozenAtGate": "G2",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "supplier": {
+      "id": "seed_supplier_heraeus"
+    }
+  },
+  {
+    "id": "seed_bom_ring_electrode_octaray",
+    "partName": "Ring electrode subassembly",
+    "sourcingMode": "SINGLE_SOURCE",
+    "frozenAtGate": "G2",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "supplier": {
+      "id": "seed_supplier_heraeus"
+    }
+  },
+  {
+    "id": "seed_bom_ring_electrode_embotrap",
+    "partName": "Ring electrode subassembly",
+    "sourcingMode": "SINGLE_SOURCE",
+    "frozenAtGate": "G2",
+    "launch": {
+      "id": "seed_launch_embotrap_iv"
+    },
+    "supplier": {
+      "id": "seed_supplier_heraeus"
+    }
+  },
+  {
+    "id": "seed_bom_ring_electrode_javelin",
+    "partName": "Ring electrode subassembly",
+    "sourcingMode": "SINGLE_SOURCE",
+    "frozenAtGate": "G2",
+    "launch": {
+      "id": "seed_launch_javelin_xl"
+    },
+    "supplier": {
+      "id": "seed_supplier_heraeus"
+    }
+  }
+]

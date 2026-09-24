@@ -1,0 +1,614 @@
+[
+  {
+    "id": "seed_ml_embotrap_iv_de",
+    "launch": {
+      "id": "seed_launch_embotrap_iv"
+    },
+    "market": {
+      "id": "seed_market_de"
+    },
+    "firstShipQuarter": "Q4 26",
+    "status": "rk",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_ethicon_4000_de",
+    "launch": {
+      "id": "seed_launch_ethicon_4000"
+    },
+    "market": {
+      "id": "seed_market_de"
+    },
+    "firstShipQuarter": "Q3 27",
+    "status": "rk",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_varipulse_g2_de",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_de"
+    },
+    "firstShipQuarter": "Q2 27",
+    "status": "ct",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_ottava_de",
+    "launch": {
+      "id": "seed_launch_ottava"
+    },
+    "market": {
+      "id": "seed_market_de"
+    },
+    "firstShipQuarter": "Q2 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_puresee_de",
+    "launch": {
+      "id": "seed_launch_puresee"
+    },
+    "market": {
+      "id": "seed_market_de"
+    },
+    "firstShipQuarter": "Q3 27",
+    "status": "rk",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_javelin_xl_de",
+    "launch": {
+      "id": "seed_launch_javelin_xl"
+    },
+    "market": {
+      "id": "seed_market_de"
+    },
+    "firstShipQuarter": "Q4 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_embotrap_iv_fr",
+    "launch": {
+      "id": "seed_launch_embotrap_iv"
+    },
+    "market": {
+      "id": "seed_market_fr"
+    },
+    "firstShipQuarter": "Q4 26",
+    "status": "rk",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_varipulse_g2_fr",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_fr"
+    },
+    "firstShipQuarter": "Q2 27",
+    "status": "ct",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_ethicon_4000_fr",
+    "launch": {
+      "id": "seed_launch_ethicon_4000"
+    },
+    "market": {
+      "id": "seed_market_fr"
+    },
+    "firstShipQuarter": "Q3 27",
+    "status": "rk",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_ottava_fr",
+    "launch": {
+      "id": "seed_launch_ottava"
+    },
+    "market": {
+      "id": "seed_market_fr"
+    },
+    "firstShipQuarter": "Q3 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_puresee_fr",
+    "launch": {
+      "id": "seed_launch_puresee"
+    },
+    "market": {
+      "id": "seed_market_fr"
+    },
+    "firstShipQuarter": "Q4 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_dualto_us",
+    "launch": {
+      "id": "seed_launch_dualto"
+    },
+    "market": {
+      "id": "seed_market_us"
+    },
+    "firstShipQuarter": "live",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_ottava_us",
+    "launch": {
+      "id": "seed_launch_ottava"
+    },
+    "market": {
+      "id": "seed_market_us"
+    },
+    "firstShipQuarter": "Q1 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_varipulse_g2_us",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_us"
+    },
+    "firstShipQuarter": "Q2 27",
+    "status": "ct",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_ethicon_4000_us",
+    "launch": {
+      "id": "seed_launch_ethicon_4000"
+    },
+    "market": {
+      "id": "seed_market_us"
+    },
+    "firstShipQuarter": "Q3 27",
+    "status": "rk",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_javelin_xl_us",
+    "launch": {
+      "id": "seed_launch_javelin_xl"
+    },
+    "market": {
+      "id": "seed_market_us"
+    },
+    "firstShipQuarter": "Q4 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_impella_ecp_us",
+    "launch": {
+      "id": "seed_launch_impella_ecp"
+    },
+    "market": {
+      "id": "seed_market_us"
+    },
+    "firstShipQuarter": "Q4 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_embotrap_iv_uk",
+    "launch": {
+      "id": "seed_launch_embotrap_iv"
+    },
+    "market": {
+      "id": "seed_market_uk"
+    },
+    "firstShipQuarter": "Q4 26",
+    "status": "rk",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_ethicon_4000_uk",
+    "launch": {
+      "id": "seed_launch_ethicon_4000"
+    },
+    "market": {
+      "id": "seed_market_uk"
+    },
+    "firstShipQuarter": "Q3 27",
+    "status": "rk",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_varipulse_g2_uk",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_uk"
+    },
+    "firstShipQuarter": "Q2 27",
+    "status": "ct",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_ottava_uk",
+    "launch": {
+      "id": "seed_launch_ottava"
+    },
+    "market": {
+      "id": "seed_market_uk"
+    },
+    "firstShipQuarter": "Q3 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_puresee_uk",
+    "launch": {
+      "id": "seed_launch_puresee"
+    },
+    "market": {
+      "id": "seed_market_uk"
+    },
+    "firstShipQuarter": "Q4 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_embotrap_iv_es",
+    "launch": {
+      "id": "seed_launch_embotrap_iv"
+    },
+    "market": {
+      "id": "seed_market_es"
+    },
+    "firstShipQuarter": "Q4 26",
+    "status": "rk",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_varipulse_g2_es",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_es"
+    },
+    "firstShipQuarter": "Q2 27",
+    "status": "ct",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_ethicon_4000_es",
+    "launch": {
+      "id": "seed_launch_ethicon_4000"
+    },
+    "market": {
+      "id": "seed_market_es"
+    },
+    "firstShipQuarter": "Q3 27",
+    "status": "rk",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_puresee_es",
+    "launch": {
+      "id": "seed_launch_puresee"
+    },
+    "market": {
+      "id": "seed_market_es"
+    },
+    "firstShipQuarter": "Q4 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_ottava_es",
+    "launch": {
+      "id": "seed_launch_ottava"
+    },
+    "market": {
+      "id": "seed_market_es"
+    },
+    "firstShipQuarter": "Q4 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_embotrap_iv_jp",
+    "launch": {
+      "id": "seed_launch_embotrap_iv"
+    },
+    "market": {
+      "id": "seed_market_jp"
+    },
+    "firstShipQuarter": "Q1 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_varipulse_g2_jp",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_jp"
+    },
+    "firstShipQuarter": "Q3 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_ethicon_4000_jp",
+    "launch": {
+      "id": "seed_launch_ethicon_4000"
+    },
+    "market": {
+      "id": "seed_market_jp"
+    },
+    "firstShipQuarter": "Q4 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_puresee_jp",
+    "launch": {
+      "id": "seed_launch_puresee"
+    },
+    "market": {
+      "id": "seed_market_jp"
+    },
+    "firstShipQuarter": "Q4 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_embotrap_iv_cn",
+    "launch": {
+      "id": "seed_launch_embotrap_iv"
+    },
+    "market": {
+      "id": "seed_market_cn"
+    },
+    "firstShipQuarter": "Q3 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_varipulse_g2_cn",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_cn"
+    },
+    "firstShipQuarter": "Q4 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_puresee_cn",
+    "launch": {
+      "id": "seed_launch_puresee"
+    },
+    "market": {
+      "id": "seed_market_cn"
+    },
+    "firstShipQuarter": "Q4 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_embotrap_iv_br",
+    "launch": {
+      "id": "seed_launch_embotrap_iv"
+    },
+    "market": {
+      "id": "seed_market_br"
+    },
+    "firstShipQuarter": "Q2 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_varipulse_g2_br",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_br"
+    },
+    "firstShipQuarter": "Q3 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_ethicon_4000_br",
+    "launch": {
+      "id": "seed_launch_ethicon_4000"
+    },
+    "market": {
+      "id": "seed_market_br"
+    },
+    "firstShipQuarter": "Q4 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_embotrap_iv_it",
+    "launch": {
+      "id": "seed_launch_embotrap_iv"
+    },
+    "market": {
+      "id": "seed_market_it"
+    },
+    "firstShipQuarter": "Q1 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_puresee_it",
+    "launch": {
+      "id": "seed_launch_puresee"
+    },
+    "market": {
+      "id": "seed_market_it"
+    },
+    "firstShipQuarter": "Q3 27",
+    "status": "rk",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_dualto_it",
+    "launch": {
+      "id": "seed_launch_dualto"
+    },
+    "market": {
+      "id": "seed_market_it"
+    },
+    "firstShipQuarter": "Q4 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_ethicon_4000_in",
+    "launch": {
+      "id": "seed_launch_ethicon_4000"
+    },
+    "market": {
+      "id": "seed_market_in"
+    },
+    "firstShipQuarter": "Q2 28",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_javelin_xl_in",
+    "launch": {
+      "id": "seed_launch_javelin_xl"
+    },
+    "market": {
+      "id": "seed_market_in"
+    },
+    "firstShipQuarter": "Q3 28",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_embotrap_iv_ca",
+    "launch": {
+      "id": "seed_launch_embotrap_iv"
+    },
+    "market": {
+      "id": "seed_market_ca"
+    },
+    "firstShipQuarter": "Q1 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_varipulse_g2_ca",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_ca"
+    },
+    "firstShipQuarter": "Q3 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_varipulse_g2_au",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_au"
+    },
+    "firstShipQuarter": "Q4 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_ethicon_4000_au",
+    "launch": {
+      "id": "seed_launch_ethicon_4000"
+    },
+    "market": {
+      "id": "seed_market_au"
+    },
+    "firstShipQuarter": "Q4 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_octaray_g2_de",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "market": {
+      "id": "seed_market_de"
+    },
+    "firstShipQuarter": "Q3 27",
+    "status": "rk",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_octaray_g2_us",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "market": {
+      "id": "seed_market_us"
+    },
+    "firstShipQuarter": "Q3 27",
+    "status": "rk",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_octaray_g2_fr",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "market": {
+      "id": "seed_market_fr"
+    },
+    "firstShipQuarter": "Q4 27",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_octaray_g2_uk",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "market": {
+      "id": "seed_market_uk"
+    },
+    "firstShipQuarter": "Q1 28",
+    "status": "ok",
+    "reimbursementStatus": ""
+  },
+  {
+    "id": "seed_ml_octaray_g2_jp",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "market": {
+      "id": "seed_market_jp"
+    },
+    "firstShipQuarter": "Q2 28",
+    "status": "ok",
+    "reimbursementStatus": ""
+  }
+]

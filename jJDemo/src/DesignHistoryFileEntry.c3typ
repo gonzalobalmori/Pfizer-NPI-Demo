@@ -1,0 +1,26 @@
+/**
+ * An immutable, append-only entry in a {@link Launch}'s Design History File
+ * (model invariant §3.6.6). This is the regulatory-defensibility spine: a
+ * Notified Body auditor must be able to reconstruct every agent action against a
+ * device's DHF (§1). The approve transaction appends one entry — it never edits
+ * or removes existing entries.
+ */
+entity type DesignHistoryFileEntry {
+  /** Absolute time the entry was written. */
+  entryAt: datetime
+
+  /** The actor — an agent, a person, or the Orchestrator. */
+  actor: string
+
+  /** What was recorded, e.g. "Option A approved — G3 re-baselined 21 Dec → 13 Nov". */
+  action: string
+
+  /** Reference to the record behind the entry, e.g. "DEC-0417", "CAPA-2026-0148". */
+  recordRef: string
+
+  /** True — entries are immutable and append-only; this documents the invariant. */
+  immutable: boolean
+
+  /** The launch whose DHF this entry belongs to. */
+  launch: Launch
+}

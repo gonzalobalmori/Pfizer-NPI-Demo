@@ -1,0 +1,40 @@
+/**
+ * A grounded example prompt for the NPI Copilot (§2.5) and its pre-composed,
+ * evidence-backed answer. Eight are seeded, exactly as authored in the prototype.
+ * Every answer is grounded in the launch plan, the 107 activities, the agent log
+ * and the supplier/market data — nothing is a guess (§2.5). The Copilot's
+ * designed refusal state is a separate, fixed response (not a prompt) surfaced
+ * by {@link CopilotPrompt#refusal} when a free-text query matches no intent; §6
+ * forbids softening it.
+ *
+ * The answer body is stored as structured {@code json} (prose, evidence rows,
+ * numbered steps, recommendation, why-bullets, confidence, action buttons) so the
+ * UI renders it without composing copy itself.
+ */
+entity type CopilotPrompt mixes SeedData {
+  /** Stable prompt id / intent key, e.g. "today", "heraeus". */
+  id: !string
+
+  /** The prompt question, e.g. "Walk me through what I have to do today". */
+  question: !string
+
+  /** The one-line subtitle shown on the suggestion card. */
+  subtitle: string
+
+  /** The group this prompt sits under, e.g. "Guide me through it". */
+  groupLabel: string
+
+  /** Display order of the suggestion cards, 1-based. */
+  sortOrder: int
+
+  /**
+   * The full pre-composed answer as structured json:
+   * { prose:[..], evidence:[{label,value}], steps:[{title,body,when,flag}],
+   *   prose2:[..], rec:string, why:[..], confidence:string,
+   *   actions:[{label,style,target}] }. The UI renders these blocks directly.
+   */
+  answer: json
+
+  /** True on the single prompt whose answer includes the guardrail-breach evidence (§2.5). */
+  showsGuardrails: boolean
+}

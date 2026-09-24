@@ -1,0 +1,53 @@
+/**
+ * One of the 107 activities that make up a launch programme. Extracted exactly
+ * from the specification: 16/19/27/22/14/9 by phase, 48 complete / 8 in progress
+ * / 5 at risk / 2 late / 44 not started by status, and 95 A / 10 R / 2 H by
+ * autonomy class — all reconciling to 107 (model invariants §3.6.7–8).
+ *
+ * An activity belongs to a {@link Phase}, a {@link FunctionalDomain} and a
+ * {@link Launch}, is owned by a {@link Person} or an {@link Agent}, carries an
+ * {@link AutonomyClass}, and can hold {@link Comment}s.
+ */
+entity type Activity mixes SeedData {
+  /** Stable activity id, e.g. "ACT-VPG2-P3-11". */
+  id: !string
+
+  /** Activity description, e.g. "Execute sterilisation validation and bioburden baseline, ISO 11135". */
+  name: !string
+
+  /** Planned completion date. */
+  plannedEnd: datetime
+
+  /** Actual completion date, where the activity is complete. */
+  actualEnd: datetime
+
+  /** Execution status. Drives the by-status reconciliation (48/8/5/2/44). */
+  status: string enum('Complete', 'In progress', 'At risk', 'Late', 'Not started')
+
+  /** Short status code used by the workflow board: ok / run / rk / late / no. */
+  statusCode: string enum('ok', 'run', 'rk', 'late', 'no')
+
+  /** Free-text detail shown on the card, e.g. "47 days late" or "5 of 6 criteria". */
+  detail: string
+
+  /** The phase this activity sits in. */
+  phase: Phase
+
+  /** The functional domain that owns this activity. */
+  domain: FunctionalDomain
+
+  /** The launch this activity belongs to. */
+  launch: Launch
+
+  /** The autonomy class governing this activity. */
+  autonomyClass: AutonomyClass
+
+  /** The person who owns this activity, where a person owns it. */
+  owningPerson: Person
+
+  /** The agent that owns this activity, where an agent owns it. */
+  owningAgent: Agent
+
+  /** Commentary attached to this activity. Inverse of {@link Comment#activity}. */
+  comments: [Comment](activity)
+}

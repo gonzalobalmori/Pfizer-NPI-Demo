@@ -1,0 +1,552 @@
+[
+  {
+    "id": "today",
+    "groupLabel": "Guide me through it",
+    "sortOrder": 1,
+    "question": "Walk me through what I have to do today",
+    "subtitle": "The four open decisions, in the order that avoids re-work",
+    "showsGuardrails": false,
+    "answer": {
+      "prose": [
+        "You have four decisions waiting and one of them closes at 17:00. Two of the four sit on the same supplier, so the order matters — taken in the order below, nothing has to be decided twice."
+      ],
+      "steps": [
+        {
+          "title": "NPI-0417 · Dual-source the EO sterilisation slot",
+          "body": "Steris Venlo cancelled the 12 Oct chamber slot. Sourcing priced three alternatives; Sterigenics recovers 38 of the 47 days for €340k. G3 moves 04 Nov → 21 Dec if you do nothing.",
+          "when": "Due today · 17:00",
+          "flag": "r"
+        },
+        {
+          "title": "NPI-0402 · Release 2,600 units at risk",
+          "body": "Tooling is booked from 02 Nov and the slot lapses if the build is not released. Finance modelled three volumes: 2,600 units caps exposure at €1.7M, above your €1.5M authority.",
+          "when": "Due 13 Sep",
+          "flag": "a"
+        },
+        {
+          "title": "NPI-0388 · Activate the Heraeus second source before G2",
+          "body": "Same supplier as 0417. Decide 0417 first — if line 3 stops, the second source stops being a choice and becomes the plan. 19 days of float left.",
+          "when": "Due 16 Sep",
+          "flag": "a"
+        },
+        {
+          "title": "NPI-0371 · Sign the two G2 design inputs",
+          "body": "Usability and transit summaries. Quality drafted both from the test data, traced, no criteria waived. G2 closes on schedule if you sign.",
+          "when": "Due 18 Sep",
+          "flag": "a"
+        }
+      ],
+      "rec": "Start with NPI-0417, then NPI-0388",
+      "why": [
+        "They are the same supplier: Heraeus. Deciding 0417 first removes one option from 0388",
+        "0402 and 0371 are independent — take them in any order before their dates",
+        "Nothing else needs you this week. 95 of the 107 activities run without asking you"
+      ],
+      "confidence": "These four are every open item where the next step is yours. Four more are moving without you.",
+      "actions": [
+        {
+          "label": "Open NPI-0417",
+          "style": "p",
+          "target": "openFinding:417"
+        },
+        {
+          "label": "See all four",
+          "style": "s",
+          "target": "pane:pending"
+        }
+      ]
+    }
+  },
+  {
+    "id": "waiting",
+    "groupLabel": "Guide me through it",
+    "sortOrder": 2,
+    "question": "What is waiting on someone other than me?",
+    "subtitle": "Four items with a person, and which one needs a push",
+    "showsGuardrails": false,
+    "answer": {
+      "prose": [
+        "Four items are with a person. None of them comes back to you unless it stalls."
+      ],
+      "evidence": [
+        {
+          "label": "S. Lindqvist · Regulatory",
+          "value": "NPI-0365 — a Notified Body response needs a qualified signatory. Open 3 days, chased twice, escalated to their manager yesterday."
+        },
+        {
+          "label": "The Launch Board",
+          "value": "NPI-0344 — the US reimbursement call is tabled for 24 Sep. Both scenarios are already in the pack."
+        },
+        {
+          "label": "R. Devi · Logistics",
+          "value": "NPI-0351 — pricing a second sterilisation lane for the EMBOTRAP loaner sets. Number due 12 Sep."
+        },
+        {
+          "label": "K. Tanaka · R&D",
+          "value": "NPI-0359 — redesigning the PureSee thermoform insert. Re-test booked 14 Sep."
+        }
+      ],
+      "rec": "Only NPI-0365 needs a push from you",
+      "why": [
+        "The response pack has been drafted and unsigned for 6 days, and every one of those days is a day of G4",
+        "The other three have a dated next step inside this week",
+        "An escalation travels upwards only — you cannot pull 0365 back and sign it yourself"
+      ],
+      "confidence": "Read from the ownership field on every open record, not from a status someone typed.",
+      "actions": [
+        {
+          "label": "Push on NPI-0365",
+          "style": "p",
+          "target": "openFinding:365"
+        },
+        {
+          "label": "Open Escalated",
+          "style": "s",
+          "target": "pane:escalated"
+        }
+      ]
+    }
+  },
+  {
+    "id": "varipulse",
+    "groupLabel": "Diagnose a launch",
+    "sortOrder": 3,
+    "question": "Diagnose the VARIPULSE Gen 2 launch",
+    "subtitle": "P3, G3 on 04 Nov, and the one cause behind four findings",
+    "showsGuardrails": false,
+    "answer": {
+      "prose": [
+        "VARIPULSE Gen 2 is in P3 — design V&V and supplier qualification, with G3 Submission Commit on 04 Nov 2026. The design work is not the problem. Both live threats are supplier threats, and both are the same supplier."
+      ],
+      "evidence": [
+        {
+          "label": "Gate at risk",
+          "value": "G3 Submission Commit · 04 Nov 2026 · would move to 21 Dec"
+        },
+        {
+          "label": "Revenue exposed",
+          "value": "€18.4M on the G3 slip, €6.2M on the G2 design freeze"
+        },
+        {
+          "label": "Open findings",
+          "value": "4 — two are yours to decide, two the fleet is still working"
+        },
+        {
+          "label": "Common cause",
+          "value": "Heraeus. Single source on the frozen BOM, downgraded to High financial risk"
+        },
+        {
+          "label": "Lead market",
+          "value": "Germany, then France and Spain · BSI Q4 review slot holds for now"
+        }
+      ],
+      "rec": "Treat this as one supplier decision, not four findings",
+      "why": [
+        "NPI-0417 (EO slot) and NPI-0412 (line 3 out of spec) are both Heraeus-driven; NPI-0388 is the Heraeus credit downgrade itself",
+        "Activating the qualified second source at Neuss answers all three at once, and it is cheapest before the G2 freeze on 30 Sep",
+        "After G2 the same change costs 11 weeks of change control"
+      ],
+      "confidence": "High confidence · the BOM trace, the credit file and the SPC data all point at one part.",
+      "actions": [
+        {
+          "label": "Open NPI-0417",
+          "style": "p",
+          "target": "openFinding:417"
+        },
+        {
+          "label": "See the agents on it",
+          "style": "s",
+          "target": "board:Biosense Webster"
+        },
+        {
+          "label": "Open the activity plan",
+          "style": "s",
+          "target": "flow:"
+        }
+      ]
+    }
+  },
+  {
+    "id": "g3",
+    "groupLabel": "Diagnose a launch",
+    "sortOrder": 4,
+    "question": "What is putting the G3 gate at risk?",
+    "subtitle": "The single cancelled slot behind a 47-day slip",
+    "showsGuardrails": false,
+    "answer": {
+      "prose": [
+        "One thing: the 12 Oct EO chamber slot at Steris Venlo, cancelled by the supplier. Without it the ISO 11135 validation report slips to 19 Dec, EU MDR section 4.3 stays open, and the BSI Q4 review slot lapses — another 31 days on top of the 47."
+      ],
+      "prose2": [
+        "The fleet has already done the work. Quality read the cancellation off the portal, Planning recomputed the critical path, Sourcing priced three alternative sites and Regulatory checked the dossier would survive a 9-day shift. What is left is a €340k authorisation, which is yours."
+      ],
+      "evidence": [
+        {
+          "label": "As planned",
+          "value": "G3 Submission Commit · 04 Nov 2026"
+        },
+        {
+          "label": "If nothing changes",
+          "value": "21 Dec 2026 · +47 days"
+        },
+        {
+          "label": "With Sterigenics",
+          "value": "13 Nov 2026 · +9 days, for €340k"
+        },
+        {
+          "label": "Checked against",
+          "value": "BSI Q4 slot holds at +9 days. It does not hold at +47."
+        }
+      ],
+      "rec": "Dual-source to Sterigenics Grand Rapids",
+      "why": [
+        "Recovers 38 of the 47 days — the only option of the three that keeps the BSI slot",
+        "Switching modality to X-ray costs 62 days and €1.1M and forfeits the slot",
+        "Going US-first needs a G1 reversal, which is a bigger decision than this one"
+      ],
+      "confidence": "High confidence · based on 6 comparable EO re-qualifications across MedTech.",
+      "actions": [
+        {
+          "label": "Open NPI-0417",
+          "style": "p",
+          "target": "openFinding:417"
+        },
+        {
+          "label": "See the chain",
+          "style": "s",
+          "target": "board:Biosense Webster"
+        }
+      ]
+    }
+  },
+  {
+    "id": "heraeus",
+    "groupLabel": "Follow the agents",
+    "sortOrder": 5,
+    "question": "Trace the Heraeus line 3 failure agent by agent",
+    "subtitle": "Line monitor → Quality → Sourcing → Planning → you",
+    "showsGuardrails": false,
+    "answer": {
+      "prose": [
+        "This one arrived two minutes ago and has already crossed four agents. It is the clearest example of the handoff in the fleet: a line monitor finds a physical drift, and it ends as a gate decision on your desk."
+      ],
+      "steps": [
+        {
+          "title": "Line Monitor agent — flagged the dimensional drift",
+          "body": "SPC rule 2 broken on 4 consecutive lots on the ring electrode dimensional check. Raised without anyone asking it to look.",
+          "when": "2m ago",
+          "flag": "a"
+        },
+        {
+          "title": "Quality agent — pulled and re-measured all 12 lots",
+          "body": "4 confirmed out of tolerance. Scope established: it is 4 lots, not the whole line.",
+          "when": "2m ago",
+          "flag": "a"
+        },
+        {
+          "title": "Sourcing agent — checked the qualified alternatives",
+          "body": "2 approved sites, 1 with capacity now. Neuss can take the volume.",
+          "when": "1m ago",
+          "flag": "a"
+        },
+        {
+          "title": "Planning agent — re-baselined the affected gates",
+          "body": "G3 holds if the line stops inside 5 days. Beyond that it does not.",
+          "when": "40s ago",
+          "flag": "a"
+        },
+        {
+          "title": "It is yours — stop line 3 at Heraeus?",
+          "body": "Quarantine the 4 lots and switch to Neuss. Hits VARIPULSE G2, OCTARAY G2 and EMBOTRAP IV in Germany, France and Spain.",
+          "when": "Now",
+          "flag": "r"
+        }
+      ],
+      "rec": "Stop the line and switch to Neuss",
+      "why": [
+        "The 5-day window is what makes this cheap. Inside it, G3 does not move at all",
+        "Three launches share the part, so a wrong call here is a wrong call three times",
+        "The fleet cannot stop a supplier line on its own — that guardrail is deliberate"
+      ],
+      "confidence": "Four agents, four minutes, no human in the loop until the decision that needed one.",
+      "actions": [
+        {
+          "label": "See it live on the board",
+          "style": "p",
+          "target": "board:Biosense Webster"
+        },
+        {
+          "label": "Open the record",
+          "style": "s",
+          "target": "openFinding:417"
+        }
+      ]
+    }
+  },
+  {
+    "id": "overnight",
+    "groupLabel": "Follow the agents",
+    "sortOrder": 6,
+    "question": "What did the agents do without me overnight?",
+    "subtitle": "The chain the fleet closed end to end, and why it could",
+    "showsGuardrails": true,
+    "answer": {
+      "prose": [
+        "One finding was closed end to end, with no decision reaching you. It was inside guardrails — a known cause and a scheduled fix — which is the test for whether the fleet finishes something itself."
+      ],
+      "evidence": [
+        {
+          "label": "Javelin XL · Iberia",
+          "value": "Field-force certification at 91% against a 95% target. 14 reps rebooked into the 22 Sep lab-session cohort, which clears 97% before first ship."
+        },
+        {
+          "label": "Guardrails breached",
+          "value": "0 in 90 days"
+        }
+      ],
+      "rec": "Nothing here needs you",
+      "why": [
+        "It had a known root cause and a dated fix — the condition for autonomous close",
+        "Anything without both of those is routed to a person instead, which is why four things are waiting for you and this one is not",
+        "Every step is logged. You can reopen it and take the decision yourself"
+      ],
+      "confidence": "From the fleet record, not a summary — the chain is replayable step by step.",
+      "actions": [
+        {
+          "label": "Open the fleet record",
+          "style": "p",
+          "target": "log:"
+        },
+        {
+          "label": "My history only",
+          "style": "s",
+          "target": "pane:history"
+        }
+      ]
+    }
+  },
+  {
+    "id": "germany",
+    "groupLabel": "Slice the portfolio",
+    "sortOrder": 7,
+    "question": "Which launches are exposed in Germany?",
+    "subtitle": "Five launches, one shared constraint, and it is not regulatory",
+    "showsGuardrails": false,
+    "answer": {
+      "prose": [
+        "Germany is the lead market for five of the nine launches and it carries the most exposure of any market, because the EU MDR path and the BSI review slot both sit behind it."
+      ],
+      "evidence": [
+        {
+          "label": "VARIPULSE Gen 2",
+          "value": "G3 Submission Commit · €18.4M exposed on the EO slot. The BSI Q4 slot is the constraint, not the validation work."
+        },
+        {
+          "label": "OCTARAY Gen 2",
+          "value": "G2 Design Freeze 30 Sep · two unsigned design inputs and the Heraeus single source. Both are yours this week."
+        },
+        {
+          "label": "EMBOTRAP IV",
+          "value": "G5 First Ship 26 Sep · 340 of 520 loaner sets still uncertified. 3PL sterilisation is running 6 days over plan."
+        },
+        {
+          "label": "PureSee Toric",
+          "value": "Transit packaging failed ASTM D4169 Sequence D. Re-test 14 Sep."
+        },
+        {
+          "label": "OTTAVA",
+          "value": "First ship Q2 2027, same quarter as VARIPULSE G2. 14 of 22 German reps are dual-certified, which is the real constraint."
+        }
+      ],
+      "rec": "The German constraint is field force, not regulatory",
+      "why": [
+        "Four of the five clear their regulatory path on current dates",
+        "Two launches want the same 22 German reps in the same quarter, and only 14 are dual-certified",
+        "Moving OTTAVA first ship to Q3 2027 uses its float; VARIPULSE G2 has none"
+      ],
+      "confidence": "Medium-high · certification throughput is modelled from the last 6 EP launches.",
+      "actions": [
+        {
+          "label": "See every German finding",
+          "style": "p",
+          "target": "board:DE"
+        },
+        {
+          "label": "Open NPI-0351",
+          "style": "s",
+          "target": "openFinding:351"
+        }
+      ]
+    }
+  },
+  {
+    "id": "regulatory",
+    "groupLabel": "Diagnose a launch",
+    "sortOrder": 9,
+    "question": "What do the regulators need from us right now?",
+    "subtitle": "Two open agency clocks, one review slot, and the site visit to prepare",
+    "showsGuardrails": false,
+    "answer": {
+      "prose": [
+        "Three agency threads are live across the portfolio, and only one of them is something you can act on. The other two are clocks running on an authority — the honest answer is that acting faster does not move them, so the job is to keep them un-blocked and be ready when they respond."
+      ],
+      "evidence": [
+        {
+          "label": "FDA · VARIPULSE Gen 2",
+          "value": "NPI-0420 — PMA under review, a deficiency letter is open. 45 days at stake, no approval until the agency responds. This is on the authority, not on us: acting here will not move the date."
+        },
+        {
+          "label": "BSI Notified Body · VARIPULSE Gen 2",
+          "value": "Q4 review slot holds only while G3 stays at +9 days. Miss the window and the next confirmed slot is February — another 31 days. The slot is the real regulatory deadline, not the validation work."
+        },
+        {
+          "label": "BSI Notified Body · ETHICON 4000+",
+          "value": "NPI-0365 — a query-cycle-2 response has been drafted and unsigned for 6 days. The 21-day clock-stop is running. This is the one thread you can move: it needs a qualified signatory, S. Lindqvist, and it is already escalated."
+        },
+        {
+          "label": "Questions on the table",
+          "value": "FDA: sterilisation-residual limits and the biocompatibility bridge. BSI: the clinical evaluation equivalence rationale. Every query has a traced response pack assembled from the CER and the DMR."
+        },
+        {
+          "label": "On-site audit",
+          "value": "BSI unannounced site visit expected this quarter — a gemba walk of Heraeus line 3 and the Neuss second source. The line-3 CAPA and the dimensional SPC record are what they will ask to see."
+        }
+      ],
+      "rec": "Push NPI-0365 to signature today; keep FDA and the BSI slot un-blocked, don't chase them",
+      "why": [
+        "NPI-0365 is the only agency thread where the next step is yours — every unsigned day is a day of G4",
+        "The FDA deficiency clock (NPI-0420) is on the authority; acting here won't move it, so the workspace is view-only by design",
+        "The BSI Q4 slot survives at +9 days and lapses at +47 — protecting the G3 date is what protects the review window"
+      ],
+      "confidence": "Read from the ownership field on each agency thread, not a status someone typed. Two are authority-bound; one is yours.",
+      "actions": [
+        {
+          "label": "Open NPI-0365",
+          "style": "p",
+          "target": "openFinding:365"
+        },
+        {
+          "label": "View the FDA thread",
+          "style": "s",
+          "target": "openFinding:420"
+        },
+        {
+          "label": "Open the dossier register",
+          "style": "s",
+          "target": "docs:"
+        }
+      ]
+    }
+  },
+  {
+    "id": "supplier",
+    "groupLabel": "Slice the portfolio",
+    "sortOrder": 8,
+    "question": "What is putting VARIPULSE's commercial batches at risk?",
+    "subtitle": "Two lines, three batches out of spec, and an overdue CAPA",
+    "showsGuardrails": false,
+    "answer": {
+      "prose": [
+        "Manufacturing, not supply. VARIPULSE runs commercial output on two lines — line 3 and line 5 — and line 3 has produced 3 batches out of spec on the dimensional check. Line 5 is clean and is holding commercial supply for now."
+      ],
+      "prose2": [
+        "The reason line 3 is not simply back yet is a CAPA that is overdue: the DMAIC behind it is still in progress. Measure and Analyse are complete and point at tool wear, but Improve and Control are not signed, so line 3 cannot be re-qualified for commercial output. For scale: V&V produces 3 batches as the norm, so 3 affected commercial batches is a full run's worth of the launch quantity."
+      ],
+      "evidence": [
+        {
+          "label": "Where",
+          "value": "Line 3 — 3 commercial batches out of spec; line 5 unaffected"
+        },
+        {
+          "label": "Why not fixed yet",
+          "value": "CAPA overdue — DMAIC Improve/Control still in progress"
+        },
+        {
+          "label": "Scale",
+          "value": "V&V norm is 3 batches (a validation run was 12 at one site), so this is a full run's worth of commercial volume"
+        },
+        {
+          "label": "Gate",
+          "value": "G3 holds on all three routes — this is a volume call, not a schedule one"
+        },
+        {
+          "label": "Routes",
+          "value": "Re-prioritise markets · drive the DMAIC to close · move to another qualified site (same modality)"
+        }
+      ],
+      "rec": "Re-prioritise markets and redistribute the reduced commercial volume",
+      "why": [
+        "Fewer commercial batches means the launch quantity has to be reallocated — protect the lead markets, defer the lower-priority ones",
+        "Closing the CAPA via the in-progress DMAIC recovers line 3, but only once Improve and Control sign off",
+        "Moving to another same-modality site is viable only if the agents confirm regulatory/engineering clearance AND open capacity"
+      ],
+      "confidence": "High confidence · read from the line MES, the SPC record and the open CAPA/DMAIC.",
+      "actions": [
+        {
+          "label": "Open NPI-0412",
+          "style": "p",
+          "target": "openFinding:412"
+        },
+        {
+          "label": "See the Biosense Webster board",
+          "style": "s",
+          "target": "board:Biosense Webster"
+        }
+      ]
+    }
+  },
+  {
+    "id": "cascade",
+    "groupLabel": "Diagnose a launch",
+    "sortOrder": 10,
+    "question": "The FDA slipped OTTAVA's clearance six weeks — what moves?",
+    "subtitle": "One authority date, five downstream commitments, two calls that are yours",
+    "showsGuardrails": false,
+    "answer": {
+      "prose": [
+        "The FDA moved OTTAVA's 510(k) clearance from 02 Nov to 14 Dec — a six-week slip on a date you don't control. Manufacturing has already built launch stock, the loaner kits are staged at the 3PL, and the field is trained for the original go-live. The old way, that slip becomes a ten-week scramble across three teams. Here it cascades in one pass: three commitments re-time themselves, and exactly two need a human."
+      ],
+      "evidence": [
+        {
+          "label": "Manufacturing · auto-adjusted",
+          "value": "Production Run 2 (launch-stock top-up) held to the new clearance date. No second run committed against a date the agency has already moved."
+        },
+        {
+          "label": "Logistics · auto-adjusted",
+          "value": "Loaner-kit deployment across the US geographies re-timed to the new go-live. The 3PL is not asked to ship against the old date."
+        },
+        {
+          "label": "Commercial · auto-adjusted",
+          "value": "KOL pre-announcement accounts flagged for proactive outreach, so the field is not selling a date the FDA just moved."
+        },
+        {
+          "label": "Finance · needs you",
+          "value": "Six extra weeks of finished-goods storage. Extend the 3PL slot (+€48k carrying cost, zero re-stage risk) or repatriate to the regional DC (saves €36k, adds a 9-day re-stage). J. Ruiz owns it."
+        },
+        {
+          "label": "Field readiness · needs you",
+          "value": "Certification currency drifts past the new go-live. Recertify now, or schedule a single refresh two weeks out. T. Bergmann owns it."
+        }
+      ],
+      "rec": "Take the two human calls in one sitting; the other three are already re-planned",
+      "why": [
+        "The three auto-adjusted commitments have a known rule — move with the clearance date — so the platform re-timed them and recorded it, rather than asking",
+        "The two that reach you are genuine trade-offs (carrying cost vs re-stage risk; recertify-now vs single-refresh) that no rule can settle",
+        "Leadership sees the €48k working-capital impact the moment the date moves, not three days later"
+      ],
+      "confidence": "Read from the connected-milestone graph — every downstream commitment carries its own re-plan rule and owner, so the split into auto vs human is derived, not typed.",
+      "actions": [
+        {
+          "label": "Open the replan dashboard",
+          "style": "p",
+          "target": "cascade:"
+        },
+        {
+          "label": "Open the OTTAVA record",
+          "style": "s",
+          "target": "launch:seed_launch_ottava"
+        }
+      ]
+    }
+  }
+]

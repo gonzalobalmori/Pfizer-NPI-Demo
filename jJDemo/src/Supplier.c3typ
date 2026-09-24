@@ -1,0 +1,32 @@
+/**
+ * A supplier in the launch supply chain. The anchor case turns on four:
+ * Steris Venlo (contract EO steriliser that cancelled the booking),
+ * Sterigenics Grand Rapids (approved alternative, audit current to Mar 2028),
+ * Heraeus Medical Components (single source on the frozen BOM, downgraded to
+ * High financial risk) and BSI (the Notified Body).
+ *
+ * A supplier has many {@link Site}s, {@link QualifiedProcess}es and
+ * {@link ContractTerm}s.
+ */
+entity type Supplier mixes SeedData {
+  /** Supplier name, e.g. "Sterigenics Grand Rapids". */
+  name: !string
+
+  /** Approval status against the Approved Supplier List. */
+  approvalStatus: string enum('APPROVED', 'CONDITIONAL', 'NOT_APPROVED')
+
+  /** Date the supplier's audit is valid until, e.g. Mar 2028 for Sterigenics. */
+  auditValidUntil: datetime
+
+  /** Financial risk rating — Heraeus was downgraded to "High". */
+  financialRiskRating: string enum('Low', 'Medium', 'High')
+
+  /** True where the supplier is the only qualified source for a critical component. */
+  singleSourceFlag: boolean
+
+  /** Sites operated by this supplier. Inverse of {@link Site#supplier}. */
+  sites: [Site](supplier)
+
+  /** Contract terms held with this supplier. Inverse of {@link ContractTerm#supplier}. */
+  contractTerms: [ContractTerm](supplier)
+}

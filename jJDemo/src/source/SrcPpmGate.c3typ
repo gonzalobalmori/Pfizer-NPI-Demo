@@ -1,0 +1,23 @@
+/**
+ * Source type for the Planisware PPM gate extract (`PPM_GATE`). A Source type is
+ * a transient, one-field-per-column mirror of a source file — it is the shape the
+ * raw file lands in before a {@link Transform} maps it into the ontology. It owns
+ * no storage; it exists so the platform can parse the CSV and hand typed rows to
+ * the transform.
+ *
+ * This feed is the authoritative origin of gate dates (the Item-2 correction:
+ * gate dates come from PPM, exposure is derived downstream, not stored). It drives
+ * demo 1 — tracing "G3 +47 days" back to `PPM_GATE_20260911.csv` row.
+ *
+ * Maps to {@link Gate} via the `SrcPpmGate-Gate` transform.
+ */
+type SrcPpmGate mixes Source {
+  @ser(name="GateId")       gateId: string
+  @ser(name="ProjectId")    projectId: string
+  @ser(name="GateCode")     gateCode: string
+  @ser(name="GateName")     gateName: string
+  @ser(name="BaselineDate") baselineDate: string
+  @ser(name="ForecastDate") forecastDate: string
+  @ser(name="SlipDays")     slipDays: int
+  @ser(name="Status")       status: string
+}

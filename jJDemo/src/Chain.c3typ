@@ -1,0 +1,37 @@
+/**
+ * The ordered chain of agent work behind a {@link Finding}. Nine chains are
+ * recorded (CHN-01 … CHN-09) with their exact agent sequences — e.g. CHN-09 =
+ * Quality → Planning → Sourcing → Regulatory → Orchestrator, twenty-eight
+ * minutes and four handoffs (the anchor case).
+ *
+ * The handoff sequence must be reconstructable from the {@link AgentAction}
+ * records alone, in time order (acceptance criterion §2.2).
+ */
+entity type Chain mixes SeedData {
+  /** Chain id, e.g. "CHN-09". */
+  id: !string
+
+  /** Short title, e.g. "Steriliser slot recovery". */
+  title: string
+
+  /** Number of handoffs in the chain, e.g. 4. Derived from the ordered actions. */
+  handoffCount: int
+
+  /** Outcome of the chain, mirroring the finding outcome. */
+  outcome: string enum('USER', 'HELD', 'AUTO', 'RUNNING')
+
+  /** When the chain started (first action's timestamp). */
+  startedAt: datetime
+
+  /** When the chain closed, where it has closed. */
+  closedAt: datetime
+
+  /** The finding this chain works. */
+  finding: Finding
+
+  /** The ordered actions in this chain. Inverse of {@link AgentAction#chain}. */
+  actions: [AgentAction](chain)
+
+  /** The handoffs between agents in this chain. Inverse of {@link Handoff#chain}. */
+  handoffs: [Handoff](chain)
+}

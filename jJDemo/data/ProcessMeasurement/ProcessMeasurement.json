@@ -1,0 +1,6450 @@
+[
+  {
+    "id": "M0001217",
+    "measId": "M0001217",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.543,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-14T06:00:00"
+  },
+  {
+    "id": "M0001223",
+    "measId": "M0001223",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5501,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-14T06:18:00"
+  },
+  {
+    "id": "M0001226",
+    "measId": "M0001226",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5422,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-14T06:27:00"
+  },
+  {
+    "id": "M0001228",
+    "measId": "M0001228",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5539,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-14T06:33:00"
+  },
+  {
+    "id": "M0001229",
+    "measId": "M0001229",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5524,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-14T06:36:00"
+  },
+  {
+    "id": "M0001235",
+    "measId": "M0001235",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5478,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-14T06:54:00"
+  },
+  {
+    "id": "M0001236",
+    "measId": "M0001236",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5502,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-14T06:57:00"
+  },
+  {
+    "id": "M0001240",
+    "measId": "M0001240",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5545,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-14T07:09:00"
+  },
+  {
+    "id": "M0001241",
+    "measId": "M0001241",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5547,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-14T07:12:00"
+  },
+  {
+    "id": "M0001242",
+    "measId": "M0001242",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5534,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-14T07:15:00"
+  },
+  {
+    "id": "M0001243",
+    "measId": "M0001243",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5513,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-14T07:18:00"
+  },
+  {
+    "id": "M0001244",
+    "measId": "M0001244",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5543,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-14T07:21:00"
+  },
+  {
+    "id": "M0001245",
+    "measId": "M0001245",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5516,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-14T07:24:00"
+  },
+  {
+    "id": "M0001248",
+    "measId": "M0001248",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5523,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-14T07:33:00"
+  },
+  {
+    "id": "M0001252",
+    "measId": "M0001252",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5528,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-14T07:45:00"
+  },
+  {
+    "id": "M0001253",
+    "measId": "M0001253",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5502,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-14T07:48:00"
+  },
+  {
+    "id": "M0001259",
+    "measId": "M0001259",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5504,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-14T08:06:00"
+  },
+  {
+    "id": "M0001262",
+    "measId": "M0001262",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5453,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-14T08:15:00"
+  },
+  {
+    "id": "M0001263",
+    "measId": "M0001263",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5534,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-14T08:18:00"
+  },
+  {
+    "id": "M0001270",
+    "measId": "M0001270",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5507,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-14T08:39:00"
+  },
+  {
+    "id": "M0001271",
+    "measId": "M0001271",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5391,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-14T08:42:00"
+  },
+  {
+    "id": "M0001275",
+    "measId": "M0001275",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5548,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-14T08:54:00"
+  },
+  {
+    "id": "M0001277",
+    "measId": "M0001277",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5522,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-14T09:00:00"
+  },
+  {
+    "id": "M0001278",
+    "measId": "M0001278",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5534,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-14T09:03:00"
+  },
+  {
+    "id": "M0001280",
+    "measId": "M0001280",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.54,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-14T09:09:00"
+  },
+  {
+    "id": "M0001286",
+    "measId": "M0001286",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5527,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-14T09:27:00"
+  },
+  {
+    "id": "M0001288",
+    "measId": "M0001288",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5542,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-14T09:33:00"
+  },
+  {
+    "id": "M0001289",
+    "measId": "M0001289",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5408,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-14T09:36:00"
+  },
+  {
+    "id": "M0001292",
+    "measId": "M0001292",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5543,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-14T09:45:00"
+  },
+  {
+    "id": "M0001296",
+    "measId": "M0001296",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5529,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-14T09:57:00"
+  },
+  {
+    "id": "M0001298",
+    "measId": "M0001298",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5487,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-14T10:03:00"
+  },
+  {
+    "id": "M0001299",
+    "measId": "M0001299",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5508,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-14T10:06:00"
+  },
+  {
+    "id": "M0001300",
+    "measId": "M0001300",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5548,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-14T10:09:00"
+  },
+  {
+    "id": "M0001304",
+    "measId": "M0001304",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5504,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-14T10:21:00"
+  },
+  {
+    "id": "M0001306",
+    "measId": "M0001306",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5542,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-14T10:27:00"
+  },
+  {
+    "id": "M0001307",
+    "measId": "M0001307",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5368,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-14T10:30:00"
+  },
+  {
+    "id": "M0001313",
+    "measId": "M0001313",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.553,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-14T10:48:00"
+  },
+  {
+    "id": "M0001314",
+    "measId": "M0001314",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5515,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-14T10:51:00"
+  },
+  {
+    "id": "M0001316",
+    "measId": "M0001316",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5536,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-14T10:57:00"
+  },
+  {
+    "id": "M0001325",
+    "measId": "M0001325",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5353,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-14T11:24:00"
+  },
+  {
+    "id": "M0001329",
+    "measId": "M0001329",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5521,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-14T11:36:00"
+  },
+  {
+    "id": "M0001330",
+    "measId": "M0001330",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.552,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-14T11:39:00"
+  },
+  {
+    "id": "M0001333",
+    "measId": "M0001333",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5523,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-14T11:48:00"
+  },
+  {
+    "id": "M0001334",
+    "measId": "M0001334",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5467,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-14T11:51:00"
+  },
+  {
+    "id": "M0001342",
+    "measId": "M0001342",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5502,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-14T12:15:00"
+  },
+  {
+    "id": "M0001343",
+    "measId": "M0001343",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5376,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-14T12:18:00"
+  },
+  {
+    "id": "M0001345",
+    "measId": "M0001345",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5526,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-14T12:24:00"
+  },
+  {
+    "id": "M0001347",
+    "measId": "M0001347",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5531,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-14T12:30:00"
+  },
+  {
+    "id": "M0001352",
+    "measId": "M0001352",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5537,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-14T12:45:00"
+  },
+  {
+    "id": "M0001354",
+    "measId": "M0001354",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5536,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-14T12:51:00"
+  },
+  {
+    "id": "M0001358",
+    "measId": "M0001358",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5503,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-14T13:03:00"
+  },
+  {
+    "id": "M0001359",
+    "measId": "M0001359",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.553,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-14T13:06:00"
+  },
+  {
+    "id": "M0001361",
+    "measId": "M0001361",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5352,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-14T13:12:00"
+  },
+  {
+    "id": "M0001362",
+    "measId": "M0001362",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5515,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-14T13:15:00"
+  },
+  {
+    "id": "M0001363",
+    "measId": "M0001363",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5533,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-14T13:18:00"
+  },
+  {
+    "id": "M0001365",
+    "measId": "M0001365",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5539,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-14T13:24:00"
+  },
+  {
+    "id": "M0001369",
+    "measId": "M0001369",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5538,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-14T13:36:00"
+  },
+  {
+    "id": "M0001370",
+    "measId": "M0001370",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5505,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-14T13:39:00"
+  },
+  {
+    "id": "M0001371",
+    "measId": "M0001371",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5545,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-14T13:42:00"
+  },
+  {
+    "id": "M0001372",
+    "measId": "M0001372",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5392,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-15T06:00:00"
+  },
+  {
+    "id": "M0001379",
+    "measId": "M0001379",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5578,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-15T06:21:00"
+  },
+  {
+    "id": "M0001380",
+    "measId": "M0001380",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.553,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-15T06:24:00"
+  },
+  {
+    "id": "M0001381",
+    "measId": "M0001381",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5416,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-15T06:27:00"
+  },
+  {
+    "id": "M0001382",
+    "measId": "M0001382",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5556,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-15T06:30:00"
+  },
+  {
+    "id": "M0001383",
+    "measId": "M0001383",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5577,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-15T06:33:00"
+  },
+  {
+    "id": "M0001388",
+    "measId": "M0001388",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5532,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-15T06:48:00"
+  },
+  {
+    "id": "M0001389",
+    "measId": "M0001389",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.558,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-15T06:51:00"
+  },
+  {
+    "id": "M0001390",
+    "measId": "M0001390",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5403,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-15T06:54:00"
+  },
+  {
+    "id": "M0001392",
+    "measId": "M0001392",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5559,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-15T07:00:00"
+  },
+  {
+    "id": "M0001398",
+    "measId": "M0001398",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5528,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-15T07:18:00"
+  },
+  {
+    "id": "M0001399",
+    "measId": "M0001399",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5449,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-15T07:21:00"
+  },
+  {
+    "id": "M0001401",
+    "measId": "M0001401",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5556,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-15T07:27:00"
+  },
+  {
+    "id": "M0001402",
+    "measId": "M0001402",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5569,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-15T07:30:00"
+  },
+  {
+    "id": "M0001404",
+    "measId": "M0001404",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5559,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-15T07:36:00"
+  },
+  {
+    "id": "M0001408",
+    "measId": "M0001408",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5447,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-15T07:48:00"
+  },
+  {
+    "id": "M0001409",
+    "measId": "M0001409",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5565,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-15T07:51:00"
+  },
+  {
+    "id": "M0001410",
+    "measId": "M0001410",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5513,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-15T07:54:00"
+  },
+  {
+    "id": "M0001415",
+    "measId": "M0001415",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5578,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-15T08:09:00"
+  },
+  {
+    "id": "M0001417",
+    "measId": "M0001417",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5535,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-15T08:15:00"
+  },
+  {
+    "id": "M0001419",
+    "measId": "M0001419",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5584,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-15T08:21:00"
+  },
+  {
+    "id": "M0001420",
+    "measId": "M0001420",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5519,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-15T08:24:00"
+  },
+  {
+    "id": "M0001422",
+    "measId": "M0001422",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5536,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-15T08:30:00"
+  },
+  {
+    "id": "M0001423",
+    "measId": "M0001423",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5579,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-15T08:33:00"
+  },
+  {
+    "id": "M0001424",
+    "measId": "M0001424",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5581,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-15T08:36:00"
+  },
+  {
+    "id": "M0001425",
+    "measId": "M0001425",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5546,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-15T08:39:00"
+  },
+  {
+    "id": "M0001426",
+    "measId": "M0001426",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5575,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-15T08:42:00"
+  },
+  {
+    "id": "M0001428",
+    "measId": "M0001428",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5583,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-15T08:48:00"
+  },
+  {
+    "id": "M0001430",
+    "measId": "M0001430",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5588,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-15T08:54:00"
+  },
+  {
+    "id": "M0001432",
+    "measId": "M0001432",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5581,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-15T09:00:00"
+  },
+  {
+    "id": "M0001435",
+    "measId": "M0001435",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5464,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-15T09:09:00"
+  },
+  {
+    "id": "M0001438",
+    "measId": "M0001438",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5548,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-15T09:18:00"
+  },
+  {
+    "id": "M0001440",
+    "measId": "M0001440",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5513,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-15T09:24:00"
+  },
+  {
+    "id": "M0001444",
+    "measId": "M0001444",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5429,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-15T09:36:00"
+  },
+  {
+    "id": "M0001446",
+    "measId": "M0001446",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5563,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-15T09:42:00"
+  },
+  {
+    "id": "M0001447",
+    "measId": "M0001447",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5582,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-15T09:45:00"
+  },
+  {
+    "id": "M0001451",
+    "measId": "M0001451",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5552,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-15T09:57:00"
+  },
+  {
+    "id": "M0001452",
+    "measId": "M0001452",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5534,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-15T10:00:00"
+  },
+  {
+    "id": "M0001453",
+    "measId": "M0001453",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5496,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-15T10:03:00"
+  },
+  {
+    "id": "M0001455",
+    "measId": "M0001455",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5557,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-15T10:09:00"
+  },
+  {
+    "id": "M0001460",
+    "measId": "M0001460",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5513,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-15T10:24:00"
+  },
+  {
+    "id": "M0001461",
+    "measId": "M0001461",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5545,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-15T10:27:00"
+  },
+  {
+    "id": "M0001462",
+    "measId": "M0001462",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5539,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-15T10:30:00"
+  },
+  {
+    "id": "M0001466",
+    "measId": "M0001466",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5508,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-15T10:42:00"
+  },
+  {
+    "id": "M0001468",
+    "measId": "M0001468",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5572,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-15T10:48:00"
+  },
+  {
+    "id": "M0001470",
+    "measId": "M0001470",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5509,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-15T10:54:00"
+  },
+  {
+    "id": "M0001471",
+    "measId": "M0001471",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5564,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-15T10:57:00"
+  },
+  {
+    "id": "M0001474",
+    "measId": "M0001474",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5541,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-15T11:06:00"
+  },
+  {
+    "id": "M0001475",
+    "measId": "M0001475",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5529,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-15T11:09:00"
+  },
+  {
+    "id": "M0001479",
+    "measId": "M0001479",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5542,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-15T11:21:00"
+  },
+  {
+    "id": "M0001480",
+    "measId": "M0001480",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5528,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-15T11:24:00"
+  },
+  {
+    "id": "M0001483",
+    "measId": "M0001483",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5576,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-15T11:33:00"
+  },
+  {
+    "id": "M0001488",
+    "measId": "M0001488",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5537,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-15T11:48:00"
+  },
+  {
+    "id": "M0001489",
+    "measId": "M0001489",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5442,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-15T11:51:00"
+  },
+  {
+    "id": "M0001490",
+    "measId": "M0001490",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5523,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-15T11:54:00"
+  },
+  {
+    "id": "M0001492",
+    "measId": "M0001492",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5577,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-15T12:00:00"
+  },
+  {
+    "id": "M0001495",
+    "measId": "M0001495",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5506,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-15T12:09:00"
+  },
+  {
+    "id": "M0001498",
+    "measId": "M0001498",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5533,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-15T12:18:00"
+  },
+  {
+    "id": "M0001501",
+    "measId": "M0001501",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5525,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-15T12:27:00"
+  },
+  {
+    "id": "M0001503",
+    "measId": "M0001503",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5564,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-15T12:33:00"
+  },
+  {
+    "id": "M0001504",
+    "measId": "M0001504",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5579,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-15T12:36:00"
+  },
+  {
+    "id": "M0001507",
+    "measId": "M0001507",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5568,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-15T12:45:00"
+  },
+  {
+    "id": "M0001511",
+    "measId": "M0001511",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5511,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-15T12:57:00"
+  },
+  {
+    "id": "M0001513",
+    "measId": "M0001513",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5561,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-15T13:03:00"
+  },
+  {
+    "id": "M0001516",
+    "measId": "M0001516",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5475,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-15T13:12:00"
+  },
+  {
+    "id": "M0001517",
+    "measId": "M0001517",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5583,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-15T13:15:00"
+  },
+  {
+    "id": "M0001518",
+    "measId": "M0001518",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5491,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-16T06:00:00"
+  },
+  {
+    "id": "M0001521",
+    "measId": "M0001521",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.558,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-16T06:09:00"
+  },
+  {
+    "id": "M0001523",
+    "measId": "M0001523",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5564,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-16T06:15:00"
+  },
+  {
+    "id": "M0001524",
+    "measId": "M0001524",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5505,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-16T06:18:00"
+  },
+  {
+    "id": "M0001525",
+    "measId": "M0001525",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5616,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-16T06:21:00"
+  },
+  {
+    "id": "M0001526",
+    "measId": "M0001526",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5559,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-16T06:24:00"
+  },
+  {
+    "id": "M0001527",
+    "measId": "M0001527",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5519,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-16T06:27:00"
+  },
+  {
+    "id": "M0001529",
+    "measId": "M0001529",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5628,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-16T06:33:00"
+  },
+  {
+    "id": "M0001530",
+    "measId": "M0001530",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5546,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-16T06:36:00"
+  },
+  {
+    "id": "M0001531",
+    "measId": "M0001531",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5616,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-16T06:39:00"
+  },
+  {
+    "id": "M0001532",
+    "measId": "M0001532",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5598,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-16T06:42:00"
+  },
+  {
+    "id": "M0001533",
+    "measId": "M0001533",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5622,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-16T06:45:00"
+  },
+  {
+    "id": "M0001536",
+    "measId": "M0001536",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.554,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-16T06:54:00"
+  },
+  {
+    "id": "M0001538",
+    "measId": "M0001538",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5518,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-16T07:00:00"
+  },
+  {
+    "id": "M0001539",
+    "measId": "M0001539",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5585,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-16T07:03:00"
+  },
+  {
+    "id": "M0001541",
+    "measId": "M0001541",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5624,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-16T07:09:00"
+  },
+  {
+    "id": "M0001542",
+    "measId": "M0001542",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5592,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-16T07:12:00"
+  },
+  {
+    "id": "M0001543",
+    "measId": "M0001543",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5597,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-16T07:15:00"
+  },
+  {
+    "id": "M0001544",
+    "measId": "M0001544",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5602,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-16T07:18:00"
+  },
+  {
+    "id": "M0001545",
+    "measId": "M0001545",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5473,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-16T07:21:00"
+  },
+  {
+    "id": "M0001547",
+    "measId": "M0001547",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5611,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-16T07:27:00"
+  },
+  {
+    "id": "M0001548",
+    "measId": "M0001548",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5604,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-16T07:30:00"
+  },
+  {
+    "id": "M0001549",
+    "measId": "M0001549",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5567,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-16T07:33:00"
+  },
+  {
+    "id": "M0001550",
+    "measId": "M0001550",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5509,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-16T07:36:00"
+  },
+  {
+    "id": "M0001552",
+    "measId": "M0001552",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5513,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-16T07:42:00"
+  },
+  {
+    "id": "M0001553",
+    "measId": "M0001553",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5572,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-16T07:45:00"
+  },
+  {
+    "id": "M0001554",
+    "measId": "M0001554",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5601,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-16T07:48:00"
+  },
+  {
+    "id": "M0001555",
+    "measId": "M0001555",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5629,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-16T07:51:00"
+  },
+  {
+    "id": "M0001556",
+    "measId": "M0001556",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.551,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-16T07:54:00"
+  },
+  {
+    "id": "M0001557",
+    "measId": "M0001557",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5524,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-16T07:57:00"
+  },
+  {
+    "id": "M0001558",
+    "measId": "M0001558",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5561,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-16T08:00:00"
+  },
+  {
+    "id": "M0001559",
+    "measId": "M0001559",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5562,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-16T08:03:00"
+  },
+  {
+    "id": "M0001560",
+    "measId": "M0001560",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5616,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-16T08:06:00"
+  },
+  {
+    "id": "M0001561",
+    "measId": "M0001561",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5566,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-16T08:09:00"
+  },
+  {
+    "id": "M0001562",
+    "measId": "M0001562",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5612,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-16T08:12:00"
+  },
+  {
+    "id": "M0001563",
+    "measId": "M0001563",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5564,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-16T08:15:00"
+  },
+  {
+    "id": "M0001564",
+    "measId": "M0001564",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5586,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-16T08:18:00"
+  },
+  {
+    "id": "M0001566",
+    "measId": "M0001566",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5612,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-16T08:24:00"
+  },
+  {
+    "id": "M0001568",
+    "measId": "M0001568",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5591,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-16T08:30:00"
+  },
+  {
+    "id": "M0001569",
+    "measId": "M0001569",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5573,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-16T08:33:00"
+  },
+  {
+    "id": "M0001570",
+    "measId": "M0001570",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.552,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-16T08:36:00"
+  },
+  {
+    "id": "M0001572",
+    "measId": "M0001572",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.554,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-16T08:42:00"
+  },
+  {
+    "id": "M0001573",
+    "measId": "M0001573",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5618,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-16T08:45:00"
+  },
+  {
+    "id": "M0001574",
+    "measId": "M0001574",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5565,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-16T08:48:00"
+  },
+  {
+    "id": "M0001576",
+    "measId": "M0001576",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5545,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-16T08:54:00"
+  },
+  {
+    "id": "M0001578",
+    "measId": "M0001578",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5574,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-16T09:00:00"
+  },
+  {
+    "id": "M0001579",
+    "measId": "M0001579",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5595,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-16T09:03:00"
+  },
+  {
+    "id": "M0001581",
+    "measId": "M0001581",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.552,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-16T09:09:00"
+  },
+  {
+    "id": "M0001582",
+    "measId": "M0001582",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5549,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-16T09:12:00"
+  },
+  {
+    "id": "M0001583",
+    "measId": "M0001583",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5523,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-16T09:15:00"
+  },
+  {
+    "id": "M0001585",
+    "measId": "M0001585",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5624,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-16T09:21:00"
+  },
+  {
+    "id": "M0001586",
+    "measId": "M0001586",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5599,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-16T09:24:00"
+  },
+  {
+    "id": "M0001587",
+    "measId": "M0001587",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5555,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-16T09:27:00"
+  },
+  {
+    "id": "M0001588",
+    "measId": "M0001588",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5583,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-16T09:30:00"
+  },
+  {
+    "id": "M0001590",
+    "measId": "M0001590",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5493,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-16T09:36:00"
+  },
+  {
+    "id": "M0001592",
+    "measId": "M0001592",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5511,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-16T09:42:00"
+  },
+  {
+    "id": "M0001594",
+    "measId": "M0001594",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5586,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-16T09:48:00"
+  },
+  {
+    "id": "M0001595",
+    "measId": "M0001595",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5568,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-16T09:51:00"
+  },
+  {
+    "id": "M0001597",
+    "measId": "M0001597",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5627,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-16T09:57:00"
+  },
+  {
+    "id": "M0001598",
+    "measId": "M0001598",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5556,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-16T10:00:00"
+  },
+  {
+    "id": "M0001599",
+    "measId": "M0001599",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5463,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-16T10:03:00"
+  },
+  {
+    "id": "M0001601",
+    "measId": "M0001601",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5571,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-16T10:09:00"
+  },
+  {
+    "id": "M0001602",
+    "measId": "M0001602",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5527,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-16T10:12:00"
+  },
+  {
+    "id": "M0001603",
+    "measId": "M0001603",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5557,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-16T10:15:00"
+  },
+  {
+    "id": "M0001604",
+    "measId": "M0001604",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5502,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-16T10:18:00"
+  },
+  {
+    "id": "M0001605",
+    "measId": "M0001605",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5592,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-16T10:21:00"
+  },
+  {
+    "id": "M0001606",
+    "measId": "M0001606",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5548,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-16T10:24:00"
+  },
+  {
+    "id": "M0001607",
+    "measId": "M0001607",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5517,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-16T10:27:00"
+  },
+  {
+    "id": "M0001608",
+    "measId": "M0001608",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5459,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-16T10:30:00"
+  },
+  {
+    "id": "M0001609",
+    "measId": "M0001609",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5622,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-16T10:33:00"
+  },
+  {
+    "id": "M0001610",
+    "measId": "M0001610",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5502,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-16T10:36:00"
+  },
+  {
+    "id": "M0001611",
+    "measId": "M0001611",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5594,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-16T10:39:00"
+  },
+  {
+    "id": "M0001612",
+    "measId": "M0001612",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5549,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-16T10:42:00"
+  },
+  {
+    "id": "M0001613",
+    "measId": "M0001613",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5616,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-16T10:45:00"
+  },
+  {
+    "id": "M0001614",
+    "measId": "M0001614",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5526,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-16T10:48:00"
+  },
+  {
+    "id": "M0001615",
+    "measId": "M0001615",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5624,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-16T10:51:00"
+  },
+  {
+    "id": "M0001616",
+    "measId": "M0001616",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5589,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-16T10:54:00"
+  },
+  {
+    "id": "M0001617",
+    "measId": "M0001617",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5531,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-16T10:57:00"
+  },
+  {
+    "id": "M0001620",
+    "measId": "M0001620",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5528,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-16T11:06:00"
+  },
+  {
+    "id": "M0001621",
+    "measId": "M0001621",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.554,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-16T11:09:00"
+  },
+  {
+    "id": "M0001622",
+    "measId": "M0001622",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5612,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-16T11:12:00"
+  },
+  {
+    "id": "M0001623",
+    "measId": "M0001623",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5534,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-16T11:15:00"
+  },
+  {
+    "id": "M0001625",
+    "measId": "M0001625",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5522,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-16T11:21:00"
+  },
+  {
+    "id": "M0001626",
+    "measId": "M0001626",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5542,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-16T11:24:00"
+  },
+  {
+    "id": "M0001629",
+    "measId": "M0001629",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5621,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-16T11:33:00"
+  },
+  {
+    "id": "M0001631",
+    "measId": "M0001631",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5627,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-16T11:39:00"
+  },
+  {
+    "id": "M0001632",
+    "measId": "M0001632",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5535,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-16T11:42:00"
+  },
+  {
+    "id": "M0001635",
+    "measId": "M0001635",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5572,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-16T11:51:00"
+  },
+  {
+    "id": "M0001637",
+    "measId": "M0001637",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5519,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-16T11:57:00"
+  },
+  {
+    "id": "M0001638",
+    "measId": "M0001638",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5579,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-16T12:00:00"
+  },
+  {
+    "id": "M0001639",
+    "measId": "M0001639",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5504,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-16T12:03:00"
+  },
+  {
+    "id": "M0001640",
+    "measId": "M0001640",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5564,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-16T12:06:00"
+  },
+  {
+    "id": "M0001643",
+    "measId": "M0001643",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5612,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-16T12:15:00"
+  },
+  {
+    "id": "M0001644",
+    "measId": "M0001644",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5527,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-16T12:18:00"
+  },
+  {
+    "id": "M0001646",
+    "measId": "M0001646",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5559,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-16T12:24:00"
+  },
+  {
+    "id": "M0001647",
+    "measId": "M0001647",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.562,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-16T12:27:00"
+  },
+  {
+    "id": "M0001648",
+    "measId": "M0001648",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5627,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-16T12:30:00"
+  },
+  {
+    "id": "M0001650",
+    "measId": "M0001650",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5539,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-16T12:36:00"
+  },
+  {
+    "id": "M0001653",
+    "measId": "M0001653",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5616,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-16T12:45:00"
+  },
+  {
+    "id": "M0001654",
+    "measId": "M0001654",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5567,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-16T12:48:00"
+  },
+  {
+    "id": "M0001656",
+    "measId": "M0001656",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5502,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-16T12:54:00"
+  },
+  {
+    "id": "M0001657",
+    "measId": "M0001657",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5626,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-16T12:57:00"
+  },
+  {
+    "id": "M0001661",
+    "measId": "M0001661",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5537,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-16T13:09:00"
+  },
+  {
+    "id": "M0001662",
+    "measId": "M0001662",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5587,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-16T13:12:00"
+  },
+  {
+    "id": "M0001664",
+    "measId": "M0001664",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.553,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-16T13:18:00"
+  },
+  {
+    "id": "M0001666",
+    "measId": "M0001666",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5534,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-16T13:24:00"
+  },
+  {
+    "id": "M0001667",
+    "measId": "M0001667",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5585,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-16T13:27:00"
+  },
+  {
+    "id": "M0001669",
+    "measId": "M0001669",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5598,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-16T13:33:00"
+  },
+  {
+    "id": "M0001670",
+    "measId": "M0001670",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5596,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-16T13:36:00"
+  },
+  {
+    "id": "M0001671",
+    "measId": "M0001671",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5497,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-16T13:39:00"
+  },
+  {
+    "id": "M0001672",
+    "measId": "M0001672",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5511,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-17T06:00:00"
+  },
+  {
+    "id": "M0001673",
+    "measId": "M0001673",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5546,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-17T06:03:00"
+  },
+  {
+    "id": "M0001674",
+    "measId": "M0001674",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.552,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-17T06:06:00"
+  },
+  {
+    "id": "M0001675",
+    "measId": "M0001675",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5613,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-17T06:09:00"
+  },
+  {
+    "id": "M0001676",
+    "measId": "M0001676",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5647,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-17T06:12:00"
+  },
+  {
+    "id": "M0001678",
+    "measId": "M0001678",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5529,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-17T06:18:00"
+  },
+  {
+    "id": "M0001679",
+    "measId": "M0001679",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5508,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-17T06:21:00"
+  },
+  {
+    "id": "M0001681",
+    "measId": "M0001681",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5487,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-17T06:27:00"
+  },
+  {
+    "id": "M0001683",
+    "measId": "M0001683",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5536,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-17T06:33:00"
+  },
+  {
+    "id": "M0001684",
+    "measId": "M0001684",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5555,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-17T06:36:00"
+  },
+  {
+    "id": "M0001685",
+    "measId": "M0001685",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5519,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-17T06:39:00"
+  },
+  {
+    "id": "M0001686",
+    "measId": "M0001686",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5607,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-17T06:42:00"
+  },
+  {
+    "id": "M0001687",
+    "measId": "M0001687",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.554,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-17T06:45:00"
+  },
+  {
+    "id": "M0001688",
+    "measId": "M0001688",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5633,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-17T06:48:00"
+  },
+  {
+    "id": "M0001689",
+    "measId": "M0001689",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5501,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-17T06:51:00"
+  },
+  {
+    "id": "M0001690",
+    "measId": "M0001690",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5648,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-17T06:54:00"
+  },
+  {
+    "id": "M0001691",
+    "measId": "M0001691",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5535,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-17T06:57:00"
+  },
+  {
+    "id": "M0001692",
+    "measId": "M0001692",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5585,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-17T07:00:00"
+  },
+  {
+    "id": "M0001695",
+    "measId": "M0001695",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5585,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-17T07:09:00"
+  },
+  {
+    "id": "M0001696",
+    "measId": "M0001696",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5518,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-17T07:12:00"
+  },
+  {
+    "id": "M0001697",
+    "measId": "M0001697",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.566,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-17T07:15:00"
+  },
+  {
+    "id": "M0001698",
+    "measId": "M0001698",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5545,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-17T07:18:00"
+  },
+  {
+    "id": "M0001699",
+    "measId": "M0001699",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5487,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-17T07:21:00"
+  },
+  {
+    "id": "M0001700",
+    "measId": "M0001700",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.556,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-17T07:24:00"
+  },
+  {
+    "id": "M0001701",
+    "measId": "M0001701",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5543,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-17T07:27:00"
+  },
+  {
+    "id": "M0001702",
+    "measId": "M0001702",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5523,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-17T07:30:00"
+  },
+  {
+    "id": "M0001703",
+    "measId": "M0001703",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.552,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-17T07:33:00"
+  },
+  {
+    "id": "M0001704",
+    "measId": "M0001704",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5614,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-17T07:36:00"
+  },
+  {
+    "id": "M0001705",
+    "measId": "M0001705",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5579,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-17T07:39:00"
+  },
+  {
+    "id": "M0001706",
+    "measId": "M0001706",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5567,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-17T07:42:00"
+  },
+  {
+    "id": "M0001707",
+    "measId": "M0001707",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5652,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-17T07:45:00"
+  },
+  {
+    "id": "M0001708",
+    "measId": "M0001708",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5544,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-17T07:48:00"
+  },
+  {
+    "id": "M0001709",
+    "measId": "M0001709",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5627,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-17T07:51:00"
+  },
+  {
+    "id": "M0001710",
+    "measId": "M0001710",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5635,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-17T07:54:00"
+  },
+  {
+    "id": "M0001712",
+    "measId": "M0001712",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5509,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-17T08:00:00"
+  },
+  {
+    "id": "M0001713",
+    "measId": "M0001713",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5597,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-17T08:03:00"
+  },
+  {
+    "id": "M0001714",
+    "measId": "M0001714",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5572,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-17T08:06:00"
+  },
+  {
+    "id": "M0001715",
+    "measId": "M0001715",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5563,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-17T08:09:00"
+  },
+  {
+    "id": "M0001716",
+    "measId": "M0001716",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.554,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-17T08:12:00"
+  },
+  {
+    "id": "M0001717",
+    "measId": "M0001717",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5599,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-17T08:15:00"
+  },
+  {
+    "id": "M0001718",
+    "measId": "M0001718",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5581,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-17T08:18:00"
+  },
+  {
+    "id": "M0001719",
+    "measId": "M0001719",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5571,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-17T08:21:00"
+  },
+  {
+    "id": "M0001720",
+    "measId": "M0001720",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.555,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-17T08:24:00"
+  },
+  {
+    "id": "M0001721",
+    "measId": "M0001721",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5521,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-17T08:27:00"
+  },
+  {
+    "id": "M0001722",
+    "measId": "M0001722",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5648,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-17T08:30:00"
+  },
+  {
+    "id": "M0001723",
+    "measId": "M0001723",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5561,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-17T08:33:00"
+  },
+  {
+    "id": "M0001724",
+    "measId": "M0001724",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5551,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-17T08:36:00"
+  },
+  {
+    "id": "M0001725",
+    "measId": "M0001725",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.559,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-17T08:39:00"
+  },
+  {
+    "id": "M0001726",
+    "measId": "M0001726",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5635,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-17T08:42:00"
+  },
+  {
+    "id": "M0001727",
+    "measId": "M0001727",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5668,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-17T08:45:00"
+  },
+  {
+    "id": "M0001728",
+    "measId": "M0001728",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5626,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-17T08:48:00"
+  },
+  {
+    "id": "M0001729",
+    "measId": "M0001729",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5556,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-17T08:51:00"
+  },
+  {
+    "id": "M0001730",
+    "measId": "M0001730",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5557,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-17T08:54:00"
+  },
+  {
+    "id": "M0001731",
+    "measId": "M0001731",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5516,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-17T08:57:00"
+  },
+  {
+    "id": "M0001732",
+    "measId": "M0001732",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5537,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-17T09:00:00"
+  },
+  {
+    "id": "M0001733",
+    "measId": "M0001733",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5658,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-17T09:03:00"
+  },
+  {
+    "id": "M0001734",
+    "measId": "M0001734",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.552,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-17T09:06:00"
+  },
+  {
+    "id": "M0001735",
+    "measId": "M0001735",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5656,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-17T09:09:00"
+  },
+  {
+    "id": "M0001736",
+    "measId": "M0001736",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5526,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-17T09:12:00"
+  },
+  {
+    "id": "M0001737",
+    "measId": "M0001737",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5553,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-17T09:15:00"
+  },
+  {
+    "id": "M0001738",
+    "measId": "M0001738",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5561,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-17T09:18:00"
+  },
+  {
+    "id": "M0001739",
+    "measId": "M0001739",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5621,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-17T09:21:00"
+  },
+  {
+    "id": "M0001740",
+    "measId": "M0001740",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5666,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-17T09:24:00"
+  },
+  {
+    "id": "M0001741",
+    "measId": "M0001741",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5549,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-17T09:27:00"
+  },
+  {
+    "id": "M0001742",
+    "measId": "M0001742",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5647,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-17T09:30:00"
+  },
+  {
+    "id": "M0001744",
+    "measId": "M0001744",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5655,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-17T09:36:00"
+  },
+  {
+    "id": "M0001745",
+    "measId": "M0001745",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5511,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-17T09:39:00"
+  },
+  {
+    "id": "M0001747",
+    "measId": "M0001747",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5649,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-17T09:45:00"
+  },
+  {
+    "id": "M0001748",
+    "measId": "M0001748",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5575,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-17T09:48:00"
+  },
+  {
+    "id": "M0001749",
+    "measId": "M0001749",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5522,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-17T09:51:00"
+  },
+  {
+    "id": "M0001750",
+    "measId": "M0001750",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5628,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-17T09:54:00"
+  },
+  {
+    "id": "M0001752",
+    "measId": "M0001752",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5648,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-17T10:00:00"
+  },
+  {
+    "id": "M0001753",
+    "measId": "M0001753",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5473,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-17T10:03:00"
+  },
+  {
+    "id": "M0001754",
+    "measId": "M0001754",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5611,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-17T10:06:00"
+  },
+  {
+    "id": "M0001756",
+    "measId": "M0001756",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5618,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-17T10:12:00"
+  },
+  {
+    "id": "M0001757",
+    "measId": "M0001757",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5621,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-17T10:15:00"
+  },
+  {
+    "id": "M0001758",
+    "measId": "M0001758",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.553,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-17T10:18:00"
+  },
+  {
+    "id": "M0001759",
+    "measId": "M0001759",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5608,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-17T10:21:00"
+  },
+  {
+    "id": "M0001760",
+    "measId": "M0001760",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5597,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-17T10:24:00"
+  },
+  {
+    "id": "M0001761",
+    "measId": "M0001761",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5635,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-17T10:27:00"
+  },
+  {
+    "id": "M0001762",
+    "measId": "M0001762",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.56,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-17T10:30:00"
+  },
+  {
+    "id": "M0001763",
+    "measId": "M0001763",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5538,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-17T10:33:00"
+  },
+  {
+    "id": "M0001764",
+    "measId": "M0001764",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5521,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-17T10:36:00"
+  },
+  {
+    "id": "M0001765",
+    "measId": "M0001765",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.566,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-17T10:39:00"
+  },
+  {
+    "id": "M0001766",
+    "measId": "M0001766",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5645,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-17T10:42:00"
+  },
+  {
+    "id": "M0001767",
+    "measId": "M0001767",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5526,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-17T10:45:00"
+  },
+  {
+    "id": "M0001768",
+    "measId": "M0001768",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5513,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-17T10:48:00"
+  },
+  {
+    "id": "M0001770",
+    "measId": "M0001770",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5566,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-17T10:54:00"
+  },
+  {
+    "id": "M0001771",
+    "measId": "M0001771",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5636,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-17T10:57:00"
+  },
+  {
+    "id": "M0001772",
+    "measId": "M0001772",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5508,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-17T11:00:00"
+  },
+  {
+    "id": "M0001775",
+    "measId": "M0001775",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5632,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-17T11:09:00"
+  },
+  {
+    "id": "M0001777",
+    "measId": "M0001777",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5643,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-17T11:15:00"
+  },
+  {
+    "id": "M0001778",
+    "measId": "M0001778",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5599,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-17T11:18:00"
+  },
+  {
+    "id": "M0001779",
+    "measId": "M0001779",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5658,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-17T11:21:00"
+  },
+  {
+    "id": "M0001780",
+    "measId": "M0001780",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5608,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-17T11:24:00"
+  },
+  {
+    "id": "M0001781",
+    "measId": "M0001781",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5601,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-17T11:27:00"
+  },
+  {
+    "id": "M0001782",
+    "measId": "M0001782",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5653,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-17T11:30:00"
+  },
+  {
+    "id": "M0001783",
+    "measId": "M0001783",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5664,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-17T11:33:00"
+  },
+  {
+    "id": "M0001784",
+    "measId": "M0001784",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5573,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-17T11:36:00"
+  },
+  {
+    "id": "M0001785",
+    "measId": "M0001785",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.562,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-17T11:39:00"
+  },
+  {
+    "id": "M0001786",
+    "measId": "M0001786",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5587,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-17T11:42:00"
+  },
+  {
+    "id": "M0001787",
+    "measId": "M0001787",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5598,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-17T11:45:00"
+  },
+  {
+    "id": "M0001788",
+    "measId": "M0001788",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5546,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-17T11:48:00"
+  },
+  {
+    "id": "M0001789",
+    "measId": "M0001789",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5533,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-17T11:51:00"
+  },
+  {
+    "id": "M0001790",
+    "measId": "M0001790",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5582,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-17T11:54:00"
+  },
+  {
+    "id": "M0001791",
+    "measId": "M0001791",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5616,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-17T11:57:00"
+  },
+  {
+    "id": "M0001792",
+    "measId": "M0001792",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5559,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-17T12:00:00"
+  },
+  {
+    "id": "M0001793",
+    "measId": "M0001793",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5546,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-17T12:03:00"
+  },
+  {
+    "id": "M0001794",
+    "measId": "M0001794",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.552,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-17T12:06:00"
+  },
+  {
+    "id": "M0001795",
+    "measId": "M0001795",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5576,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-17T12:09:00"
+  },
+  {
+    "id": "M0001796",
+    "measId": "M0001796",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5542,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-17T12:12:00"
+  },
+  {
+    "id": "M0001797",
+    "measId": "M0001797",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5566,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-17T12:15:00"
+  },
+  {
+    "id": "M0001798",
+    "measId": "M0001798",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5582,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-17T12:18:00"
+  },
+  {
+    "id": "M0001799",
+    "measId": "M0001799",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5633,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-17T12:21:00"
+  },
+  {
+    "id": "M0001800",
+    "measId": "M0001800",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5527,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-17T12:24:00"
+  },
+  {
+    "id": "M0001801",
+    "measId": "M0001801",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5599,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-17T12:27:00"
+  },
+  {
+    "id": "M0001802",
+    "measId": "M0001802",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5648,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-17T12:30:00"
+  },
+  {
+    "id": "M0001803",
+    "measId": "M0001803",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5643,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-17T12:33:00"
+  },
+  {
+    "id": "M0001804",
+    "measId": "M0001804",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5646,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-17T12:36:00"
+  },
+  {
+    "id": "M0001805",
+    "measId": "M0001805",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5551,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-17T12:39:00"
+  },
+  {
+    "id": "M0001806",
+    "measId": "M0001806",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5501,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-17T12:42:00"
+  },
+  {
+    "id": "M0001807",
+    "measId": "M0001807",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5563,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-17T12:45:00"
+  },
+  {
+    "id": "M0001808",
+    "measId": "M0001808",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5506,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-17T12:48:00"
+  },
+  {
+    "id": "M0001809",
+    "measId": "M0001809",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5514,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-17T12:51:00"
+  },
+  {
+    "id": "M0001810",
+    "measId": "M0001810",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5585,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 3,
+    "measTs": "2026-09-17T12:54:00"
+  },
+  {
+    "id": "M0001811",
+    "measId": "M0001811",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5644,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-17T12:57:00"
+  },
+  {
+    "id": "M0001812",
+    "measId": "M0001812",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5625,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-17T13:00:00"
+  },
+  {
+    "id": "M0001814",
+    "measId": "M0001814",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5593,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-17T13:06:00"
+  },
+  {
+    "id": "M0001815",
+    "measId": "M0001815",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5645,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-17T13:09:00"
+  },
+  {
+    "id": "M0001816",
+    "measId": "M0001816",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5491,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_2",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-17T13:12:00"
+  },
+  {
+    "id": "M0001817",
+    "measId": "M0001817",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5518,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": "RULE_1",
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-17T13:15:00"
+  },
+  {
+    "id": "M0000001",
+    "measId": "M0000001",
+    "lot": {
+      "id": "HRS-RE-2609-01"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.506,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-06T06:00:00"
+  },
+  {
+    "id": "M0000041",
+    "measId": "M0000041",
+    "lot": {
+      "id": "HRS-RE-2609-01"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5053,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-06T08:00:00"
+  },
+  {
+    "id": "M0000081",
+    "measId": "M0000081",
+    "lot": {
+      "id": "HRS-RE-2609-01"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5025,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-06T10:00:00"
+  },
+  {
+    "id": "M0000121",
+    "measId": "M0000121",
+    "lot": {
+      "id": "HRS-RE-2609-01"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.489,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-06T12:00:00"
+  },
+  {
+    "id": "M0000161",
+    "measId": "M0000161",
+    "lot": {
+      "id": "HRS-RE-2609-02"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.4993,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-07T06:18:00"
+  },
+  {
+    "id": "M0000201",
+    "measId": "M0000201",
+    "lot": {
+      "id": "HRS-RE-2609-02"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.4961,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-07T08:18:00"
+  },
+  {
+    "id": "M0000241",
+    "measId": "M0000241",
+    "lot": {
+      "id": "HRS-RE-2609-02"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.4995,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-07T10:18:00"
+  },
+  {
+    "id": "M0000281",
+    "measId": "M0000281",
+    "lot": {
+      "id": "HRS-RE-2609-02"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5016,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-07T12:18:00"
+  },
+  {
+    "id": "M0000321",
+    "measId": "M0000321",
+    "lot": {
+      "id": "HRS-RE-2609-03"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5081,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-08T06:39:00"
+  },
+  {
+    "id": "M0000361",
+    "measId": "M0000361",
+    "lot": {
+      "id": "HRS-RE-2609-03"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5045,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-08T08:39:00"
+  },
+  {
+    "id": "M0000401",
+    "measId": "M0000401",
+    "lot": {
+      "id": "HRS-RE-2609-03"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5034,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-08T10:39:00"
+  },
+  {
+    "id": "M0000441",
+    "measId": "M0000441",
+    "lot": {
+      "id": "HRS-RE-2609-03"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.4937,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 6,
+    "measTs": "2026-09-08T12:39:00"
+  },
+  {
+    "id": "M0000481",
+    "measId": "M0000481",
+    "lot": {
+      "id": "HRS-RE-2609-04"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5026,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-09T07:06:00"
+  },
+  {
+    "id": "M0000521",
+    "measId": "M0000521",
+    "lot": {
+      "id": "HRS-RE-2609-04"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.4939,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-09T09:06:00"
+  },
+  {
+    "id": "M0000561",
+    "measId": "M0000561",
+    "lot": {
+      "id": "HRS-RE-2609-04"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.501,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-09T11:06:00"
+  },
+  {
+    "id": "M0000601",
+    "measId": "M0000601",
+    "lot": {
+      "id": "HRS-RE-2609-04"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5042,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-09T13:06:00"
+  },
+  {
+    "id": "M0000641",
+    "measId": "M0000641",
+    "lot": {
+      "id": "HRS-RE-2609-05"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5082,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-10T07:21:00"
+  },
+  {
+    "id": "M0000681",
+    "measId": "M0000681",
+    "lot": {
+      "id": "HRS-RE-2609-05"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5057,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-10T09:21:00"
+  },
+  {
+    "id": "M0000721",
+    "measId": "M0000721",
+    "lot": {
+      "id": "HRS-RE-2609-05"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5073,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-10T11:21:00"
+  },
+  {
+    "id": "M0000761",
+    "measId": "M0000761",
+    "lot": {
+      "id": "HRS-RE-2609-05"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5028,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-10T13:21:00"
+  },
+  {
+    "id": "M0000801",
+    "measId": "M0000801",
+    "lot": {
+      "id": "HRS-RE-2609-06"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.4985,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-11T07:39:00"
+  },
+  {
+    "id": "M0000841",
+    "measId": "M0000841",
+    "lot": {
+      "id": "HRS-RE-2609-06"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5069,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-11T09:39:00"
+  },
+  {
+    "id": "M0000881",
+    "measId": "M0000881",
+    "lot": {
+      "id": "HRS-RE-2609-06"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5118,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 2,
+    "measTs": "2026-09-11T11:39:00"
+  },
+  {
+    "id": "M0000921",
+    "measId": "M0000921",
+    "lot": {
+      "id": "HRS-RE-2609-07"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5001,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-12T06:12:00"
+  },
+  {
+    "id": "M0000961",
+    "measId": "M0000961",
+    "lot": {
+      "id": "HRS-RE-2609-07"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5022,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-12T08:12:00"
+  },
+  {
+    "id": "M0001001",
+    "measId": "M0001001",
+    "lot": {
+      "id": "HRS-RE-2609-07"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.4987,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-12T10:12:00"
+  },
+  {
+    "id": "M0001041",
+    "measId": "M0001041",
+    "lot": {
+      "id": "HRS-RE-2609-07"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5011,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-12T12:12:00"
+  },
+  {
+    "id": "M0001081",
+    "measId": "M0001081",
+    "lot": {
+      "id": "HRS-RE-2609-08"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.4962,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-13T06:36:00"
+  },
+  {
+    "id": "M0001121",
+    "measId": "M0001121",
+    "lot": {
+      "id": "HRS-RE-2609-08"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.4904,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-13T08:36:00"
+  },
+  {
+    "id": "M0001161",
+    "measId": "M0001161",
+    "lot": {
+      "id": "HRS-RE-2609-08"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.4936,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-13T10:36:00"
+  },
+  {
+    "id": "M0001201",
+    "measId": "M0001201",
+    "lot": {
+      "id": "HRS-RE-2609-08"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.505,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-13T12:36:00"
+  },
+  {
+    "id": "M0001257",
+    "measId": "M0001257",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5387,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 1,
+    "measTs": "2026-09-14T08:00:00"
+  },
+  {
+    "id": "M0001320",
+    "measId": "M0001320",
+    "lot": {
+      "id": "HRS-RE-2609-09"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5355,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 8,
+    "measTs": "2026-09-14T11:09:00"
+  },
+  {
+    "id": "M0001386",
+    "measId": "M0001386",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5412,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-15T06:42:00"
+  },
+  {
+    "id": "M0001463",
+    "measId": "M0001463",
+    "lot": {
+      "id": "HRS-RE-2609-10"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5419,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 4,
+    "measTs": "2026-09-15T10:33:00"
+  },
+  {
+    "id": "M0001546",
+    "measId": "M0001546",
+    "lot": {
+      "id": "HRS-RE-2609-11"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5454,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 5,
+    "measTs": "2026-09-16T07:24:00"
+  },
+  {
+    "id": "M0001694",
+    "measId": "M0001694",
+    "lot": {
+      "id": "HRS-RE-2609-12"
+    },
+    "parameter": "ring_electrode_od_mm",
+    "measValue": 2.5473,
+    "usl": 2.55,
+    "lsl": 2.45,
+    "nominal": 2.5,
+    "spcRuleViolated": null,
+    "equipmentId": "CASHEL-L4",
+    "cavity": 7,
+    "measTs": "2026-09-17T07:06:00"
+  }
+]

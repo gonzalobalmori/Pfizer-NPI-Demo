@@ -1,0 +1,36 @@
+{
+  "provider": "Steris Venlo",
+  "portal": "steris-booking.example.com",
+  "polled_at": "2026-09-11T08:00:00+02:00",
+  "bookings": [
+    {
+      "booking_ref": "BKG-2026-33412",
+      "chamber_id": "VNL-EO-02",
+      "process": "EO",
+      "slot_datetime": "2026-10-12T07:00:00",
+      "lot_ref": "VPG2-VAL-03",
+      "status": "Cancelled",
+      "cancelled_at": "2026-09-11T07:58:00+02:00",
+      "reason": "Chamber deviation — capacity withdrawn",
+      "commitment": "Non-committed"
+    },
+    {
+      "booking_ref": "BKG-2026-33301",
+      "chamber_id": "VNL-EO-01",
+      "process": "EO",
+      "slot_datetime": "2026-09-28T07:00:00",
+      "lot_ref": "OCT-VAL-02",
+      "status": "Booked",
+      "commitment": "Non-committed"
+    },
+    {
+      "booking_ref": "BKG-2026-33455",
+      "chamber_id": "VNL-EO-02",
+      "process": "EO",
+      "slot_datetime": "2026-10-20T07:00:00",
+      "lot_ref": "EMB-VAL-05",
+      "status": "Booked",
+      "commitment": "Committed"
+    }
+  ]
+}

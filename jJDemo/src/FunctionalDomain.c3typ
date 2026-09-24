@@ -1,0 +1,23 @@
+/**
+ * A functional domain that owns work in the NPI programme. Twelve are modelled,
+ * exactly the business list: Governance, R&D / Design, Clinical, Regulatory,
+ * Quality, Manufacturing, Sourcing, Supply Chain, Commercial, Market Access,
+ * IT / Digital, Finance.
+ *
+ * Each domain is served by one {@link Agent} in the fleet and owns many
+ * {@link Activity}s. The by-domain reconciliation (12 domains summing to 107
+ * activities) is model invariant §3.6.7.
+ */
+entity type FunctionalDomain mixes SeedData {
+  /** Short domain code used on activity rows, e.g. "src", "qua", "reg". */
+  code: !string
+
+  /** Domain name as the business names it, e.g. "Sourcing". */
+  name: !string
+
+  /** The agent that serves this domain. Inverse of {@link Agent#domain}. */
+  agent: Agent
+
+  /** Activities owned by this domain. Inverse of {@link Activity#domain}. */
+  activities: [Activity](domain)
+}

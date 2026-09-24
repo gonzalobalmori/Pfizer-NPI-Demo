@@ -1,0 +1,57 @@
+/**
+ * A Corrective And Preventive Action record. A CAPA is opened only when there is
+ * a genuine quality problem — a manufacturing or product defect — never for a
+ * routine supplier or scheduling event. The anchor case is CAPA-2026-0149 on
+ * {@link Finding} NPI-0412: opened against VARIPULSE commercial-batch
+ * manufacturing after line 3 produced three batches out of spec on the
+ * dimensional check. Its containment holds the affected batches and keeps
+ * commercial supply on the unaffected line 5; its corrective action is a DMAIC on
+ * the line-3 dimensional drift (Measure and Analyse complete, Improve in
+ * progress, Control unsigned), which is why the CAPA is overdue; and its
+ * effectiveness check re-qualifies line 3 for commercial output only after the
+ * DMAIC Control phase signs off and a confirmatory run passes.
+ *
+ * The approve transaction writes the containment closure and opens the corrective
+ * action and effectiveness check (§2.4). A CAPA belongs to a {@link Finding} and
+ * a {@link Launch} and is closed by a {@link Decision}.
+ */
+entity type CAPA {
+  /** Seed key, e.g. "seed_capa_0148". */
+  id: !string
+
+  /** Business CAPA id, e.g. "CAPA-2026-0148". */
+  capaId: string
+
+  /** The process the CAPA was opened against, e.g. "Supplier-managed EO sterilisation". */
+  openedAgainstProcess: string
+
+  /** Who opened it, e.g. "Quality agent". */
+  openedBy: string
+
+  /** When it was opened. */
+  openedAt: datetime
+
+  /** The containment action — what gets the validation executed in time. */
+  containmentAction: string
+
+  /** The corrective action — permanent Sterigenics qualification + committed-capacity clause. */
+  correctiveAction: string
+
+  /** The effectiveness check — validation report delivered by 06 Nov, ahead of the gate. */
+  effectivenessCheck: string
+
+  /** When the effectiveness check is due. */
+  effectivenessDueDate: datetime
+
+  /** CAPA status. Moves from OPEN to CONTAINED when the containment closure is written on approval. */
+  status: string enum('OPEN', 'CONTAINED', 'CORRECTIVE_IN_PROGRESS', 'CLOSED')
+
+  /** The finding this CAPA was opened from. */
+  finding: Finding
+
+  /** The launch this CAPA is against. */
+  launch: Launch
+
+  /** The decision that closes the containment. */
+  closedByDecision: Decision
+}

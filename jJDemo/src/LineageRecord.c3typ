@@ -1,0 +1,36 @@
+/**
+ * A provenance breadcrumb for a single loaded ontology object: which feed, which
+ * file, which source row, and which transform produced it. This is what makes
+ * demo 1 ("trace one number back to a source row") a one-click walk: start on
+ * "G3 +47 days", read the {@link Gate}'s lineage record, and it names
+ * `PPM_GATE / PPM_GATE_20260911.csv / row 3 / SrcPpmGate-Gate`.
+ *
+ * The platform records some lineage natively; this type gives the demo an
+ * explicit, screen-readable trail without depending on env-specific lineage
+ * configuration. One row per (targetType, targetId) load. Operational → `data/`.
+ */
+entity type LineageRecord {
+  /** Stable id: "<targetType>__<targetId>", e.g. "Gate__seed_gate_varipulse_g3". */
+  id: !string
+
+  /** The ontology type the row landed on, e.g. "Gate". */
+  targetType: string
+
+  /** The ontology object id, e.g. "seed_gate_varipulse_g3". */
+  targetId: string
+
+  /** The feed code, e.g. "PPM_GATE". */
+  feedCode: string
+
+  /** The source file the value came from, e.g. "ppm/PPM_GATE_20260911.csv". */
+  sourceFile: string
+
+  /** The source-row business key, e.g. the GateId "G-VARIPULSE-G2-G3". */
+  sourceRowKey: string
+
+  /** The transform that mapped source → target, e.g. "SrcPpmGate-Gate". */
+  transform: string
+
+  /** When this lineage breadcrumb was written. */
+  loadedAt: datetime
+}

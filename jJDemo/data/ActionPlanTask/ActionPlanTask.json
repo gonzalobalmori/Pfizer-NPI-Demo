@@ -1,0 +1,340 @@
+[
+  {
+    "id": "seed_task_417_a_1",
+    "name": "Book the 29 Sep chamber slot at Sterigenics and issue the capacity PO",
+    "owner": "Sourcing agent",
+    "detail": "Sourcing agent · within guardrails · reversible for 24h",
+    "agentRunnable": true,
+    "optionKey": "a",
+    "status": "Not started",
+    "dueDate": null,
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_a_2",
+    "name": "Draft the half-cycle revalidation protocol from the OCTARAY G2 precedent",
+    "owner": "Quality agent",
+    "detail": "Quality agent · A. Kowalski reviews before execution",
+    "agentRunnable": true,
+    "optionKey": "a",
+    "status": "Not started",
+    "dueDate": "2026-09-15T00:00:00",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_a_3",
+    "name": "Notify BSI of the 9-day dossier shift and confirm the Q4 slot is held",
+    "owner": "Regulatory agent",
+    "detail": "Regulatory agent · S. Lindqvist countersigns the letter",
+    "agentRunnable": true,
+    "optionKey": "a",
+    "status": "Not started",
+    "dueDate": null,
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_a_4",
+    "name": "Re-baseline the launch plan to G3 13 Nov and cascade to G4, G5 and the tenders",
+    "owner": "Planning agent",
+    "detail": "Planning agent · runs once the slot is confirmed",
+    "agentRunnable": true,
+    "optionKey": "a",
+    "status": "Not started",
+    "dueDate": null,
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_a_5",
+    "name": "Execute a take-or-pay amendment on both sterilisers to stop this recurring",
+    "owner": "MO",
+    "detail": "M. Okafor · Sourcing · needs Legal countersignature",
+    "agentRunnable": false,
+    "optionKey": "a",
+    "status": "Not started",
+    "dueDate": "2026-09-18T00:00:00",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_a_6",
+    "name": "Approve the revalidation protocol and release the validation lots",
+    "owner": "AK",
+    "detail": "A. Kowalski · Quality · not delegable to an agent",
+    "agentRunnable": false,
+    "optionKey": "a",
+    "status": "Not started",
+    "dueDate": "2026-09-22T00:00:00",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_a_7",
+    "name": "Release €340k against the NPI contingency line",
+    "owner": "TB",
+    "detail": "T. Bergmann · Finance · within his delegated authority",
+    "agentRunnable": false,
+    "optionKey": "a",
+    "status": "Not started",
+    "dueDate": "2026-09-16T00:00:00",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_b_1",
+    "name": "Book X-ray capacity at Synergy Health Marcoule for the validation lots",
+    "owner": "Sourcing agent",
+    "detail": "Sourcing agent · site already on the ASL for radiation",
+    "agentRunnable": true,
+    "optionKey": "b",
+    "status": "Not started",
+    "dueDate": null,
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_b_2",
+    "name": "Commission the ISO 10993 biocompatibility bridging study",
+    "owner": "Quality agent",
+    "detail": "Quality agent · drafts the protocol, K. Tanaka approves",
+    "agentRunnable": true,
+    "optionKey": "b",
+    "status": "Not started",
+    "dueDate": "2026-09-20T00:00:00",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_b_3",
+    "name": "Approve the material-compatibility and bridging protocol",
+    "owner": "KT",
+    "detail": "K. Tanaka · R&D · new modality, no precedent to reuse",
+    "agentRunnable": false,
+    "optionKey": "b",
+    "status": "Not started",
+    "dueDate": "2026-09-25T00:00:00",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_b_4",
+    "name": "Rewrite EU MDR Technical Documentation section 4.3 for the new modality",
+    "owner": "Regulatory agent",
+    "detail": "Regulatory agent · full rewrite, not a site swap",
+    "agentRunnable": true,
+    "optionKey": "b",
+    "status": "Not started",
+    "dueDate": "2026-10-10T00:00:00",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_b_5",
+    "name": "Pre-notify BSI of the modality change and request a new review slot",
+    "owner": "SL",
+    "detail": "S. Lindqvist · Regulatory · the Q4 window will be lost",
+    "agentRunnable": false,
+    "optionKey": "b",
+    "status": "Not started",
+    "dueDate": "2026-09-22T00:00:00",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_b_6",
+    "name": "Requalify the sterile barrier at the new radiation dose",
+    "owner": "AK",
+    "detail": "A. Kowalski · Quality · packaging may need respecification",
+    "agentRunnable": false,
+    "optionKey": "b",
+    "status": "Not started",
+    "dueDate": "2026-11-05T00:00:00",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_b_7",
+    "name": "Release €1.1M against the NPI contingency line",
+    "owner": "TB",
+    "detail": "T. Bergmann · Finance · above his authority, needs CFO sign-off",
+    "agentRunnable": false,
+    "optionKey": "b",
+    "status": "Not started",
+    "dueDate": "2026-09-18T00:00:00",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_c_1",
+    "name": "Reverse the G1 market-sequence decision at the September board",
+    "owner": "GB",
+    "detail": "Governance board · this unwinds a gate decision already taken",
+    "agentRunnable": false,
+    "optionKey": "c",
+    "status": "Not started",
+    "dueDate": "2026-09-24T00:00:00",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_c_2",
+    "name": "Confirm Irvine in-house EO capacity for the US validation lots",
+    "owner": "Sourcing agent",
+    "detail": "Sourcing agent · in-house, unaffected by the cancellation",
+    "agentRunnable": true,
+    "optionKey": "c",
+    "status": "Not started",
+    "dueDate": null,
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_c_3",
+    "name": "Split the dossier: file the US PMA on schedule, hold the EU Technical Documentation",
+    "owner": "Regulatory agent",
+    "detail": "Regulatory agent · the modular architecture makes this possible",
+    "agentRunnable": true,
+    "optionKey": "c",
+    "status": "Not started",
+    "dueDate": "2026-09-18T00:00:00",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_c_4",
+    "name": "Release the BSI Q4 slot and request February",
+    "owner": "SL",
+    "detail": "S. Lindqvist · Regulatory · the slot cannot be held unused",
+    "agentRunnable": false,
+    "optionKey": "c",
+    "status": "Not started",
+    "dueDate": "2026-09-19T00:00:00",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_c_5",
+    "name": "Re-phase the launch P&L to US-first",
+    "owner": "TB",
+    "detail": "T. Bergmann · Finance · €7.2M of EU value moves out of FY27",
+    "agentRunnable": false,
+    "optionKey": "c",
+    "status": "Not started",
+    "dueDate": "2026-09-22T00:00:00",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_c_6",
+    "name": "Re-sequence market activation and notify the affiliates",
+    "owner": "Commercial agent",
+    "detail": "Commercial agent · 14 affiliate plans to re-time",
+    "agentRunnable": true,
+    "optionKey": "c",
+    "status": "Not started",
+    "dueDate": null,
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_417_c_7",
+    "name": "Re-time the DE and FR tender entries to Q4 2027",
+    "owner": "DM",
+    "detail": "D. Moreau · Market Access · two windows deliberately skipped",
+    "agentRunnable": false,
+    "optionKey": "c",
+    "status": "Not started",
+    "dueDate": "2026-09-30T00:00:00",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_task_412_a_1",
+    "name": "Quarantine the 3 out-of-spec line-3 commercial batches and issue the containment hold",
+    "owner": "Quality agent",
+    "detail": "Quality agent · within guardrails · reversible for 24h",
+    "agentRunnable": true,
+    "optionKey": "a",
+    "status": "Not started",
+    "dueDate": null,
+    "decision": {
+      "id": "seed_decision_412"
+    }
+  },
+  {
+    "id": "seed_task_412_a_2",
+    "name": "Continue commercial supply from line 5 and confirm the 100% dimensional check",
+    "owner": "Line Monitor agent",
+    "detail": "Line Monitor agent · line 5 unaffected and qualified on the identical spec",
+    "agentRunnable": true,
+    "optionKey": "a",
+    "status": "Not started",
+    "dueDate": null,
+    "decision": {
+      "id": "seed_decision_412"
+    }
+  },
+  {
+    "id": "seed_task_412_a_3",
+    "name": "Re-weight the commercial allocation across markets — protect the lead markets, defer the lower-priority ones",
+    "owner": "Planning agent",
+    "detail": "Planning agent · redistributes the reduced commercial volume against the launch plan",
+    "agentRunnable": true,
+    "optionKey": "a",
+    "status": "Not started",
+    "dueDate": null,
+    "decision": {
+      "id": "seed_decision_412"
+    }
+  },
+  {
+    "id": "seed_task_412_a_4",
+    "name": "Re-baseline the P3 activities to hold G3 and cascade the batch shortfall to the build plan",
+    "owner": "Planning agent",
+    "detail": "Planning agent · runs once the revised allocation is confirmed",
+    "agentRunnable": true,
+    "optionKey": "a",
+    "status": "Not started",
+    "dueDate": null,
+    "decision": {
+      "id": "seed_decision_412"
+    }
+  },
+  {
+    "id": "seed_task_412_a_5",
+    "name": "Approve the revised market-priority allocation for the reduced launch volume",
+    "owner": "LH",
+    "detail": "L. Haugen · Manufacturing + Commercial · prioritising markets is a commercial and planning trade-off",
+    "agentRunnable": false,
+    "optionKey": "a",
+    "status": "Not started",
+    "dueDate": "2026-09-19T00:00:00",
+    "decision": {
+      "id": "seed_decision_412"
+    }
+  }
+]

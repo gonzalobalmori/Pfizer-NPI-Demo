@@ -1,0 +1,196 @@
+[
+  {
+    "step": "1 / 16",
+    "title": "Three ways in, and we use two",
+    "labels": [
+      "01 · not built out in this demo",
+      "02 · we start here →",
+      "03 · and we finish here"
+    ],
+    "spotTexts": [
+      "›01StrategicDecisionsAssess and define the right strategic choices to enable a successful launch.Sourcing strategymake v",
+      "›202Pipeline StatusOverviewGet a clear view of your product pipeline for one division, with the option to see a consolid",
+      "›403ExecutionPlan, coordinate and track execution with end-to-end visibility.My actionspending, escalated and your own h"
+    ]
+  },
+  {
+    "step": "2 / 16",
+    "title": "Helena starts her day here",
+    "labels": [
+      "five on plan, three at risk, one off track",
+      "€11.2M worse in a month",
+      "worst case: 47 days"
+    ],
+    "spotTexts": [
+      "Launch health3on plan3at risk1off trackOff track: VARIPULSE Gen 2 PFA Catheter9 launches",
+      "Revenue exposed€38M▲ €11.2M in the last 30 days9.2% of pipeline value€412M total",
+      "Schedule discipline5daysAverage slip at gate closeTarget ≤ 5 daysworst 47 days"
+    ]
+  },
+  {
+    "step": "3 / 16",
+    "title": "Which launch is the 47 days?",
+    "labels": [
+      "four lenses, one screen",
+      "VARIPULSE Gen 2 · P3 · +47d, worst first"
+    ],
+    "spotTexts": [
+      "View the portfolio byProductMarketBusiness unitTimeline",
+      "VARIPULSE Gen 2 PFA CatheterBiosense Webster · Class III · PMA + EU MDR12345P3Design V&V + supplier qualification21 Dec "
+    ]
+  },
+  {
+    "step": "4 / 16",
+    "title": "And which market is carrying it?",
+    "labels": [
+      "Germany",
+      "6 launches · 1 off track · €24.1M",
+      "and the record behind it: NPI-0417"
+    ],
+    "spotTexts": [
+      "6DE Germany",
+      "6launches1off track€24.1Mat risk",
+      "VARIPULSE G2 has missed the Q2 2027 tender windowNPI-0417 · sterilisation slip"
+    ]
+  },
+  {
+    "step": "5 / 16",
+    "title": "The ones that are actually hers",
+    "labels": [
+      "pending · escalated · her own history",
+      "NPI-0417 · due 17:00 today"
+    ],
+    "spotTexts": [
+      "Pending actions4Escalated2History7",
+      "NPI-0417EO sterilisation validation slot cancelledVARIPULSE G2 · G3 Submission Commit · +47 days · €18.4M at riskAgent r"
+    ]
+  },
+  {
+    "step": "6 / 16",
+    "title": "How did this even reach me?",
+    "labels": [
+      "agent, action, and the time it happened"
+    ],
+    "spotTexts": [
+      "DETECTEDQuality agent · Steris Venlo cancelled the 12 Oct EO chamber slot booked for validation lot VPG2-VAL-03. Picked "
+    ]
+  },
+  {
+    "step": "7 / 16",
+    "title": "And then it stopped",
+    "labels": [
+      "stopped and waiting on her",
+      "closed with no human at all"
+    ],
+    "spotTexts": [
+      "Your decision5the fleet has done the work and stopped",
+      "Closed by the fleet3no human was involved"
+    ]
+  },
+  {
+    "step": "8 / 16",
+    "title": "The case, in the language of the quality",
+    "labels": [
+      "the quality record it opened",
+      "the gate, the slip, the exposure, the clock"
+    ],
+    "spotTexts": [
+      "CAPA-2026-0148",
+      "Gate at riskG3 Submission CommitGate date04 Nov 26Slip+47 daysRevenue exposed€18.4MDecide byDue today · 17:00"
+    ]
+  },
+  {
+    "step": "9 / 16",
+    "title": "What the CAPA actually needs from her",
+    "labels": [
+      "recommended · +9d for €340k",
+      "+62d and €1.1M",
+      "needs a G1 reversal"
+    ],
+    "spotTexts": [
+      "Dual-source to Sterigenics Grand RapidsHalf-cycle revalidation at an approved site, same modalityAgent recommends+9d ins",
+      "Switch modality to X-ray at MarcouleNeeds biocompatibility bridging and a dossier rewrite+62d€1.1MBSI Q4 slot forfeited€",
+      "Re-sequence — US first, EU wave 2Irvine steriliser is unaffected; needs a G1 decision reversal+78d in EU, none in US€0BS"
+    ]
+  },
+  {
+    "step": "10 / 16",
+    "title": "And the guardrails ran first",
+    "labels": [
+      "six checks, none breached"
+    ],
+    "spotTexts": [
+      "Run all 4 agent actions"
+    ]
+  },
+  {
+    "step": "11 / 16",
+    "title": "Why it came to her, in her colleagues’ o",
+    "labels": [
+      "four entries, three functions, one agent"
+    ],
+    "spotTexts": [
+      "MOM. OkaforSourcing10 Sep 19:40Steris have cancelled our 12 Oct slot. I pushed back on the phone — they have a genuine c"
+    ]
+  },
+  {
+    "step": "12 / 16",
+    "title": "One decision",
+    "labels": [
+      "click this, then press Next"
+    ],
+    "spotTexts": [
+      "Approve Option A"
+    ]
+  },
+  {
+    "step": "13 / 16",
+    "title": "What one decision moved",
+    "labels": [
+      "nothing off track",
+      "€18.4M released",
+      "47 days → 9"
+    ],
+    "spotTexts": [
+      "Launch health3on plan3at risk1off trackOff track: VARIPULSE Gen 2 PFA Catheter9 launches",
+      "Revenue exposed€38M▲ €11.2M in the last 30 days9.2% of pipeline value€412M total",
+      "Schedule discipline5daysAverage slip at gate closeTarget ≤ 5 daysworst 47 days"
+    ]
+  },
+  {
+    "step": "14 / 16",
+    "title": "Her own record",
+    "labels": [
+      "her decisions, with their outcomes"
+    ],
+    "spotTexts": [
+      "Decisions taken23last 90 days+4 vs prior 90 dClosed19of the 23 you took4 still openActions delegated61to agents and to p"
+    ]
+  },
+  {
+    "step": "15 / 16",
+    "title": "And the fleet’s record",
+    "labels": [
+      "32 actions, 14 agents",
+      "her approval, newest line"
+    ],
+    "spotTexts": [
+      "32 actions executed by 13 agents",
+      "11 Sep 08:41PlanningagentRe-baselined the affected gatesG3 holds if the line stops inside 5 daysVARIPULSE Gen 2 PFA Cath"
+    ]
+  },
+  {
+    "step": "16 / 16",
+    "title": "Or she could have just asked",
+    "labels": [
+      "the evidence it used",
+      "the recommendation and its confidence",
+      "buttons that open the record"
+    ],
+    "spotTexts": [
+      "Gate at riskG3 Submission Commit · 04 Nov 2026 · would move to 21 DecRevenue exposed€18.4M on the G3 slip, €6.2M on the ",
+      "What I would doTreat this as one supplier decision, not four findingsNPI-0417 (EO slot) and NPI-0412 (line 3 out of spec",
+      "Open NPI-0417See the agents on itOpen the activity plan"
+    ]
+  }
+]

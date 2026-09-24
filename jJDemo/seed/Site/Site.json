@@ -1,0 +1,42 @@
+[
+  {
+    "id": "seed_site_venlo",
+    "name": "Steris Venlo EO facility",
+    "location": "Venlo, NL",
+    "capabilities": "EO sterilisation",
+    "capacityAvailableFrom": "2026-11-28",
+    "supplier": {
+      "id": "seed_supplier_steris"
+    }
+  },
+  {
+    "id": "seed_site_grandrapids",
+    "name": "Sterigenics Grand Rapids",
+    "location": "Grand Rapids, US",
+    "capabilities": "EO sterilisation",
+    "capacityAvailableFrom": "2026-09-29",
+    "supplier": {
+      "id": "seed_supplier_sterigenics"
+    }
+  },
+  {
+    "id": "seed_site_cashel",
+    "name": "Cashel",
+    "location": "Cashel, IE",
+    "capabilities": "Device manufacturing",
+    "capacityAvailableFrom": "2026-09-01",
+    "supplier": {
+      "id": "seed_supplier_heraeus"
+    }
+  },
+  {
+    "id": "seed_site_neuss",
+    "name": "Neuss",
+    "location": "Neuss, DE",
+    "capabilities": "Ring electrode subassembly; sterilisation lane",
+    "capacityAvailableFrom": "2026-09-15",
+    "supplier": {
+      "id": "seed_supplier_heraeus"
+    }
+  }
+]

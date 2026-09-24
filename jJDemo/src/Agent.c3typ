@@ -1,0 +1,33 @@
+/**
+ * A functional agent in the fleet of fourteen: Orchestrator (owns no activity,
+ * owns routing), Planning, Design, Clinical, Regulatory, Quality, Manufacturing,
+ * Sourcing, Supply Chain, Commercial, Market Access, IT / Data, Finance, and the
+ * Line Monitor (reads MES/SPC signals).
+ *
+ * An agent serves one {@link FunctionalDomain} and performs many
+ * {@link AgentAction}s. Its {@link Agent#autonomyBand} and
+ * {@link Agent#escalationRules} make the autonomy boundary a configured,
+ * inspectable rule rather than an emergent behaviour (§1, §6).
+ */
+entity type Agent mixes SeedData {
+  /** Short agent code, e.g. "src", "orc", "linemon". */
+  code: !string
+
+  /** Agent name, e.g. "Sourcing agent", "Orchestrator". */
+  name: !string
+
+  /** The band inside which the agent may act autonomously, e.g. "Executes inside guardrails". */
+  autonomyBand: string
+
+  /** Tools the agent is permitted to use, e.g. "ASL scan, contract read, PO issue". */
+  toolsPermitted: string
+
+  /** The explicit rules under which the agent escalates to a human. */
+  escalationRules: string
+
+  /** The domain this agent serves. */
+  domain: FunctionalDomain
+
+  /** Actions performed by this agent across all chains. Inverse of {@link AgentAction#agent}. */
+  actions: [AgentAction](agent)
+}

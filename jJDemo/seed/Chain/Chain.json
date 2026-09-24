@@ -1,0 +1,121 @@
+[
+  {
+    "id": "seed_chain_chn09",
+    "title": "Steriliser slot recovery",
+    "handoffCount": 4,
+    "outcome": "USER",
+    "startedAt": "2026-09-11T08:14:00",
+    "closedAt": "2026-09-11T08:24:00",
+    "finding": {
+      "id": "seed_finding_417"
+    }
+  },
+  {
+    "id": "seed_chain_chn08",
+    "title": "At-risk build authorisation",
+    "handoffCount": 3,
+    "outcome": "USER",
+    "startedAt": "2026-09-09T08:42:00",
+    "closedAt": "2026-09-09T08:43:00",
+    "finding": {
+      "id": "seed_finding_402"
+    }
+  },
+  {
+    "id": "seed_chain_chn07",
+    "title": "Single-source supplier downgrade",
+    "handoffCount": 3,
+    "outcome": "USER",
+    "startedAt": "2026-09-07T08:42:00",
+    "closedAt": "2026-09-08T08:43:00",
+    "finding": {
+      "id": "seed_finding_388"
+    }
+  },
+  {
+    "id": "seed_chain_chn06",
+    "title": "Design inputs outstanding",
+    "handoffCount": 2,
+    "outcome": "USER",
+    "startedAt": "2026-09-05T08:42:00",
+    "closedAt": "2026-09-05T08:43:00",
+    "finding": {
+      "id": "seed_finding_371"
+    }
+  },
+  {
+    "id": "seed_chain_chn05",
+    "title": "Notified Body query cycle 2",
+    "handoffCount": 2,
+    "outcome": "HELD",
+    "startedAt": "2026-09-07T08:42:00",
+    "closedAt": "2026-09-08T08:42:00",
+    "finding": {
+      "id": "seed_finding_365"
+    }
+  },
+  {
+    "id": "seed_chain_chn04",
+    "title": "No US reimbursement code",
+    "handoffCount": 3,
+    "outcome": "HELD",
+    "startedAt": "2026-09-05T08:42:00",
+    "closedAt": "2026-09-06T08:43:00",
+    "finding": {
+      "id": "seed_finding_344"
+    }
+  },
+  {
+    "id": "seed_chain_chn03",
+    "title": "Supplier audit finding closure",
+    "handoffCount": 2,
+    "outcome": "HELD",
+    "startedAt": "2026-09-08T08:42:00",
+    "closedAt": "2026-09-08T08:42:00",
+    "finding": null
+  },
+  {
+    "id": "seed_chain_iz412",
+    "title": "Heraeus line 3 — 4 of 12 lots out of spec on the ring electrode dimensional check",
+    "handoffCount": 3,
+    "outcome": "USER",
+    "startedAt": "2026-09-11T08:40:00",
+    "closedAt": "2026-09-11T08:42:00",
+    "finding": {
+      "id": "seed_finding_412"
+    }
+  },
+  {
+    "id": "seed_chain_iz359",
+    "title": "Secondary packaging deformed at Sequence D of the ASTM D4169 transit battery",
+    "handoffCount": 1,
+    "outcome": "RUNNING",
+    "startedAt": "2026-09-06T08:42:00",
+    "closedAt": "2026-09-11T08:42:00",
+    "finding": {
+      "id": "seed_finding_359"
+    }
+  },
+  {
+    "id": "seed_chain_iz351",
+    "title": "340 of 520 loaner sets still awaiting a final sterilisation cycle",
+    "handoffCount": 1,
+    "outcome": "RUNNING",
+    "startedAt": "2026-09-09T08:42:00",
+    "closedAt": "2026-09-11T08:42:00",
+    "finding": {
+      "id": "seed_finding_351"
+    }
+  },
+  {
+    "id": "seed_chain_iz319",
+    "title": "Iberia field-force certification at 91% against a 95% target",
+    "handoffCount": 1,
+    "outcome": "AUTO",
+    "startedAt": "2026-09-08T08:42:00",
+    "closedAt": "2026-09-08T08:42:00",
+    "finding": {
+      "id": "seed_finding_319"
+    }
+  }
+]

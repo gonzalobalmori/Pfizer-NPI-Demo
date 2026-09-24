@@ -1,0 +1,154 @@
+[
+  {
+    "id": "seed_agent_orc",
+    "code": "orc",
+    "name": "Orchestrator",
+    "autonomyBand": "Routing only",
+    "toolsPermitted": "Owns no activity — owns the routing",
+    "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
+    "domain": null
+  },
+  {
+    "id": "seed_agent_gov",
+    "code": "gov",
+    "name": "Planning agent",
+    "autonomyBand": "Autonomous within guardrails",
+    "toolsPermitted": "Gate readiness, the schedule and the critical path",
+    "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
+    "domain": {
+      "id": "seed_domain_gov"
+    }
+  },
+  {
+    "id": "seed_agent_rnd",
+    "code": "rnd",
+    "name": "Design agent",
+    "autonomyBand": "Autonomous within guardrails",
+    "toolsPermitted": "Design inputs, outputs, V&V and the DHF",
+    "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
+    "domain": {
+      "id": "seed_domain_rnd"
+    }
+  },
+  {
+    "id": "seed_agent_cli",
+    "code": "cli",
+    "name": "Clinical agent",
+    "autonomyBand": "Autonomous within guardrails",
+    "toolsPermitted": "Clinical evaluation, CER and proctor faculty",
+    "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
+    "domain": {
+      "id": "seed_domain_cli"
+    }
+  },
+  {
+    "id": "seed_agent_reg",
+    "code": "reg",
+    "name": "Regulatory agent",
+    "autonomyBand": "Autonomous within guardrails",
+    "toolsPermitted": "Dossiers, agency and Notified Body queries",
+    "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
+    "domain": {
+      "id": "seed_domain_reg"
+    }
+  },
+  {
+    "id": "seed_agent_qua",
+    "code": "qua",
+    "name": "Quality agent",
+    "autonomyBand": "Autonomous within guardrails",
+    "toolsPermitted": "Validation, CAPA, audits and lot release",
+    "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
+    "domain": {
+      "id": "seed_domain_qua"
+    }
+  },
+  {
+    "id": "seed_agent_mfg",
+    "code": "mfg",
+    "name": "Manufacturing agent",
+    "autonomyBand": "Autonomous within guardrails",
+    "toolsPermitted": "Process validation, tooling and builds",
+    "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
+    "domain": {
+      "id": "seed_domain_mfg"
+    }
+  },
+  {
+    "id": "seed_agent_src",
+    "code": "src",
+    "name": "Sourcing agent",
+    "autonomyBand": "Autonomous within guardrails",
+    "toolsPermitted": "Suppliers, qualification and capacity",
+    "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
+    "domain": {
+      "id": "seed_domain_src"
+    }
+  },
+  {
+    "id": "seed_agent_sc",
+    "code": "sc",
+    "name": "Supply Chain agent",
+    "autonomyBand": "Autonomous within guardrails",
+    "toolsPermitted": "Demand, inventory, logistics and loaner kits",
+    "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
+    "domain": {
+      "id": "seed_domain_sc"
+    }
+  },
+  {
+    "id": "seed_agent_com",
+    "code": "com",
+    "name": "Commercial agent",
+    "autonomyBand": "Autonomous within guardrails",
+    "toolsPermitted": "Field force, accounts and launch readiness",
+    "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
+    "domain": {
+      "id": "seed_domain_com"
+    }
+  },
+  {
+    "id": "seed_agent_ma",
+    "code": "ma",
+    "name": "Market Access agent",
+    "autonomyBand": "Autonomous within guardrails",
+    "toolsPermitted": "Pricing, reimbursement codes and HTA",
+    "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
+    "domain": {
+      "id": "seed_domain_ma"
+    }
+  },
+  {
+    "id": "seed_agent_it",
+    "code": "it",
+    "name": "IT / Data agent",
+    "autonomyBand": "Autonomous within guardrails",
+    "toolsPermitted": "Master data, UDI feeds and system integration",
+    "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
+    "domain": {
+      "id": "seed_domain_it"
+    }
+  },
+  {
+    "id": "seed_agent_fin",
+    "code": "fin",
+    "name": "Finance agent",
+    "autonomyBand": "Autonomous within guardrails",
+    "toolsPermitted": "Budget, margin at actual cost and exposure",
+    "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
+    "domain": {
+      "id": "seed_domain_fin"
+    }
+  },
+  {
+    "id": "seed_agent_line",
+    "code": "line",
+    "name": "Line Monitor agent",
+    "autonomyBand": "Autonomous within guardrails",
+    "toolsPermitted": "Reads MES / SPC signals from the lines",
+    "escalationRules": "Raise to Quality on an SPC rule breach; stopping a supplier line is never autonomous",
+    "domain": {
+      "id": "seed_domain_mfg"
+    }
+  }
+]

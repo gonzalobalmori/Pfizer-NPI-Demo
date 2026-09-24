@@ -1,0 +1,50 @@
+/**
+ * One of the three modelled alternatives on a {@link Decision}, each costed
+ * against the live plan (§2.4 section 5). For the anchor case: Option A
+ * (dual-source to Sterigenics, +9d, €340k, recommended), Option B (X-ray at
+ * Marcoule, +62d, €1.1M) and Option C (US-first re-sequence, needs a G1
+ * reversal). Selecting one rebuilds the action plan.
+ */
+entity type DecisionOption mixes SeedData {
+  /** Option key, "a" / "b" / "c". */
+  optionKey: !string
+
+  /** Option label, e.g. "Dual-source to Sterigenics Grand Rapids". */
+  label: string
+
+  /** Sub-label, e.g. "Half-cycle revalidation at an approved site, same modality". */
+  subLabel: string
+
+  /** Days recovered / net slip for this option, e.g. +9 (net) — display uses the sign. */
+  daysRecovered: int
+
+  /** Net slip shown on the option row, e.g. "+9d", "+62d". */
+  slipLabel: string
+
+  /** Cost of the option in euros, e.g. 340000. */
+  cost: double
+
+  /** Impact on the binding BSI gate slot, e.g. "Retained", "Lost". */
+  gateImpact: string
+
+  /** Revenue kept under this option, in euros. */
+  revenueKept: double
+
+  /** What the option forfeits, e.g. "Q4 BSI window" or "two tender windows". */
+  forfeits: string
+
+  /** Whether this is the agent-recommended option. Exactly one per decision. */
+  recommended: boolean
+
+  /** Confidence in the recommendation, e.g. "High confidence · based on 6 comparable launches". */
+  confidence: string
+
+  /** The basis/reasoning for the recommendation. */
+  basis: string
+
+  /** Risk band for the option: Low / Medium / High. */
+  riskBand: string enum('Low', 'Medium', 'High')
+
+  /** The decision this option belongs to. */
+  decision: Decision
+}

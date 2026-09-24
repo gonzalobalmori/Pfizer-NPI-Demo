@@ -1,0 +1,189 @@
+[
+  {
+    "id": "seed_option_417_a",
+    "optionKey": "a",
+    "label": "Dual-source to Sterigenics Grand Rapids",
+    "subLabel": "Half-cycle revalidation at an approved site, same modality",
+    "daysRecovered": 38,
+    "slipLabel": "+9d instead of +47",
+    "cost": 340000,
+    "gateImpact": "G3 to 13 Nov (+9d), BSI slot retained",
+    "revenueKept": 18400000,
+    "forfeits": "None — BSI slot retained",
+    "recommended": true,
+    "confidence": "High",
+    "basis": "Site already approved, modality unchanged, OCTARAY G2 precedent to reuse",
+    "riskBand": "Medium",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_option_417_b",
+    "optionKey": "b",
+    "label": "Switch modality to X-ray at Marcoule",
+    "subLabel": "Needs biocompatibility bridging and a dossier rewrite",
+    "daysRecovered": -15,
+    "slipLabel": "+62d",
+    "cost": 1100000,
+    "gateImpact": "BSI Q4 slot forfeited",
+    "revenueKept": 14700000,
+    "forfeits": "BSI Q4 window, €3.7M",
+    "recommended": false,
+    "confidence": "Low",
+    "basis": "Different modality means full requalification",
+    "riskBand": "High",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_option_417_c",
+    "optionKey": "c",
+    "label": "Re-sequence — US first, EU wave 2",
+    "subLabel": "Irvine steriliser is unaffected; needs a G1 decision reversal",
+    "daysRecovered": 0,
+    "slipLabel": "+78d in EU, none in US",
+    "cost": 0,
+    "gateImpact": "BSI Q4 slot forfeited; needs a G1 reversal",
+    "revenueKept": 11200000,
+    "forfeits": "Two EU tender windows; €7.2M moved to FY28",
+    "recommended": false,
+    "confidence": "Medium",
+    "basis": "Irvine in-house EO unaffected, but unwinds a gate decision",
+    "riskBand": "Low",
+    "decision": {
+      "id": "seed_decision_417"
+    }
+  },
+  {
+    "id": "seed_option_402_a",
+    "optionKey": "a",
+    "label": "Phased 2,600 units",
+    "subLabel": "Caps exposure at €1.7M, covers first 9 weeks in DE and FR, holds G5",
+    "cost": 1700000,
+    "recommended": true,
+    "riskBand": "Medium",
+    "gateImpact": "Holds G5 First Ship",
+    "revenueKept": 0,
+    "decision": {
+      "id": "seed_decision_402"
+    },
+    "basis": "Modelled against P50 demand"
+  },
+  {
+    "id": "seed_option_402_b",
+    "optionKey": "b",
+    "label": "Full 4,200 units",
+    "subLabel": "Full launch cover but €2.8M write-off exposure",
+    "cost": 2800000,
+    "recommended": false,
+    "riskBand": "High",
+    "gateImpact": "Holds G5 First Ship",
+    "revenueKept": 0,
+    "decision": {
+      "id": "seed_decision_402"
+    },
+    "basis": "Modelled against P50 demand"
+  },
+  {
+    "id": "seed_option_402_c",
+    "optionKey": "c",
+    "label": "1,400 units",
+    "subLabel": "€0.9M exposure but stocks out in week 5",
+    "cost": 900000,
+    "recommended": false,
+    "riskBand": "Low",
+    "gateImpact": "Holds G5 First Ship",
+    "revenueKept": 0,
+    "decision": {
+      "id": "seed_decision_402"
+    },
+    "basis": "Modelled against P50 demand"
+  },
+  {
+    "id": "seed_option_388_a",
+    "optionKey": "a",
+    "label": "Activate the qualified second source before the G2 freeze",
+    "subLabel": "Document change now vs 11 weeks of change control after G2",
+    "recommended": true,
+    "confidence": "High",
+    "basis": "BOM trace machine-read from the released DMR",
+    "riskBand": "Low",
+    "gateImpact": "Protects G2 Design Freeze",
+    "decision": {
+      "id": "seed_decision_388"
+    }
+  },
+  {
+    "id": "seed_option_412_a",
+    "optionKey": "a",
+    "label": "Prioritise markets and redistribute the reduced commercial volume",
+    "subLabel": "Line 3 is down 3 commercial batches, so commercial and planning re-weight allocation across markets — protect the lead-market launch quantities and defer the lower-priority markets until line 3 is back",
+    "daysRecovered": 0,
+    "slipLabel": "No gate move — a volume-allocation call, not a schedule one",
+    "cost": 90000,
+    "gateImpact": "Holds G3; the shortfall is absorbed by re-prioritising markets, not by moving the gate",
+    "revenueKept": 0,
+    "forfeits": "Full simultaneous coverage of every market at launch",
+    "recommended": true,
+    "confidence": "High",
+    "basis": "Fewer commercial batches means the launch quantity has to be redistributed; commercial and planning own the market trade-off",
+    "riskBand": "Medium",
+    "decision": {
+      "id": "seed_decision_412"
+    }
+  },
+  {
+    "id": "seed_option_412_b",
+    "optionKey": "b",
+    "label": "Drive the in-progress DMAICs to close the CAPA and re-operate line 3",
+    "subLabel": "The line-3 CAPA is overdue because its DMAIC is still open — push Improve and Control to a fast close so line 3 is re-qualified and commercial output resumes quickly",
+    "daysRecovered": 0,
+    "slipLabel": "Recovers line-3 volume the soonest if the DMAIC closes on plan",
+    "cost": 70000,
+    "gateImpact": "Holds G3; restores full commercial capacity once the DMAIC Control phase signs off",
+    "revenueKept": 0,
+    "forfeits": "Nothing if the DMAIC closes on plan — carries schedule risk if Improve slips",
+    "recommended": false,
+    "confidence": "Medium",
+    "basis": "Measure and Analyse are complete; the open Improve/Control phases are the only thing keeping the CAPA overdue",
+    "riskBand": "Medium",
+    "decision": {
+      "id": "seed_decision_412"
+    }
+  },
+  {
+    "id": "seed_option_412_c",
+    "optionKey": "c",
+    "label": "Move commercial output to a different site, same modality",
+    "subLabel": "Shift the affected commercial batches to another qualified site on the same manufacturing modality — the agents first confirm it is acceptable from regulatory and engineering AND that the site actually has the capacity",
+    "daysRecovered": 0,
+    "slipLabel": "No slip if the alternate site has capacity and is cleared",
+    "cost": 240000,
+    "gateImpact": "Holds G3 provided the site is cleared on regulatory/engineering and capacity is confirmed",
+    "revenueKept": 0,
+    "forfeits": "None if capacity exists — but it is contingent on two agent checks passing",
+    "recommended": false,
+    "confidence": "Medium",
+    "basis": "Same-modality transfer avoids a requalification, but capacity and regulatory/engineering clearance both have to be confirmed by the agents first",
+    "riskBand": "Medium",
+    "decision": {
+      "id": "seed_decision_412"
+    }
+  },
+  {
+    "id": "seed_option_371_a",
+    "optionKey": "a",
+    "label": "Review and sign the two design inputs",
+    "subLabel": "Both drafts traced to the input matrix; no criteria waived",
+    "recommended": true,
+    "confidence": "High",
+    "basis": "IEC 62366 + ASTM D4169 evidence complete",
+    "riskBand": "Low",
+    "gateImpact": "G2 closes on schedule",
+    "decision": {
+      "id": "seed_decision_371"
+    }
+  }
+]

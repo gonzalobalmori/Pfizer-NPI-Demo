@@ -1,0 +1,39 @@
+/**
+ * A stage gate that closes a {@link Phase} for a given {@link Launch}:
+ * G1 NPI Readiness, G2 Design Freeze, G3 Submission Commit,
+ * G4 Clearance / CE Certificate, G5 Launch Go / No-Go.
+ *
+ * Gate dates are money (§1): a slip cascades into lost regulatory-review and
+ * tender windows. The anchor case moves the VARIPULSE G2 G3 gate from a 04 Nov
+ * baseline out to 21 Dec (+47d) and the approve transaction re-baselines it to
+ * 13 Nov (+9d). {@link Gate#slipDays} is derived from the two dates, not stored
+ * for display.
+ */
+entity type Gate {
+  /** Gate code, "G1"–"G5". */
+  code: !string
+
+  /** Gate name, e.g. "Submission Commit". */
+  name: !string
+
+  /** The committed baseline date for the gate. */
+  baselineDate: datetime
+
+  /** The current forecast date for the gate — moves when a slip is booked or recovered. */
+  forecastDate: datetime
+
+  /** Slip in days between forecast and baseline. Derived; recomputed by the approve transaction. */
+  slipDays: int
+
+  /** Readiness status of the gate. */
+  status: string enum('ok', 'late', 'no')
+
+  /** The launch this gate belongs to. */
+  launch: Launch
+
+  /** The phase this gate closes. */
+  phase: Phase
+
+  /** The criteria that must all be met for the gate to close. Inverse of {@link GateCriterion#gate}. */
+  criteria: [GateCriterion](gate)
+}
