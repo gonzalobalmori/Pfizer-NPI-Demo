@@ -79,11 +79,11 @@
         },
         {
           "label": "R. Devi · Logistics",
-          "value": "NPI-0351 — pricing a second sterilisation lane for the EMBOTRAP loaner sets. Number due 12 Sep."
+          "value": "NPI-0351 — pricing a second sterilisation lane for the Elrexfio loaner sets. Number due 12 Sep."
         },
         {
           "label": "K. Tanaka · R&D",
-          "value": "NPI-0359 — redesigning the PureSee thermoform insert. Re-test booked 14 Sep."
+          "value": "NPI-0359 — redesigning the Litfulo thermoform insert. Re-test booked 14 Sep."
         }
       ],
       "rec": "Only NPI-0365 needs a push from you",
@@ -111,12 +111,12 @@
     "id": "varipulse",
     "groupLabel": "Diagnose a launch",
     "sortOrder": 3,
-    "question": "Diagnose the VARIPULSE Gen 2 launch",
+    "question": "Diagnose the Comirnaty Gen 2 launch",
     "subtitle": "P3, G3 on 04 Nov, and the one cause behind four findings",
     "showsGuardrails": false,
     "answer": {
       "prose": [
-        "VARIPULSE Gen 2 is in P3 — design V&V and supplier qualification, with G3 Submission Commit on 04 Nov 2026. The design work is not the problem. Both live threats are supplier threats, and both are the same supplier."
+        "Comirnaty Gen 2 is in P3 — design V&V and supplier qualification, with G3 Submission Commit on 04 Nov 2026. The design work is not the problem. Both live threats are supplier threats, and both are the same supplier."
       ],
       "evidence": [
         {
@@ -156,7 +156,7 @@
         {
           "label": "See the agents on it",
           "style": "s",
-          "target": "board:Biosense Webster"
+          "target": "board:Vaccines"
         },
         {
           "label": "Open the activity plan",
@@ -204,7 +204,7 @@
         "Switching modality to X-ray costs 62 days and €1.1M and forfeits the slot",
         "Going US-first needs a G1 reversal, which is a bigger decision than this one"
       ],
-      "confidence": "High confidence · based on 6 comparable EO re-qualifications across MedTech.",
+      "confidence": "High confidence · based on 6 comparable EO re-qualifications across Biopharma.",
       "actions": [
         {
           "label": "Open NPI-0417",
@@ -214,7 +214,7 @@
         {
           "label": "See the chain",
           "style": "s",
-          "target": "board:Biosense Webster"
+          "target": "board:Vaccines"
         }
       ]
     }
@@ -257,7 +257,7 @@
         },
         {
           "title": "It is yours — stop line 3 at Heraeus?",
-          "body": "Quarantine the 4 lots and switch to Neuss. Hits VARIPULSE G2, OCTARAY G2 and EMBOTRAP IV in Germany, France and Spain.",
+          "body": "Quarantine the 4 lots and switch to Neuss. Hits Comirnaty G2, Abrysvo G2 and Elrexfio IV in Germany, France and Spain.",
           "when": "Now",
           "flag": "r"
         }
@@ -273,7 +273,7 @@
         {
           "label": "See it live on the board",
           "style": "p",
-          "target": "board:Biosense Webster"
+          "target": "board:Vaccines"
         },
         {
           "label": "Open the record",
@@ -296,7 +296,7 @@
       ],
       "evidence": [
         {
-          "label": "Javelin XL · Iberia",
+          "label": "Somavert XL · Iberia",
           "value": "Field-force certification at 91% against a 95% target. 14 reps rebooked into the 22 Sep lab-session cohort, which clears 97% before first ship."
         },
         {
@@ -338,31 +338,31 @@
       ],
       "evidence": [
         {
-          "label": "VARIPULSE Gen 2",
+          "label": "Comirnaty Gen 2",
           "value": "G3 Submission Commit · €18.4M exposed on the EO slot. The BSI Q4 slot is the constraint, not the validation work."
         },
         {
-          "label": "OCTARAY Gen 2",
+          "label": "Abrysvo Gen 2",
           "value": "G2 Design Freeze 30 Sep · two unsigned design inputs and the Heraeus single source. Both are yours this week."
         },
         {
-          "label": "EMBOTRAP IV",
+          "label": "Elrexfio IV",
           "value": "G5 First Ship 26 Sep · 340 of 520 loaner sets still uncertified. 3PL sterilisation is running 6 days over plan."
         },
         {
-          "label": "PureSee Toric",
+          "label": "Litfulo Toric",
           "value": "Transit packaging failed ASTM D4169 Sequence D. Re-test 14 Sep."
         },
         {
-          "label": "OTTAVA",
-          "value": "First ship Q2 2027, same quarter as VARIPULSE G2. 14 of 22 German reps are dual-certified, which is the real constraint."
+          "label": "Velsipity",
+          "value": "First ship Q2 2027, same quarter as Comirnaty G2. 14 of 22 German reps are dual-certified, which is the real constraint."
         }
       ],
       "rec": "The German constraint is field force, not regulatory",
       "why": [
         "Four of the five clear their regulatory path on current dates",
         "Two launches want the same 22 German reps in the same quarter, and only 14 are dual-certified",
-        "Moving OTTAVA first ship to Q3 2027 uses its float; VARIPULSE G2 has none"
+        "Moving Velsipity first ship to Q3 2027 uses its float; Comirnaty G2 has none"
       ],
       "confidence": "Medium-high · certification throughput is modelled from the last 6 EP launches.",
       "actions": [
@@ -392,15 +392,15 @@
       ],
       "evidence": [
         {
-          "label": "FDA · VARIPULSE Gen 2",
+          "label": "FDA · Comirnaty Gen 2",
           "value": "NPI-0420 — PMA under review, a deficiency letter is open. 45 days at stake, no approval until the agency responds. This is on the authority, not on us: acting here will not move the date."
         },
         {
-          "label": "BSI Notified Body · VARIPULSE Gen 2",
+          "label": "BSI Notified Body · Comirnaty Gen 2",
           "value": "Q4 review slot holds only while G3 stays at +9 days. Miss the window and the next confirmed slot is February — another 31 days. The slot is the real regulatory deadline, not the validation work."
         },
         {
-          "label": "BSI Notified Body · ETHICON 4000+",
+          "label": "BSI Notified Body · Prevnar 20",
           "value": "NPI-0365 — a query-cycle-2 response has been drafted and unsigned for 6 days. The 21-day clock-stop is running. This is the one thread you can move: it needs a qualified signatory, S. Lindqvist, and it is already escalated."
         },
         {
@@ -442,12 +442,12 @@
     "id": "supplier",
     "groupLabel": "Slice the portfolio",
     "sortOrder": 8,
-    "question": "What is putting VARIPULSE's commercial batches at risk?",
+    "question": "What is putting Comirnaty's commercial batches at risk?",
     "subtitle": "Two lines, three batches out of spec, and an overdue CAPA",
     "showsGuardrails": false,
     "answer": {
       "prose": [
-        "Manufacturing, not supply. VARIPULSE runs commercial output on two lines — line 3 and line 5 — and line 3 has produced 3 batches out of spec on the dimensional check. Line 5 is clean and is holding commercial supply for now."
+        "Manufacturing, not supply. Comirnaty runs commercial output on two lines — line 3 and line 5 — and line 3 has produced 3 batches out of spec on the dimensional check. Line 5 is clean and is holding commercial supply for now."
       ],
       "prose2": [
         "The reason line 3 is not simply back yet is a CAPA that is overdue: the DMAIC behind it is still in progress. Measure and Analyse are complete and point at tool wear, but Improve and Control are not signed, so line 3 cannot be re-qualified for commercial output. For scale: V&V produces 3 batches as the norm, so 3 affected commercial batches is a full run's worth of the launch quantity."
@@ -488,9 +488,9 @@
           "target": "openFinding:412"
         },
         {
-          "label": "See the Biosense Webster board",
+          "label": "See the Vaccines board",
           "style": "s",
-          "target": "board:Biosense Webster"
+          "target": "board:Vaccines"
         }
       ]
     }
@@ -499,12 +499,12 @@
     "id": "cascade",
     "groupLabel": "Diagnose a launch",
     "sortOrder": 10,
-    "question": "The FDA slipped OTTAVA's clearance six weeks — what moves?",
+    "question": "The FDA slipped Velsipity's clearance six weeks — what moves?",
     "subtitle": "One authority date, five downstream commitments, two calls that are yours",
     "showsGuardrails": false,
     "answer": {
       "prose": [
-        "The FDA moved OTTAVA's 510(k) clearance from 02 Nov to 14 Dec — a six-week slip on a date you don't control. Manufacturing has already built launch stock, the loaner kits are staged at the 3PL, and the field is trained for the original go-live. The old way, that slip becomes a ten-week scramble across three teams. Here it cascades in one pass: three commitments re-time themselves, and exactly two need a human."
+        "The FDA moved Velsipity's 510(k) clearance from 02 Nov to 14 Dec — a six-week slip on a date you don't control. Manufacturing has already built launch stock, the loaner kits are staged at the 3PL, and the field is trained for the original go-live. The old way, that slip becomes a ten-week scramble across three teams. Here it cascades in one pass: three commitments re-time themselves, and exactly two need a human."
       ],
       "evidence": [
         {
@@ -542,7 +542,7 @@
           "target": "cascade:"
         },
         {
-          "label": "Open the OTTAVA record",
+          "label": "Open the Velsipity record",
           "style": "s",
           "target": "launch:seed_launch_ottava"
         }

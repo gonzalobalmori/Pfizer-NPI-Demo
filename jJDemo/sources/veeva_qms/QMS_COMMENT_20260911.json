@@ -21,7 +21,7 @@
       "comment_ts__c": "2026-09-11T06:05:00",
       "is_system_check__c": "Y",
       "sources_read__c": "master agreement clause 7.3, Approved Supplier List, audit validity",
-      "body__c": "Checked the master agreement: the booking was a non-committed capacity reservation, clause 7.3 permits reallocation on 30 days notice. No contractual claim and no penalty available. Scanned the ASL for EO alternatives — Sterigenics Grand Rapids is approved, audit current to Mar 2028, already qualified for OCTARAY G2 and EMBOTRAP IV, and has capacity from 29 Sep."
+      "body__c": "Checked the master agreement: the booking was a non-committed capacity reservation, clause 7.3 permits reallocation on 30 days notice. No contractual claim and no penalty available. Scanned the ASL for EO alternatives — Sterigenics Grand Rapids is approved, audit current to Mar 2028, already qualified for Abrysvo G2 and Elrexfio IV, and has capacity from 29 Sep."
     },
     {
       "id": "CMT-0148-03",
@@ -31,7 +31,7 @@
       "comment_ts__c": "2026-09-11T07:12:00",
       "is_system_check__c": "N",
       "sources_read__c": "",
-      "body__c": "If we move site, it is a half-cycle revalidation, not a full one, because the modality is unchanged. Realistically 21 days of protocol plus execution. I would want the protocol drafted against the OCTARAY G2 precedent so we are not writing it from scratch. Flagging that cycle development on a new chamber has overrun 5–8 days on two of our last seven transfers."
+      "body__c": "If we move site, it is a half-cycle revalidation, not a full one, because the modality is unchanged. Realistically 21 days of protocol plus execution. I would want the protocol drafted against the Abrysvo G2 precedent so we are not writing it from scratch. Flagging that cycle development on a new chamber has overrun 5–8 days on two of our last seven transfers."
     },
     {
       "id": "CMT-0148-04",

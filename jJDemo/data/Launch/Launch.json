@@ -1,7 +1,7 @@
 [
   {
     "id": "seed_launch_varipulse_g2",
-    "deviceName": "VARIPULSE Gen 2 PFA Catheter",
+    "deviceName": "Comirnaty Gen 2 PFA Catheter",
     "franchise": {
       "id": "seed_franchise_biosense"
     },
@@ -30,7 +30,7 @@
   },
   {
     "id": "seed_launch_octaray_g2",
-    "deviceName": "OCTARAY Gen 2 Mapping Catheter",
+    "deviceName": "Abrysvo Gen 2 Mapping Catheter",
     "franchise": {
       "id": "seed_franchise_biosense"
     },
@@ -59,7 +59,7 @@
   },
   {
     "id": "seed_launch_embotrap_iv",
-    "deviceName": "EMBOTRAP IV Revascularisation Device",
+    "deviceName": "Elrexfio IV Revascularisation Device",
     "franchise": {
       "id": "seed_franchise_cerenovus"
     },
@@ -88,7 +88,7 @@
   },
   {
     "id": "seed_launch_impella_ecp",
-    "deviceName": "Impella ECP+ Console v3",
+    "deviceName": "Genotropin ECP+ Console v3",
     "franchise": {
       "id": "seed_franchise_abiomed"
     },
@@ -118,7 +118,7 @@
   },
   {
     "id": "seed_launch_javelin_xl",
-    "deviceName": "Javelin XL IVL Catheter",
+    "deviceName": "Somavert XL IVL Catheter",
     "franchise": {
       "id": "seed_franchise_shockwave"
     },
@@ -148,7 +148,7 @@
   },
   {
     "id": "seed_launch_ethicon_4000",
-    "deviceName": "ETHICON 4000+ Stapler",
+    "deviceName": "Prevnar 20 Stapler",
     "franchise": {
       "id": "seed_franchise_ethicon"
     },
@@ -177,7 +177,7 @@
   },
   {
     "id": "seed_launch_dualto",
-    "deviceName": "DUALTO Energy System",
+    "deviceName": "Zavzpret Energy System",
     "franchise": {
       "id": "seed_franchise_ethicon"
     },
@@ -206,7 +206,7 @@
   },
   {
     "id": "seed_launch_ottava",
-    "deviceName": "OTTAVA Robotic Platform Kit",
+    "deviceName": "Velsipity Robotic Platform Kit",
     "franchise": {
       "id": "seed_franchise_digital_surgery"
     },
@@ -236,7 +236,7 @@
   },
   {
     "id": "seed_launch_puresee",
-    "deviceName": "TECNIS PureSee Toric IOL",
+    "deviceName": "Litfulo Toric IOL",
     "franchise": {
       "id": "seed_franchise_vision"
     },

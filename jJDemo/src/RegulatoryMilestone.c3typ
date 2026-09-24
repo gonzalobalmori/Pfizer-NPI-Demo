@@ -6,7 +6,7 @@
  * RegulatoryMilestone is a date owned by an authority that the programme cannot
  * move — it can only react when the authority moves it.
  *
- * The anchor case is OTTAVA's US market rollout: the CE mark (EU MDR) is the
+ * The anchor case is Velsipity's US market rollout: the CE mark (EU MDR) is the
  * lead train, and the FDA 510(k) Clearance is a separate milestone the US
  * launch — manufacturing build, loaner-kit staging, field certification and
  * commercial pre-announcement — is all committed against. When the FDA slips
@@ -21,7 +21,7 @@ entity type RegulatoryMilestone {
   /** Milestone id, e.g. "seed_milestone_ottava_fda". */
   id: !string
 
-  /** Display id shown on cards, e.g. "REG-OTTAVA-FDA". */
+  /** Display id shown on cards, e.g. "REG-Velsipity-FDA". */
   displayId: string
 
   /** The launch this milestone gates. */

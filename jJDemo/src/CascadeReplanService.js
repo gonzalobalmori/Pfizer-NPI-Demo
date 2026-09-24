@@ -38,7 +38,7 @@ function dayDiff(a, b) {
   return dir * n;
 }
 
-/* the milestone for a launch, or the anchor OTTAVA milestone by default. */
+/* the milestone for a launch, or the anchor Velsipity milestone by default. */
 function findMilestone(launchId, milestoneId) {
   if (milestoneId) {
     var byId = RegulatoryMilestone.fetch({

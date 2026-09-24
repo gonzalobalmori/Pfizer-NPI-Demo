@@ -1,13 +1,13 @@
 /*
  * Idempotent merge of per-launch scope + device facts into data/Launch/Launch.json.
  *
- * WHY (manager review): the Product-detail page hard-coded VARIPULSE's scope for
+ * WHY (manager review): the Product-detail page hard-coded Comirnaty's scope for
  * EVERY product ("Class", launch scope, units built, sterilisation, manufacture,
  * workstream readiness). These must be attested per launch so each product's
  * detail matches its own context. This script writes those attested facts onto
  * the Launch records (keyed by id) without disturbing existing fields.
  *
- * VARIPULSE keeps its authored prototype figures verbatim (€96M value, EO,
+ * Comirnaty keeps its authored prototype figures verbatim (€96M value, EO,
  * Irvine + CMO, 11 of 14, 4,200 units, 62/78, 9 of 22).
  *
  * RUN: node scripts/add-launch-scope.mjs   (from the jJDemo pkg root)

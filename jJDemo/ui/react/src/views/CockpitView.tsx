@@ -100,7 +100,7 @@ interface TimeImpactDatum {
 }
 
 /* Inside-bar label for the green (recoverable) segment — hidden when 0 so a
- * purely authority-bound launch (ETHICON) shows no green tag. */
+ * purely authority-bound launch (Prevnar 20) shows no green tag. */
 function fmtRecLabel(value: React.ReactNode): string {
   const n = typeof value === 'number' ? value : Number(value);
   return n > 0 ? `${n}d` : '';

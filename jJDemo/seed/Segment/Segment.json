@@ -1,19 +1,19 @@
 [
   {
     "id": "seed_segment_surgery",
-    "name": "Surgery",
+    "name": "Primary Care",
     "revenueScale": "~$12B",
     "growthRate": 0.05
   },
   {
     "id": "seed_segment_cardiovascular",
-    "name": "Cardiovascular",
+    "name": "Specialty Care",
     "revenueScale": "~$9B",
     "growthRate": 0.15
   },
   {
     "id": "seed_segment_vision",
-    "name": "Vision",
+    "name": "Oncology",
     "revenueScale": "~$5.5B",
     "growthRate": 0.03
   }

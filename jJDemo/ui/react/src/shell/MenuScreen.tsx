@@ -1,6 +1,6 @@
 /*
  * Landing MENU screen (prototype "SCREEN 0"). Ported verbatim from the #menu
- * markup — the Johnson&Johnson wordmark bar, the "Hi, Helena" hero, the three
+ * markup — the Pfizer wordmark bar, the "Hi, Helena" hero, the three
  * branch cards (Strategic Decisions / Pipeline Status / Execution) and the
  * right rail. Class names are the prototype's own (.m-*, .mc*, .mr-*).
  */
@@ -17,7 +17,7 @@ export default function MenuScreen() {
     <div id="menu" className="on">
       <div className="m-top">
         <div className="m-wm">
-          Johnson<i>&amp;</i>Johnson
+          Pfizer
         </div>
         <div className="m-sub">NPI Launch Control</div>
         <button type="button" className="h-gd" onClick={startGuidedTour} title="Run the guided demo">
@@ -33,7 +33,7 @@ export default function MenuScreen() {
           <div className="m-hi">
             Hi, <b>Helena</b>
           </div>
-          <div className="m-hisub">NPI Launch Control · MedTech · 24 September 2026</div>
+          <div className="m-hisub">NPI Launch Control · Biopharma · 24 September 2026</div>
 
           <div className="m-cards">
             {/* 01 — Strategic Decisions (out of scope, dimmed) */}
@@ -224,7 +224,7 @@ export default function MenuScreen() {
         </aside>
       </div>
 
-      <div className="m-ft">Demo · Accenture for J&amp;J MedTech · all figures illustrative</div>
+      <div className="m-ft">Demo · Accenture for Pfizer Biopharma · all figures illustrative</div>
     </div>
   );
 }

@@ -10,7 +10,7 @@
  *   §3.6.7  Activities reconcile:
  *             by phase    P1..P6  = 16 / 19 / 27 / 22 / 14 / 9  (= 107)
  *             by status   ok/run/rk/late/no = 49 / 8 / 4 / 2 / 44  (= 107)
- *               (VARIPULSE P2_12 corrected rk→ok: a CLOSED phase cannot hold an
+ *               (Comirnaty P2_12 corrected rk→ok: a CLOSED phase cannot hold an
  *                at-risk deliverable — manager feedback; residual risk lives in P3)
  *             by domain   12 functional domains, counts sum to 107
  *   §3.6.8  Autonomy split A / R = 95 / 12  (= 107)
@@ -24,10 +24,10 @@ describe(filename, function () {
   beforeAll(function () {
     this.TOTAL = 107;
 
-    // Read VARIPULSE's authored activity set once (statusCode + phase code +
+    // Read Comirnaty's authored activity set once (statusCode + phase code +
     // domain code + autonomy class code), then derive every tally from that one
     // collection so all four reconciliations are proven against the same 107
-    // rows. Scoped to VARIPULSE: the §3.6.7–8 fixture is the VARIPULSE board;
+    // rows. Scoped to Comirnaty: the §3.6.7–8 fixture is the Comirnaty board;
     // the other launches carry their own phase-shifted activity boards.
     var acts = Activity.fetch({
       filter: Filter.eq('launch.id', 'seed_launch_varipulse_g2'),
@@ -72,7 +72,7 @@ describe(filename, function () {
     // time-recovery feature: it depends on a regulator, so it sits HELD while the
     // agency responds.)
     // The two post-market (P6) AUTO findings — I-331 (Cashel yield) and I-328
-    // (EUDAMED) on the LAUNCHED DUALTO — were removed with all post-market agent
+    // (EUDAMED) on the LAUNCHED Zavzpret — were removed with all post-market agent
     // activity: post-market is out of launch-control scope. That drops AUTO 3→1
     // and the finding total 13→11.
     var findings = Finding.fetch({ include: 'id, outcome', limit: -1 }).objs;

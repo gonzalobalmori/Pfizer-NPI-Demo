@@ -3,7 +3,7 @@
     "id": "seed_finding_412",
     "displayId": "NPI-0412",
     "headline": "Commercial batches at risk on line 3?",
-    "description": "Manufacturing at-risk commercial batches — VARIPULSE runs commercial output on lines 3 and 5, and line 3 has produced 3 batches out of spec on the dimensional check. V&V produces 3 batches as the norm, so the 3 affected batches are a full validation run's worth of commercial supply. An overdue CAPA is open on line 3 with a DMAIC still in progress.",
+    "description": "Manufacturing at-risk commercial batches — Comirnaty runs commercial output on lines 3 and 5, and line 3 has produced 3 batches out of spec on the dimensional check. V&V produces 3 batches as the norm, so the 3 affected batches are a full validation run's worth of commercial supply. An overdue CAPA is open on line 3 with a DMAIC still in progress.",
     "signalSource": "Line 3 — 3 commercial batches out of spec on the dimensional check; CAPA overdue, DMAIC in progress",
     "detectedAt": null,
     "outcome": "USER",
@@ -40,7 +40,7 @@
     "dependency": "SELF",
     "daysAtStake": 12,
     "exposure": 18400000,
-    "exposureCause": "G3 Submission Commit slip — full VARIPULSE first-year launch revenue at risk if the EO sterilisation window is missed",
+    "exposureCause": "G3 Submission Commit slip — full Comirnaty first-year launch revenue at risk if the EO sterilisation window is missed",
     "phase": {
       "id": "seed_phase_p3"
     },
@@ -64,7 +64,7 @@
     "dependency": "SELF",
     "daysAtStake": 9,
     "exposure": 6200000,
-    "exposureCause": "Single-source ring electrode supplier — OCTARAY G2 Design Freeze exposure if the second source is not activated before the gate",
+    "exposureCause": "Single-source ring electrode supplier — Abrysvo G2 Design Freeze exposure if the second source is not activated before the gate",
     "phase": {
       "id": "seed_phase_p2"
     },
@@ -120,7 +120,7 @@
     "dependency": "AGENT",
     "daysAtStake": 5,
     "exposure": 2300000,
-    "exposureCause": "Transit-validation failure at the conditioning step — TECNIS PureSee G3 first-year launch revenue at risk until the thermoform insert redesign passes",
+    "exposureCause": "Transit-validation failure at the conditioning step — Litfulo G3 first-year launch revenue at risk until the thermoform insert redesign passes",
     "phase": {
       "id": "seed_phase_p3"
     },
@@ -144,7 +144,7 @@
     "dependency": "AGENT",
     "daysAtStake": 8,
     "exposure": 3100000,
-    "exposureCause": "Loaner instrument sets not certified for first-case coverage — EMBOTRAP G5 launch revenue at risk until a second sterilisation lane is priced",
+    "exposureCause": "Loaner instrument sets not certified for first-case coverage — Elrexfio G5 launch revenue at risk until a second sterilisation lane is priced",
     "phase": {
       "id": "seed_phase_p5"
     },
@@ -190,7 +190,7 @@
     "dependency": "SELF",
     "daysAtStake": 7,
     "exposure": 2800000,
-    "exposureCause": "At-risk build write-off exposure — 2,600 VARIPULSE units authorised above delegated authority ahead of G4 CE Certificate",
+    "exposureCause": "At-risk build write-off exposure — 2,600 Comirnaty units authorised above delegated authority ahead of G4 CE Certificate",
     "phase": {
       "id": "seed_phase_p4"
     },
@@ -214,7 +214,7 @@
     "dependency": "TEAM",
     "daysAtStake": 20,
     "exposure": 7800000,
-    "exposureCause": "CPT code application pending — no US reimbursement path for the ETHICON 4000+ Stapler puts the full first-year US launch revenue at risk until a code is granted",
+    "exposureCause": "CPT code application pending — no US reimbursement path for the Prevnar 20 Stapler puts the full first-year US launch revenue at risk until a code is granted",
     "phase": {
       "id": "seed_phase_p4"
     },

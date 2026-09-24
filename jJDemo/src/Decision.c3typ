@@ -28,8 +28,8 @@ entity type Decision {
   authorityThreshold: string
 
   /**
-   * The queue-card meta line for the Pending pane (§2.1) — the attested J&J
-   * phrasing that varies per card, e.g. "VARIPULSE G2 · G3 Submission Commit ·
+   * The queue-card meta line for the Pending pane (§2.1) — the attested Pfizer
+   * phrasing that varies per card, e.g. "Comirnaty G2 · G3 Submission Commit ·
    * +47 days · €18.4M at risk" or "above your €1.5M authority". Curated content,
    * not a derived display string.
    */

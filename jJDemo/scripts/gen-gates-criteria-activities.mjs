@@ -4,16 +4,16 @@
  *
  * WHY (manager review): "in the detail of each of the products, all the information
  * shown must match the context of that product. For the products at risk and the
- * yellow-gate ones, when clicked, the risks must appear ... use VARIPULSE as the
+ * yellow-gate ones, when clicked, the risks must appear ... use Comirnaty as the
  * example of the tables that should exist. If the product is not at risk, the
  * tables should appear but only when they make sense — no item at risk, open
- * issues clean." Currently only VARIPULSE is fully seeded; every other launch has
+ * issues clean." Currently only Comirnaty is fully seeded; every other launch has
  * an incomplete gate ladder, ZERO gate criteria (empty centre table) and ZERO
  * activities (empty Workflow board). This generator fixes all three from a single
  * source of truth.
  *
  * INVARIANTS honoured:
- *  - VARIPULSE G2's authored data is preserved VERBATIM: its 5 gates, its 6 G3
+ *  - Comirnaty G2's authored data is preserved VERBATIM: its 5 gates, its 6 G3
  *    GateCriterion (incl. seed_gc_varipulse_g3_sterilisation -> seed_doc_varipulse_44),
  *    and its 107 Activity records are copied through unchanged.
  *  - Gate ids keep the exact seed_gate_<slug>_<code> scheme the PPM transform
@@ -21,7 +21,7 @@
  *  - Every launch's ladder is consistent with its currentPhase: gates BEFORE the
  *    live phase are closed (ok), the gate AT the live phase carries the launch's
  *    real slip/status, gates AFTER are pending (no).
- *  - Criteria sit only on each launch's NEXT (live) gate — exactly as VARIPULSE
+ *  - Criteria sit only on each launch's NEXT (live) gate — exactly as Comirnaty
  *    carries criteria only on G3, not G4/G5. Troubled launches surface >=1 unmet
  *    criterion (the risk); on-plan launches read clean.
  *  - The PPM_GATE CSV (the ingest source of truth) is regenerated to match.
@@ -41,7 +41,7 @@ const CRIT_JSON = join(ROOT, 'seed', 'GateCriterion', 'GateCriterion.json');
 const ACT_JSON = join(ROOT, 'seed', 'Activity', 'Activity.json');
 const LAUNCH_JSON = join(ROOT, 'data', 'Launch', 'Launch.json');
 
-const VARIPULSE = 'seed_launch_varipulse_g2';
+const Comirnaty = 'seed_launch_varipulse_g2';
 
 /* ── canonical gate metadata ────────────────────────────────────────── */
 const GATE_NAME = {
@@ -67,7 +67,7 @@ const GATE_PHASE = { G1: 'p1', G2: 'p2', G3: 'p3', G4: 'p4', G5: 'p5', BAU: 'p6'
  */
 const LAUNCHES = [
   {
-    launchId: VARIPULSE, slug: 'varipulse', project: 'PRJ-VARIPULSE_G2',
+    launchId: Comirnaty, slug: 'varipulse', project: 'PRJ-Comirnaty_G2',
     readiness: 83, troubled: true, next: 'G3',
     ladder: [
       { code: 'G1', baseline: '2024-09-24', forecast: '2024-09-24', slip: 0, status: 'ok' },
@@ -78,7 +78,7 @@ const LAUNCHES = [
     ]
   },
   {
-    launchId: 'seed_launch_octaray_g2', slug: 'octaray_g2', project: 'PRJ-OCTARAY_G2',
+    launchId: 'seed_launch_octaray_g2', slug: 'octaray_g2', project: 'PRJ-Abrysvo_G2',
     readiness: 86, troubled: true, next: 'G2',
     ladder: [
       { code: 'G1', baseline: '2024-11-15', forecast: '2024-11-15', slip: 0, status: 'ok' },
@@ -89,7 +89,7 @@ const LAUNCHES = [
     ]
   },
   {
-    launchId: 'seed_launch_embotrap_iv', slug: 'embotrap_iv', project: 'PRJ-EMBOTRAP_IV',
+    launchId: 'seed_launch_embotrap_iv', slug: 'embotrap_iv', project: 'PRJ-Elrexfio_IV',
     readiness: 67, troubled: true, next: 'G5',
     ladder: [
       { code: 'G1', baseline: '2023-06-15', forecast: '2023-06-15', slip: 0, status: 'ok' },
@@ -123,7 +123,7 @@ const LAUNCHES = [
     ]
   },
   {
-    launchId: 'seed_launch_ethicon_4000', slug: 'ethicon_4000', project: 'PRJ-ETHICON_4000',
+    launchId: 'seed_launch_ethicon_4000', slug: 'ethicon_4000', project: 'PRJ-PREVNAR20_4000',
     readiness: 80, troubled: true, next: 'G4',
     ladder: [
       { code: 'G1', baseline: '2024-02-15', forecast: '2024-02-15', slip: 0, status: 'ok' },
@@ -134,7 +134,7 @@ const LAUNCHES = [
     ]
   },
   {
-    launchId: 'seed_launch_dualto', slug: 'dualto', project: 'PRJ-DUALTO',
+    launchId: 'seed_launch_dualto', slug: 'dualto', project: 'PRJ-Zavzpret',
     readiness: 100, troubled: false, next: 'BAU',
     ladder: [
       { code: 'G1', baseline: '2022-06-15', forecast: '2022-06-15', slip: 0, status: 'ok' },
@@ -146,7 +146,7 @@ const LAUNCHES = [
     ]
   },
   {
-    launchId: 'seed_launch_ottava', slug: 'ottava', project: 'PRJ-OTTAVA',
+    launchId: 'seed_launch_ottava', slug: 'ottava', project: 'PRJ-Velsipity',
     readiness: 95, troubled: false, next: 'G1',
     ladder: [
       { code: 'G1', baseline: '2026-11-15', forecast: '2026-11-15', slip: 0, status: 'no' },
@@ -157,7 +157,7 @@ const LAUNCHES = [
     ]
   },
   {
-    launchId: 'seed_launch_puresee', slug: 'puresee', project: 'PRJ-PURESEE',
+    launchId: 'seed_launch_puresee', slug: 'puresee', project: 'PRJ-LITFULO',
     readiness: 83, troubled: false, next: 'G3',
     ladder: [
       { code: 'G1', baseline: '2024-08-15', forecast: '2024-08-15', slip: 0, status: 'ok' },
@@ -172,8 +172,8 @@ const LAUNCHES = [
 /*
  * Per-launch commercial scope + device facts (the "Launch scope" and "Device"
  * cards on the Product-detail page). Kept as attested programme data — the single
- * source of truth the UI must read instead of the old hard-coded VARIPULSE values.
- * VARIPULSE reproduces the prototype exactly (€96M, EO, Irvine + CMO, 11/14,
+ * source of truth the UI must read instead of the old hard-coded Comirnaty values.
+ * Comirnaty reproduces the prototype exactly (€96M, EO, Irvine + CMO, 11/14,
  * 4200, 62/78, 9/22). Numbers are phase-appropriate: pre-market programmes have
  * little commercial scope built yet; launched programmes are complete.
  *
@@ -221,7 +221,7 @@ const SCOPE = {
 
 /* ── gate-criterion templates, keyed by gate code ───────────────────── */
 /* Each entry: [name, unmetReason]. The reason is only emitted when the criterion
- * is scored unmet. VARIPULSE's authored G3 set is preserved verbatim elsewhere,
+ * is scored unmet. Comirnaty's authored G3 set is preserved verbatim elsewhere,
  * so this G3 template is used only for the other G3 launches (puresee). */
 const CRIT_TEMPLATE = {
   G1: [
@@ -352,18 +352,18 @@ for (const L of LAUNCHES) {
 }
 
 /* ── build GateCriterion.json ───────────────────────────────────────── */
-/* Preserve VARIPULSE's authored 6 (they reference seed_doc_varipulse_44). */
+/* Preserve Comirnaty's authored 6 (they reference seed_doc_varipulse_44). */
 const existingCrit = JSON.parse(readFileSync(CRIT_JSON, 'utf8'));
 const varipulseCrit = existingCrit.filter(
   (c) => c.gate && c.gate.id === 'seed_gate_varipulse_g3'
 );
 if (varipulseCrit.length !== 6) {
-  throw new Error(`Expected 6 VARIPULSE G3 criteria to preserve, found ${varipulseCrit.length}`);
+  throw new Error(`Expected 6 Comirnaty G3 criteria to preserve, found ${varipulseCrit.length}`);
 }
 
 const critOut = [...varipulseCrit];
 for (const L of LAUNCHES) {
-  if (L.launchId === VARIPULSE) continue; // authored, already carried through
+  if (L.launchId === Comirnaty) continue; // authored, already carried through
   const tmpl = CRIT_TEMPLATE[L.next];
   const total = tmpl.length;
   // met count reflects readiness; a still-open gate keeps at least one unmet.
@@ -373,7 +373,7 @@ for (const L of LAUNCHES) {
   const gateId = `seed_gate_${L.slug}_${L.next.toLowerCase()}`;
   tmpl.forEach(([name, reason], i) => {
     // Score the LAST `total-met` criteria unmet so the outstanding ones read as
-    // the launch's live risks (matching VARIPULSE, whose sole unmet is last).
+    // the launch's live risks (matching Comirnaty, whose sole unmet is last).
     const isMet = i < met;
     const rec = {
       id: `seed_gc_${L.slug}_${L.next.toLowerCase()}_${i + 1}`,
@@ -387,11 +387,11 @@ for (const L of LAUNCHES) {
 }
 
 /* ── build Activity.json ────────────────────────────────────────────── */
-/* Preserve VARIPULSE's authored 107 activities verbatim. */
+/* Preserve Comirnaty's authored 107 activities verbatim. */
 const existingActs = JSON.parse(readFileSync(ACT_JSON, 'utf8'));
-const varipulseActs = existingActs.filter((a) => a.launch && a.launch.id === VARIPULSE);
+const varipulseActs = existingActs.filter((a) => a.launch && a.launch.id === Comirnaty);
 if (varipulseActs.length !== 107) {
-  throw new Error(`Expected 107 VARIPULSE activities to preserve, found ${varipulseActs.length}`);
+  throw new Error(`Expected 107 Comirnaty activities to preserve, found ${varipulseActs.length}`);
 }
 
 function autonomyFor(n) {
@@ -434,7 +434,7 @@ let personCursor = 0;
 let autoCounter = 0;
 
 for (const L of LAUNCHES) {
-  if (L.launchId === VARIPULSE) continue;
+  if (L.launchId === Comirnaty) continue;
   const curPhase = phaseIdx(L); // 1-based
   const launched = L.launchId === 'seed_launch_dualto';
   PHASE_ORDER.forEach((pcode, pi) => {
@@ -487,8 +487,8 @@ writeFileSync(ACT_JSON, JSON.stringify(actOut, null, 2) + '\n');
 
 /* ── summary ────────────────────────────────────────────────────────── */
 console.log(`Gates: ${gateOut.length}  (CSV rows ${csvRows.length - 1})`);
-console.log(`GateCriterion: ${critOut.length}  (VARIPULSE preserved ${varipulseCrit.length})`);
-console.log(`Activities: ${actOut.length}  (VARIPULSE preserved ${varipulseActs.length})`);
+console.log(`GateCriterion: ${critOut.length}  (Comirnaty preserved ${varipulseCrit.length})`);
+console.log(`Activities: ${actOut.length}  (Comirnaty preserved ${varipulseActs.length})`);
 const perLaunchCrit = {};
 critOut.forEach((c) => {
   const g = c.gate.id;

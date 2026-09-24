@@ -1,6 +1,6 @@
 /**
  * A single criterion that must be met for a {@link Gate} to close. G3 Submission
- * Commit for VARIPULSE G2 stands at "5 of 6 criteria met" — the ISO 11135
+ * Commit for Comirnaty G2 stands at "5 of 6 criteria met" — the ISO 11135
  * sterilisation validation is the only one outstanding, which is precisely what
  * holds the gate in the anchor case.
  *

@@ -69,24 +69,24 @@ export const MK_MARKETS: Record<string, MkMarket> = {
     risks: [
       {
         status: 'ct',
-        title: 'VARIPULSE G2 has missed the Q2 2027 tender window',
+        title: 'Comirnaty G2 has missed the Q2 2027 tender window',
         detail: 'NPI-0417 · sterilisation slip',
         action: issue('417'),
       },
       {
         status: 'rk',
         title: 'Two launches land in Q2 2027 for one field force',
-        detail: 'VARIPULSE G2 and OTTAVA',
+        detail: 'Comirnaty G2 and Velsipity',
         action: chat(),
       },
     ],
     launches: [
-      { name: 'EMBOTRAP IV', quarter: 'Q4 26', status: 'ok' },
-      { name: 'ETHICON 4000+ G4', quarter: 'Q1 27', status: 'rk' },
-      { name: 'VARIPULSE G2', quarter: 'Q2 27', status: 'ct' },
-      { name: 'OTTAVA', quarter: 'Q2 27', status: 'ok' },
-      { name: 'PureSee Toric', quarter: 'Q3 27', status: 'ok' },
-      { name: 'Javelin XL', quarter: 'Q4 27', status: 'ok' },
+      { name: 'Elrexfio IV', quarter: 'Q4 26', status: 'ok' },
+      { name: 'Prevnar 20 G4', quarter: 'Q1 27', status: 'rk' },
+      { name: 'Comirnaty G2', quarter: 'Q2 27', status: 'ct' },
+      { name: 'Velsipity', quarter: 'Q2 27', status: 'ok' },
+      { name: 'Litfulo Toric', quarter: 'Q3 27', status: 'ok' },
+      { name: 'Somavert XL', quarter: 'Q4 27', status: 'ok' },
     ],
   },
   FR: {
@@ -101,23 +101,23 @@ export const MK_MARKETS: Record<string, MkMarket> = {
     risks: [
       {
         status: 'ct',
-        title: 'VARIPULSE G2 has missed the Q2 2027 tender window',
+        title: 'Comirnaty G2 has missed the Q2 2027 tender window',
         detail: 'NPI-0417 · sterilisation slip',
         action: issue('417'),
       },
       {
         status: 'rk',
         title: 'Two launches in the same CEPS pricing cycle',
-        detail: 'ETHICON 4000+ and OTTAVA, Q3 27',
+        detail: 'Prevnar 20 and Velsipity, Q3 27',
         action: chat(),
       },
     ],
     launches: [
-      { name: 'EMBOTRAP IV', quarter: 'Q4 26', status: 'ok' },
-      { name: 'VARIPULSE G2', quarter: 'Q2 27', status: 'ct' },
-      { name: 'ETHICON 4000+ G4', quarter: 'Q3 27', status: 'rk' },
-      { name: 'OTTAVA', quarter: 'Q3 27', status: 'ok' },
-      { name: 'PureSee Toric', quarter: 'Q4 27', status: 'ok' },
+      { name: 'Elrexfio IV', quarter: 'Q4 26', status: 'ok' },
+      { name: 'Comirnaty G2', quarter: 'Q2 27', status: 'ct' },
+      { name: 'Prevnar 20 G4', quarter: 'Q3 27', status: 'rk' },
+      { name: 'Velsipity', quarter: 'Q3 27', status: 'ok' },
+      { name: 'Litfulo Toric', quarter: 'Q4 27', status: 'ok' },
     ],
   },
   US: {
@@ -132,24 +132,24 @@ export const MK_MARKETS: Record<string, MkMarket> = {
     risks: [
       {
         status: 'rk',
-        title: 'ETHICON 4000+ has no CPT reimbursement code',
+        title: 'Prevnar 20 has no CPT reimbursement code',
         detail: 'NPI-0344 · escalated to the Launch Board',
         action: issue('344'),
       },
       {
         status: 'rk',
         title: 'Two cardiology launches share the cath-lab call point',
-        detail: 'Javelin XL and Impella ECP+, Q4 27',
+        detail: 'Somavert XL and Genotropin ECP+, Q4 27',
         action: chat(),
       },
     ],
     launches: [
-      { name: 'DUALTO', quarter: 'live', status: 'ok' },
-      { name: 'OTTAVA', quarter: 'Q1 27', status: 'ok' },
-      { name: 'VARIPULSE G2', quarter: 'Q2 27', status: 'ok' },
-      { name: 'ETHICON 4000+ G4', quarter: 'Q3 27', status: 'rk' },
-      { name: 'Javelin XL', quarter: 'Q4 27', status: 'ok' },
-      { name: 'Impella ECP+', quarter: 'Q4 27', status: 'ok' },
+      { name: 'Zavzpret', quarter: 'live', status: 'ok' },
+      { name: 'Velsipity', quarter: 'Q1 27', status: 'ok' },
+      { name: 'Comirnaty G2', quarter: 'Q2 27', status: 'ok' },
+      { name: 'Prevnar 20 G4', quarter: 'Q3 27', status: 'rk' },
+      { name: 'Somavert XL', quarter: 'Q4 27', status: 'ok' },
+      { name: 'Genotropin ECP+', quarter: 'Q4 27', status: 'ok' },
     ],
   },
   UK: {
@@ -164,17 +164,17 @@ export const MK_MARKETS: Record<string, MkMarket> = {
     risks: [
       {
         status: 'rk',
-        title: 'ETHICON 4000+ delayed by a Notified Body query cycle',
+        title: 'Prevnar 20 delayed by a Notified Body query cycle',
         detail: 'NPI-0365 · 21-day clock-stop',
         action: issue('365'),
       },
     ],
     launches: [
-      { name: 'EMBOTRAP IV', quarter: 'Q4 26', status: 'ok' },
-      { name: 'ETHICON 4000+ G4', quarter: 'Q1 27', status: 'rk' },
-      { name: 'VARIPULSE G2', quarter: 'Q2 27', status: 'ok' },
-      { name: 'OTTAVA', quarter: 'Q3 27', status: 'ok' },
-      { name: 'PureSee Toric', quarter: 'Q4 27', status: 'ok' },
+      { name: 'Elrexfio IV', quarter: 'Q4 26', status: 'ok' },
+      { name: 'Prevnar 20 G4', quarter: 'Q1 27', status: 'rk' },
+      { name: 'Comirnaty G2', quarter: 'Q2 27', status: 'ok' },
+      { name: 'Velsipity', quarter: 'Q3 27', status: 'ok' },
+      { name: 'Litfulo Toric', quarter: 'Q4 27', status: 'ok' },
     ],
   },
   ES: {
@@ -195,11 +195,11 @@ export const MK_MARKETS: Record<string, MkMarket> = {
       },
     ],
     launches: [
-      { name: 'EMBOTRAP IV', quarter: 'Q4 26', status: 'rk' },
-      { name: 'VARIPULSE G2', quarter: 'Q2 27', status: 'ok' },
-      { name: 'ETHICON 4000+ G4', quarter: 'Q3 27', status: 'ok' },
-      { name: 'PureSee Toric', quarter: 'Q4 27', status: 'ok' },
-      { name: 'OTTAVA', quarter: 'Q4 27', status: 'ok' },
+      { name: 'Elrexfio IV', quarter: 'Q4 26', status: 'rk' },
+      { name: 'Comirnaty G2', quarter: 'Q2 27', status: 'ok' },
+      { name: 'Prevnar 20 G4', quarter: 'Q3 27', status: 'ok' },
+      { name: 'Litfulo Toric', quarter: 'Q4 27', status: 'ok' },
+      { name: 'Velsipity', quarter: 'Q4 27', status: 'ok' },
     ],
   },
   JP: {
@@ -215,15 +215,15 @@ export const MK_MARKETS: Record<string, MkMarket> = {
       {
         status: 'rk',
         title: 'Two launches targeting the same Chuikyo listing cycle',
-        detail: 'ETHICON 4000+ and PureSee Toric, Q4 27',
+        detail: 'Prevnar 20 and Litfulo Toric, Q4 27',
         action: chat(),
       },
     ],
     launches: [
-      { name: 'EMBOTRAP IV', quarter: 'Q1 27', status: 'ok' },
-      { name: 'VARIPULSE G2', quarter: 'Q3 27', status: 'ok' },
-      { name: 'ETHICON 4000+ G4', quarter: 'Q4 27', status: 'ok' },
-      { name: 'PureSee Toric', quarter: 'Q4 27', status: 'ok' },
+      { name: 'Elrexfio IV', quarter: 'Q1 27', status: 'ok' },
+      { name: 'Comirnaty G2', quarter: 'Q3 27', status: 'ok' },
+      { name: 'Prevnar 20 G4', quarter: 'Q4 27', status: 'ok' },
+      { name: 'Litfulo Toric', quarter: 'Q4 27', status: 'ok' },
     ],
   },
   CN: {
@@ -238,15 +238,15 @@ export const MK_MARKETS: Record<string, MkMarket> = {
     risks: [
       {
         status: 'rk',
-        title: 'VARIPULSE G2 registration depends on the EU MDR file',
+        title: 'Comirnaty G2 registration depends on the EU MDR file',
         detail: 'downstream of the G3 slip',
         action: chat(),
       },
     ],
     launches: [
-      { name: 'EMBOTRAP IV', quarter: 'Q3 27', status: 'ok' },
-      { name: 'VARIPULSE G2', quarter: 'Q4 27', status: 'ok' },
-      { name: 'PureSee Toric', quarter: 'Q4 27', status: 'ok' },
+      { name: 'Elrexfio IV', quarter: 'Q3 27', status: 'ok' },
+      { name: 'Comirnaty G2', quarter: 'Q4 27', status: 'ok' },
+      { name: 'Litfulo Toric', quarter: 'Q4 27', status: 'ok' },
     ],
   },
   BR: {
@@ -260,9 +260,9 @@ export const MK_MARKETS: Record<string, MkMarket> = {
     ],
     risks: [],
     launches: [
-      { name: 'EMBOTRAP IV', quarter: 'Q2 27', status: 'ok' },
-      { name: 'VARIPULSE G2', quarter: 'Q3 27', status: 'ok' },
-      { name: 'ETHICON 4000+ G4', quarter: 'Q4 27', status: 'ok' },
+      { name: 'Elrexfio IV', quarter: 'Q2 27', status: 'ok' },
+      { name: 'Comirnaty G2', quarter: 'Q3 27', status: 'ok' },
+      { name: 'Prevnar 20 G4', quarter: 'Q4 27', status: 'ok' },
     ],
   },
   IT: {
@@ -277,15 +277,15 @@ export const MK_MARKETS: Record<string, MkMarket> = {
     risks: [
       {
         status: 'rk',
-        title: 'PureSee Toric failed Sequence D of the transit battery',
+        title: 'Litfulo Toric failed Sequence D of the transit battery',
         detail: 'NPI-0359 · insert redesign, re-test 14 Sep',
         action: issue('359'),
       },
     ],
     launches: [
-      { name: 'EMBOTRAP IV', quarter: 'Q1 27', status: 'ok' },
-      { name: 'PureSee Toric', quarter: 'Q3 27', status: 'rk' },
-      { name: 'DUALTO', quarter: 'Q4 27', status: 'ok' },
+      { name: 'Elrexfio IV', quarter: 'Q1 27', status: 'ok' },
+      { name: 'Litfulo Toric', quarter: 'Q3 27', status: 'rk' },
+      { name: 'Zavzpret', quarter: 'Q4 27', status: 'ok' },
     ],
   },
   IN: {
@@ -299,8 +299,8 @@ export const MK_MARKETS: Record<string, MkMarket> = {
     ],
     risks: [],
     launches: [
-      { name: 'ETHICON 4000+', quarter: 'Q2 28', status: 'ok' },
-      { name: 'Javelin XL', quarter: 'Q3 28', status: 'ok' },
+      { name: 'Prevnar 20', quarter: 'Q2 28', status: 'ok' },
+      { name: 'Somavert XL', quarter: 'Q3 28', status: 'ok' },
     ],
   },
   CA: {
@@ -314,8 +314,8 @@ export const MK_MARKETS: Record<string, MkMarket> = {
     ],
     risks: [],
     launches: [
-      { name: 'EMBOTRAP IV', quarter: 'Q1 27', status: 'ok' },
-      { name: 'VARIPULSE G2', quarter: 'Q3 27', status: 'ok' },
+      { name: 'Elrexfio IV', quarter: 'Q1 27', status: 'ok' },
+      { name: 'Comirnaty G2', quarter: 'Q3 27', status: 'ok' },
     ],
   },
   AU: {
@@ -329,8 +329,8 @@ export const MK_MARKETS: Record<string, MkMarket> = {
     ],
     risks: [],
     launches: [
-      { name: 'VARIPULSE G2', quarter: 'Q4 27', status: 'ok' },
-      { name: 'ETHICON 4000+ G4', quarter: 'Q4 27', status: 'ok' },
+      { name: 'Comirnaty G2', quarter: 'Q4 27', status: 'ok' },
+      { name: 'Prevnar 20 G4', quarter: 'Q4 27', status: 'ok' },
     ],
   },
 };

@@ -2,7 +2,7 @@
  * PortfolioService — read-side projections for the non-Execution screens (§5).
  * Every method derives its bundle from the model at call time and returns plain
  * JSON the React pages render directly. No display strings are persisted beyond
- * the attested J&J copy already on the domain types (model invariant §3.6.1).
+ * the attested Pfizer copy already on the domain types (model invariant §3.6.1).
  */
 
 /* ── shared helpers ─────────────────────────────────────────────── */
@@ -200,7 +200,7 @@ function deriveMarketGates(launch, gates, mls) {
     /* Project the lead gate's real dates onto this market by shifting deltaQ
        quarters (deltaQ*3 months). This lets the timeline position the per-market
        gate on the SAME date axis (monthPos) as the lead train, so a small slip
-       (e.g. EMBOTRAP G5 +9d) renders a visible baseline→forecast bar instead of
+       (e.g. Elrexfio G5 +9d) renders a visible baseline→forecast bar instead of
        collapsing to the left edge when the coarse quarter mid-month falls before
        the axis start. */
     var monthShift = deltaQ * 3;
@@ -316,7 +316,7 @@ function cockpit() {
     if (!lid) return;
     var cur = nextGateByLaunch[lid];
     /* earliest open gate by ORDINAL rank — a plain string compare puts "BAU"
-       before "G5", so EMBOTRAP (only G5 + BAU open) would mislabel its next gate
+       before "G5", so Elrexfio (only G5 + BAU open) would mislabel its next gate
        as BAU. GATE_RANK gives the correct G1<…<G5<BAU order. */
     if (!cur || (GATE_RANK[g.code] || 99) < (GATE_RANK[cur.code] || 99)) {
       nextGateByLaunch[lid] = { code: g.code, name: g.name, forecastDate: iso(g.forecastDate), status: g.status };
@@ -701,7 +701,7 @@ function portfolioTimeline() {
  * decision exists, else the outcome itself.
  *
  * `dependency === 'REGULATOR'` overrides everything else: when the next step is
- * with a body outside J&J (FDA, a Notified Body, a reimbursement authority) the
+ * with a body outside Pfizer (FDA, a Notified Body, a reimbursement authority) the
  * issue is waiting on an AUTHORITY no matter who nominally holds it internally —
  * this is the time you cannot pull in by acting faster. That distinction is the
  * whole point of the time-recovery view, so it wins over USER/HELD/AUTO. */
@@ -1143,7 +1143,7 @@ function launchRecord(launchId) {
    * Findings raised against this launch, mapped to the Product-detail "Open
    * issues on this launch" table. Open = outcome USER / HELD / RUNNING (a call
    * you owe, a held item, or an in-flight agent action); AUTO = resolved. This
-   * replaces the hard-coded VARIPULSE-only issues list so every product's issue
+   * replaces the hard-coded Comirnaty-only issues list so every product's issue
    * table reflects its own findings — and an on-plan launch with no open
    * findings reads clean (empty). blockingCount = open findings whose category
    * is 'ct' (critical — blocks the gate).

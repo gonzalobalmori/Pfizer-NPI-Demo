@@ -19,7 +19,7 @@ import {
   runCascadeReplan,
   resolveCascadeImpact,
   resetCascade,
-  OTTAVA_LAUNCH_ID,
+  Velsipity_LAUNCH_ID,
 } from '@/api/cascade';
 import { fmtDate, fmtEuro } from '@/lib/format';
 import type { CascadePlan, CascadeItem } from '@/types/portfolio';
@@ -123,7 +123,7 @@ export default function CascadeView() {
   const load = useCallback(async () => {
     setError(null);
     try {
-      const p = await getCascadePlan(OTTAVA_LAUNCH_ID);
+      const p = await getCascadePlan(Velsipity_LAUNCH_ID);
       setPlan(p);
     } catch (err) {
       setError(typeof err === 'string' ? err : 'Failed to load the replan dashboard.');

@@ -4,8 +4,8 @@
 
 ## Current state
 
-Building the **J&J MedTech agentic NPI Launch Control** app (Mode A, full-scope) from
-`.attachments/JNJ_MedTech_NPI_Demo.html` (functional/visual spec) + `.attachments/C3_build_prompt.md`
+Building the **Pfizer Biopharma agentic NPI Launch Control** app (Mode A, full-scope) from
+`.attachments/JNJ_Biopharma_NPI_Demo.html` (functional/visual spec) + `.attachments/C3_build_prompt.md`
 (priority-ordered brief). Demo "now" = **2026-09-11 08:42** (LGNOW).
 
 - **Ontology (`src/`):** ✅ DONE — 34 entity types + `HasExposure` mixin, all validate & provision clean.
@@ -23,9 +23,9 @@ Building the **J&J MedTech agentic NPI Launch Control** app (Mode A, full-scope)
   Launch Record (Overview/Workflow/Documents tabs), Strategic Decisions placeholder. Backed by
   `PortfolioService` (8 read methods), all browser-verified (c3Action 200 OK, real seed data). See below.
 - **Verify/wire/smoke-test (task #7):** ✅ DONE — `npm run build` clean (lint+tsc+vite), no critical
-  Pkg.Issue, every §5 page fires its c3Action → 200 OK with real J&J records rendered.
+  Pkg.Issue, every §5 page fires its c3Action → 200 OK with real Pfizer records rendered.
 - **UI RE-SKIN (verbatim prototype port):** ✅ DONE — the entire frontend was rebuilt to reproduce the
-  click-through prototype (`JNJ_MedTech_NPI_Demo.html`) exactly: raw CSS ported verbatim, prototype's own
+  click-through prototype (`JNJ_Biopharma_NPI_Demo.html`) exactly: raw CSS ported verbatim, prototype's own
   top-header + tab-strip navigation (no URL routing), landing MENU screen, all 11 views + menu using the
   prototype's own class names. Every figure stays fed by the existing PortfolioService/ExecutionService
   c3Actions ("keep live C3 data"). Browser-verified: all 11 views + menu render, all c3Actions 200 OK,
@@ -40,20 +40,20 @@ Building the **J&J MedTech agentic NPI Launch Control** app (Mode A, full-scope)
   {daysAtStake, recoverableDays, regulatorDays, pctRecoverable, openCount} + per-launch breakdown
   (worst-first); `openIssues()` enriched with `dependency, daysAtStake, recoverableDays, regulatorDays,
   recoverable`, adds an **AUTHORITY** waiting-on bucket + counts, and sorts by recoverableDays first.
-  New regulator-bound finding NPI-0420 (VARIPULSE, FDA deficiency letter, 45d). **Cockpit** (`CockpitView.tsx`)
+  New regulator-bound finding NPI-0420 (Comirnaty, FDA deficiency letter, 45d). **Cockpit** (`CockpitView.tsx`)
   shows a full-width Recharts horizontal stacked bar (green recoverable / grey authority-fixed) per launch,
   headline + legend. **Open issues** (`AlertsView.tsx` — the LIVE view; `pages/OpenIssues/OpenIssues.tsx`
   is dead/unrouted) gained an "On an authority" lens, two live header tiles (Recoverable-by-acting /
   Waiting-on-authority replacing the old hardcoded "Worst slip"/"Agents resolving"), and a **Time impact**
   column with a "You can accelerate" (green) vs "Waiting on authority" (grey) chip. Verified reconciling:
-  totals 131d = 51 recoverable + 80 authority (39%); VARIPULSE 43%, ETHICON 0% (all authority), others 100%;
+  totals 131d = 51 recoverable + 80 authority (39%); Comirnaty 43%, Prevnar 20 0% (all authority), others 100%;
   openIssues counts YOU5/PERSON2/AGENT0/AUTHORITY3, total 10. Build green.
 
 - **Post-market removal + cockpit metric reconciliation (tasks #38–43):** ✅ DONE. (1) **Removed all
-  post-market (P6) agent activity**: the two AUTO findings on the LAUNCHED DUALTO — I-331 (Cashel yield)
+  post-market (P6) agent activity**: the two AUTO findings on the LAUNCHED Zavzpret — I-331 (Cashel yield)
   & I-328 (EUDAMED) — and every dependent (chains chn01/chn02, 7 AgentActions, 5 Handoffs, 2 Decisions,
   CAPA-2026-0139, 2 GuardrailChecks, 4 Comments, the Veeva V0Q…139 source row). In-flight AUTO finding
-  I-319 (Javelin XL) KEPT. Live DB orphans purged via `removeAll`. Findings now **11** (USER5/HELD3/**AUTO1**/
+  I-319 (Somavert XL) KEPT. Live DB orphans purged via `removeAll`. Findings now **11** (USER5/HELD3/**AUTO1**/
   RUNNING2); chains **11** (all in-flight); CAPAs **2** (0148, 0151). (2) **Cockpit top metrics now
   reconcile with portfolio**: `LaunchControlMetrics.launchHealthDistribution()` returns `active`
   (= total − LAUNCHED = 8) + `rollup {onPlan: ON_PLAN+PRE_MARKET=3, atRisk:4, offTrack:1, launched:1}`;
@@ -68,7 +68,7 @@ Building the **J&J MedTech agentic NPI Launch Control** app (Mode A, full-scope)
 `/usr/workspace/gen_seed.mjs` (Node, run `node gen_seed.mjs` from `/usr/workspace`). Parses the HTML
 literal arrays (FLA, OCH, IZ, OLANE, MKT/MKS/MKN, THR, PROB, HOLD, PEEK, ACTS, doc register) and emits
 per-type JSON into `jJDemo/seed/<TypeName>/`. **Edit the generator, not the JSON**, then re-run + `upsertSeedData`.
-⚠️ NOTE: the generator is STALE relative to several later surgical JSON edits (DUALTO revenueAtRisk 200000→0,
+⚠️ NOTE: the generator is STALE relative to several later surgical JSON edits (Zavzpret revenueAtRisk 200000→0,
 etc.) — re-running would REGRESS them. Post-market removal was done by editing JSON + source maps in
 parallel WITHOUT re-running. Treat re-running as a manual reconciliation exercise, not a safe refresh.
 
@@ -114,7 +114,7 @@ ActionPlanTask 21, **Document 731** (every launch now has a complete 9-section r
   €250k authority)→3 options (A recommended, keeps €18.4M)→21 tasks→CAPA→6 guardrail checks→4-comment
   thread→3 notifications→4 DHF entries. CHN-09 reconstructs in time order (qua→gov→src→reg→orc).
 
-## Manager demo-review changes (J&J Demo Changes.docx — applied)
+## Manager demo-review changes (Pfizer Demo Changes.docx — applied)
 
 Feedback doc `.attachments/docx_extract/` (~28 items, Spanish, 11 screenshots). Applied:
 
@@ -127,20 +127,20 @@ Feedback doc `.attachments/docx_extract/` (~28 items, Spanish, 11 screenshots). 
   (Regulatory Submission Filed @ G3, FDA Approved/CE @ G4, First Ship @ G5). Verified rendering.
 - **Cockpit "Next gate" column:** was showing markets; now shows the launch's actual next open gate via
   `nextGateByLaunch` lookup (`cockpit()`), with a code-vs-name dedup so "BAU handover" doesn't double.
-- **Item 1 — IssueView false CAPA framing:** `IssueView.tsx` hard-coded VARIPULSE-G2 supplier-quality/CAPA copy
+- **Item 1 — IssueView false CAPA framing:** `IssueView.tsx` hard-coded Comirnaty-G2 supplier-quality/CAPA copy
   (CAPA-2026-0148, "Quality agent opened CAPA…", G3/+47d, validation/BSI impact) that rendered for ANY finding —
-  so Javelin's commercial NPI-0319 showed a false quality/CAPA story. Now data-driven: `resolutionWorkspace()` returns
+  so Somavert's commercial NPI-0319 showed a false quality/CAPA story. Now data-driven: `resolutionWorkspace()` returns
   `capa` (from `CAPA.fetch` by finding) + `gateAtRisk` (launch's next open gate); the CAPA chip, quality tag, CAPA
   paragraph, gate meta, and impact block render conditionally on `ws.capa`/slip. Verified: 0319 → no CAPA, "Commercial"
   tag, "on schedule"; 417 → CAPA-2026-0148, G3, +47d.
-- **Item 2a — Cerenovus empty-but-live columns:** `ExecutionService.liveBoard` column `state` was hard-coded 'live'
-  for P3/P4; now downgraded to 'queued' when the (franchise-filtered) column has 0 cards. Verified Cerenovus.
+- **Item 2a — Rare Disease empty-but-live columns:** `ExecutionService.liveBoard` column `state` was hard-coded 'live'
+  for P3/P4; now downgraded to 'queued' when the (franchise-filtered) column has 0 cards. Verified Rare Disease.
 - **Item 2b — mis-attributed step:** `seed_chain_iz351_a2` "Pricing a second sterilisation lane" was `seed_agent_qua`
   (Quality); reassigned to `seed_agent_sc` (Supply Chain) to match the finding's `detectedBy` and sibling step a1. Verified.
 - **Item 3 — Manufacturing count confusion:** no data bug (whole-launch "4 Not started" vs P3-only "1/3" answer different
   questions). Clarified the FlowView Status strip label to "… across all phases" so the scope is explicit.
 - **Item 4 — India timeline empty:** `MK_QUARTERS` ended Q4 2027 but India ships Q2/Q3 2028 → row said "2" with no chips.
-  Extended window contiguously through Q3 2028. Verified: India now shows ETHICON 4000+ (Q2 28) + Javelin XL (Q3 28).
+  Extended window contiguously through Q3 2028. Verified: India now shows Prevnar 20 (Q2 28) + Somavert XL (Q3 28).
 
 Runtime gotcha: after editing backend `.js`, `runJsCode` can be stale — call `clearCaches({workspaceId})` then retry.
 `Filter.and` here is a member (`Filter.eq(...).and(...)`), NOT varargs-array.
@@ -156,7 +156,7 @@ Runtime gotcha: after editing backend `.js`, `runJsCode` can be stale — call `
   (88.8%; H merged into R), handoffs 24/9 chains (max 4), breaches 0, 12 domains/107 acts, openFindings 5 USER/2 HELD/3 AUTO/2 RUNNING,
   health 9 launches. `guardrailBreachCount(days)` & `decisionsTakenTrailing90Days(days)` take an `int` param.
 - **DEVIATION (§6, documented):** the prototype's per-launch exposure figures do NOT reconcile to its own €30.5M
-  headline (cockpit attention table sums to €44.1M; resolution narratives to €38M; only VARIPULSE €18.4M is stated
+  headline (cockpit attention table sums to €44.1M; resolution narratives to €38M; only Comirnaty €18.4M is stated
   consistently). Per §3.6.1 (one source, derive don't store) we keep each launch's attested `revenueAtRisk` and
   DERIVE the portfolio total (€38M) rather than hard-coding €30.5M. Spec constants (Δ+€11.2M/30d, €412M base,
   readiness target 85/−6pts, slip target ≤5/worst 47) are returned as context alongside the derived value.
@@ -167,7 +167,7 @@ Runtime gotcha: after editing backend `.js`, `runJsCode` can be stale — call `
 - **Item 3 — synthetic source extracts:** `/usr/workspace/gen_sources.mjs` (seeded 0x1a2b3c4d, re-runnable, byte-identical). Emits **21 feeds** across 11 source systems into `jJDemo/sources/<system>/` + `_MANIFEST.json`. Feeds look like real SAP/Ariba/SRM/D&B/Veeva-QMS/Veeva-RIM/LIMS/MES/PPM/Workday/portal extracts (real column names, key formats, bounded dirt: nulls, 1 dup, trailing-space key, DD/MM/YYYY alt-date; 3 planted crosswalk mismatches; Heraeus omitted from D&B → no match). `QMS_COMMENT` generated verbatim from the 4 locked Comment records of `seed_decision_417` (thread guarantee).
 - **Item 4 — the pipeline (DONE):**
   - New ontology types: `Lot`, `ProcessMeasurement` (Heraeus SPC contrast case), `SupplierCrosswalk` (key resolution), `DataFeedWatermark` (freshness), `LineageRecord` (provenance). All operational → `data/`.
-  - **Gold path proven REAL:** `src/source/SrcPpmGate.c3typ` + `metadata/Transform/SrcPpmGate-Gate.js` (uses `replace()` not `replaceAll` — id reversal `G-VARIPULSE_G3`→`seed_gate_varipulse_g3`) + `metadata/FileSourceSystem/NpiSourceFiles.json` + `metadata/FileSourceCollection/PpmGateFeed.json`. Verified end-to-end: wrote a mutated PPM_GATE file to the Azure inbox, `.process()`, and the SAME gate row updated (slip 47→9, forecast 2026-12-21→2026-11-13, no duplicate). Then RESTORED to baseline (47/2026-12-21) so the thread demo is intact.
+  - **Gold path proven REAL:** `src/source/SrcPpmGate.c3typ` + `metadata/Transform/SrcPpmGate-Gate.js` (uses `replace()` not `replaceAll` — id reversal `G-Comirnaty_G3`→`seed_gate_varipulse_g3`) + `metadata/FileSourceSystem/NpiSourceFiles.json` + `metadata/FileSourceCollection/PpmGateFeed.json`. Verified end-to-end: wrote a mutated PPM_GATE file to the Azure inbox, `.process()`, and the SAME gate row updated (slip 47→9, forecast 2026-12-21→2026-11-13, no duplicate). Then RESTORED to baseline (47/2026-12-21) so the thread demo is intact.
   - **`src/PipelineOrchestrator.{c3typ,js}`** — stateless service, 5 methods (all smoke-tested green): `feedHealth()` (20 feeds FRESH, flips STALE at 2× cadence — drives demo 3), `resolveSupplier(kind,value)` + `crosswalkReport()` (AUTO 2/MANUAL 1/PARTIAL 1; Heraeus DUNS gap surfaced), `lineageFor(type,id)` (Gate→PPM_GATE/file/row/transform — demo 1), `reconcileThread()` (staged QMS_COMMENT vs locked golden thread — **match=true, 4/4 byte-for-byte**).
   - Derivation step: `/usr/workspace/gen_pipeline_data.mjs` turns source extracts → `data/` files for the 5 new types (deterministic). Verified in DB: 12 lots (09-12 HOLD w/ spcViolation), 403 measurements (366 violations, all confined to the 4 HOLD lots, escalating 59→66→110→131; RULE_1 333 / RULE_2 33 — matches NPI-0412 "4 of 12 lots out of spec").
   - **Two lanes honored:** operational types in `data/` accept idempotent load updates; `SeedData` types (Comment etc.) are LOCKED — the escalation thread cannot be mutated by any load, so QMS_COMMENT is STAGED + reconciled, never written over.
@@ -187,7 +187,7 @@ Runtime gotcha: after editing backend `.js`, `runJsCode` can be stale — call `
 ## UI shell / views (current — verbatim prototype port)
 
 The React app reproduces the prototype's **screen model**, not React-Router routes:
-- **CSS:** raw prototype CSS ported verbatim to `ui/react/src/styles/prototype.css` (~2266 lines; J&J red
+- **CSS:** raw prototype CSS ported verbatim to `ui/react/src/styles/prototype.css` (~2266 lines; Pfizer red
   ramp `--red500:#EB1700`/`--red600`, `--amber`, warm-grey ramp, 13px base). Imported LAST in `main.tsx`
   so it wins over any residual Tailwind. Verbatim port rules: `class`→`className`, `onclick`→`onClick`,
   inline `style="…"`→`style={{…}}`, void tags self-closed, prototype class names + static text word-for-word.
@@ -202,7 +202,7 @@ The React app reproduces the prototype's **screen model**, not React-Router rout
   `towerPane`/`towerFranchise`/`towerOpenCard` (Agent tower), `chatAsk` (Copilot canned prompt). Each view
   reads `intent` via `useNav()` and applies the fields naming its own local state; `go`/`open`/`tab` clear
   the intent. This is the mechanism the guided tour uses.
-- **Shell:** `shell/AppShell.tsx` — two-row sticky `.hdr` (J&J wordmark + back-to-menu chevron, branch
+- **Shell:** `shell/AppShell.tsx` — two-row sticky `.hdr` (Pfizer wordmark + back-to-menu chevron, branch
   label, "Guided demo" button, "My decisions" button → exec/actions, avatar; source-systems chip removed) + `.tabs` strip
   from the active branch's tab set; `.body` renders exactly one `.view.on`. `shell/MenuScreen.tsx` — the
   landing "SCREEN 0" (wordmark bar, "Hi, Helena" hero, 3 branch cards, right rail).
@@ -214,7 +214,7 @@ The React app reproduces the prototype's **screen model**, not React-Router rout
   - `ActionsView` → 3 sub-panes `getPendingQueue`/`getEscalatedQueue`/`getDecisionHistory`; cards → `open('issue',findingId)`
   - `TowerView` → `getLiveBoard('all','all')` + `getActivityLog('all','all')`
   - `AlertsView` → `getOpenIssues()`; rows → `open('issue',findingId)`
-  - `ChatView` → **two-mode Copilot** (per user: integrated INTO the Copilot as two modes, NOT a separate tab — the old `EodLogView` + `eod` nav tab were removed). A `.cq-modes` segmented control at the top of `#v-chat` toggles `mode` (`'ask'` default | `'eod'`); each mode keeps its own state so switching never loses an in-progress thread or capture. CSS `.cq-modes`/`.cq-mode(.on)`/`.cq-mode-ic`/`.cq-mode-tx` in prototype.css "COPILOT" block (purple icon accent, J&J-red active border).
+  - `ChatView` → **two-mode Copilot** (per user: integrated INTO the Copilot as two modes, NOT a separate tab — the old `EodLogView` + `eod` nav tab were removed). A `.cq-modes` segmented control at the top of `#v-chat` toggles `mode` (`'ask'` default | `'eod'`); each mode keeps its own state so switching never loses an in-progress thread or capture. CSS `.cq-modes`/`.cq-mode(.on)`/`.cq-mode-ic`/`.cq-mode-tx` in prototype.css "COPILOT" block (purple icon accent, Pfizer-red active border).
     - **Ask** → the existing grounded Q&A copilot: `getCopilot()` (greeting + suggestion prompts; refusal prose rendered VERBATIM, never softened). The guided tour's `chatAsk` forces Ask mode.
     - **End-of-day log** → the conversational capture assistant (`EodMode` sub-component wrapping the shared **`components/EodCapture.tsx`**): a domain owner tells the copilot what happened and it becomes real `Finding` records the tower sees, no form-filling. Two **text-only** modes inside — **Free dump** (`extractEodSignals(domain,text,[])`) and **Guided** (questions from `getEodPrompts(domain)` → `extractEodSignals(domain,'',answers)`); domain chips from `getEodDomains()` (13 incl. "all"→Orchestrator); extraction returns **DRAFTS only** (edit headline, change impact ct/rk/ok, include/exclude, confidence + NEEDS REVIEW badges); **Capture** → `commitEodSignals(approvedDrafts)` (SOLE writer → `outcome='RUNNING'`, `signalSource='eod-log'`, `detectedBy`=domain agent). A "Captured this session" list links each new finding into its resolution workspace via `open('issue',id)`. Wired in `api/execution.ts` (4 fns) + types in `types/execution.ts` (`EodDomain`/`EodPrompt`/`EodAnswer`/`EodDraft`/`EodExtractData`/`EodCommittedFinding`+Data wrappers). **Verified in browser:** mode selector renders, EOD mode fires `domains` + `extractSignals` (both 200 OK), 2 drafts render correctly classified.
   - `StratView` → fully static verbatim port (out-of-scope branch, no data wiring by design)
@@ -226,12 +226,12 @@ The React app reproduces the prototype's **screen model**, not React-Router rout
   covered by an OCH chain (Chain 9→13, AgentAction 33→44; activity log 24→32 completed fleet actions, 13
   agents). Reconciliation tests still 11/11. TowerView `agentLabel`/`agentBase` helpers dedupe the "agent"
   suffix (seed names carry "… agent"; prototype AL map appends it).
-- **Timeline gate data — FIXED.** The Timeline (Milestones) lens previously showed markers for VARIPULSE
+- **Timeline gate data — FIXED.** The Timeline (Milestones) lens previously showed markers for Comirnaty
   only; the other 8 launches rendered as empty lines ("can barely see any information"). Root cause: only
-  VARIPULSE had `Gate` seed records. Added `OTHER_GATES` in `gen_seed.mjs` (block just before
+  Comirnaty had `Gate` seed records. Added `OTHER_GATES` in `gen_seed.mjs` (block just before
   `write('Gate', gates)`) seeding gates for all 8 remaining launches with the **prototype's own §2.4
-  milestone dates** (EMBOTRAP G5 17→26 Sep +9d, ETHICON G4 12 Oct→02 Nov +21d, OCTARAY G2 16→30 Sep +14d,
-  PureSee G3 03→14 Nov +11d, plus on-plan/future markers for Impella/Javelin/OTTAVA/DUALTO and BAU
+  milestone dates** (Elrexfio G5 17→26 Sep +9d, Prevnar 20 G4 12 Oct→02 Nov +21d, Abrysvo G2 16→30 Sep +14d,
+  Litfulo G3 03→14 Nov +11d, plus on-plan/future markers for Genotropin/Somavert/Velsipity/Zavzpret and BAU
   handovers). Gate count 5→22, all 9 timeline rows now carry markers (verified: `rowsWithNoGates:0`).
   Non-slipped gates set `baselineDate = forecastDate` so `monthPos` plots the single forecast marker.
 - **BU cards + Timeline slip bars — FIXED (readiness/float/next-gate/slip visuals).** BU cards previously
@@ -245,38 +245,38 @@ The React app reproduces the prototype's **screen model**, not React-Router rout
   scheduleFloatDays/nextGate/openIssues, each franchise carries summed openIssues. (3) `BuLaunchView` renders
   `bu-rd` bar (`bar-f r/a/g` by health, width=readinessPct%), `slp` pill (+Nd | Nd float | launched | on plan),
   next-gate (`bu-lp` phase → code + fmtDate). (4) `monthPos()` now uses fractional day-of-month so a +9d/+11d
-  in-month slip draws a visible striped `ms-sp` bar. **Data-difference note:** VARIPULSE BU next gate is
+  in-month slip draws a visible striped `ms-sp` bar. **Data-difference note:** Comirnaty BU next gate is
   self-consistent **G3 21 Dec / +47d** (04 Nov baseline + 47d; matches issue-workspace "04 Nov → 21 Dec" and
   worst-slip KPI). The prototype's BU card hardcodes "13 Nov" text while labeling +47d — an internal prototype
   inconsistency; per §3.6.1 (one source, derive don't store) we keep the derived 21 Dec. All other 8 launches'
   BU dates/slips/readiness match the prototype exactly. Verified via browser (bu-view.png, timeline-view.png).
 - **Timeline per-market coherence — FIXED (color ↔ slip-bar ↔ launch-status agreement).** The expanded
   Timeline showed markets with `mlStatus:'ok'` (green/no slip bar) that nonetheless inherited the lead
-  gate's slip (VARIPULSE ES/UK/US +47, EMBOTRAP DE/FR/UK, ETHICON ES +21, PureSee DE +11) — color/graph
-  said "on plan" while the data carried a delay — and OCTARAY had **zero** MarketLaunch rows (empty expand)
+  gate's slip (Comirnaty ES/UK/US +47, Elrexfio DE/FR/UK, Prevnar 20 ES +21, Litfulo DE +11) — color/graph
+  said "on plan" while the data carried a delay — and Abrysvo had **zero** MarketLaunch rows (empty expand)
   despite a 14-day G2 slip. Root cause = incoherent **seed** (`seed/MarketLaunch/MarketLaunch.json`), NOT a
   render bug: `mlStatus` is the single shared tone source across Cockpit / Market lens / Timeline, so the
   fix belongs in the authored data (fixing only `deriveMarketGates` would desync the Timeline from the
   Market lens). **Coherence invariant now held:** a non-live market has slip>0 ⟺ status≠ok, and severity
   reconciles with launch health (OFF_TRACK→lead `ct`, exposed followers `rk`; AT_RISK→`rk`; on-time/live→`ok`).
-  Edits: VARIPULSE ES/UK/US ok→rk; EMBOTRAP DE/FR/UK ok→rk; ETHICON ES ok→rk and DE/UK moved Q1 27→Q3 27
+  Edits: Comirnaty ES/UK/US ok→rk; Elrexfio DE/FR/UK ok→rk; Prevnar 20 ES ok→rk and DE/UK moved Q1 27→Q3 27
   (they shipped *before* the US lead → `deltaQ<0` spuriously projected them "live"; now same-quarter as lead
-  so they share the 21d G4 slip); PureSee DE ok→rk; **added 5 OCTARAY MarketLaunch rows** (DE-lead+US Q3 27
+  so they share the 21d G4 slip); Litfulo DE ok→rk; **added 5 Abrysvo MarketLaunch rows** (DE-lead+US Q3 27
   `rk` on the late G2, FR/UK/JP later `ok`). Verified: `portfolioTimeline()` reports **0 incoherences**,
   Cockpit-vs-Timeline marketGates signatures match exactly, all 11 `test_Reconciliation` cases pass, build+
   lint green. Browser-verified (timeline-varipulse-expanded.png): DE/FR red dot+red G3+red slip bar, ES/UK/US
   amber dot+amber G3+amber slip bar, AU/BR/CA/CN/JP grey dot+grey G2+no bar.
 - **Msg 8 — three coherence fixes (identity / authority / timeline-cohort) — FIXED.**
-  - **(8a) Timeline cohort tone.** VARIPULSE (OFF_TRACK) was the only launch whose slipped-gate cohort was
+  - **(8a) Timeline cohort tone.** Comirnaty (OFF_TRACK) was the only launch whose slipped-gate cohort was
     two-toned: DE/FR `ct` but ES/UK/US `rk`, despite all five sharing the *identical* cohort (G3 / +47d /
     Q4 26 forecast) — same marker position, different colour, so a per-country difference was *always* shown
     even when the markets are in the same situation. Every other launch already renders its slipped cohort
-    uniformly. Fix (seed, `MarketLaunch.json`): VARIPULSE US/UK/ES `rk`→`ct` so all five delayed markets read
+    uniformly. Fix (seed, `MarketLaunch.json`): Comirnaty US/UK/ES `rk`→`ct` so all five delayed markets read
     one tone. Coherence invariant still holds (0 incoherences).
     - **CLARIFIED INTENT (Msg 9, w/ screenshots):** the user CONFIRMED that all-same-colour + all-same-delay
-      (VARIPULSE's 5 red markets each with an identical red striped slip bar) is exactly what they want — the
+      (Comirnaty's 5 red markets each with an identical red striped slip bar) is exactly what they want — the
       uniform-cohort change above is correct. The real defect they flagged is **(8a-fix) small slips were
-      invisible** on the per-country rows: EMBOTRAP's +9d G5 cohort (DE/ES/FR/UK) showed the amber G5 marker
+      invisible** on the per-country rows: Elrexfio's +9d G5 cohort (DE/ES/FR/UK) showed the amber G5 marker
       but NO slip bar. Root cause was a **positioning bug**, not just a floor: `MarketTimelineRow` positioned
       by `quarterPos(gateForecastQuarter)`, and the slipped markets carried the coarse quarter `"Q3 26"` whose
       mid-month (Aug 26) falls *before* the Sep-26 axis start → clamped to `left:0%`, collapsing the slip bar
@@ -290,8 +290,8 @@ The React app reproduces the prototype's **screen model**, not React-Router rout
          (falling back to `quarterPos` only if no date), plus `MIN_SLIP_BAR_PCT=5` / `slipBarGeom` floor so a
          small to-scale slip is still drawn wide enough to separate the hollow baseline marker from the
          forecast marker. Applied to both `MarketTimelineRow` (per-country) and `MilestoneRowView` (lead row).
-      Browser-verified: EMBOTRAP DE/ES/FR/UK now render `ms-sp amb` bar (`width:5%`, baseline `left:0.95%` →
-      forecast `left:5.95%`); VARIPULSE +47d bars unchanged (wide, red `ms-sp`, to-scale); on-plan markets show
+      Browser-verified: Elrexfio DE/ES/FR/UK now render `ms-sp amb` bar (`width:5%`, baseline `left:0.95%` →
+      forecast `left:5.95%`); Comirnaty +47d bars unchanged (wide, red `ms-sp`, to-scale); on-plan markets show
       no bar. 11/11 reconciliation tests still pass; build+lint green.
   - **(8b) Identity — "You" vs "Helena Fossi".** The signed-in user *is* Helena Fossi (`seed_person_hf` owns
     all 12 Decisions), so `waitingOnFor` (PortfolioService.js) showed her USER findings as "You" but the two
@@ -380,45 +380,45 @@ The React app reproduces the prototype's **screen model**, not React-Router rout
   a second reconciling finding → decision/approve → My-actions history → fleet activity log → Copilot answer),
   anchored on a DIFFERENT case for a DIFFERENT audience. Sharing screens between demos is by design. Picker
   auto-shows `d.steps.length` (all read "16 steps"); browser-verified the picker renders 3 cards each at 16.
-  - **Demo 1 `capa` (16 steps, chip CAPA-2026-0148):** the original VARIPULSE sterilisation-slot CAPA
+  - **Demo 1 `capa` (16 steps, chip CAPA-2026-0148):** the original Comirnaty sterilisation-slot CAPA
     (NPI-0417), verbatim — the template arc all three mirror.
   - **Demo 2 `regulatory` (16 steps, chip REGULATORY):** regulatory-agency angle, anchored on **FDA 0420**
-    (VARIPULSE G2 deficiency letter, view-only / authority-bound — no Approve) + **BSI 0365** (Ethicon 4000+,
+    (Comirnaty G2 deficiency letter, view-only / authority-bound — no Approve) + **BSI 0365** (Hospital 4000+,
     Notified Body signature we owe, movable). **INVARIANT (post-review): there is exactly ONE authority-bound
     thread — NPI-0420/FDA (45 fixed/grey days in `PortfolioService.timeImpact()`). NPI-0365/BSI is 100%
     recoverable (a signature Helena owes, not an agency wait). No card may claim "two agency clocks/threads on
     the authority."** Arc: menu → cockpit **time-recovery panel** (card 2 spots `.ti-pnl` / `.ti-card.reg`
-    "Waiting on an authority" 45d / `.ti-card.rec`; the ONE authority thread, FDA) → **VARIPULSE launch detail**
+    "Waiting on an authority" 45d / `.ti-card.rec`; the ONE authority thread, FDA) → **Comirnaty launch detail**
     (card 3, `view:'launch', param:'seed_launch_varipulse_g2'`; `#ld-slip`/`#ld-rev` — reached in one click from
     the grey bar, NOT the product-lens list) → portfolio market lens **US** (card 4, `.wp[data-m=US]` FDA/the one
     fixed clock + `.wp[data-m=UK]` BSI/movable) → open issues **authority** filter (card 5, exactly ONE row:
     `#v-alerts .al-lens .wl.authority`, `tr[data-npi="NPI-0420"]`) → my actions **escalated**
-    (`.dr[data-npi="NPI-0365"]`) → agent tower **Ethicon** (`#c-seed_finding_365 .tbwk`, 3 steps — NOT 0420,
+    (`.dr[data-npi="NPI-0365"]`) → agent tower **Hospital** (`#c-seed_finding_365 .tbwk`, 3 steps — NOT 0420,
     which has 0 chain/tower steps) → tower autonomy KPIs **+ board card `#c-seed_finding_420`** (card 8, the
     one-click bridge into the FDA record) → 0420 issue (`#is-t`/`.is-bar` view-only) → 0420 problem (`#pb-txt`)
     → 0365 issue (`#is-held`, held) → 0365 chain (`#hd-chain`) → dossier register (card 13 spots the SHORT group
     **headers** `#v-docs .dc-g[data-c=reg] .dc-gh` / `[data-c=cert] .dc-gh` — not the tall `.dc-g`, whose outline
     scrolled off) → history (card 14 spots `.fb2[data-f=esc]` + `#v-actions .sb-p.on .ev[data-npi="NPI-0365"]` —
-    the ETHICON escalation from THIS tour; ActionsView history rows now carry `data-npi`) → fleet log (all
+    the Prevnar 20 escalation from THIS tour; ActionsView history rows now carry `data-npi`) → fleet log (all
     franchises) → Copilot `chatAsk='regulatory'` (`.cq-ev`/`.cq-rec`/`.cq-act`; card 16 copy = "one FDA clock +
     one signature + BSI slot + site visit", NOT "two agency clocks"). **Data:** `hist_0365` ESCALATED
     `DecisionHistoryEvent` seeded so History genuinely contains the NPI-0365 escalation
     (`decisionHistory().counts` = {taken:6, escalations:2, total:8}); reconciles History escalations with the KPI
     band ("Escalations open: 2") and the Escalated pane (0344 + 0365). `test_Reconciliation` unaffected (11/11).
   - **Demo 3 `supplier` (16 steps, chip SUPPLIER CHANGE):** shared-component supplier-reallocation, anchored on
-    **NPI-0412** (Heraeus line-3 dimensional-drift SPC defect on VARIPULSE — a fully-modelled USER decision:
-    options a\*/b/c, 4-entry thread, **5 tower work steps**, 5 action-plan tasks) + **NPI-0388** (OCTARAY G2
+    **NPI-0412** (Heraeus line-3 dimensional-drift SPC defect on Comirnaty — a fully-modelled USER decision:
+    options a\*/b/c, 4-entry thread, **5 tower work steps**, 5 action-plan tasks) + **NPI-0388** (Abrysvo G2
     single-source, owns the reserved Neuss capacity). Arc: menu → cockpit → portfolio product lens (four
     launches share the ring electrode) → portfolio market lens **DE** (`.wp[data-m=DE]`, the concentration) →
-    my actions pending (`.dr[data-npi="NPI-0412"]`) → agent tower **Biosense Webster**
+    my actions pending (`.dr[data-npi="NPI-0412"]`) → agent tower **Vaccines**
     (`#c-seed_finding_412 .tbwk`, 5 steps) → tower autonomy KPIs → 0412 issue (`#pb-txt`/`.is-meta`) → three
     options (`#opt-a` reroute-line-5 recommended / `#opt-b` 100%-inspection / `#opt-c` Neuss diversion) →
-    action plan (`#run-all`, 4 of 5 steps agent-runnable) → thread (`#thr-417`) → 0388 OCTARAY side
+    action plan (`#run-all`, 4 of 5 steps agent-runnable) → thread (`#thr-417`) → 0388 Abrysvo side
     (`#is-t`/`#opt-a`, ships later w/ longer FDA path so it can lend) → approve (`#btn-app`) → history → fleet
     log → Copilot `chatAsk='supplier'` (`.cq-ev`/`.cq-rec`/`.cq-act`).
     - **Tower vs workspace chain — IMPORTANT:** `resolutionWorkspace('seed_finding_412').chain` returns **0**
       (0412 has no `Chain`/`AgentAction` record), but the **tower `liveBoard` card** `#c-seed_finding_412`
-      renders **5 work steps** (V&V column, Biosense Webster) — a SEPARATE projection. So Demo 3's tower step
+      renders **5 work steps** (V&V column, Vaccines) — a SEPARATE projection. So Demo 3's tower step
       spotlights `.tbwk` correctly; do NOT rely on the workspace-chain count for tower steps.
   - **Data added for Demos 2 & 3 is TEST-INVISIBLE** (no Finding/activity touched, so the reconciliation lock —
     **13 findings / 107 activities / 11 `test_Reconciliation.js` tests — is unaffected and re-verified green**):
@@ -484,19 +484,19 @@ groups), `launchIndex`. `DOC_GROUP_ORDER = dhf,vv,cli,reg,cert,mfg,com,sco,pm` (
 registrations, Manufacturing & quality, Labelling & commercial, Supply chain & operations, Post-market
 surveillance).
 
-**Document register (COMPLETE per launch):** every launch now carries the full industry-standard J&J
-MedTech checklist (81 items × 8 launches + VARIPULSE's 83 = **731** total). The full set is always present
+**Document register (COMPLETE per launch):** every launch now carries the full industry-standard Pfizer
+Biopharma checklist (81 items × 8 launches + Comirnaty's 83 = **731** total). The full set is always present
 (manager: "que esten todos porque son cosas que hay que subir"); only `status` varies by how far the launch
-has progressed. VARIPULSE keeps its 78 bespoke docs verbatim (incl. `seed_doc_varipulse_44`, a GateCriterion
+has progressed. Comirnaty keeps its 78 bespoke docs verbatim (incl. `seed_doc_varipulse_44`, a GateCriterion
 evidence link) + a new 5-doc supply-chain section. The other 8 launches are generated deterministically by
 `scripts/gen-documents.mjs` (in-repo, re-runnable), grading each doc's status from the launch's current phase
-vs the doc's expected-completion phase — DUALTO/P6 ≈ all approved, OTTAVA/P1 ≈ all not-started, mid-phase
+vs the doc's expected-completion phase — Zavzpret/P6 ≈ all approved, Velsipity/P1 ≈ all not-started, mid-phase
 graded in between; AT_RISK/OFF_TRACK launches surface a few `miss` gaps. Verified in-browser (200 OK) for
-DUALTO + OTTAVA.
+Zavzpret + Velsipity.
 
 **Product-detail consistency (manager review — "all data connected end-to-end, nothing hardcoded"):**
-Previously only VARIPULSE was fully seeded and LaunchView hard-coded VARIPULSE's scope/workstreams/issues
-for every product (DUALTO's detail was empty; ETHICON showed no at-risk steps; downstream/issues tables
+Previously only Comirnaty was fully seeded and LaunchView hard-coded Comirnaty's scope/workstreams/issues
+for every product (Zavzpret's detail was empty; Prevnar 20 showed no at-risk steps; downstream/issues tables
 missing). Fixed end-to-end:
 - **Scope + gate ladders + criteria + activities generated for all 9 launches** by the single consolidated
   `scripts/gen-launch-detail.mjs` (deterministic, re-runnable; supersedes the earlier split
@@ -509,7 +509,7 @@ missing). Fixed end-to-end:
   short-slug ids were the bug that created orphan duplicate gates + broke the SrcPpmGate→Gate transform. An
   `AUTHORED` table in the script is the source of truth for narrative late/slip gates (varipulse G3 +47, octaray
   G2 +14, embotrap G5 +9, ethicon G4 +21, puresee G3 +11, dualto G5 ok) so re-runs never lose a late gate to file
-  drift. VARIPULSE's 5 gates / 6 G3 criteria / 107 activities preserved verbatim (guard-checked, asserts counts).
+  drift. Comirnaty's 5 gates / 6 G3 criteria / 107 activities preserved verbatim (guard-checked, asserts counts).
   NOTE: an earlier bad-id upsert left 27 orphan short-slug gates in the DB (ethicon/impella g1-g5, octaray g1-g5,
   embotrap/javelin g1-g5+bau) that shadowed the real active gate → "0/0 criteria"; these were removed via
   `Gate.removeAll` and the live total is back to 48. This made `LaunchControlMetrics.portfolioGateReadiness` a
@@ -526,7 +526,7 @@ missing). Fixed end-to-end:
   issues" when empty). Verified via launchRecord replay across ALL 9 launches: at-risk/late products surface
   risks in the center Gate-readiness table (varipulse G3 5/6+1rk, octaray G2 5/6+1rk, embotrap G5 4/6+2rk,
   ethicon G4 5/6+1rk, puresee G3 5/6+1rk); on-plan/launched/pre-market are clean (impella G4 6/6, javelin G5 5/6,
-  dualto BAU 6/6, ottava G1 6/6 — 0 risks, 0 blocking). DUALTO now fully populated (was empty); ETHICON now shows
+  dualto BAU 6/6, ottava G1 6/6 — 0 risks, 0 blocking). Zavzpret now fully populated (was empty); Prevnar 20 now shows
   its G4 at-risk criteria + full ladder. All carry 8 workstream bars + attested scope (launchValue, build units,
   field force, VAC, registrations, sterilisation, site).
 - **Portfolio legend** already carries all three gate states: "Gate closed" (gray `gd done`), "Gate at risk"
@@ -536,7 +536,7 @@ missing). Fixed end-to-end:
   `PortfolioService.openIssues().total` once and feeds both the AppShell tab badge (v==='alerts') and the menu
   card text; null while loading → badge/count omitted (no guessed fallback). Finding-outcome split is pinned to
   §3.6.3 (USER5/HELD2/AUTO3/RUNNING2) by `test_Reconciliation.js` (which counts the 12 raw `Finding` seed rows,
-  not the projection); `seed_finding_359` (PureSee, at-risk redesign) is `RUNNING` to satisfy that invariant.
+  not the projection); `seed_finding_359` (Litfulo, at-risk redesign) is `RUNNING` to satisfy that invariant.
 - **Open-issues definition unified across ALL views (Set F — cross-view consistency fix).** The user flagged
   JAVELIN reading "on plan" / 0 open issues in its detail yet still appearing in the portfolio-wide **Open
   Issues** page. Root cause: `openIssues()` returned *all 12* findings (including 3 resolved `AUTO` ones) while
@@ -571,17 +571,17 @@ missing). Fixed end-to-end:
 **Set B**
 - **TECNIS not amber in timeline** — root cause: `MilestoneRowView` derives marker tone from `row.health`,
   and `seed_launch_puresee` was `ON_PLAN` despite an 11-day-late G3 slip (the sole health/slip mismatch;
-  every other slipping launch is AT_RISK+). Fixed the underlying data: set PureSee `healthStatus` to
+  every other slipping launch is AT_RISK+). Fixed the underlying data: set Litfulo `healthStatus` to
   `AT_RISK` in `data/Launch/Launch.json` so product/BU/timeline all agree. Verified live: timeline forecast
   G3 renders `ms-g risk` + slip bar `ms-sp amb`.
 - **"Missing products" in BU view** — NOT reproduced. All 9 launches are present and identical (health/slip/
   revenue) across product, timeline, and BU lenses at both the data and rendered-DOM level (BuPane renders
   3 segments / 7 franchise cards / 9 launches). No change needed beyond the TECNIS health alignment above.
-- **Javelin XL commercial-vs-quality incoherence** — NOT present in the live app. `seed_finding_319` and its
+- **Somavert XL commercial-vs-quality incoherence** — NOT present in the live app. `seed_finding_319` and its
   `resolutionWorkspace` are fully commercial (field-force certification, reps, lab-session cohort), `capa: null`;
   IssueView gates ALL CAPA/Quality copy on `ws.capa`. Swept all 12 findings — every one is coherent
   (function/category/thread/CAPA aligned). The mixed CAPA/supplier narrative lives only in the DEAD
-  `ui/react/src/pages/Resolution/Resolution.tsx` (hardcoded VARIPULSE CAPA-2026-0148 port), which is not
+  `ui/react/src/pages/Resolution/Resolution.tsx` (hardcoded Comirnaty CAPA-2026-0148 port), which is not
   imported anywhere (`pages/*` is unused; the live app uses `views/*`). No change needed.
 
 **Set C — per-market phase/gate (Scope C, derived)**
@@ -617,7 +617,7 @@ missing). Fixed end-to-end:
   `.mg-row`/`.mg-dot`/`.mg-mk`/`.mg-lead`/`.mg-gate`/`.mg-q` + `.msr-name`/`.msr-cv`/`.msr-mks`/`.msr-mk*` in
   `prototype.css`. Tone map: ct→red, rk→amber, ok→green.
 - **Verified live (all four tabs reconcile):** cockpit shows 40 per-country rows; timeline expands 0→10 sub-rows on
-  click; launch record shows 10-market rollout — same `mlStatus` colours across all (e.g. VARIPULSE Gen2 PFA: DE/FR=ct
+  click; launch record shows 10-market rollout — same `mlStatus` colours across all (e.g. Comirnaty Gen2 PFA: DE/FR=ct
   red, ES/UK/US/AU/BR/CA/CN/JP=ok green). Build+lint green, no critical pkg issues, 0 console errors.
 
 **Set E — cockpit attention panel flattened to one line per slipping market (supersedes Set D's grouped sub-rows)**
@@ -630,7 +630,7 @@ missing). Fixed end-to-end:
   slip. Panel renamed "Markets needing attention"; the `<MarketGateRows>` sub-row component was removed. Market shown
   as an `.atn-mk` chip next to the product name + `lead` tag; row toned by `mlStatus`. `healthTone` helper removed
   (unused). The Timeline expand and Launch-record rollout (Set D) are UNCHANGED — those keep the full per-market list.
-- **Verified live:** VARIPULSE→DE+FR only (not ES/UK/US), ETHICON→US+FR+DE+UK, TECNIS→IT, EMBOTRAP→ES, OCTARAY→DE.
+- **Verified live:** Comirnaty→DE+FR only (not ES/UK/US), Prevnar 20→US+FR+DE+UK, TECNIS→IT, Elrexfio→ES, Abrysvo→DE.
   Build+lint green, 0 console errors.
 - **Layout follow-up:** market moved to its OWN column (headers: Launch · Market · Gate · Slip · €M). Product name +
   `franchise · phaseCode` sub-line stays one line; Market cell = `.atn-mk-cell` (dot + code + `lead`); Gate = code bold
@@ -646,8 +646,8 @@ missing). Fixed end-to-end:
 User rule: "los datos tienen que cuadrar" — same product/market/person/issue/gate reads identically everywhere.
 All fixes touched only `dependency`/`owner`/`launch` refs + derivation logic — NEVER a finding `outcome`, so the
 11-spec `test_Reconciliation.js` (13 findings USER5/HELD3/AUTO3/RUNNING2, 107 activities, A95/R12) still passes.
-- **A — NPI-0388 re-attributed VARIPULSE→OCTARAY** (`data/Finding/Finding.json`): its Decision card already read
-  "OCTARAY G2 and 3 others", phase p2 matches OCTARAY. Result: VARIPULSE open 5→4/blocking 3, OCTARAY 1→2/blocking 1.
+- **A — NPI-0388 re-attributed Comirnaty→Abrysvo** (`data/Finding/Finding.json`): its Decision card already read
+  "Abrysvo G2 and 3 others", phase p2 matches Abrysvo. Result: Comirnaty open 5→4/blocking 3, Abrysvo 1→2/blocking 1.
 - **B — NPI-0412 given a USER Decision + 2 options** (`data/Decision`, `seed/DecisionOption`): it was a YOU finding
   with no Decision, so "on you" (5) ≠ Pending queue (4). Now Pending = 5 = YOU count. `seed_decision_412`/`seed_option_412_a,b`.
 - **C — authority-vs-escalation fix:** NPI-0344 & 0365 were internal escalations mis-tagged `dependency=REGULATOR`
@@ -656,7 +656,7 @@ All fixes touched only `dependency`/`owner`/`launch` refs + derivation logic —
   Result: Open Issues YOU5/PERSON2/AGENT2/AUTHORITY1; PERSON 2 = Escalated queue 2; timeImpact recoverable 51→86 (66%),
   regulator 80→45 (only 0420).
 - **D — cockpit `nextGateByLaunch`** (`PortfolioService.js`): string compare put "BAU"<"G5"; now uses `GATE_RANK`.
-  EMBOTRAP next gate BAU→G5.
+  Elrexfio next gate BAU→G5.
 - **E — resolutionWorkspace `gateAtRisk`** (`ExecutionService.js`): now derives the gate that CLOSES the finding's
   phase (added `PHASE_GATE` + `GATE_RANK` maps), with earliest-open-by-rank fallback. NPI-0402 (P4) G3→G4 = its card.
 - **F — label vocabulary made distinct across screens:** "slip"/"+Nd" = gate schedule movement (SlipPill everywhere);
@@ -664,7 +664,7 @@ All fixes touched only `dependency`/`owner`/`launch` refs + derivation logic —
 - **G — Open Issues gained a "Gate at risk" column** (`PortfolioService.openIssues` + `types/portfolio.ts`
   `IssueGateAtRisk` + `OpenIssues.tsx` `GateAtRiskCell`): same phase-closing-gate rule as the workspace, so the gate a
   row shows == the gate its resolution page shows == the finding card. Header comment de-staled (was "twelve"/"4 on people").
-- **H — cleanups:** DUALTO (LAUNCHED) `revenueAtRisk` 200000→0 (cockpit revenue now €37.8M, DUALTO absent from
+- **H — cleanups:** Zavzpret (LAUNCHED) `revenueAtRisk` 200000→0 (cockpit revenue now €37.8M, Zavzpret absent from
   attention); Cockpit "Gates closing" renders "+Nd slip"/"criteria pending" instead of a misleading "0/0 met" bar.
 - **Verified whole:** Open Issues total 10 = YOU5+PERSON2+AGENT2+AUTHORITY1; Pending 5 = YOU; Escalated 2 = PERSON;
   Σ per-launch open (4+2+1+2+1+0) = 10; timeImpact 131 at stake / 86 recoverable / 45 regulator; build+lint green;
@@ -679,8 +679,8 @@ All fixes touched only `dependency`/`owner`/`launch` refs + derivation logic —
   mis-wired to `row.exposureCause` (also null) instead of the gate slip the backend already computes. The "€30.5M exposed"
   band was hardcoded.
 - **Fix (data):** seeded `exposure`/`exposureCause` on the 4 gate-blocking (`ct`) findings so the €M column matches the
-  cards and sums to the band: NPI-0417 €18.4M (VARIPULSE G3), NPI-0388 €6.2M (OCTARAY G2), NPI-0402 €2.8M (VARIPULSE G4),
-  NPI-0351 €3.1M (EMBOTRAP G5) → **Σ = €30.5M**. NPI-0420 stays null (its VARIPULSE revenue is already counted via 0417 —
+  cards and sums to the band: NPI-0417 €18.4M (Comirnaty G3), NPI-0388 €6.2M (Abrysvo G2), NPI-0402 €2.8M (Comirnaty G4),
+  NPI-0351 €3.1M (Elrexfio G5) → **Σ = €30.5M**. NPI-0420 stays null (its Comirnaty revenue is already counted via 0417 —
   no double-count; its real cost is the 45-day authority wait). `rk`/`ok` findings stay null (they consume float/are
   monitored, cards cite days not €). **No `outcome` touched → 11/11 reconciliation specs still pass.**
 - **Fix (AlertsView.tsx):** "Slip" column rewired from `exposureCause` to a new `GateSlipChip` reading `row.gateAtRisk`
@@ -698,10 +698,10 @@ model now enforced everywhere:
   (€37.8M) while Open Issues summed `Finding.exposure` (€30.5M) — two grains, so they never matched. Fix: made each
   launch's open-finding exposures **sum exactly to that launch's `revenueAtRisk`**, and Open Issues now reads a
   **server-computed total** (`PortfolioService.openIssues().totals.exposureOpen`) instead of re-summing visible rows.
-  - Data edits: `data/Finding/Finding.json` — added `exposure` 2.3M (NPI-0359 TECNIS/PureSee, RUNNING) and 7.8M
-    (NPI-0344 ETHICON 4000+, HELD) + `exposureCause` prose; `data/Launch/Launch.json` — VARIPULSE `revenueAtRisk`
-    18.4M→**21.2M** (= its open findings 0417 18.4M + 0402 2.8M). Per-launch check (all match): EMBOTRAP 3.1M,
-    ETHICON 7.8M, OCTARAY 6.2M, PureSee 2.3M, VARIPULSE 21.2M → **Σ = €40.6M**.
+  - Data edits: `data/Finding/Finding.json` — added `exposure` 2.3M (NPI-0359 TECNIS/Litfulo, RUNNING) and 7.8M
+    (NPI-0344 Prevnar 20, HELD) + `exposureCause` prose; `data/Launch/Launch.json` — Comirnaty `revenueAtRisk`
+    18.4M→**21.2M** (= its open findings 0417 18.4M + 0402 2.8M). Per-launch check (all match): Elrexfio 3.1M,
+    Prevnar 20 7.8M, Abrysvo 6.2M, Litfulo 2.3M, Comirnaty 21.2M → **Σ = €40.6M**.
   - **`exposureBlocking` €30.5M** is the gate-blocking (`ct`) subset, shown as the "of €X blocking a gate" subtitle —
     never as a rival headline. AlertsView 2nd header tile relabelled "Blocking a gate" → **"Revenue exposed"** €40.6M
     with "€30.5M blocking a gate" subtitle.
@@ -735,7 +735,7 @@ descripcion de las distintas demos … da a entender que solo la primera te ense
   demos (Demo 1 `capa`, Demo 2 `regulatory`, Demo 3 `supplier`) — previously they read the stale 83% / three at
   risk / €38M. Demo 1 step 5 "Four decisions"→"Five decisions" (matches Pending 5 = YOU). Demo 1 step 13 ("€18.4M
   released, launch slip 47→9, cockpit worst 47→21") verified CORRECT and left unchanged (NPI-0417 = €18.4M;
-  ETHICON 4000+ G4 = 21d is next-worst after VARIPULSE's 47). "107 activities / 32 actions / 28 minutes / €340k"
+  Prevnar 20 G4 = 21d is next-worst after Comirnaty's 47). "107 activities / 32 actions / 28 minutes / €340k"
   are narrative-only (no on-screen KPI conflict) — kept as story detail.
 - **Descriptions rewritten** so each demo advertises a FULL end-to-end tour (no longer implying only Demo 1 shows
   everything). Parallel three-blurb structure in the `DEMOS` registry: titles "A steriliser drops a booked slot" /
@@ -780,7 +780,7 @@ Governing rule reaffirmed: each client sees only ONE demo, so no demo may say "t
 Core theme fixed across Demo 2: there is exactly ONE authority-bound thread — **NPI-0420/FDA** (45 fixed grey
 days); **NPI-0365/BSI is a recoverable signature Helena owes** (drafted, unsigned 6 days), NOT an agency wait.
 All "two agency clocks/threads" over-claims corrected. Edited GD2 cards 2,3,4,5,8,13,14,16: card 2 → cockpit
-time-recovery panel (`.ti-pnl`/`.ti-card.reg` 45d/`.ti-card.rec`); card 3 lands on VARIPULSE launch detail; card 4
+time-recovery panel (`.ti-pnl`/`.ti-card.reg` 45d/`.ti-card.rec`); card 3 lands on Comirnaty launch detail; card 4
 market lens UK→US with both pins; card 5 singularised to one authority row; card 8 board card `#c-seed_finding_420`;
 card 13 short `.dc-gh` headers; card 14 spots `.fb2[data-f=esc]` + `.ev[data-npi="NPI-0365"]`; card 16 "one FDA
 clock + one signature + BSI slot + site visit". Verified: 11/11 reconciliation, build/lint green, browser confirmed.
@@ -790,7 +790,7 @@ User (verbatim): "en la demo tres donde veo yo que tienen el mismo supplier, deb
 haga click en el detalle de los 4 y vea que es el mismo … el mapa no aplica. asegurate … las decisiones tomadas
 se vean reflejadas en el historico del humano y … en el del agent tambien." Three fixes, all done + verified:
 - **D3-1 · Shared supplier verifiable in launch detail.** `seed/BillOfMaterialItem/seed_bom_ring_electrode.json`
-  expanded from 1 row (VARIPULSE only) to **4 rows** — all Heraeus (`seed_supplier_heraeus`), SINGLE_SOURCE, frozen
+  expanded from 1 row (Comirnaty only) to **4 rows** — all Heraeus (`seed_supplier_heraeus`), SINGLE_SOURCE, frozen
   at G2, part "Ring electrode subassembly" — for varipulse/octaray/embotrap/javelin. New `criticalSupply` projection
   in `PortfolioService.launchRecord()`: fetches this launch's BOM, then all BOM once, groups siblings by
   `supplier.id + partName`, returns `{partName, sourcingMode, frozenAtGate, supplierId, supplierName, sharedAcross,
@@ -798,10 +798,10 @@ se vean reflejadas en el historico del humano y … en el del agent tambien." Th
   `CriticalSupplySibling`, `LaunchOverview.criticalSupply`). `LaunchView.tsx` left rail renders a **"Critical supply"**
   card (`#ld-supply`, `.ld-sup*` styles in `prototype.css`): part, Heraeus, "Single-source · frozen at G2 · shared
   across 4 launches", and clickable sibling chips (`.ld-sup-lk` → `open('launch', siblingId)`). Verified runtime:
-  `sharedAcross:4`, 3 siblings (OCTARAY/EMBOTRAP/Javelin). NOTE: no launch has a `shortName` in seed → chips show
+  `sharedAcross:4`, 3 siblings (Abrysvo/Elrexfio/Somavert). NOTE: no launch has a `shortName` in seed → chips show
   full device names (still concrete + clickable).
 - **D3-2 · Map removed from Demo 3.** GD3 card 4 was the DE market-map step (user: "el mapa no aplica"). Replaced
-  with an **"Open one launch and see the same supplier"** step that drives to VARIPULSE launch detail
+  with an **"Open one launch and see the same supplier"** step that drives to Comirnaty launch detail
   (`view:'launch', param:'seed_launch_varipulse_g2'`) and spotlights `#ld-supply` + `.ld-sup-sib` — the viewer
   clicks the sibling chips to confirm the same Heraeus part on each of the 4 launches.
 - **D3-3 · NPI-0412 decision reflected in BOTH records, spotlighted for this demo.** Added `hist_0412` MY/RUNNING
@@ -839,8 +839,8 @@ exagerado."
 
 New end-to-end feature: an outside authority (the FDA) moves a launch's clearance date; the platform fans the
 impact across every downstream commitment, auto-adjusting what it safely can and surfacing ONLY the items that
-need a human. Anchored on **OTTAVA** (robotic surgical platform, keyed on its FDA 510(k) clearance). The demo
-story: FDA slips OTTAVA's clearance six weeks; three downstream commitments auto-adjust, two decisions reach
+need a human. Anchored on **Velsipity** (robotic surgical platform, keyed on its FDA 510(k) clearance). The demo
+story: FDA slips Velsipity's clearance six weeks; three downstream commitments auto-adjust, two decisions reach
 Helena, she resolves both in one meeting.
 
 - **Backend types (`src/`):**
@@ -864,21 +864,21 @@ Helena, she resolves both in one meeting.
   pre-slip banner, primary `#cs-run` button ("FDA slips 6 weeks — run cascade replan") that flips to "Reset
   scenario" once slipped, and a two-column `.two.cs-two` layout (`#cs-auto-list` AutoItem cards / `#cs-human-list`
   HumanItem cards with option buttons → resolve). Reads the tour's `cascadeRun` DriveIntent to land already-cascaded.
-  Wired via `api/cascade.ts` (getCascadePlan/runCascadeReplan/resolveCascadeImpact/resetCascade + OTTAVA_LAUNCH_ID
-  `seed_launch_ottava` / OTTAVA_FDA_MILESTONE_ID `seed_milestone_ottava_fda`); types `CascadePlan`/`CascadeItem` in
+  Wired via `api/cascade.ts` (getCascadePlan/runCascadeReplan/resolveCascadeImpact/resetCascade + Velsipity_LAUNCH_ID
+  `seed_launch_ottava` / Velsipity_FDA_MILESTONE_ID `seed_milestone_ottava_fda`); types `CascadePlan`/`CascadeItem` in
   `types/portfolio.ts`; `| 'cascade'` ViewId; pipeline-branch tab `{v:'cascade', l:'Milestone replan'}` in
   NavContext; `cascadeRun?: boolean` on DriveTarget; view registered in AppShell body. CSS `.cs-*` block appended
   to `prototype.css`. Added `data-launch={row.launchId}` to PortfolioView product-lens rows so the tour can
-  spotlight OTTAVA.
+  spotlight Velsipity.
 - **4th guided demo (`shell/GuidedTour.tsx`):** `GD4` (16 steps), registered in DEMOS as `{id:'cascade', chip:
   'MILESTONE REPLAN', title:'A regulator slips a date'}`. Arc: menu → cockpit → portfolio product lens (spotlight
-  `.tkr[data-launch="seed_launch_ottava"]`) → OTTAVA launch record → cascade view (on-track) → cascade with
+  `.tkr[data-launch="seed_launch_ottava"]`) → Velsipity launch record → cascade view (on-track) → cascade with
   `cascadeRun:true` → exception summary → auto column → human finance card → human field card → resolve → cost
   booked → milestone re-planned → launch record re-timed → Copilot `chatAsk:'cascade'` → close (points at the
   on-screen Reset scenario button). New `cascade` CopilotPrompt (`seed/CopilotPrompt/CopilotPrompt.json`,
-  sortOrder 10, group "Diagnose a launch"): Q "The FDA slipped OTTAVA's clearance six weeks — what moves?", 5
+  sortOrder 10, group "Diagnose a launch"): Q "The FDA slipped Velsipity's clearance six weeks — what moves?", 5
   evidence items (3 auto-adjusted / 2 need-you), rec + why bullets, actions [open the replan dashboard `cascade:`
-  / open the OTTAVA record `launch:seed_launch_ottava`].
+  / open the Velsipity record `launch:seed_launch_ottava`].
 - **Verified:** `runJsCode` full circuit (replan/resolve/reset) green; CascadeView renders live seed data +
   cascade c3Actions 200 OK (Playwright: run replan → KPIs +6 wks / 3 auto / 2 human / €48k, all 3
   CascadeReplanService calls 200 OK, then reset to clean baseline). Reconciliation lock intact — new types are
@@ -903,7 +903,7 @@ are not Finding/Activity/Gate instances — so reconciliation stays 11 findings 
   action"), and the "why me" aside. DEMOS chip `CAPA-2026-0148`→`STERILISATION SLOT`. `Decision.js` needs no change
   (its CAPA-closure step is guarded by a length check → no-op when no CAPA on the finding).
 - **Demo 3 (`supplier`, NPI-0412) — full manufacturing reframe.** Was a Heraeus shared-component supplier-change /
-  Neuss-diversion story; now: **VARIPULSE builds commercial output on two lines (3 and 5); line 3 produced 3 batches
+  Neuss-diversion story; now: **Comirnaty builds commercial output on two lines (3 and 5); line 3 produced 3 batches
   out of spec on the dimensional check; a CAPA IS appropriate here (manufacturing defect) and is overdue because its
   DMAIC is open/in-progress.** Data fact encoded: V&V produces **3 batches as the norm** (12 at one site), so 3 bad
   commercial batches = a full run's worth. Changes:
@@ -915,17 +915,17 @@ are not Finding/Activity/Gate instances — so reconciliation stays 11 findings 
   - 3 DecisionOptions rewritten (`seed_option_412_a/b/c`): **A = prioritise markets & redistribute reduced volume
     (recommended); B = drive the in-progress DMAICs to close the CAPA & re-operate line 3; C = move output to another
     qualified site, same modality (contingent on agents confirming regulatory/engineering clearance + capacity).**
-    All Neuss/OCTARAY/supplier-change content removed.
+    All Neuss/Abrysvo/supplier-change content removed.
   - Comment thread `seed_comment_412_1..4` rewritten to Line Monitor → A. Kowalski (Quality, overdue CAPA/DMAIC) →
     Planning agent (shortfall model) → L. Haugen (three routes, market-priority is above his line). **M. Okafor
-    sourcing comment and all Neuss/OCTARAY-diversion content removed** (per user screenshot).
+    sourcing comment and all Neuss/Abrysvo-diversion content removed** (per user screenshot).
   - ActionPlanTasks `seed_task_412_a_1..5` realigned to Option A (quarantine 3 batches, supply from line 5, re-weight
     market allocation, re-baseline P3, manual approve revised market priority — Neuss hedge removed).
-  - `supplier` CopilotPrompt reframed: Q "What is putting VARIPULSE's commercial batches at risk?", evidence =
+  - `supplier` CopilotPrompt reframed: Q "What is putting Comirnaty's commercial batches at risk?", evidence =
     line 3 vs line 5 / overdue CAPA-DMAIC / V&V-3-norm / G3 holds / three routes; rec = re-prioritise markets;
     actions → open NPI-0412. Heraeus-concentration framing gone.
   - GuidedTour `GD3` (16 steps) fully rewritten to the manufacturing arc; **dropped the `#ld-supply` Critical-supply
-    step, the NPI-0388/OCTARAY "other side of the same part" step, and the "one part, four catheters" framing.** New
+    step, the NPI-0388/Abrysvo "other side of the same part" step, and the "one part, four catheters" framing.** New
     steps land on the launch scope (`#ld-phase`/`#ld-strip`), spotlight the overdue CAPA (`#is-capa`), the 3 rewritten
     options (`#opt-a/b/c`), and a dedicated "Why the CAPA is overdue" DMAIC step. DEMOS chip `SUPPLIER CHANGE`→
     `MANUFACTURING`, title "One part, four catheters"→"Commercial batches at risk".

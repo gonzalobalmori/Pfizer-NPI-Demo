@@ -4,7 +4,7 @@
  * G4 Clearance / CE Certificate, G5 Launch Go / No-Go.
  *
  * Gate dates are money (§1): a slip cascades into lost regulatory-review and
- * tender windows. The anchor case moves the VARIPULSE G2 G3 gate from a 04 Nov
+ * tender windows. The anchor case moves the Comirnaty G2 G3 gate from a 04 Nov
  * baseline out to 21 Dec (+47d) and the approve transaction re-baselines it to
  * 13 Nov (+9d). {@link Gate#slipDays} is derived from the two dates, not stored
  * for display.

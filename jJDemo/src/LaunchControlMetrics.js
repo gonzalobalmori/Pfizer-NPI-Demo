@@ -110,8 +110,8 @@ function revenueAtRisk() {
 /* ---- AverageSlipAtGateClose --------------------------------------------
  * The headline "average slip" must reconcile with what the portfolio actually
  * shows: the gates that have SLIPPED. The portfolio timeline / launch cards only
- * ever surface gates that moved on the calendar (VARIPULSE G3 +47, ETHICON G4
- * +21, OCTARAY G2 +14, TECNIS G3 +11, EMBOTRAP G5 +9); a gate sitting exactly on
+ * ever surface gates that moved on the calendar (Comirnaty G3 +47, Prevnar 20 G4
+ * +21, Abrysvo G2 +14, TECNIS G3 +11, Elrexfio G5 +9); a gate sitting exactly on
  * baseline is not a "slip". Averaging over ALL open gates (most with slipDays=0)
  * silently diluted the figure to ~4d and did not match any per-launch number the
  * user could see — the discrepancy flagged. So the average is taken over gates

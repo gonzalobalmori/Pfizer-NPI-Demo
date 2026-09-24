@@ -16,7 +16,7 @@
     "author": "Sourcing agent",
     "authorRole": "Automated check",
     "commentedAt": "2026-09-11T06:05:00",
-    "body": "Checked the master agreement: the booking was a non-committed capacity reservation, clause 7.3 permits reallocation on 30 days notice. No contractual claim and no penalty available. Scanned the ASL for EO alternatives — Sterigenics Grand Rapids is approved, audit current to Mar 2028, already qualified for OCTARAY G2 and EMBOTRAP IV, and has capacity from 29 Sep.",
+    "body": "Checked the master agreement: the booking was a non-committed capacity reservation, clause 7.3 permits reallocation on 30 days notice. No contractual claim and no penalty available. Scanned the ASL for EO alternatives — Sterigenics Grand Rapids is approved, audit current to Mar 2028, already qualified for Abrysvo G2 and Elrexfio IV, and has capacity from 29 Sep.",
     "isAutomatedCheck": true,
     "sourcesRead": "master agreement clause 7.3, Approved Supplier List, audit validity",
     "decision": {
@@ -28,7 +28,7 @@
     "author": "A. Kowalski",
     "authorRole": "Quality",
     "commentedAt": "2026-09-11T07:12:00",
-    "body": "If we move site, it is a half-cycle revalidation, not a full one, because the modality is unchanged. Realistically 21 days of protocol plus execution. I would want the protocol drafted against the OCTARAY G2 precedent so we are not writing it from scratch. Flagging that cycle development on a new chamber has overrun 5–8 days on two of our last seven transfers.",
+    "body": "If we move site, it is a half-cycle revalidation, not a full one, because the modality is unchanged. Realistically 21 days of protocol plus execution. I would want the protocol drafted against the Abrysvo G2 precedent so we are not writing it from scratch. Flagging that cycle development on a new chamber has overrun 5–8 days on two of our last seven transfers.",
     "isAutomatedCheck": false,
     "sourcesRead": "",
     "decision": {
@@ -220,7 +220,7 @@
     "author": "Sourcing agent",
     "authorRole": "Automated check",
     "commentedAt": "2026-09-07T06:12:00",
-    "body": "Heraeus downgraded to High financial risk — 34-day payables extension, second consecutive quarter. They are single source on the ring electrode subassembly across VARIPULSE G2, OCTARAY G2 and two other Biosense Webster catheters.",
+    "body": "Heraeus downgraded to High financial risk — 34-day payables extension, second consecutive quarter. They are single source on the ring electrode subassembly across Comirnaty G2, Abrysvo G2 and two other Vaccines catheters.",
     "isAutomatedCheck": true,
     "sourcesRead": "",
     "decision": {
@@ -256,7 +256,7 @@
     "author": "Line Monitor agent",
     "authorRole": "Automated check",
     "commentedAt": "2026-09-15T08:14:00",
-    "body": "VARIPULSE runs commercial output on lines 3 and 5. SPC rule 2 broken on line 3 — pulled and re-measured the commercial batches in the window and confirmed 3 out of spec on the dimensional check. For context, V&V produces 3 batches as the norm (a validation run was 12 at one site), so 3 affected commercial batches is a full run's worth of supply. Line 5 is unaffected. Raised without anyone asking it to look.",
+    "body": "Comirnaty runs commercial output on lines 3 and 5. SPC rule 2 broken on line 3 — pulled and re-measured the commercial batches in the window and confirmed 3 out of spec on the dimensional check. For context, V&V produces 3 batches as the norm (a validation run was 12 at one site), so 3 affected commercial batches is a full run's worth of supply. Line 5 is unaffected. Raised without anyone asking it to look.",
     "isAutomatedCheck": true,
     "sourcesRead": "Line 3 MES, SPC control chart, commercial batch dimensional records",
     "decision": {

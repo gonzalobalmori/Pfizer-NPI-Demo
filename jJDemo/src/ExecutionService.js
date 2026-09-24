@@ -2,7 +2,7 @@
  * ExecutionService — read-side projections for the Execution branch UI (§2).
  * Every method derives its bundle from the model at call time and returns plain
  * JSON the React pages render directly. No display strings are persisted beyond
- * the attested J&J copy already on the domain types (model invariant §3.6.1).
+ * the attested Pfizer copy already on the domain types (model invariant §3.6.1).
  */
 
 /* ── shared helpers ─────────────────────────────────────────────── */
@@ -316,7 +316,7 @@ function liveBoard(franchise, market) {
     var colYou = col.filter(function (c) { return c.outcome === 'USER'; }).length;
     /* A phase is only shown as "live" if the current board actually has work
        in it. Otherwise the fixed P3/P4 'live' flag lit up empty columns for a
-       filtered franchise (e.g. Cerenovus), reading as "active but empty". */
+       filtered franchise (e.g. Rare Disease), reading as "active but empty". */
     var baseState = meta ? meta[2] : '';
     var state = (baseState === 'live' && col.length === 0) ? 'queued' : baseState;
     return {
@@ -341,7 +341,7 @@ function liveBoard(franchise, market) {
     },
     columns: columns,
     filters: {
-      franchises: ['all', 'Biosense Webster', 'Ethicon', 'J&J Vision', 'Shockwave', 'Cerenovus'],
+      franchises: ['all', 'Vaccines', 'Hospital', 'Oncology Biosimilars', 'Internal Medicine', 'Rare Disease'],
       markets: ['all', 'DE', 'FR', 'ES', 'US', 'IE']
     }
   };

@@ -1,8 +1,8 @@
 /**
- * A single MedTech device launch — the central programme object. Nine are
- * modelled, exactly the real next-generation J&J programme designations from
- * the specification (VARIPULSE Gen 2, OCTARAY Gen 2, EMBOTRAP IV, Impella ECP+,
- * Javelin XL, ETHICON 4000+, DUALTO, OTTAVA, TECNIS PureSee Toric).
+ * A single Biopharma device launch — the central programme object. Nine are
+ * modelled, exactly the real next-generation Pfizer programme designations from
+ * the specification (Comirnaty Gen 2, Abrysvo Gen 2, Elrexfio IV, Genotropin ECP+,
+ * Somavert XL, Prevnar 20, Zavzpret, Velsipity, Litfulo Toric).
  *
  * A launch is a regulated programme of {@link Activity}s across six
  * {@link Phase}s and five {@link Gate}s, rolled out into many {@link Market}s
@@ -12,11 +12,11 @@ entity type Launch mixes HasExposure {
   /** Programme id, e.g. "NPI-VPG2". */
   id: !string
 
-  /** Full device name, e.g. "VARIPULSE Gen 2 PFA Catheter". */
+  /** Full device name, e.g. "Comirnaty Gen 2 PFA Catheter". */
   deviceName: !string
 
   /**
-   * Short board/pill label, e.g. "VARIPULSE G2". Used on the Live board cards
+   * Short board/pill label, e.g. "Comirnaty G2". Used on the Live board cards
    * and the Activity log rows (§2.2, §2.3) where the full {@link Launch#deviceName}
    * is too long. Kept as attested data, not derived, so the label matches the
    * prototype exactly.
@@ -47,8 +47,8 @@ entity type Launch mixes HasExposure {
   /**
    * Launch readiness, 0–100, as attested on the Business-unit roll-up (§2.3):
    * the share of the next gate's criteria in hand. Kept as attested data so the
-   * card's progress bar matches the prototype exactly (e.g. VARIPULSE 83%,
-   * OTTAVA 95%, DUALTO 100%).
+   * card's progress bar matches the prototype exactly (e.g. Comirnaty 83%,
+   * Velsipity 95%, Zavzpret 100%).
    */
   readinessPct: int
 
@@ -71,7 +71,7 @@ entity type Launch mixes HasExposure {
   /**
    * Terminal sterilisation method for the device, e.g. "EO" (ethylene oxide),
    * "Gamma", "e-beam", or "N/A" for a non-sterile capital device. Shown on the
-   * Product-detail Device card; drives, for VARIPULSE, the EO steriliser-slot
+   * Product-detail Device card; drives, for Comirnaty, the EO steriliser-slot
    * risk narrative.
    */
   sterilisationMethod: string

@@ -5,7 +5,7 @@
     "targetId": "seed_gate_varipulse_g3",
     "feedCode": "PPM_GATE",
     "sourceFile": "ppm/PPM_GATE_20260911.csv",
-    "sourceRowKey": "G-VARIPULSE_G3",
+    "sourceRowKey": "G-Comirnaty_G3",
     "transform": "SrcPpmGate-Gate",
     "loadedAt": "2026-09-11T08:42:00"
   },

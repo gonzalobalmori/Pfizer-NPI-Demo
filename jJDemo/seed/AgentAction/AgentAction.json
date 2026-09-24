@@ -194,7 +194,7 @@
     "sequence": 2,
     "occurredAt": "2026-09-07T08:42:00",
     "verb": "ASSESSED",
-    "detail": "The ring electrode subassembly is single-source across four Biosense Webster catheters and sits on a BOM that freezes at G2 on 30 Sep.",
+    "detail": "The ring electrode subassembly is single-source across four Vaccines catheters and sits on a BOM that freezes at G2 on 30 Sep.",
     "stateLabel": "ASSESSED",
     "handoffPrompt": "Finance agent — “cost it before and after the freeze”",
     "completed": true,

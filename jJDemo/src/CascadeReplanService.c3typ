@@ -14,7 +14,7 @@
  */
 entity type CascadeReplanService {
   /**
-   * The replan dashboard for a launch (default OTTAVA when no id given): the
+   * The replan dashboard for a launch (default Velsipity when no id given): the
    * milestone with its baseline/current dates and slip, the full list of
    * downstream impact items split into auto-adjusted vs. awaiting-a-human, and
    * the rolled-up working-capital cost leadership sees. Read-only — reflects

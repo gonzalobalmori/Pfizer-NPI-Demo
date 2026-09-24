@@ -1,14 +1,14 @@
 /*
  * Reproducible generator for the Document seed register.
  *
- * WHY: every launch must show a COMPLETE, industry-standard J&J MedTech document
+ * WHY: every launch must show a COMPLETE, industry-standard Pfizer Biopharma document
  * section (the manager's requirement: "todos los productos tienen su seccion de
  * documentos completa, aunque el status cambie ... que esten todos porque son
  * cosas que hay que subir"). Statuses vary by how far each launch has progressed,
  * but the full checklist is present for every product.
  *
  * INVARIANTS honoured:
- *  - VARIPULSE G2's 78 bespoke, hand-authored documents are preserved VERBATIM
+ *  - Comirnaty G2's 78 bespoke, hand-authored documents are preserved VERBATIM
  *    (including seed_doc_varipulse_44, which a GateCriterion references as
  *    evidence). We only ADD the new Supply-chain & operations section to it.
  *  - The catalog maps the manager's 8 industry categories onto the 9 group codes
@@ -23,7 +23,7 @@ import { dirname, join } from 'node:path';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SEED = join(HERE, '..', 'seed', 'Document', 'Document.json');
-const VARIPULSE = 'seed_launch_varipulse_g2';
+const Comirnaty = 'seed_launch_varipulse_g2';
 
 /* Launches and the phase each currently sits in (drives status derivation). */
 const LAUNCHES = [
@@ -50,7 +50,7 @@ const LAUNCHES = [
  *   7 Commercial & Market Access ....... com
  *   8 Supply Chain & Operations ........ sco
  * Verification & validation (vv) is split out of Design as its own section,
- * matching VARIPULSE's authored structure.
+ * matching Comirnaty's authored structure.
  */
 const CATALOG = [
   // ── Design & development (DHF) ──
@@ -145,9 +145,9 @@ const CATALOG = [
   ['Periodic Safety Update Report (PSUR)', 'Report', 'pm', 6],
 ];
 
-/* The Supply-chain section VARIPULSE is currently missing — added so it too is
- * complete across all nine groups. Statuses reflect VARIPULSE at P3, OFF_TRACK. */
-const VARIPULSE_SCO = [
+/* The Supply-chain section Comirnaty is currently missing — added so it too is
+ * complete across all nine groups. Statuses reflect Comirnaty at P3, OFF_TRACK. */
+const Comirnaty_SCO = [
   ['Demand forecast and launch build plan — 4,200 units', 'Plan', 'sco', 'dft'],
   ['Safety stock and inventory policy', 'Policy', 'sco', 'na'],
   ['Country registration status tracker — 11 of 14 filed', 'Tracker', 'sco', 'rev'],
@@ -209,16 +209,16 @@ function sizeFor(seed) {
 
 /* ── Build ── */
 const existing = JSON.parse(readFileSync(SEED, 'utf8'));
-const varipulseDocs = existing.filter((d) => d.launch && d.launch.id === VARIPULSE);
+const varipulseDocs = existing.filter((d) => d.launch && d.launch.id === Comirnaty);
 if (varipulseDocs.length !== 78) {
-  throw new Error(`Expected 78 VARIPULSE docs to preserve, found ${varipulseDocs.length}`);
+  throw new Error(`Expected 78 Comirnaty docs to preserve, found ${varipulseDocs.length}`);
 }
 
 const out = [...varipulseDocs];
 
-// Add VARIPULSE's missing Supply-chain section.
-VARIPULSE_SCO.forEach(([name, docType, group, status], i) => {
-  const seed = hash(VARIPULSE + name);
+// Add Comirnaty's missing Supply-chain section.
+Comirnaty_SCO.forEach(([name, docType, group, status], i) => {
+  const seed = hash(Comirnaty + name);
   out.push({
     id: `seed_doc_varipulse_sco_${i + 1}`,
     name,
@@ -229,7 +229,7 @@ VARIPULSE_SCO.forEach(([name, docType, group, status], i) => {
     documentDate: status === 'na' ? null : dateFor(3, status, seed),
     owner: OWNERS[group],
     fileSize: status === 'na' || status === 'miss' ? null : sizeFor(seed),
-    launch: { id: VARIPULSE },
+    launch: { id: Comirnaty },
   });
 });
 

@@ -1,49 +1,49 @@
 [
   {
     "id": "seed_franchise_biosense",
-    "name": "Biosense Webster",
+    "name": "Vaccines",
     "segment": {
       "id": "seed_segment_cardiovascular"
     }
   },
   {
     "id": "seed_franchise_cerenovus",
-    "name": "Cerenovus",
+    "name": "Rare Disease",
     "segment": {
       "id": "seed_segment_cardiovascular"
     }
   },
   {
     "id": "seed_franchise_abiomed",
-    "name": "Abiomed",
+    "name": "Immunology",
     "segment": {
       "id": "seed_segment_cardiovascular"
     }
   },
   {
     "id": "seed_franchise_shockwave",
-    "name": "Shockwave",
+    "name": "Internal Medicine",
     "segment": {
       "id": "seed_segment_cardiovascular"
     }
   },
   {
     "id": "seed_franchise_ethicon",
-    "name": "Ethicon",
+    "name": "Hospital",
     "segment": {
       "id": "seed_segment_surgery"
     }
   },
   {
     "id": "seed_franchise_digital_surgery",
-    "name": "Digital Surgery",
+    "name": "Neuroscience",
     "segment": {
       "id": "seed_segment_surgery"
     }
   },
   {
     "id": "seed_franchise_vision",
-    "name": "J&J Vision",
+    "name": "Oncology Biosimilars",
     "segment": {
       "id": "seed_segment_vision"
     }

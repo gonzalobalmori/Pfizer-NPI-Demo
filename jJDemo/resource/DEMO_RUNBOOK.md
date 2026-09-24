@@ -19,7 +19,7 @@ or replay it through the app. The three demos are independent — run any subset
 **Proves:** every figure on screen has provenance — it traces to one row in one
 file from one source system.
 
-1. **Open the app** on the cockpit. Point at VARIPULSE G3: **"+47 days slip"**.
+1. **Open the app** on the cockpit. Point at Comirnaty G3: **"+47 days slip"**.
    Say: *"This number drives the whole escalation. Where does it come from?"*
 2. **Run the lineage lookup:**
    ```javascript
@@ -29,11 +29,11 @@ file from one source system.
    ```
    feedCode:     PPM_GATE
    sourceFile:   ppm/PPM_GATE_20260911.csv
-   sourceRowKey: G-VARIPULSE_G3
+   sourceRowKey: G-Comirnaty_G3
    transform:    SrcPpmGate-Gate
    ```
 3. **Open that source file** (`jJDemo/sources/ppm/PPM_GATE_20260911.csv`) and find
-   the `G-VARIPULSE_G3` row — the 47 is right there in the `SlipDays` column.
+   the `G-Comirnaty_G3` row — the 47 is right there in the `SlipDays` column.
 
 **Say:** *"The '+47 days' isn't a slide. It traces to one row in the Planisware
 gate extract, through one named transform, into one object the UI reads."*
@@ -54,7 +54,7 @@ app changes, with no code edit.
    from 47/21-Dec to **9/13-Nov**):
    ```javascript
    var header = 'GateId,ProjectId,GateCode,GateName,BaselineDate,ForecastDate,SlipDays,Status';
-   var row = 'G-VARIPULSE_G3,PRJ-VARIPULSE-G2,G3,Design Verification Complete,2026-11-04,2026-11-13,9,late';
+   var row = 'G-Comirnaty_G3,PRJ-Comirnaty-G2,G3,Design Verification Complete,2026-11-04,2026-11-13,9,late';
    var coll = FileSourceCollection.forName('PpmGateFeed');
    var inbox = coll.inboxUrl();
    FileSystem.makeFile(inbox + 'PPM_GATE_DEMO2.csv').writeString(header + '\n' + row + '\n');
@@ -84,7 +84,7 @@ try { SourceFile.remove(SourceFile.make({id:'PpmGateFeed_PPM_GATE_DEMO2.csv'}));
 **Proves:** the app does not blindly ingest everything. A **gate rule** decides, row
 by row, what is allowed in — admitting clean data, repairing what it can, and
 setting aside the unusable with a reason. This is how the app supports "only the
-part of J&J's data that's fit to use" **honestly** — nothing is silently dropped.
+part of Pfizer's data that's fit to use" **honestly** — nothing is silently dropped.
 
 *(This replaces the earlier "break a feed" script — a gate is the stronger story:
 it shows enforcement and the 80/20 handling the client asked about.)*
@@ -117,7 +117,7 @@ it shows enforcement and the 80/20 handling the client asked about.)*
 
 **Say:** *"The app took in the 98% it could trust, fixed the one row it could
 repair, and quarantined the one that would have corrupted the count — with a
-reason attached. If J&J's data is only 80% clean, this is the mechanism that lets
+reason attached. If Pfizer's data is only 80% clean, this is the mechanism that lets
 the app run on the good part without ever pretending the other 20% didn't exist."*
 
 **Tie it to Configure:** this is exactly what the **Data Validation** section is

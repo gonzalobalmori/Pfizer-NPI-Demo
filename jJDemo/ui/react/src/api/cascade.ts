@@ -8,12 +8,12 @@
 import { c3Action } from '@/c3Action';
 import type { CascadePlan } from '@/types/portfolio';
 
-/** The default anchor launch/milestone for the scenario (OTTAVA robotic platform, FDA clearance). */
-export const OTTAVA_LAUNCH_ID = 'seed_launch_ottava';
-export const OTTAVA_FDA_MILESTONE_ID = 'seed_milestone_ottava_fda';
+/** The default anchor launch/milestone for the scenario (Velsipity robotic platform, FDA clearance). */
+export const Velsipity_LAUNCH_ID = 'seed_launch_ottava';
+export const Velsipity_FDA_MILESTONE_ID = 'seed_milestone_ottava_fda';
 
-/** Read the current replan dashboard for a launch (defaults to OTTAVA server-side when null). */
-export const getCascadePlan = (launchId: string | null = OTTAVA_LAUNCH_ID): Promise<CascadePlan | null> =>
+/** Read the current replan dashboard for a launch (defaults to Velsipity server-side when null). */
+export const getCascadePlan = (launchId: string | null = Velsipity_LAUNCH_ID): Promise<CascadePlan | null> =>
   c3Action('CascadeReplanService', 'plan', [launchId]);
 
 /** Run the cascade: move the authority's date, auto-adjust what is safe, surface what needs a human. */

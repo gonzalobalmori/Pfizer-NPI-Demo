@@ -25,7 +25,7 @@ entity type LineageRecord {
   /** The source file the value came from, e.g. "ppm/PPM_GATE_20260911.csv". */
   sourceFile: string
 
-  /** The source-row business key, e.g. the GateId "G-VARIPULSE-G2-G3". */
+  /** The source-row business key, e.g. the GateId "G-Comirnaty-G2-G3". */
   sourceRowKey: string
 
   /** The transform that mapped source → target, e.g. "SrcPpmGate-Gate". */

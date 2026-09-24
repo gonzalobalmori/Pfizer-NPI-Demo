@@ -2,7 +2,7 @@
  * A Corrective And Preventive Action record. A CAPA is opened only when there is
  * a genuine quality problem — a manufacturing or product defect — never for a
  * routine supplier or scheduling event. The anchor case is CAPA-2026-0149 on
- * {@link Finding} NPI-0412: opened against VARIPULSE commercial-batch
+ * {@link Finding} NPI-0412: opened against Comirnaty commercial-batch
  * manufacturing after line 3 produced three batches out of spec on the
  * dimensional check. Its containment holds the affected batches and keeps
  * commercial supply on the unaffected line 5; its corrective action is a DMAIC on

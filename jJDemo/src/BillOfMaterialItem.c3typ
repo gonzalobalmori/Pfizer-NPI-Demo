@@ -1,6 +1,6 @@
 /**
  * A part on a launch's bill of materials. The ring electrode subassembly is the
- * one that matters: single-source on Heraeus across four Biosense Webster
+ * one that matters: single-source on Heraeus across four Vaccines
  * catheters, on a BOM that freezes at G2 — the substance of finding NPI-0388.
  *
  * An item belongs to one {@link Launch} and is supplied by one {@link Supplier}.

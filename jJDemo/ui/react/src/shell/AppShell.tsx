@@ -1,6 +1,6 @@
 /*
  * App shell (prototype "#app"). The two-row sticky header (.hdr): row 1 is the
- * J&J wordmark + back-to-menu chevron, the active branch label/title, a
+ * Pfizer wordmark + back-to-menu chevron, the active branch label/title, a
  * "Guided demo" button, a "My decisions" button and the avatar; row 2 is the
  * tab strip (.tabs) built from the active branch's tab set. Below it, the .body
  * hosts exactly one .view.on at a time. All class names are the prototype's.
@@ -36,7 +36,7 @@ export default function AppShell() {
           <button className="h-logo" onClick={toMenu}>
             <div className="h-back">‹</div>
             <div className="h-wm">
-              Johnson<i>&amp;</i>Johnson<span>NPI Launch Control</span>
+              Pfizer<span>NPI Launch Control</span>
             </div>
           </button>
           <div className="h-div" />

@@ -12,7 +12,7 @@ import ReactDOM from 'react-dom/client';
 import { HashRouter } from 'react-router-dom';
 import App from './App';
 import './globals.css';
-// Prototype design system, ported verbatim from the J&J NPI Launch Control
+// Prototype design system, ported verbatim from the Pfizer NPI Launch Control
 // click-through (its entire <style> block). Imported last so its tokens and
 // component classes (.hdr, .kgrid, .mc, .dt, …) take precedence for these screens.
 import './styles/prototype.css';

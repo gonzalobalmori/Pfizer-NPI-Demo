@@ -18,7 +18,7 @@
  *   • Demo 2 — the regulatory-authority thread: the questions the FDA and the
  *     Notified Body are asking, the BSI review slot that is the real deadline,
  *     the one signature that is actually Helena's, and the site-visit dossier.
- *   • Demo 3 — a manufacturing defect puts commercial batches at risk: VARIPULSE
+ *   • Demo 3 — a manufacturing defect puts commercial batches at risk: Comirnaty
  *     runs commercial output on lines 3 and 5, line 3 gives three out-of-spec
  *     batches, and an overdue CAPA (its DMAIC still in progress) is open on it.
  *     The three routes are re-prioritise markets, drive the DMAIC to close, or
@@ -33,7 +33,7 @@
  * pane re-renders beneath them.
  *
  * Every demo drives ONLY already-reconciled records — Demo 2 and Demo 3 add no
- * findings and touch no VARIPULSE activities (the reconciliation lock), so all
+ * findings and touch no Comirnaty activities (the reconciliation lock), so all
  * data still ties out across every tab and view.
  */
 
@@ -75,7 +75,7 @@ const GD: Step[] = [
   {
     t: 'Three ways in, and we use two',
     p:
-      'Helena Fossi runs nine MedTech launches across three franchises. Three entry points: ' +
+      'Helena Fossi runs nine Biopharma launches across three franchises. Three entry points: ' +
       '<b>01 define</b> the launch &mdash; sourcing strategy, supplier qualification, supply-chain ' +
       'risk, digital twins. <b>02 see</b> it. <b>03 execute</b> it. 01 is a design workspace and is ' +
       'not built out in this demo; the screen says so itself. Today is 02 and 03.',
@@ -110,7 +110,7 @@ const GD: Step[] = [
     t: 'Which launch is the 47 days?',
     p:
       'Portfolio, product lens. Nine launches, one line each, <b>always sorted worst first</b> ' +
-      '&mdash; so the answer is the top row. <b>VARIPULSE Gen 2</b>, in P3, design V&amp;V and ' +
+      '&mdash; so the answer is the top row. <b>Comirnaty Gen 2</b>, in P3, design V&amp;V and ' +
       'supplier qualification, with <b>G3 Submission Commit at +47 days</b>. Hollow markers are the ' +
       'gates ahead; solid ones have closed.',
     say:
@@ -119,14 +119,14 @@ const GD: Step[] = [
     target: { branch: 'pipeline', view: 'portfolio', lens: 'product' },
     spot: [
       ['#v-portfolio .pf-sw', 'four lenses, one screen'],
-      ['.tkr', 'VARIPULSE Gen 2 &middot; P3 &middot; +47d, worst first'],
+      ['.tkr', 'Comirnaty Gen 2 &middot; P3 &middot; +47d, worst first'],
     ],
   },
   {
     t: 'And which market is carrying it?',
     p:
       'Same portfolio, market lens. <b>Germany is six launches and the only one off track, with ' +
-      '&euro;24.1M at risk.</b> Click it and the risk is named for her: <i>VARIPULSE G2 has missed ' +
+      '&euro;24.1M at risk.</b> Click it and the risk is named for her: <i>Comirnaty G2 has missed ' +
       'the Q2 2027 tender window</i> &mdash; <b>NPI-0417, sterilisation slip</b>. That is the thread ' +
       'she pulls.',
     say:
@@ -166,7 +166,7 @@ const GD: Step[] = [
     say:
       'Twenty-eight minutes, four agents, no meeting. This is the traceability: what was done, by ' +
       'which agent, at what time. Nobody was watching that portal.',
-    target: { branch: 'exec', view: 'tower', towerPane: 'live', towerFranchise: 'Biosense Webster', towerOpenCard: 'seed_finding_417' },
+    target: { branch: 'exec', view: 'tower', towerPane: 'live', towerFranchise: 'Vaccines', towerOpenCard: 'seed_finding_417' },
     spot: [['#c-seed_finding_417 .tbwk', 'agent, action, and the time it happened']],
   },
   {
@@ -261,10 +261,10 @@ const GD: Step[] = [
   {
     t: 'What one decision moved',
     p:
-      'VARIPULSE&rsquo;s <b>G3 goes back to 13 November</b> &mdash; its own slip drops 47 &rarr; 9 days &mdash; ' +
+      'Comirnaty&rsquo;s <b>G3 goes back to 13 November</b> &mdash; its own slip drops 47 &rarr; 9 days &mdash; ' +
       'and <b>&euro;18.4M is released</b>, so it is off the at-risk list. Watch the cockpit&rsquo;s worst-case ' +
-      'slip too: it falls <b>47 &rarr; 21</b>, not to 9. VARIPULSE was the worst launch in the portfolio; with ' +
-      'it fixed, the <b>ETHICON 4000+ Stapler&rsquo;s G4 at 21 days</b> is now the top of the list. Nothing is off ' +
+      'slip too: it falls <b>47 &rarr; 21</b>, not to 9. Comirnaty was the worst launch in the portfolio; with ' +
+      'it fixed, the <b>Prevnar 20 Stapler&rsquo;s G4 at 21 days</b> is now the top of the list. Nothing is off ' +
       'track any more. Seven tasks assigned, BSI notified, the Design History File updated, the launch plan ' +
       're-baselined &mdash; and the same numbers changed on every other screen at the same time.',
     target: { branch: 'pipeline', view: 'cockpit' },
@@ -310,7 +310,7 @@ const GD: Step[] = [
       'plan, the 107 activities, the agent log, the supplier and market data. Every answer ends in a ' +
       'button that opens the thing it is talking about.',
     say:
-      'She could have started here. Ask it to diagnose VARIPULSE Gen 2 and it says in one answer ' +
+      'She could have started here. Ask it to diagnose Comirnaty Gen 2 and it says in one answer ' +
       'what took us five screens: four findings, one cause &mdash; Heraeus.',
     target: { branch: 'exec', view: 'chat', chatAsk: 'varipulse' },
     scroll: false,
@@ -327,8 +327,8 @@ const GD: Step[] = [
  * → open issues → my actions → agent tower → the record → the record's detail
  * → history → fleet log → copilot — but the casuistry is regulatory. It drives
  * existing, already-reconciled records ONLY: NPI-0420 (FDA deficiency letter, a
- * view-only REGULATOR finding on VARIPULSE) and NPI-0365 (BSI Notified Body
- * query-cycle 2 + the signatory escalation on ETHICON 4000+), plus the VARIPULSE
+ * view-only REGULATOR finding on Comirnaty) and NPI-0365 (BSI Notified Body
+ * query-cycle 2 + the signatory escalation on Prevnar 20), plus the Comirnaty
  * dossier register (reg/cert groups) and the `regulatory` copilot answer. No
  * finding is added or changed, so every count still ties out. */
 const GD2: Step[] = [
@@ -355,8 +355,8 @@ const GD2: Step[] = [
     p:
       'The morning read on the portfolio. Gate readiness at <b>87%</b>, four launches at risk and one off track, ' +
       '<b>&euro;40.6M exposed</b>. But the number that decides today is on this panel: of all the slip across the ' +
-      'portfolio, exactly <b>one</b> thread is a fixed wait on an authority &mdash; <b>VARIPULSE Gen 2</b>, the grey ' +
-      'bar, an open FDA deficiency letter. Everything else, including the ETHICON signature, is schedule time she ' +
+      'portfolio, exactly <b>one</b> thread is a fixed wait on an authority &mdash; <b>Comirnaty Gen 2</b>, the grey ' +
+      'bar, an open FDA deficiency letter. Everything else, including the Prevnar 20 signature, is schedule time she ' +
       'can win back by acting.',
     say:
       'She is not reading status, she is deciding where to look. The grey is the only clock a regulator holds; the ' +
@@ -371,7 +371,7 @@ const GD2: Step[] = [
   {
     t: 'The one clock a regulator holds',
     p:
-      'Click the grey bar and it opens the launch behind it &mdash; <b>VARIPULSE Gen 2</b>, not a product-lens ' +
+      'Click the grey bar and it opens the launch behind it &mdash; <b>Comirnaty Gen 2</b>, not a product-lens ' +
       'list. Its slip and exposure are on the strip, and the reason is a single <b>FDA</b> thread: a PMA under ' +
       'review with a deficiency letter open. This is the launch this tour follows: the FDA clock she can only ' +
       'wait on, and a Notified Body review slot she has to protect.',
@@ -388,8 +388,8 @@ const GD2: Step[] = [
     t: 'Two jurisdictions, two very different clocks',
     p:
       'Back to the portfolio, market lens. The FDA thread lives under <b>the United States</b> &mdash; that is ' +
-      'VARIPULSE Gen 2&rsquo;s jurisdiction and the one authority clock on the board. <b>The United Kingdom</b> ' +
-      'carries the Notified Body thread on <b>ETHICON 4000+</b> (NPI-0365) &mdash; same word, ' +
+      'Comirnaty Gen 2&rsquo;s jurisdiction and the one authority clock on the board. <b>The United Kingdom</b> ' +
+      'carries the Notified Body thread on <b>Prevnar 20</b> (NPI-0365) &mdash; same word, ' +
       '&ldquo;regulatory&rdquo;, but that one is a signature she can move, not an agency wait.',
     say:
       'The map colours by status and sizes by launches. The US is where the fixed FDA clock sits; the UK is ' +
@@ -397,8 +397,8 @@ const GD2: Step[] = [
     target: { branch: 'pipeline', view: 'portfolio', lens: 'market', marketView: 'map', marketPick: 'US' },
     scroll: false,
     spot: [
-      ['.wp[data-m=US]', 'United States · FDA · the one fixed authority clock (VARIPULSE)'],
-      ['.wp[data-m=UK]', 'United Kingdom · BSI Notified Body · the movable signature (ETHICON)'],
+      ['.wp[data-m=US]', 'United States · FDA · the one fixed authority clock (Comirnaty)'],
+      ['.wp[data-m=UK]', 'United Kingdom · BSI Notified Body · the movable signature (Prevnar 20)'],
       ['#map-side .ms-k', 'the launches under FDA jurisdiction'],
     ],
   },
@@ -407,8 +407,8 @@ const GD2: Step[] = [
     p:
       'Open issues, filtered to <b>Waiting on an authority</b>. This bucket holds exactly <b>one</b> row, and ' +
       'that is the whole point: everything else on this screen is work someone can accelerate. <b>NPI-0420</b> ' +
-      '&mdash; VARIPULSE Gen 2 is under FDA review with a <b>deficiency letter open</b>, and it is <b>blocking a ' +
-      'gate</b>. Acting faster does not move it: the next step is with the agency. The ETHICON signature is ' +
+      '&mdash; Comirnaty Gen 2 is under FDA review with a <b>deficiency letter open</b>, and it is <b>blocking a ' +
+      'gate</b>. Acting faster does not move it: the next step is with the agency. The Prevnar 20 signature is ' +
       'not here &mdash; it is recoverable work, and it lives on the escalated queue instead.',
     say:
       'This is the honest distinction most tools blur. Only one thread is genuinely on a regulator. The system ' +
@@ -439,14 +439,14 @@ const GD2: Step[] = [
   {
     t: 'How the agent worked the query, then stopped',
     p:
-      'Agent orchestration, filtered to <b>Ethicon</b>. The card for <b>NPI-0365</b> shows the fleet&rsquo;s ' +
+      'Agent orchestration, filtered to <b>Hospital</b>. The card for <b>NPI-0365</b> shows the fleet&rsquo;s ' +
       'work verb by verb: the Regulatory agent <b>detected</b> the second query cycle, the Clinical agent ' +
       '<b>assembled</b> a response pack from the CER and the equivalence rationale &mdash; and then it ' +
       '<b>stopped on a human</b>, because a submission cannot go out without a qualified signatory.',
     say:
       'This is the traceability a Notified Body cares about: what was drafted, by which agent, and exactly ' +
       'where the chain handed off to a person. The agent did everything except the signature.',
-    target: { branch: 'exec', view: 'tower', towerPane: 'live', towerFranchise: 'Ethicon', towerOpenCard: 'seed_finding_365' },
+    target: { branch: 'exec', view: 'tower', towerPane: 'live', towerFranchise: 'Hospital', towerOpenCard: 'seed_finding_365' },
     spot: [['#c-seed_finding_365 .tbwk', 'detected → assembled → stopped on a human']],
   },
   {
@@ -470,7 +470,7 @@ const GD2: Step[] = [
     t: 'What the FDA is actually asking',
     p:
       'The FDA thread, opened. Because the next step is the agency&rsquo;s, the workspace is ' +
-      '<b>view-only</b> &mdash; no Approve, no Reassign, only the record. VARIPULSE Gen 2&rsquo;s PMA is ' +
+      '<b>view-only</b> &mdash; no Approve, no Reassign, only the record. Comirnaty Gen 2&rsquo;s PMA is ' +
       'under review with a deficiency letter open, and until the agency responds the gate does not move.',
     say:
       'Point at the bar: &ldquo;Waiting on an outside authority &mdash; acting here won&rsquo;t move ' +
@@ -529,7 +529,7 @@ const GD2: Step[] = [
   {
     t: 'Ready for the site visit',
     p:
-      'The dossier register for VARIPULSE, narrowed to <b>Regulatory submissions</b> and ' +
+      'The dossier register for Comirnaty, narrowed to <b>Regulatory submissions</b> and ' +
       '<b>Certificates &amp; licences</b>. An unannounced BSI site visit is expected this quarter &mdash; ' +
       'a gemba walk of Heraeus line 3 and the Neuss second source. Everything an auditor asks for is here, ' +
       'versioned and attributed: the submissions, the certificates, the validation reports.',
@@ -554,7 +554,7 @@ const GD2: Step[] = [
     target: { branch: 'exec', view: 'actions', actionsPane: 'history' },
     spot: [
       ['#v-actions .fb2[data-f=esc]', 'filter to the escalations she raised'],
-      ['#v-actions .sb-p.on .ev[data-npi="NPI-0365"]', 'the ETHICON signature she escalated — the very thread from this tour'],
+      ['#v-actions .sb-p.on .ev[data-npi="NPI-0365"]', 'the Prevnar 20 signature she escalated — the very thread from this tour'],
     ],
   },
   {
@@ -594,7 +594,7 @@ const GD2: Step[] = [
 
 /* ── Demo 3 — a manufacturing defect puts commercial batches at risk ────
  * (16 steps, end to end — the same journey as Demo 1, anchored on a different
- * case.) Drives NPI-0412: VARIPULSE runs commercial output on lines 3 and 5,
+ * case.) Drives NPI-0412: Comirnaty runs commercial output on lines 3 and 5,
  * line 3 has produced 3 batches out of spec on the dimensional check, and an
  * overdue CAPA (CAPA-2026-0149, its DMAIC still in progress) is open on it. It
  * is a fully-modelled USER decision with three options a/b/c — re-prioritise
@@ -626,7 +626,7 @@ const GD3: Step[] = [
     t: 'Where a manufacturing problem shows up',
     p:
       'The screening pass. Gate readiness at <b>87%</b>, <b>&euro;40.6M exposed</b>, four launches at risk. One of ' +
-      'those is <b>VARIPULSE G2</b>, and behind its number is a manufacturing problem: it builds commercial ' +
+      'those is <b>Comirnaty G2</b>, and behind its number is a manufacturing problem: it builds commercial ' +
       'output on two lines, and one of them is producing out-of-spec batches. The cockpit is where that ' +
       'first shows as a launch drifting the wrong way.',
     say:
@@ -643,23 +643,23 @@ const GD3: Step[] = [
   {
     t: 'Find the launch that is building at risk',
     p:
-      'Portfolio, product lens. Nine launches, <b>sorted worst first</b>. <b>VARIPULSE G2</b> is in P3, and ' +
+      'Portfolio, product lens. Nine launches, <b>sorted worst first</b>. <b>Comirnaty G2</b> is in P3, and ' +
       'its commercial build runs on <b>two manufacturing lines &mdash; line 3 and line 5</b>. Line 3 has ' +
       'gone out of spec, so a share of the launch volume is at risk. Hollow markers are the gates ahead; ' +
       'solid ones have closed.',
     say:
-      'Product lens first, because the question is <i>which device</i> is building at risk. VARIPULSE is ' +
+      'Product lens first, because the question is <i>which device</i> is building at risk. Comirnaty is ' +
       'the one &mdash; its commercial batches, not its design work, are the problem.',
     target: { branch: 'pipeline', view: 'portfolio', lens: 'product' },
     spot: [
       ['#v-portfolio .pf-sw', 'four lenses, one screen'],
-      ['.tkr', 'VARIPULSE G2 · commercial build on lines 3 and 5'],
+      ['.tkr', 'Comirnaty G2 · commercial build on lines 3 and 5'],
     ],
   },
   {
     t: 'Open the launch and see the build at risk',
     p:
-      'Click into <b>VARIPULSE G2</b>. Its record shows the launch scope &mdash; the commercial build that ' +
+      'Click into <b>Comirnaty G2</b>. Its record shows the launch scope &mdash; the commercial build that ' +
       'is committed for first ship. That build runs on lines 3 and 5, and with line 3 out of spec the ' +
       'launch is short of the batches it planned for. This is not a schedule line; it is real commercial ' +
       'volume that now has to be re-planned.',
@@ -691,7 +691,7 @@ const GD3: Step[] = [
   {
     t: 'How it reached her — agent by agent',
     p:
-      'Agent orchestration, filtered to <b>Biosense Webster</b>. The card for <b>NPI-0412</b> shows the ' +
+      'Agent orchestration, filtered to <b>Vaccines</b>. The card for <b>NPI-0412</b> shows the ' +
       'chain verb by verb: the <b>Line Monitor</b> flagged the drift, the <b>Quality agent</b> re-measured ' +
       'the commercial batches and confirmed 3 out of tolerance, the <b>Planning agent</b> modelled the ' +
       'volume shortfall against the launch plan &mdash; and then it <b>stopped on her</b>, because ' +
@@ -699,7 +699,7 @@ const GD3: Step[] = [
     say:
       'Several agents, minutes, no meeting. The clearest example of the handoff in the fleet: a dimensional ' +
       'drift on a line becomes a commercial-priority decision on her desk.',
-    target: { branch: 'exec', view: 'tower', towerPane: 'live', towerFranchise: 'Biosense Webster', towerOpenCard: 'seed_finding_412' },
+    target: { branch: 'exec', view: 'tower', towerPane: 'live', towerFranchise: 'Vaccines', towerOpenCard: 'seed_finding_412' },
     spot: [['#c-seed_finding_412 .tbwk', 'line monitor → quality → planning → you']],
   },
   {
@@ -837,7 +837,7 @@ const GD3: Step[] = [
   {
     t: 'Two lines, three batches, one decision',
     p:
-      'Ask the copilot what is putting VARIPULSE&rsquo;s commercial batches at risk and it says it in one ' +
+      'Ask the copilot what is putting Comirnaty&rsquo;s commercial batches at risk and it says it in one ' +
       'answer: line 3 has produced <b>3 batches out of spec</b> while line 5 is clean, an <b>overdue ' +
       'CAPA</b> is open because its <b>DMAIC is still in progress</b>, and &mdash; since V&amp;V produces ' +
       '<b>3 batches as the norm</b> &mdash; that is a full run&rsquo;s worth of launch volume. The three ' +
@@ -859,13 +859,13 @@ const GD3: Step[] = [
 
 /* ── Demo 4 — a regulator moves a date and the plan re-plans itself ─────
  * (16 steps, end to end — the same journey shape as the other three, anchored
- * on the connected-milestone / dynamic-cascade case.) The FDA slips OTTAVA's
+ * on the connected-milestone / dynamic-cascade case.) The FDA slips Velsipity's
  * 510(k) clearance six weeks; the platform cascades the impact across five
  * downstream commitments, auto-adjusting the three it safely can and surfacing
  * the two that need a human. Drives its own self-contained subsystem
  * (RegulatoryMilestone + CascadeImpactItem via CascadeReplanService) plus the
- * already-modelled OTTAVA launch record and the `cascade` copilot answer. It
- * adds NO finding and touches NO VARIPULSE activity, so the reconciliation lock
+ * already-modelled Velsipity launch record and the `cascade` copilot answer. It
+ * adds NO finding and touches NO Comirnaty activity, so the reconciliation lock
  * holds and every count still ties out. The Milestone-replan screen is
  * repeatable — its reset restores the pre-slip baseline — so the tour can be
  * run again and again from a clean state. */
@@ -875,7 +875,7 @@ const GD4: Step[] = [
     p:
       'The same three entry points Helena always has: <b>01 define</b> the launch, <b>02 see</b> it, ' +
       '<b>03 execute</b> it. This walkthrough follows a single outside event &mdash; the <b>FDA slips ' +
-      'OTTAVA&rsquo;s clearance six weeks</b> &mdash; all the way through to a plan that re-plans itself. ' +
+      'Velsipity&rsquo;s clearance six weeks</b> &mdash; all the way through to a plan that re-plans itself. ' +
       '01 is a design workspace and is not built out here; today is 02 and 03.',
     say:
       'Today the trigger is a regulator, and the story is what happens <i>downstream</i> of a date nobody ' +
@@ -891,7 +891,7 @@ const GD4: Step[] = [
   {
     t: 'The launch that is waiting on a clearance',
     p:
-      'The screening pass. Most of the portfolio is in-market work, but <b>OTTAVA</b> &mdash; the robotic ' +
+      'The screening pass. Most of the portfolio is in-market work, but <b>Velsipity</b> &mdash; the robotic ' +
       'surgical platform &mdash; is <b>pre-market</b>, first ship targeted at Q2 2027, its whole plan hung off ' +
       'one FDA 510(k) clearance date. Nothing is on fire yet: manufacturing has built launch stock, the loaner ' +
       'kits are staged, the field is trained. That is exactly the calm before a date moves.',
@@ -906,10 +906,10 @@ const GD4: Step[] = [
     ],
   },
   {
-    t: 'Find OTTAVA in the portfolio',
+    t: 'Find Velsipity in the portfolio',
     p:
-      'Portfolio, product lens. Nine launches, one line each. <b>OTTAVA Robotic Platform Kit</b> is the ' +
-      'pre-market line &mdash; Digital Surgery, Class II, lead market Germany, first ship Q2 2027. Its gates are ' +
+      'Portfolio, product lens. Nine launches, one line each. <b>Velsipity Robotic Platform Kit</b> is the ' +
+      'pre-market line &mdash; Neuroscience, Class II, lead market Germany, first ship Q2 2027. Its gates are ' +
       'still ahead of it; the clearance milestone is the one that sets everything after it.',
     say:
       'Product lens, because the question is <i>which device</i> is exposed to the clearance date. It is the ' +
@@ -917,13 +917,13 @@ const GD4: Step[] = [
     target: { branch: 'pipeline', view: 'portfolio', lens: 'product' },
     spot: [
       ['#v-portfolio .pf-sw', 'four lenses, one screen'],
-      ['.tkr[data-launch="seed_launch_ottava"]', 'OTTAVA · pre-market · one clearance date gates it all'],
+      ['.tkr[data-launch="seed_launch_ottava"]', 'Velsipity · pre-market · one clearance date gates it all'],
     ],
   },
   {
     t: 'Everything hangs off one clearance date',
     p:
-      'Open OTTAVA. The record shows what is already committed against the original clearance: a ' +
+      'Open Velsipity. The record shows what is already committed against the original clearance: a ' +
       '<b>launch build of 40 units</b>, a <b>field force part-certified</b>, registrations filed. This is the ' +
       'point of the case &mdash; the plan is real, physical and staged, so a six-week slip is not a line on a ' +
       'chart, it is stock in a warehouse and reps trained for the wrong month.',
@@ -939,7 +939,7 @@ const GD4: Step[] = [
   {
     t: 'The connected-milestone screen',
     p:
-      'Pipeline, <b>Milestone replan</b>. This is the exception dashboard for OTTAVA&rsquo;s ' +
+      'Pipeline, <b>Milestone replan</b>. This is the exception dashboard for Velsipity&rsquo;s ' +
       '<b>FDA 510(k) clearance</b>. Right now the milestone is <b>on track</b> at 02 Nov, and the panel spells ' +
       'out the situation in plain words: launch stock built, kits at the 3PL, field trained for the original ' +
       'go-live. Nothing has moved &mdash; yet.',
@@ -1094,7 +1094,7 @@ const GD4: Step[] = [
   {
     t: 'The commitments, re-timed against the new date',
     p:
-      'Back on the OTTAVA record, the launch scope now reads against the <b>new clearance</b>: the build is ' +
+      'Back on the Velsipity record, the launch scope now reads against the <b>new clearance</b>: the build is ' +
       'held for the later date, the kit deployment and field plan reference the new go-live. The record and the ' +
       'replan screen reconcile &mdash; one date, one connected plan, the same numbers on every screen.',
     say:
@@ -1109,7 +1109,7 @@ const GD4: Step[] = [
   {
     t: 'Or she could have just asked',
     p:
-      'Everything we clicked through, the copilot answers from the same connected plan. Ask it what OTTAVA&rsquo;s ' +
+      'Everything we clicked through, the copilot answers from the same connected plan. Ask it what Velsipity&rsquo;s ' +
       'six-week slip moves and it says it in one answer: <b>three commitments re-timed themselves</b> ' +
       '(manufacturing, logistics, commercial), <b>two need a human</b> (the &euro;48k storage call and the field ' +
       'refresh), and the working-capital impact is visible now. Every answer ends in a button that opens the record.',
@@ -1168,7 +1168,7 @@ const DEMOS: Demo[] = [
     chip: 'MANUFACTURING',
     title: 'Commercial batches at risk',
     blurb:
-      'A manufacturing call. VARIPULSE builds on two lines; line 3 gives three out-of-spec commercial batches and its CAPA is overdue with the DMAIC still open, so Helena re-prioritises markets while line 3 comes back.',
+      'A manufacturing call. Comirnaty builds on two lines; line 3 gives three out-of-spec commercial batches and its CAPA is overdue with the DMAIC still open, so Helena re-prioritises markets while line 3 comes back.',
     steps: GD3,
   },
   {
@@ -1176,7 +1176,7 @@ const DEMOS: Demo[] = [
     chip: 'MILESTONE REPLAN',
     title: 'A regulator slips a date',
     blurb:
-      'A dynamic cascade replan. The FDA slips OTTAVA’s clearance six weeks; the plan re-plans itself — three downstream commitments auto-adjust, two decisions reach Helena, and she resolves both in one meeting.',
+      'A dynamic cascade replan. The FDA slips Velsipity’s clearance six weeks; the plan re-plans itself — three downstream commitments auto-adjust, two decisions reach Helena, and she resolves both in one meeting.',
     steps: GD4,
   },
 ];

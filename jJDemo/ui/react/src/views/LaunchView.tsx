@@ -89,7 +89,7 @@ export default function LaunchView() {
   const slipText = nextGate && nextGate.slipDays != null ? `+${nextGate.slipDays}d` : '—';
 
   // Derive the US/EU regulatory pathways from the live route rather than
-  // hardcoding VARIPULSE's PMA/MDR (fixes the DUALTO Class II/III mismatch).
+  // hardcoding Comirnaty's PMA/MDR (fixes the Zavzpret Class II/III mismatch).
   const route = o.regulatoryRoute ?? '';
   const usPathway = route.includes('PMA') ? 'PMA' : route.includes('510') ? '510(k)' : route.includes('De Novo') ? 'De Novo' : '—';
   const euPathway = route.includes('MDR') ? 'MDR · BSI' : '—';

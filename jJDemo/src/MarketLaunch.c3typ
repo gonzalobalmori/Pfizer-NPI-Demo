@@ -2,7 +2,7 @@
  * The rollout of one {@link Launch} into one {@link Market} — the join that
  * carries the per-market first-ship quarter, status, reimbursement position and
  * revenue exposure. The German Q2 2027 tender collision and the €18.4M exposure
- * on VARIPULSE G2 both live here.
+ * on Comirnaty G2 both live here.
  *
  * A market launch can raise {@link Finding}s specific to that market.
  */

@@ -271,7 +271,7 @@ def _llm_extract(domain, snippets, launches):
         )
         joined = "\n".join("%d. %s" % (i + 1, s["text"]) for i, s in enumerate(snippets))
         system = (
-            "You structure an end-of-day operations log for a MedTech new-product "
+            "You structure an end-of-day operations log for a Biopharma new-product "
             "launch programme into discrete signals. For EACH distinct signal, "
             "output an object with: kind (one of risk, delay, blocker, decision, "
             "evidence, status), headline (<=80 chars), description, launchId (the "

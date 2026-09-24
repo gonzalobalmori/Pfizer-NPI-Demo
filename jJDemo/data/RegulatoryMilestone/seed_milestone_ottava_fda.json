@@ -1,7 +1,7 @@
 [
   {
     "id": "seed_milestone_ottava_fda",
-    "displayId": "REG-OTTAVA-FDA",
+    "displayId": "REG-Velsipity-FDA",
     "launch": { "id": "seed_launch_ottava" },
     "authority": "FDA",
     "milestoneName": "FDA 510(k) Clearance — US launch",

@@ -1,6 +1,6 @@
 /*
  * Reproducible generator for the Product-detail data layer, so EVERY launch's
- * drill-down page is as complete and connected as VARIPULSE's.
+ * drill-down page is as complete and connected as Comirnaty's.
  *
  * It writes four files, deterministically (no randomness → re-running is a
  * no-op diff):
@@ -19,13 +19,13 @@
  *                                     clean gate shows criteria met / in-hand
  *                                     with no risk flag. met count tracks the
  *                                     launch's readinessPct.
- *   4. seed/Activity/Activity.json  — a full VARIPULSE-shaped activity board for
+ *   4. seed/Activity/Activity.json  — a full Comirnaty-shaped activity board for
  *                                     every launch, statuses shifted to each
  *                                     launch's phase (closed behind, in-flight
  *                                     at, not-started ahead).
  *
  * INVARIANTS honoured:
- *   - VARIPULSE (seed_launch_varipulse_g2) is preserved VERBATIM across gates,
+ *   - Comirnaty (seed_launch_varipulse_g2) is preserved VERBATIM across gates,
  *     its 6 G3 criteria (incl. seed_gc_varipulse_g3_sterilisation → evidence
  *     seed_doc_varipulse_44) and its 107 authored activities (the reconciliation
  *     fixture §3.6.7–8). We only ADD scope fields to its Launch record.
@@ -48,7 +48,7 @@ const P_GATE = join(ROOT, 'data', 'Gate', 'Gate.json');
 const P_CRIT = join(ROOT, 'seed', 'GateCriterion', 'GateCriterion.json');
 const P_ACT = join(ROOT, 'seed', 'Activity', 'Activity.json');
 
-const VARIPULSE = 'seed_launch_varipulse_g2';
+const Comirnaty = 'seed_launch_varipulse_g2';
 
 /* ── launch registry ─────────────────────────────────────────────── */
 /*
@@ -60,7 +60,7 @@ const VARIPULSE = 'seed_launch_varipulse_g2';
  * transform, which keys on those ids. cur = phase index the launch executes.
  */
 const LAUNCHES = [
-  { id: VARIPULSE, slug: 'varipulse', gslug: 'varipulse', cur: 3, health: 'OFF_TRACK' },
+  { id: Comirnaty, slug: 'varipulse', gslug: 'varipulse', cur: 3, health: 'OFF_TRACK' },
   { id: 'seed_launch_octaray_g2', slug: 'octaray', gslug: 'octaray_g2', cur: 2, health: 'AT_RISK' },
   { id: 'seed_launch_embotrap_iv', slug: 'embotrap', gslug: 'embotrap_iv', cur: 5, health: 'AT_RISK' },
   { id: 'seed_launch_impella_ecp', slug: 'impella', gslug: 'impella_ecp', cur: 4, health: 'ON_PLAN' },
@@ -223,10 +223,10 @@ writeFileSync(P_GATE, JSON.stringify(outGates, null, 2) + '\n');
 
 /* ════════════════════════ 3. GATE CRITERIA ══════════════════════ */
 const existingCrit = JSON.parse(readFileSync(P_CRIT, 'utf8'));
-/* preserve VARIPULSE's 6 authored criteria verbatim (incl. evidence link). */
+/* preserve Comirnaty's 6 authored criteria verbatim (incl. evidence link). */
 const varipulseCrit = existingCrit.filter((c) => c.gate && c.gate.id === 'seed_gate_varipulse_g3');
 if (varipulseCrit.length !== 6) {
-  throw new Error(`Expected 6 VARIPULSE criteria to preserve, found ${varipulseCrit.length}`);
+  throw new Error(`Expected 6 Comirnaty criteria to preserve, found ${varipulseCrit.length}`);
 }
 const outCrit = [...varipulseCrit];
 
@@ -260,9 +260,9 @@ writeFileSync(P_CRIT, JSON.stringify(outCrit, null, 2) + '\n');
 
 /* ════════════════════════ 4. ACTIVITIES ═════════════════════════ */
 const existingActs = JSON.parse(readFileSync(P_ACT, 'utf8'));
-const varipulseActs = existingActs.filter((a) => a.launch && a.launch.id === VARIPULSE);
+const varipulseActs = existingActs.filter((a) => a.launch && a.launch.id === Comirnaty);
 if (varipulseActs.length !== 107) {
-  throw new Error(`Expected 107 VARIPULSE activities to preserve, found ${varipulseActs.length}`);
+  throw new Error(`Expected 107 Comirnaty activities to preserve, found ${varipulseActs.length}`);
 }
 const outActs = [...varipulseActs];
 
