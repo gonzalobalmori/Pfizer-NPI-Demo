@@ -15,6 +15,7 @@ import { getOpenIssues } from '@/api/portfolio';
 import { fmtEuro } from '@/lib/format';
 import type { OpenIssues, IssueRow, WaitingOn } from '@/types/portfolio';
 import { labelFor } from '@/productLabel';
+import { pharma } from '@/pharmaText';
 
 type WaitingFilter = 'all' | 'you' | 'other' | 'agent' | 'authority';
 type ImpactFilter = 'all' | 'ct' | 'rk' | 'ok';
@@ -262,8 +263,8 @@ function AlertRow({ row, onOpen }: { row: IssueRow; onOpen: () => void }) {
     <tr className={cat} data-npi={row.displayId} onClick={onOpen}>
       <td className="l">
         <span className="al-id">{row.displayId}</span>
-        <span className="al-t">{row.headline}</span>
-        <span className="al-rc">{row.description}</span>
+        <span className="al-t">{pharma(row.headline)}</span>
+        <span className="al-rc">{pharma(row.description)}</span>
       </td>
       <td className="l">
         <span className={`cat ${cat}`}>{CAT_LABEL[cat]}</span>

@@ -19,6 +19,7 @@ import type { Category, Outcome, ResolutionWorkspace } from '@/types/execution';
 import Glyph from '@/components/Brand/Glyph';
 import ActionToast from '@/components/Feedback/ActionToast';
 import { labelFor } from '@/productLabel';
+import { pharma } from '@/pharmaText';
 
 /** The recurring 4-point spark glyph used for agent avatars and the copilot CTA. */
 function Spark() {
@@ -195,7 +196,7 @@ export default function IssueView() {
               <span id="is-id">{f.displayId}</span> · <span id="is-asset">{labelFor(f)}</span> ·{' '}
               <span id="is-phase">Phase {f.phaseCode} · {f.phaseName}</span>
             </div>
-            <div className="is-t" id="is-t">{f.headline}</div>
+            <div className="is-t" id="is-t">{pharma(f.headline)}</div>
             <div className="is-tags">
               <span className={`cat ${cat.cls}`} id="is-cat">{cat.label}</span>
               <span className="tag fn">{functionOf(f.detectedBy)}</span>
@@ -233,7 +234,7 @@ export default function IssueView() {
           <section className="sec">
             <div className="sec-h">The problem</div>
             <div className="sec-b">
-              <p className="pb-txt" id="pb-txt">{f.description}</p>
+              <p className="pb-txt" id="pb-txt">{pharma(f.description)}</p>
               {ws.capa ? (
                 <p className="pb-txt" style={{ marginTop: 11 }}>
                   {ws.capa.openedBy ?? 'The Quality agent'} opened <b>{ws.capa.capaId}</b> against{' '}
@@ -369,7 +370,7 @@ export default function IssueView() {
                 return (
                   <div className={`ac-r${isAg ? '' : ' man'}`} data-k={i + 1} key={i}>
                     <span className={`ac-w${isAg ? ' ag' : ''}`}>{isAg ? <Spark /> : initials(t.owner)}</span>
-                    <span className="ac-b"><b>{t.name}</b><em>{t.detail}</em></span>
+                    <span className="ac-b"><b>{pharma(t.name)}</b><em>{pharma(t.detail)}</em></span>
                     <span className="ac-d">{fmtDate(t.dueDate) || t.dueDate || ''}</span>
                     <span className="ac-s" data-s="0">Not started</span>
                     {isAg

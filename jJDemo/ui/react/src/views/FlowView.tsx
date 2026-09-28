@@ -15,6 +15,7 @@ import { fmtDateYear } from '@/lib/format';
 import type { LaunchRecord, ActivityCard, WorkflowColumn } from '@/types/portfolio';
 import Glyph, { type GlyphName } from '@/components/Brand/Glyph';
 import { labelFor } from '@/productLabel';
+import { pharma } from '@/pharmaText';
 
 /* Status → label + pip glyph, verbatim from the prototype's FLST / FLPIP. */
 const ST_LABEL: Record<string, string> = {
@@ -284,7 +285,7 @@ function PhaseColumn({ col, inDomCol, visible }: { col: WorkflowColumn; inDomCol
     <div className={`tbcol ${col.state === 'live' ? 'live' : ''}`}>
       <div className="tbch">
         <div className="tbch-p"><b>{col.code}</b><em>{col.state}</em></div>
-        <div className="tbch-n">{col.name}</div>
+        <div className="tbch-n">{pharma(col.name)}</div>
         <div className="tbch-c">{inDomCol.length ? <><b>{done}</b> of {inDomCol.length} complete</> : 'nothing in this function'}</div>
         {inDomCol.length ? <div className="fk-bar"><i style={{ width: `${Math.round((done / inDomCol.length) * 100)}%` }}></i></div> : null}
       </div>
@@ -295,7 +296,7 @@ function PhaseColumn({ col, inDomCol, visible }: { col: WorkflowColumn; inDomCol
       </div>
       {g ? (
         <div className={`fk-g ${g.status}`}><span className="fk-gc">{g.code}</span>
-          <span className="fk-gn">{g.name}<em>{g.status === 'ok' ? 'closed' : 'forecast'} {fmtDateYear(g.forecastDate)}</em></span></div>
+          <span className="fk-gn">{pharma(g.name)}<em>{g.status === 'ok' ? 'closed' : 'forecast'} {fmtDateYear(g.forecastDate)}</em></span></div>
       ) : null}
     </div>
   );
@@ -308,7 +309,7 @@ function FlowCard({ act }: { act: ActivityCard }) {
     <div className={`fk ${sc}`} data-c={act.id} data-w={act.domainCode ?? ''}>
       <button className="fk-r" type="button">
         <span className={`fai ${sc}`}><StatusPip status={sc} /></span>
-        <span className="fk-b"><span className="fk-n">{act.name}</span>
+        <span className="fk-b"><span className="fk-n">{pharma(act.name)}</span>
           <span className="fa-m"><span className="faw">{act.domainName}</span>
             <span className="fao">{act.owner}</span>
             {au ? <span className={`fau ${au.toLowerCase()}`} title={AU_TITLE[au]}>{au}</span> : null}

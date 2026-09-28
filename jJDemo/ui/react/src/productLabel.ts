@@ -1,42 +1,103 @@
 /*
- * Canonical product labels, resolved in the UI.
+ * Canonical product facts, resolved in the UI.
  *
  * WHY THIS EXISTS: the C3 environment the demo is shown from can be running an
- * older seed/backend than the repo — old launch ids, old product names, and the
- * pre-rename `device` field instead of `product`. That made the Launch column
- * render blank and the charts show retired names. Rather than require a re-seed
- * before every demo, the UI resolves the label itself.
+ * older seed/backend than the repo — old launch ids, old product names, retired
+ * franchises, and the pre-rename `device` field instead of `product`. That left
+ * the Launch column blank and the Product card reading "—". Rather than require
+ * a re-seed before every demo, the UI resolves these itself.
  *
  * Each of the nine programmes is listed under BOTH its current id and the legacy
  * id that occupied the same slot, plus every retired display name it has been
- * through, so any vintage of backend resolves to the same label.
+ * through, so any vintage of backend resolves to the same facts.
  *
  * Once the environment is re-seeded this layer becomes a no-op rather than
- * wrong: the current ids map to exactly the names the backend would return.
+ * wrong: the current ids resolve to exactly what the backend would return.
  */
 
 export interface ProductLabel {
   product: string;
   modality: string;
   franchise: string;
+  segment: string;
+  indication: string;
+  developmentPhase: string;
+  estimatedLaunch: string;
+  targetMarkets: string;
+  regulatoryRoute: string;
+  fillFinishRoute: string;
+  manufactureSite: string;
 }
 
 const IM = 'Internal Medicine';
 const ONC = 'Oncology';
 const VAX = 'Vaccines & Anti-Infectives';
+const PRIMARY = 'Primary Care';
+const ONC_SEG = 'Oncology';
+
+const NDA_MAA = 'NDA (FDA) + MAA centralised procedure (EMA)';
+const BLA_MAA = 'BLA (FDA) + MAA centralised procedure (EMA)';
+const PFS = 'Aseptic fill — prefilled syringe';
+const TABLET = 'Oral solid dose — film-coated tablet';
 
 /* The nine programmes. Modality wording is the client's own. */
-const BEROBENATIDE: ProductLabel = { product: 'Berobenatide', modality: 'Monthly GLP-1 agonist', franchise: IM };
-const MET097: ProductLabel = { product: 'MET097', modality: 'Monthly injectable GLP-1', franchise: IM };
-const PF3945: ProductLabel = { product: 'PF-3945', modality: 'Amylin-based combo (w/ berobenatide)', franchise: IM };
-const ATIRMOCICLIB: ProductLabel = { product: 'Atirmociclib', modality: 'CDK4 inhibitor', franchise: ONC };
-const SIGVOTATUG: ProductLabel = { product: 'Sigvotatug vedotin', modality: 'Antibody-drug conjugate (ADC)', franchise: ONC };
-const PF08634404: ProductLabel = { product: 'PF-08634404', modality: 'Dual PD-1/VEGF inhibitor', franchise: ONC };
-const SASANLIMAB: ProductLabel = { product: 'Sasanlimab', modality: 'Anti-PD-1 monoclonal antibody', franchise: ONC };
-const VEPDEGESTRANT: ProductLabel = { product: 'Vepdegestrant', modality: 'Oral ER degrader (PROTAC)', franchise: ONC };
-const PF07817883: ProductLabel = { product: 'PF-07817883', modality: 'Oral 3CL protease inhibitor', franchise: VAX };
+const BEROBENATIDE: ProductLabel = {
+  product: 'Berobenatide', modality: 'Monthly GLP-1 agonist', franchise: IM, segment: PRIMARY,
+  indication: 'Obesity, knee OA, sleep apnoea, T2D', developmentPhase: 'Phase 3 (10 trials)',
+  estimatedLaunch: '~2028', targetMarkets: 'US, EU, Global', regulatoryRoute: NDA_MAA,
+  fillFinishRoute: PFS, manufactureSite: 'Puurs + Vetter Ravensburg',
+};
+const MET097: ProductLabel = {
+  product: 'MET097', modality: 'Monthly injectable GLP-1', franchise: IM, segment: PRIMARY,
+  indication: 'Obesity', developmentPhase: 'Phase 3 (9 trials)',
+  estimatedLaunch: '~2028', targetMarkets: 'US, EU', regulatoryRoute: NDA_MAA,
+  fillFinishRoute: PFS, manufactureSite: 'Kalamazoo (KZO)',
+};
+const PF3945: ProductLabel = {
+  product: 'PF-3945', modality: 'Amylin-based combo (w/ berobenatide)', franchise: IM, segment: PRIMARY,
+  indication: 'Obesity', developmentPhase: 'Phase 2',
+  estimatedLaunch: 'Post-2028', targetMarkets: 'US, EU', regulatoryRoute: NDA_MAA,
+  fillFinishRoute: 'Aseptic fill — prefilled pen', manufactureSite: 'Puurs',
+};
+const ATIRMOCICLIB: ProductLabel = {
+  product: 'Atirmociclib', modality: 'CDK4 inhibitor', franchise: ONC, segment: ONC_SEG,
+  indication: 'HR+/HER2− metastatic breast cancer (1L)', developmentPhase: 'Late Phase 3',
+  estimatedLaunch: '2027–2028', targetMarkets: 'US, EU', regulatoryRoute: NDA_MAA,
+  fillFinishRoute: TABLET, manufactureSite: 'Freiburg',
+};
+const SIGVOTATUG: ProductLabel = {
+  product: 'Sigvotatug vedotin', modality: 'Antibody-drug conjugate (ADC)', franchise: ONC, segment: ONC_SEG,
+  indication: 'Metastatic NSCLC', developmentPhase: 'Late Phase 3',
+  estimatedLaunch: '2027–2028', targetMarkets: 'US, EU', regulatoryRoute: BLA_MAA,
+  fillFinishRoute: 'Lyophilised — single-use vial', manufactureSite: 'Grange Castle',
+};
+const PF08634404: ProductLabel = {
+  product: 'PF-08634404', modality: 'Dual PD-1/VEGF inhibitor', franchise: ONC, segment: ONC_SEG,
+  indication: 'Metastatic colorectal cancer; 1L NSCLC', developmentPhase: 'Phase 3 (2 pivotal)',
+  estimatedLaunch: '2028+', targetMarkets: 'US, EU, China',
+  regulatoryRoute: 'BLA (FDA) + MAA centralised procedure (EMA) + NMPA (China)',
+  fillFinishRoute: 'Aseptic fill — single-use vial', manufactureSite: 'Grange Castle + Siegfried Hameln',
+};
+const SASANLIMAB: ProductLabel = {
+  product: 'Sasanlimab', modality: 'Anti-PD-1 monoclonal antibody', franchise: ONC, segment: ONC_SEG,
+  indication: 'Non-muscle-invasive bladder cancer', developmentPhase: 'Phase 3',
+  estimatedLaunch: '2027–2028', targetMarkets: 'US, EU', regulatoryRoute: BLA_MAA,
+  fillFinishRoute: 'Aseptic fill — single-use vial', manufactureSite: 'Puurs',
+};
+const VEPDEGESTRANT: ProductLabel = {
+  product: 'Vepdegestrant', modality: 'Oral ER degrader (PROTAC)', franchise: ONC, segment: ONC_SEG,
+  indication: 'HR+/HER2− advanced breast cancer', developmentPhase: 'Phase 3',
+  estimatedLaunch: '2027–2028', targetMarkets: 'US, EU', regulatoryRoute: NDA_MAA,
+  fillFinishRoute: TABLET, manufactureSite: 'Freiburg',
+};
+const PF07817883: ProductLabel = {
+  product: 'PF-07817883', modality: 'Oral 3CL protease inhibitor', franchise: VAX, segment: PRIMARY,
+  indication: 'COVID-19 (oral antiviral)', developmentPhase: 'Phase 3',
+  estimatedLaunch: '2027–2028', targetMarkets: 'US, EU', regulatoryRoute: NDA_MAA,
+  fillFinishRoute: TABLET, manufactureSite: 'Freiburg',
+};
 
-/* Launch id -> label. Current ids first, then the legacy id for the same slot. */
+/* Launch id -> facts. Current ids first, then the legacy id for the same slot. */
 const BY_ID: Record<string, ProductLabel> = {
   seed_launch_berobenatide_obesity: BEROBENATIDE,
   seed_launch_berobenatide_t2d: SASANLIMAB,
@@ -59,9 +120,9 @@ const BY_ID: Record<string, ProductLabel> = {
   seed_launch_puresee: PF08634404,
 };
 
-/* Retired display names, for a backend whose ids we do not recognise. Keyed on a
-   lower-cased substring match so "Comirnaty Gen 2 PFA Catheter",
-   "Comirnaty 2026-27 Formula" and bare "Comirnaty" all resolve. */
+/* Retired display names, for a backend whose ids we do not recognise. Matched as
+   a lower-cased substring so "Comirnaty Gen 2 PFA Catheter", "Comirnaty 2026-27
+   Formula" and bare "Comirnaty" all resolve to the same programme. */
 const BY_NAME: [string, ProductLabel][] = [
   ['comirnaty', BEROBENATIDE],
   ['abrysvo', SASANLIMAB],
@@ -89,7 +150,22 @@ const BY_NAME: [string, ProductLabel][] = [
   ['pf-08634404', PF08634404],
 ];
 
-/** Resolve a launch to its canonical label, or null if nothing matches. */
+/** A payload row carrying a launch, from any vintage of the backend. */
+export interface LaunchNamed {
+  launchId?: string | null;
+  product?: string | null;
+  productName?: string | null;
+  shortName?: string | null;
+  /** Pre-rename field name — a backend deployed before `device` became `product`. */
+  device?: string | null;
+}
+
+/** Whatever name this row carries, whichever field the backend used for it. */
+export function rawName(row: LaunchNamed): string | null {
+  return row.product ?? row.productName ?? row.device ?? row.shortName ?? null;
+}
+
+/** Resolve a launch to its canonical facts, or null if nothing matches. */
 export function lookupProduct(launchId?: string | null, name?: string | null): ProductLabel | null {
   if (launchId && BY_ID[launchId]) return BY_ID[launchId];
   if (name) {
@@ -97,6 +173,11 @@ export function lookupProduct(launchId?: string | null, name?: string | null): P
     for (const [needle, label] of BY_NAME) if (n.includes(needle)) return label;
   }
   return null;
+}
+
+/** Resolve straight from a payload row. */
+export function lookupRow(row: LaunchNamed): ProductLabel | null {
+  return lookupProduct(row.launchId, rawName(row));
 }
 
 /**
@@ -117,22 +198,16 @@ export function franchiseLabel(launchId?: string | null, name?: string | null, f
   return lookupProduct(launchId, name)?.franchise ?? fallback ?? '';
 }
 
-/** A payload row carrying a launch, from any vintage of the backend. */
-export interface LaunchNamed {
-  launchId?: string | null;
-  product?: string | null;
-  productName?: string | null;
-  shortName?: string | null;
-  /** Pre-rename field name — a backend deployed before `device` became `product`. */
-  device?: string | null;
-}
-
-/** Whatever name this row carries, whichever field the backend used for it. */
-export function rawName(row: LaunchNamed): string | null {
-  return row.product ?? row.productName ?? row.device ?? row.shortName ?? null;
-}
-
 /** One-call product label for a payload row. */
 export function labelFor(row: LaunchNamed): string {
   return productLabel(row.launchId, rawName(row));
+}
+
+/** One field of the canonical facts for a row, falling back to the backend's value. */
+export function factFor<K extends keyof ProductLabel>(
+  row: LaunchNamed,
+  key: K,
+  fallback?: string | null,
+): string {
+  return lookupRow(row)?.[key] ?? fallback ?? '';
 }

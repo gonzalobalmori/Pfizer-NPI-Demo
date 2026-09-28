@@ -32,6 +32,7 @@ import type {
 import EodCapture from '@/components/EodCapture';
 import Glyph from '@/components/Brand/Glyph';
 import GlyphText from '@/components/Brand/GlyphText';
+import { pharma } from '@/pharmaText';
 
 type CopilotMode = 'ask' | 'eod';
 
@@ -309,7 +310,7 @@ function EodMode({
           <div className="cap-ll">
             {committed.map((c) => (
               <button key={c.id} type="button" className="cap-i" onClick={() => open('issue', c.id)}>
-                <b>{c.displayId}</b> &mdash; {c.headline}{' '}
+                <b>{c.displayId}</b> &mdash; {pharma(c.headline)}{' '}
                 <i>
                   open <Glyph name="arrow-right" className="sm" />
                 </i>

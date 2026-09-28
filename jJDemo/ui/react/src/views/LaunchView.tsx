@@ -14,7 +14,9 @@ import { fmtEuro, fmtDateYear, fmtGate } from '@/lib/format';
 import type { LaunchRecord, RecordGate, MlStatus } from '@/types/portfolio';
 import Glyph from '@/components/Brand/Glyph';
 import MlDot from '@/components/Brand/MlDot';
-import { labelFor } from '@/productLabel';
+import { labelFor, factFor } from '@/productLabel';
+import { pharma, gateName } from '@/pharmaText';
+import { phaseNameFor } from '@/phaseModel';
 
 /* MarketLaunch.status → the pill colour class (shared tone source: same field
  * the Cockpit rows and Market tab colour by, so a market reads the same colour
@@ -95,7 +97,7 @@ export default function LaunchView() {
   // hardcoding Berobenatide's NDA/MAA (fixes the PF-3945 biologic/small-molecule mismatch).
   // Supplement/variation forms are tested before their base form, since
   // "NDA supplement" also contains "NDA".
-  const route = o.regulatoryRoute ?? '';
+  const route = factFor(o, 'regulatoryRoute', o.regulatoryRoute);
   const usPathway = route.includes('BLA supplement') ? 'BLA supplement'
     : route.includes('NDA supplement') ? 'NDA supplement'
     : route.includes('BLA') ? 'BLA'
@@ -168,10 +170,20 @@ export default function LaunchView() {
         <button className="bk" type="button" onClick={() => open('portfolio')}><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7" /></svg><span className="bk-lbl">Back</span></button>
         <div>
           <div className="ld-n">{labelFor(o)}</div>
-          <div className="ld-s">{o.franchise} &middot; {o.segment} &middot; {o.modality} &middot; {o.regulatoryRoute} &middot; lead market {o.leadMarketCode ?? o.leadMarket}</div>
+          <div className="ld-s">
+            {[
+              factFor(o, 'franchise', o.franchise),
+              factFor(o, 'segment', o.segment),
+              factFor(o, 'modality', o.modality),
+              route,
+              `lead market ${o.leadMarketCode ?? o.leadMarket ?? ''}`.trim(),
+            ]
+              .filter(Boolean)
+              .join(' · ')}
+          </div>
         </div>
         <div className="h-sp"></div>
-        {o.segment ? <span className="pill z" style={{ alignSelf: 'center', marginRight: 8 }} title="Business unit">{o.segment}</span> : null}
+        {factFor(o, 'segment', o.segment) ? <span className="pill z" style={{ alignSelf: 'center', marginRight: 8 }} title="Business unit">{factFor(o, 'segment', o.segment)}</span> : null}
         <button
           className="btn s"
           type="button"
@@ -196,8 +208,8 @@ export default function LaunchView() {
         <button className="ld-tb" type="button" onClick={() => open('docs', param)}>Documents{docCount ? <span className="bdg a">{docCount}</span> : null}</button>
       </div>
       <div className="ld-strip">
-        <div className="ld-t"><div className="ld-tv" id="ld-phase">{o.currentPhase}</div><div className="ld-tl">Current phase<br />{o.currentPhaseName}</div></div>
-        <div className="ld-t"><div className="ld-tv" id="ld-gate">{nextGate?.code}</div><div className="ld-tl">Next gate<br />{nextGate?.name}</div></div>
+        <div className="ld-t"><div className="ld-tv" id="ld-phase">{o.currentPhase}</div><div className="ld-tl">Current phase<br />{phaseNameFor(o.currentPhase, o.currentPhaseName)}</div></div>
+        <div className="ld-t"><div className="ld-tv" id="ld-gate">{nextGate?.code}</div><div className="ld-tl">Next gate<br />{gateName(nextGate?.code, nextGate?.name)}</div></div>
         <div className="ld-t"><div className="ld-tv mono" id="ld-date">{fmtDateYear(nextGate?.forecastDate ?? null)}</div><div className="ld-tl">Forecast date<br />baseline {fmtDateYear(nextGate?.baselineDate ?? null)}</div></div>
         <div className="ld-t"><div className="ld-tv r" id="ld-slip">{slipText}</div><div className="ld-tl">Slip<br />{record.issues.recoverableDays > 0 ? `${record.issues.recoverableDays}d recoverable by acting` : 'zero float on path'}</div></div>
         <div className="ld-t"><div className="ld-tv r" id="ld-rev">{fmtEuro(o.revenueAtRisk)}</div><div className="ld-tl">Revenue at risk<br />of {fmtEuro(o.launchValue)} launch value</div></div>
@@ -210,11 +222,14 @@ export default function LaunchView() {
         <div className="ld-rail">
           <div className="ld-card">
             <div className="ld-ct">Product</div>
-            <div className="ld-kv"><span>Modality</span><b>{o.modality ?? '—'}</b></div>
+            <div className="ld-kv"><span>Modality</span><b>{factFor(o, 'modality', o.modality) || '—'}</b></div>
+            <div className="ld-kv"><span>Indication</span><b>{factFor(o, 'indication') || '—'}</b></div>
+            <div className="ld-kv"><span>Development phase</span><b>{factFor(o, 'developmentPhase') || '—'}</b></div>
+            <div className="ld-kv"><span>Est. launch</span><b>{factFor(o, 'estimatedLaunch') || '—'}</b></div>
             <div className="ld-kv"><span>US pathway</span><b>{usPathway}</b></div>
             <div className="ld-kv"><span>EU pathway</span><b>{euPathway}</b></div>
-            <div className="ld-kv"><span>Fill-finish</span><b>{o.fillFinishRoute ?? '—'}</b></div>
-            <div className="ld-kv"><span>Manufacture</span><b>{o.manufactureSite ?? '—'}</b></div>
+            <div className="ld-kv"><span>Fill-finish</span><b>{factFor(o, 'fillFinishRoute', o.fillFinishRoute) || '—'}</b></div>
+            <div className="ld-kv"><span>Manufacture</span><b>{factFor(o, 'manufactureSite', o.manufactureSite) || '—'}</b></div>
             <div className="ld-kv"><span>Dossier status</span><b>{o.health === 'LAUNCHED' ? 'Closed' : 'Open'}</b></div>
           </div>
 
@@ -233,8 +248,8 @@ export default function LaunchView() {
               {o.criticalSupply.map((cs) => (
                 <div className="ld-sup" data-supplier={cs.supplierId ?? undefined} key={`${cs.partName}-${cs.supplierId}`}>
                   <div className="ld-kv">
-                    <span>{cs.partName}</span>
-                    <b>{cs.supplierName ?? '—'}</b>
+                    <span>{pharma(cs.partName)}</span>
+                    <b>{pharma(cs.supplierName) || '—'}</b>
                   </div>
                   <div className="ld-sup-m">
                     {cs.sourcingMode === 'SINGLE_SOURCE' ? 'Single-source' : cs.sourcingMode}
@@ -283,7 +298,7 @@ export default function LaunchView() {
 
           <div className="ld-card">
             <div className="ld-hrow">
-              <div><div className="ld-ct" style={{ margin: 0 }}>Gate readiness — {fmtGate(nextGate?.code, nextGate?.name)}</div></div>
+              <div><div className="ld-ct" style={{ margin: 0 }}>Gate readiness — {fmtGate(nextGate?.code, gateName(nextGate?.code, nextGate?.name))}</div></div>
               <div className="ld-gr"><span className="ld-grv" id="ld-grv">{met}</span><span className="ld-grt">of {total} met</span></div>
             </div>
             {(nextGate?.criteria ?? []).map((c, i) => (
@@ -293,8 +308,8 @@ export default function LaunchView() {
                 <span className={`cx ${c.met ? 'ok' : 'no'}`}>
                   <Glyph name={c.met ? 'check' : 'close'} className="sm" />
                 </span>
-                <div className="crb"><div className="crn">{c.name}</div>
-                  {c.outstandingReason ? <div className="crm">{c.outstandingReason}</div> : null}</div>
+                <div className="crb"><div className="crn">{pharma(c.name)}</div>
+                  {c.outstandingReason ? <div className="crm">{pharma(c.outstandingReason)}</div> : null}</div>
                 {c.met ? <span className="pill g">Met</span> : <button className="btn p sm" type="button">Resolve</button>}</div>
             ))}
           </div>
@@ -396,7 +411,7 @@ export default function LaunchView() {
                     return (
                       <tr key={r.findingId} style={!r.open ? { opacity: 0.6, cursor: 'default' } : { cursor: 'pointer' }}
                         onClick={r.open ? () => open('issue', r.findingId) : undefined}>
-                        <td><div className="nm">{r.headline}</div>
+                        <td><div className="nm">{pharma(r.headline)}</div>
                           {meta ? <div className="sub">{meta}</div> : null}</td>
                         <td style={{ textAlign: 'right' }}>
                           <span className={`pill ${pillCls}`}>{pillTxt}</span>

@@ -37,6 +37,13 @@ export const PHASE_MODEL: { code: string; name: string; short: string }[] = [
 /** The header axis: one entry per phase, abbreviated. */
 export const PHASE_AXIS = PHASE_MODEL.map((p) => ({ code: p.code, short: p.short }));
 
+const BY_CODE = new Map(PHASE_MODEL.map((p) => [p.code, p]));
+
+/** The full phase name for a code, falling back to the backend's own label. */
+export function phaseNameFor(code?: string | null, fallback?: string | null): string {
+  return (code ? BY_CODE.get(code)?.name : undefined) ?? fallback ?? '';
+}
+
 interface BackendPhase {
   code: string;
   name?: string | null;

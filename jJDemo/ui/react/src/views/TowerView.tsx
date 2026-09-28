@@ -23,6 +23,7 @@ import type {
   Outcome,
 } from '@/types/execution';
 import { labelFor } from '@/productLabel';
+import { pharma } from '@/pharmaText';
 
 /* outcome → the prototype's short class used on the "now" strip and cards */
 const OUT_CLASS: Record<Outcome, 'you' | 'held' | 'auto' | 'run'> = {
@@ -354,7 +355,7 @@ function ColumnView({
           <b>{col.code}</b>
           <em>{col.state}</em>
         </div>
-        <div className="tbch-n">{col.name}</div>
+        <div className="tbch-n">{pharma(col.name)}</div>
         <div className="tbch-c">
           {col.cards.length ? (
             <>
@@ -417,7 +418,7 @@ function CardView({
           <span className="tbnw-k">{NWK[out]}</span>
           <span className="tbnw-t">{card.displayId}</span>
         </div>
-        <div className="tbnw-a">{cur ? cur.verb : card.headline}</div>
+        <div className="tbnw-a">{pharma(cur ? cur.verb : card.headline)}</div>
         <div className="tbnw-w">
           {out === 'you' ? (
             <>the fleet stopped here &mdash; {cur ? cur.detail : ''}</>

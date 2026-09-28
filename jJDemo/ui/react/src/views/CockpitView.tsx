@@ -24,6 +24,7 @@ import KpiDistribution, { type KpiDatum } from '@/components/Brand/KpiDistributi
 import MlDot from '@/components/Brand/MlDot';
 import type { Cockpit, GateClosingRow, Health, MlStatus, TimeImpact } from '@/types/portfolio';
 import { labelFor } from '@/productLabel';
+import { pharma } from '@/pharmaText';
 
 /*
  * Time-recovery chart palette. Recharts needs real colour values (it writes
@@ -664,7 +665,7 @@ export default function CockpitView() {
                   {i < data.phaseModel.length - 1 ? (
                     <div className="pm-g">
                       <span className="gc">{p.gate}</span>
-                      <div className="gn">{p.gateName}</div>
+                      <div className="gn">{pharma(p.gateName)}</div>
                     </div>
                   ) : null}
                 </div>
@@ -742,7 +743,7 @@ export default function CockpitView() {
                       </td>
                       <td>
                         <div className="nm">{f.gateCode ?? (f.gateName ?? '—')}</div>
-                        {f.gateCode && f.gateName ? <div className="sub">{f.gateName}</div> : null}
+                        {f.gateCode && f.gateName ? <div className="sub">{pharma(f.gateName)}</div> : null}
                       </td>
                       <td>
                         <div className="bar">

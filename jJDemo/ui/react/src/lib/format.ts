@@ -7,6 +7,8 @@
  * This material may be covered by one or more patents or pending patent applications.
  */
 
+import { gateName } from '@/pharmaText';
+
 const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
 /** Parses an ISO-ish string/Date into a valid Date, or null when unparseable. */
@@ -79,7 +81,10 @@ function joinCodeName(code: string | null | undefined, name: string | null | und
  * Falls back to whichever value is present, or an empty string when both are empty.
  */
 export function fmtGate(code: string | null | undefined, name?: string | null | undefined): string {
-  return joinCodeName(code, name);
+  /* The gate label is resolved rather than passed through, so a C3 environment
+     still serving the device-era ladder ("Submission Commit", "Clearance / CE
+     Certificate") renders the pharma gate names everywhere at once. */
+  return joinCodeName(code, gateName(code, name));
 }
 
 /**
