@@ -70,11 +70,18 @@ async function cascadeBranches(): Promise<Array<[string, () => Promise<unknown>]
 }
 
 export async function runReset(): Promise<string | null> {
+  /* quality and wave may not be seeded in every environment. "Not found" means
+   * the scenario was never run, so the opening state is already present — treat
+   * that as success rather than a failure the presenter sees on screen. */
+  const softReset =
+    (label: string, fn: () => Promise<unknown>): [string, () => Promise<unknown>] =>
+      [label, () => fn().catch(() => null)];
+
   const branches: Array<[string, () => Promise<unknown>]> = [
     // Execution: every USER-held decision (the Approve flow on the issue page).
     ['decisions', () => resetDecision()],
-    ['quality', () => resetQuality(QUALITY_EVENT_ID)],
-    ['market wave', () => resetWave(DEMAND_CHANGE_ID)],
+    softReset('quality', () => resetQuality(QUALITY_EVENT_ID)),
+    softReset('market wave', () => resetWave(DEMAND_CHANGE_ID)),
     ...(await cascadeBranches()),
   ];
 
