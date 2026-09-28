@@ -3,7 +3,7 @@
  * Steris Venlo (contract EO steriliser that cancelled the booking),
  * Sterigenics Grand Rapids (approved alternative, audit current to Mar 2028),
  * Heraeus Medical Components (single source on the frozen BOM, downgraded to
- * High financial risk) and BSI (the Notified Body).
+ * High financial risk) and BSI (the CHMP rapporteur).
  *
  * A supplier has many {@link Site}s, {@link QualifiedProcess}es and
  * {@link ContractTerm}s.

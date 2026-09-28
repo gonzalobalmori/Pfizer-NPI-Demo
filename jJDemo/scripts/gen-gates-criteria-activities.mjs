@@ -46,9 +46,9 @@ const Comirnaty = 'seed_launch_varipulse_g2';
 /* ── canonical gate metadata ────────────────────────────────────────── */
 const GATE_NAME = {
   G1: 'NPI Readiness Gate',
-  G2: 'Design Freeze',
+  G2: 'CMC Lock',
   G3: 'Submission Commit',
-  G4: 'Clearance / CE Certificate',
+  G4: 'Approval / Marketing Authorisation',
   G5: 'Launch Go / No-Go — First Ship',
   BAU: 'BAU handover'
 };
@@ -225,7 +225,7 @@ const SCOPE = {
  * so this G3 template is used only for the other G3 launches (puresee). */
 const CRIT_TEMPLATE = {
   G1: [
-    ['Design & Development Plan approved', 'Development plan in review with the core team'],
+    ['Development & CMC Plan approved', 'Development plan in review with the core team'],
     ['Risk Management File opened (ISO 14971)', 'Initial hazard analysis still being compiled'],
     ['Regulatory strategy and pathway confirmed', 'Pathway pending a pre-submission meeting'],
     ['Clinical Evaluation Plan drafted', 'Clinical plan awaiting KOL input'],
@@ -242,13 +242,13 @@ const CRIT_TEMPLATE = {
   G3: [
     ['Design verification complete', 'Verification report awaiting sign-off'],
     ['Design validation complete', 'Validation runs in progress'],
-    ['Clinical Evaluation Report approved', 'CER in Notified Body query cycle'],
+    ['Clinical Evaluation Report approved', 'CER in CHMP rapporteur query cycle'],
     ['Sterilisation validation report (ISO 11135)', 'Sterilisation validation slot cancelled; report slips'],
     ['Risk management file current', 'Risk file update pending latest test data'],
     ['EU MDR Technical Documentation complete', 'Technical documentation 96% complete']
   ],
   G4: [
-    ['Notified Body / FDA review closed', 'Query cycle 2 open on the clinical section'],
+    ['CHMP rapporteur / FDA review closed', 'Query cycle 2 open on the clinical section'],
     ['Process validation complete (IQ/OQ/PQ)', 'PQ runs not yet complete on the transfer line'],
     ['Design transfer to manufacturing complete', 'Design transfer package being finalised'],
     ['Labelling and IFU approved', 'IFU artwork in MLR review'],
@@ -298,8 +298,8 @@ const ACT_TEMPLATE = {
   ],
   P4: [
     ['Complete process validation (IQ/OQ/PQ)', 'mfg'],
-    ['Execute design transfer to manufacturing', 'mfg'],
-    ['Respond to Notified Body / FDA queries', 'reg'],
+    ['Execute tech transfer to manufacturing', 'mfg'],
+    ['Respond to CHMP rapporteur / FDA queries', 'reg'],
     ['Approve labelling and IFU artwork', 'com'],
     ['Close CAPAs and non-conformances', 'qua']
   ],
@@ -311,7 +311,7 @@ const ACT_TEMPLATE = {
     ['Sign distribution and 3PL agreements', 'sc']
   ],
   P6: [
-    ['Activate the post-market surveillance plan', 'pm'],
+    ['Activate the pharmacovigilance plan', 'pm'],
     ['Stand up complaint handling and vigilance', 'pm'],
     ['Release the first production lots', 'mfg'],
     ['Complete the BAU handover', 'gov']

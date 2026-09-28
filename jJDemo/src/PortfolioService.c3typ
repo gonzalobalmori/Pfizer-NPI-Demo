@@ -60,7 +60,7 @@ entity type PortfolioService {
    * portfolio's critical path, how many are *recoverable* by acting (a
    * {@link Finding#dependency} of SELF / TEAM / AGENT — your own organisation,
    * agents included since they only run when you launch them) versus a fixed wait
-   * on an outside body (REGULATOR — FDA, a Notified Body, a reimbursement
+   * on an outside body (REGULATOR — FDA, a CHMP rapporteur, a reimbursement
    * authority) that acting faster cannot compress. Returns portfolio totals
    * (daysAtStake, recoverableDays, regulatorDays, pctRecoverable) and a
    * per-launch breakdown, worst-first, for the Cockpit time-recovery chart. Uses

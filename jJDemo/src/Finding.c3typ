@@ -41,7 +41,7 @@ entity type Finding mixes HasExposure {
    * Who the next step depends on — the axis that separates schedule time you can
    * still pull in from time you cannot. `SELF` = your own decision/sign-off;
    * `TEAM` = a named person in the organisation; `AGENT` = an in-flight agent
-   * action; `REGULATOR` = a body outside Pfizer (FDA, a Notified Body, a
+   * action; `REGULATOR` = a body outside Pfizer (FDA, a CHMP rapporteur, a
    * reimbursement authority). Agent and team work resolve on the organisation's
    * own clock, so for the time-recovery maths (see {@link Finding#daysAtStake})
    * `SELF`/`TEAM`/`AGENT` are all treated as *recoverable* — you can accelerate

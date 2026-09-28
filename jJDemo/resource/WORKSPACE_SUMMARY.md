@@ -83,7 +83,7 @@ Notification; mixin HasExposure.
 - **Decision**: `heldBy enum('USER','ESCALATED','DELEGATED','AGENT')`; `approve(optionLabel):Decision js` +
   `assertUserCanDecide():boolean js` — ✅ IMPLEMENTED in `src/Decision.js` & smoke-tested. Approve verified to
   produce the exact toast: G3 21 Dec→13 Nov · slip 47→9 · €18.4M released (launch→ON_PLAN) · 7 tasks (4 Dispatched
-  /3 Assigned) · 3 notifications sent · CAPA-2026-0148→CONTAINED · immutable DHF entry appended. Re-run rejected;
+  /3 Assigned) · 3 notifications sent · CAPA-2026-0148→CONTAINED · immutable CTD entry appended. Re-run rejected;
   non-USER rejected. (Test state was reset back to pre-approval after verifying.)
 - **CRITICAL ontology change:** the 8 **operational** types the approve transaction / fleet mutate at runtime —
   **Gate, Launch, Finding, Decision, ActionPlanTask, Notification, CAPA, DesignHistoryFileEntry** — had the
@@ -112,14 +112,14 @@ ActionPlanTask 21, **Document 731** (every launch now has a complete 9-section r
   grows as the fleet works"; restored the Line Monitor's genuine CHN-02 opening detection to reach 14 agents).
 - Anchor case **NPI-0417 / CAPA-2026-0148** modelled end-to-end: finding→decision(USER, due 17:00,
   €250k authority)→3 options (A recommended, keeps €18.4M)→21 tasks→CAPA→6 guardrail checks→4-comment
-  thread→3 notifications→4 DHF entries. CHN-09 reconstructs in time order (qua→gov→src→reg→orc).
+  thread→3 notifications→4 CTD entries. CHN-09 reconstructs in time order (qua→gov→src→reg→orc).
 
 ## Manager demo-review changes (Pfizer Demo Changes.docx — applied)
 
 Feedback doc `.attachments/docx_extract/` (~28 items, Spanish, 11 screenshots). Applied:
 
 - **Phase renaming (structural, top ask):** all 6 phases renamed to the manager's scheme —
-  P1 Feasibility (strategic definition) / P2 Design Inputs (supply definition) / P3 V&V (verification & validation)
+  P1 Early NPI readiness (strategic definition) / P2 NPI planning (supply & CMC definition) / P3 PPQ execution & filing preparation
   / P4 Transfer / P5 Ready / P6 Post-market. Changed in `seed/Phase/Phase.json`, `PortfolioService.PHASE_META`+`PHASE_MODEL`,
   and `ExecutionService.PHASE_META` (all three must stay in sync). Upserted + cache-cleared + verified in cockpit/openIssues/launchRecord.
 - **Cockpit phase/gate/milestone band:** new `PHASE_MODEL` (backend) → `data.phaseModel` drives a `.pm-band` on the
@@ -233,7 +233,7 @@ The React app reproduces the prototype's **screen model**, not React-Router rout
   - `CockpitView` → `getCockpit()` (reference pattern: 4 KPI `.kc` cards + 2 `.pnl`/`.dt` panels; rows → `open('launch',id)`)
   - `PortfolioView` → 4 lenses (`getPortfolioProduct/Market/BusinessUnit/Timeline`; Market lens embeds the decorative world-map SVG). **Lens visibility fix:** all four pane roots carry `pf-l sb-p on` (prototype CSS hides `.pf-l`/`.sb-p` unless `on`; originally only the product pane had it, so Market/Business unit/Timeline were invisible — verified all 4 now render). **Business-unit lens redesign (per manager feedback — no static title sections):** `BuPane` now renders a `.filt` **filter-chip bar** ("All units" + one health-toned `.fb` chip per unit w/ launch-count badge) plus `.bu2-row` **expandable rows** (`BuSegmentRow`) — each row summarises the unit (health-mix tally `.bu2-mix` + revenue-at-risk `.bu2-rk`) and expands on click to the existing `BuCardView` franchise cards. Chips are now a **filter** (`filter: string|null` — narrow to one unit or "All units") kept SEPARATE from **expansion** (`expanded: Set<string>` — each row opens/closes independently, initialised to ALL segment names so all three units are expanded by default; per manager feedback that opening one unit shouldn't collapse the others). Backend `getPortfolioBusinessUnit()` unchanged. CSS in `prototype.css` "BY BUSINESS UNIT v4" block (`.filt`/`.fb-n`/`.fb.ct`/`.fb.rk`/`.bu2-*`); note `.ac` is a global 3px pip class — the mix chips use bare `<em>`/`.a`/`.r`, NOT `.ac`. Verified in browser: chips render, rows expand/collapse to franchise cards, no console errors. **Market side panel** (`#map-side`) is populated from `views/marketDetail.ts` (`MK_MARKETS` 12 launch markets + `MK_SMALL` 10 registration markets, ported from prototype MKT/MKS literals); clicking a `.wp[data-m]` map bubble (or the tour driving `marketPick`) fills `.ms-*`/`.mrk` — a risk row's action opens the issue (`open('issue',findingId)`) or hands off to the copilot (`drive({view:'chat'})`).
   - `LaunchView` / `FlowView` / `DocsView` → all read `param` and call `getLaunchRecord(param)` (overview+gates / workflow board / doc register). **Header actions (per manager feedback — the 4 crowded buttons "Resolve blocker / Message workstream leads / Request gate review / Escalate to Launch Board" were fatal):** now just two — **Resolve** (`btn s`) and **Escalate** (`btn p`). LaunchView additionally calls `getOpenIssues()`, filters rows by `launchId`, picks the blocking finding (`category==='ct'`, else first) → `resolveFindingId`; **Resolve** does `open('issue', resolveFindingId)` which routes into the **exec** branch resolution workspace (IssueView) — i.e. "resolve it in Execution". Falls back to `open('flow', param)` if no finding. Escalate opens the same finding (or `alerts`). **Gate label dedup:** the post-market gate is `code="BAU"` / `name="BAU handover"`, so any `${code} ${name}` render doubled to "BAU BAU handover". Added `fmtGate(code,name)` in `lib/format.ts` (drops the code when the name already starts with it) and use it in LaunchView (gate-readiness header + gate schedule) and IssueView (gate-at-risk + impact rows). Product lens (`ngName.startsWith(ngCode)`) and BuLaunchView (code-only `→ BAU`) were already safe. **Descriptive/tour-style `.vs`/`.ld-cs` subtitles removed** from all dashboard view headers (Cockpit, Portfolio all 4 lenses, Launch gate-readiness, Alerts, Actions ×3, Strat) per manager feedback ("frases explicativas que nunca estarían en un dashboard"); Flow/Docs keep the factual count/type lists only.
-  - `IssueView` → `getResolutionWorkspace(param)`; Approve → `approveDecision(id,label)` (enabled only when decision USER-held + option selected; NO withdraw control). **Approve confirmation (user: "I click and nothing happens"):** `Decision#approve` ran its full cascade server-side but the ONLY visible change was the Approve button going grey (`canApprove` false once `approvedAt` set) — a successful action read as a broken one, and users re-clicked into the `assertUserCanDecide` "Approve runs once" error. Now three things land: (1) a transient `ActionToast` (`components/Feedback/ActionToast.tsx`, reuses the previously-unused `.toast`/`.tck`/`.ttx` prototype CSS, `role="status"`, auto-dismiss 6s) fired ONLY on your own click via `justApproved` state; (2) an `.is-approved` bar state (green `.tag done` ✓ APPROVED + "Option C approved · <timestamp>" + gate/exposure/task consequences) that REPLACES the approve/reject/reassign controls once `approvedAt` is set, so the outcome stays legible for the rest of the session — **session-only: a refresh rewinds it, see "Reset actions on refresh" below**; (3) `Approving…` button copy while in flight. **Also fixed:** `load()` defaulted `selectedKey` to `recommendedOptionKey`, so approving Option C re-rendered the bar reading Option A — the approval looked ignored or misapplied; it now prefers `decision.selectedOption` when set. Browser-verified end-to-end on NPI-0417 Option C (toast + banner + backend `selectedOption:"Option C"`, 3 tasks Dispatched / 4 Assigned, DHF entry by George Hall), banner persists across reload while the toast correctly does NOT re-fire; **demo data restored to pristine unapproved state afterwards** (gate +47d, €18.4M exposure, 21 tasks "Not started").
+  - `IssueView` → `getResolutionWorkspace(param)`; Approve → `approveDecision(id,label)` (enabled only when decision USER-held + option selected; NO withdraw control). **Approve confirmation (user: "I click and nothing happens"):** `Decision#approve` ran its full cascade server-side but the ONLY visible change was the Approve button going grey (`canApprove` false once `approvedAt` set) — a successful action read as a broken one, and users re-clicked into the `assertUserCanDecide` "Approve runs once" error. Now three things land: (1) a transient `ActionToast` (`components/Feedback/ActionToast.tsx`, reuses the previously-unused `.toast`/`.tck`/`.ttx` prototype CSS, `role="status"`, auto-dismiss 6s) fired ONLY on your own click via `justApproved` state; (2) an `.is-approved` bar state (green `.tag done` ✓ APPROVED + "Option C approved · <timestamp>" + gate/exposure/task consequences) that REPLACES the approve/reject/reassign controls once `approvedAt` is set, so the outcome stays legible for the rest of the session — **session-only: a refresh rewinds it, see "Reset actions on refresh" below**; (3) `Approving…` button copy while in flight. **Also fixed:** `load()` defaulted `selectedKey` to `recommendedOptionKey`, so approving Option C re-rendered the bar reading Option A — the approval looked ignored or misapplied; it now prefers `decision.selectedOption` when set. Browser-verified end-to-end on NPI-0417 Option C (toast + banner + backend `selectedOption:"Option C"`, 3 tasks Dispatched / 4 Assigned, CTD entry by George Hall), banner persists across reload while the toast correctly does NOT re-fire; **demo data restored to pristine unapproved state afterwards** (gate +47d, €18.4M exposure, 21 tasks "Not started").
   - `ActionsView` → 3 sub-panes `getPendingQueue`/`getEscalatedQueue`/`getDecisionHistory`; cards → `open('issue',findingId)`
   - `TowerView` → `getLiveBoard('all','all')` + `getActivityLog('all','all')`
   - `AlertsView` → `getOpenIssues()`; rows → `open('issue',findingId)`
@@ -328,7 +328,7 @@ The React app reproduces the prototype's **screen model**, not React-Router rout
     `seed/Person/Person.json`. Change one without the other and the duplicate "You" / "<full name>" bug above
     silently returns. (Persona renamed Helena Fossi → **George Hall** / initials `HF` → `GH`, 2026-09-25;
     ids such as `seed_person_hf` deliberately left alone — ~110 refs across seed/data/tests key off them.
-    Note `DHF` = Design History File, unrelated to the `HF` initials — do not blind-replace.)
+    Note `CTD` = Design History File, unrelated to the `HF` initials — do not blind-replace.)
   - **(8c) Authority items are view-only.** AlertsView `AlertRow` rendered "Resolve →" for every row; now
     `waitingOn==='AUTHORITY'` rows show **"View detail →"**. IssueView: added `authorityBound =
     finding.dependency==='REGULATOR'` — the bottom bar drops Approve/Reject/Reassign and shows a view-only
@@ -413,7 +413,7 @@ The React app reproduces the prototype's **screen model**, not React-Router rout
     (NPI-0417), verbatim — the template arc all three mirror.
   - **Demo 2 `regulatory` (16 steps, chip REGULATORY):** regulatory-agency angle, anchored on **FDA 0420**
     (Comirnaty G2 deficiency letter, view-only / authority-bound — no Approve) + **BSI 0365** (Hospital 4000+,
-    Notified Body signature we owe, movable). **INVARIANT (post-review): there is exactly ONE authority-bound
+    CHMP rapporteur signature we owe, movable). **INVARIANT (post-review): there is exactly ONE authority-bound
     thread — NPI-0420/FDA (45 fixed/grey days in `PortfolioService.timeImpact()`). NPI-0365/BSI is 100%
     recoverable (a signature Helena owes, not an agency wait). No card may claim "two agency clocks/threads on
     the authority."** Arc: menu → cockpit **time-recovery panel** (card 2 spots `.ti-pnl` / `.ti-card.reg`
@@ -508,8 +508,8 @@ phase blocks + gate markers), `portfolioMarket` (22 markets, LAUNCH/REGISTRATION
 ct<rk<ok, quarter timeline), `portfolioBusinessUnit` (Segment→Franchise→Launch rollup), `portfolioTimeline`
 (per-gate baseline vs forecast), `openIssues` (12 findings, waitingOn YOU5/PERSON4/AGENT3, worst-first),
 `launchRecord(launchId)` (overview gates+criteria / workflow 6 phase-cols+gate-at-foot / documents 9
-groups), `launchIndex`. `DOC_GROUP_ORDER = dhf,vv,cli,reg,cert,mfg,com,sco,pm` (labels: Design & development
-(DHF), Verification & validation, Clinical & evidence, Regulatory submissions, Certificates/licences/
+groups), `launchIndex`. `DOC_GROUP_ORDER = dhf,vv,cli,reg,cert,mfg,com,sco,pm` (labels: Development & CMC
+(CTD), Verification & validation, Clinical & evidence, Regulatory submissions, Certificates/licences/
 registrations, Manufacturing & quality, Labelling & commercial, Supply chain & operations, Post-market
 surveillance).
 
@@ -801,7 +801,7 @@ decir si fue automnoma o fue human in the loop". Both done:
   classes/tones unchanged (`you`=red, `held`=amber, `auto`=green, `run`=purple).
 - **Verified:** `VITE_C3_PKG=jJDemo npm run build` green (lint+tsc+vite); `runTest test_Reconciliation` 11/11 pass;
   live baseline confirmed canonical (decision USER/unapproved, G3 slip 47, launch €21.2M OFF_TRACK, History
-  RUNNING, stray approve-DHF removed, CAPA back to OPEN). NOTE: backend JS recompile lags — after editing a `.js`
+  RUNNING, stray approve-CTD removed, CAPA back to OPEN). NOTE: backend JS recompile lags — after editing a `.js`
   service, `clearCaches(workspaceId)` was needed for the live app to pick up `decisionHistory()`'s new projection.
 
 ### Set L — Demo 2 (regulatory) critique fixes, 8 items (`shell/GuidedTour.tsx`, GD2 only)
@@ -868,7 +868,7 @@ exagerado."
 
 New end-to-end feature: an outside authority (the FDA) moves a launch's clearance date; the platform fans the
 impact across every downstream commitment, auto-adjusting what it safely can and surfacing ONLY the items that
-need a human. Anchored on **Velsipity** (robotic surgical platform, keyed on its FDA 510(k) clearance). The demo
+need a human. Anchored on **Velsipity** (robotic surgical platform, keyed on its FDA NDA clearance). The demo
 story: FDA slips Velsipity's clearance six weeks; three downstream commitments auto-adjust, two decisions reach
 Helena, she resolves both in one meeting.
 
@@ -1054,7 +1054,7 @@ option when refresh, same for every button."* This **reverses** the earlier "per
 
 - **Why it had to be a backend rewind, not a UI reset.** `Decision#approve` genuinely persists an 8-step
   cascade (gate re-baselined, exposure released, 21 tasks dispatched, notification re-stamped, CAPA closed,
-  DHF entry appended). Hiding the banner client-side would have left a dead grey Approve button — the
+  CTD entry appended). Hiding the banner client-side would have left a dead grey Approve button — the
   *original* complaint — over a page contradicting its own data, and a second click would still hit
   `assertUserCanDecide`'s "Approve runs once".
 - **The pattern already existed in 3 of 4 branches** (`QualityDisruptionService.reset`,
@@ -1097,7 +1097,7 @@ option when refresh, same for every button."* This **reverses** the earlier "per
   post-approval values with no later refresh to correct them. A failure **resolves** (never rejects) and the
   app still boots with a non-blocking notice — stale scenario state beats a blank screen.
 - **Verified end-to-end in the browser:** approve Option C → toast + banner → refresh → DB fully rewound
-  (`selectedOption` null, gate 2026-12-21/+47d, €21.2M/OFF_TRACK, 21 tasks "Not started", DHF back to 4, all
+  (`selectedOption` null, gate 2026-12-21/+47d, €21.2M/OFF_TRACK, 21 tasks "Not started", CTD back to 4, all
   31 child links intact) → UI shows the actionable "Approve Option A" button again → **a second approve
   succeeds**, proving the cascade is re-runnable. Request ordering confirmed in the network panel: the four
   resets land at #59–62, `openIssues` only at #64. Bonus: `DecisionHistoryEvent` derives RESOLVED via
@@ -1125,10 +1125,10 @@ Audited against a supplied six-product Pfizer NPI table. **Do not assume R-BASE-
   relation to `DesignHistoryFileEntry` (a 21 CFR 820.30 device artefact). There is **no**
   `indication`, `modality` or trial-phase field, and no `Trial`/`Indication`/`Molecule` type —
   so four of the six columns in the product table have nowhere to be stored.
-- **Regulatory routes are device routes** — `PMA + EU MDR`, `510(k)`, notified bodies, and gate
-  G4 "Clearance / CE Certificate". No BLA/NDA/MAA/EMA/CHMP/PDUFA anywhere.
+- **Regulatory routes are device routes** — `PMA + EU MDR`, `NDA`, notified bodies, and gate
+  G4 "Approval / Marketing Authorisation". No BLA/NDA/MAA/EMA/CHMP/PDUFA anywhere.
 - Device vocabulary still present by file count: `notified body` 29, `sterilis*` 33, `device` 36,
-  `MDR` 13, `IOL` 13, `PMA` 13, `EO` 22, `VAC` 16, `DHF` 14, `loaner` 12, `510(k)` 9.
+  `MDR` 13, `IOL` 13, `PMA` 13, `EO` 22, `VAC` 16, `CTD` 14, `loaner` 12, `NDA` 9.
 - **Bright spot:** the four Pfizer sites added in M1 are genuine — Freiburg, Puurs, Kalamazoo,
   Grange Castle. But 4 device-era sites remain (Steris Venlo, Sterigenics Grand Rapids, Cashel,
   Neuss) and **all 4 suppliers are device suppliers** (EO sterilisation, ring electrodes, BSI).

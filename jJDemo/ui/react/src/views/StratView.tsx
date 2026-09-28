@@ -61,7 +61,7 @@ export default function StratView() {
             List and EU GMP audit status.
           </div>
           <div className="st-u">
-            Feeds gate <b>G2 Design Freeze</b> · agent qualifies, human approves
+            Feeds gate <b>G2 CMC Lock</b> · agent qualifies, human approves
           </div>
         </div>
         <div className="ld-card">

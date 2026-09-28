@@ -1,7 +1,7 @@
 /**
- * A manufacturing/sterilisation process qualified at a {@link Site}. The anchor
+ * A manufacturing/fill-finish process qualified at a {@link Site}. The anchor
  * case hinges on this: Sterigenics Grand Rapids already holds a qualified EO
- * sterilisation process (qualified for Abrysvo G2 and Elrexfio IV), so moving to
+ * fill-finish process (qualified for Abrysvo G2 and Elrexfio IV), so moving to
  * it is a half-cycle revalidation (~21 days) rather than a full one.
  */
 entity type QualifiedProcess mixes SeedData {

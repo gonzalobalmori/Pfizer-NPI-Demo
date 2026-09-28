@@ -1,7 +1,7 @@
 /**
  * A stage gate that closes a {@link Phase} for a given {@link Launch}:
- * G1 NPI Readiness, G2 Design Freeze, G3 Submission Commit,
- * G4 Clearance / CE Certificate, G5 Launch Go / No-Go.
+ * G1 NPI Readiness, G2 CMC Lock, G3 Submission Commit,
+ * G4 Approval / Marketing Authorisation, G5 Launch Go / No-Go.
  *
  * Gate dates are money (§1): a slip cascades into lost regulatory-review and
  * tender windows. The anchor case moves the Comirnaty G2 G3 gate from a 04 Nov

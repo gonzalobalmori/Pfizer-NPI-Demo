@@ -2,42 +2,42 @@
   {
     "id": "seed_phase_p1",
     "code": "P1",
-    "name": "Feasibility (strategic definition)",
+    "name": "Early NPI readiness (strategic definition)",
     "window": "Mar 2024 – Sep 2024",
     "state": "closed"
   },
   {
     "id": "seed_phase_p2",
     "code": "P2",
-    "name": "Design Inputs (supply definition)",
+    "name": "NPI planning (supply & CMC definition)",
     "window": "Oct 2024 – Jun 2026",
     "state": "closed"
   },
   {
     "id": "seed_phase_p3",
     "code": "P3",
-    "name": "V&V (verification & validation)",
+    "name": "PPQ execution & filing preparation",
     "window": "Jun 2026 – Nov 2026",
     "state": "live"
   },
   {
     "id": "seed_phase_p4",
     "code": "P4",
-    "name": "Transfer",
+    "name": "Regulatory & access execution",
     "window": "Nov 2026 – May 2027",
     "state": "live"
   },
   {
     "id": "seed_phase_p5",
     "code": "P5",
-    "name": "Ready",
+    "name": "Launch readiness",
     "window": "May 2027 – Jun 2027",
     "state": "queued"
   },
   {
     "id": "seed_phase_p6",
     "code": "P6",
-    "name": "Post-market",
+    "name": "Post-launch intelligence",
     "window": "from Jun 2027",
     "state": "queued"
   }

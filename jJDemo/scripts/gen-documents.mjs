@@ -41,7 +41,7 @@ const LAUNCHES = [
  * Master catalog. Each entry: [name, docType, group, expectedPhase].
  * expectedPhase = the NPI phase by which the document is normally completed.
  * Groups (manager's 8 categories → group codes):
- *   1 Design & Development (DHF) ....... dhf
+ *   1 Design & Development (CTD) ....... dhf
  *   2 Regulatory Submissions ........... reg  (+ cert for licences/registrations)
  *   3 Manufacturing & Quality .......... mfg
  *   4 Clinical & Evidence .............. cli
@@ -53,17 +53,17 @@ const LAUNCHES = [
  * matching Comirnaty's authored structure.
  */
 const CATALOG = [
-  // ── Design & development (DHF) ──
-  ['Design & Development Plan', 'Plan', 'dhf', 1],
-  ['Design Input Requirements (DIR)', 'Specification', 'dhf', 2],
-  ['Design Output — drawings and specifications', 'Specification', 'dhf', 3],
-  ['Requirements traceability matrix', 'Matrix', 'dhf', 3],
-  ['Design Review minutes', 'Minutes', 'dhf', 3],
-  ['Risk Management File, ISO 14971', 'Risk file', 'dhf', 3],
-  ['Design FMEA', 'Analysis', 'dhf', 3],
-  ['Process FMEA', 'Analysis', 'dhf', 3],
-  ['Device Master Record (DMR)', 'Record', 'dhf', 4],
-  ['Design History File index', 'Index', 'dhf', 4],
+  // ── Development & CMC (CTD) ──
+  ['Development & CMC Plan', 'Plan', 'ctd', 1],
+  ['Quality Target Product Profile (QTPP)', 'Specification', 'ctd', 2],
+  ['CMC output — process and specifications', 'Specification', 'ctd', 3],
+  ['Requirements traceability matrix', 'Matrix', 'ctd', 3],
+  ['Stage-gate review minutes', 'Minutes', 'ctd', 3],
+  ['Risk Management Plan (RMP)', 'Risk file', 'ctd', 3],
+  ['Design FMEA', 'Analysis', 'ctd', 3],
+  ['Process FMEA', 'Analysis', 'ctd', 3],
+  ['Device Master Record (DMR)', 'Record', 'ctd', 4],
+  ['Design History File index', 'Index', 'ctd', 4],
   // ── Verification & validation ──
   ['Design verification summary report', 'Report', 'vv', 3],
   ['Bench and mechanical test reports', 'Test reports', 'vv', 3],
@@ -90,8 +90,8 @@ const CATALOG = [
   ['Device classification rationale', 'Rationale', 'reg', 2],
   ['FDA Q-Sub / pre-submission minutes', 'Minutes', 'reg', 3],
   ['EU MDR Technical Documentation', 'Dossier', 'reg', 4],
-  ['FDA submission — 510(k) / PMA / De Novo', 'Dossier', 'reg', 4],
-  ['Notified Body correspondence', 'Correspondence', 'reg', 4],
+  ['FDA submission — NDA / PMA / De Novo', 'Dossier', 'reg', 4],
+  ['CHMP rapporteur correspondence', 'Correspondence', 'reg', 4],
   ['Summary of Safety and Clinical Performance (SSCP)', 'Summary', 'reg', 4],
   ['EU Authorised Representative agreement', 'Agreement', 'reg', 4],
   ['Country dossiers', 'Dossier set', 'reg', 5],
@@ -101,7 +101,7 @@ const CATALOG = [
   ['MDSAP certificate', 'Certificate', 'cert', 3],
   ['FDA establishment registration', 'Registration', 'cert', 4],
   ['Sterilisation facility licence', 'Licence', 'cert', 4],
-  ['UDI-DI assignment record, GS1', 'Record', 'cert', 4],
+  ['serialisation-DI assignment record, GS1', 'Record', 'cert', 4],
   ['GUDID submission record', 'Registration', 'cert', 5],
   ['EUDAMED registration record', 'Registration', 'cert', 5],
   ['Import and export licences', 'Licence set', 'cert', 5],
@@ -123,7 +123,7 @@ const CATALOG = [
   // ── Labelling & commercial ──
   ['Instructions for Use (IFU) — master', 'Labelling', 'com', 4],
   ['Labelling artwork', 'Artwork', 'com', 4],
-  ['Symbols and UDI carrier specification', 'Specification', 'com', 4],
+  ['Symbols and serialisation carrier specification', 'Specification', 'com', 4],
   ['eIFU registration', 'Registration', 'com', 5],
   ['Health economic model', 'Model', 'com', 4],
   ['Global Value Dossier', 'Dossier', 'com', 4],
@@ -137,7 +137,7 @@ const CATALOG = [
   ['Country registration status tracker', 'Tracker', 'sco', 5],
   ['Distribution and 3PL agreements', 'Agreements', 'sco', 5],
   ['Import / export documentation pack', 'Pack', 'sco', 5],
-  // ── Post-market surveillance ──
+  // ── Pharmacovigilance & post-launch ──
   ['Post-Market Surveillance (PMS) plan', 'Plan', 'pm', 5],
   ['Vigilance and complaint handling procedure', 'Procedure', 'pm', 5],
   ['Field Safety Corrective Action procedure', 'Procedure', 'pm', 5],
@@ -164,7 +164,7 @@ const OWNERS = {
   mfg: 'Quality / Manufacturing',
   com: 'Commercial / Marketing',
   sco: 'Supply chain',
-  pm: 'Post-market surveillance',
+  pm: 'Pharmacovigilance & post-launch',
 };
 
 /* Deterministic small hash from a string → non-negative int. */

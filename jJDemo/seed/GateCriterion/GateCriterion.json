@@ -143,12 +143,12 @@
   },
   {
     "id": "seed_gc_embotrap_g5_6",
-    "name": "Post-market surveillance plan in place",
+    "name": "Pharmacovigilance & post-launch plan in place",
     "met": false,
     "gate": {
       "id": "seed_gate_embotrap_iv_g5"
     },
-    "outstandingReason": "Post-market surveillance plan in place outstanding — action open"
+    "outstandingReason": "Pharmacovigilance & post-launch plan in place outstanding — action open"
   },
   {
     "id": "seed_gc_impella_g4_1",
@@ -240,7 +240,7 @@
   },
   {
     "id": "seed_gc_javelin_g5_6",
-    "name": "Post-market surveillance plan in place",
+    "name": "Pharmacovigilance & post-launch plan in place",
     "met": false,
     "gate": {
       "id": "seed_gate_javelin_xl_g5"
@@ -353,7 +353,7 @@
   },
   {
     "id": "seed_gc_ottava_g1_2",
-    "name": "Design & Development Plan baselined",
+    "name": "Development & CMC Plan baselined",
     "met": true,
     "gate": {
       "id": "seed_gate_ottava_g1"

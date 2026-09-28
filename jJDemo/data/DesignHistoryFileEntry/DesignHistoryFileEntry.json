@@ -14,7 +14,7 @@
     "id": "seed_dhf_varipulse_2",
     "entryAt": "2026-06-19T00:00:00",
     "actor": "Governance",
-    "action": "G2 Design Freeze closed — BOM frozen, 6/6 criteria met",
+    "action": "G2 CMC Lock closed — BOM frozen, 6/6 criteria met",
     "recordRef": "G2",
     "immutable": true,
     "launch": {

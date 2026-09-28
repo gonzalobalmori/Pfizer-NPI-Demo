@@ -22,7 +22,7 @@ entity type Escalation mixes SeedData {
   /** Why it was escalated. */
   reason: string
 
-  /** The escalated-card title (§2.1), e.g. "Notified Body response drafted but unsigned". */
+  /** The escalated-card title (§2.1), e.g. "CHMP rapporteur response drafted but unsigned". */
   cardTitle: string
 
   /** The escalated-card meta line, e.g. "With S. Lindqvist · Regulatory Affairs · raised by you 08 Sep · every day costs one day of G4". */

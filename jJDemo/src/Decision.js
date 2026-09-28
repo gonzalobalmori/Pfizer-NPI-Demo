@@ -11,7 +11,7 @@
  *                        the gate, releases the exposure on the launch, assigns and
  *                        dispatches the chosen option's tasks, fires and logs the
  *                        notifications, writes the CAPA containment closure, appends
- *                        an immutable DHF entry, and stamps the decision approved.
+ *                        an immutable CTD entry, and stamps the decision approved.
  *                        A second run is rejected by the same guard.
  */
 
@@ -161,7 +161,7 @@ function approve(optionLabel) {
   // 7. Stamp the decision approved (idempotency marker — a second run is rejected in step 1).
   Decision.make({ id: d.id, selectedOption: optionLabelText, approvedAt: now }).merge();
 
-  // 8. Append the immutable DHF entry LAST, summarising the cascade (§3.6.6 append-only).
+  // 8. Append the immutable CTD entry LAST, summarising the cascade (§3.6.6 append-only).
   if (launchId) {
     DesignHistoryFileEntry.make({
       id: 'dhf_approve_' + d.id,

@@ -32,7 +32,7 @@ entity type SupplierCrosswalk {
   /** QMS audit subject key, e.g. "SUP-STG-GR". */
   qmsAuditSubject: string
 
-  /** Free-text name as it appears on the sterilisation certificate. */
+  /** Free-text name as it appears on the fill-finish certificate. */
   certificateName: string
 
   /** D&B DUNS number; empty where no D&B match exists (Heraeus). */

@@ -88,9 +88,9 @@ const SCOPE = {
 /* ── gate metadata ───────────────────────────────────────────────── */
 const GATE_META = {
   G1: { name: 'NPI Readiness Gate', phase: 'seed_phase_p1', idx: 1 },
-  G2: { name: 'Design Freeze', phase: 'seed_phase_p2', idx: 2 },
+  G2: { name: 'CMC Lock', phase: 'seed_phase_p2', idx: 2 },
   G3: { name: 'Submission Commit', phase: 'seed_phase_p3', idx: 3 },
-  G4: { name: 'Clearance / CE Certificate', phase: 'seed_phase_p4', idx: 4 },
+  G4: { name: 'Approval / Marketing Authorisation', phase: 'seed_phase_p4', idx: 4 },
   G5: { name: 'Launch Go / No-Go — First Ship', phase: 'seed_phase_p5', idx: 5 },
   BAU: { name: 'BAU handover', phase: 'seed_phase_p6', idx: 6 },
 };
@@ -123,25 +123,25 @@ const AUTHORED = {
 
 /* ── criteria templates per gate code ────────────────────────────── */
 const CRITERIA = {
-  G1: ['Business case approved', 'Design & Development Plan baselined', 'Regulatory strategy and pathway defined', 'Project RACI and budget approved', 'Feasibility risk assessment complete', 'Clinical strategy outlined'],
+  G1: ['Business case approved', 'Development & CMC Plan baselined', 'Regulatory strategy and pathway defined', 'Project RACI and budget approved', 'Feasibility risk assessment complete', 'Clinical strategy outlined'],
   G2: ['Design inputs frozen', 'Design FMEA complete', 'Requirements traceability established', 'Design review minutes signed off', 'Risk management file drafted', 'Verification protocols approved'],
   G3: ['Design verification complete', 'Design validation complete', 'Clinical evaluation report approved', 'EU MDR Technical Documentation complete', 'Risk management file current', 'Sterilisation validation report approved'],
-  G4: ['Regulatory submission accepted for review', 'Design transfer to manufacturing complete', 'Process validation (IQ/OQ/PQ) complete', 'Notified Body / FDA queries closed', 'Labelling and IFU finalised', 'QMS audit readiness confirmed'],
-  G5: ['Regulatory clearance / CE certificate received', 'Launch build complete and released', 'Field force trained and certified', 'Distribution and 3PL agreements signed', 'Value Analysis Committee approvals secured', 'Post-market surveillance plan in place'],
+  G4: ['Regulatory submission accepted for review', 'Design transfer to manufacturing complete', 'Process validation (IQ/OQ/PQ) complete', 'CHMP rapporteur / FDA queries closed', 'Labelling and IFU finalised', 'QMS audit readiness confirmed'],
+  G5: ['Regulatory clearance / CE certificate received', 'Launch build complete and released', 'Field force trained and certified', 'Distribution and 3PL agreements signed', 'Value Analysis Committee approvals secured', 'Pharmacovigilance & post-launch plan in place'],
   BAU: ['Launch KPIs meeting target', 'Complaint handling in steady state', 'PMCF plan active', 'Supply chain at safety stock', 'Commercial ramp on plan', 'Programme handed to BAU owner'],
 };
 /* short outstanding reasons keyed by "<code>#<criterion index>" for late gates. */
 function reasonFor(code, name) {
   const R = {
     'Sterilisation validation report approved': 'Sterilisation validation slot slipped; report awaiting site data',
-    'EU MDR Technical Documentation complete': 'Technical documentation at 96%; two annexes outstanding with the Notified Body',
-    'Design Freeze': 'Design inputs not yet frozen; late change request under review',
+    'EU MDR Technical Documentation complete': 'Technical documentation at 96%; two annexes outstanding with the CHMP rapporteur',
+    'CMC Lock': 'Design inputs not yet frozen; late change request under review',
     'Design inputs frozen': 'Late change request under review; freeze held pending disposition',
     'Verification protocols approved': 'Two verification protocols awaiting sign-off',
     'Regulatory submission accepted for review': 'Submission returned with deficiency questions; response in preparation',
-    'Notified Body / FDA queries closed': 'Open Notified Body queries on biocompatibility not yet closed',
+    'CHMP rapporteur / FDA queries closed': 'Open CHMP rapporteur queries on biocompatibility not yet closed',
     'Process validation (IQ/OQ/PQ) complete': 'PQ run held for equipment qualification',
-    'Regulatory clearance / CE certificate received': 'Certificate pending — Notified Body review slot at risk',
+    'Regulatory clearance / CE certificate received': 'Certificate pending — CHMP rapporteur review slot at risk',
     'Field force trained and certified': 'Field-force certification behind plan',
     'Value Analysis Committee approvals secured': 'VAC approvals behind target across key accounts',
   };

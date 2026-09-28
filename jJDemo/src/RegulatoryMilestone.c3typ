@@ -1,13 +1,13 @@
 /**
  * A dated regulatory milestone on a {@link Launch} — an approval or clearance
- * from an outside authority (FDA, a Notified Body, a competent authority) that
+ * from an outside authority (FDA, a CHMP rapporteur, a competent authority) that
  * a launch's downstream plan is committed against. Distinct from a {@link Gate}:
  * a Gate is an internal stage-gate decision the programme owns, whereas a
  * RegulatoryMilestone is a date owned by an authority that the programme cannot
  * move — it can only react when the authority moves it.
  *
  * The anchor case is Velsipity's US market rollout: the CE mark (EU MDR) is the
- * lead train, and the FDA 510(k) Clearance is a separate milestone the US
+ * lead train, and the FDA NDA Clearance is a separate milestone the US
  * launch — manufacturing build, loaner-kit staging, field certification and
  * commercial pre-announcement — is all committed against. When the FDA slips
  * this date six weeks, {@link CascadeReplanService#cascadeReplan} fans the impact
@@ -30,7 +30,7 @@ entity type RegulatoryMilestone {
   /** The authority that owns the date, e.g. "FDA", "BSI", "CE (EU MDR)". */
   authority: !string
 
-  /** Milestone name, e.g. "FDA 510(k) Clearance — US". */
+  /** Milestone name, e.g. "FDA NDA Clearance — US". */
   milestoneName: !string
 
   /**

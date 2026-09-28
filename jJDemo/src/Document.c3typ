@@ -3,10 +3,10 @@
  * industry-standard Pfizer Biopharma register — the full checklist is always present
  * because every item is something that must ultimately be uploaded; only the
  * {@link Document#status} varies with how far the launch has progressed. The
- * register spans nine groups (see {@link Document#group}): Design & development
- * (DHF), Verification & validation, Clinical & evidence, Regulatory submissions,
+ * register spans nine groups (see {@link Document#group}): Development & CMC
+ * (CTD), Verification & validation, Clinical & evidence, Regulatory submissions,
  * Certificates/licences/registrations, Manufacturing & quality, Labelling &
- * commercial, Supply chain & operations, and Post-market surveillance.
+ * commercial, Supply chain & operations, and Pharmacovigilance & post-launch.
  *
  * Comirnaty G2 keeps its bespoke, hand-authored set (78 originals plus a
  * supply-chain section); the other launches are generated deterministically by
@@ -17,13 +17,13 @@
  * validation report evidences the outstanding G3 criterion).
  */
 entity type Document mixes SeedData {
-  /** Document name, e.g. "Design & Development Plan". */
+  /** Document name, e.g. "Development & CMC Plan". */
   name: !string
 
   /** Document type, e.g. "Plan", "Specification", "Validation report". */
   docType: string
 
-  /** Group the document belongs to, e.g. "dhf", "vv", "cli", "reg". */
+  /** Group the document belongs to, e.g. "ctd", "vv", "cli", "reg". */
   group: string
 
   /** Revision, e.g. "rev 6". */

@@ -110,7 +110,7 @@
     "confidence": "High",
     "basis": "BOM trace machine-read from the released Master Batch Record",
     "riskBand": "Low",
-    "gateImpact": "Protects G2 Design Freeze",
+    "gateImpact": "Protects G2 CMC Lock",
     "decision": {
       "id": "seed_decision_388"
     }

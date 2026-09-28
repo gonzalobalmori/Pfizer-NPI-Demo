@@ -17,7 +17,7 @@
   {
     "id": "seed_gate_dualto_g2",
     "code": "G2",
-    "name": "Design Freeze",
+    "name": "CMC Lock",
     "baselineDate": "2024-04-01",
     "forecastDate": "2024-04-01",
     "slipDays": 0,
@@ -107,7 +107,7 @@
   {
     "id": "seed_gate_embotrap_iv_g2",
     "code": "G2",
-    "name": "Design Freeze",
+    "name": "CMC Lock",
     "baselineDate": "2025-06-03",
     "forecastDate": "2025-06-03",
     "slipDays": 0,
@@ -197,7 +197,7 @@
   {
     "id": "seed_gate_ethicon_4000_g2",
     "code": "G2",
-    "name": "Design Freeze",
+    "name": "CMC Lock",
     "baselineDate": "2026-04-29",
     "forecastDate": "2026-04-29",
     "slipDays": 0,
@@ -272,7 +272,7 @@
   {
     "id": "seed_gate_impella_ecp_g2",
     "code": "G2",
-    "name": "Design Freeze",
+    "name": "CMC Lock",
     "baselineDate": "2027-01-29",
     "forecastDate": "2027-01-29",
     "slipDays": 0,
@@ -347,7 +347,7 @@
   {
     "id": "seed_gate_javelin_xl_g2",
     "code": "G2",
-    "name": "Design Freeze",
+    "name": "CMC Lock",
     "baselineDate": "2026-08-22",
     "forecastDate": "2026-08-22",
     "slipDays": 0,
@@ -437,7 +437,7 @@
   {
     "id": "seed_gate_octaray_g2_g2",
     "code": "G2",
-    "name": "Design Freeze",
+    "name": "CMC Lock",
     "baselineDate": "2026-09-16",
     "forecastDate": "2026-09-30",
     "slipDays": 14,
@@ -512,7 +512,7 @@
   {
     "id": "seed_gate_ottava_g2",
     "code": "G2",
-    "name": "Design Freeze",
+    "name": "CMC Lock",
     "baselineDate": "2027-12-07",
     "forecastDate": "2027-12-07",
     "slipDays": 0,
@@ -587,7 +587,7 @@
   {
     "id": "seed_gate_puresee_g2",
     "code": "G2",
-    "name": "Design Freeze",
+    "name": "CMC Lock",
     "baselineDate": "2027-04-23",
     "forecastDate": "2027-04-23",
     "slipDays": 0,
@@ -662,7 +662,7 @@
   {
     "id": "seed_gate_varipulse_g2",
     "code": "G2",
-    "name": "Design Freeze",
+    "name": "CMC Lock",
     "baselineDate": "2026-06-19",
     "forecastDate": "2026-06-19",
     "slipDays": 0,

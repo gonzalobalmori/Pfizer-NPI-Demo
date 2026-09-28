@@ -7,7 +7,7 @@
  * decides (full workspace); ESCALATED / DELEGATED / AGENT are read-only. The
  * approve transaction ({@link Decision#approve}) is the most important behaviour
  * in the application — it must atomically re-baseline the gate, release the
- * exposure, dispatch tasks, notify, write the CAPA closure and append to the DHF
+ * exposure, dispatch tasks, notify, write the CAPA closure and append to the CTD
  * (§2.4), and reject a second run.
  */
 entity type Decision {
@@ -80,7 +80,7 @@ entity type Decision {
   /**
    * Atomic approve transaction (§2.4). Records the decision, re-baselines the gate,
    * releases the exposure, assigns and dispatches tasks, fires notifications,
-   * writes the CAPA containment closure and appends an immutable DHF entry —
+   * writes the CAPA containment closure and appends an immutable CTD entry —
    * all-or-nothing. Rejects if the decision is not held by the user, or is already
    * approved.
    */

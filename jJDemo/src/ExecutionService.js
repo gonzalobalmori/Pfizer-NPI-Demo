@@ -194,12 +194,12 @@ function decisionHistory() {
 /* ── §2.2 Agent orchestration — Live board ──────────────────────── */
 
 var PHASE_META = {
-  seed_phase_p1: ['P1', 'Feasibility (strategic definition)', 'closed'],
-  seed_phase_p2: ['P2', 'Design Inputs (supply definition)', 'closed'],
-  seed_phase_p3: ['P3', 'V&V (verification & validation)', 'live'],
-  seed_phase_p4: ['P4', 'Transfer', 'live'],
-  seed_phase_p5: ['P5', 'Ready', 'queued'],
-  seed_phase_p6: ['P6', 'Post-market', 'queued']
+  seed_phase_p1: ['P1', 'Early NPI readiness (strategic definition)', 'closed'],
+  seed_phase_p2: ['P2', 'NPI planning (supply & CMC definition)', 'closed'],
+  seed_phase_p3: ['P3', 'PPQ execution & filing preparation', 'live'],
+  seed_phase_p4: ['P4', 'Regulatory & access execution', 'live'],
+  seed_phase_p5: ['P5', 'Launch readiness', 'queued'],
+  seed_phase_p6: ['P6', 'Post-launch intelligence', 'queued']
 };
 var PHASE_ORDER = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6'];
 /* Ordinal rank so gates compare numerically (a plain string sort puts "BAU"
@@ -541,7 +541,7 @@ function resolutionWorkspace(findingId) {
   /* the CAPA (if any) opened for this finding — the resolution page only shows
      the supplier-quality/CAPA framing when a CAPA actually exists. Commercial
      findings (e.g. field-force certification) have no CAPA and must NOT render
-     the "Quality agent opened CAPA-… against the sterilisation process" copy. */
+     the "Quality agent opened CAPA-… against the fill-finish process" copy. */
   var capa = null;
   var caps = CAPA.fetch({
     filter: Filter.eq('finding.id', findingId),
@@ -564,7 +564,7 @@ function resolutionWorkspace(findingId) {
   /* the gate this finding puts at risk. A finding lives in a phase, and each
      phase is closed by a specific gate (P4 → G4), so the gate at risk is the
      gate that closes the FINDING'S phase — this is what the finding card's meta
-     states (e.g. NPI-0402 in P4 reads "G4 CE Certificate"). We therefore match
+     states (e.g. NPI-0402 in P4 reads "G4 Marketing Authorisation"). We therefore match
      the phase-closing gate first; only if that gate is not on the launch do we
      fall back to the earliest still-open gate BY RANK (a string compare would
      put "BAU" before "G5"). */
@@ -611,7 +611,7 @@ function resolutionWorkspace(findingId) {
       detectedBy: f.detectedBy ? f.detectedBy.name : null,
       category: f.category,
       outcome: f.outcome,
-      /* who the next step depends on — REGULATOR (FDA / Notified Body / payer) is
+      /* who the next step depends on — REGULATOR (FDA / CHMP rapporteur / payer) is
          an outside authority the user cannot resolve by acting, so the workspace
          renders it view-only (no Approve). SELF/TEAM/AGENT are the org's own clock. */
       dependency: f.dependency || null,
@@ -876,7 +876,7 @@ function resetOneDecision(d, out) {
     }
   }
 
-  /* 6. The generated DHF entry. Removed rather than kept because it is a record of
+  /* 6. The generated CTD entry. Removed rather than kept because it is a record of
         a decision that, after the rewind, did not happen — leaving it would show a
         design-history entry for an unapproved decision. The seeded
         seed_dhf_* entries are untouched. */

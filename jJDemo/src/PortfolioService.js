@@ -19,12 +19,12 @@ function healthRank(h) {
 
 var PHASE_ORDER = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6'];
 var PHASE_META = {
-  P1: ['Feasibility (strategic definition)', 'closed'],
-  P2: ['Design Inputs (supply definition)', 'closed'],
-  P3: ['V&V (verification & validation)', 'live'],
-  P4: ['Transfer', 'live'],
-  P5: ['Ready', 'queued'],
-  P6: ['Post-market', 'queued']
+  P1: ['Early NPI readiness (strategic definition)', 'closed'],
+  P2: ['NPI planning (supply & CMC definition)', 'closed'],
+  P3: ['PPQ execution & filing preparation', 'live'],
+  P4: ['Regulatory & access execution', 'live'],
+  P5: ['Launch readiness', 'queued'],
+  P6: ['Post-launch intelligence', 'queued']
 };
 
 /*
@@ -34,16 +34,16 @@ var PHASE_META = {
  * phase. `short` is the reviewer-approved label (matches the Portfolio phase
  * axis); `full` expands it; `gate`/`gateName` name the decision gate; and
  * `milestone` calls out the regulatory milestone that lands in that phase
- * (notably "Regulatory Submission Filed" at G3 and "FDA Approved / CE Marked"
+ * (notably "Regulatory Submission Filed" at G3 and "FDA Approved / EMA Authorised"
  * at G4, which the reviewer flagged as missing from the phase overview).
  */
 var PHASE_MODEL = [
-  { code: 'P1', short: 'Feasibility', full: 'Feasibility (strategic definition)', gate: 'G1', gateName: 'NPI Readiness Gate', milestone: null },
-  { code: 'P2', short: 'Design Inputs', full: 'Design Inputs (supply definition)', gate: 'G2', gateName: 'Design Freeze', milestone: null },
-  { code: 'P3', short: 'V&V', full: 'V&V (verification & validation)', gate: 'G3', gateName: 'Submission Commit', milestone: 'Regulatory Submission Filed — full dossier to FDA' },
-  { code: 'P4', short: 'Transfer', full: 'Reg review, design transfer & at-risk build', gate: 'G4', gateName: 'Clearance / CE Certificate', milestone: 'FDA Approved / CE Marked' },
+  { code: 'P1', short: 'NPI Strategy', full: 'Early NPI readiness (strategic definition)', gate: 'G1', gateName: 'NPI Readiness Gate', milestone: null },
+  { code: 'P2', short: 'NPI Planning', full: 'NPI planning (supply & CMC definition)', gate: 'G2', gateName: 'CMC Lock', milestone: null },
+  { code: 'P3', short: 'PPQ', full: 'PPQ execution & filing preparation', gate: 'G3', gateName: 'Submission Commit', milestone: 'Regulatory Submission Filed — full dossier to FDA' },
+  { code: 'P4', short: 'Reg review', full: 'Regulatory & access execution, tech transfer & at-risk build', gate: 'G4', gateName: 'Approval / Marketing Authorisation', milestone: 'FDA Approved / EMA Authorised' },
   { code: 'P5', short: 'Ready', full: 'Launch readiness', gate: 'G5', gateName: 'Launch Go / No-Go — First Ship', milestone: 'First Ship' },
-  { code: 'P6', short: 'Post-market', full: 'Post-market surveillance & BAU transfer', gate: 'BAU', gateName: 'BAU handover', milestone: null }
+  { code: 'P6', short: 'Post-launch', full: 'Post-launch intelligence & BAU transfer', gate: 'BAU', gateName: 'BAU handover', milestone: null }
 ];
 
 /* the current-phase code marks which phase column a launch is executing in */
@@ -75,12 +75,12 @@ var GATE_RANK = { G1: 1, G2: 2, G3: 3, G4: 4, G5: 5, BAU: 6 };
 var PHASE_GATE = { P1: 'G1', P2: 'G2', P3: 'G3', P4: 'G4', P5: 'G5', P6: 'BAU' };
 /* Which phase a launch is executing in while driving toward a given gate. */
 var GATE_PHASE = {
-  G1: ['P1', 'Feasibility'],
-  G2: ['P2', 'Design Inputs'],
-  G3: ['P3', 'V&V'],
-  G4: ['P4', 'Transfer'],
+  G1: ['P1', 'NPI Strategy'],
+  G2: ['P2', 'NPI Planning'],
+  G3: ['P3', 'PPQ'],
+  G4: ['P4', 'Reg review'],
   G5: ['P5', 'Ready'],
-  BAU: ['P6', 'Post-market']
+  BAU: ['P6', 'Post-launch']
 };
 
 /* Quarter index (year*4 + quarter-1) from a "Q2 27" / "Q2 2027" label. */
@@ -701,7 +701,7 @@ function portfolioTimeline() {
  * decision exists, else the outcome itself.
  *
  * `dependency === 'REGULATOR'` overrides everything else: when the next step is
- * with a body outside Pfizer (FDA, a Notified Body, a reimbursement authority) the
+ * with a body outside Pfizer (FDA, a CHMP rapporteur, a reimbursement authority) the
  * issue is waiting on an AUTHORITY no matter who nominally holds it internally —
  * this is the time you cannot pull in by acting faster. That distinction is the
  * whole point of the time-recovery view, so it wins over USER/HELD/AUTO. */
@@ -718,7 +718,7 @@ function portfolioTimeline() {
 var SELF_PERSON_NAME = 'George Hall';
 
 function waitingOnFor(outcome, heldBy, ownerName, agentName, dependency) {
-  /* An outside authority (FDA, Notified Body, payer) overrides everything: acting
+  /* An outside authority (FDA, CHMP rapporteur, payer) overrides everything: acting
      faster cannot pull this in. */
   if (dependency === 'REGULATOR') return { kind: 'AUTHORITY', label: 'A regulatory authority' };
   /* Agent-driven work is classified BEFORE the held-by-person branch. A finding an
@@ -959,7 +959,7 @@ function openIssues() {
  * findings are holding on the portfolio, how much can you get back by acting
  * (SELF / TEAM / AGENT — your own organisation, agents included since they only
  * run when you launch them) versus how much is a fixed wait on an outside
- * authority (REGULATOR — FDA, a Notified Body, a reimbursement body). Acting
+ * authority (REGULATOR — FDA, a CHMP rapporteur, a reimbursement body). Acting
  * faster on the first bucket pulls the schedule in; the second does not move no
  * matter how fast you work. Same open-definition as {@link openIssues}
  * (USER/HELD/RUNNING) so the numbers reconcile across every view.
@@ -1038,17 +1038,17 @@ function timeImpact() {
 /* ── §5 Launch record ───────────────────────────────────────────── */
 
 var DOC_GROUPS = {
-  dhf: 'Design & development (DHF)',
-  vv: 'Verification & validation',
+  ctd: 'Development & CMC (CTD)',
+  vv: 'Validation & qualification',
   cli: 'Clinical & evidence',
   reg: 'Regulatory submissions',
   cert: 'Certificates, licences & registrations',
   mfg: 'Manufacturing & quality',
   com: 'Labelling & commercial',
   sco: 'Supply chain & operations',
-  pm: 'Post-market surveillance'
+  pm: 'Pharmacovigilance & post-launch'
 };
-var DOC_GROUP_ORDER = ['dhf', 'vv', 'cli', 'reg', 'cert', 'mfg', 'com', 'sco', 'pm'];
+var DOC_GROUP_ORDER = ['ctd', 'vv', 'cli', 'reg', 'cert', 'mfg', 'com', 'sco', 'pm'];
 
 function launchRecord(launchId) {
   var ls = Launch.fetch({

@@ -64,7 +64,7 @@
     "dependency": "SELF",
     "daysAtStake": 9,
     "exposure": 6200000,
-    "exposureCause": "Single-source lyophilisation stopper supplier — Abrysvo G2 Design Freeze exposure if the second source is not activated before the gate",
+    "exposureCause": "Single-source lyophilisation stopper supplier — Abrysvo G2 CMC Lock exposure if the second source is not activated before the gate",
     "phase": {
       "id": "seed_phase_p2"
     },
@@ -90,7 +90,7 @@
     "id": "seed_finding_371",
     "displayId": "NPI-0371",
     "headline": "Sign the two reports?",
-    "description": "G2 Design Freeze — 2 of 14 design inputs unsigned",
+    "description": "G2 CMC Lock — 2 of 14 design inputs unsigned",
     "signalSource": "05 Sep 08:20 · K. Tanaka",
     "detectedAt": "2026-09-05T08:20:00",
     "outcome": "USER",

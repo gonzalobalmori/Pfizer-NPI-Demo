@@ -4,7 +4,7 @@
  * Data rule §4.3.4 requires every exposure to be attributable to a named
  * gate, market or supplier — never a free-floating amount. Types that mix
  * {@link HasExposure} therefore carry both the figure and the cause that
- * makes it defensible in front of a Notified Body auditor.
+ * makes it defensible in front of a CHMP rapporteur auditor.
  */
 type HasExposure {
   /** Revenue exposed by this record, in euros. */
