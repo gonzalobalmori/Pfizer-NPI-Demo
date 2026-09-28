@@ -735,9 +735,9 @@ var BASELINE = {
      this was caught: the reset appeared to work but the pane read "+47 days" against an
      unslipped date. The invariant is asserted at the bottom of this block. */
   gates: {
-    seed_gate_berobenatide_obesity_g3:  { forecastDate: '2026-12-21', slipDays: 47, status: 'late' },
-    seed_gate_berobenatide_obesity_g4:  { forecastDate: '2027-05-18', slipDays: 0,  status: 'no' },
-    seed_gate_berobenatide_t2d_g2: { forecastDate: '2026-09-30', slipDays: 14, status: 'late' }
+    seed_gate_berobenatide_obesity_g3:  { forecastDate: '2025-12-24', slipDays: 0,  status: 'ok' },
+    seed_gate_berobenatide_obesity_g4:  { forecastDate: '2026-07-11', slipDays: 47, status: 'late' },
+    seed_gate_berobenatide_t2d_g2: { forecastDate: '2026-01-27', slipDays: 18, status: 'rk' }
   },
   launches: {
     seed_launch_berobenatide_obesity: { revenueAtRisk: 21200000, healthStatus: 'OFF_TRACK' },
@@ -832,14 +832,9 @@ function resetOneDecision(d, out) {
     out.recordsRestored += 1;
   }
 
-  /* 2. Launch — restore the exposure and health that approve() released. */
-  if (launchId && BASELINE.launches[launchId]) {
-    var lb = BASELINE.launches[launchId];
-    Launch.make({
-      id: launchId, revenueAtRisk: lb.revenueAtRisk, healthStatus: lb.healthStatus
-    }).merge();
-    out.recordsRestored += 1;
-  }
+  /* 2. Launch exposure and health is restored by restoreBaselineLaunches(), which
+        runs unconditionally in resetDecision() rather than from here — see the
+        comment on that function for why it cannot live behind the early return. */
 
   /* 3. Tasks — every option's tasks go back to "Not started". Not just the
         approved option's: a reset must not leave a previously-approved option's
@@ -900,8 +895,34 @@ function resetOneDecision(d, out) {
   out.reset.push(d.id);
 }
 
+/*
+ * Restore every launch's seeded exposure and health.
+ *
+ * This runs unconditionally, and deliberately does NOT sit inside
+ * resetOneDecision. That function early-returns on a decision whose approvedAt
+ * and selectedOption are already clear, so once the first reset had cleared the
+ * decision marker nothing ever wrote Launch.healthStatus again. Any state that
+ * left a launch improved while its decision looked un-approved was therefore
+ * permanent: Berobenatide stayed off OFF_TRACK, and because the portfolio sorts
+ * worst-health-first it stopped being the launch the demo opens on.
+ *
+ * Safe to call on every page load: these are absolute values against fixed ids,
+ * so the write is idempotent rather than incremental.
+ */
+function restoreBaselineLaunches(out) {
+  for (var launchId in BASELINE.launches) {
+    var lb = BASELINE.launches[launchId];
+    Launch.make({
+      id: launchId, revenueAtRisk: lb.revenueAtRisk, healthStatus: lb.healthStatus
+    }).merge();
+    out.recordsRestored += 1;
+  }
+}
+
 function resetDecision(decisionId) {
   var out = { reset: [], alreadyBaseline: [], recordsRestored: 0 };
+
+  restoreBaselineLaunches(out);
 
   var filter = (decisionId && ('' + decisionId).length)
     ? Filter.eq('id', decisionId)
