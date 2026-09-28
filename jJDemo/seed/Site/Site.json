@@ -6,7 +6,7 @@
     "capabilities": "aseptic fill-finish",
     "capacityAvailableFrom": "2026-11-28",
     "supplier": {
-      "id": "seed_supplier_steris"
+      "id": "seed_supplier_vetter"
     }
   },
   {
@@ -16,7 +16,7 @@
     "capabilities": "aseptic fill-finish",
     "capacityAvailableFrom": "2026-09-29",
     "supplier": {
-      "id": "seed_supplier_sterigenics"
+      "id": "seed_supplier_siegfried"
     }
   },
   {
@@ -26,7 +26,7 @@
     "capabilities": "Oral solid dose manufacture and packaging",
     "capacityAvailableFrom": "2026-09-01",
     "supplier": {
-      "id": "seed_supplier_heraeus"
+      "id": "seed_supplier_aptar"
     }
   },
   {
@@ -36,7 +36,7 @@
     "capabilities": "Elastomeric closures; nasal spray actuators",
     "capacityAvailableFrom": "2026-09-15",
     "supplier": {
-      "id": "seed_supplier_heraeus"
+      "id": "seed_supplier_aptar"
     }
   },
   {

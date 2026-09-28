@@ -23,7 +23,7 @@
 
 /* ── shared constants ───────────────────────────────────────────────── */
 
-var DEFAULT_CHANGE = 'seed_dchg_comirnaty_de';
+var DEFAULT_CHANGE = 'seed_dchg_berobenatide_obesity_de';
 
 /* Late-delivery exposure on a commitment that carries a contractual penalty,
  * per week of delay, as a share of the delayed commitment value. Resequencing a
@@ -86,7 +86,7 @@ function findChange(changeId) {
   var id = changeId || DEFAULT_CHANGE;
   var rs = DemandChange.fetch({
     filter: Filter.eq('id', id),
-    include: 'this, launch.id, launch.deviceName, launch.shortName, ' +
+    include: 'this, launch.id, launch.productName, launch.shortName, ' +
              'market.id, market.code, market.name, market.regulatoryBody, ' +
              'marketCommitment.id, marketCommitment.priorityRank, ' +
              'requestedBy.id, requestedBy.name, requestedBy.functionName, ' +
@@ -635,7 +635,7 @@ function buildBundle(c) {
     change: {
       id: c.id, requestNo: c.requestNo,
       launchId: launchId,
-      launchName: (c.launch && (c.launch.shortName || c.launch.deviceName)) || null,
+      launchName: (c.launch && (c.launch.shortName || c.launch.productName)) || null,
       marketCode: c.market && c.market.code,
       marketName: c.market && c.market.name,
       regulatoryBody: c.market && c.market.regulatoryBody,

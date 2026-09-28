@@ -2,8 +2,8 @@
   {
     "id": "seed_qp_grandrapids_eo",
     "processType": "aseptic fill-finish",
-    "qualifiedForLaunches": "Abrysvo G2, Elrexfio IV",
-    "qualificationDepth": "half-cycle",
+    "qualifiedForLaunches": "Berobenatide T2D, Sigvotatug",
+    "qualificationDepth": "bracketed",
     "site": {
       "id": "seed_site_grandrapids"
     }
@@ -11,7 +11,7 @@
   {
     "id": "seed_qp_venlo_eo",
     "processType": "aseptic fill-finish",
-    "qualifiedForLaunches": "Comirnaty G2",
+    "qualifiedForLaunches": "Berobenatide OB",
     "qualificationDepth": "full",
     "site": {
       "id": "seed_site_venlo"
@@ -20,7 +20,7 @@
   {
     "id": "seed_qp_neuss_electrode",
     "processType": "Lyophilisation stopper",
-    "qualifiedForLaunches": "Comirnaty G2, Abrysvo G2",
+    "qualifiedForLaunches": "Berobenatide OB, Berobenatide T2D",
     "qualificationDepth": "full",
     "site": {
       "id": "seed_site_neuss"

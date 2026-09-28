@@ -1,6 +1,6 @@
 [
   {
-    "id": "seed_gate_varipulse_g1",
+    "id": "seed_gate_berobenatide_obesity_g1",
     "code": "G1",
     "name": "Launch Strategy Approved",
     "baselineDate": "2025-02-23",
@@ -8,14 +8,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "phase": {
       "id": "seed_phase_p1"
     }
   },
   {
-    "id": "seed_gate_varipulse_g2",
+    "id": "seed_gate_berobenatide_obesity_g2",
     "code": "G2",
     "name": "NPL Plan Approved",
     "baselineDate": "2025-07-25",
@@ -23,14 +23,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "phase": {
       "id": "seed_phase_p2"
     }
   },
   {
-    "id": "seed_gate_varipulse_g3",
+    "id": "seed_gate_berobenatide_obesity_g3",
     "code": "G3",
     "name": "DS Released",
     "baselineDate": "2025-12-24",
@@ -38,14 +38,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "phase": {
       "id": "seed_phase_p3"
     }
   },
   {
-    "id": "seed_gate_varipulse_g4",
+    "id": "seed_gate_berobenatide_obesity_g4",
     "code": "G4",
     "name": "DP Released",
     "baselineDate": "2026-05-25",
@@ -53,14 +53,14 @@
     "slipDays": 47,
     "status": "late",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "phase": {
       "id": "seed_phase_p4"
     }
   },
   {
-    "id": "seed_gate_varipulse_g5",
+    "id": "seed_gate_berobenatide_obesity_g5",
     "code": "G5",
     "name": "Finished Product Released",
     "baselineDate": "2026-10-24",
@@ -68,14 +68,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "phase": {
       "id": "seed_phase_p5"
     }
   },
   {
-    "id": "seed_gate_varipulse_g6",
+    "id": "seed_gate_berobenatide_obesity_g6",
     "code": "G6",
     "name": "Launch Readiness Confirmed",
     "baselineDate": "2027-03-25",
@@ -83,14 +83,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "phase": {
       "id": "seed_phase_p6"
     }
   },
   {
-    "id": "seed_gate_varipulse_g7",
+    "id": "seed_gate_berobenatide_obesity_g7",
     "code": "G7",
     "name": "Launch Go / No-Go",
     "baselineDate": "2027-08-24",
@@ -98,14 +98,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "phase": {
       "id": "seed_phase_p7"
     }
   },
   {
-    "id": "seed_gate_varipulse_g8",
+    "id": "seed_gate_berobenatide_obesity_g8",
     "code": "G8",
     "name": "Commercial Availability",
     "baselineDate": "2028-01-23",
@@ -113,14 +113,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "phase": {
       "id": "seed_phase_p8"
     }
   },
   {
-    "id": "seed_gate_varipulse_bau",
+    "id": "seed_gate_berobenatide_obesity_bau",
     "code": "BAU",
     "name": "BAU handover",
     "baselineDate": "2028-06-23",
@@ -128,14 +128,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "phase": {
       "id": "seed_phase_p9"
     }
   },
   {
-    "id": "seed_gate_octaray_g2_g1",
+    "id": "seed_gate_berobenatide_t2d_g1",
     "code": "G1",
     "name": "Launch Strategy Approved",
     "baselineDate": "2025-08-10",
@@ -143,14 +143,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "phase": {
       "id": "seed_phase_p1"
     }
   },
   {
-    "id": "seed_gate_octaray_g2_g2",
+    "id": "seed_gate_berobenatide_t2d_g2",
     "code": "G2",
     "name": "NPL Plan Approved",
     "baselineDate": "2026-01-09",
@@ -158,14 +158,14 @@
     "slipDays": 18,
     "status": "rk",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "phase": {
       "id": "seed_phase_p2"
     }
   },
   {
-    "id": "seed_gate_octaray_g2_g3",
+    "id": "seed_gate_berobenatide_t2d_g3",
     "code": "G3",
     "name": "DS Released",
     "baselineDate": "2026-06-10",
@@ -173,14 +173,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "phase": {
       "id": "seed_phase_p3"
     }
   },
   {
-    "id": "seed_gate_octaray_g2_g4",
+    "id": "seed_gate_berobenatide_t2d_g4",
     "code": "G4",
     "name": "DP Released",
     "baselineDate": "2026-11-09",
@@ -188,14 +188,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "phase": {
       "id": "seed_phase_p4"
     }
   },
   {
-    "id": "seed_gate_octaray_g2_g5",
+    "id": "seed_gate_berobenatide_t2d_g5",
     "code": "G5",
     "name": "Finished Product Released",
     "baselineDate": "2027-04-10",
@@ -203,14 +203,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "phase": {
       "id": "seed_phase_p5"
     }
   },
   {
-    "id": "seed_gate_octaray_g2_g6",
+    "id": "seed_gate_berobenatide_t2d_g6",
     "code": "G6",
     "name": "Launch Readiness Confirmed",
     "baselineDate": "2027-09-09",
@@ -218,14 +218,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "phase": {
       "id": "seed_phase_p6"
     }
   },
   {
-    "id": "seed_gate_octaray_g2_g7",
+    "id": "seed_gate_berobenatide_t2d_g7",
     "code": "G7",
     "name": "Launch Go / No-Go",
     "baselineDate": "2028-02-08",
@@ -233,14 +233,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "phase": {
       "id": "seed_phase_p7"
     }
   },
   {
-    "id": "seed_gate_octaray_g2_g8",
+    "id": "seed_gate_berobenatide_t2d_g8",
     "code": "G8",
     "name": "Commercial Availability",
     "baselineDate": "2028-07-09",
@@ -248,14 +248,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "phase": {
       "id": "seed_phase_p8"
     }
   },
   {
-    "id": "seed_gate_octaray_g2_bau",
+    "id": "seed_gate_berobenatide_t2d_bau",
     "code": "BAU",
     "name": "BAU handover",
     "baselineDate": "2028-12-08",
@@ -263,14 +263,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "phase": {
       "id": "seed_phase_p9"
     }
   },
   {
-    "id": "seed_gate_puresee_g1",
+    "id": "seed_gate_pf08634404_crc_g1",
     "code": "G1",
     "name": "Launch Strategy Approved",
     "baselineDate": "2025-06-21",
@@ -278,14 +278,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_puresee"
+      "id": "seed_launch_pf08634404_crc"
     },
     "phase": {
       "id": "seed_phase_p1"
     }
   },
   {
-    "id": "seed_gate_puresee_g2",
+    "id": "seed_gate_pf08634404_crc_g2",
     "code": "G2",
     "name": "NPL Plan Approved",
     "baselineDate": "2025-11-20",
@@ -293,14 +293,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_puresee"
+      "id": "seed_launch_pf08634404_crc"
     },
     "phase": {
       "id": "seed_phase_p2"
     }
   },
   {
-    "id": "seed_gate_puresee_g3",
+    "id": "seed_gate_pf08634404_crc_g3",
     "code": "G3",
     "name": "DS Released",
     "baselineDate": "2026-04-21",
@@ -308,14 +308,14 @@
     "slipDays": 24,
     "status": "rk",
     "launch": {
-      "id": "seed_launch_puresee"
+      "id": "seed_launch_pf08634404_crc"
     },
     "phase": {
       "id": "seed_phase_p3"
     }
   },
   {
-    "id": "seed_gate_puresee_g4",
+    "id": "seed_gate_pf08634404_crc_g4",
     "code": "G4",
     "name": "DP Released",
     "baselineDate": "2026-09-20",
@@ -323,14 +323,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_puresee"
+      "id": "seed_launch_pf08634404_crc"
     },
     "phase": {
       "id": "seed_phase_p4"
     }
   },
   {
-    "id": "seed_gate_puresee_g5",
+    "id": "seed_gate_pf08634404_crc_g5",
     "code": "G5",
     "name": "Finished Product Released",
     "baselineDate": "2027-02-19",
@@ -338,14 +338,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_puresee"
+      "id": "seed_launch_pf08634404_crc"
     },
     "phase": {
       "id": "seed_phase_p5"
     }
   },
   {
-    "id": "seed_gate_puresee_g6",
+    "id": "seed_gate_pf08634404_crc_g6",
     "code": "G6",
     "name": "Launch Readiness Confirmed",
     "baselineDate": "2027-07-21",
@@ -353,14 +353,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_puresee"
+      "id": "seed_launch_pf08634404_crc"
     },
     "phase": {
       "id": "seed_phase_p6"
     }
   },
   {
-    "id": "seed_gate_puresee_g7",
+    "id": "seed_gate_pf08634404_crc_g7",
     "code": "G7",
     "name": "Launch Go / No-Go",
     "baselineDate": "2027-12-20",
@@ -368,14 +368,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_puresee"
+      "id": "seed_launch_pf08634404_crc"
     },
     "phase": {
       "id": "seed_phase_p7"
     }
   },
   {
-    "id": "seed_gate_puresee_g8",
+    "id": "seed_gate_pf08634404_crc_g8",
     "code": "G8",
     "name": "Commercial Availability",
     "baselineDate": "2028-05-20",
@@ -383,14 +383,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_puresee"
+      "id": "seed_launch_pf08634404_crc"
     },
     "phase": {
       "id": "seed_phase_p8"
     }
   },
   {
-    "id": "seed_gate_puresee_bau",
+    "id": "seed_gate_pf08634404_crc_bau",
     "code": "BAU",
     "name": "BAU handover",
     "baselineDate": "2028-10-19",
@@ -398,14 +398,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_puresee"
+      "id": "seed_launch_pf08634404_crc"
     },
     "phase": {
       "id": "seed_phase_p9"
     }
   },
   {
-    "id": "seed_gate_impella_ecp_g1",
+    "id": "seed_gate_met097_obesity_g1",
     "code": "G1",
     "name": "Launch Strategy Approved",
     "baselineDate": "2024-11-02",
@@ -413,14 +413,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_impella_ecp"
+      "id": "seed_launch_met097_obesity"
     },
     "phase": {
       "id": "seed_phase_p1"
     }
   },
   {
-    "id": "seed_gate_impella_ecp_g2",
+    "id": "seed_gate_met097_obesity_g2",
     "code": "G2",
     "name": "NPL Plan Approved",
     "baselineDate": "2025-04-03",
@@ -428,14 +428,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_impella_ecp"
+      "id": "seed_launch_met097_obesity"
     },
     "phase": {
       "id": "seed_phase_p2"
     }
   },
   {
-    "id": "seed_gate_impella_ecp_g3",
+    "id": "seed_gate_met097_obesity_g3",
     "code": "G3",
     "name": "DS Released",
     "baselineDate": "2025-09-02",
@@ -443,14 +443,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_impella_ecp"
+      "id": "seed_launch_met097_obesity"
     },
     "phase": {
       "id": "seed_phase_p3"
     }
   },
   {
-    "id": "seed_gate_impella_ecp_g4",
+    "id": "seed_gate_met097_obesity_g4",
     "code": "G4",
     "name": "DP Released",
     "baselineDate": "2026-02-01",
@@ -458,14 +458,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_impella_ecp"
+      "id": "seed_launch_met097_obesity"
     },
     "phase": {
       "id": "seed_phase_p4"
     }
   },
   {
-    "id": "seed_gate_impella_ecp_g5",
+    "id": "seed_gate_met097_obesity_g5",
     "code": "G5",
     "name": "Finished Product Released",
     "baselineDate": "2026-07-03",
@@ -473,14 +473,14 @@
     "slipDays": 0,
     "status": "run",
     "launch": {
-      "id": "seed_launch_impella_ecp"
+      "id": "seed_launch_met097_obesity"
     },
     "phase": {
       "id": "seed_phase_p5"
     }
   },
   {
-    "id": "seed_gate_impella_ecp_g6",
+    "id": "seed_gate_met097_obesity_g6",
     "code": "G6",
     "name": "Launch Readiness Confirmed",
     "baselineDate": "2026-12-02",
@@ -488,14 +488,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_impella_ecp"
+      "id": "seed_launch_met097_obesity"
     },
     "phase": {
       "id": "seed_phase_p6"
     }
   },
   {
-    "id": "seed_gate_impella_ecp_g7",
+    "id": "seed_gate_met097_obesity_g7",
     "code": "G7",
     "name": "Launch Go / No-Go",
     "baselineDate": "2027-05-03",
@@ -503,14 +503,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_impella_ecp"
+      "id": "seed_launch_met097_obesity"
     },
     "phase": {
       "id": "seed_phase_p7"
     }
   },
   {
-    "id": "seed_gate_impella_ecp_g8",
+    "id": "seed_gate_met097_obesity_g8",
     "code": "G8",
     "name": "Commercial Availability",
     "baselineDate": "2027-10-02",
@@ -518,14 +518,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_impella_ecp"
+      "id": "seed_launch_met097_obesity"
     },
     "phase": {
       "id": "seed_phase_p8"
     }
   },
   {
-    "id": "seed_gate_impella_ecp_bau",
+    "id": "seed_gate_met097_obesity_bau",
     "code": "BAU",
     "name": "BAU handover",
     "baselineDate": "2028-03-02",
@@ -533,14 +533,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_impella_ecp"
+      "id": "seed_launch_met097_obesity"
     },
     "phase": {
       "id": "seed_phase_p9"
     }
   },
   {
-    "id": "seed_gate_ethicon_4000_g1",
+    "id": "seed_gate_berobenatide_osa_g1",
     "code": "G1",
     "name": "Launch Strategy Approved",
     "baselineDate": "2024-09-14",
@@ -548,14 +548,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "phase": {
       "id": "seed_phase_p1"
     }
   },
   {
-    "id": "seed_gate_ethicon_4000_g2",
+    "id": "seed_gate_berobenatide_osa_g2",
     "code": "G2",
     "name": "NPL Plan Approved",
     "baselineDate": "2025-02-13",
@@ -563,14 +563,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "phase": {
       "id": "seed_phase_p2"
     }
   },
   {
-    "id": "seed_gate_ethicon_4000_g3",
+    "id": "seed_gate_berobenatide_osa_g3",
     "code": "G3",
     "name": "DS Released",
     "baselineDate": "2025-07-15",
@@ -578,14 +578,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "phase": {
       "id": "seed_phase_p3"
     }
   },
   {
-    "id": "seed_gate_ethicon_4000_g4",
+    "id": "seed_gate_berobenatide_osa_g4",
     "code": "G4",
     "name": "DP Released",
     "baselineDate": "2025-12-14",
@@ -593,14 +593,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "phase": {
       "id": "seed_phase_p4"
     }
   },
   {
-    "id": "seed_gate_ethicon_4000_g5",
+    "id": "seed_gate_berobenatide_osa_g5",
     "code": "G5",
     "name": "Finished Product Released",
     "baselineDate": "2026-05-15",
@@ -608,14 +608,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "phase": {
       "id": "seed_phase_p5"
     }
   },
   {
-    "id": "seed_gate_ethicon_4000_g6",
+    "id": "seed_gate_berobenatide_osa_g6",
     "code": "G6",
     "name": "Launch Readiness Confirmed",
     "baselineDate": "2026-10-14",
@@ -623,14 +623,14 @@
     "slipDays": 12,
     "status": "rk",
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "phase": {
       "id": "seed_phase_p6"
     }
   },
   {
-    "id": "seed_gate_ethicon_4000_g7",
+    "id": "seed_gate_berobenatide_osa_g7",
     "code": "G7",
     "name": "Launch Go / No-Go",
     "baselineDate": "2027-03-15",
@@ -638,14 +638,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "phase": {
       "id": "seed_phase_p7"
     }
   },
   {
-    "id": "seed_gate_ethicon_4000_g8",
+    "id": "seed_gate_berobenatide_osa_g8",
     "code": "G8",
     "name": "Commercial Availability",
     "baselineDate": "2027-08-14",
@@ -653,14 +653,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "phase": {
       "id": "seed_phase_p8"
     }
   },
   {
-    "id": "seed_gate_ethicon_4000_bau",
+    "id": "seed_gate_berobenatide_osa_bau",
     "code": "BAU",
     "name": "BAU handover",
     "baselineDate": "2028-01-13",
@@ -668,14 +668,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "phase": {
       "id": "seed_phase_p9"
     }
   },
   {
-    "id": "seed_gate_javelin_xl_g1",
+    "id": "seed_gate_berobenatide_knee_oa_g1",
     "code": "G1",
     "name": "Launch Strategy Approved",
     "baselineDate": "2024-07-13",
@@ -683,14 +683,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_javelin_xl"
+      "id": "seed_launch_berobenatide_knee_oa"
     },
     "phase": {
       "id": "seed_phase_p1"
     }
   },
   {
-    "id": "seed_gate_javelin_xl_g2",
+    "id": "seed_gate_berobenatide_knee_oa_g2",
     "code": "G2",
     "name": "NPL Plan Approved",
     "baselineDate": "2024-12-12",
@@ -698,14 +698,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_javelin_xl"
+      "id": "seed_launch_berobenatide_knee_oa"
     },
     "phase": {
       "id": "seed_phase_p2"
     }
   },
   {
-    "id": "seed_gate_javelin_xl_g3",
+    "id": "seed_gate_berobenatide_knee_oa_g3",
     "code": "G3",
     "name": "DS Released",
     "baselineDate": "2025-05-13",
@@ -713,14 +713,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_javelin_xl"
+      "id": "seed_launch_berobenatide_knee_oa"
     },
     "phase": {
       "id": "seed_phase_p3"
     }
   },
   {
-    "id": "seed_gate_javelin_xl_g4",
+    "id": "seed_gate_berobenatide_knee_oa_g4",
     "code": "G4",
     "name": "DP Released",
     "baselineDate": "2025-10-12",
@@ -728,14 +728,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_javelin_xl"
+      "id": "seed_launch_berobenatide_knee_oa"
     },
     "phase": {
       "id": "seed_phase_p4"
     }
   },
   {
-    "id": "seed_gate_javelin_xl_g5",
+    "id": "seed_gate_berobenatide_knee_oa_g5",
     "code": "G5",
     "name": "Finished Product Released",
     "baselineDate": "2026-03-13",
@@ -743,14 +743,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_javelin_xl"
+      "id": "seed_launch_berobenatide_knee_oa"
     },
     "phase": {
       "id": "seed_phase_p5"
     }
   },
   {
-    "id": "seed_gate_javelin_xl_g6",
+    "id": "seed_gate_berobenatide_knee_oa_g6",
     "code": "G6",
     "name": "Launch Readiness Confirmed",
     "baselineDate": "2026-08-12",
@@ -758,14 +758,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_javelin_xl"
+      "id": "seed_launch_berobenatide_knee_oa"
     },
     "phase": {
       "id": "seed_phase_p6"
     }
   },
   {
-    "id": "seed_gate_javelin_xl_g7",
+    "id": "seed_gate_berobenatide_knee_oa_g7",
     "code": "G7",
     "name": "Launch Go / No-Go",
     "baselineDate": "2027-01-11",
@@ -773,14 +773,14 @@
     "slipDays": 0,
     "status": "run",
     "launch": {
-      "id": "seed_launch_javelin_xl"
+      "id": "seed_launch_berobenatide_knee_oa"
     },
     "phase": {
       "id": "seed_phase_p7"
     }
   },
   {
-    "id": "seed_gate_javelin_xl_g8",
+    "id": "seed_gate_berobenatide_knee_oa_g8",
     "code": "G8",
     "name": "Commercial Availability",
     "baselineDate": "2027-06-12",
@@ -788,14 +788,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_javelin_xl"
+      "id": "seed_launch_berobenatide_knee_oa"
     },
     "phase": {
       "id": "seed_phase_p8"
     }
   },
   {
-    "id": "seed_gate_javelin_xl_bau",
+    "id": "seed_gate_berobenatide_knee_oa_bau",
     "code": "BAU",
     "name": "BAU handover",
     "baselineDate": "2027-11-11",
@@ -803,14 +803,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_javelin_xl"
+      "id": "seed_launch_berobenatide_knee_oa"
     },
     "phase": {
       "id": "seed_phase_p9"
     }
   },
   {
-    "id": "seed_gate_embotrap_iv_g1",
+    "id": "seed_gate_sigvotatug_nsclc_g1",
     "code": "G1",
     "name": "Launch Strategy Approved",
     "baselineDate": "2024-04-06",
@@ -818,14 +818,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "phase": {
       "id": "seed_phase_p1"
     }
   },
   {
-    "id": "seed_gate_embotrap_iv_g2",
+    "id": "seed_gate_sigvotatug_nsclc_g2",
     "code": "G2",
     "name": "NPL Plan Approved",
     "baselineDate": "2024-09-05",
@@ -833,14 +833,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "phase": {
       "id": "seed_phase_p2"
     }
   },
   {
-    "id": "seed_gate_embotrap_iv_g3",
+    "id": "seed_gate_sigvotatug_nsclc_g3",
     "code": "G3",
     "name": "DS Released",
     "baselineDate": "2025-02-04",
@@ -848,14 +848,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "phase": {
       "id": "seed_phase_p3"
     }
   },
   {
-    "id": "seed_gate_embotrap_iv_g4",
+    "id": "seed_gate_sigvotatug_nsclc_g4",
     "code": "G4",
     "name": "DP Released",
     "baselineDate": "2025-07-06",
@@ -863,14 +863,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "phase": {
       "id": "seed_phase_p4"
     }
   },
   {
-    "id": "seed_gate_embotrap_iv_g5",
+    "id": "seed_gate_sigvotatug_nsclc_g5",
     "code": "G5",
     "name": "Finished Product Released",
     "baselineDate": "2025-12-05",
@@ -878,14 +878,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "phase": {
       "id": "seed_phase_p5"
     }
   },
   {
-    "id": "seed_gate_embotrap_iv_g6",
+    "id": "seed_gate_sigvotatug_nsclc_g6",
     "code": "G6",
     "name": "Launch Readiness Confirmed",
     "baselineDate": "2026-05-06",
@@ -893,14 +893,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "phase": {
       "id": "seed_phase_p6"
     }
   },
   {
-    "id": "seed_gate_embotrap_iv_g7",
+    "id": "seed_gate_sigvotatug_nsclc_g7",
     "code": "G7",
     "name": "Launch Go / No-Go",
     "baselineDate": "2026-10-05",
@@ -908,14 +908,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "phase": {
       "id": "seed_phase_p7"
     }
   },
   {
-    "id": "seed_gate_embotrap_iv_g8",
+    "id": "seed_gate_sigvotatug_nsclc_g8",
     "code": "G8",
     "name": "Commercial Availability",
     "baselineDate": "2027-03-06",
@@ -923,14 +923,14 @@
     "slipDays": 9,
     "status": "rk",
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "phase": {
       "id": "seed_phase_p8"
     }
   },
   {
-    "id": "seed_gate_embotrap_iv_bau",
+    "id": "seed_gate_sigvotatug_nsclc_bau",
     "code": "BAU",
     "name": "BAU handover",
     "baselineDate": "2027-08-05",
@@ -938,14 +938,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "phase": {
       "id": "seed_phase_p9"
     }
   },
   {
-    "id": "seed_gate_ottava_g1",
+    "id": "seed_gate_pf3945_obesity_g1",
     "code": "G1",
     "name": "Launch Strategy Approved",
     "baselineDate": "2026-02-07",
@@ -953,14 +953,14 @@
     "slipDays": 0,
     "status": "run",
     "launch": {
-      "id": "seed_launch_ottava"
+      "id": "seed_launch_pf3945_obesity"
     },
     "phase": {
       "id": "seed_phase_p1"
     }
   },
   {
-    "id": "seed_gate_ottava_g2",
+    "id": "seed_gate_pf3945_obesity_g2",
     "code": "G2",
     "name": "NPL Plan Approved",
     "baselineDate": "2026-07-09",
@@ -968,14 +968,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_ottava"
+      "id": "seed_launch_pf3945_obesity"
     },
     "phase": {
       "id": "seed_phase_p2"
     }
   },
   {
-    "id": "seed_gate_ottava_g3",
+    "id": "seed_gate_pf3945_obesity_g3",
     "code": "G3",
     "name": "DS Released",
     "baselineDate": "2026-12-08",
@@ -983,14 +983,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_ottava"
+      "id": "seed_launch_pf3945_obesity"
     },
     "phase": {
       "id": "seed_phase_p3"
     }
   },
   {
-    "id": "seed_gate_ottava_g4",
+    "id": "seed_gate_pf3945_obesity_g4",
     "code": "G4",
     "name": "DP Released",
     "baselineDate": "2027-05-09",
@@ -998,14 +998,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_ottava"
+      "id": "seed_launch_pf3945_obesity"
     },
     "phase": {
       "id": "seed_phase_p4"
     }
   },
   {
-    "id": "seed_gate_ottava_g5",
+    "id": "seed_gate_pf3945_obesity_g5",
     "code": "G5",
     "name": "Finished Product Released",
     "baselineDate": "2027-10-08",
@@ -1013,14 +1013,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_ottava"
+      "id": "seed_launch_pf3945_obesity"
     },
     "phase": {
       "id": "seed_phase_p5"
     }
   },
   {
-    "id": "seed_gate_ottava_g6",
+    "id": "seed_gate_pf3945_obesity_g6",
     "code": "G6",
     "name": "Launch Readiness Confirmed",
     "baselineDate": "2028-03-08",
@@ -1028,14 +1028,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_ottava"
+      "id": "seed_launch_pf3945_obesity"
     },
     "phase": {
       "id": "seed_phase_p6"
     }
   },
   {
-    "id": "seed_gate_ottava_g7",
+    "id": "seed_gate_pf3945_obesity_g7",
     "code": "G7",
     "name": "Launch Go / No-Go",
     "baselineDate": "2028-08-07",
@@ -1043,14 +1043,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_ottava"
+      "id": "seed_launch_pf3945_obesity"
     },
     "phase": {
       "id": "seed_phase_p7"
     }
   },
   {
-    "id": "seed_gate_ottava_g8",
+    "id": "seed_gate_pf3945_obesity_g8",
     "code": "G8",
     "name": "Commercial Availability",
     "baselineDate": "2029-01-06",
@@ -1058,14 +1058,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_ottava"
+      "id": "seed_launch_pf3945_obesity"
     },
     "phase": {
       "id": "seed_phase_p8"
     }
   },
   {
-    "id": "seed_gate_ottava_bau",
+    "id": "seed_gate_pf3945_obesity_bau",
     "code": "BAU",
     "name": "BAU handover",
     "baselineDate": "2029-06-07",
@@ -1073,14 +1073,14 @@
     "slipDays": 0,
     "status": "no",
     "launch": {
-      "id": "seed_launch_ottava"
+      "id": "seed_launch_pf3945_obesity"
     },
     "phase": {
       "id": "seed_phase_p9"
     }
   },
   {
-    "id": "seed_gate_dualto_g1",
+    "id": "seed_gate_atirmociclib_mbc_g1",
     "code": "G1",
     "name": "Launch Strategy Approved",
     "baselineDate": "2023-10-14",
@@ -1088,14 +1088,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_dualto"
+      "id": "seed_launch_atirmociclib_mbc"
     },
     "phase": {
       "id": "seed_phase_p1"
     }
   },
   {
-    "id": "seed_gate_dualto_g2",
+    "id": "seed_gate_atirmociclib_mbc_g2",
     "code": "G2",
     "name": "NPL Plan Approved",
     "baselineDate": "2024-03-14",
@@ -1103,14 +1103,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_dualto"
+      "id": "seed_launch_atirmociclib_mbc"
     },
     "phase": {
       "id": "seed_phase_p2"
     }
   },
   {
-    "id": "seed_gate_dualto_g3",
+    "id": "seed_gate_atirmociclib_mbc_g3",
     "code": "G3",
     "name": "DS Released",
     "baselineDate": "2024-08-13",
@@ -1118,14 +1118,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_dualto"
+      "id": "seed_launch_atirmociclib_mbc"
     },
     "phase": {
       "id": "seed_phase_p3"
     }
   },
   {
-    "id": "seed_gate_dualto_g4",
+    "id": "seed_gate_atirmociclib_mbc_g4",
     "code": "G4",
     "name": "DP Released",
     "baselineDate": "2025-01-12",
@@ -1133,14 +1133,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_dualto"
+      "id": "seed_launch_atirmociclib_mbc"
     },
     "phase": {
       "id": "seed_phase_p4"
     }
   },
   {
-    "id": "seed_gate_dualto_g5",
+    "id": "seed_gate_atirmociclib_mbc_g5",
     "code": "G5",
     "name": "Finished Product Released",
     "baselineDate": "2025-06-13",
@@ -1148,14 +1148,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_dualto"
+      "id": "seed_launch_atirmociclib_mbc"
     },
     "phase": {
       "id": "seed_phase_p5"
     }
   },
   {
-    "id": "seed_gate_dualto_g6",
+    "id": "seed_gate_atirmociclib_mbc_g6",
     "code": "G6",
     "name": "Launch Readiness Confirmed",
     "baselineDate": "2025-11-12",
@@ -1163,14 +1163,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_dualto"
+      "id": "seed_launch_atirmociclib_mbc"
     },
     "phase": {
       "id": "seed_phase_p6"
     }
   },
   {
-    "id": "seed_gate_dualto_g7",
+    "id": "seed_gate_atirmociclib_mbc_g7",
     "code": "G7",
     "name": "Launch Go / No-Go",
     "baselineDate": "2026-04-13",
@@ -1178,14 +1178,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_dualto"
+      "id": "seed_launch_atirmociclib_mbc"
     },
     "phase": {
       "id": "seed_phase_p7"
     }
   },
   {
-    "id": "seed_gate_dualto_g8",
+    "id": "seed_gate_atirmociclib_mbc_g8",
     "code": "G8",
     "name": "Commercial Availability",
     "baselineDate": "2026-09-12",
@@ -1193,14 +1193,14 @@
     "slipDays": 0,
     "status": "ok",
     "launch": {
-      "id": "seed_launch_dualto"
+      "id": "seed_launch_atirmociclib_mbc"
     },
     "phase": {
       "id": "seed_phase_p8"
     }
   },
   {
-    "id": "seed_gate_dualto_bau",
+    "id": "seed_gate_atirmociclib_mbc_bau",
     "code": "BAU",
     "name": "BAU handover",
     "baselineDate": "2027-02-11",
@@ -1208,7 +1208,7 @@
     "slipDays": 0,
     "status": "run",
     "launch": {
-      "id": "seed_launch_dualto"
+      "id": "seed_launch_atirmociclib_mbc"
     },
     "phase": {
       "id": "seed_phase_p9"

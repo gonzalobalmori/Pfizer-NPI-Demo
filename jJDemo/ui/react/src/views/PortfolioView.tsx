@@ -221,7 +221,7 @@ function ProductPane({ data, open }: { data: ProductLens; open: (id: string) => 
 
 function ProductRowView({ row, open }: { row: ProductRow; open: (id: string) => void }) {
   // Display tone. Normally the rollup health, but a launch that is "on plan" at
-  // the rollup yet has a slipping or late gate (e.g. Litfulo: ON_PLAN
+  // the rollup yet has a slipping or late gate (e.g. PF-08634404: ON_PLAN
   // rollup, G3 late +11d) must not read as on-plan grey/green — floor it to
   // amber so the icon, phase bar and gate dot all show the slip.
   const baseTone = healthTone(row.health);
@@ -249,7 +249,7 @@ function ProductRowView({ row, open }: { row: ProductRow; open: (id: string) => 
     slipTxt = `+${slipGate.slipDays}d`;
     slipSub = `vs ${fmtDate(slipGate.baselineDate)}`;
     // A positive gate slip is never "on plan" (grey): key off health, but floor
-    // at amber so e.g. Litfulo (+11d, ON_PLAN rollup) shows a slip tone.
+    // at amber so e.g. PF-08634404 (+11d, ON_PLAN rollup) shows a slip tone.
     const byHealth = slpClass(row.health);
     slipCls = byHealth === 'n' ? 'a' : byHealth;
   }
@@ -260,9 +260,9 @@ function ProductRowView({ row, open }: { row: ProductRow; open: (id: string) => 
         <SstIcon tone={tone} />
       </div>
       <div className="tk-c1">
-        <div className="lnm">{row.device}</div>
+        <div className="lnm">{row.product}</div>
         <div className="lmt">
-          {row.franchise} · {row.deviceClass} · {row.regulatoryRoute}
+          {row.franchise} · {row.modality} · {row.regulatoryRoute}
         </div>
       </div>
       <div className="trk">
@@ -702,7 +702,7 @@ function MarketPane({
           <div className="map-box">
             <div className="map-hd">
               <div className="map-eb">Global launch footprint</div>
-              <div className="map-ti">Where each device reaches first ship</div>
+              <div className="map-ti">Where each product reaches first ship</div>
             </div>
             <div
               ref={stageRef}
@@ -1083,7 +1083,7 @@ function BuLaunchView({ launch, open }: { launch: BuLaunch; open: (id: string) =
 
   return (
     <button className="bu-li" type="button" onClick={() => open(launch.launchId)}>
-      <span className="bu-ln">{launch.device}</span>
+      <span className="bu-ln">{launch.product}</span>
       <span className={`slp ${slpTone}`}>{slpTxt}</span>
       <span className="bu-lg">
         {launch.currentPhase && <i className="bu-lp">{launch.currentPhase}</i>}
@@ -1221,11 +1221,11 @@ function slipWidthPct(slipDays: number | null): number {
   return (months / 14) * 100;
 }
 
-/* Minimum on-axis width (%) for a drawn slip bar. A small slip (Elrexfio +9d ≈ 2%,
- * Litfulo +11d, Abrysvo +14d, Prevnar 20 +21d) is narrower than the gate marker itself
+/* Minimum on-axis width (%) for a drawn slip bar. A small slip (Sigvotatug +9d ≈ 2%,
+ * PF-08634404 +11d, Berobenatide T2D +14d, Berobenatide OSA +21d) is narrower than the gate marker itself
  * (~20-26px), so a to-scale bar hides entirely behind the forecast marker and the
  * delay reads as "no slip". Floor the DRAWN width so the baseline marker separates
- * from the forecast marker and the striped bar is visible; large slips (Comirnaty
+ * from the forecast marker and the striped bar is visible; large slips (Berobenatide OB
  * +47d ≈ 11%) already exceed this floor and stay to-scale. */
 const MIN_SLIP_BAR_PCT = 5;
 
@@ -1256,7 +1256,7 @@ function MarketTimelineRow({ mk }: { mk: MarketGate }) {
     ? monthPos(null) ?? 2
     : monthPos(mk.gateForecastDate) ?? quarterPos(mk.gateForecastQuarter);
   const slipW = markerCls && mk.slipDays && mk.slipDays > 0 ? slipWidthPct(mk.slipDays) : 0;
-  /* Floor the drawn bar so a small slip (e.g. Elrexfio +9d) is still visible and
+  /* Floor the drawn bar so a small slip (e.g. Sigvotatug +9d) is still visible and
      doesn't hide behind the forecast marker. */
   const geom = forePos != null && slipW > 0 ? slipBarGeom(slipW, forePos) : null;
   const basePos = geom ? geom.basePos : null;
@@ -1349,7 +1349,7 @@ function MilestoneRowView({ row, open }: { row: TimelineRow; open: (id: string) 
                 <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" /></svg>
               </span>
             ) : null}
-            {row.shortName ?? row.device}
+            {row.shortName ?? row.product}
           </div>
           <div className="lmt">{lmt}</div>
         </button>
@@ -1361,7 +1361,7 @@ function MilestoneRowView({ row, open }: { row: TimelineRow; open: (id: string) 
             const rawBasePos = monthPos(g.baselineDate);
             const forePos = monthPos(g.forecastDate);
             const slipped = (g.slipDays ?? 0) > 0 && rawBasePos != null && forePos != null;
-            /* Floor the drawn bar so a small lead slip (e.g. Elrexfio G5 +9d) is
+            /* Floor the drawn bar so a small lead slip (e.g. Sigvotatug G5 +9d) is
                still visible instead of hiding behind the forecast marker. The base
                marker is drawn at the same floored position so the two align. */
             const geom = slipped ? slipBarGeom((forePos as number) - (rawBasePos as number), forePos as number) : null;

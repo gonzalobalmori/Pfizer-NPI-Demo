@@ -7,7 +7,7 @@
       "id": "seed_site_puurs"
     },
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "operation": "FILL_FINISH",
     "presentation": "6-dose multi-dose vial",
@@ -27,7 +27,7 @@
       "id": "seed_site_puurs"
     },
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "operation": "FILL_FINISH",
     "presentation": "1-dose prefilled syringe",
@@ -47,7 +47,7 @@
       "id": "seed_supplier_baxter"
     },
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "operation": "FILL_FINISH",
     "presentation": "6-dose multi-dose vial",
@@ -67,7 +67,7 @@
       "id": "seed_site_puurs"
     },
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "operation": "PACKAGING",
     "presentation": "6-dose multi-dose vial",
@@ -87,7 +87,7 @@
       "id": "seed_supplier_thermofisher"
     },
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "operation": "PACKAGING",
     "presentation": "6-dose multi-dose vial",
@@ -108,7 +108,7 @@
       "id": "seed_site_kzo"
     },
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "operation": "FILL_FINISH",
     "presentation": "Lyophilised vial, 13mm stopper",

@@ -228,8 +228,8 @@
     "note": "weekly, arrives Sun 22:00 CET"
   },
   {
-    "id": "wm_portal_chamber",
-    "feedCode": "PORTAL_CHAMBER",
+    "id": "wm_portal_fillslot",
+    "feedCode": "PORTAL_FILLSLOT",
     "sourceSystem": "portal",
     "targetType": "trigger -> Quality-agent Finding (NPI-0417)",
     "lastWatermark": "20260911",

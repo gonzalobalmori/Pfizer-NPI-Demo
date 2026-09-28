@@ -92,7 +92,7 @@ export default function ChatView() {
   }, [load]);
 
   /* the guided tour resets the thread and asks a canned prompt by id — the
-     prototype's cqReset(); cqAsk('varipulse'). It always lands in Ask mode. */
+     prototype's cqReset(); cqAsk('berobenatide_obesity'). It always lands in Ask mode. */
   useEffect(() => {
     if (intent?.view !== 'chat' || !intent.chatAsk || !data) return;
     const p = data.prompts.find((x) => x.id.toLowerCase() === intent.chatAsk!.toLowerCase());

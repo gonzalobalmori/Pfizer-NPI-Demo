@@ -52,7 +52,7 @@ entity type PipelineOrchestrator {
 
   /**
    * Provenance for one loaded object. Given a target type and id (e.g. "Gate",
-   * "seed_gate_varipulse_g3"), returns its {@link LineageRecord} — feed, source
+   * "seed_gate_berobenatide_obesity_g3"), returns its {@link LineageRecord} — feed, source
    * file, source row key and transform — so the UI can walk "this number" back to
    * the exact source row (demo 1).
    */

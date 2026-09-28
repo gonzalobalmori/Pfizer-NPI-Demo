@@ -21,10 +21,10 @@
  */
 entity type FillBatch {
 
-  /** Seed key, e.g. {@code seed_batch_abrysvo_2601}. */
+  /** Seed key, e.g. {@code seed_batch_berobenatide_t2d_2601}. */
   id: !string
 
-  /** The GMP batch number as printed on the batch record, e.g. {@code ABR-26-0412}. */
+  /** The GMP batch number as printed on the batch record, e.g. {@code BER-26-0412}. */
   batchNo: !string
 
   /** The launch this batch was filled for. */

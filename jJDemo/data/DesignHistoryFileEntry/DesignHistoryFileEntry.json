@@ -1,46 +1,46 @@
 [
   {
-    "id": "seed_dhf_varipulse_1",
+    "id": "seed_dhf_berobenatide_obesity_1",
     "entryAt": "2024-04-12T00:00:00",
     "actor": "R&D",
     "action": "CTD dossier opened",
     "recordRef": "CTD-0720",
     "immutable": true,
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     }
   },
   {
-    "id": "seed_dhf_varipulse_2",
+    "id": "seed_dhf_berobenatide_obesity_2",
     "entryAt": "2026-06-19T00:00:00",
     "actor": "Governance",
     "action": "G2 CMC Lock closed — BOM frozen, 6/6 criteria met",
     "recordRef": "G2",
     "immutable": true,
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     }
   },
   {
-    "id": "seed_dhf_varipulse_3",
+    "id": "seed_dhf_berobenatide_obesity_3",
     "entryAt": "2026-09-11T06:05:00",
     "actor": "Quality agent",
     "action": "CAPA-2026-0148 opened against supplier-managed fill-finish fill-finish",
     "recordRef": "CAPA-2026-0148",
     "immutable": true,
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     }
   },
   {
-    "id": "seed_dhf_varipulse_4",
+    "id": "seed_dhf_berobenatide_obesity_4",
     "entryAt": "2026-09-11T08:23:00",
     "actor": "Orchestrator",
     "action": "NPI-0417 routed to a human — €18.4M exposed and a gate date moves",
     "recordRef": "NPI-0417",
     "immutable": true,
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     }
   }
 ]

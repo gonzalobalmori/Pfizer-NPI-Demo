@@ -1,473 +1,473 @@
 [
   {
-    "id": "seed_gc_varipulse_g4_1",
+    "id": "seed_gc_berobenatide_obesity_g4_1",
     "name": "DP demand forecast approved",
     "met": true,
     "gate": {
-      "id": "seed_gate_varipulse_g4"
+      "id": "seed_gate_berobenatide_obesity_g4"
     }
   },
   {
-    "id": "seed_gc_varipulse_g4_2",
+    "id": "seed_gc_berobenatide_obesity_g4_2",
     "name": "Packaging components ready",
     "met": true,
     "gate": {
-      "id": "seed_gate_varipulse_g4"
+      "id": "seed_gate_berobenatide_obesity_g4"
     }
   },
   {
-    "id": "seed_gc_varipulse_g4_3",
+    "id": "seed_gc_berobenatide_obesity_g4_3",
     "name": "Manufacturing scheduled",
     "met": true,
     "gate": {
-      "id": "seed_gate_varipulse_g4"
+      "id": "seed_gate_berobenatide_obesity_g4"
     }
   },
   {
-    "id": "seed_gc_varipulse_g4_4",
+    "id": "seed_gc_berobenatide_obesity_g4_4",
     "name": "DP manufactured",
     "met": true,
     "gate": {
-      "id": "seed_gate_varipulse_g4"
+      "id": "seed_gate_berobenatide_obesity_g4"
     }
   },
   {
-    "id": "seed_gc_varipulse_g4_5",
+    "id": "seed_gc_berobenatide_obesity_g4_5",
     "name": "DP released",
     "met": true,
     "gate": {
-      "id": "seed_gate_varipulse_g4"
+      "id": "seed_gate_berobenatide_obesity_g4"
     }
   },
   {
-    "id": "seed_gc_varipulse_g4_6",
+    "id": "seed_gc_berobenatide_obesity_g4_6",
     "name": "Transportation validated",
     "met": true,
     "gate": {
-      "id": "seed_gate_varipulse_g4"
+      "id": "seed_gate_berobenatide_obesity_g4"
     }
   },
   {
-    "id": "seed_gc_varipulse_g4_7",
+    "id": "seed_gc_berobenatide_obesity_g4_7",
     "name": "DP delivered to packaging site",
     "met": false,
     "gate": {
-      "id": "seed_gate_varipulse_g4"
+      "id": "seed_gate_berobenatide_obesity_g4"
     },
     "outstandingReason": "Delivery to the packaging site not yet scheduled"
   },
   {
-    "id": "seed_gc_octaray_g2_g2_1",
+    "id": "seed_gc_berobenatide_t2d_g2_1",
     "name": "NPL created in the NPL Data Repository",
     "met": true,
     "gate": {
-      "id": "seed_gate_octaray_g2_g2"
+      "id": "seed_gate_berobenatide_t2d_g2"
     }
   },
   {
-    "id": "seed_gc_octaray_g2_g2_2",
+    "id": "seed_gc_berobenatide_t2d_g2_2",
     "name": "Product Passport established",
     "met": true,
     "gate": {
-      "id": "seed_gate_octaray_g2_g2"
+      "id": "seed_gate_berobenatide_t2d_g2"
     }
   },
   {
-    "id": "seed_gc_octaray_g2_g2_3",
+    "id": "seed_gc_berobenatide_t2d_g2_3",
     "name": "Project plan created in DLPP",
     "met": true,
     "gate": {
-      "id": "seed_gate_octaray_g2_g2"
+      "id": "seed_gate_berobenatide_t2d_g2"
     }
   },
   {
-    "id": "seed_gc_octaray_g2_g2_4",
+    "id": "seed_gc_berobenatide_t2d_g2_4",
     "name": "Pfizer Connect programmes linked",
     "met": false,
     "gate": {
-      "id": "seed_gate_octaray_g2_g2"
+      "id": "seed_gate_berobenatide_t2d_g2"
     },
     "outstandingReason": "Programme links not yet confirmed"
   },
   {
-    "id": "seed_gc_octaray_g2_g2_5",
+    "id": "seed_gc_berobenatide_t2d_g2_5",
     "name": "Governance and milestones configured",
     "met": false,
     "gate": {
-      "id": "seed_gate_octaray_g2_g2"
+      "id": "seed_gate_berobenatide_t2d_g2"
     },
     "outstandingReason": "Milestone calendar pending sign-off"
   },
   {
-    "id": "seed_gc_octaray_g2_g2_6",
+    "id": "seed_gc_berobenatide_t2d_g2_6",
     "name": "Sourcing grid built",
     "met": false,
     "gate": {
-      "id": "seed_gate_octaray_g2_g2"
+      "id": "seed_gate_berobenatide_t2d_g2"
     },
     "outstandingReason": "Sourcing grid missing secondary packaging lanes"
   },
   {
-    "id": "seed_gc_puresee_g3_1",
+    "id": "seed_gc_pf08634404_crc_g3_1",
     "name": "DS demand forecast approved",
     "met": true,
     "gate": {
-      "id": "seed_gate_puresee_g3"
+      "id": "seed_gate_pf08634404_crc_g3"
     }
   },
   {
-    "id": "seed_gc_puresee_g3_2",
+    "id": "seed_gc_pf08634404_crc_g3_2",
     "name": "BOM and standard cost complete",
     "met": true,
     "gate": {
-      "id": "seed_gate_puresee_g3"
+      "id": "seed_gate_pf08634404_crc_g3"
     }
   },
   {
-    "id": "seed_gc_puresee_g3_3",
+    "id": "seed_gc_pf08634404_crc_g3_3",
     "name": "DS manufacturing approved",
     "met": true,
     "gate": {
-      "id": "seed_gate_puresee_g3"
+      "id": "seed_gate_pf08634404_crc_g3"
     }
   },
   {
-    "id": "seed_gc_puresee_g3_4",
+    "id": "seed_gc_pf08634404_crc_g3_4",
     "name": "Raw material procurement complete",
     "met": false,
     "gate": {
-      "id": "seed_gate_puresee_g3"
+      "id": "seed_gate_pf08634404_crc_g3"
     },
     "outstandingReason": "One long-lead raw material still open"
   },
   {
-    "id": "seed_gc_puresee_g3_5",
+    "id": "seed_gc_pf08634404_crc_g3_5",
     "name": "DS manufactured",
     "met": false,
     "gate": {
-      "id": "seed_gate_puresee_g3"
+      "id": "seed_gate_pf08634404_crc_g3"
     },
     "outstandingReason": "API campaign not yet complete"
   },
   {
-    "id": "seed_gc_puresee_g3_6",
+    "id": "seed_gc_pf08634404_crc_g3_6",
     "name": "DS released",
     "met": false,
     "gate": {
-      "id": "seed_gate_puresee_g3"
+      "id": "seed_gate_pf08634404_crc_g3"
     },
     "outstandingReason": "Quality review open on the API campaign"
   },
   {
-    "id": "seed_gc_puresee_g3_7",
+    "id": "seed_gc_pf08634404_crc_g3_7",
     "name": "DS received at DP site",
     "met": false,
     "gate": {
-      "id": "seed_gate_puresee_g3"
+      "id": "seed_gate_pf08634404_crc_g3"
     },
     "outstandingReason": "Shipment to the DP site not yet booked"
   },
   {
-    "id": "seed_gc_impella_ecp_g5_1",
+    "id": "seed_gc_met097_obesity_g5_1",
     "name": "Artwork approved",
     "met": true,
     "gate": {
-      "id": "seed_gate_impella_ecp_g5"
+      "id": "seed_gate_met097_obesity_g5"
     }
   },
   {
-    "id": "seed_gc_impella_ecp_g5_2",
+    "id": "seed_gc_met097_obesity_g5_2",
     "name": "Labelling approved",
     "met": true,
     "gate": {
-      "id": "seed_gate_impella_ecp_g5"
+      "id": "seed_gate_met097_obesity_g5"
     }
   },
   {
-    "id": "seed_gc_impella_ecp_g5_3",
+    "id": "seed_gc_met097_obesity_g5_3",
     "name": "Printed components released",
     "met": true,
     "gate": {
-      "id": "seed_gate_impella_ecp_g5"
+      "id": "seed_gate_met097_obesity_g5"
     }
   },
   {
-    "id": "seed_gc_impella_ecp_g5_4",
+    "id": "seed_gc_met097_obesity_g5_4",
     "name": "Packaging complete",
     "met": true,
     "gate": {
-      "id": "seed_gate_impella_ecp_g5"
+      "id": "seed_gate_met097_obesity_g5"
     }
   },
   {
-    "id": "seed_gc_impella_ecp_g5_5",
+    "id": "seed_gc_met097_obesity_g5_5",
     "name": "Serialisation ready",
     "met": false,
     "gate": {
-      "id": "seed_gate_impella_ecp_g5"
+      "id": "seed_gate_met097_obesity_g5"
     },
     "outstandingReason": "Serialisation master data not yet loaded"
   },
   {
-    "id": "seed_gc_impella_ecp_g5_6",
+    "id": "seed_gc_met097_obesity_g5_6",
     "name": "Finished product released",
     "met": false,
     "gate": {
-      "id": "seed_gate_impella_ecp_g5"
+      "id": "seed_gate_met097_obesity_g5"
     },
     "outstandingReason": "Quality approval pending packaging release"
   },
   {
-    "id": "seed_gc_impella_ecp_g5_7",
+    "id": "seed_gc_met097_obesity_g5_7",
     "name": "Transfer pricing complete",
     "met": false,
     "gate": {
-      "id": "seed_gate_impella_ecp_g5"
+      "id": "seed_gate_met097_obesity_g5"
     },
     "outstandingReason": "Transfer price not yet set for two affiliates"
   },
   {
-    "id": "seed_gc_ethicon_4000_g6_1",
+    "id": "seed_gc_berobenatide_osa_g6_1",
     "name": "Enterprise systems set up via Pfizer Connect",
     "met": true,
     "gate": {
-      "id": "seed_gate_ethicon_4000_g6"
+      "id": "seed_gate_berobenatide_osa_g6"
     }
   },
   {
-    "id": "seed_gc_ethicon_4000_g6_2",
+    "id": "seed_gc_berobenatide_osa_g6_2",
     "name": "Market readiness assessments complete",
     "met": true,
     "gate": {
-      "id": "seed_gate_ethicon_4000_g6"
+      "id": "seed_gate_berobenatide_osa_g6"
     }
   },
   {
-    "id": "seed_gc_ethicon_4000_g6_3",
+    "id": "seed_gc_berobenatide_osa_g6_3",
     "name": "Market approvals managed and tracked",
     "met": true,
     "gate": {
-      "id": "seed_gate_ethicon_4000_g6"
+      "id": "seed_gate_berobenatide_osa_g6"
     }
   },
   {
-    "id": "seed_gc_ethicon_4000_g6_4",
+    "id": "seed_gc_berobenatide_osa_g6_4",
     "name": "Product listings prepared",
     "met": false,
     "gate": {
-      "id": "seed_gate_ethicon_4000_g6"
+      "id": "seed_gate_berobenatide_osa_g6"
     },
     "outstandingReason": "Listing data incomplete for the wave-two markets"
   },
   {
-    "id": "seed_gc_ethicon_4000_g6_5",
+    "id": "seed_gc_berobenatide_osa_g6_5",
     "name": "Artwork samples submitted",
     "met": false,
     "gate": {
-      "id": "seed_gate_ethicon_4000_g6"
+      "id": "seed_gate_berobenatide_osa_g6"
     },
     "outstandingReason": "Sample submissions pending in two markets"
   },
   {
-    "id": "seed_gc_ethicon_4000_g6_6",
+    "id": "seed_gc_berobenatide_osa_g6_6",
     "name": "Distribution centre readiness confirmed",
     "met": false,
     "gate": {
-      "id": "seed_gate_ethicon_4000_g6"
+      "id": "seed_gate_berobenatide_osa_g6"
     },
     "outstandingReason": "DC readiness check not yet signed off"
   },
   {
-    "id": "seed_gc_javelin_xl_g7_1",
+    "id": "seed_gc_berobenatide_knee_oa_g7_1",
     "name": "Launch command centre governance live",
     "met": true,
     "gate": {
-      "id": "seed_gate_javelin_xl_g7"
+      "id": "seed_gate_berobenatide_knee_oa_g7"
     }
   },
   {
-    "id": "seed_gc_javelin_xl_g7_2",
+    "id": "seed_gc_berobenatide_knee_oa_g7_2",
     "name": "Site-to-site coordination confirmed",
     "met": true,
     "gate": {
-      "id": "seed_gate_javelin_xl_g7"
+      "id": "seed_gate_berobenatide_knee_oa_g7"
     }
   },
   {
-    "id": "seed_gc_javelin_xl_g7_3",
+    "id": "seed_gc_berobenatide_knee_oa_g7_3",
     "name": "Internal and external manufacturers aligned",
     "met": true,
     "gate": {
-      "id": "seed_gate_javelin_xl_g7"
+      "id": "seed_gate_berobenatide_knee_oa_g7"
     }
   },
   {
-    "id": "seed_gc_javelin_xl_g7_4",
+    "id": "seed_gc_berobenatide_knee_oa_g7_4",
     "name": "Supply allocation decisions taken",
     "met": true,
     "gate": {
-      "id": "seed_gate_javelin_xl_g7"
+      "id": "seed_gate_berobenatide_knee_oa_g7"
     }
   },
   {
-    "id": "seed_gc_javelin_xl_g7_5",
+    "id": "seed_gc_berobenatide_knee_oa_g7_5",
     "name": "Readiness milestones tracked green",
     "met": false,
     "gate": {
-      "id": "seed_gate_javelin_xl_g7"
+      "id": "seed_gate_berobenatide_knee_oa_g7"
     },
     "outstandingReason": "Two milestones remain amber"
   },
   {
-    "id": "seed_gc_javelin_xl_g7_6",
+    "id": "seed_gc_berobenatide_knee_oa_g7_6",
     "name": "Exceptions cleared",
     "met": false,
     "gate": {
-      "id": "seed_gate_javelin_xl_g7"
+      "id": "seed_gate_berobenatide_knee_oa_g7"
     },
     "outstandingReason": "One open exception awaiting a decision"
   },
   {
-    "id": "seed_gc_embotrap_iv_g8_1",
+    "id": "seed_gc_sigvotatug_nsclc_g8_1",
     "name": "Finished product shipped to DC",
     "met": true,
     "gate": {
-      "id": "seed_gate_embotrap_iv_g8"
+      "id": "seed_gate_sigvotatug_nsclc_g8"
     }
   },
   {
-    "id": "seed_gc_embotrap_iv_g8_2",
+    "id": "seed_gc_sigvotatug_nsclc_g8_2",
     "name": "Launch supplies received at DC",
     "met": true,
     "gate": {
-      "id": "seed_gate_embotrap_iv_g8"
+      "id": "seed_gate_sigvotatug_nsclc_g8"
     }
   },
   {
-    "id": "seed_gc_embotrap_iv_g8_3",
+    "id": "seed_gc_sigvotatug_nsclc_g8_3",
     "name": "Market ready to order",
     "met": true,
     "gate": {
-      "id": "seed_gate_embotrap_iv_g8"
+      "id": "seed_gate_sigvotatug_nsclc_g8"
     }
   },
   {
-    "id": "seed_gc_embotrap_iv_g8_4",
+    "id": "seed_gc_sigvotatug_nsclc_g8_4",
     "name": "Product listing activated",
     "met": true,
     "gate": {
-      "id": "seed_gate_embotrap_iv_g8"
+      "id": "seed_gate_sigvotatug_nsclc_g8"
     }
   },
   {
-    "id": "seed_gc_embotrap_iv_g8_5",
+    "id": "seed_gc_sigvotatug_nsclc_g8_5",
     "name": "First commercial shipment complete",
     "met": false,
     "gate": {
-      "id": "seed_gate_embotrap_iv_g8"
+      "id": "seed_gate_sigvotatug_nsclc_g8"
     },
     "outstandingReason": "First commercial order not yet shipped"
   },
   {
-    "id": "seed_gc_embotrap_iv_g8_6",
+    "id": "seed_gc_sigvotatug_nsclc_g8_6",
     "name": "Commercial availability achieved",
     "met": false,
     "gate": {
-      "id": "seed_gate_embotrap_iv_g8"
+      "id": "seed_gate_sigvotatug_nsclc_g8"
     },
     "outstandingReason": "Availability not yet confirmed in all wave-one markets"
   },
   {
-    "id": "seed_gc_ottava_g1_1",
+    "id": "seed_gc_pf3945_obesity_g1_1",
     "name": "Launch scope agreed (product / indication / market)",
     "met": true,
     "gate": {
-      "id": "seed_gate_ottava_g1"
+      "id": "seed_gate_pf3945_obesity_g1"
     }
   },
   {
-    "id": "seed_gc_ottava_g1_2",
+    "id": "seed_gc_pf3945_obesity_g1_2",
     "name": "Regulatory strategy approved",
     "met": false,
     "gate": {
-      "id": "seed_gate_ottava_g1"
+      "id": "seed_gate_pf3945_obesity_g1"
     },
     "outstandingReason": "Pathway pending a health-authority meeting"
   },
   {
-    "id": "seed_gc_ottava_g1_3",
+    "id": "seed_gc_pf3945_obesity_g1_3",
     "name": "Manufacturing and inventory strategy set",
     "met": false,
     "gate": {
-      "id": "seed_gate_ottava_g1"
+      "id": "seed_gate_pf3945_obesity_g1"
     },
     "outstandingReason": "Make-vs-buy decision outstanding"
   },
   {
-    "id": "seed_gc_ottava_g1_4",
+    "id": "seed_gc_pf3945_obesity_g1_4",
     "name": "Supply chain sourcing strategy defined",
     "met": false,
     "gate": {
-      "id": "seed_gate_ottava_g1"
+      "id": "seed_gate_pf3945_obesity_g1"
     },
     "outstandingReason": "Sourcing options still being costed"
   },
   {
-    "id": "seed_gc_ottava_g1_5",
+    "id": "seed_gc_pf3945_obesity_g1_5",
     "name": "Market prioritisation and wave plan agreed",
     "met": false,
     "gate": {
-      "id": "seed_gate_ottava_g1"
+      "id": "seed_gate_pf3945_obesity_g1"
     },
     "outstandingReason": "Wave sequencing under review with the affiliates"
   },
   {
-    "id": "seed_gc_ottava_g1_6",
+    "id": "seed_gc_pf3945_obesity_g1_6",
     "name": "Leadership endorsement recorded",
     "met": false,
     "gate": {
-      "id": "seed_gate_ottava_g1"
+      "id": "seed_gate_pf3945_obesity_g1"
     },
     "outstandingReason": "Endorsement pending the portfolio committee"
   },
   {
-    "id": "seed_gc_dualto_bau_1",
+    "id": "seed_gc_atirmociclib_mbc_bau_1",
     "name": "Launch KPI monitoring live",
     "met": true,
     "gate": {
-      "id": "seed_gate_dualto_bau"
+      "id": "seed_gate_atirmociclib_mbc_bau"
     }
   },
   {
-    "id": "seed_gc_dualto_bau_2",
+    "id": "seed_gc_atirmociclib_mbc_bau_2",
     "name": "Inventory health tracking active",
     "met": true,
     "gate": {
-      "id": "seed_gate_dualto_bau"
+      "id": "seed_gate_atirmociclib_mbc_bau"
     }
   },
   {
-    "id": "seed_gc_dualto_bau_3",
+    "id": "seed_gc_atirmociclib_mbc_bau_3",
     "name": "Supply continuity review complete",
     "met": true,
     "gate": {
-      "id": "seed_gate_dualto_bau"
+      "id": "seed_gate_atirmociclib_mbc_bau"
     }
   },
   {
-    "id": "seed_gc_dualto_bau_4",
+    "id": "seed_gc_atirmociclib_mbc_bau_4",
     "name": "Lessons learned captured",
     "met": true,
     "gate": {
-      "id": "seed_gate_dualto_bau"
+      "id": "seed_gate_atirmociclib_mbc_bau"
     }
   },
   {
-    "id": "seed_gc_dualto_bau_5",
+    "id": "seed_gc_atirmociclib_mbc_bau_5",
     "name": "Playbook updated",
     "met": false,
     "gate": {
-      "id": "seed_gate_dualto_bau"
+      "id": "seed_gate_atirmociclib_mbc_bau"
     },
     "outstandingReason": "Playbook revision outstanding"
   }

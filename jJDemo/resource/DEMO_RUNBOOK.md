@@ -19,21 +19,23 @@ or replay it through the app. The three demos are independent — run any subset
 **Proves:** every figure on screen has provenance — it traces to one row in one
 file from one source system.
 
-1. **Open the app** on the cockpit. Point at Comirnaty G3: **"+47 days slip"**.
+1. **Open the app** on the cockpit. Point at Berobenatide OB G4 (DP Released):
+   **"+47 days slip"**.
    Say: *"This number drives the whole escalation. Where does it come from?"*
 2. **Run the lineage lookup:**
    ```javascript
-   PipelineOrchestrator.lineageFor('Gate', 'seed_gate_varipulse_g3')
+   PipelineOrchestrator.lineageFor('Gate', 'seed_gate_berobenatide_obesity_g4')
    ```
    **Expected:**
    ```
    feedCode:     PPM_GATE
    sourceFile:   ppm/PPM_GATE_20260911.csv
-   sourceRowKey: G-Comirnaty_G3
+   sourceRowKey: G-BEROBENATIDE_OBESITY_G4
    transform:    SrcPpmGate-Gate
    ```
 3. **Open that source file** (`jJDemo/sources/ppm/PPM_GATE_20260911.csv`) and find
-   the `G-Comirnaty_G3` row — the 47 is right there in the `SlipDays` column.
+   the `G-BEROBENATIDE_OBESITY_G4` row — the 47 is right there in the `SlipDays`
+   column.
 
 **Say:** *"The '+47 days' isn't a slide. It traces to one row in the Planisware
 gate extract, through one named transform, into one object the UI reads."*
@@ -47,14 +49,14 @@ app changes, with no code edit.
 
 1. **Show the baseline:**
    ```javascript
-   Gate.fetch({filter:"id=='seed_gate_varipulse_g3'"}).objs[0]
+   Gate.fetch({filter:"id=='seed_gate_berobenatide_obesity_g4'"}).objs[0]
    ```
-   Note **slip 47 / forecast 2026-12-21**.
+   Note **slip 47 / forecast 2026-07-11**.
 2. **Write an edited extract into the feed inbox** (the same file, one row changed
-   from 47/21-Dec to **9/13-Nov**):
+   from 47/11-Jul to **9/03-Jun**):
    ```javascript
    var header = 'GateId,ProjectId,GateCode,GateName,BaselineDate,ForecastDate,SlipDays,Status';
-   var row = 'G-Comirnaty_G3,PRJ-Comirnaty-G2,G3,Design Verification Complete,2026-11-04,2026-11-13,9,late';
+   var row = 'G-BEROBENATIDE_OBESITY_G4,PRJ-BERO_OB,G4,DP Released,2026-05-25,2026-06-03,9,late';
    var coll = FileSourceCollection.forName('PpmGateFeed');
    var inbox = coll.inboxUrl();
    FileSystem.makeFile(inbox + 'PPM_GATE_DEMO2.csv').writeString(header + '\n' + row + '\n');
@@ -62,9 +64,9 @@ app changes, with no code edit.
    ```
 3. **Wait a few seconds, then re-read the gate:**
    ```javascript
-   Gate.fetch({filter:"id=='seed_gate_varipulse_g3'"}).objs[0]
+   Gate.fetch({filter:"id=='seed_gate_berobenatide_obesity_g4'"}).objs[0]
    ```
-   **Expected: slip 9 / forecast 2026-11-13** — the SAME row updated, no duplicate.
+   **Expected: slip 9 / forecast 2026-06-03** — the SAME row updated, no duplicate.
 4. **Refresh the app** — the cockpit now shows +9 days.
 
 **Say:** *"I changed a source file, not code. The pipeline matched it to the same
@@ -72,8 +74,8 @@ gate by its business key and updated it. Every screen downstream moved with it."
 
 **Reset after the demo** (so the escalation story is back to baseline):
 ```javascript
-var g = Gate.fetch({filter:"id=='seed_gate_varipulse_g3'"}).objs[0];
-g.withField('slipDays', 47).withField('forecastDate', DateTime.fromString('2026-12-21T00:00:00')).merge();
+var g = Gate.fetch({filter:"id=='seed_gate_berobenatide_obesity_g4'"}).objs[0];
+g.withField('slipDays', 47).withField('forecastDate', DateTime.fromString('2026-07-11T00:00:00')).merge();
 try { SourceFile.remove(SourceFile.make({id:'PpmGateFeed_PPM_GATE_DEMO2.csv'})); } catch(e) {}
 ```
 
@@ -94,7 +96,7 @@ it shows enforcement and the 80/20 handling the client asked about.)*
 2. **Show the raw feed** (`jJDemo/sources/sap/SAP_LFA1_VENDOR_20260911.csv`). Point
    out two planted problems:
    - Line 3: vendor `0001007988 ` — **trailing space** in the key.
-   - Lines 5 & 58: vendor `0001009003` (BSI) — **the same row twice**.
+   - Lines 5 & 58: vendor `0001009003` (Eurofins) — **the same row twice**.
 3. **Run the admission gate:**
    ```javascript
    DataQualityCheck.supplierAdmissionGate()
@@ -104,8 +106,8 @@ it shows enforcement and the 80/20 handling the client asked about.)*
    status:            GATED
    rowsChecked:       57
    admittedCount:     55
-   cleansedCount:     1     -> Sterigenics: trimmed whitespace from key "0001007988 "
-   quarantinedCount:  1     -> BSI: duplicate of an already-admitted vendor (would double-count)
+   cleansedCount:     1     -> Siegfried: trimmed whitespace from key "0001007988 "
+   quarantinedCount:  1     -> Eurofins: duplicate of an already-admitted vendor (would double-count)
    admittedRate:      98.2
    ```
 4. **Walk the three buckets.** Every one of the 57 rows landed in exactly one:

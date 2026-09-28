@@ -57,7 +57,7 @@ function plain(v) {
  */
 var GOVERNED = {
   Launch: {
-    fields: ['id', 'deviceName', 'shortName', 'healthStatus', 'revenueAtRisk', 'firstShipDate',
+    fields: ['id', 'productName', 'shortName', 'healthStatus', 'revenueAtRisk', 'firstShipDate',
              'readinessPct', 'scheduleFloatDays', 'launchValue', 'launchBuildUnits',
              'registrationsFiled', 'registrationsTotal'],
     refs: ['currentPhase', 'leadMarket', 'franchise'],

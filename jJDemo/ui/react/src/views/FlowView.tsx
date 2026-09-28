@@ -147,7 +147,7 @@ export default function FlowView() {
     <div className="view on" id="v-flow">
       <div className="ld-top">
         <button className="bk" type="button" onClick={() => open('portfolio')}><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7" /></svg><span className="bk-lbl">Back</span></button>
-        <div><div className="ld-n">{o.device}</div>
+        <div><div className="ld-n">{o.product}</div>
           <div className="ld-s">{total} activities &middot; {columns.length} phases &middot; {gateCount} gates</div></div>
         <div className="h-sp"></div>
       </div>

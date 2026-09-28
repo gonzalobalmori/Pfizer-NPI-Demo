@@ -5,7 +5,7 @@
     "name": "2mL Type I borosilicate multi-dose vial",
     "componentClass": "PRIMARY",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "presentation": "6-dose multi-dose vial",
     "supplier": {
@@ -27,7 +27,7 @@
     "name": "13mm chlorobutyl serum stopper",
     "componentClass": "PRIMARY",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "presentation": "6-dose multi-dose vial",
     "supplier": {
@@ -49,7 +49,7 @@
     "name": "1mL long prefillable glass syringe, staked needle",
     "componentClass": "PRIMARY",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "presentation": "1-dose prefilled syringe",
     "supplier": {
@@ -71,7 +71,7 @@
     "name": "1mL PFS plunger stopper, FluroTec-coated",
     "componentClass": "PRIMARY",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "presentation": "1-dose prefilled syringe",
     "supplier": {
@@ -93,7 +93,7 @@
     "name": "German-language 6-dose carton",
     "componentClass": "SECONDARY",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "presentation": "6-dose multi-dose vial",
     "supplier": {
@@ -115,7 +115,7 @@
     "name": "Ultra-cold shipper, medium",
     "componentClass": "COLD_CHAIN",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "presentation": "6-dose multi-dose vial",
     "supplier": {
@@ -137,7 +137,7 @@
     "name": "13mm FluroTec-coated lyophilisation stopper",
     "componentClass": "PRIMARY",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "presentation": "Lyophilised vial, 13mm stopper",
     "supplier": {

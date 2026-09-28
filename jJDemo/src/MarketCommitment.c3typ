@@ -20,7 +20,7 @@
  */
 entity type MarketCommitment {
 
-  /** Seed key, e.g. {@code seed_mcom_abrysvo_us}. */
+  /** Seed key, e.g. {@code seed_mcom_berobenatide_t2d_us}. */
   id: !string
 
   /** The launch making the promise. */

@@ -1,24 +1,24 @@
 [
   {
-    "id": "seed_contract_steris_73",
+    "id": "seed_contract_vetter_73",
     "clauseRef": "Master agreement clause 7.3",
     "capacityCommitment": "NON_COMMITTED",
     "noticePeriodDays": 30,
     "penaltyAvailable": false,
     "summary": "Non-committed capacity reservation, reallocable on 30 days notice, no claim and no penalty — the root cause of NPI-0417.",
     "supplier": {
-      "id": "seed_supplier_steris"
+      "id": "seed_supplier_vetter"
     }
   },
   {
-    "id": "seed_contract_sterigenics_committed",
+    "id": "seed_contract_siegfried_committed",
     "clauseRef": "Proposed committed-capacity clause",
     "capacityCommitment": "COMMITTED",
     "noticePeriodDays": 90,
     "penaltyAvailable": true,
     "summary": "Corrective action: replace the non-committed reservation with committed capacity at a permanently qualified second source.",
     "supplier": {
-      "id": "seed_supplier_sterigenics"
+      "id": "seed_supplier_siegfried"
     }
   }
 ]

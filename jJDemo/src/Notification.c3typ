@@ -14,7 +14,7 @@ entity type Notification {
   /** When it was sent. Set by the approve transaction. */
   sentAt: datetime
 
-  /** Subject line, e.g. "Option A approved — half-cycle revalidation protocol to draft". */
+  /** Subject line, e.g. "Option A approved — bracketed revalidation protocol to draft". */
   subject: string
 
   /** The decision this notification belongs to. */

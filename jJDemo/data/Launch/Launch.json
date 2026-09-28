@@ -1,13 +1,19 @@
 [
   {
-    "id": "seed_launch_varipulse_g2",
-    "deviceName": "Comirnaty 2026–27 Formula",
-    "shortName": "Comirnaty",
+    "id": "seed_launch_berobenatide_obesity",
+    "productName": "Berobenatide — Obesity",
+    "shortName": "Berobenatide OB",
+    "molecule": "Berobenatide",
+    "indication": "Obesity",
     "franchise": {
-      "id": "seed_franchise_biosense"
+      "id": "seed_franchise_internal_medicine"
     },
-    "deviceClass": "Vaccine — mRNA",
-    "regulatoryRoute": "BLA supplement (FDA) + Art. 17 annual update (EMA)",
+    "modality": "Monthly GLP-1 receptor agonist",
+    "developmentPhase": "Phase 3",
+    "trialCount": 10,
+    "estimatedLaunch": "~2028",
+    "targetMarkets": "US, EU, Global",
+    "regulatoryRoute": "NDA (FDA) + MAA centralised procedure (EMA)",
     "leadMarket": {
       "id": "seed_market_de"
     },
@@ -16,10 +22,10 @@
     },
     "healthStatus": "OFF_TRACK",
     "revenueAtRisk": 21200000,
-    "firstShipDate": "2027-06-29",
+    "firstShipDate": "2028-06-29",
     "readinessPct": 83,
     "launchValue": 96000000,
-    "sterilisationMethod": "Aseptic fill",
+    "fillFinishRoute": "Aseptic fill — prefilled syringe",
     "manufactureSite": "Puurs + Vetter Ravensburg",
     "registrationsFiled": 11,
     "registrationsTotal": 14,
@@ -30,14 +36,20 @@
     "vacApprovalsTotal": 22
   },
   {
-    "id": "seed_launch_octaray_g2",
-    "deviceName": "Abrysvo Maternal Indication Expansion",
-    "shortName": "Abrysvo",
+    "id": "seed_launch_berobenatide_t2d",
+    "productName": "Berobenatide — Type 2 Diabetes",
+    "shortName": "Berobenatide T2D",
+    "molecule": "Berobenatide",
+    "indication": "Type 2 diabetes",
     "franchise": {
-      "id": "seed_franchise_biosense"
+      "id": "seed_franchise_internal_medicine"
     },
-    "deviceClass": "Vaccine — bivalent RSVpreF",
-    "regulatoryRoute": "BLA efficacy supplement (FDA) + Type II variation (EMA)",
+    "modality": "Monthly GLP-1 receptor agonist",
+    "developmentPhase": "Phase 3",
+    "trialCount": 10,
+    "estimatedLaunch": "~2028",
+    "targetMarkets": "US, EU, Global",
+    "regulatoryRoute": "NDA (FDA) + MAA centralised procedure (EMA)",
     "leadMarket": {
       "id": "seed_market_de"
     },
@@ -46,10 +58,10 @@
     },
     "healthStatus": "AT_RISK",
     "revenueAtRisk": 6200000,
-    "firstShipDate": "2027-07-15",
-    "readinessPct": 86,
+    "firstShipDate": "2028-03-31",
+    "readinessPct": 46,
     "launchValue": 54000000,
-    "sterilisationMethod": "Aseptic fill",
+    "fillFinishRoute": "Aseptic fill — prefilled syringe",
     "manufactureSite": "Puurs",
     "registrationsFiled": 3,
     "registrationsTotal": 12,
@@ -60,73 +72,55 @@
     "vacApprovalsTotal": 18
   },
   {
-    "id": "seed_launch_embotrap_iv",
-    "deviceName": "Hympavzi Paediatric Extension",
+    "id": "seed_launch_berobenatide_osa",
+    "productName": "Berobenatide — Obstructive Sleep Apnoea",
+    "shortName": "Berobenatide OSA",
+    "molecule": "Berobenatide",
+    "indication": "Obstructive sleep apnoea",
     "franchise": {
-      "id": "seed_franchise_cerenovus"
+      "id": "seed_franchise_internal_medicine"
     },
-    "deviceClass": "Rare disease — anti-TFPI mAb",
-    "regulatoryRoute": "BLA supplement (FDA) + Type II variation (EMA)",
-    "leadMarket": {
-      "id": "seed_market_de"
-    },
-    "currentPhase": {
-      "id": "seed_phase_p8"
-    },
-    "healthStatus": "AT_RISK",
-    "revenueAtRisk": 3100000,
-    "firstShipDate": "2026-09-26",
-    "readinessPct": 67,
-    "launchValue": 41000000,
-    "sterilisationMethod": "Lyophilised",
-    "manufactureSite": "Grange Castle",
-    "registrationsFiled": 9,
-    "registrationsTotal": 11,
-    "launchBuildUnits": 6800,
-    "fieldForceCertified": 44,
-    "fieldForceTotal": 52,
-    "vacApprovalsFiled": 12,
-    "vacApprovalsTotal": 19,
-    "shortName": "Hympavzi"
-  },
-  {
-    "id": "seed_launch_impella_ecp",
-    "deviceName": "Cibinqo Adolescent Indication",
-    "franchise": {
-      "id": "seed_franchise_abiomed"
-    },
-    "deviceClass": "Immunology — JAK1 inhibitor",
+    "modality": "Monthly GLP-1 receptor agonist",
+    "developmentPhase": "Phase 3",
+    "trialCount": 10,
+    "estimatedLaunch": "~2028",
+    "targetMarkets": "US, EU",
     "regulatoryRoute": "NDA supplement (FDA) + Type II variation (EMA)",
     "leadMarket": {
       "id": "seed_market_us"
     },
     "currentPhase": {
-      "id": "seed_phase_p5"
+      "id": "seed_phase_p6"
     },
-    "healthStatus": "ON_PLAN",
-    "revenueAtRisk": 0,
-    "firstShipDate": "2027-12-15",
-    "readinessPct": 92,
-    "scheduleFloatDays": 31,
-    "launchValue": 120000000,
-    "sterilisationMethod": "Aseptic fill",
-    "manufactureSite": "Kalamazoo (KZO)",
-    "registrationsFiled": 2,
-    "registrationsTotal": 6,
-    "launchBuildUnits": 900,
-    "fieldForceCertified": 18,
-    "fieldForceTotal": 70,
-    "vacApprovalsFiled": 2,
-    "vacApprovalsTotal": 15,
-    "shortName": "Cibinqo"
+    "healthStatus": "AT_RISK",
+    "revenueAtRisk": 7800000,
+    "firstShipDate": "2028-06-30",
+    "readinessPct": 57,
+    "launchValue": 76000000,
+    "fillFinishRoute": "Aseptic fill — prefilled syringe",
+    "manufactureSite": "Puurs + Baxter Halle",
+    "registrationsFiled": 6,
+    "registrationsTotal": 12,
+    "launchBuildUnits": 3100,
+    "fieldForceCertified": 31,
+    "fieldForceTotal": 84,
+    "vacApprovalsFiled": 5,
+    "vacApprovalsTotal": 24
   },
   {
-    "id": "seed_launch_javelin_xl",
-    "deviceName": "Velsipity Line Extension",
+    "id": "seed_launch_berobenatide_knee_oa",
+    "productName": "Berobenatide — Knee Osteoarthritis",
+    "shortName": "Berobenatide OA",
+    "molecule": "Berobenatide",
+    "indication": "Knee osteoarthritis",
     "franchise": {
-      "id": "seed_franchise_shockwave"
+      "id": "seed_franchise_internal_medicine"
     },
-    "deviceClass": "Internal medicine — S1P modulator",
+    "modality": "Monthly GLP-1 receptor agonist",
+    "developmentPhase": "Phase 3",
+    "trialCount": 10,
+    "estimatedLaunch": "~2028",
+    "targetMarkets": "US, EU",
     "regulatoryRoute": "NDA supplement (FDA) + Type II variation (EMA)",
     "leadMarket": {
       "id": "seed_market_us"
@@ -136,59 +130,107 @@
     },
     "healthStatus": "ON_PLAN",
     "revenueAtRisk": 0,
-    "firstShipDate": "2027-12-15",
-    "readinessPct": 88,
+    "firstShipDate": "2028-09-30",
+    "readinessPct": 74,
     "scheduleFloatDays": 18,
     "launchValue": 88000000,
-    "sterilisationMethod": "Aseptic fill",
-    "manufactureSite": "Freiburg",
+    "fillFinishRoute": "Aseptic fill — prefilled syringe",
+    "manufactureSite": "Puurs",
     "registrationsFiled": 7,
     "registrationsTotal": 9,
     "launchBuildUnits": 5200,
     "fieldForceCertified": 58,
     "fieldForceTotal": 66,
     "vacApprovalsFiled": 14,
-    "vacApprovalsTotal": 20,
-    "shortName": "Velsipity"
+    "vacApprovalsTotal": 20
   },
   {
-    "id": "seed_launch_ethicon_4000",
-    "deviceName": "Zavicefta Paediatric Launch",
+    "id": "seed_launch_met097_obesity",
+    "productName": "MET097 — Obesity",
+    "shortName": "MET097",
+    "molecule": "MET097",
+    "indication": "Obesity",
     "franchise": {
-      "id": "seed_franchise_ethicon"
+      "id": "seed_franchise_internal_medicine"
     },
-    "deviceClass": "Hospital — beta-lactam/BLI combination",
-    "regulatoryRoute": "Type II variation (EMA) + national tender filings",
+    "modality": "Monthly injectable GLP-1 receptor agonist",
+    "developmentPhase": "Phase 3",
+    "trialCount": 9,
+    "estimatedLaunch": "~2028",
+    "targetMarkets": "US, EU",
+    "regulatoryRoute": "NDA (FDA) + MAA centralised procedure (EMA)",
     "leadMarket": {
       "id": "seed_market_us"
     },
     "currentPhase": {
-      "id": "seed_phase_p6"
+      "id": "seed_phase_p5"
     },
-    "healthStatus": "AT_RISK",
-    "revenueAtRisk": 7800000,
-    "firstShipDate": "2027-03-15",
-    "readinessPct": 80,
-    "launchValue": 76000000,
-    "sterilisationMethod": "Terminal sterile",
-    "manufactureSite": "Freiburg + Baxter Halle",
-    "registrationsFiled": 6,
-    "registrationsTotal": 12,
-    "launchBuildUnits": 3100,
-    "fieldForceCertified": 31,
-    "fieldForceTotal": 84,
-    "vacApprovalsFiled": 5,
-    "vacApprovalsTotal": 24,
-    "shortName": "Zavicefta"
+    "healthStatus": "ON_PLAN",
+    "revenueAtRisk": 0,
+    "firstShipDate": "2028-09-30",
+    "readinessPct": 61,
+    "scheduleFloatDays": 31,
+    "launchValue": 120000000,
+    "fillFinishRoute": "Aseptic fill — prefilled syringe",
+    "manufactureSite": "Kalamazoo (KZO)",
+    "registrationsFiled": 2,
+    "registrationsTotal": 6,
+    "launchBuildUnits": 900,
+    "fieldForceCertified": 18,
+    "fieldForceTotal": 70,
+    "vacApprovalsFiled": 2,
+    "vacApprovalsTotal": 15
   },
   {
-    "id": "seed_launch_dualto",
-    "deviceName": "Fragmin Prefilled Syringe Refresh",
+    "id": "seed_launch_pf3945_obesity",
+    "productName": "PF-3945 — Obesity",
+    "shortName": "PF-3945",
+    "molecule": "PF-3945",
+    "indication": "Obesity",
     "franchise": {
-      "id": "seed_franchise_ethicon"
+      "id": "seed_franchise_internal_medicine"
     },
-    "deviceClass": "Hospital — low molecular weight heparin",
-    "regulatoryRoute": "Type IB variation (EMA)",
+    "modality": "Amylin analogue fixed-dose combination (with berobenatide)",
+    "developmentPhase": "Phase 2",
+    "estimatedLaunch": "Post-2028",
+    "targetMarkets": "US, EU",
+    "regulatoryRoute": "NDA (FDA) + MAA centralised procedure (EMA)",
+    "leadMarket": {
+      "id": "seed_market_us"
+    },
+    "currentPhase": {
+      "id": "seed_phase_p1"
+    },
+    "healthStatus": "PRE_MARKET",
+    "revenueAtRisk": 0,
+    "firstShipDate": "2029-03-31",
+    "readinessPct": 21,
+    "scheduleFloatDays": 24,
+    "launchValue": 210000000,
+    "fillFinishRoute": "Aseptic fill — prefilled pen",
+    "manufactureSite": "Puurs",
+    "registrationsFiled": 0,
+    "registrationsTotal": 8,
+    "launchBuildUnits": 0,
+    "fieldForceCertified": 0,
+    "fieldForceTotal": 90,
+    "vacApprovalsFiled": 0,
+    "vacApprovalsTotal": 30
+  },
+  {
+    "id": "seed_launch_atirmociclib_mbc",
+    "productName": "Atirmociclib — HR+/HER2− Metastatic Breast Cancer (1L)",
+    "shortName": "Atirmociclib",
+    "molecule": "Atirmociclib",
+    "indication": "HR+/HER2− metastatic breast cancer (first line)",
+    "franchise": {
+      "id": "seed_franchise_oncology"
+    },
+    "modality": "Selective CDK4 inhibitor",
+    "developmentPhase": "Late Phase 3",
+    "estimatedLaunch": "2027–2028",
+    "targetMarkets": "US, EU",
+    "regulatoryRoute": "NDA (FDA) + MAA centralised procedure (EMA)",
     "leadMarket": {
       "id": "seed_market_us"
     },
@@ -197,10 +239,10 @@
     },
     "healthStatus": "LAUNCHED",
     "revenueAtRisk": 0,
-    "firstShipDate": "2026-01-01",
-    "readinessPct": 100,
+    "firstShipDate": "2027-06-30",
+    "readinessPct": 96,
     "launchValue": 62000000,
-    "sterilisationMethod": "Oral solid dose",
+    "fillFinishRoute": "Oral solid dose — film-coated tablet",
     "manufactureSite": "Freiburg",
     "registrationsFiled": 9,
     "registrationsTotal": 9,
@@ -208,48 +250,58 @@
     "fieldForceCertified": 112,
     "fieldForceTotal": 112,
     "vacApprovalsFiled": 28,
-    "vacApprovalsTotal": 28,
-    "shortName": "Fragmin"
+    "vacApprovalsTotal": 28
   },
   {
-    "id": "seed_launch_ottava",
-    "deviceName": "Zavzpret EU Launch",
+    "id": "seed_launch_sigvotatug_nsclc",
+    "productName": "Sigvotatug vedotin — Metastatic NSCLC",
+    "shortName": "Sigvotatug",
+    "molecule": "Sigvotatug vedotin",
+    "indication": "Metastatic non-small cell lung cancer",
     "franchise": {
-      "id": "seed_franchise_digital_surgery"
+      "id": "seed_franchise_oncology"
     },
-    "deviceClass": "Neuroscience — CGRP antagonist nasal spray",
-    "regulatoryRoute": "MAA centralised procedure (EMA)",
+    "modality": "Antibody-drug conjugate (integrin β-6 targeted)",
+    "developmentPhase": "Late Phase 3",
+    "estimatedLaunch": "2027–2028",
+    "targetMarkets": "US, EU",
+    "regulatoryRoute": "BLA (FDA) + MAA centralised procedure (EMA)",
     "leadMarket": {
       "id": "seed_market_de"
     },
     "currentPhase": {
-      "id": "seed_phase_p1"
+      "id": "seed_phase_p8"
     },
-    "healthStatus": "PRE_MARKET",
-    "revenueAtRisk": 0,
-    "firstShipDate": "2027-06-30",
-    "readinessPct": 95,
-    "scheduleFloatDays": 24,
-    "launchValue": 210000000,
-    "sterilisationMethod": "Oral solid dose",
-    "manufactureSite": "Freiburg",
-    "registrationsFiled": 0,
-    "registrationsTotal": 8,
-    "launchBuildUnits": 0,
-    "fieldForceCertified": 0,
-    "fieldForceTotal": 90,
-    "vacApprovalsFiled": 0,
-    "vacApprovalsTotal": 30,
-    "shortName": "Zavzpret"
+    "healthStatus": "AT_RISK",
+    "revenueAtRisk": 3100000,
+    "firstShipDate": "2027-09-30",
+    "readinessPct": 69,
+    "launchValue": 41000000,
+    "fillFinishRoute": "Lyophilised — single-use vial",
+    "manufactureSite": "Grange Castle",
+    "registrationsFiled": 9,
+    "registrationsTotal": 11,
+    "launchBuildUnits": 6800,
+    "fieldForceCertified": 44,
+    "fieldForceTotal": 52,
+    "vacApprovalsFiled": 12,
+    "vacApprovalsTotal": 19
   },
   {
-    "id": "seed_launch_puresee",
-    "deviceName": "Zirabev Additional Strength",
+    "id": "seed_launch_pf08634404_crc",
+    "productName": "PF-08634404 — Metastatic Colorectal Cancer / 1L NSCLC",
+    "shortName": "PF-08634404",
+    "molecule": "PF-08634404",
+    "indication": "Metastatic colorectal cancer; first-line NSCLC",
     "franchise": {
-      "id": "seed_franchise_vision"
+      "id": "seed_franchise_oncology"
     },
-    "deviceClass": "Biosimilar — bevacizumab-bvzr",
-    "regulatoryRoute": "351(k) BLA supplement (FDA) + Type II variation (EMA)",
+    "modality": "Bispecific antibody — dual PD-1/VEGF inhibitor",
+    "developmentPhase": "Phase 3",
+    "trialCount": 2,
+    "estimatedLaunch": "2028+",
+    "targetMarkets": "US, EU, China",
+    "regulatoryRoute": "BLA (FDA) + MAA centralised procedure (EMA) + NMPA (China)",
     "leadMarket": {
       "id": "seed_market_de"
     },
@@ -258,18 +310,17 @@
     },
     "healthStatus": "AT_RISK",
     "revenueAtRisk": 2300000,
-    "firstShipDate": "2027-09-30",
-    "readinessPct": 83,
+    "firstShipDate": "2029-06-30",
+    "readinessPct": 38,
     "launchValue": 47000000,
-    "sterilisationMethod": "Terminal sterile",
-    "manufactureSite": "Siegfried Hameln",
+    "fillFinishRoute": "Aseptic fill — single-use vial",
+    "manufactureSite": "Grange Castle + Siegfried Hameln",
     "registrationsFiled": 4,
     "registrationsTotal": 13,
     "launchBuildUnits": 1200,
     "fieldForceCertified": 12,
     "fieldForceTotal": 48,
     "vacApprovalsFiled": 3,
-    "vacApprovalsTotal": 21,
-    "shortName": "Zirabev"
+    "vacApprovalsTotal": 21
   }
 ]

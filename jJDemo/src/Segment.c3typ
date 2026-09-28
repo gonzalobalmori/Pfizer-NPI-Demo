@@ -4,7 +4,7 @@
  * Primary Care (~$12B), Specialty Care (~$9B, fastest growing) and Oncology (~$5.5B).
  *
  * A {@link Segment} owns many {@link Franchise}s, each of which owns the
- * device {@link Launch}es this application governs.
+ * {@link Launch}es this application governs.
  */
 entity type Segment mixes SeedData {
   /** Business name of the segment, e.g. "Specialty Care". */

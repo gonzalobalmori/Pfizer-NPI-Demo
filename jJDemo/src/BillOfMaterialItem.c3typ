@@ -1,7 +1,7 @@
 /**
- * A part on a launch's bill of materials. The lyophilisation stopper is the
- * one that matters: single-source on Aptar across four Vaccines
- * catheters, on a BOM that freezes at G2 — the substance of finding NPI-0388.
+ * A part on a launch's bill of materials. The vial stopper is the one that
+ * matters: single-source on Aptar across the four berobenatide programmes,
+ * on a BOM that freezes at G2 — the substance of finding NPI-0388.
  *
  * An item belongs to one {@link Launch} and is supplied by one {@link Supplier}.
  */

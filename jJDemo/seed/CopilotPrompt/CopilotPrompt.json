@@ -13,7 +13,7 @@
       "steps": [
         {
           "title": "NPI-0417 · Dual-source the aseptic fill-finish slot",
-          "body": "Vetter Ravensburg cancelled the 12 Oct chamber slot. Sourcing priced three alternatives; Siegfried recovers 38 of the 47 days for €340k. G3 moves 04 Nov → 21 Dec if you do nothing.",
+          "body": "Vetter Ravensburg cancelled the 12 Oct fill slot. Sourcing priced three alternatives; Siegfried recovers 38 of the 47 days for €340k. G3 moves 04 Nov → 21 Dec if you do nothing.",
           "when": "Due today · 17:00",
           "flag": "r"
         },
@@ -79,11 +79,11 @@
         },
         {
           "label": "R. Devi · Logistics",
-          "value": "NPI-0351 — pricing a second fill-finish lane for the Elrexfio launch stock units. Number due 12 Sep."
+          "value": "NPI-0351 — pricing a second fill-finish lane for the Sigvotatug launch stock units. Number due 12 Sep."
         },
         {
           "label": "K. Tanaka · R&D",
-          "value": "NPI-0359 — redesigning the Litfulo thermoform insert. Re-test booked 14 Sep."
+          "value": "NPI-0359 — redesigning the PF-08634404 thermoform insert. Re-test booked 14 Sep."
         }
       ],
       "rec": "Only NPI-0365 needs a push from you",
@@ -108,15 +108,15 @@
     }
   },
   {
-    "id": "varipulse",
+    "id": "berobenatide_obesity",
     "groupLabel": "Diagnose a launch",
     "sortOrder": 3,
-    "question": "Diagnose the Comirnaty Gen 2 launch",
+    "question": "Diagnose the Berobenatide OB launch",
     "subtitle": "P3, G3 on 04 Nov, and the one cause behind four findings",
     "showsGuardrails": false,
     "answer": {
       "prose": [
-        "Comirnaty Gen 2 is in P3 — design V&V and supplier qualification, with G3 Submission Commit on 04 Nov 2026. The design work is not the problem. Both live threats are supplier threats, and both are the same supplier."
+        "Berobenatide OB is in P3 — process validation and supplier qualification, with G3 Submission Commit on 04 Nov 2026. The design work is not the problem. Both live threats are supplier threats, and both are the same supplier."
       ],
       "evidence": [
         {
@@ -142,7 +142,7 @@
       ],
       "rec": "Treat this as one supplier decision, not four findings",
       "why": [
-        "NPI-0417 (EO slot) and NPI-0412 (line 3 out of spec) are both Aptar-driven; NPI-0388 is the Aptar credit downgrade itself",
+        "NPI-0417 (fill-finish slot) and NPI-0412 (line 3 out of spec) are both Aptar-driven; NPI-0388 is the Aptar credit downgrade itself",
         "Activating the qualified second source at Neuss answers all three at once, and it is cheapest before the G2 freeze on 30 Sep",
         "After G2 the same change costs 11 weeks of change control"
       ],
@@ -204,7 +204,7 @@
         "Switching modality to X-ray costs 62 days and €1.1M and forfeits the slot",
         "Going US-first needs a G1 reversal, which is a bigger decision than this one"
       ],
-      "confidence": "High confidence · based on 6 comparable EO re-qualifications across Biopharma.",
+      "confidence": "High confidence · based on 6 comparable fill-finish requalifications across Biopharma.",
       "actions": [
         {
           "label": "Open NPI-0417",
@@ -220,7 +220,7 @@
     }
   },
   {
-    "id": "heraeus",
+    "id": "aptar",
     "groupLabel": "Follow the agents",
     "sortOrder": 5,
     "question": "Trace the Aptar line 3 failure agent by agent",
@@ -257,7 +257,7 @@
         },
         {
           "title": "It is yours — stop line 3 at Aptar?",
-          "body": "Quarantine the 4 lots and switch to Neuss. Hits Comirnaty G2, Abrysvo G2 and Elrexfio IV in Germany, France and Spain.",
+          "body": "Quarantine the 4 lots and switch to Neuss. Hits Berobenatide OB, Berobenatide T2D and Sigvotatug in Germany, France and Spain.",
           "when": "Now",
           "flag": "r"
         }
@@ -296,7 +296,7 @@
       ],
       "evidence": [
         {
-          "label": "Somavert XL · Iberia",
+          "label": "Berobenatide OA · Iberia",
           "value": "Field-force certification at 91% against a 95% target. 14 reps rebooked into the 22 Sep lab-session cohort, which clears 97% before first ship."
         },
         {
@@ -338,31 +338,31 @@
       ],
       "evidence": [
         {
-          "label": "Comirnaty Gen 2",
-          "value": "G3 Submission Commit · €18.4M exposed on the EO slot. The CHMP Q4 slot is the constraint, not the validation work."
+          "label": "Berobenatide OB",
+          "value": "G3 Submission Commit · €18.4M exposed on the fill-finish slot. The CHMP Q4 slot is the constraint, not the validation work."
         },
         {
-          "label": "Abrysvo Gen 2",
+          "label": "Berobenatide T2D",
           "value": "G2 CMC Lock 30 Sep · two unsigned target product profile and the Aptar single source. Both are yours this week."
         },
         {
-          "label": "Elrexfio IV",
+          "label": "Sigvotatug",
           "value": "G5 First Ship 26 Sep · 340 of 520 launch stock units still uncertified. 3PL fill-finish is running 6 days over plan."
         },
         {
-          "label": "Litfulo Toric",
+          "label": "PF-08634404",
           "value": "Transit packaging failed cold-chain transit protocol Sequence D. Re-test 14 Sep."
         },
         {
-          "label": "Velsipity",
-          "value": "First ship Q2 2027, same quarter as Comirnaty G2. 14 of 22 German reps are dual-certified, which is the real constraint."
+          "label": "Berobenatide OA",
+          "value": "First ship Q2 2027, same quarter as Berobenatide OB. 14 of 22 German reps are dual-certified, which is the real constraint."
         }
       ],
       "rec": "The German constraint is field force, not regulatory",
       "why": [
         "Four of the five clear their regulatory path on current dates",
         "Two launches want the same 22 German reps in the same quarter, and only 14 are dual-certified",
-        "Moving Velsipity first ship to Q3 2027 uses its float; Comirnaty G2 has none"
+        "Moving Berobenatide OA first ship to Q3 2027 uses its float; Berobenatide OB has none"
       ],
       "confidence": "Medium-high · certification throughput is modelled from the last 6 EP launches.",
       "actions": [
@@ -392,20 +392,20 @@
       ],
       "evidence": [
         {
-          "label": "FDA · Comirnaty Gen 2",
+          "label": "FDA · Berobenatide OB",
           "value": "NPI-0420 — BLA under review, a deficiency letter is open. 45 days at stake, no approval until the agency responds. This is on the authority, not on us: acting here will not move the date."
         },
         {
-          "label": "CHMP CHMP rapporteur · Comirnaty Gen 2",
+          "label": "CHMP CHMP rapporteur · Berobenatide OB",
           "value": "Q4 review slot holds only while G3 stays at +9 days. Miss the window and the next confirmed slot is February — another 31 days. The slot is the real regulatory deadline, not the validation work."
         },
         {
-          "label": "CHMP CHMP rapporteur · Prevnar 20",
+          "label": "CHMP CHMP rapporteur · Berobenatide OSA",
           "value": "NPI-0365 — a query-cycle-2 response has been drafted and unsigned for 6 days. The 21-day clock-stop is running. This is the one thread you can move: it needs a qualified signatory, S. Lindqvist, and it is already escalated."
         },
         {
           "label": "Questions on the table",
-          "value": "FDA: fill-finish-residual limits and the extractables and leachables bridge. BSI: the clinical evidence equivalence rationale. Every query has a traced response pack assembled from the CSR and the Master Batch Record."
+          "value": "FDA: fill-finish-residual limits and the extractables and leachables bridge. EMA/CHMP: the comparability rationale. Every query has a traced response pack assembled from the CSR and the Master Batch Record."
         },
         {
           "label": "On-site audit",
@@ -442,15 +442,15 @@
     "id": "supplier",
     "groupLabel": "Slice the portfolio",
     "sortOrder": 8,
-    "question": "What is putting Comirnaty's commercial batches at risk?",
+    "question": "What is putting Berobenatide OB's commercial batches at risk?",
     "subtitle": "Two lines, three batches out of spec, and an overdue CAPA",
     "showsGuardrails": false,
     "answer": {
       "prose": [
-        "Manufacturing, not supply. Comirnaty runs commercial output on two lines — line 3 and line 5 — and line 3 has produced 3 batches out of spec on the dimensional check. Line 5 is clean and is holding commercial supply for now."
+        "Manufacturing, not supply. Berobenatide OB runs commercial output on two lines — line 3 and line 5 — and line 3 has produced 3 batches out of spec on the dimensional check. Line 5 is clean and is holding commercial supply for now."
       ],
       "prose2": [
-        "The reason line 3 is not simply back yet is a CAPA that is overdue: the DMAIC behind it is still in progress. Measure and Analyse are complete and point at tool wear, but Improve and Control are not signed, so line 3 cannot be re-qualified for commercial output. For scale: V&V produces 3 batches as the norm, so 3 affected commercial batches is a full run's worth of the launch quantity."
+        "The reason line 3 is not simply back yet is a CAPA that is overdue: the DMAIC behind it is still in progress. Measure and Analyse are complete and point at tool wear, but Improve and Control are not signed, so line 3 cannot be re-qualified for commercial output. For scale: PPQ produces 3 batches as the norm, so 3 affected commercial batches is a full run's worth of the launch quantity."
       ],
       "evidence": [
         {
@@ -463,7 +463,7 @@
         },
         {
           "label": "Scale",
-          "value": "V&V norm is 3 batches (a validation run was 12 at one site), so this is a full run's worth of commercial volume"
+          "value": "PPQ norm is 3 batches (a validation run was 12 at one site), so this is a full run's worth of commercial volume"
         },
         {
           "label": "Gate",
@@ -499,12 +499,12 @@
     "id": "cascade",
     "groupLabel": "Diagnose a launch",
     "sortOrder": 10,
-    "question": "The FDA slipped Velsipity's clearance six weeks — what moves?",
+    "question": "The FDA slipped Berobenatide OA's clearance six weeks — what moves?",
     "subtitle": "One authority date, five downstream commitments, two calls that are yours",
     "showsGuardrails": false,
     "answer": {
       "prose": [
-        "The FDA moved Velsipity's NDA clearance from 02 Nov to 14 Dec — a six-week slip on a date you don't control. Manufacturing has already built launch stock, the launch stock are staged at the 3PL, and the field is trained for the original go-live. The old way, that slip becomes a ten-week scramble across three teams. Here it cascades in one pass: three commitments re-time themselves, and exactly two need a human."
+        "The FDA moved Berobenatide OA's NDA clearance from 02 Nov to 14 Dec — a six-week slip on a date you don't control. Manufacturing has already built launch stock, the launch stock are staged at the 3PL, and the field is trained for the original go-live. The old way, that slip becomes a ten-week scramble across three teams. Here it cascades in one pass: three commitments re-time themselves, and exactly two need a human."
       ],
       "evidence": [
         {
@@ -542,9 +542,9 @@
           "target": "cascade:"
         },
         {
-          "label": "Open the Velsipity record",
+          "label": "Open the Berobenatide OA record",
           "style": "s",
-          "target": "launch:seed_launch_ottava"
+          "target": "launch:seed_launch_pf3945_obesity"
         }
       ]
     }

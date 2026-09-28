@@ -1,7 +1,7 @@
 [
   {
-    "id": "seed_cascade_ottava_run2",
-    "milestone": { "id": "seed_milestone_ottava_fda" },
+    "id": "seed_cascade_pf3945_obesity_run2",
+    "milestone": { "id": "seed_milestone_pf3945_obesity_fda" },
     "sortOrder": 1,
     "domain": "MANUFACTURING",
     "domainLabel": "Manufacturing",
@@ -14,8 +14,8 @@
     "status": "PENDING"
   },
   {
-    "id": "seed_cascade_ottava_kits",
-    "milestone": { "id": "seed_milestone_ottava_fda" },
+    "id": "seed_cascade_pf3945_obesity_kits",
+    "milestone": { "id": "seed_milestone_pf3945_obesity_fda" },
     "sortOrder": 2,
     "domain": "LOGISTICS",
     "domainLabel": "Launch stock / 3PL",
@@ -28,8 +28,8 @@
     "status": "PENDING"
   },
   {
-    "id": "seed_cascade_ottava_comms",
-    "milestone": { "id": "seed_milestone_ottava_fda" },
+    "id": "seed_cascade_pf3945_obesity_comms",
+    "milestone": { "id": "seed_milestone_pf3945_obesity_fda" },
     "sortOrder": 3,
     "domain": "COMMERCIAL",
     "domainLabel": "Commercial comms",
@@ -42,8 +42,8 @@
     "status": "PENDING"
   },
   {
-    "id": "seed_cascade_ottava_storage",
-    "milestone": { "id": "seed_milestone_ottava_fda" },
+    "id": "seed_cascade_pf3945_obesity_storage",
+    "milestone": { "id": "seed_milestone_pf3945_obesity_fda" },
     "sortOrder": 4,
     "domain": "FINANCE",
     "domainLabel": "Working capital",
@@ -61,8 +61,8 @@
     "status": "PENDING"
   },
   {
-    "id": "seed_cascade_ottava_field",
-    "milestone": { "id": "seed_milestone_ottava_fda" },
+    "id": "seed_cascade_pf3945_obesity_field",
+    "milestone": { "id": "seed_milestone_pf3945_obesity_fda" },
     "sortOrder": 5,
     "domain": "COMMERCIAL",
     "domainLabel": "Field readiness",

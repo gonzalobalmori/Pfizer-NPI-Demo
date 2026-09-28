@@ -95,7 +95,7 @@ export default function DocsView() {
     <div className="view on" id="v-docs">
       <div className="ld-top">
         <button className="bk" type="button" onClick={() => open('portfolio')}><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7" /></svg><span className="bk-lbl">Back</span></button>
-        <div><div className="ld-n">{o.device}</div>
+        <div><div className="ld-n">{o.product}</div>
           <div className="ld-s">Dossiers, certificates, licences, validation reports and approvals</div></div>
         <div className="h-sp"></div>
         <button className="btn s" type="button"><svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" /><path d="m7 10 5 5 5-5M12 15V3" /></svg>Export the register</button>

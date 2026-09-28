@@ -27,7 +27,7 @@ function pendingQueue() {
   var decs = Decision.fetch({
     filter: Filter.eq('heldBy', 'USER'),
     include: 'this, finding.id, finding.displayId, finding.description, finding.category, ' +
-      'finding.phase.code, finding.launch.deviceName, finding.launch.shortName',
+      'finding.phase.code, finding.launch.productName, finding.launch.shortName',
     limit: -1
   }).objs;
 
@@ -65,7 +65,7 @@ function pendingQueue() {
 function escalatedQueue() {
   var escs = Escalation.fetch({
     include: 'this, decision.id, decision.finding.displayId, ' +
-      'decision.finding.launch.deviceName',
+      'decision.finding.launch.productName',
     limit: -1
   }).objs;
 
@@ -250,8 +250,8 @@ function chainStepsByFinding() {
 
 function boardCards(franchise, market) {
   var findings = Finding.fetch({
-    include: 'this, phase.id, phase.code, launch.deviceName, launch.shortName, ' +
-      'launch.franchise.name, otherLaunches.shortName, otherLaunches.deviceName, ' +
+    include: 'this, phase.id, phase.code, launch.productName, launch.shortName, ' +
+      'launch.franchise.name, otherLaunches.shortName, otherLaunches.productName, ' +
       'detectedBy.name',
     limit: -1
   }).objs;
@@ -269,9 +269,9 @@ function boardCards(franchise, market) {
     var steps = chainId && chainMap.stepsByChain[chainId] ? chainMap.stepsByChain[chainId] : [];
 
     var products = [];
-    if (f.launch) products.push(f.launch.shortName || f.launch.deviceName);
+    if (f.launch) products.push(f.launch.shortName || f.launch.productName);
     if (f.otherLaunches) {
-      f.otherLaunches.each(function (l) { products.push(l.shortName || l.deviceName); });
+      f.otherLaunches.each(function (l) { products.push(l.shortName || l.productName); });
     }
     var codes = [];
     if (f.marketCodes) f.marketCodes.each(function (c) { codes.push(c); });
@@ -400,7 +400,7 @@ function activityLog(franchise, market) {
 function resolutionWorkspace(findingId) {
   var f = Finding.fetch({
     filter: Filter.eq('id', findingId),
-    include: 'this, phase.code, phase.name, launch.deviceName, launch.shortName, ' +
+    include: 'this, phase.code, phase.name, launch.productName, launch.shortName, ' +
       'launch.franchise.name, launch.revenueAtRisk, detectedBy.name',
     limit: 1
   }).objs;
@@ -620,7 +620,7 @@ function resolutionWorkspace(findingId) {
       dependency: f.dependency || null,
       phaseCode: f.phase ? f.phase.code : null,
       phaseName: f.phase ? f.phase.name : null,
-      deviceName: f.launch ? f.launch.deviceName : null,
+      productName: f.launch ? f.launch.productName : null,
       shortName: f.launch ? f.launch.shortName : null,
       franchise: f.launch && f.launch.franchise ? f.launch.franchise.name : null,
       revenueAtRisk: f.launch ? f.launch.revenueAtRisk : null,
@@ -729,13 +729,13 @@ var BASELINE = {
      this was caught: the reset appeared to work but the pane read "+47 days" against an
      unslipped date. The invariant is asserted at the bottom of this block. */
   gates: {
-    seed_gate_varipulse_g3:  { forecastDate: '2026-12-21', slipDays: 47, status: 'late' },
-    seed_gate_varipulse_g4:  { forecastDate: '2027-05-18', slipDays: 0,  status: 'no' },
-    seed_gate_octaray_g2_g2: { forecastDate: '2026-09-30', slipDays: 14, status: 'late' }
+    seed_gate_berobenatide_obesity_g3:  { forecastDate: '2026-12-21', slipDays: 47, status: 'late' },
+    seed_gate_berobenatide_obesity_g4:  { forecastDate: '2027-05-18', slipDays: 0,  status: 'no' },
+    seed_gate_berobenatide_t2d_g2: { forecastDate: '2026-09-30', slipDays: 14, status: 'late' }
   },
   launches: {
-    seed_launch_varipulse_g2: { revenueAtRisk: 21200000, healthStatus: 'OFF_TRACK' },
-    seed_launch_octaray_g2:   { revenueAtRisk: 6200000,  healthStatus: 'AT_RISK' }
+    seed_launch_berobenatide_obesity: { revenueAtRisk: 21200000, healthStatus: 'OFF_TRACK' },
+    seed_launch_berobenatide_t2d:   { revenueAtRisk: 6200000,  healthStatus: 'AT_RISK' }
   },
   /* seeded Notification.sentAt — the cards were already sent when the decision was
      routed, so a reset restores that instant rather than clearing it. */

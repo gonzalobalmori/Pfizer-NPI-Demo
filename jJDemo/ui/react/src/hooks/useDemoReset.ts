@@ -29,7 +29,7 @@
 import { useEffect, useState } from 'react';
 import { resetDecision } from '@/api/execution';
 import { resetQuality, resetWave, QUALITY_EVENT_ID, DEMAND_CHANGE_ID } from '@/api/scenarios';
-import { resetCascade, Velsipity_FDA_MILESTONE_ID } from '@/api/cascade';
+import { resetCascade, PF3945_FDA_MILESTONE_ID } from '@/api/cascade';
 
 export interface DemoResetState {
   /** True once the reset has settled — successfully or not. Views must wait for it. */
@@ -49,7 +49,7 @@ async function runReset(): Promise<string | null> {
     ['decisions', () => resetDecision()],
     ['quality', () => resetQuality(QUALITY_EVENT_ID)],
     ['market wave', () => resetWave(DEMAND_CHANGE_ID)],
-    ['cascade', () => resetCascade(Velsipity_FDA_MILESTONE_ID)],
+    ['cascade', () => resetCascade(PF3945_FDA_MILESTONE_ID)],
   ];
 
   const results = await Promise.allSettled(branches.map(([, run]) => run()));

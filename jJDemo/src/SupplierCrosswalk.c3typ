@@ -17,7 +17,7 @@
  * mutates, so it lives in `data/`. Keyed on {@link SupplierCrosswalk#supplierId}.
  */
 entity type SupplierCrosswalk {
-  /** The canonical {@link Supplier#id} this row resolves to, e.g. "seed_supplier_sterigenics". */
+  /** The canonical {@link Supplier#id} this row resolves to, e.g. "seed_supplier_siegfried". */
   supplierId: !string
 
   /** Canonical supplier name, for readback in the lineage view. */
@@ -26,10 +26,10 @@ entity type SupplierCrosswalk {
   /** SAP vendor number (LFA1.LIFNR), 10-char zero-padded. */
   sapVendor: string
 
-  /** Ariba supplier id, e.g. "AN02-STERIGENICS-GR". */
+  /** Ariba supplier id, e.g. "AN02-SIEGFRIED-HML". */
   aribaSupplierId: string
 
-  /** QMS audit subject key, e.g. "SUP-STG-GR". */
+  /** QMS audit subject key, e.g. "SUP-SGF-HML". */
   qmsAuditSubject: string
 
   /** Free-text name as it appears on the fill-finish certificate. */

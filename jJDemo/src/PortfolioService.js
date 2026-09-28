@@ -209,7 +209,7 @@ function deriveMarketGates(launch, gates, mls) {
     /* Project the lead gate's real dates onto this market by shifting deltaQ
        quarters (deltaQ*3 months). This lets the timeline position the per-market
        gate on the SAME date axis (monthPos) as the lead train, so a small slip
-       (e.g. Elrexfio G5 +9d) renders a visible baseline→forecast bar instead of
+       (e.g. Sigvotatug G5 +9d) renders a visible baseline→forecast bar instead of
        collapsing to the left edge when the coarse quarter mid-month falls before
        the axis start. */
     var monthShift = deltaQ * 3;
@@ -325,7 +325,7 @@ function cockpit() {
     if (!lid) return;
     var cur = nextGateByLaunch[lid];
     /* earliest open gate by ORDINAL rank — a plain string compare puts "BAU"
-       before "G5", so Elrexfio (only G5 + BAU open) would mislabel its next gate
+       before "G5", so Sigvotatug (only G5 + BAU open) would mislabel its next gate
        as BAU. GATE_RANK gives the correct G1<…<G5<BAU order. */
     if (!cur || (GATE_RANK[g.code] || 99) < (GATE_RANK[cur.code] || 99)) {
       nextGateByLaunch[lid] = { code: g.code, name: g.name, forecastDate: iso(g.forecastDate), status: g.status };
@@ -342,7 +342,7 @@ function cockpit() {
        single lead-market gate. Live markets are folded in as the "Live" head. */
     attention.push({
       launchId: l.id,
-      device: l.deviceName,
+      product: l.productName,
       shortName: l.shortName,
       franchise: l.franchise ? l.franchise.name : null,
       phaseCode: l.currentPhase ? l.currentPhase.code : null,
@@ -366,7 +366,7 @@ function cockpit() {
   var horizon = DateTime.now().plusDays(120);
   var gates = Gate.fetch({
     filter: Filter.ne('status', 'ok').and().le('forecastDate', horizon),
-    include: 'this, launch.deviceName, launch.shortName, launch.id, phase.code, criteria.met',
+    include: 'this, launch.productName, launch.shortName, launch.id, phase.code, criteria.met',
     limit: -1
   }).objs;
   var closing = [];
@@ -375,7 +375,7 @@ function cockpit() {
     if (g.criteria) g.criteria.each(function (c) { all++; if (c.met) met++; });
     closing.push({
       launchId: g.launch ? g.launch.id : null,
-      device: g.launch ? g.launch.deviceName : null,
+      product: g.launch ? g.launch.productName : null,
       shortName: g.launch ? g.launch.shortName : null,
       gateCode: g.code,
       gateName: g.name,
@@ -442,11 +442,11 @@ function portfolioProduct() {
     var tr = timeByLaunch[l.id] || { daysAtStake: 0, recoverableDays: 0, regulatorDays: 0, pctRecoverable: 0, openCount: 0 };
     rows.push({
       launchId: l.id,
-      device: l.deviceName,
+      product: l.productName,
       shortName: l.shortName,
       franchise: l.franchise ? l.franchise.name : null,
       segment: l.franchise && l.franchise.segment ? l.franchise.segment.name : null,
-      deviceClass: l.deviceClass,
+      modality: l.modality,
       regulatoryRoute: l.regulatoryRoute,
       leadMarket: l.leadMarket ? l.leadMarket.code : null,
       currentPhase: curCode,
@@ -478,7 +478,7 @@ function portfolioMarket() {
   /* market launches grouped by market code */
   var byMarket = {};
   var mls = MarketLaunch.fetch({
-    include: 'this, market.code, launch.shortName, launch.deviceName, launch.healthStatus',
+    include: 'this, market.code, launch.shortName, launch.productName, launch.healthStatus',
     limit: -1
   }).objs;
   mls.each(function (ml) {
@@ -486,7 +486,7 @@ function portfolioMarket() {
     if (!code) return;
     if (!byMarket[code]) byMarket[code] = [];
     byMarket[code].push({
-      launch: ml.launch ? (ml.launch.shortName || ml.launch.deviceName) : null,
+      launch: ml.launch ? (ml.launch.shortName || ml.launch.productName) : null,
       status: ml.status,
       firstShipQuarter: ml.firstShipQuarter,
       reimbursementStatus: ml.reimbursementStatus,
@@ -585,7 +585,7 @@ function portfolioBusinessUnit() {
     if (!byFranchise[fn]) byFranchise[fn] = [];
     var tr = timeByLaunch[l.id] || { daysAtStake: 0, recoverableDays: 0, regulatorDays: 0, pctRecoverable: 0 };
     byFranchise[fn].push({
-      launchId: l.id, device: l.deviceName, shortName: l.shortName,
+      launchId: l.id, product: l.productName, shortName: l.shortName,
       health: l.healthStatus, currentPhase: l.currentPhase ? l.currentPhase.code : null,
       revenueAtRisk: l.revenueAtRisk,
       readinessPct: l.readinessPct != null ? l.readinessPct : null,
@@ -686,7 +686,7 @@ function portfolioTimeline() {
     lg.sort(function (a, b) { return (GATE_RANK[a.code] || 9) - (GATE_RANK[b.code] || 9); });
     rows.push({
       launchId: l.id,
-      device: l.deviceName,
+      product: l.productName,
       shortName: l.shortName,
       franchise: l.franchise ? l.franchise.name : null,
       leadMarket: l.leadMarket ? l.leadMarket.code : null,
@@ -805,7 +805,7 @@ function launchTimeRecoveryMap() {
 
 function openIssues() {
   var findings = Finding.fetch({
-    include: 'this, dependency, daysAtStake, phase.code, phase.name, launch.deviceName, ' +
+    include: 'this, dependency, daysAtStake, phase.code, phase.name, launch.productName, ' +
       'launch.shortName, launch.id, launch.franchise.name, detectedBy.name',
     limit: -1
   }).objs;
@@ -899,7 +899,7 @@ function openIssues() {
       gateAtRisk: gateAtRiskFor(f.launch ? f.launch.id : null, f.phase ? f.phase.code : null),
       phaseCode: f.phase ? f.phase.code : null,
       phaseName: f.phase ? f.phase.name : null,
-      device: f.launch ? f.launch.deviceName : null,
+      product: f.launch ? f.launch.productName : null,
       shortName: f.launch ? f.launch.shortName : null,
       launchId: f.launch ? f.launch.id : null,
       franchise: f.launch && f.launch.franchise ? f.launch.franchise.name : null,
@@ -976,13 +976,13 @@ function openIssues() {
  * Returns:
  *   totals   { daysAtStake, recoverableDays, regulatorDays, pctRecoverable,
  *              openCount }
- *   byLaunch [{ launchId, device, shortName, health, daysAtStake,
+ *   byLaunch [{ launchId, product, shortName, health, daysAtStake,
  *               recoverableDays, regulatorDays, pctRecoverable, findingCount }]
  *              — worst-first by total days at stake, only launches that carry any.
  */
 function timeImpact() {
   var findings = Finding.fetch({
-    include: 'this, dependency, daysAtStake, launch.deviceName, launch.shortName, ' +
+    include: 'this, dependency, daysAtStake, launch.productName, launch.shortName, ' +
       'launch.id, launch.healthStatus',
     limit: -1
   }).objs;
@@ -1008,7 +1008,7 @@ function timeImpact() {
     if (!byLaunchMap[lid]) {
       byLaunchMap[lid] = {
         launchId: lid,
-        device: f.launch.deviceName,
+        product: f.launch.productName,
         shortName: f.launch.shortName,
         health: f.launch.healthStatus,
         daysAtStake: 0, recoverableDays: 0, regulatorDays: 0, findingCount: 0
@@ -1063,7 +1063,7 @@ function launchRecord(launchId) {
   var ls = Launch.fetch({
     filter: Filter.eq('id', launchId),
     include: 'this, franchise.name, franchise.segment.name, currentPhase.code, currentPhase.name, ' +
-      'leadMarket.code, leadMarket.name, firstShipDate, launchValue, sterilisationMethod, manufactureSite, ' +
+      'leadMarket.code, leadMarket.name, firstShipDate, launchValue, fillFinishRoute, manufactureSite, ' +
       'registrationsFiled, registrationsTotal, launchBuildUnits, fieldForceCertified, ' +
       'fieldForceTotal, vacApprovalsFiled, vacApprovalsTotal',
     limit: 1
@@ -1157,7 +1157,7 @@ function launchRecord(launchId) {
    * Findings raised against this launch, mapped to the Product-detail "Open
    * issues on this launch" table. Open = outcome USER / HELD / RUNNING (a call
    * you owe, a held item, or an in-flight agent action); AUTO = resolved. This
-   * replaces the hard-coded Comirnaty-only issues list so every product's issue
+   * replaces the hard-coded Berobenatide OB-only issues list so every product's issue
    * table reflects its own findings — and an on-plan launch with no open
    * findings reads clean (empty). blockingCount = open findings whose category
    * is 'ct' (critical — blocks the gate).
@@ -1313,7 +1313,7 @@ function launchRecord(launchId) {
     /* one fetch of every BOM row, so sibling launches can be grouped in memory
        without an N+1 query per part. */
     var allBom = BillOfMaterialItem.fetch({
-      include: 'this, launch.id, launch.deviceName, launch.shortName, supplier.id, supplier.name',
+      include: 'this, launch.id, launch.productName, launch.shortName, supplier.id, supplier.name',
       limit: -1
     }).objs;
     myBom.each(function (b) {
@@ -1325,13 +1325,13 @@ function launchRecord(launchId) {
         if (oSup && oSup === supId && o.partName === b.partName) {
           siblings.push({
             launchId: o.launch.id,
-            device: o.launch.deviceName,
+            product: o.launch.productName,
             shortName: o.launch.shortName || null
           });
         }
       });
       siblings.sort(function (a, b2) {
-        return (a.device || '') < (b2.device || '') ? -1 : (a.device || '') > (b2.device || '') ? 1 : 0;
+        return (a.product || '') < (b2.product || '') ? -1 : (a.product || '') > (b2.product || '') ? 1 : 0;
       });
       criticalSupply.push({
         partName: b.partName,
@@ -1357,9 +1357,9 @@ function launchRecord(launchId) {
   return {
     overview: {
       launchId: l.id,
-      device: l.deviceName,
+      product: l.productName,
       shortName: l.shortName,
-      deviceClass: l.deviceClass,
+      modality: l.modality,
       regulatoryRoute: l.regulatoryRoute,
       franchise: l.franchise ? l.franchise.name : null,
       segment: l.franchise && l.franchise.segment ? l.franchise.segment.name : null,
@@ -1372,7 +1372,7 @@ function launchRecord(launchId) {
       exposureCause: l.exposureCause,
       firstShipDate: iso(l.firstShipDate),
       launchValue: l.launchValue,
-      sterilisationMethod: l.sterilisationMethod,
+      fillFinishRoute: l.fillFinishRoute,
       manufactureSite: l.manufactureSite,
       registrationsFiled: l.registrationsFiled,
       registrationsTotal: l.registrationsTotal,
@@ -1426,7 +1426,7 @@ function launchIndex() {
   launches.each(function (l) {
     rows.push({
       launchId: l.id,
-      device: l.deviceName,
+      product: l.productName,
       shortName: l.shortName,
       franchise: l.franchise ? l.franchise.name : null,
       currentPhase: l.currentPhase ? l.currentPhase.code : null,

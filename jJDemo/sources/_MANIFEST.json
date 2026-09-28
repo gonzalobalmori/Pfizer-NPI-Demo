@@ -195,8 +195,8 @@
     },
     {
       "system": "portal",
-      "feed": "PORTAL_CHAMBER",
-      "file": "portal/PORTAL_CHAMBER_BOOKING_20260911_08.json",
+      "feed": "PORTAL_FILLSLOT",
+      "file": "portal/PORTAL_FILLSLOT_BOOKING_20260911_08.json",
       "format": "json",
       "rows": 1,
       "frequency": "hourly poll",
@@ -209,6 +209,6 @@
     "SAP LFA1: one duplicate vendor row (DQ: de-dupe on LIFNR).",
     "D&B: Aptar Pharma Le Vaudreuil intentionally has NO DUNS match (partial resolution — resolves as Supplier, flags missing risk rating).",
     "Crosswalk: Siegfried certificate name \"Siegfried US LLC\" ≠ Ariba \"Siegfried Hameln\" (fuzzy-name miss → manual crosswalk entry resolves on stage).",
-    "LIMS: sample OCT-BIO-07 result_date in DD/MM/YYYY (02/09/2026) not ISO (DQ: normalise date format)."
+    "LIMS: sample BRT-BIO-07 result_date in DD/MM/YYYY (02/09/2026) not ISO (DQ: normalise date format)."
   ]
 }

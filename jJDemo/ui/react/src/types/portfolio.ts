@@ -88,7 +88,7 @@ export interface MarketGate {
 }
 export interface AttentionRow {
   launchId: string;
-  device: string;
+  product: string;
   shortName: string | null;
   franchise: string | null;
   phaseCode: string | null;
@@ -105,7 +105,7 @@ export interface AttentionRow {
 }
 export interface GateClosingRow {
   launchId: string | null;
-  device: string | null;
+  product: string | null;
   shortName: string | null;
   gateCode: string;
   gateName: string;
@@ -154,11 +154,11 @@ export interface GateMarker {
 }
 export interface ProductRow {
   launchId: string;
-  device: string;
+  product: string;
   shortName: string | null;
   franchise: string | null;
   segment: string | null;
-  deviceClass: string | null;
+  modality: string | null;
   regulatoryRoute: string | null;
   leadMarket: string | null;
   currentPhase: string | null;
@@ -213,7 +213,7 @@ export interface BuNextGate {
 }
 export interface BuLaunch {
   launchId: string;
-  device: string;
+  product: string;
   shortName: string | null;
   health: Health;
   currentPhase: string | null;
@@ -253,7 +253,7 @@ export interface BusinessUnitLens {
 /* ── Portfolio · Timeline lens ────────────────────────────────────── */
 export interface TimelineRow {
   launchId: string;
-  device: string;
+  product: string;
   shortName: string | null;
   franchise: string | null;
   leadMarket: string | null;
@@ -303,7 +303,7 @@ export interface IssueRow {
   gateAtRisk: IssueGateAtRisk | null;
   phaseCode: string | null;
   phaseName: string | null;
-  device: string | null;
+  product: string | null;
   shortName: string | null;
   launchId: string | null;
   franchise: string | null;
@@ -341,7 +341,7 @@ export interface OpenIssues {
 /* ── Time impact (schedule recovery) ──────────────────────────────── */
 export interface TimeImpactLaunch {
   launchId: string;
-  device: string;
+  product: string;
   shortName: string | null;
   health: Health;
   daysAtStake: number;
@@ -430,7 +430,7 @@ export interface WorkstreamReadiness {
  * made verifiable in the detail page. `sharedAcross` counts this launch + siblings. */
 export interface CriticalSupplySibling {
   launchId: string;
-  device: string;
+  product: string;
   shortName: string | null;
 }
 export interface CriticalSupplyItem {
@@ -462,9 +462,9 @@ export interface LaunchIssue {
 }
 export interface LaunchOverview {
   launchId: string;
-  device: string;
+  product: string;
   shortName: string | null;
-  deviceClass: string | null;
+  modality: string | null;
   regulatoryRoute: string | null;
   franchise: string | null;
   segment: string | null;
@@ -477,7 +477,7 @@ export interface LaunchOverview {
   exposureCause: string | null;
   firstShipDate: string | null;
   launchValue: number | null;
-  sterilisationMethod: string | null;
+  fillFinishRoute: string | null;
   manufactureSite: string | null;
   registrationsFiled: number | null;
   registrationsTotal: number | null;
@@ -586,7 +586,7 @@ export interface CascadePlan {
 /* ── Launch index ─────────────────────────────────────────────────── */
 export interface LaunchIndexRow {
   launchId: string;
-  device: string;
+  product: string;
   shortName: string | null;
   franchise: string | null;
   currentPhase: string | null;

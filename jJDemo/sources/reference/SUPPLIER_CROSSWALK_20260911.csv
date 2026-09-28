@@ -1,5 +1,5 @@
 supplier_id,canonical_name,sap_vendor,ariba_supplier_id,qms_audit_subject,certificate_name,duns_number,resolution_state
-seed_supplier_steris,Vetter Ravensburg,0001007731,AN01-STERIS-VENLO,SUP-STERIS-VNL,Vetter Ravensburg,40-123-8890,AUTO
-seed_supplier_sterigenics,Siegfried Hameln,0001007988,AN02-STERIGENICS-GR,SUP-STG-GR,Siegfried US LLC,07-836-4421,MANUAL
-seed_supplier_heraeus,Aptar Pharma Le Vaudreuil,0001004412,AN05-HERAEUS-MC,SUP-HRS-MC,Aptar Pharma Le Vaudreuil,,PARTIAL
-seed_supplier_bsi,Eurofins Scientific,0001009003,AN09-BSI-NB,SUP-BSI-NB,Eurofins Scientific,21-004-1177,AUTO
+seed_supplier_vetter,Vetter Ravensburg,0001007731,AN01-VETTER-RVB,SUP-VETTER-RVB,Vetter Ravensburg,40-123-8890,AUTO
+seed_supplier_siegfried,Siegfried Hameln,0001007988,AN02-SIEGFRIED-HML,SUP-SGF-HML,Siegfried US LLC,07-836-4421,MANUAL
+seed_supplier_aptar,Aptar Pharma Le Vaudreuil,0001004412,AN05-APTAR-LVD,SUP-APT-LVD,Aptar Pharma Le Vaudreuil,,PARTIAL
+seed_supplier_eurofins,Eurofins Scientific,0001009003,AN09-EUROFINS-SCI,SUP-EUR-SCI,Eurofins Scientific,21-004-1177,AUTO

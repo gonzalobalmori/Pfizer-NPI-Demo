@@ -10,13 +10,13 @@
  * configuration. One row per (targetType, targetId) load. Operational → `data/`.
  */
 entity type LineageRecord {
-  /** Stable id: "<targetType>__<targetId>", e.g. "Gate__seed_gate_varipulse_g3". */
+  /** Stable id: "<targetType>__<targetId>", e.g. "Gate__seed_gate_berobenatide_obesity_g3". */
   id: !string
 
   /** The ontology type the row landed on, e.g. "Gate". */
   targetType: string
 
-  /** The ontology object id, e.g. "seed_gate_varipulse_g3". */
+  /** The ontology object id, e.g. "seed_gate_berobenatide_obesity_g3". */
   targetId: string
 
   /** The feed code, e.g. "PPM_GATE". */
@@ -25,7 +25,7 @@ entity type LineageRecord {
   /** The source file the value came from, e.g. "ppm/PPM_GATE_20260911.csv". */
   sourceFile: string
 
-  /** The source-row business key, e.g. the GateId "G-Comirnaty-G2-G3". */
+  /** The source-row business key, e.g. the GateId "G-Berobenatide OB-G2-G3". */
   sourceRowKey: string
 
   /** The transform that mapped source → target, e.g. "SrcPpmGate-Gate". */

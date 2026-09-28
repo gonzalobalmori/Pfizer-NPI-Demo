@@ -177,10 +177,9 @@ export default function AlertsView() {
         <div className="hb-m">
           <span className="hb-lb">Waiting on an authority</span>
           <b>{regulatorDays} d</b>
-          {/* Pharma authorities. "CHMP rapporteur" is a medical-device conformity
-              assessor under MAA (EMA) and has no role in a pharmaceutical launch — the
-              EU reviewer is EMA/CHMP. Corrected as part of the device→pharma
-              vocabulary pass; the wider sweep is tracked for M2. */}
+          {/* The authorities a drug launch actually waits on: FDA in the US,
+              EMA/CHMP in the EU, then payer/reimbursement. A notified body — the
+              conformity assessor for a device under EU MDR — has no role here. */}
           <span className="hb-sb">FDA &middot; EMA &middot; payer</span>
           <span className="hb-d">acting won&apos;t move it</span>
         </div>
@@ -269,7 +268,7 @@ function AlertRow({ row, onOpen }: { row: IssueRow; onOpen: () => void }) {
         <span className={`cat ${cat}`}>{CAT_LABEL[cat]}</span>
       </td>
       <td className="l">
-        <b>{row.shortName ?? row.device}</b>
+        <b>{row.shortName ?? row.product}</b>
         <span className="sub">{row.franchise}</span>
       </td>
       <td className="l">

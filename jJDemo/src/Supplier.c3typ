@@ -1,6 +1,6 @@
 /**
  * A supplier in the launch supply chain. The anchor case turns on four:
- * Vetter Ravensburg (contract EO steriliser that cancelled the booking),
+ * Vetter Ravensburg (contract fill-finish site that cancelled the slot),
  * Siegfried Hameln (approved alternative, audit current to Mar 2028),
  * Aptar Pharma Le Vaudreuil (single source on the frozen BOM, downgraded to
  * High financial risk) and CHMP (the CHMP rapporteur).

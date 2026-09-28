@@ -122,7 +122,7 @@ const GD_QUALITY: Step[] = [
   {
     t: 'The disruption, on its own screen',
     p:
-      '<b>DEV-26-0881</b> &mdash; a deviation raised at <b>Kalamazoo</b> on the <b>Abrysvo</b> ' +
+      '<b>DEV-26-0881</b> &mdash; a deviation raised at <b>Kalamazoo</b> on the <b>Berobenatide T2D</b> ' +
       'launch. Visual inspection found a <b>stopper-related defect</b>, and the batch is on hold. ' +
       'The rail across the top is the whole governed sequence: <b>scope</b>, <b>options</b>, ' +
       '<b>markets</b>, <b>decision</b>, <b>coordinate</b>. Every step is a real service call ' +
@@ -290,10 +290,10 @@ const GD_QUALITY: Step[] = [
  * governed decision, and the commit that rewrites every affected plan.
  *
  * Live figures, read back from MarketWaveService at baseline:
- *   request         DCR-26-0067 · Comirnaty · T. Bergmann (Commercial) ·
+ *   request         DCR-26-0067 · Berobenatide OB · T. Bergmann (Commercial) ·
  *                   420,000 → 690,000 doses (+270,000, +64.3%) · €7M at stake
- *   pack mix        6-dose multi-dose vial (COM-DE-MDV-6)
- *                   → 1-dose prefilled syringe (COM-DE-PFS-1)
+ *   pack mix        6-dose multi-dose vial (BER-DE-MDV-6)
+ *                   → 1-dose prefilled syringe (BER-DE-PFS-1)
  *   clock           56 days = 8.0 weeks of runway before packaging starts 4 Nov
  *   binds first     BD 1mL long prefillable glass syringe, staked needle —
  *                   84-day lead time against a 56-day runway, so only 15,000 of
@@ -317,7 +317,7 @@ const GD_WAVE: Step[] = [
     t: 'Eight weeks before packaging',
     p:
       'Same cockpit, a different kind of shock. Nothing has broken: <b>Commercial has won more ' +
-      'demand</b>. <b>DCR-26-0067</b> on the <b>Comirnaty</b> launch &mdash; Germany wants ' +
+      'demand</b>. <b>DCR-26-0067</b> on the <b>Berobenatide OB</b> launch &mdash; Germany wants ' +
       '<b>690,000 doses instead of 420,000</b>, and wants them in a <b>different presentation</b>. ' +
       'The request arrives <b>eight weeks before packaging starts</b>.',
     say:
@@ -332,8 +332,8 @@ const GD_WAVE: Step[] = [
     t: 'What Commercial is actually asking for',
     p:
       '<b>+270,000 doses, +64.3%</b>, worth <b>&euro;7M</b>. And the part that makes it hard: the ' +
-      'pack mix changes too &mdash; from the <b>6-dose multi-dose vial</b> (COM-DE-MDV-6) to the ' +
-      '<b>1-dose prefilled syringe</b> (COM-DE-PFS-1). That is not a bigger version of the same ' +
+      'pack mix changes too &mdash; from the <b>6-dose multi-dose vial</b> (BER-DE-MDV-6) to the ' +
+      '<b>1-dose prefilled syringe</b> (BER-DE-PFS-1). That is not a bigger version of the same ' +
       'plan. It is <b>different components, a different fill line and a different carton</b>.',
     say:
       'Two changes in one request, and the second one is the expensive one. More doses is a capacity ' +

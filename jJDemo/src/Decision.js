@@ -101,7 +101,7 @@ function approve(optionLabel) {
 
   // 3. Release the exposure on the launch (§2.4 — "release the exposure").
   if (launch) {
-    var lf = Launch.forId(launchId).get('revenueAtRisk, healthStatus, deviceName');
+    var lf = Launch.forId(launchId).get('revenueAtRisk, healthStatus, productName');
     var released = lf.revenueAtRisk || 0;
     var kept = option.revenueKept || 0;
     var newRisk = Math.max(0, released - kept);
@@ -109,7 +109,7 @@ function approve(optionLabel) {
     if (newRisk === 0) upd = upd.withHealthStatus('ON_PLAN');
     upd.merge();
     if (released > 0) {
-      dhfLines.push('Exposure released on ' + lf.deviceName + ': €' +
+      dhfLines.push('Exposure released on ' + lf.productName + ': €' +
         (released / 1000000).toFixed(1) + 'M kept (' + optionLabelText + ')');
     }
   }

@@ -191,7 +191,7 @@ export default function IssueView() {
           </button>
           <div className="is-hd-b">
             <div className="is-crumb">
-              <span id="is-id">{f.displayId}</span> · <span id="is-asset">{f.shortName ?? f.deviceName}</span> ·{' '}
+              <span id="is-id">{f.displayId}</span> · <span id="is-asset">{f.shortName ?? f.productName}</span> ·{' '}
               <span id="is-phase">Phase {f.phaseCode} · {f.phaseName}</span>
             </div>
             <div className="is-t" id="is-t">{f.headline}</div>

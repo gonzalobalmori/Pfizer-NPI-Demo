@@ -2,7 +2,7 @@
   {
     "id": "seed_capa_0412",
     "capaId": "CAPA-2026-0149",
-    "openedAgainstProcess": "Comirnaty commercial-batch manufacturing — line 3 (stopper and closure assembly)",
+    "openedAgainstProcess": "Berobenatide OB commercial-batch manufacturing — line 3 (stopper and closure assembly)",
     "openedBy": "Quality agent",
     "openedAt": "2026-09-15T08:20:00",
     "containmentAction": "Hold the 3 out-of-spec line-3 batches; continue commercial supply from line 5.",
@@ -14,7 +14,7 @@
       "id": "seed_finding_412"
     },
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "closedByDecision": null
   },
@@ -30,7 +30,7 @@
       "id": "seed_finding_359"
     },
     "launch": {
-      "id": "seed_launch_puresee"
+      "id": "seed_launch_pf08634404_crc"
     }
   }
 ]

@@ -24,7 +24,7 @@
     "code": "rnd",
     "name": "Design agent",
     "autonomyBand": "Autonomous within guardrails",
-    "toolsPermitted": "Target product profile, outputs, V&V and the CTD",
+    "toolsPermitted": "Target product profile, outputs, PPQ and the CTD",
     "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
     "domain": {
       "id": "seed_domain_rnd"

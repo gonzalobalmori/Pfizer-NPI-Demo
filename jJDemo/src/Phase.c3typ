@@ -1,7 +1,7 @@
 /**
  * One of the six NPI phases every Biopharma launch moves through:
  * P1 Feasibility & strategic definition, P2 Target product profile & supply architecture,
- * P3 Design V&V + supplier qualification, P4 Reg review/transfer/at-risk build,
+ * P3 Design PPQ + supplier qualification, P4 Reg review/transfer/at-risk build,
  * P5 Launch readiness, P6 Post-market & BAU transfer.
  *
  * A phase is closed by exactly one {@link Gate} and groups many
@@ -12,7 +12,7 @@ entity type Phase mixes SeedData {
   /** Phase code, "P1"–"P6". */
   code: !string
 
-  /** Phase name, e.g. "Design V&V + Supplier Qualification". */
+  /** Phase name, e.g. "Design PPQ + Supplier Qualification". */
   name: !string
 
   /** Human-readable calendar window, e.g. "Jun 2026 – Nov 2026". */

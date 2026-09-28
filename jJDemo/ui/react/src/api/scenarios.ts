@@ -18,8 +18,8 @@ import type {
 
 /* ── Scenario 1 — quality disruption ──────────────────────────────── */
 
-/** The stopper-defect hold on the Abrysvo launch that opens Scenario 1. */
-export const QUALITY_EVENT_ID = 'seed_qe_abrysvo_stopper';
+/** The stopper-defect hold on the Berobenatide T2D launch that opens Scenario 1. */
+export const QUALITY_EVENT_ID = 'seed_qe_berobenatide_t2d_stopper';
 
 /** Read the quality dashboard at whatever stage the event has reached. */
 export const getQualityPlan = (eventId: string = QUALITY_EVENT_ID): Promise<QualityPlan | null> =>
@@ -63,8 +63,8 @@ export const resetQuality = (eventId: string = QUALITY_EVENT_ID): Promise<Qualit
 
 /* ── Scenario 2 — demand and market-wave change ───────────────────── */
 
-/** Commercial's uplift + pack-mix request on the Comirnaty launch. */
-export const DEMAND_CHANGE_ID = 'seed_dchg_comirnaty_de';
+/** Commercial's uplift + pack-mix request on the Berobenatide OB launch. */
+export const DEMAND_CHANGE_ID = 'seed_dchg_berobenatide_obesity_de';
 
 /** Read the demand-change dashboard at whatever stage the request has reached. */
 export const getDemandPlan = (changeId: string = DEMAND_CHANGE_ID): Promise<DemandPlan | null> =>

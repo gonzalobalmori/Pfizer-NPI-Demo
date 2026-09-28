@@ -67,14 +67,14 @@ def _domain_agent_map():
 def _launch_lookup():
     """List of launches with the tokens we match free text against."""
     res = c3.Launch.fetch({
-        "include": "id, deviceName, shortName, currentPhase.id, currentPhase.code, "
+        "include": "id, productName, shortName, currentPhase.id, currentPhase.code, "
                    "franchise.name, healthStatus",
         "limit": -1,
     })
     launches = []
     for l in res.objs:
         tokens = set()
-        for src in [l.shortName, l.deviceName]:
+        for src in [l.shortName, l.productName]:
             if not src:
                 continue
             for tok in _re.split(r"[\s/]+", src.lower()):
@@ -82,7 +82,7 @@ def _launch_lookup():
                     tokens.add(tok)
         launches.append({
             "id": l.id,
-            "deviceName": l.deviceName,
+            "productName": l.productName,
             "shortName": l.shortName,
             "phaseId": l.currentPhase.id if l.currentPhase else None,
             "phaseCode": l.currentPhase.code if l.currentPhase else None,
@@ -129,14 +129,14 @@ def guidedPrompts(cls, domain=None):
     gates = c3.Gate.fetch({
         "filter": "status != 'ok' && slipDays > 0",
         "include": "code, name, slipDays, forecastDate, status, "
-                   "launch.id, launch.shortName, launch.deviceName, launch.currentPhase.id",
+                   "launch.id, launch.shortName, launch.productName, launch.currentPhase.id",
         "limit": -1,
     })
     seen = set()
     for g in gates.objs:
         if not g.launch:
             continue
-        name = g.launch.shortName or g.launch.deviceName
+        name = g.launch.shortName or g.launch.productName
         key = (g.launch.id, g.code)
         if key in seen:
             continue
@@ -155,7 +155,7 @@ def guidedPrompts(cls, domain=None):
     findings = c3.Finding.fetch({
         "filter": "outcome == 'USER' || outcome == 'RUNNING' || outcome == 'HELD'",
         "include": "displayId, headline, outcome, "
-                   "launch.id, launch.shortName, launch.deviceName, phase.id, "
+                   "launch.id, launch.shortName, launch.productName, phase.id, "
                    "detectedBy.domain.code",
         "limit": -1,
     })
@@ -166,7 +166,7 @@ def guidedPrompts(cls, domain=None):
         # In a specific-domain log, only surface that domain's findings.
         if domain and domain != "all" and dcode and dcode != domain:
             continue
-        name = (f.launch.shortName or f.launch.deviceName) if f.launch else "the programme"
+        name = (f.launch.shortName or f.launch.productName) if f.launch else "the programme"
         prompts.append({
             "promptId": "finding_%s" % f.displayId,
             "question": "%s (%s) is still open on %s — any update, or is it resolved?" % (
@@ -266,7 +266,7 @@ def _llm_extract(domain, snippets, launches):
             return None
 
         launch_list = "\n".join(
-            "- %s: %s (%s)" % (l["id"], l["deviceName"], l.get("franchise") or "")
+            "- %s: %s (%s)" % (l["id"], l["productName"], l.get("franchise") or "")
             for l in launches
         )
         joined = "\n".join("%d. %s" % (i + 1, s["text"]) for i, s in enumerate(snippets))
@@ -278,7 +278,7 @@ def _llm_extract(domain, snippets, launches):
             "best-matching id from the list, or null), category (ct if it blocks a "
             "gate, rk if it eats schedule float, ok if merely monitored), and "
             "confidence (0-1). Do not invent risks that are not in the text. Never "
-            "attribute a failure to an already-marketed device. Return ONLY a JSON "
+            "attribute a failure to an already-marketed product. Return ONLY a JSON "
             "object: {\"signals\": [ ... ]}."
         )
         user = "Launches:\n%s\n\nDomain: %s\n\nLog entries:\n%s" % (
@@ -385,7 +385,7 @@ def extractSignals(cls, domain=None, freeText=None, answers=None):
     by_id = {l["id"]: l for l in launches}
     for d in drafts:
         l = by_id.get(d.get("launchId"))
-        d["launchName"] = (l["shortName"] or l["deviceName"]) if l else None
+        d["launchName"] = (l["shortName"] or l["productName"]) if l else None
 
     return {"domain": domain or "all", "engine": engine,
             "count": len(drafts), "drafts": drafts}

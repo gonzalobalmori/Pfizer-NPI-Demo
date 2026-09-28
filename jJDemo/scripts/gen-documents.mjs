@@ -8,8 +8,8 @@
  * but the full checklist is present for every product.
  *
  * INVARIANTS honoured:
- *  - Comirnaty G2's 78 bespoke, hand-authored documents are preserved VERBATIM
- *    (including seed_doc_varipulse_44, which a GateCriterion references as
+ *  - Berobenatide OB's 78 bespoke, hand-authored documents are preserved VERBATIM
+ *    (including seed_doc_berobenatide_obesity_44, which a GateCriterion references as
  *    evidence). We only ADD the new Supply-chain & operations section to it.
  *  - The catalog maps the manager's 8 industry categories onto the 9 group codes
  *    the UI/back end already render (dhf, vv, cli, reg, cert, mfg, com, sco, pm).
@@ -23,18 +23,18 @@ import { dirname, join } from 'node:path';
 
 const HERE = dirname(fileURLToPath(import.meta.url));
 const SEED = join(HERE, '..', 'seed', 'Document', 'Document.json');
-const Comirnaty = 'seed_launch_varipulse_g2';
+const BERO_OB = 'seed_launch_berobenatide_obesity';
 
 /* Launches and the phase each currently sits in (drives status derivation). */
 const LAUNCHES = [
-  { id: 'seed_launch_dualto', slug: 'dualto', phase: 6, health: 'LAUNCHED' },
-  { id: 'seed_launch_embotrap_iv', slug: 'embotrap', phase: 5, health: 'AT_RISK' },
-  { id: 'seed_launch_ethicon_4000', slug: 'ethicon', phase: 4, health: 'AT_RISK' },
-  { id: 'seed_launch_impella_ecp', slug: 'impella', phase: 4, health: 'ON_PLAN' },
-  { id: 'seed_launch_javelin_xl', slug: 'javelin', phase: 5, health: 'ON_PLAN' },
-  { id: 'seed_launch_octaray_g2', slug: 'octaray', phase: 2, health: 'AT_RISK' },
-  { id: 'seed_launch_ottava', slug: 'ottava', phase: 1, health: 'PRE_MARKET' },
-  { id: 'seed_launch_puresee', slug: 'puresee', phase: 3, health: 'ON_PLAN' },
+  { id: 'seed_launch_atirmociclib_mbc', slug: 'atirmociclib_mbc', phase: 6, health: 'LAUNCHED' },
+  { id: 'seed_launch_sigvotatug_nsclc', slug: 'sigvotatug_nsclc', phase: 5, health: 'AT_RISK' },
+  { id: 'seed_launch_berobenatide_osa', slug: 'berobenatide_osa', phase: 4, health: 'AT_RISK' },
+  { id: 'seed_launch_met097_obesity', slug: 'met097_obesity', phase: 4, health: 'ON_PLAN' },
+  { id: 'seed_launch_berobenatide_knee_oa', slug: 'berobenatide_knee_oa', phase: 5, health: 'ON_PLAN' },
+  { id: 'seed_launch_berobenatide_t2d', slug: 'berobenatide_t2d', phase: 2, health: 'AT_RISK' },
+  { id: 'seed_launch_pf3945_obesity', slug: 'pf3945_obesity', phase: 1, health: 'PRE_MARKET' },
+  { id: 'seed_launch_pf08634404_crc', slug: 'pf08634404_crc', phase: 3, health: 'ON_PLAN' },
 ];
 
 /*
@@ -50,7 +50,7 @@ const LAUNCHES = [
  *   7 Commercial & Market Access ....... com
  *   8 Supply Chain & Operations ........ sco
  * Verification & validation (vv) is split out of Design as its own section,
- * matching Comirnaty's authored structure.
+ * matching Berobenatide OB's authored structure.
  */
 const CATALOG = [
   // ── Development & CMC (CTD) ──
@@ -128,7 +128,7 @@ const CATALOG = [
   ['Health economic model', 'Model', 'com', 4],
   ['Global Value Dossier', 'Dossier', 'com', 4],
   ['Pricing corridor and IRP exposure analysis', 'Analysis', 'com', 4],
-  ['Value Analysis Committee evidence pack', 'Pack', 'com', 5],
+  ['P&T formulary dossier', 'Pack', 'com', 5],
   ['Field-force training and certification curriculum', 'Curriculum', 'com', 5],
   ['Promotional material — MLR review', 'Material', 'com', 5],
   // ── Supply chain & operations ──
@@ -145,9 +145,9 @@ const CATALOG = [
   ['Periodic Safety Update Report (PSUR)', 'Report', 'pm', 6],
 ];
 
-/* The Supply-chain section Comirnaty is currently missing — added so it too is
- * complete across all nine groups. Statuses reflect Comirnaty at P3, OFF_TRACK. */
-const Comirnaty_SCO = [
+/* The Supply-chain section Berobenatide OB is currently missing — added so it too is
+ * complete across all nine groups. Statuses reflect Berobenatide OB at P3, OFF_TRACK. */
+const BERO_OB_SCO = [
   ['Demand forecast and launch build plan — 4,200 units', 'Plan', 'sco', 'dft'],
   ['Safety stock and inventory policy', 'Policy', 'sco', 'na'],
   ['Country registration status tracker — 11 of 14 filed', 'Tracker', 'sco', 'rev'],
@@ -157,7 +157,7 @@ const Comirnaty_SCO = [
 
 const OWNERS = {
   dhf: 'R&D / CMC',
-  vv: 'V&V engineering',
+  vv: 'Process validation',
   cli: 'Clinical affairs',
   reg: 'Regulatory affairs',
   cert: 'Regulatory operations',
@@ -209,18 +209,18 @@ function sizeFor(seed) {
 
 /* ── Build ── */
 const existing = JSON.parse(readFileSync(SEED, 'utf8'));
-const varipulseDocs = existing.filter((d) => d.launch && d.launch.id === Comirnaty);
-if (varipulseDocs.length !== 78) {
-  throw new Error(`Expected 78 Comirnaty docs to preserve, found ${varipulseDocs.length}`);
+const berobenatide_obesityDocs = existing.filter((d) => d.launch && d.launch.id === BERO_OB);
+if (berobenatide_obesityDocs.length !== 78) {
+  throw new Error(`Expected 78 Berobenatide OB docs to preserve, found ${berobenatide_obesityDocs.length}`);
 }
 
-const out = [...varipulseDocs];
+const out = [...berobenatide_obesityDocs];
 
-// Add Comirnaty's missing Supply-chain section.
-Comirnaty_SCO.forEach(([name, docType, group, status], i) => {
-  const seed = hash(Comirnaty + name);
+// Add Berobenatide OB's missing Supply-chain section.
+BERO_OB_SCO.forEach(([name, docType, group, status], i) => {
+  const seed = hash(BERO_OB + name);
   out.push({
-    id: `seed_doc_varipulse_sco_${i + 1}`,
+    id: `seed_doc_berobenatide_obesity_sco_${i + 1}`,
     name,
     docType,
     group,
@@ -229,7 +229,7 @@ Comirnaty_SCO.forEach(([name, docType, group, status], i) => {
     documentDate: status === 'na' ? null : dateFor(3, status, seed),
     owner: OWNERS[group],
     fileSize: status === 'na' || status === 'miss' ? null : sizeFor(seed),
-    launch: { id: Comirnaty },
+    launch: { id: BERO_OB },
   });
 });
 

@@ -1,5 +1,5 @@
 sample_id,test_code,method_ref,analyst_id,result,units,result_state,result_date,product
-VPG2-VAL-03,ISO11135-EO-VAL,PPQ:2014 half-cycle,AK,,SAL,Pending,,Comirnaty Gen 2 PFA Catheter
-VPG2-BIO-11,BIOBURDEN,ISO 11737-1,JT,42,CFU/device,Approved,2026-08-20,Comirnaty Gen 2 PFA Catheter
-PSEE-TRN-D,ASTM-D4169-DC13,cold-chain transit protocol Seq. D,JT,FAIL,pass/fail,Approved,2026-09-06,Litfulo Toric IOL
-OCT-BIO-07,BIOBURDEN,ISO 11737-1,JT,31,CFU/device,Approved,02/09/2026,Abrysvo Gen 2 Mapping Catheter
+BER-VAL-03,ANNEX1-APS-VAL,PPQ:2014 bracketed,AK,,SAL,Pending,,Berobenatide OB
+BER-BIO-11,BIOBURDEN,Ph.Eur. 2.6.12,JT,42,CFU/vial,Approved,2026-08-20,Berobenatide OB
+PF404-TRN-D,ASTM-D4169-DC13,cold-chain transit protocol Seq. D,JT,FAIL,pass/fail,Approved,2026-09-06,PF-08634404
+BRT-BIO-07,BIOBURDEN,Ph.Eur. 2.6.12,JT,31,CFU/vial,Approved,02/09/2026,Berobenatide T2D

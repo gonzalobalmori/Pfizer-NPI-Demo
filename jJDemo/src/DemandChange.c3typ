@@ -16,7 +16,7 @@
  */
 entity type DemandChange {
 
-  /** Seed key, e.g. {@code seed_dchg_comirnaty_de}. */
+  /** Seed key, e.g. {@code seed_dchg_berobenatide_obesity_de}. */
   id: !string
 
   /** Change-request number, e.g. {@code DCR-26-0067}. */

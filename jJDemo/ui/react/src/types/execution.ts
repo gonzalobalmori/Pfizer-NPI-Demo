@@ -177,7 +177,7 @@ export interface WorkspaceFinding {
   dependency: 'SELF' | 'TEAM' | 'AGENT' | 'REGULATOR' | null;
   phaseCode: string | null;
   phaseName: string | null;
-  deviceName: string | null;
+  productName: string | null;
   shortName: string | null;
   franchise: string | null;
   revenueAtRisk: number | null;

@@ -3,7 +3,7 @@
     "id": "seed_finding_412",
     "displayId": "NPI-0412",
     "headline": "Commercial batches at risk on line 3?",
-    "description": "Manufacturing at-risk commercial batches — Comirnaty runs commercial output on lines 3 and 5, and line 3 has produced 3 batches out of spec on the dimensional check. V&V produces 3 batches as the norm, so the 3 affected batches are a full validation run's worth of commercial supply. An overdue CAPA is open on line 3 with a DMAIC still in progress.",
+    "description": "Manufacturing at-risk commercial batches — Berobenatide OB runs commercial output on lines 3 and 5, and line 3 has produced 3 batches out of spec on the dimensional check. PPQ produces 3 batches as the norm, so the 3 affected batches are a full validation run's worth of commercial supply. An overdue CAPA is open on line 3 with a DMAIC still in progress.",
     "signalSource": "Line 3 — 3 commercial batches out of spec on the dimensional check; CAPA overdue, DMAIC in progress",
     "detectedAt": null,
     "outcome": "USER",
@@ -14,14 +14,14 @@
       "id": "seed_phase_p3"
     },
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "otherLaunches": [
       {
-        "id": "seed_launch_octaray_g2"
+        "id": "seed_launch_berobenatide_t2d"
       },
       {
-        "id": "seed_launch_embotrap_iv"
+        "id": "seed_launch_sigvotatug_nsclc"
       }
     ],
     "detectedBy": {
@@ -40,12 +40,12 @@
     "dependency": "SELF",
     "daysAtStake": 12,
     "exposure": 18400000,
-    "exposureCause": "G3 Submission Commit slip — full Comirnaty first-year launch revenue at risk if the aseptic fill-finish window is missed",
+    "exposureCause": "G3 Submission Commit slip — full Berobenatide OB first-year launch revenue at risk if the aseptic fill-finish window is missed",
     "phase": {
       "id": "seed_phase_p3"
     },
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "otherLaunches": [],
     "detectedBy": {
@@ -64,22 +64,22 @@
     "dependency": "SELF",
     "daysAtStake": 9,
     "exposure": 6200000,
-    "exposureCause": "Single-source lyophilisation stopper supplier — Abrysvo G2 CMC Lock exposure if the second source is not activated before the gate",
+    "exposureCause": "Single-source lyophilisation stopper supplier — Berobenatide T2D CMC Lock exposure if the second source is not activated before the gate",
     "phase": {
       "id": "seed_phase_p2"
     },
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "otherLaunches": [
       {
-        "id": "seed_launch_varipulse_g2"
+        "id": "seed_launch_berobenatide_obesity"
       },
       {
-        "id": "seed_launch_embotrap_iv"
+        "id": "seed_launch_sigvotatug_nsclc"
       },
       {
-        "id": "seed_launch_javelin_xl"
+        "id": "seed_launch_berobenatide_knee_oa"
       }
     ],
     "detectedBy": {
@@ -101,7 +101,7 @@
       "id": "seed_phase_p2"
     },
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "otherLaunches": [],
     "detectedBy": {
@@ -120,12 +120,12 @@
     "dependency": "AGENT",
     "daysAtStake": 5,
     "exposure": 2300000,
-    "exposureCause": "Transit-validation failure at the conditioning step — Litfulo G3 first-year launch revenue at risk until the thermoform insert redesign passes",
+    "exposureCause": "Transit-validation failure at the conditioning step — PF-08634404 G3 first-year launch revenue at risk until the thermoform insert redesign passes",
     "phase": {
       "id": "seed_phase_p3"
     },
     "launch": {
-      "id": "seed_launch_puresee"
+      "id": "seed_launch_pf08634404_crc"
     },
     "otherLaunches": [],
     "detectedBy": {
@@ -144,12 +144,12 @@
     "dependency": "AGENT",
     "daysAtStake": 8,
     "exposure": 3100000,
-    "exposureCause": "Pre-launch stock not certified for launch supply coverage — Elrexfio G5 launch revenue at risk until a second fill-finish lane is priced",
+    "exposureCause": "Pre-launch stock not certified for launch supply coverage — Sigvotatug G5 launch revenue at risk until a second fill-finish lane is priced",
     "phase": {
       "id": "seed_phase_p5"
     },
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "otherLaunches": [],
     "detectedBy": {
@@ -171,7 +171,7 @@
       "id": "seed_phase_p4"
     },
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "otherLaunches": [],
     "detectedBy": {
@@ -190,12 +190,12 @@
     "dependency": "SELF",
     "daysAtStake": 7,
     "exposure": 2800000,
-    "exposureCause": "At-risk build write-off exposure — 2,600 Comirnaty units authorised above delegated authority ahead of G4 Marketing Authorisation",
+    "exposureCause": "At-risk build write-off exposure — 2,600 Berobenatide OB units authorised above delegated authority ahead of G4 Marketing Authorisation",
     "phase": {
       "id": "seed_phase_p4"
     },
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "otherLaunches": [],
     "detectedBy": {
@@ -214,12 +214,12 @@
     "dependency": "TEAM",
     "daysAtStake": 20,
     "exposure": 7800000,
-    "exposureCause": "Paediatric reimbursement dossier pending — no US formulary path for Zavicefta paediatric presentations puts the full first-year US launch revenue at risk until access is granted",
+    "exposureCause": "Paediatric reimbursement dossier pending — no US formulary path for Berobenatide OSA paediatric presentations puts the full first-year US launch revenue at risk until access is granted",
     "phase": {
       "id": "seed_phase_p4"
     },
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "otherLaunches": [],
     "detectedBy": {
@@ -241,7 +241,7 @@
       "id": "seed_phase_p5"
     },
     "launch": {
-      "id": "seed_launch_javelin_xl"
+      "id": "seed_launch_berobenatide_knee_oa"
     },
     "otherLaunches": [],
     "detectedBy": {
@@ -263,7 +263,7 @@
       "id": "seed_phase_p4"
     },
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "otherLaunches": [],
     "detectedBy": {

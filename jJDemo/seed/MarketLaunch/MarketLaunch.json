@@ -1,8 +1,8 @@
 [
   {
-    "id": "seed_ml_embotrap_iv_de",
+    "id": "seed_ml_sigvotatug_nsclc_de",
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "market": {
       "id": "seed_market_de"
@@ -12,9 +12,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_ethicon_4000_de",
+    "id": "seed_ml_berobenatide_osa_de",
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "market": {
       "id": "seed_market_de"
@@ -24,9 +24,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_varipulse_g2_de",
+    "id": "seed_ml_berobenatide_obesity_g2_de",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_de"
@@ -36,9 +36,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_ottava_de",
+    "id": "seed_ml_pf3945_obesity_de",
     "launch": {
-      "id": "seed_launch_ottava"
+      "id": "seed_launch_pf3945_obesity"
     },
     "market": {
       "id": "seed_market_de"
@@ -48,9 +48,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_puresee_de",
+    "id": "seed_ml_pf08634404_crc_de",
     "launch": {
-      "id": "seed_launch_puresee"
+      "id": "seed_launch_pf08634404_crc"
     },
     "market": {
       "id": "seed_market_de"
@@ -60,9 +60,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_javelin_xl_de",
+    "id": "seed_ml_berobenatide_knee_oa_de",
     "launch": {
-      "id": "seed_launch_javelin_xl"
+      "id": "seed_launch_berobenatide_knee_oa"
     },
     "market": {
       "id": "seed_market_de"
@@ -72,9 +72,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_embotrap_iv_fr",
+    "id": "seed_ml_sigvotatug_nsclc_fr",
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "market": {
       "id": "seed_market_fr"
@@ -84,9 +84,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_varipulse_g2_fr",
+    "id": "seed_ml_berobenatide_obesity_g2_fr",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_fr"
@@ -96,9 +96,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_ethicon_4000_fr",
+    "id": "seed_ml_berobenatide_osa_fr",
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "market": {
       "id": "seed_market_fr"
@@ -108,9 +108,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_ottava_fr",
+    "id": "seed_ml_pf3945_obesity_fr",
     "launch": {
-      "id": "seed_launch_ottava"
+      "id": "seed_launch_pf3945_obesity"
     },
     "market": {
       "id": "seed_market_fr"
@@ -120,9 +120,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_puresee_fr",
+    "id": "seed_ml_pf08634404_crc_fr",
     "launch": {
-      "id": "seed_launch_puresee"
+      "id": "seed_launch_pf08634404_crc"
     },
     "market": {
       "id": "seed_market_fr"
@@ -132,9 +132,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_dualto_us",
+    "id": "seed_ml_atirmociclib_mbc_us",
     "launch": {
-      "id": "seed_launch_dualto"
+      "id": "seed_launch_atirmociclib_mbc"
     },
     "market": {
       "id": "seed_market_us"
@@ -144,9 +144,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_ottava_us",
+    "id": "seed_ml_pf3945_obesity_us",
     "launch": {
-      "id": "seed_launch_ottava"
+      "id": "seed_launch_pf3945_obesity"
     },
     "market": {
       "id": "seed_market_us"
@@ -156,9 +156,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_varipulse_g2_us",
+    "id": "seed_ml_berobenatide_obesity_g2_us",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_us"
@@ -168,9 +168,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_ethicon_4000_us",
+    "id": "seed_ml_berobenatide_osa_us",
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "market": {
       "id": "seed_market_us"
@@ -180,9 +180,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_javelin_xl_us",
+    "id": "seed_ml_berobenatide_knee_oa_us",
     "launch": {
-      "id": "seed_launch_javelin_xl"
+      "id": "seed_launch_berobenatide_knee_oa"
     },
     "market": {
       "id": "seed_market_us"
@@ -192,9 +192,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_impella_ecp_us",
+    "id": "seed_ml_met097_obesity_us",
     "launch": {
-      "id": "seed_launch_impella_ecp"
+      "id": "seed_launch_met097_obesity"
     },
     "market": {
       "id": "seed_market_us"
@@ -204,9 +204,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_embotrap_iv_uk",
+    "id": "seed_ml_sigvotatug_nsclc_uk",
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "market": {
       "id": "seed_market_uk"
@@ -216,9 +216,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_ethicon_4000_uk",
+    "id": "seed_ml_berobenatide_osa_uk",
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "market": {
       "id": "seed_market_uk"
@@ -228,9 +228,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_varipulse_g2_uk",
+    "id": "seed_ml_berobenatide_obesity_g2_uk",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_uk"
@@ -240,9 +240,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_ottava_uk",
+    "id": "seed_ml_pf3945_obesity_uk",
     "launch": {
-      "id": "seed_launch_ottava"
+      "id": "seed_launch_pf3945_obesity"
     },
     "market": {
       "id": "seed_market_uk"
@@ -252,9 +252,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_puresee_uk",
+    "id": "seed_ml_pf08634404_crc_uk",
     "launch": {
-      "id": "seed_launch_puresee"
+      "id": "seed_launch_pf08634404_crc"
     },
     "market": {
       "id": "seed_market_uk"
@@ -264,9 +264,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_embotrap_iv_es",
+    "id": "seed_ml_sigvotatug_nsclc_es",
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "market": {
       "id": "seed_market_es"
@@ -276,9 +276,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_varipulse_g2_es",
+    "id": "seed_ml_berobenatide_obesity_g2_es",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_es"
@@ -288,9 +288,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_ethicon_4000_es",
+    "id": "seed_ml_berobenatide_osa_es",
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "market": {
       "id": "seed_market_es"
@@ -300,9 +300,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_puresee_es",
+    "id": "seed_ml_pf08634404_crc_es",
     "launch": {
-      "id": "seed_launch_puresee"
+      "id": "seed_launch_pf08634404_crc"
     },
     "market": {
       "id": "seed_market_es"
@@ -312,9 +312,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_ottava_es",
+    "id": "seed_ml_pf3945_obesity_es",
     "launch": {
-      "id": "seed_launch_ottava"
+      "id": "seed_launch_pf3945_obesity"
     },
     "market": {
       "id": "seed_market_es"
@@ -324,9 +324,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_embotrap_iv_jp",
+    "id": "seed_ml_sigvotatug_nsclc_jp",
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "market": {
       "id": "seed_market_jp"
@@ -336,9 +336,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_varipulse_g2_jp",
+    "id": "seed_ml_berobenatide_obesity_g2_jp",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_jp"
@@ -348,9 +348,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_ethicon_4000_jp",
+    "id": "seed_ml_berobenatide_osa_jp",
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "market": {
       "id": "seed_market_jp"
@@ -360,9 +360,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_puresee_jp",
+    "id": "seed_ml_pf08634404_crc_jp",
     "launch": {
-      "id": "seed_launch_puresee"
+      "id": "seed_launch_pf08634404_crc"
     },
     "market": {
       "id": "seed_market_jp"
@@ -372,9 +372,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_embotrap_iv_cn",
+    "id": "seed_ml_sigvotatug_nsclc_cn",
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "market": {
       "id": "seed_market_cn"
@@ -384,9 +384,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_varipulse_g2_cn",
+    "id": "seed_ml_berobenatide_obesity_g2_cn",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_cn"
@@ -396,9 +396,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_puresee_cn",
+    "id": "seed_ml_pf08634404_crc_cn",
     "launch": {
-      "id": "seed_launch_puresee"
+      "id": "seed_launch_pf08634404_crc"
     },
     "market": {
       "id": "seed_market_cn"
@@ -408,9 +408,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_embotrap_iv_br",
+    "id": "seed_ml_sigvotatug_nsclc_br",
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "market": {
       "id": "seed_market_br"
@@ -420,9 +420,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_varipulse_g2_br",
+    "id": "seed_ml_berobenatide_obesity_g2_br",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_br"
@@ -432,9 +432,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_ethicon_4000_br",
+    "id": "seed_ml_berobenatide_osa_br",
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "market": {
       "id": "seed_market_br"
@@ -444,9 +444,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_embotrap_iv_it",
+    "id": "seed_ml_sigvotatug_nsclc_it",
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "market": {
       "id": "seed_market_it"
@@ -456,9 +456,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_puresee_it",
+    "id": "seed_ml_pf08634404_crc_it",
     "launch": {
-      "id": "seed_launch_puresee"
+      "id": "seed_launch_pf08634404_crc"
     },
     "market": {
       "id": "seed_market_it"
@@ -468,9 +468,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_dualto_it",
+    "id": "seed_ml_atirmociclib_mbc_it",
     "launch": {
-      "id": "seed_launch_dualto"
+      "id": "seed_launch_atirmociclib_mbc"
     },
     "market": {
       "id": "seed_market_it"
@@ -480,9 +480,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_ethicon_4000_in",
+    "id": "seed_ml_berobenatide_osa_in",
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "market": {
       "id": "seed_market_in"
@@ -492,9 +492,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_javelin_xl_in",
+    "id": "seed_ml_berobenatide_knee_oa_in",
     "launch": {
-      "id": "seed_launch_javelin_xl"
+      "id": "seed_launch_berobenatide_knee_oa"
     },
     "market": {
       "id": "seed_market_in"
@@ -504,9 +504,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_embotrap_iv_ca",
+    "id": "seed_ml_sigvotatug_nsclc_ca",
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "market": {
       "id": "seed_market_ca"
@@ -516,9 +516,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_varipulse_g2_ca",
+    "id": "seed_ml_berobenatide_obesity_g2_ca",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_ca"
@@ -528,9 +528,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_varipulse_g2_au",
+    "id": "seed_ml_berobenatide_obesity_g2_au",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_au"
@@ -540,9 +540,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_ethicon_4000_au",
+    "id": "seed_ml_berobenatide_osa_au",
     "launch": {
-      "id": "seed_launch_ethicon_4000"
+      "id": "seed_launch_berobenatide_osa"
     },
     "market": {
       "id": "seed_market_au"
@@ -552,9 +552,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_octaray_g2_de",
+    "id": "seed_ml_berobenatide_t2d_de",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "market": {
       "id": "seed_market_de"
@@ -564,9 +564,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_octaray_g2_us",
+    "id": "seed_ml_berobenatide_t2d_us",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "market": {
       "id": "seed_market_us"
@@ -576,9 +576,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_octaray_g2_fr",
+    "id": "seed_ml_berobenatide_t2d_fr",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "market": {
       "id": "seed_market_fr"
@@ -588,9 +588,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_octaray_g2_uk",
+    "id": "seed_ml_berobenatide_t2d_uk",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "market": {
       "id": "seed_market_uk"
@@ -600,9 +600,9 @@
     "reimbursementStatus": ""
   },
   {
-    "id": "seed_ml_octaray_g2_jp",
+    "id": "seed_ml_berobenatide_t2d_jp",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "market": {
       "id": "seed_market_jp"

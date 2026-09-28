@@ -18,7 +18,7 @@
 
 /* ── shared helpers ─────────────────────────────────────────────── */
 
-var DEFAULT_EVENT = 'seed_qe_abrysvo_stopper';
+var DEFAULT_EVENT = 'seed_qe_berobenatide_t2d_stopper';
 
 /* Visual-inspection action limit (ppm). Batches under it can be recovered by a
  * 100% re-inspection; batches over it cannot be released on any route. */
@@ -69,7 +69,7 @@ function findEvent(eventId) {
   var id = eventId || DEFAULT_EVENT;
   var rs = QualityEvent.fetch({
     filter: Filter.eq('id', id),
-    include: 'this, launch.id, launch.deviceName, launch.shortName, site.id, site.name, ' +
+    include: 'this, launch.id, launch.productName, launch.shortName, site.id, site.name, ' +
              'site.location, componentLot.id, componentLot.lotNo, componentLot.componentName, ' +
              'componentLot.defectRatePpm, componentLot.quantityRemaining, ' +
              'componentLot.acceptanceStatus, componentLot.supplier.id, ' +
@@ -321,7 +321,7 @@ function buildBundle(e) {
       id: e.id,
       eventNo: e.eventNo,
       launchId: launchId,
-      launchName: (e.launch && (e.launch.shortName || e.launch.deviceName)) || null,
+      launchName: (e.launch && (e.launch.shortName || e.launch.productName)) || null,
       siteName: e.site && e.site.name,
       siteLocation: e.site && e.site.location,
       defectDescription: e.defectDescription,
@@ -517,7 +517,7 @@ function evaluateOptions(eventId) {
   /* ---- Option A: rework the held batches -------------------------------- *
    * Ruled out by container-closure integrity: a lyophilised product cannot be
    * de-stoppered and re-stoppered without breaching the container closure integrity.      */
-  var isLyo = ('' + (e.launch && e.launch.deviceName || '')).length > 0 &&
+  var isLyo = ('' + (e.launch && e.launch.productName || '')).length > 0 &&
               batches.length > 0 &&
               ('' + (batches[0].presentation || '')).toLowerCase().indexOf('lyophilis') >= 0;
   opts.push({

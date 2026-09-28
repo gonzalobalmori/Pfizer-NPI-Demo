@@ -4,7 +4,7 @@
     "sequence": 1,
     "occurredAt": "2026-09-11T08:14:00",
     "verb": "DETECTED",
-    "detail": "Vetter Ravensburg cancelled the 12 Oct fill-finish line slot booked for validation lot VPG2-VAL-03. Picked up from the supplier portal feed, not from a person.",
+    "detail": "Vetter Ravensburg cancelled the 12 Oct fill-finish line slot booked for validation lot BER-VAL-03. Picked up from the supplier portal feed, not from a person.",
     "stateLabel": "DETECTED",
     "handoffPrompt": "Planning agent — “what does this do to the gate plan?”",
     "completed": true,

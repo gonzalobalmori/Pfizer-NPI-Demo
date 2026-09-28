@@ -1,7 +1,7 @@
 /**
- * A Pfizer Biopharma product franchise (e.g. Vaccines, Rare Disease, Immunology,
- * Internal Medicine, Hospital, Neuroscience, Oncology Biosimilars). A franchise belongs to one
- * {@link Segment} and owns the device {@link Launch}es under it.
+ * A Pfizer Biopharma therapeutic area (Internal Medicine, Oncology, Vaccines,
+ * Inflammation & Immunology, Rare Disease). A franchise belongs to one
+ * {@link Segment} and owns the {@link Launch}es under it.
  *
  * Franchise is a first-class filter dimension across the application: the
  * Live control board and the activity log share a franchise filter (§2.2).
@@ -13,6 +13,6 @@ entity type Franchise mixes SeedData {
   /** The segment this franchise rolls up to. */
   segment: Segment
 
-  /** The device launches governed under this franchise. Inverse of {@link Launch#franchise}. */
+  /** The launches governed under this franchise. Inverse of {@link Launch#franchise}. */
   launches: [Launch](franchise)
 }

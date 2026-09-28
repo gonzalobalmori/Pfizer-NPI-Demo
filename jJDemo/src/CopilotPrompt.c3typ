@@ -12,7 +12,7 @@
  * UI renders it without composing copy itself.
  */
 entity type CopilotPrompt mixes SeedData {
-  /** Stable prompt id / intent key, e.g. "today", "heraeus". */
+  /** Stable prompt id / intent key, e.g. "today", "aptar". */
   id: !string
 
   /** The prompt question, e.g. "Walk me through what I have to do today". */

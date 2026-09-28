@@ -1,15 +1,15 @@
 [
   {
-    "id": "seed_dchg_comirnaty_de",
+    "id": "seed_dchg_berobenatide_obesity_de",
     "requestNo": "DCR-26-0067",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_de"
     },
     "marketCommitment": {
-      "id": "seed_mcom_comirnaty_de"
+      "id": "seed_mcom_berobenatide_obesity_de"
     },
     "requestedBy": {
       "id": "seed_person_tb"
@@ -22,8 +22,8 @@
     "upliftPercent": 64.3,
     "baselinePresentation": "6-dose multi-dose vial",
     "requestedPresentation": "1-dose prefilled syringe",
-    "baselineSku": "COM-DE-MDV-6",
-    "requestedSku": "COM-DE-PFS-1",
+    "baselineSku": "BER-DE-MDV-6",
+    "requestedSku": "BER-DE-PFS-1",
     "rationale": "STIKO recommendation extended to the 60-plus cohort and two Länder have moved to pharmacy-led administration, which requires single-dose presentations. Commercial requests 690,000 doses with the pack mix moved to prefilled syringe.",
     "incrementalRevenue": 7020000.0,
     "stage": "RAISED"

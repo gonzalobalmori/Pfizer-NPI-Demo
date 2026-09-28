@@ -2,7 +2,7 @@
  * CascadeReplanService — the connected-milestone / dynamic-cascade-replan
  * behaviour (SCENARIO 1). When an outside authority moves a
  * {@link RegulatoryMilestone}, this service fans the impact across every
- * downstream {@link CascadeImpactItem} — manufacturing schedule, loaner-kit
+ * downstream {@link CascadeImpactItem} — manufacturing schedule, launch stock
  * deployment, commercial comms, and carrying-cost visibility — auto-adjusting
  * what it safely can and surfacing only the items that genuinely need a human.
  * The result is an exception dashboard ("N auto-adjusted, M require a human
@@ -14,7 +14,7 @@
  */
 entity type CascadeReplanService {
   /**
-   * The replan dashboard for a launch (default Velsipity when no id given): the
+   * The replan dashboard for a launch (default Berobenatide OA when no id given): the
    * milestone with its baseline/current dates and slip, the full list of
    * downstream impact items split into auto-adjusted vs. awaiting-a-human, and
    * the rolled-up working-capital cost leadership sees. Read-only — reflects

@@ -64,7 +64,7 @@ function mlStatusTone(s: MlStatus): 'r' | 'a' | '' {
  *
  * This was previously one row per launch × market, which is the grain the data
  * does NOT support and it produced a table that misled three ways at once:
- *   1. Five rows for Comirnaty were byte-identical apart from the market code —
+ *   1. Five rows for Berobenatide OB were byte-identical apart from the market code —
  *      same status, same 47d slip, same G3 gate — because the backend gives every
  *      flagged market of a launch the same gate projection. Four of the five rows
  *      carried no information.
@@ -90,7 +90,7 @@ interface AttnMarket {
 interface AttnRow {
   key: string;
   launchId: string;
-  device: string;
+  product: string;
   franchise: string | null;
   phaseCode: string | null;
   phaseName: string | null;
@@ -135,8 +135,8 @@ interface TimeImpactDatum {
  * green segment is labelled inside it only when a grey segment exists to tell it
  * apart from. Without that test four of five rows printed the same number twice
  * about 8px apart ("35d 35d", "13d 13d", "8d 8d", "5d 5d"), which reads as a
- * rendering fault rather than as data. Only Comirnaty is really split (25 green +
- * 45 grey = 70), so only Comirnaty gets the inside label; every bar still shows
+ * rendering fault rather than as data. Only Berobenatide OB is really split (25 green +
+ * 45 grey = 70), so only Berobenatide OB gets the inside label; every bar still shows
  * the full breakdown on hover.
  *
  * This is written as a `valueAccessor` rather than a `formatter` because Recharts
@@ -300,7 +300,7 @@ export default function CockpitView() {
       return [{
         key: a.launchId,
         launchId: a.launchId,
-        device: a.device,
+        product: a.product,
         franchise: a.franchise,
         phaseCode: worst.phaseCode ?? a.phaseCode,
         phaseName: a.phaseName,
@@ -321,7 +321,7 @@ export default function CockpitView() {
       return [{
         key: a.launchId,
         launchId: a.launchId,
-        device: a.device,
+        product: a.product,
         franchise: a.franchise,
         phaseCode: a.phaseCode,
         phaseName: a.phaseName,
@@ -355,7 +355,7 @@ export default function CockpitView() {
      worst-first (the backend already sorts byLaunch that way). */
   const tiRows: TimeImpactDatum[] = (timeImpact?.byLaunch ?? []).map((b) => ({
     launchId: b.launchId,
-    label: b.shortName ?? b.device,
+    label: b.shortName ?? b.product,
     recoverableDays: b.recoverableDays,
     regulatorDays: b.regulatorDays,
     daysAtStake: b.daysAtStake,
@@ -721,7 +721,7 @@ export default function CockpitView() {
                   return (
                     <tr key={f.key} onClick={() => open('launch', f.launchId)}>
                       <td>
-                        <div className="nm">{f.device}</div>
+                        <div className="nm">{f.product}</div>
                         <div className="sub">{f.franchise}{f.phaseCode ? ` · ${f.phaseCode}` : ''}</div>
                       </td>
                       <td>
@@ -787,7 +787,7 @@ export default function CockpitView() {
                 * The readiness bar used to be toned by `gateTone(g.status)` — the
                 * gate's SCHEDULE state (late / not met) — while its LENGTH showed
                 * criteria met. So a gate with every criterion satisfied drew a
-                * full-length RED bar if its date had slipped: Zavzpret at 6/6 was
+                * full-length RED bar if its date had slipped: PF-3945 at 6/6 was
                 * the most alarming row on the panel while being the most ready one.
                 * A mark whose length says "done" and whose colour says "critical"
                 * cannot be read at all.
@@ -815,7 +815,7 @@ export default function CockpitView() {
                       <div className="sub">Go / No-Go</div>
                     </td>
                     <td>
-                      <div className="nm">{g.shortName ?? g.device}</div>
+                      <div className="nm">{g.shortName ?? g.product}</div>
                     </td>
                     <td>
                       <div className="nm mono">{fmtDate(g.forecastDate)}</div>

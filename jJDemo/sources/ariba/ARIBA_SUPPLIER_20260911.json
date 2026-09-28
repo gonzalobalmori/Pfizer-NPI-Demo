@@ -1,6 +1,6 @@
 [
   {
-    "supplier_id": "AN01-STERIS-VENLO",
+    "supplier_id": "AN01-VETTER-RVB",
     "supplier_name": "Vetter Ravensburg",
     "qualification_status": "Qualified",
     "audit_valid_to": "2027-12-31",
@@ -10,7 +10,7 @@
     "category": "Fill-finish & Contract Mfg"
   },
   {
-    "supplier_id": "AN02-STERIGENICS-GR",
+    "supplier_id": "AN02-SIEGFRIED-HML",
     "supplier_name": "Siegfried Hameln",
     "qualification_status": "Qualified",
     "audit_valid_to": "2028-03-22",
@@ -20,7 +20,7 @@
     "category": "Fill-finish & Contract Mfg"
   },
   {
-    "supplier_id": "AN05-HERAEUS-MC",
+    "supplier_id": "AN05-APTAR-LVD",
     "supplier_name": "Aptar Pharma Le Vaudreuil",
     "qualification_status": "Conditional",
     "audit_valid_to": "2027-06-30",
@@ -30,7 +30,7 @@
     "category": "Fill-finish & Contract Mfg"
   },
   {
-    "supplier_id": "AN09-BSI-NB",
+    "supplier_id": "AN09-EUROFINS-SCI",
     "supplier_name": "Eurofins Scientific",
     "qualification_status": "Qualified",
     "audit_valid_to": "2028-01-31",

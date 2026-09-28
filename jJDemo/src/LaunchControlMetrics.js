@@ -39,7 +39,7 @@ function portfolioGateReadiness() {
   // Readiness = met criteria / total criteria on each launch's next open gate.
   var gates = Gate.fetch({
     filter: Filter.ne('status', 'ok'), // next-to-close / open gates
-    include: 'code, launch.id, launch.deviceName, criteria.met', limit: -1
+    include: 'code, launch.id, launch.productName, criteria.met', limit: -1
   }).objs;
   var perLaunch = [];
   var totMet = 0, totAll = 0;
@@ -49,7 +49,7 @@ function portfolioGateReadiness() {
     if (all > 0) {
       totMet += met; totAll += all;
       perLaunch.push({
-        launch: g.launch ? g.launch.deviceName : g.code,
+        launch: g.launch ? g.launch.productName : g.code,
         gate: g.code, met: met, total: all,
         pct: round1((met / all) * 100)
       });
@@ -76,13 +76,13 @@ function portfolioGateReadiness() {
  * By construction onPlan + atRisk + offTrack === active, so the card sums to
  * its own header and matches the portfolio at-risk / off-track counts. */
 function launchHealthDistribution() {
-  var launches = Launch.fetch({ include: 'id, deviceName, healthStatus', limit: -1 }).objs;
+  var launches = Launch.fetch({ include: 'id, productName, healthStatus', limit: -1 }).objs;
   var buckets = {};
   launches.each(function (l) {
     var s = l.healthStatus || 'UNKNOWN';
     if (!buckets[s]) buckets[s] = { count: 0, launches: [] };
     buckets[s].count++;
-    buckets[s].launches.push(l.deviceName);
+    buckets[s].launches.push(l.productName);
   });
   function cnt(s) { return buckets[s] ? buckets[s].count : 0; }
   var launched = cnt('LAUNCHED');
@@ -105,13 +105,13 @@ function launchHealthDistribution() {
 function revenueAtRisk() {
   var launches = Launch.fetch({
     filter: Filter.gt('revenueAtRisk', 0),
-    include: 'id, deviceName, revenueAtRisk', limit: -1
+    include: 'id, productName, revenueAtRisk', limit: -1
   }).objs;
   var total = 0;
   var byLaunch = [];
   launches.each(function (l) {
     total += (l.revenueAtRisk || 0);
-    byLaunch.push({ launch: l.deviceName, exposure: l.revenueAtRisk });
+    byLaunch.push({ launch: l.productName, exposure: l.revenueAtRisk });
   });
   return {
     metric: 'RevenueAtRisk', value: total, unit: '€',
@@ -123,8 +123,8 @@ function revenueAtRisk() {
 /* ---- AverageSlipAtGateClose --------------------------------------------
  * The headline "average slip" must reconcile with what the portfolio actually
  * shows: the gates that have SLIPPED. The portfolio timeline / launch cards only
- * ever surface gates that moved on the calendar (Comirnaty G3 +47, Prevnar 20 G4
- * +21, Abrysvo G2 +14, TECNIS G3 +11, Elrexfio G5 +9); a gate sitting exactly on
+ * ever surface gates that moved on the calendar (Berobenatide OB G3 +47, Berobenatide OSA G4
+ * +21, Berobenatide T2D +14, PF-08634404 G3 +11, Sigvotatug G5 +9); a gate sitting exactly on
  * baseline is not a "slip". Averaging over ALL open gates (most with slipDays=0)
  * silently diluted the figure to ~4d and did not match any per-launch number the
  * user could see — the discrepancy flagged. So the average is taken over gates
@@ -135,7 +135,7 @@ function averageSlipAtGateClose() {
   // Gates still to close (status != 'ok') carry the live slip.
   var gates = Gate.fetch({
     filter: Filter.ne('status', 'ok'),
-    include: 'code, slipDays, launch.deviceName, launch.shortName', limit: -1
+    include: 'code, slipDays, launch.productName, launch.shortName', limit: -1
   }).objs;
   var sum = 0, slippedCount = 0, openGates = 0, worst = 0;
   var byGate = [];
@@ -147,7 +147,7 @@ function averageSlipAtGateClose() {
       if (s > worst) worst = s;
       byGate.push({
         gate: g.code,
-        launch: g.launch ? (g.launch.shortName || g.launch.deviceName) : null,
+        launch: g.launch ? (g.launch.shortName || g.launch.productName) : null,
         slipDays: s
       });
     }

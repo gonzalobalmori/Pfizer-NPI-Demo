@@ -4,26 +4,25 @@
  *
  * WHY (manager review): "in the detail of each of the products, all the information
  * shown must match the context of that product. For the products at risk and the
- * yellow-gate ones, when clicked, the risks must appear ... use Comirnaty as the
- * example of the tables that should exist. If the product is not at risk, the
+ * yellow-gate ones, when clicked, the risks must appear ... use the lead programme
+ * as the example of the tables that should exist. If the product is not at risk, the
  * tables should appear but only when they make sense — no item at risk, open
- * issues clean." Currently only Comirnaty is fully seeded; every other launch has
+ * issues clean." Only the lead programme was fully seeded; every other launch had
  * an incomplete gate ladder, ZERO gate criteria (empty centre table) and ZERO
  * activities (empty Workflow board). This generator fixes all three from a single
  * source of truth.
  *
  * INVARIANTS honoured:
- *  - Comirnaty G2's authored data is preserved VERBATIM: its 5 gates, its 6 G3
- *    GateCriterion (incl. seed_gc_varipulse_g3_sterilisation -> seed_doc_varipulse_44),
- *    and its 107 Activity records are copied through unchanged.
+ *  - The lead programme's authored data is preserved VERBATIM: its gates, its G3
+ *    GateCriterion set and its Activity records are copied through unchanged.
  *  - Gate ids keep the exact seed_gate_<slug>_<code> scheme the PPM transform
  *    (SrcPpmGate-Gate.js) reverses, so a re-load UPDATES gates idempotently.
  *  - Every launch's ladder is consistent with its currentPhase: gates BEFORE the
  *    live phase are closed (ok), the gate AT the live phase carries the launch's
  *    real slip/status, gates AFTER are pending (no).
- *  - Criteria sit only on each launch's NEXT (live) gate — exactly as Comirnaty
- *    carries criteria only on G3, not G4/G5. Troubled launches surface >=1 unmet
- *    criterion (the risk); on-plan launches read clean.
+ *  - Criteria sit only on each launch's NEXT (live) gate — exactly as the lead
+ *    programme carries criteria only on its live gate. Troubled launches surface
+ *    >=1 unmet criterion (the risk); on-plan launches read clean.
  *  - The PPM_GATE CSV (the ingest source of truth) is regenerated to match.
  *  - Deterministic: no randomness, so re-running yields identical output.
  *
@@ -41,7 +40,9 @@ const CRIT_JSON = join(ROOT, 'seed', 'GateCriterion', 'GateCriterion.json');
 const ACT_JSON = join(ROOT, 'seed', 'Activity', 'Activity.json');
 const LAUNCH_JSON = join(ROOT, 'data', 'Launch', 'Launch.json');
 
-const Comirnaty = 'seed_launch_varipulse_g2';
+/* The lead programme, whose authored gate/criterion/activity data is preserved
+   verbatim rather than templated (see the header note). */
+const LEAD = 'seed_launch_berobenatide_obesity';
 
 /* ── canonical gate metadata ────────────────────────────────────────── */
 const GATE_NAME = {
@@ -70,15 +71,15 @@ const GATE_ORDER = ['G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'BAU'];
  * the whole process model.
  */
 const LAUNCHES = [
-  { launchId: Comirnaty,                 slug: 'varipulse',    project: 'PRJ-Comirnaty_G2', readiness: 83, troubled: true,  next: 'G4',  start: '2024-09-24', slip: 47 },
-  { launchId: 'seed_launch_octaray_g2',  slug: 'octaray_g2',      project: 'PRJ-Abrysvo_G2',   readiness: 46, troubled: true,  next: 'G2',  start: '2025-03-11', slip: 18 },
-  { launchId: 'seed_launch_puresee',     slug: 'puresee',      project: 'PRJ-Zirabev',      readiness: 38, troubled: true,  next: 'G3',  start: '2025-01-20', slip: 24 },
-  { launchId: 'seed_launch_impella_ecp', slug: 'impella_ecp',      project: 'PRJ-Cibinqo',      readiness: 61, troubled: false, next: 'G5',  start: '2024-06-03', slip: 0  },
-  { launchId: 'seed_launch_ethicon_4000',slug: 'ethicon_4000',      project: 'PRJ-Zavicefta',    readiness: 57, troubled: true,  next: 'G6',  start: '2024-04-15', slip: 12 },
-  { launchId: 'seed_launch_javelin_xl',  slug: 'javelin_xl',      project: 'PRJ-Velsipity',    readiness: 74, troubled: false, next: 'G7',  start: '2024-02-12', slip: 0  },
-  { launchId: 'seed_launch_embotrap_iv', slug: 'embotrap_iv',     project: 'PRJ-Hympavzi',     readiness: 69, troubled: true,  next: 'G8',  start: '2023-11-06', slip: 9  },
-  { launchId: 'seed_launch_ottava',      slug: 'ottava',       project: 'PRJ-Zavzpret',     readiness: 21, troubled: false, next: 'G1',  start: '2025-09-08', slip: 0  },
-  { launchId: 'seed_launch_dualto',      slug: 'dualto',       project: 'PRJ-Fragmin',      readiness: 96, troubled: false, next: 'BAU', start: '2023-05-15', slip: 0  }
+  { launchId: LEAD,                               slug: 'berobenatide_obesity',  project: 'PRJ-BERO_OB',        readiness: 83, troubled: true,  next: 'G4',  start: '2024-09-24', slip: 47 },
+  { launchId: 'seed_launch_berobenatide_t2d',     slug: 'berobenatide_t2d',      project: 'PRJ-BERO_T2D',       readiness: 46, troubled: true,  next: 'G2',  start: '2025-03-11', slip: 18 },
+  { launchId: 'seed_launch_pf08634404_crc',       slug: 'pf08634404_crc',        project: 'PRJ-PF08634404_CRC', readiness: 38, troubled: true,  next: 'G3',  start: '2025-01-20', slip: 24 },
+  { launchId: 'seed_launch_met097_obesity',       slug: 'met097_obesity',        project: 'PRJ-MET097_OB',      readiness: 61, troubled: false, next: 'G5',  start: '2024-06-03', slip: 0  },
+  { launchId: 'seed_launch_berobenatide_osa',     slug: 'berobenatide_osa',      project: 'PRJ-BERO_OSA',       readiness: 57, troubled: true,  next: 'G6',  start: '2024-04-15', slip: 12 },
+  { launchId: 'seed_launch_berobenatide_knee_oa', slug: 'berobenatide_knee_oa',  project: 'PRJ-BERO_OA',        readiness: 74, troubled: false, next: 'G7',  start: '2024-02-12', slip: 0  },
+  { launchId: 'seed_launch_sigvotatug_nsclc',     slug: 'sigvotatug_nsclc',      project: 'PRJ-SIGVO_NSCLC',    readiness: 69, troubled: true,  next: 'G8',  start: '2023-11-06', slip: 9  },
+  { launchId: 'seed_launch_pf3945_obesity',       slug: 'pf3945_obesity',        project: 'PRJ-PF3945_OB',      readiness: 21, troubled: false, next: 'G1',  start: '2025-09-08', slip: 0  },
+  { launchId: 'seed_launch_atirmociclib_mbc',     slug: 'atirmociclib_mbc',      project: 'PRJ-ATIRMO_MBC',     readiness: 96, troubled: false, next: 'BAU', start: '2023-05-15', slip: 0  }
 ].map((L) => {
   /* ~5 months per phase, so a full programme runs a little over three years. */
   const CADENCE_DAYS = 152;
@@ -101,59 +102,62 @@ const LAUNCHES = [
 });
 
 /*
- * Per-launch commercial scope + device facts (the "Launch scope" and "Device"
- * cards on the Product-detail page). Kept as attested programme data — the single
- * source of truth the UI must read instead of the old hard-coded Comirnaty values.
- * Comirnaty reproduces the prototype exactly (€96M, EO, Irvine + CMO, 11/14,
- * 4200, 62/78, 9/22). Numbers are phase-appropriate: pre-market programmes have
- * little commercial scope built yet; launched programmes are complete.
+ * Per-launch commercial scope + drug-product facts (the "Launch scope" and
+ * "Product" cards on the Product-detail page). Kept as attested programme data —
+ * the single source of truth the UI reads instead of a hard-coded set. Numbers
+ * are phase-appropriate: pre-market programmes have little commercial scope
+ * built yet; launched programmes are complete.
+ *
+ * The four berobenatide programmes deliberately share the Puurs prefilled-syringe
+ * route, because that shared line is what lets one drug-product event cascade
+ * across several launches at once.
  *
  * fields: launchValue, fillFinish, manufacture, regsFiled/regsTotal,
  *         buildUnits, ffCertified/ffTotal, vacFiled/vacTotal.
  */
 const SCOPE = {
-  seed_launch_varipulse_g2: {
-    launchValue: 96000000, fillFinish: 'Aseptic fill', manufacture: 'Puurs + Vetter Ravensburg',
+  seed_launch_berobenatide_obesity: {
+    launchValue: 96000000, fillFinish: 'Aseptic fill — prefilled syringe', manufacture: 'Puurs + Vetter Ravensburg',
     regsFiled: 11, regsTotal: 14, buildUnits: 4200, ffCertified: 62, ffTotal: 78, vacFiled: 9, vacTotal: 22
   },
-  seed_launch_octaray_g2: {
-    launchValue: 54000000, fillFinish: 'Aseptic fill', manufacture: 'Puurs',
+  seed_launch_berobenatide_t2d: {
+    launchValue: 54000000, fillFinish: 'Aseptic fill — prefilled syringe', manufacture: 'Puurs',
     regsFiled: 3, regsTotal: 12, buildUnits: 0, ffCertified: 0, ffTotal: 64, vacFiled: 0, vacTotal: 18
   },
-  seed_launch_embotrap_iv: {
-    launchValue: 41000000, fillFinish: 'Lyophilised', manufacture: 'Grange Castle',
+  seed_launch_sigvotatug_nsclc: {
+    launchValue: 41000000, fillFinish: 'Lyophilised — single-use vial', manufacture: 'Grange Castle',
     regsFiled: 9, regsTotal: 11, buildUnits: 6800, ffCertified: 44, ffTotal: 52, vacFiled: 12, vacTotal: 19
   },
-  seed_launch_impella_ecp: {
-    launchValue: 120000000, fillFinish: 'Aseptic fill', manufacture: 'Kalamazoo (KZO)',
+  seed_launch_met097_obesity: {
+    launchValue: 120000000, fillFinish: 'Aseptic fill — prefilled syringe', manufacture: 'Kalamazoo (KZO)',
     regsFiled: 2, regsTotal: 6, buildUnits: 900, ffCertified: 18, ffTotal: 70, vacFiled: 2, vacTotal: 15
   },
-  seed_launch_javelin_xl: {
-    launchValue: 88000000, fillFinish: 'Aseptic fill', manufacture: 'Freiburg',
+  seed_launch_berobenatide_knee_oa: {
+    launchValue: 88000000, fillFinish: 'Aseptic fill — prefilled syringe', manufacture: 'Puurs',
     regsFiled: 7, regsTotal: 9, buildUnits: 5200, ffCertified: 58, ffTotal: 66, vacFiled: 14, vacTotal: 20
   },
-  seed_launch_ethicon_4000: {
-    launchValue: 76000000, fillFinish: 'Terminal sterile', manufacture: 'Freiburg + Baxter Halle',
+  seed_launch_berobenatide_osa: {
+    launchValue: 76000000, fillFinish: 'Aseptic fill — prefilled syringe', manufacture: 'Puurs + Baxter Halle',
     regsFiled: 6, regsTotal: 12, buildUnits: 3100, ffCertified: 31, ffTotal: 84, vacFiled: 5, vacTotal: 24
   },
-  seed_launch_dualto: {
-    launchValue: 62000000, fillFinish: 'Oral solid dose', manufacture: 'Freiburg',
+  seed_launch_atirmociclib_mbc: {
+    launchValue: 62000000, fillFinish: 'Oral solid dose — film-coated tablet', manufacture: 'Freiburg',
     regsFiled: 9, regsTotal: 9, buildUnits: 480, ffCertified: 112, ffTotal: 112, vacFiled: 28, vacTotal: 28
   },
-  seed_launch_ottava: {
-    launchValue: 210000000, fillFinish: 'Oral solid dose', manufacture: 'Freiburg',
+  seed_launch_pf3945_obesity: {
+    launchValue: 210000000, fillFinish: 'Aseptic fill — prefilled pen', manufacture: 'Puurs',
     regsFiled: 0, regsTotal: 8, buildUnits: 0, ffCertified: 0, ffTotal: 90, vacFiled: 0, vacTotal: 30
   },
-  seed_launch_puresee: {
-    launchValue: 47000000, fillFinish: 'Terminal sterile', manufacture: 'Siegfried Hameln',
+  seed_launch_pf08634404_crc: {
+    launchValue: 47000000, fillFinish: 'Aseptic fill — single-use vial', manufacture: 'Grange Castle + Siegfried Hameln',
     regsFiled: 4, regsTotal: 13, buildUnits: 1200, ffCertified: 12, ffTotal: 48, vacFiled: 3, vacTotal: 21
   }
 };
 
 /* ── gate-criterion templates, keyed by gate code ───────────────────── */
 /* Each entry: [name, unmetReason]. The reason is only emitted when the criterion
- * is scored unmet. Comirnaty's authored G3 set is preserved verbatim elsewhere,
- * so this G3 template is used only for the other G3 launches (puresee). */
+ * is scored unmet. Berobenatide OB's authored G3 set is preserved verbatim elsewhere,
+ * so this G3 template is used only for the other G3 launches (pf08634404_crc). */
 const CRIT_TEMPLATE = {
   G1: [
     ['Launch scope agreed (product / indication / market)', 'Indication list still open with the brand team'],
@@ -361,7 +365,7 @@ for (const L of LAUNCHES) {
 }
 
 /* ── build GateCriterion.json ───────────────────────────────────────── */
-/* Every launch, Comirnaty included, is scored from the nine-phase CRIT_TEMPLATE.
+/* Every launch, Berobenatide OB included, is scored from the nine-phase CRIT_TEMPLATE.
  * The previously authored G3 set described the old design-control process and
  * no longer matches the gate it now sits on. */
 const critOut = [];
@@ -375,7 +379,7 @@ for (const L of LAUNCHES) {
   const gateId = `seed_gate_${L.slug}_${L.next.toLowerCase()}`;
   tmpl.forEach(([name, reason], i) => {
     // Score the LAST `total-met` criteria unmet so the outstanding ones read as
-    // the launch's live risks (matching Comirnaty, whose sole unmet is last).
+    // the launch's live risks (matching Berobenatide OB, whose sole unmet is last).
     const isMet = i < met;
     const rec = {
       id: `seed_gc_${L.slug}_${L.next.toLowerCase()}_${i + 1}`,
@@ -404,7 +408,7 @@ function statusForActivity(phaseNum, curPhase, troubled, launched, idxInPhase, c
   if (phaseNum > curPhase) return 'no';
   // live phase
   if (launched) {
-    // post-market: steady-state, mostly complete with some in progress
+    // post-launch: steady-state, mostly complete with some in progress
     return idxInPhase < count - 1 ? 'ok' : 'run';
   }
   if (troubled) {
@@ -432,9 +436,9 @@ let personCursor = 0;
 let autoCounter = 0;
 
 for (const L of LAUNCHES) {
-  if (L.launchId === Comirnaty) continue;
+  if (L.launchId === LEAD) continue;
   const curPhase = phaseIdx(L); // 1-based
-  const launched = L.launchId === 'seed_launch_dualto';
+  const launched = L.launchId === 'seed_launch_atirmociclib_mbc';
   PHASE_ORDER.forEach((pcode, pi) => {
     const phaseNum = pi + 1;
     const tmpl = ACT_TEMPLATE[pcode];
@@ -459,13 +463,13 @@ for (const L of LAUNCHES) {
   });
 }
 
-/* ── enrich Launch.json with scope + device facts ───────────────────── */
+/* ── enrich Launch.json with scope + product facts ───────────────────── */
 const launches = JSON.parse(readFileSync(LAUNCH_JSON, 'utf8'));
 for (const L of launches) {
   const s = SCOPE[L.id];
   if (!s) throw new Error(`No SCOPE entry for launch ${L.id}`);
   L.launchValue = s.launchValue;
-  L.sterilisationMethod = s.fillFinish;
+  L.fillFinishRoute = s.fillFinish;
   L.manufactureSite = s.manufacture;
   L.registrationsFiled = s.regsFiled;
   L.registrationsTotal = s.regsTotal;

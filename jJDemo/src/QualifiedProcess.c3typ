@@ -1,18 +1,18 @@
 /**
  * A manufacturing/fill-finish process qualified at a {@link Site}. The anchor
- * case hinges on this: Siegfried Hameln already holds a qualified EO
- * fill-finish process (qualified for Abrysvo G2 and Elrexfio IV), so moving to
- * it is a half-cycle revalidation (~21 days) rather than a full one.
+ * case hinges on this: Siegfried Hameln already holds a qualified aseptic
+ * fill-finish process (qualified for Berobenatide T2D and Sigvotatug), so moving to
+ * it is a bracketed revalidation (~21 days) rather than a full one.
  */
 entity type QualifiedProcess mixes SeedData {
-  /** Process type, e.g. "aseptic fill-finish", "X-ray fill-finish". */
+  /** Process type, e.g. "aseptic fill-finish", "lyophilisation". */
   processType: !string
 
-  /** Launches this process is already qualified for, e.g. "Abrysvo G2, Elrexfio IV". */
+  /** Launches this process is already qualified for, e.g. "Berobenatide T2D, Sigvotatug". */
   qualifiedForLaunches: string
 
-  /** Qualification depth — a "half-cycle" existing qualification is what makes revalidation fast. */
-  qualificationDepth: string enum('full', 'half-cycle')
+  /** Qualification depth — a "bracketed" existing qualification is what makes revalidation fast. */
+  qualificationDepth: string enum('full', 'bracketed')
 
   /** The site at which this process is qualified. */
   site: Site

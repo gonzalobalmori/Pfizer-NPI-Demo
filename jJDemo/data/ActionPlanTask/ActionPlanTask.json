@@ -1,7 +1,7 @@
 [
   {
     "id": "seed_task_417_a_1",
-    "name": "Book the 29 Sep chamber slot at Siegfried and issue the capacity PO",
+    "name": "Book the 29 Sep fill slot at Siegfried and issue the capacity PO",
     "owner": "Sourcing agent",
     "detail": "Sourcing agent · within guardrails · reversible for 24h",
     "agentRunnable": true,
@@ -14,7 +14,7 @@
   },
   {
     "id": "seed_task_417_a_2",
-    "name": "Draft the half-cycle revalidation protocol from the Abrysvo G2 precedent",
+    "name": "Draft the bracketed revalidation protocol from the Berobenatide T2D precedent",
     "owner": "Quality agent",
     "detail": "Quality agent · A. Kowalski reviews before execution",
     "agentRunnable": true,

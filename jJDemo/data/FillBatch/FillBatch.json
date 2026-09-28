@@ -1,9 +1,9 @@
 [
   {
     "id": "seed_batch_abr_0412",
-    "batchNo": "ABR-26-0412",
+    "batchNo": "BER-26-0412",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "site": {
       "id": "seed_site_kzo"
@@ -22,9 +22,9 @@
   },
   {
     "id": "seed_batch_abr_0418",
-    "batchNo": "ABR-26-0418",
+    "batchNo": "BER-26-0418",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "site": {
       "id": "seed_site_kzo"
@@ -43,9 +43,9 @@
   },
   {
     "id": "seed_batch_abr_0423",
-    "batchNo": "ABR-26-0423",
+    "batchNo": "BER-26-0423",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "site": {
       "id": "seed_site_kzo"
@@ -64,9 +64,9 @@
   },
   {
     "id": "seed_batch_abr_0431",
-    "batchNo": "ABR-26-0431",
+    "batchNo": "BER-26-0431",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "site": {
       "id": "seed_site_kzo"
@@ -85,9 +85,9 @@
   },
   {
     "id": "seed_batch_abr_0407",
-    "batchNo": "ABR-26-0407",
+    "batchNo": "BER-26-0407",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "site": {
       "id": "seed_site_kzo"
@@ -109,9 +109,9 @@
   },
   {
     "id": "seed_batch_abr_0396",
-    "batchNo": "ABR-26-0396",
+    "batchNo": "BER-26-0396",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "site": {
       "id": "seed_site_kzo"
@@ -133,9 +133,9 @@
   },
   {
     "id": "seed_batch_abr_0405",
-    "batchNo": "ABR-26-0405",
+    "batchNo": "BER-26-0405",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "site": {
       "id": "seed_site_kzo"

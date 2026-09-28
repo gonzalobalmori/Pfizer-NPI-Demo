@@ -13,10 +13,10 @@
  * Pure read-and-assert against provisioned data/seed — nothing is created, so no
  * TestApi context / waitForSetup is needed.
  *
- *   DQ-KEY-01      SAP_LFA1.LIFNR   trailing whitespace   -> FAIL, 1 offender (Sterigenics padded)
- *   DQ-UNIQ-01     SAP_LFA1.LIFNR   duplicate row         -> FAIL, 1 offender (BSI x2)
- *   DQ-DATE-01     LIMS.result_date dd/MM/yyyy            -> FAIL, 1 offender (OCT-BIO-07)
- *   DQ-REF-01      XWALK.dunsNumber missing DUNS          -> FAIL, 1 offender (Heraeus)
+ *   DQ-KEY-01      SAP_LFA1.LIFNR   trailing whitespace   -> FAIL, 1 offender (Siegfried padded)
+ *   DQ-UNIQ-01     SAP_LFA1.LIFNR   duplicate row         -> FAIL, 1 offender (Eurofins x2)
+ *   DQ-DATE-01     LIMS.result_date dd/MM/yyyy            -> FAIL, 1 offender (BRT-BIO-07)
+ *   DQ-REF-01      XWALK.dunsNumber missing DUNS          -> FAIL, 1 offender (Aptar)
  *   DQ-COMPLETE-01 SAP_LFA1.STCEG   null EU VAT           -> WARN (tolerated, reported)
  *   RECON-SPC-01   breaches confined to HOLD lots         -> PASS
  *   RECON-THREAD-01 staged thread == locked golden        -> PASS
@@ -54,7 +54,7 @@ describe(filename, function () {
       expect(this.uniqueness.status).toBe('FAIL');
       expect(this.uniqueness.failures).toBe(1);
     });
-    it('identifies BSI (0001009003) emitted twice', function () {
+    it('identifies Eurofins (0001009003) emitted twice', function () {
       var off = this.uniqueness.offenders[0];
       expect(off.key).toBe('0001009003');
       expect(off.occurrences).toBe(2);
@@ -66,9 +66,9 @@ describe(filename, function () {
       expect(this.dateFormat.status).toBe('FAIL');
       expect(this.dateFormat.failures).toBe(1);
     });
-    it('identifies the dd/MM/yyyy row (OCT-BIO-07)', function () {
+    it('identifies the dd/MM/yyyy row (BRT-BIO-07)', function () {
       var off = this.dateFormat.offenders[0];
-      expect(off.sample_id).toBe('OCT-BIO-07');
+      expect(off.sample_id).toBe('BRT-BIO-07');
       expect(off.value).toBe('02/09/2026');
     });
   });
@@ -80,7 +80,7 @@ describe(filename, function () {
     });
     it('identifies Heraeus (PARTIAL resolution, no D&B match)', function () {
       var off = this.refIntegrity.offenders[0];
-      expect(off.supplierId).toBe('seed_supplier_heraeus');
+      expect(off.supplierId).toBe('seed_supplier_aptar');
       expect(off.resolutionState).toBe('PARTIAL');
     });
   });
@@ -128,9 +128,9 @@ describe(filename, function () {
       expect(this.gate.cleansed[0].name).toBe('Sterigenics Grand Rapids');
       expect(this.gate.cleansed[0].key).toBe('0001007988');
     });
-    it('quarantines the duplicate (BSI) with a reason, never loading it', function () {
+    it('quarantines the duplicate (Eurofins) with a reason, never loading it', function () {
       expect(this.gate.quarantinedCount).toBe(1);
-      expect(this.gate.quarantined[0].name).toBe('BSI (Notified Body)');
+      expect(this.gate.quarantined[0].name).toBe('Eurofins Scientific');
       expect(this.gate.quarantined[0].reason).toContain('duplicate');
     });
     it('admits 98.2% of the feed (55 clean + 1 repaired of 57)', function () {

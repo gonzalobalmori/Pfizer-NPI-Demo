@@ -91,10 +91,17 @@ export default function LaunchView() {
   const slipText = nextGate && nextGate.slipDays != null ? `+${nextGate.slipDays}d` : '—';
 
   // Derive the US/EU regulatory pathways from the live route rather than
-  // hardcoding Comirnaty's BLA/MAA (fixes the Zavzpret biologic/small-molecule mismatch).
+  // hardcoding Berobenatide OB's NDA/MAA (fixes the PF-3945 biologic/small-molecule mismatch).
+  // Supplement/variation forms are tested before their base form, since
+  // "NDA supplement" also contains "NDA".
   const route = o.regulatoryRoute ?? '';
-  const usPathway = route.includes('BLA') ? 'BLA' : route.includes('510') ? 'NDA' : route.includes('505(b)(2)') ? '505(b)(2)' : '—';
-  const euPathway = route.includes('MDR') ? 'MDR · BSI' : '—';
+  const usPathway = route.includes('BLA supplement') ? 'BLA supplement'
+    : route.includes('NDA supplement') ? 'NDA supplement'
+    : route.includes('BLA') ? 'BLA'
+    : route.includes('505(b)(2)') ? '505(b)(2)'
+    : route.includes('NDA') ? 'NDA' : '—';
+  const euPathway = route.includes('Type II variation') ? 'Type II variation · EMA'
+    : route.includes('MAA') ? 'MAA · EMA/CHMP' : '—';
 
   // Per-market rollout (Scope C) for this launch — the same derived data the
   // Cockpit rows and timeline sub-rows use, so delays are attributable to a
@@ -159,8 +166,8 @@ export default function LaunchView() {
       <div className="ld-top">
         <button className="bk" type="button" onClick={() => open('portfolio')}><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7" /></svg><span className="bk-lbl">Back</span></button>
         <div>
-          <div className="ld-n">{o.device}</div>
-          <div className="ld-s">{o.franchise} &middot; {o.segment} &middot; {o.deviceClass} &middot; {o.regulatoryRoute} &middot; lead market {o.leadMarketCode ?? o.leadMarket}</div>
+          <div className="ld-n">{o.product}</div>
+          <div className="ld-s">{o.franchise} &middot; {o.segment} &middot; {o.modality} &middot; {o.regulatoryRoute} &middot; lead market {o.leadMarketCode ?? o.leadMarket}</div>
         </div>
         <div className="h-sp"></div>
         {o.segment ? <span className="pill z" style={{ alignSelf: 'center', marginRight: 8 }} title="Business unit">{o.segment}</span> : null}
@@ -201,11 +208,11 @@ export default function LaunchView() {
         {/* LEFT RAIL */}
         <div className="ld-rail">
           <div className="ld-card">
-            <div className="ld-ct">Device</div>
-            <div className="ld-kv"><span>Classification</span><b>{o.deviceClass ?? '—'}</b></div>
+            <div className="ld-ct">Product</div>
+            <div className="ld-kv"><span>Modality</span><b>{o.modality ?? '—'}</b></div>
             <div className="ld-kv"><span>US pathway</span><b>{usPathway}</b></div>
             <div className="ld-kv"><span>EU pathway</span><b>{euPathway}</b></div>
-            <div className="ld-kv"><span>Fill-finish</span><b>{o.sterilisationMethod ?? '—'}</b></div>
+            <div className="ld-kv"><span>Fill-finish</span><b>{o.fillFinishRoute ?? '—'}</b></div>
             <div className="ld-kv"><span>Manufacture</span><b>{o.manufactureSite ?? '—'}</b></div>
             <div className="ld-kv"><span>Dossier status</span><b>{o.health === 'LAUNCHED' ? 'Closed' : 'Open'}</b></div>
           </div>
@@ -244,7 +251,7 @@ export default function LaunchView() {
                           key={s.launchId}
                           onClick={() => open('launch', s.launchId)}
                         >
-                          {s.shortName ?? s.device}
+                          {s.shortName ?? s.product}
                         </button>
                       ))}
                     </div>

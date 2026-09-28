@@ -113,15 +113,15 @@ untested code.
 
 ## Pfizer re-brand (R-BASE-04, R-BASE-05) — user-requested pass
 
-> **SUPERSEDED IN PART — read the "Product / master-data audit" section at the end of this
-> file before trusting this one.** This pass fixed the **visual** identity (colour, favicon,
-> title, contact-data residue) and that part stands. It did **not** re-brand the *domain
-> model*, and this section originally over-claimed R-BASE-04 as a result. The nine launches
-> are still J&J/Abbott device form factors with Pfizer names pasted on (`"Prevnar 20
-> Stapler"`, `"Comirnaty Gen 2 PFA Catheter"`), the J&J operating companies survive as
-> franchise primary keys (`seed_franchise_biosense`, `_cerenovus`, `_abiomed`, `_shockwave`,
-> `_ethicon`), and none of the six specified products exists as a record.
-> **R-BASE-04 = NOT met. R-DM-04 = NOT met.** Scheduled for M2.
+> **SUPERSEDED — read the "Product / master-data audit" section at the end of this file for
+> the current state.** This pass fixed the **visual** identity (colour, favicon, title,
+> contact-data residue) and that part stands. It did **not** re-brand the *domain model*, and
+> this section originally over-claimed R-BASE-04 as a result: the launches were still device
+> form factors with marketed-product names pasted on, and the J&J operating companies survived
+> as franchise primary keys.
+> **That was remediated on 2026-09-28** — launch identities, franchise/segment keys, the
+> regulatory model and the device process vocabulary were all replaced. **R-BASE-04 and
+> R-DM-04 now read as met**; the residual gaps are listed at the end of the audit section.
 
 Triggered by the user reporting "the branding and colors dont look like pfizer". The app
 already said the *word* Pfizer but carried none of the brand's colour: the palette was the
@@ -232,7 +232,7 @@ a backend failure, exactly as R-BASE-03 and the no-fallback rule intend.
 | `runJsCode 1+1` | `2` — runtime answers again |
 | `issuesForPkg` (both packages) | **0 issues** — the `testtools` WARNING is gone too |
 | `upsertSeedData` | `seeded: true`; Launch 9 · RegulatoryMilestone 1 · CascadeImpactItem 5 · AppRole 6 · Team 12 · RoleAssignment 18 · Site 8 |
-| `CascadeReplanService.plan('seed_launch_ottava')` | returns `{milestone, items, summary}` |
+| `CascadeReplanService.plan('seed_launch_pf3945_obesity')` | returns `{milestone, items, summary}` |
 | Replan cascade, in-browser | +6 wks (2 Nov → 14 Dec, +42 days), 3 of 5 auto-adjusted, 2 human decisions, €48k — all computed server-side |
 | `Reset scenario` | restores the baseline |
 | Cockpit / Portfolio / Open issues / Milestone replan | all render live data; no "Failed to load" anywhere |
@@ -290,13 +290,13 @@ breach**, not a visual-inspection defect.
 
 | Clause | State | Evidence |
 |---|---|---|
-| C1 eight weeks before **packaging** | **MISSING** | No packaging milestone, phase or gate to count back from: `seed/Phase/Phase.json` is P1 Feasibility → P6 Post-market, and `data/Gate/Gate.json` is G1 NPI Readiness → G5 Launch Go/No-Go + BAU handover. The only `RegulatoryMilestone` record in the app is `seed_milestone_ottava_fda` (FDA 510(k), a *clearance*, not a pack run). "Eight weeks" appears only as narrative (`seed/AgentAction`, `seed/Comment`) and one hard-coded chart label in `AlertsView.tsx:172`. **The countdown primitive does exist** — `daysUntil(iso)` in `CockpitView.tsx:82` over `Gate.forecastDate`, plus `slipDays` on `Gate`/`RegulatoryMilestone` — it just has no packaging anchor to point at |
+| C1 eight weeks before **packaging** | **MISSING** | No packaging milestone, phase or gate to count back from: `seed/Phase/Phase.json` is P1 Feasibility → P6 Post-market, and `data/Gate/Gate.json` is G1 NPI Readiness → G5 Launch Go/No-Go + BAU handover. The only `RegulatoryMilestone` record in the app is `seed_milestone_pf3945_obesity_fda` (FDA 510(k), a *clearance*, not a pack run). "Eight weeks" appears only as narrative (`seed/AgentAction`, `seed/Comment`) and one hard-coded chart label in `AlertsView.tsx:172`. **The countdown primitive does exist** — `daysUntil(iso)` in `CockpitView.tsx:82` over `Gate.forecastDate`, plus `slipDays` on `Gate`/`RegulatoryMilestone` — it just has no packaging anchor to point at |
 | C2 Commercial **increases demand** for a priority market | **MISSING** | No demand/forecast entity and **no per-market volume field**: `MarketLaunch` is `launch, market, firstShipQuarter (string), status, reimbursementStatus, findings` — all 51 records carry no volume. `AuditEvent.changeType` has no value for a demand revision. **The trigger is seeded as prose only** — `seed/Team/Team.json:41` says "Scenario 2 begins with a Commercial signal — a **+64% Germany forecast revision**"; that string appears nowhere else in the repo. *Partial credit:* the target market **does** exist as a record — `seed_market_de` Germany, `tier: LAUNCH`, `wave: Launch` |
 | C3 changes required **SKU / pack mix** | **MISSING** | No SKU, pack-size, presentation or pack-configuration field on any of the 61 types. Every "pack mix" hit is prose — `team_gplo` even asserts "Scenario 2's action plan routes most of its work here", yet **no `ActionPlanTask` of the 26 is scoped to GPLO for a pack-mix change**. Sole SKU reference is an activity label (`…live order-to-cash test with real SKUs`) |
 | C4 supply, site, **CMO**, packaging-component, logistics constraints | **MISSING** as quantities (qualitative labels only) | None of the five is a number that can be exceeded. Supply: `ContractTerm.capacityCommitment` = `COMMITTED`/`NON_COMMITTED` enum. Site: `Site.capacityAvailableFrom` is a **datetime** — answers "is the site free yet?", never "can it make 64% more?". **CMO: no entity at all** — it is a substring inside `Launch.manufactureSite` ("Irvine + CMO"). BOM: `BillOfMaterialItem` has no quantity/on-hand/lead-time, and all 4 records are `"Ring electrode subassembly"` — **a device subassembly, not packaging**; no carton, label, leaflet, blister or vial part exists. Logistics: a `CascadeImpactItem.domain` enum value only. **So "cannot support every market as planned" cannot be computed anywhere** |
 | C5 the four comparable options (constrained launch / inventory reallocation / added capacity / market-wave resequencing) | **PARTIAL** — mechanism real, content absent | The comparison engine is genuine and quantified (`DecisionOption`: `daysRecovered`, `cost`, `revenueKept`, `gateImpact`, `forfeits`, `riskBand`, `confidence`, `basis`), but **its doc comment says "one of the *three* modelled alternatives"** and all 10 seeded decisions have exactly three. Two of the four have close analogues: *constrained launch* → `seed_option_402_a/b/c` ("Phased 2,600 units" / "Full 4,200 units" / "1,400 units", `basis: "Modelled against P50 demand"` — **units live in the label text, not in a field**), and *wave resequencing* → `seed_option_417_c` ("Re-sequence — US first, EU wave 2", `+78d in EU, none in US`, forfeits "Two EU tender windows; €7.2M moved to FY28"). *Inventory reallocation* and *added capacity* have **no option**: the nearest, `seed_option_412_a`, reallocates **reduced supply** not existing inventory, and `412_c`'s own subLabel admits "the agents first confirm … that the site actually has the capacity" — i.e. the capacity check is narrated, not computed. **No option carries units, a per-market volume split, or a capacity delta**, so the four cannot be compared on the axis the scenario requires. `StratView.tsx` names this four-way comparison explicitly and is labelled "This branch is deliberately not built out" |
 | C6 governed decision | **PARTIAL** | Decision + spend authority are real and Scenario-2-tagged: `AppRole` seeds Executive at $50M as the **only** role with `canApproveGovernanceReversal: true`, Commercial at $1M with `market.commit` and "no quality or supply-allocation authority"; `AccessControlService.assertSpendAuthority` throws naming the limit "(R-S2-05 check 7)" and is covered by `test_AccessControl.js`. But the same gap as §8.1 C6: `Decision.approve` never calls `AuditService`, `TransactionService` or `assertSpendAuthority`, and **zero records exist for `ESignature`, `AuditEvent`, `EntityVersion`, `AgentRunRecord`, `IdempotencyRecord`** — so the audit trail is empty at runtime. `AuditEvent.c3typ:104` documents a `WAVE_RESEQUENCE` reason code that **no code path emits** |
-| C7 update all affected plans, owners, sites, partners, commitments | **PARTIAL** | Two cascade mechanisms exist and **neither touches markets, sites or partners.** `Decision.approve` writes Gate, Launch, ActionPlanTask, Notification, CAPA, DHF entry — never `MarketLaunch`, `Market`, `Site`, `Supplier`, `ContractTerm` or `CascadeImpactItem`. **`MarketLaunch` is written by no decision path at all** (only `PortfolioService` reads it and `TemporalQueryService` registers a generic replay `put`), so the 51 market-commitment records are read-only decoration. `CascadeReplanService` is date-only, single-milestone, and hardcodes `DEFAULT_LAUNCH = 'seed_launch_ottava'`. **Decisively: `CascadeImpactItem.targetLabel` is a `!string` display label with no FK to the plan record being re-timed**, and `decisionOptions: [string]` are plain strings, not `DecisionOption` records — so "update all affected plans" is a status flip on a label, not a write to a governed plan. The market/partner cascade exists only as task prose ("14 affiliate plans to re-time", "Re-time the DE and FR tender entries") describing records that do not exist |
+| C7 update all affected plans, owners, sites, partners, commitments | **PARTIAL** | Two cascade mechanisms exist and **neither touches markets, sites or partners.** `Decision.approve` writes Gate, Launch, ActionPlanTask, Notification, CAPA, DHF entry — never `MarketLaunch`, `Market`, `Site`, `Supplier`, `ContractTerm` or `CascadeImpactItem`. **`MarketLaunch` is written by no decision path at all** (only `PortfolioService` reads it and `TemporalQueryService` registers a generic replay `put`), so the 51 market-commitment records are read-only decoration. `CascadeReplanService` is date-only, single-milestone, and hardcodes `DEFAULT_LAUNCH = 'seed_launch_pf3945_obesity'`. **Decisively: `CascadeImpactItem.targetLabel` is a `!string` display label with no FK to the plan record being re-timed**, and `decisionOptions: [string]` are plain strings, not `DecisionOption` records — so "update all affected plans" is a status flip on a label, not a write to a governed plan. The market/partner cascade exists only as task prose ("14 affiliate plans to re-time", "Re-time the DE and FR tender entries") describing records that do not exist |
 
 ### What M3/M4 actually need to add
 
@@ -383,101 +383,71 @@ this system exists to support.
 
 ## Product / master-data audit against the supplied NPI product table (R-DM-04, R-BASE-04)
 
-Audited on request against a six-product table (product, type, indication, phase, target
-markets, est. launch). **Verdict: R-DM-04 is NOT met and R-BASE-04 is only cosmetically met.**
-The re-brand renamed *strings*; it did not re-model the domain. The app is still a
-**medical-device** application wearing pharma brand names.
+**Status: RESOLVED (2026-09-28).** The portfolio is now the six supplied pipeline molecules,
+modelled as **nine launch programmes — one per indication**, because an NPI launch is scoped per
+indication and berobenatide runs four in parallel off one drug substance. That shared drug
+substance is deliberate: it is what lets one drug-product event cascade across several
+programmes at once.
 
-### The six specified products are absent
+| Launch id | Product | Modality | Indication | Dev phase | Est. launch | NPI phase |
+|---|---|---|---|---|---|---|
+| `seed_launch_pf3945_obesity` | PF-3945 | Amylin analogue FDC (with berobenatide) | Obesity | Phase 2 | Post-2028 | P1 |
+| `seed_launch_berobenatide_t2d` | Berobenatide | Monthly GLP-1 agonist | Type 2 diabetes | Phase 3 | ~2028 | P2 |
+| `seed_launch_pf08634404_crc` | PF-08634404 | Bispecific, dual PD-1/VEGF | mCRC; 1L NSCLC | Phase 3 (2 pivotal) | 2028+ | P3 |
+| `seed_launch_berobenatide_obesity` | Berobenatide | Monthly GLP-1 agonist | Obesity | Phase 3 (10 trials) | ~2028 | P4 |
+| `seed_launch_met097_obesity` | MET097 | Monthly injectable GLP-1 | Obesity | Phase 3 (9 trials) | ~2028 | P5 |
+| `seed_launch_berobenatide_osa` | Berobenatide | Monthly GLP-1 agonist | Obstructive sleep apnoea | Phase 3 | ~2028 | P6 |
+| `seed_launch_berobenatide_knee_oa` | Berobenatide | Monthly GLP-1 agonist | Knee osteoarthritis | Phase 3 | ~2028 | P7 |
+| `seed_launch_sigvotatug_nsclc` | Sigvotatug vedotin | ADC (integrin beta-6) | Metastatic NSCLC | Late Phase 3 | 2027-2028 | P8 |
+| `seed_launch_atirmociclib_mbc` | Atirmociclib | Selective CDK4 inhibitor | HR+/HER2- mBC (1L) | Late Phase 3 | 2027-2028 | P9 |
 
-| Product | Type | Indication | Est. launch | In the app? |
-|---|---|---|---|---|
-| Berobenatide | Monthly GLP-1 agonist | Obesity, knee OA, sleep apnea, T2D | ~2028 | **Prose only** — `seed/Site/Site.json`, `seed/Team/Team.json`. No `Launch` record |
-| MET097 | Monthly injectable GLP-1 | Obesity | ~2028 | **Absent everywhere** |
-| PF-3945 | Amylin combo (w/ berobenatide) | Obesity | Post-2028 | **Absent everywhere** |
-| Atirmociclib | CDK4 inhibitor | HR+/HER2− mBC (1L) | 2027–2028 | **Prose only** — `seed/Site/Site.json`. No `Launch` record |
-| Sigvotatug vedotin | ADC | Metastatic NSCLC | 2027–2028 | **Absent everywhere** |
-| PF-08634404 | Dual PD-1/VEGF inhibitor | mCRC; 1L NSCLC | 2028+ | **Absent everywhere** |
+One launch sits in each of the nine phases, so the portfolio exercises the whole process model.
 
-**Zero of six exist as records.** Two appear only inside English sentences in unrelated seed files.
+### What changed, against the seven M2 items
 
-### What the nine seeded launches actually are
+1. **Launch identities replaced, ids included.** No J&J/Abbott asset codename survives as a
+   primary key — roughly 2,900 id and slug replacements, verified at 0 dangling references.
+2. **`Launch` re-modelled for pharma.** `productName`->`productName`, `modality`->`modality`,
+   `fillFinishRoute`->`fillFinishRoute`, plus new `molecule`, `indication`,
+   `developmentPhase`, `trialCount`, `estimatedLaunch` and `targetMarkets` — so all four
+   columns of the supplied table (Type, Indication, Phase, Est. launch) now have somewhere to
+   live. The `device` field on every service payload is now `product`.
+3. **Franchises rekeyed** to real therapeutic areas (`seed_franchise_internal_medicine`,
+   `_oncology`, `_vaccines`, `_inflammation_immunology`, `_rare_disease`); segments to
+   Primary Care / Specialty Care / Oncology. The `seed_franchise_internal_medicine`-style keys are gone.
+4. **Regulatory model swapped** to NDA / BLA / MAA with FDA, EMA/CHMP and NMPA. The UI's
+   US/EU pathway derivation no longer branches on `MDR` or `510(k)`, and supplement/variation
+   forms are matched before their base form.
+5. **Nine phases seeded** (P1-P9) on a nine-gate ladder (G1-G8 + BAU), now consistent end to
+   end — `ExecutionService` had been left on the six-phase constants, which silently dropped
+   P7-P9 from the Live board and mis-ranked gates G6-G8.
+6. **Suppliers rekeyed.** The vendor *names* were already pharma (Aptar, West, SCHOTT,
+   Stevanato, Datwyler, Vetter, Siegfried, Baxter Halle, Patheon); their ids and the
+   Ariba / QMS / SRM cross-system keys now agree with them. The single-source Aptar vial
+   stopper spans exactly the four berobenatide programmes, which is what gives Scenario 1 its
+   blast radius.
+7. **Target markets** carried per launch (US / EU / Global / China).
 
-Pfizer brand names pasted onto J&J/Abbott **device form factors**, retaining J&J franchise ids:
+Device *process* vocabulary went with it: EO sterilisation -> aseptic fill, half-cycle ->
+bracketed revalidation, cycle development -> media-fill qualification, V&V -> PPQ, notified
+body -> contract laboratory, Value Analysis Committee -> P&T formulary, GUDID/EUDAMED ->
+DSCSA/EU FMD, ISO 11737-1 -> Ph.Eur. 2.6.12, loaner-kit staging -> launch stock staging.
 
-| Launch id (J&J product) | `deviceName` as seeded | Franchise id → relabelled as |
-|---|---|---|
-| `seed_launch_varipulse_g2` | **"Comirnaty Gen 2 PFA Catheter"** | `seed_franchise_biosense` → "Vaccines" |
-| `seed_launch_octaray_g2` | **"Abrysvo Gen 2 Mapping Catheter"** | `seed_franchise_biosense` → "Vaccines" |
-| `seed_launch_embotrap_iv` | **"Elrexfio IV Revascularisation Device"** | `seed_franchise_cerenovus` → "Rare Disease" |
-| `seed_launch_impella_ecp` | **"Genotropin ECP+ Console v3"** | `seed_franchise_abiomed` → "Immunology" |
-| `seed_launch_javelin_xl` | **"Somavert XL IVL Catheter"** | `seed_franchise_shockwave` → "Internal Medicine" |
-| `seed_launch_ethicon_4000` | **"Prevnar 20 Stapler"** | `seed_franchise_ethicon` → "Hospital" |
-| `seed_launch_dualto` | **"Zavzpret Energy System"** | `seed_franchise_ethicon` → "Neuroscience" |
-| `seed_launch_ottava` | **"Velsipity Robotic Platform Kit"** | `seed_franchise_digital_surgery` → "Neuroscience" |
-| `seed_launch_puresee` | **"Litfulo Toric IOL"** | `seed_franchise_vision` → "Oncology Biosimilars" |
+### Known remaining gaps
 
-A vaccine that is a catheter, an oral JAK inhibitor that is an intraocular lens, and a CGRP
-nasal spray that is an "Energy System". **Every one is a category error**, and the J&J operating
-companies (Biosense Webster, Cerenovus, Abiomed, Shockwave, Ethicon) survive as primary keys —
-so R-BASE-04's "no J&J asset anywhere" is violated in the identifiers even where the labels changed.
-
-### The device data model is unchanged beneath the labels
-
-The field names, not just the values, are device-shaped — `Launch.deviceName: !string`,
-`deviceClass` ("Class II/III"), `sterilisationMethod` ("EO"), `fieldForceCertified`,
-`vacApprovalsFiled`, and relations to `DesignHistoryFileEntry` (a 21 CFR 820.30 device artefact).
-
-**There is no pharma product field at all**: no `indication`, no `modality`, no trial phase, and
-no `Trial`, `Indication`, `Molecule`, `Drug` or `Formulation` type. So four of the six columns in
-the supplied table (Type, Indication, Phase, Est. Launch) **have nowhere to be stored.**
-
-Regulatory routes are device routes — `PMA + EU MDR` ×5, `EU MDR` ×2, `PMA` ×1, `510(k) + EU MDR`
-×1. **No BLA, NDA, MAA, EMA, CHMP or PDUFA route exists**, and gate G4 is "Clearance / CE
-Certificate" — a device clearance, not an approval. The nine phases R-PH-00..10 requires are
-absent; the six seeded phases are the device lifecycle (Feasibility → Design Inputs → V&V →
-Transfer → Ready → Post-market).
-
-Device vocabulary remaining, by file count: `notified body` **29**, `sterilis*` **33**, `device`
-**36**, `MDR` 13, `IOL` 13, `PMA` 13, `EO` 22, `VAC` 16, `DHF` 14, `loaner` 12, `510(k)` 9,
-`catheter` 7, `stapler` 3.
-
-### Sites and suppliers — partially correct, and this is the one bright spot
-
-Four genuine Pfizer sites were added in M1 and are correct: **Freiburg**, **Puurs**,
-**Kalamazoo (KZO)**, **Grange Castle (GC)**. But four device-era sites remain — `seed_site_venlo`
-(Steris EO facility), `seed_site_grandrapids` (Sterigenics), `seed_site_cashel`, `seed_site_neuss`
-— and **all four suppliers are device suppliers**: Steris and Sterigenics (EO sterilisation),
-Heraeus Medical Components (ring electrodes), BSI (device notified body). A GLP-1 launch needs
-sterile-fill/finish, device-combination assembly, and an EMA/FDA biologics route — not an EO
-contract steriliser. The ten R-DM-06 source systems are likewise not yet modelled.
-
-Note the collision with the scenario audit above: the *only* `BillOfMaterialItem` records are
-"Ring electrode subassembly" — so the Scenario 1 stopper defect has no vial/stopper/closure part
-to attach to, **and** the product it is meant to affect (Berobenatide) has no `Launch` record.
-
-### What M2 must do (R-DM-04, R-PH-00..10, R-DM-06)
-
-1. **Replace all nine launches** with the six specified products — do not rename again. Ids must
-   stop referencing J&J assets (`seed_launch_varipulse_g2` → `seed_launch_berobenatide`).
-2. **Re-model `Launch` for pharma**: `deviceName`→`productName`, `deviceClass`→`modality`
-   (GLP-1 agonist / ADC / small molecule / biologic), add `indication`, `developmentPhase`
-   (Phase 2 / Phase 3 / Late Phase 3), `trialCount`, `estimatedLaunch`, and replace
-   `sterilisationMethod` with a fill-finish / drug-product route.
-3. **Replace the franchises** with real Pfizer therapeutic areas keyed to their own ids
-   (Internal Medicine, Oncology, Vaccines, Inflammation & Immunology, Rare Disease) — drop the
-   `seed_franchise_biosense`-style keys entirely.
-4. **Swap the regulatory model** to BLA/NDA/MAA with FDA/EMA/CHMP bodies and PDUFA dates; retire
-   `510(k)`, `PMA`, `EU MDR`, notified bodies and CE certificates. Gate G4 becomes an approval.
-5. **Seed the nine phases** of R-PH-00..10 in place of the six device phases.
-6. **Replace the suppliers** with pharma CMO/CDMO, API, and primary-packaging (vial, stopper,
-   closure) vendors — which is also the precondition for the Scenario 1 stopper defect.
-7. **Target markets per product** from the table (US, EU, Global, China) — this is also the
-   natural place to attach the per-market volumes Scenario 2 needs.
-
-Until 1–4 are done, **R-BASE-04 should be read as NOT met**: the audit trail, gate names,
-regulatory routes and BOM are all still device artefacts, and `deviceName` values like
-"Prevnar 20 Stapler" are visible in the UI.
+- `tour-overlap-report.json` and `tour-values-report.json` are tracked UI-audit snapshots from
+  a pre-rebrand run and still quote the original device names. They are stale *output*, not
+  inputs — regenerate or delete them rather than hand-editing, which would fabricate audit
+  results.
+- `DesignHistoryFileEntry` still carries a 21 CFR 820.30 device type name, though its prose now
+  reads CTD. Renaming the type touches its relations on `Launch` and is deferred.
+- `vacApprovals*` keeps its Value-Analysis-Committee field names while holding
+  payer/formulary counts.
+- The four site-era `seed_site_*` records flagged earlier (Venlo, Grand Rapids, Cashel, Neuss)
+  were not part of this pass.
+- The C3 Rhino test suites (`test/js-rhino/`) could not be executed here — they need a cluster.
+  JSON validity, referential integrity, the QMS/Comment byte-for-byte reconciliation, the UI
+  typecheck and lint were all verified locally instead.
 
 ---
 
@@ -584,7 +554,7 @@ readiness **%**, a measure of *goodness*, so the launches in trouble drew the SH
 Fixed with an explicit `invert` prop on `KpiDistribution` (plots shortfall from 100, clamped at 0)
 rather than by mangling the data. Breach tinting still evaluates the **true** value, and the
 `aria-label` changes to "Shortfall from 100 across 9 launches" so a screen-reader user isn't told the
-opposite of what is drawn. Verified: worst launch (Elrexfio, 67 %) is now the tall bar; the three
+opposite of what is drawn. Verified: worst launch (Sigvotatug, 67 %) is now the tall bar; the three
 100 % launches draw the 2px floor.
 
 Not a bug, checked: the label says "6 are under the 85 target" while tooltips read "83%" — the
@@ -594,7 +564,7 @@ tooltip *rounds* 5/6 = 83.33 % for display while the breach test uses the true v
 
 Four of five rows printed the same number twice ~8px apart ("35d 35d", "13d 13d", "8d 8d", "5d 5d"):
 the inside segment label and the end-of-bar total coincide whenever `regulatorDays === 0`. Only
-Comirnaty is genuinely split (25 green + 45 grey = 70).
+Berobenatide OB is genuinely split (25 green + 45 grey = 70).
 
 The fix had to go through `valueAccessor`, **not** `formatter`: Recharts' `LabelList` types
 `formatter?: Function` (untyped) and passes it the resolved value only, whereas
@@ -624,8 +594,8 @@ receives the whole row — and only when `dataKey` is absent. Verified at runtim
 - Density: "Markets needing attention" duplicates rows 5×.
 - Text leftovers: "Notified Body" (device regulatory) in `AlertsView`; hardcoded "oldest raised
   **6 days ago** · 1 already chased once" in `ActionsView`.
-- **The product names in every screenshot above are still device form factors** — "Comirnaty Gen 2
-  PFA Catheter", "Prevnar 20 Stapler", "Litfulo Toric IOL". R-DM-04 (M2) is the fix; no amount of
+- **The product names in every screenshot above are still device form factors** — "Berobenatide OB Gen 2
+  PFA Catheter", "Berobenatide — Sleep Apnoea", "PF-08634404". R-DM-04 (M2) is the fix; no amount of
   visual work resolves it.
 
 ### C-7 · Colour-only status marks replaced with a shape vocabulary

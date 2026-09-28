@@ -16,7 +16,7 @@
 
 /* ── shared helpers ─────────────────────────────────────────────── */
 
-var DEFAULT_LAUNCH = 'seed_launch_ottava';
+var DEFAULT_LAUNCH = 'seed_launch_pf3945_obesity';
 
 function iso(dt) {
   return dt ? dt.toString() : null;
@@ -38,17 +38,17 @@ function dayDiff(a, b) {
   return dir * n;
 }
 
-/* the milestone for a launch, or the anchor Velsipity milestone by default. */
+/* the milestone for a launch, or the anchor Berobenatide OA milestone by default. */
 function findMilestone(launchId, milestoneId) {
   if (milestoneId) {
     var byId = RegulatoryMilestone.fetch({
-      filter: Filter.eq('id', milestoneId), include: 'this, launch.id, launch.deviceName', limit: 1
+      filter: Filter.eq('id', milestoneId), include: 'this, launch.id, launch.productName', limit: 1
     }).objs;
     if (byId && byId.length) return byId.get(0);
   }
   var lid = launchId || DEFAULT_LAUNCH;
   var byLaunch = RegulatoryMilestone.fetch({
-    filter: Filter.eq('launch', lid), include: 'this, launch.id, launch.deviceName', limit: 1
+    filter: Filter.eq('launch', lid), include: 'this, launch.id, launch.productName', limit: 1
   }).objs;
   return byLaunch && byLaunch.length ? byLaunch.get(0) : null;
 }
@@ -113,7 +113,7 @@ function buildBundle(m) {
       id: m.id,
       displayId: m.displayId || m.id,
       launchId: m.launch && m.launch.id,
-      launchName: m.launch && m.launch.deviceName,
+      launchName: m.launch && m.launch.productName,
       authority: m.authority,
       milestoneName: m.milestoneName,
       baselineDate: iso(m.baselineDate),

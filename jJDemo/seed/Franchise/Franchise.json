@@ -1,51 +1,37 @@
 [
   {
-    "id": "seed_franchise_biosense",
-    "name": "Vaccines",
-    "segment": {
-      "id": "seed_segment_cardiovascular"
-    }
-  },
-  {
-    "id": "seed_franchise_cerenovus",
-    "name": "Rare Disease",
-    "segment": {
-      "id": "seed_segment_cardiovascular"
-    }
-  },
-  {
-    "id": "seed_franchise_abiomed",
-    "name": "Immunology",
-    "segment": {
-      "id": "seed_segment_cardiovascular"
-    }
-  },
-  {
-    "id": "seed_franchise_shockwave",
+    "id": "seed_franchise_internal_medicine",
     "name": "Internal Medicine",
     "segment": {
-      "id": "seed_segment_cardiovascular"
+      "id": "seed_segment_primary_care"
     }
   },
   {
-    "id": "seed_franchise_ethicon",
-    "name": "Hospital",
+    "id": "seed_franchise_oncology",
+    "name": "Oncology",
     "segment": {
-      "id": "seed_segment_surgery"
+      "id": "seed_segment_oncology"
     }
   },
   {
-    "id": "seed_franchise_digital_surgery",
-    "name": "Neuroscience",
+    "id": "seed_franchise_vaccines",
+    "name": "Vaccines",
     "segment": {
-      "id": "seed_segment_surgery"
+      "id": "seed_segment_primary_care"
     }
   },
   {
-    "id": "seed_franchise_vision",
-    "name": "Oncology Biosimilars",
+    "id": "seed_franchise_inflammation_immunology",
+    "name": "Inflammation & Immunology",
     "segment": {
-      "id": "seed_segment_vision"
+      "id": "seed_segment_specialty_care"
+    }
+  },
+  {
+    "id": "seed_franchise_rare_disease",
+    "name": "Rare Disease",
+    "segment": {
+      "id": "seed_segment_specialty_care"
     }
   }
 ]

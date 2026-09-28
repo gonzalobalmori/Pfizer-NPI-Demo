@@ -1,6 +1,6 @@
 /**
  * The freshness contract and load bookmark for one source feed. Every feed in
- * the architecture (SAP_LFA1, QMS_COMMENT, MES_SPC, PORTAL_CHAMBER, …) has one
+ * the architecture (SAP_LFA1, QMS_COMMENT, MES_SPC, PORTAL_FILLSLOT, …) has one
  * watermark row recording where the last incremental load stopped and what the
  * feed's expected arrival cadence is.
  *

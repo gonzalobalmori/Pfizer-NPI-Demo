@@ -1,32 +1,55 @@
 /**
- * A single Biopharma device launch — the central programme object. Nine are
- * modelled, exactly the real next-generation Pfizer programme designations from
- * the specification (Comirnaty Gen 2, Abrysvo Gen 2, Elrexfio IV, Genotropin ECP+,
- * Somavert XL, Prevnar 20, Zavzpret, Velsipity, Litfulo Toric).
+ * A single pipeline launch programme — the central programme object. Nine are
+ * modelled across the six pipeline molecules, because a launch programme is
+ * scoped per indication: berobenatide alone runs four in parallel (obesity,
+ * type 2 diabetes, obstructive sleep apnoea, knee osteoarthritis) off one
+ * drug substance, which is why a drug-product event on the shared line can
+ * cascade across several programmes at once.
  *
- * A launch is a regulated programme of {@link Activity}s across six
- * {@link Phase}s and five {@link Gate}s, rolled out into many {@link Market}s
+ * A launch is a regulated programme of {@link Activity}s across the nine
+ * {@link Phase}s and nine {@link Gate}s, rolled out into many {@link Market}s
  * via {@link MarketLaunch}. It belongs to one {@link Franchise}.
  */
 entity type Launch mixes HasExposure {
-  /** Programme id, e.g. "NPI-VPG2". */
+  /** Programme id, e.g. "seed_launch_berobenatide_obesity". */
   id: !string
 
-  /** Full device name, e.g. "Comirnaty Gen 2 PFA Catheter". */
-  deviceName: !string
+  /** Full programme name, e.g. "Berobenatide — Obesity". */
+  productName: !string
 
   /**
-   * Short board/pill label, e.g. "Comirnaty G2". Used on the Live board cards
-   * and the Activity log rows (§2.2, §2.3) where the full {@link Launch#deviceName}
-   * is too long. Kept as attested data, not derived, so the label matches the
-   * prototype exactly.
+   * Short board/pill label, e.g. "Berobenatide OB". Used on the Live board
+   * cards and the Activity log rows (§2.2, §2.3) where the full
+   * {@link Launch#productName} is too long. Kept as attested data, not derived.
    */
   shortName: string
 
-  /** Regulatory device class, e.g. "biologic". */
-  deviceClass: string
+  /**
+   * The molecule this programme launches, e.g. "Berobenatide". Several
+   * programmes share one molecule, so this is the key to roll indications up
+   * into a single asset view.
+   */
+  molecule: string
 
-  /** Regulatory route, e.g. "BLA (FDA) + MAA (EMA)". */
+  /** The indication being launched, e.g. "Obesity". */
+  indication: string
+
+  /** Therapeutic modality, e.g. "Monthly GLP-1 receptor agonist". */
+  modality: string
+
+  /** Clinical development stage, e.g. "Phase 3" / "Late Phase 3". */
+  developmentPhase: string
+
+  /** Registrational trials supporting the filing, where a count is published. */
+  trialCount: int
+
+  /** Estimated launch window as published, e.g. "~2028" / "2027–2028". */
+  estimatedLaunch: string
+
+  /** Target markets for the launch wave, e.g. "US, EU, Global". */
+  targetMarkets: string
+
+  /** Regulatory route, e.g. "NDA (FDA) + MAA centralised procedure (EMA)". */
   regulatoryRoute: string
 
   /** The lead market this launch files into first. */
@@ -47,8 +70,7 @@ entity type Launch mixes HasExposure {
   /**
    * Launch readiness, 0–100, as attested on the Business-unit roll-up (§2.3):
    * the share of the next gate's criteria in hand. Kept as attested data so the
-   * card's progress bar matches the prototype exactly (e.g. Comirnaty 83%,
-   * Velsipity 95%, Zavzpret 100%).
+   * card's progress bar matches the programme's own scoring.
    */
   readinessPct: int
 
@@ -69,16 +91,16 @@ entity type Launch mixes HasExposure {
   launchValue: double
 
   /**
-   * Terminal fill-finish method for the device, e.g. "EO" (ethylene oxide),
-   * "Gamma", "e-beam", or "N/A" for a non-sterile capital device. Shown on the
-   * Product-detail Device card; drives, for Comirnaty, the EO steriliser-slot
-   * risk narrative.
+   * Drug-product route for the finished dose form, e.g. "Aseptic fill —
+   * prefilled syringe", "Lyophilised — single-use vial", "Oral solid dose".
+   * Shown on the Product-detail card; for the berobenatide programmes it is
+   * what ties them to the shared Puurs prefilled-syringe line.
    */
-  sterilisationMethod: string
+  fillFinishRoute: string
 
   /**
-   * Manufacturing site(s) building the device, e.g. "Irvine + CMO". A plain
-   * attested label shown on the Product-detail Device card.
+   * Manufacturing site(s) making the product, e.g. "Puurs + Vetter
+   * Ravensburg". A plain attested label shown on the Product-detail card.
    */
   manufactureSite: string
 
@@ -97,7 +119,7 @@ entity type Launch mixes HasExposure {
   /** Total field-force members to certify for launch (denominator). */
   fieldForceTotal: int
 
-  /** Value-Analysis-Committee approvals secured, in accounts (numerator of "N of M accounts"). */
+  /** P&T formulary approvals secured, in accounts (numerator of "N of M accounts"). */
   vacApprovalsFiled: int
 
   /** Total target accounts requiring a payer approval (denominator). */
@@ -106,7 +128,7 @@ entity type Launch mixes HasExposure {
   /** The franchise this launch belongs to. */
   franchise: Franchise
 
-  /** The five gates that punctuate this launch. Inverse of {@link Gate#launch}. */
+  /** The nine gates that punctuate this launch. Inverse of {@link Gate#launch}. */
   gates: [Gate](launch)
 
   /** Every activity in this launch's programme. Inverse of {@link Activity#launch}. */

@@ -1,50 +1,50 @@
 [
   {
-    "id": "seed_bom_ring_electrode_varipulse",
+    "id": "seed_bom_vial_stopper_berobenatide_obesity",
     "partName": "Lyophilisation stopper",
     "sourcingMode": "SINGLE_SOURCE",
     "frozenAtGate": "G2",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "supplier": {
-      "id": "seed_supplier_heraeus"
+      "id": "seed_supplier_aptar"
     }
   },
   {
-    "id": "seed_bom_ring_electrode_octaray",
+    "id": "seed_bom_vial_stopper_berobenatide_t2d",
     "partName": "Lyophilisation stopper",
     "sourcingMode": "SINGLE_SOURCE",
     "frozenAtGate": "G2",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "supplier": {
-      "id": "seed_supplier_heraeus"
+      "id": "seed_supplier_aptar"
     }
   },
   {
-    "id": "seed_bom_ring_electrode_embotrap",
+    "id": "seed_bom_vial_stopper_berobenatide_osa",
     "partName": "Lyophilisation stopper",
     "sourcingMode": "SINGLE_SOURCE",
     "frozenAtGate": "G2",
     "launch": {
-      "id": "seed_launch_embotrap_iv"
+      "id": "seed_launch_berobenatide_osa"
     },
     "supplier": {
-      "id": "seed_supplier_heraeus"
+      "id": "seed_supplier_aptar"
     }
   },
   {
-    "id": "seed_bom_ring_electrode_javelin",
+    "id": "seed_bom_vial_stopper_berobenatide_knee_oa",
     "partName": "Lyophilisation stopper",
     "sourcingMode": "SINGLE_SOURCE",
     "frozenAtGate": "G2",
     "launch": {
-      "id": "seed_launch_javelin_xl"
+      "id": "seed_launch_berobenatide_knee_oa"
     },
     "supplier": {
-      "id": "seed_supplier_heraeus"
+      "id": "seed_supplier_aptar"
     }
   }
 ]

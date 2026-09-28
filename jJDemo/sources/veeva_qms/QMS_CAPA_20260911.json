@@ -12,7 +12,7 @@
       "process_area__c": "Supplier-managed aseptic fill-finish (Vetter Ravensburg)",
       "initiated_by__c": "Quality agent",
       "initiated_date__c": "2026-09-11",
-      "containment_action__c": "Dual-source the validation lot to Siegfried Hameln (half-cycle revalidation).",
+      "containment_action__c": "Dual-source the validation lot to Siegfried Hameln (bracketed revalidation).",
       "corrective_action__c": "Qualify Siegfried permanently as second source; replace the non-committed reservation with a committed-capacity clause.",
       "effectiveness_due__c": "2026-11-06",
       "npi_ref__c": "NPI-0417"

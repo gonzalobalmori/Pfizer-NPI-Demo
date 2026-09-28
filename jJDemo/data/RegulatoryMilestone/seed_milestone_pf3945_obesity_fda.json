@@ -1,8 +1,8 @@
 [
   {
-    "id": "seed_milestone_ottava_fda",
-    "displayId": "REG-Velsipity-FDA",
-    "launch": { "id": "seed_launch_ottava" },
+    "id": "seed_milestone_pf3945_obesity_fda",
+    "displayId": "REG-Berobenatide OA-FDA",
+    "launch": { "id": "seed_launch_pf3945_obesity" },
     "authority": "FDA",
     "milestoneName": "FDA BLA Approval — US launch",
     "baselineDate": "2026-11-02",

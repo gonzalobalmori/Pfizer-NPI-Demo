@@ -1,108 +1,108 @@
 TaskId,ProjectId,TaskName,PhaseCode,FunctionalDomain,Status,OwnerId,AutonomyClass,BaselineFinish,ActualFinish
-T20000,PRJ-VPG2,"Activate NPI governance, assign workstream owners and RACI",P1,Governance,Complete,HF,A,,2026-07-11
-T20001,PRJ-VPG2,Open the CTD dossier and draft the development and CMC plan,P1,R&D / CMC,Complete,KT,A,,2026-08-13
-T20002,PRJ-VPG2,"Initiate the risk management plan, ICH Q9 risk assessment",P1,R&D / CMC,Complete,KT,A,,2026-08-14
-T20003,PRJ-VPG2,"Confirm modality and pathway: biologic, BLA (FDA) + MAA (EMA)",P1,Regulatory,Complete,SL,R,,2026-06-14
-T20004,PRJ-VPG2,Define lead market and the country registration long tail,P1,Regulatory,Complete,SL,A,,2026-07-13
-T20005,PRJ-VPG2,Book the FDA Q-Sub and reserve a CHMP rapporteur slot,P1,Regulatory,Complete,SL,A,,2026-07-11
-T20006,PRJ-VPG2,"Define GxP and audit expectations, 21 CFR 210/211",P1,Quality,Complete,AK,A,,2026-08-12
-T20007,PRJ-VPG2,Make vs. buy and own-plant vs. CMO assessment,P1,Manufacturing,Complete,LH,R,,2026-06-15
-T20008,PRJ-VPG2,"Market scan and RFI, identify long-lead items",P1,Sourcing,Complete,MO,A,,2026-08-14
-T20009,PRJ-VPG2,Decide the fill-finish route and scan CMO capacity,P1,Sourcing,Complete,MO,R,,2026-07-14
-T20010,PRJ-VPG2,"Initial network assumptions, serialisation and serialisation architecture",P1,Supply Chain,Complete,AP,A,,2026-06-14
-T20011,PRJ-VPG2,Early market priority and launch sequence hypothesis,P1,Commercial,Complete,TB,A,,2026-06-14
-T20012,PRJ-VPG2,Reimbursement feasibility: existing vs new code needed,P1,Market Access,Complete,DM,R,,2026-07-13
-T20013,PRJ-VPG2,"Instantiate the digital product spine, PLM to ERP to QMS to MES",P1,IT / Digital,Complete,RM,A,,2026-06-13
-T20014,PRJ-VPG2,"Investment plan, funding scenarios, capital request for tooling",P1,Finance,Complete,TB,A,,2026-08-11
-T20015,PRJ-VPG2,"Draft CMO and supplier framework contracts, NDAs",P1,Finance,Complete,JR,A,,2026-08-14
-T20016,PRJ-VPG2,"Track G2 readiness live, chase open design-input items",P2,Governance,Complete,HF,A,,2026-08-12
-T20017,PRJ-VPG2,Lock the target product profile and build the traceability matrix,P2,R&D / CMC,Complete,KT,A,,2026-08-14
-T20018,PRJ-VPG2,"CMC outputs: process description, specifications, draft Master Batch Record",P2,R&D / CMC,Complete,KT,A,,2026-06-14
-T20019,PRJ-VPG2,"Hold design reviews at checkpoints, minuted into the CTD",P2,R&D / CMC,Complete,KT,A,,2026-06-10
-T20020,PRJ-VPG2,"Clinical evidence plan, decide whether an IND amendment is needed",P2,Clinical,Complete,JT,R,,2026-06-11
-T20021,PRJ-VPG2,Draft the submission plan and modular dossier architecture,P2,Regulatory,Complete,SL,A,,2026-06-13
-T20022,PRJ-VPG2,"Incorporate pre-submission feedback, agree the validation package with FDA",P2,Regulatory,Complete,SL,A,,2026-06-12
-T20023,PRJ-VPG2,"Design FMEA, process FMEA, risk controls traced to inputs",P2,Quality,Complete,AK,A,,2026-07-14
-T20024,PRJ-VPG2,"Process design, line layout, tooling and mould specification",P2,Manufacturing,Complete,LH,A,,2026-07-12
-T20025,PRJ-VPG2,"CMO selection, due diligence and technology readiness",P2,Manufacturing,Complete,LH,R,,2026-08-11
-T20026,PRJ-VPG2,"Supplier identification and qualification, EU GMP audits",P2,Sourcing,Complete,MO,A,,2026-08-10
-T20027,PRJ-VPG2,Quality Agreements and Approved Supplier List entries,P2,Sourcing,Complete,MO,A,,2026-08-15
-T20028,PRJ-VPG2,Dual-source strategy for single-source critical components,P2,Sourcing,At Risk,MO,R,,
-T20029,PRJ-VPG2,"Demand plan v1, supply, production and safety-stock plan",P2,Supply Chain,Complete,AP,A,,2026-08-13
-T20030,PRJ-VPG2,"Network design: DCs, 3PLs, cold chain and launch stock model",P2,Supply Chain,Complete,RD,R,,2026-07-14
-T20031,PRJ-VPG2,"Launch archetype, target accounts, field-force sizing",P2,Commercial,Complete,TB,A,,2026-07-11
-T20032,PRJ-VPG2,"Pricing corridor, value dossier framework, IRP exposure",P2,Market Access,Complete,DM,A,,2026-07-12
-T20033,PRJ-VPG2,"Master data in ERP / MDM / PLM, serialisation-DI assignment logic",P2,IT / Digital,Complete,RM,A,,2026-07-15
-T20034,PRJ-VPG2,"Cost roll-up vs target COGS, capital approval for tooling",P2,Finance,Complete,TB,A,,2026-08-13
-T20035,PRJ-VPG2,Track the G3 Submission Commit readiness scorecard,P3,Governance,In Progress,HF,A,,
-T20036,PRJ-VPG2,"Analytical verification: assay, stability and process validation",P3,R&D / CMC,Complete,KT,A,,2026-06-13
-T20037,PRJ-VPG2,"Human factors validation for the combination presentation",P3,R&D / CMC,Complete,KT,A,,2026-06-10
-T20038,PRJ-VPG2,"Extractables and leachables, stability and accelerated stability",P3,R&D / CMC,Complete,KT,A,,2026-08-10
-T20039,PRJ-VPG2,"Cold-chain transit validation, container closure integrity",P3,R&D / CMC,Complete,KT,A,,2026-08-11
-T20040,PRJ-VPG2,Execute the Phase III study and collect data for the CSR,P3,Clinical,Complete,JT,A,,2026-06-10
-T20041,PRJ-VPG2,Identify the MSL faculty and plan the lab sessions,P3,Clinical,In Progress,JT,A,,
-T20042,PRJ-VPG2,"Assemble the CTD Module 3 quality dossier, live completeness",P3,Regulatory,In Progress,SL,A,,
-T20043,PRJ-VPG2,Draft local dossiers ready at lead-market filing,P3,Regulatory,Complete,AGENT,A,,2026-08-14
-T20044,PRJ-VPG2,Review the fill-finish validation protocols with the CHMP rapporteur,P3,Regulatory,At Risk,SL,A,,
-T20045,PRJ-VPG2,"Close supplier qualification audits, SCAR process live",P3,Quality,Complete,AK,A,,2026-06-15
-T20046,PRJ-VPG2,"Execute Process Performance Qualification and bioburden baseline",P3,Quality,Late,AK,A,,
-T20047,PRJ-VPG2,"Pre-approval inspection readiness self-audit, QSIT and MDSAP",P3,Quality,In Progress,AK,A,,
-T20048,PRJ-VPG2,"Tooling FAT and SAT, pilot builds, IQ and OQ of the lines",P3,Manufacturing,Complete,LH,A,,2026-07-11
-T20049,PRJ-VPG2,Engineering builds with real-time deviation monitoring,P3,Manufacturing,In Progress,LH,A,,
-T20050,PRJ-VPG2,Root cause analysis and CAPA on build deviations,P3,Manufacturing,At Risk,LH,A,,
-T20051,PRJ-VPG2,"Component PPAP and first-article inspection, capacity commitments",P3,Sourcing,Complete,MO,A,,2026-08-13
-T20052,PRJ-VPG2,"Release long-lead POs, supplier risk monitoring live",P3,Sourcing,At Risk,MO,A,,
-T20053,PRJ-VPG2,Book the CMO fill-finish and 3PL slots for the PPQ batches,P3,Sourcing,Late,MO,A,,
-T20054,PRJ-VPG2,Lock the launch inventory build plan,P3,Supply Chain,Complete,AP,A,,2026-08-11
-T20055,PRJ-VPG2,"Execute the 3PL and distributor contracts, validate GDP lanes",P3,Supply Chain,Complete,RD,A,,2026-06-11
-T20056,PRJ-VPG2,"File import, export and country registration licences pre-approval",P3,Supply Chain,In Progress,AGENT,A,,
-T20057,PRJ-VPG2,Build the hospital Value Analysis Committee evidence pack,P3,Commercial,In Progress,TB,A,,
-T20058,PRJ-VPG2,"HEOR studies, economic model, payer evidence-gap tracker",P3,Market Access,Complete,DM,A,,2026-06-10
-T20059,PRJ-VPG2,"Integration testing PLM to ERP to QMS to MES, serialisation feed test",P3,IT / Digital,Complete,RM,A,,2026-06-10
-T20060,PRJ-VPG2,"Track spend vs approved budget, refresh margin at actual cost",P3,Finance,In Progress,TB,A,,
-T20061,PRJ-VPG2,"Sign supplier and CMO contracts, licensing and compliance review",P3,Finance,Complete,JR,A,,2026-06-13
-T20062,PRJ-VPG2,"Manage cross-functional execution, weekly gate-risk review",P4,Governance,Not Started,HF,A,,
-T20063,PRJ-VPG2,"Design transfer to manufacturing: release the Master Batch Record, close the CTD",P4,R&D / CMC,Not Started,KT,A,,
-T20064,PRJ-VPG2,Respond to agency and CHMP rapporteur technical queries,P4,R&D / CMC,Not Started,KT,A,,
-T20065,PRJ-VPG2,"Support clinical query responses, publication plan",P4,Clinical,Not Started,JT,A,,
-T20066,PRJ-VPG2,Submit the BLA (FDA) and the MAA centralised dossier (EMA),P4,Regulatory,Not Started,SL,H,,
-T20067,PRJ-VPG2,Activate the parallel local submissions at lead-market filing,P4,Regulatory,Not Started,AGENT,A,,
-T20068,PRJ-VPG2,"Manage agency and NB query cycles, track clock-stops",P4,Regulatory,Not Started,AGENT,A,,
-T20069,PRJ-VPG2,Trigger the label and IFU artwork workflow at labelling lock,P4,Regulatory,Not Started,AGENT,A,,
-T20070,PRJ-VPG2,"Host the pre-approval and NB inspection, close findings",P4,Quality,Not Started,AK,A,,
-T20071,PRJ-VPG2,Bring the lot release process and Certificate of Analysis live,P4,Quality,Not Started,AK,A,,
-T20072,PRJ-VPG2,Process validation PQ: three consecutive conforming lots,P4,Manufacturing,Not Started,LH,A,,
-T20073,PRJ-VPG2,"Operator training and certification, MES recipes live",P4,Manufacturing,Not Started,LH,A,,
-T20074,PRJ-VPG2,At-risk commercial build ahead of clearance,P4,Manufacturing,At Risk,LH,R,,
-T20075,PRJ-VPG2,"Enforce the supplier capacity ramp, monitor risk signals",P4,Sourcing,Not Started,MO,A,,
-T20076,PRJ-VPG2,"Pre-position at-risk inventory at the 3PLs, kitting and packs",P4,Supply Chain,Not Started,AP,A,,
-T20077,PRJ-VPG2,Activate the weekly demand-supply reconciliation cadence,P4,Supply Chain,Not Started,AGENT,A,,
-T20078,PRJ-VPG2,"Schedule the fill-finish cycles, serialised goods receipt",P4,Supply Chain,Not Started,RD,A,,
-T20079,PRJ-VPG2,"Build field-force training, schedule MSLs, account plans",P4,Commercial,Not Started,TB,A,,
-T20080,PRJ-VPG2,"Submit HTA and tender dossiers, payer and GPO contracting",P4,Market Access,Not Started,DM,A,,
-T20081,PRJ-VPG2,"Configure order-to-cash, consignment and launch stock tracking",P4,IT / Digital,Not Started,RM,A,,
-T20082,PRJ-VPG2,"Track at-risk inventory exposure, refresh the business case",P4,Finance,Not Started,TB,A,,
-T20083,PRJ-VPG2,"Approve the label, the IFU and the promotional material",P4,Finance,Not Started,JR,R,,
-T20084,PRJ-VPG2,"Monitor the launch scorecard, chase the red criteria",P5,Governance,Not Started,HF,A,,
-T20085,PRJ-VPG2,"KOL education calendar, MSL roster, launch medical support",P5,Clinical,Not Started,JT,A,,
-T20086,PRJ-VPG2,"Confirm launch readiness per market, serialisation/GUDID and EUDAMED",P5,Regulatory,Not Started,AGENT,A,,
-T20087,PRJ-VPG2,Final lot review and quality release of the launch inventory,P5,Quality,Not Started,AK,A,,
-T20088,PRJ-VPG2,Bring complaint handling and vigilance live before first ship,P5,Quality,Not Started,AK,A,,
-T20089,PRJ-VPG2,Confirm manufacturing readiness and the ramp curve,P5,Manufacturing,Not Started,LH,A,,
-T20090,PRJ-VPG2,"Confirm the launch inventory in-market, by DC and country",P5,Supply Chain,Not Started,AP,A,,
-T20091,PRJ-VPG2,"Activate the returns, expiry and consignment protocol",P5,Supply Chain,Not Started,AGENT,A,,
-T20092,PRJ-VPG2,"Validate global trade, customs classification and GDP lanes",P5,Supply Chain,Not Started,RD,A,,
-T20093,PRJ-VPG2,Bring the launch stock and replenishment model live,P5,Supply Chain,Not Started,RD,A,,
-T20094,PRJ-VPG2,"Train the affiliate field teams, secure payer listings at launch accounts",P5,Commercial,Not Started,TB,A,,
-T20095,PRJ-VPG2,"Confirm price, reimbursement and contract status per market",P5,Market Access,Not Started,DM,A,,
-T20096,PRJ-VPG2,"Master-data final switch, live order-to-cash test with real SKUs",P5,IT / Digital,Not Started,RM,A,,
-T20097,PRJ-VPG2,"Lock the launch P&L, configure revenue recognition",P5,Finance,Not Started,TB,A,,
-T20098,PRJ-VPG2,"Review learnings, recalibrate the NPI model for the next product",P6,Governance,Not Started,HF,A,,
-T20099,PRJ-VPG2,"Execute post-authorisation safety study, registry data",P6,Clinical,Not Started,JT,A,,
-T20100,PRJ-VPG2,"PMS plan, PSUR, vigilance reporting, registration long tail",P6,Regulatory,Not Started,AGENT,A,,
-T20101,PRJ-VPG2,"Complaint trending, CAPA, field-action and recall readiness",P6,Quality,Not Started,AK,A,,
-T20102,PRJ-VPG2,"Yield and scrap optimisation, second-source activation",P6,Manufacturing,Not Started,LH,A,,
-T20103,PRJ-VPG2,"Dynamic safety stock, reroute to markets with active access",P6,Supply Chain,Not Started,AGENT,A,,
-T20104,PRJ-VPG2,"Adoption vs plan by account, escalate access barriers",P6,Commercial,Not Started,TB,A,,
-T20105,PRJ-VPG2,Twin-based network monitoring and control,P6,IT / Digital,Not Started,RM,A,,
-T20106,PRJ-VPG2,Transfer to business as usual — formal handover signed,P6,Governance,Not Started,HF,H,,
+T20000,PRJ-BERO_OB,"Activate NPI governance, assign workstream owners and RACI",P1,Governance,Complete,HF,A,,2026-07-11
+T20001,PRJ-BERO_OB,Open the CTD dossier and draft the development and CMC plan,P1,R&D / CMC,Complete,KT,A,,2026-08-13
+T20002,PRJ-BERO_OB,"Initiate the risk management plan, ICH Q9 risk assessment",P1,R&D / CMC,Complete,KT,A,,2026-08-14
+T20003,PRJ-BERO_OB,"Confirm modality and pathway: biologic, BLA (FDA) + MAA (EMA)",P1,Regulatory,Complete,SL,R,,2026-06-14
+T20004,PRJ-BERO_OB,Define lead market and the country registration long tail,P1,Regulatory,Complete,SL,A,,2026-07-13
+T20005,PRJ-BERO_OB,Book the FDA Q-Sub and reserve a CHMP rapporteur slot,P1,Regulatory,Complete,SL,A,,2026-07-11
+T20006,PRJ-BERO_OB,"Define GxP and audit expectations, 21 CFR 210/211",P1,Quality,Complete,AK,A,,2026-08-12
+T20007,PRJ-BERO_OB,Make vs. buy and own-plant vs. CMO assessment,P1,Manufacturing,Complete,LH,R,,2026-06-15
+T20008,PRJ-BERO_OB,"Market scan and RFI, identify long-lead items",P1,Sourcing,Complete,MO,A,,2026-08-14
+T20009,PRJ-BERO_OB,Decide the fill-finish route and scan CMO capacity,P1,Sourcing,Complete,MO,R,,2026-07-14
+T20010,PRJ-BERO_OB,"Initial network assumptions, serialisation and serialisation architecture",P1,Supply Chain,Complete,AP,A,,2026-06-14
+T20011,PRJ-BERO_OB,Early market priority and launch sequence hypothesis,P1,Commercial,Complete,TB,A,,2026-06-14
+T20012,PRJ-BERO_OB,Reimbursement feasibility: existing vs new code needed,P1,Market Access,Complete,DM,R,,2026-07-13
+T20013,PRJ-BERO_OB,"Instantiate the digital product spine, PLM to ERP to QMS to MES",P1,IT / Digital,Complete,RM,A,,2026-06-13
+T20014,PRJ-BERO_OB,"Investment plan, funding scenarios, capital request for tooling",P1,Finance,Complete,TB,A,,2026-08-11
+T20015,PRJ-BERO_OB,"Draft CMO and supplier framework contracts, NDAs",P1,Finance,Complete,JR,A,,2026-08-14
+T20016,PRJ-BERO_OB,"Track G2 readiness live, chase open design-input items",P2,Governance,Complete,HF,A,,2026-08-12
+T20017,PRJ-BERO_OB,Lock the target product profile and build the traceability matrix,P2,R&D / CMC,Complete,KT,A,,2026-08-14
+T20018,PRJ-BERO_OB,"CMC outputs: process description, specifications, draft Master Batch Record",P2,R&D / CMC,Complete,KT,A,,2026-06-14
+T20019,PRJ-BERO_OB,"Hold design reviews at checkpoints, minuted into the CTD",P2,R&D / CMC,Complete,KT,A,,2026-06-10
+T20020,PRJ-BERO_OB,"Clinical evidence plan, decide whether an IND amendment is needed",P2,Clinical,Complete,JT,R,,2026-06-11
+T20021,PRJ-BERO_OB,Draft the submission plan and modular dossier architecture,P2,Regulatory,Complete,SL,A,,2026-06-13
+T20022,PRJ-BERO_OB,"Incorporate pre-submission feedback, agree the validation package with FDA",P2,Regulatory,Complete,SL,A,,2026-06-12
+T20023,PRJ-BERO_OB,"Design FMEA, process FMEA, risk controls traced to inputs",P2,Quality,Complete,AK,A,,2026-07-14
+T20024,PRJ-BERO_OB,"Process design, line layout, tooling and mould specification",P2,Manufacturing,Complete,LH,A,,2026-07-12
+T20025,PRJ-BERO_OB,"CMO selection, due diligence and technology readiness",P2,Manufacturing,Complete,LH,R,,2026-08-11
+T20026,PRJ-BERO_OB,"Supplier identification and qualification, EU GMP audits",P2,Sourcing,Complete,MO,A,,2026-08-10
+T20027,PRJ-BERO_OB,Quality Agreements and Approved Supplier List entries,P2,Sourcing,Complete,MO,A,,2026-08-15
+T20028,PRJ-BERO_OB,Dual-source strategy for single-source critical components,P2,Sourcing,At Risk,MO,R,,
+T20029,PRJ-BERO_OB,"Demand plan v1, supply, production and safety-stock plan",P2,Supply Chain,Complete,AP,A,,2026-08-13
+T20030,PRJ-BERO_OB,"Network design: DCs, 3PLs, cold chain and launch stock model",P2,Supply Chain,Complete,RD,R,,2026-07-14
+T20031,PRJ-BERO_OB,"Launch archetype, target accounts, field-force sizing",P2,Commercial,Complete,TB,A,,2026-07-11
+T20032,PRJ-BERO_OB,"Pricing corridor, value dossier framework, IRP exposure",P2,Market Access,Complete,DM,A,,2026-07-12
+T20033,PRJ-BERO_OB,"Master data in ERP / MDM / PLM, serialisation-DI assignment logic",P2,IT / Digital,Complete,RM,A,,2026-07-15
+T20034,PRJ-BERO_OB,"Cost roll-up vs target COGS, capital approval for tooling",P2,Finance,Complete,TB,A,,2026-08-13
+T20035,PRJ-BERO_OB,Track the G3 Submission Commit readiness scorecard,P3,Governance,In Progress,HF,A,,
+T20036,PRJ-BERO_OB,"Analytical verification: assay, stability and process validation",P3,R&D / CMC,Complete,KT,A,,2026-06-13
+T20037,PRJ-BERO_OB,"Human factors validation for the combination presentation",P3,R&D / CMC,Complete,KT,A,,2026-06-10
+T20038,PRJ-BERO_OB,"Extractables and leachables, stability and accelerated stability",P3,R&D / CMC,Complete,KT,A,,2026-08-10
+T20039,PRJ-BERO_OB,"Cold-chain transit validation, container closure integrity",P3,R&D / CMC,Complete,KT,A,,2026-08-11
+T20040,PRJ-BERO_OB,Execute the Phase III study and collect data for the CSR,P3,Clinical,Complete,JT,A,,2026-06-10
+T20041,PRJ-BERO_OB,Identify the MSL faculty and plan the lab sessions,P3,Clinical,In Progress,JT,A,,
+T20042,PRJ-BERO_OB,"Assemble the CTD Module 3 quality dossier, live completeness",P3,Regulatory,In Progress,SL,A,,
+T20043,PRJ-BERO_OB,Draft local dossiers ready at lead-market filing,P3,Regulatory,Complete,AGENT,A,,2026-08-14
+T20044,PRJ-BERO_OB,Review the fill-finish validation protocols with the CHMP rapporteur,P3,Regulatory,At Risk,SL,A,,
+T20045,PRJ-BERO_OB,"Close supplier qualification audits, SCAR process live",P3,Quality,Complete,AK,A,,2026-06-15
+T20046,PRJ-BERO_OB,"Execute Process Performance Qualification and bioburden baseline",P3,Quality,Late,AK,A,,
+T20047,PRJ-BERO_OB,"Pre-approval inspection readiness self-audit, QSIT and MDSAP",P3,Quality,In Progress,AK,A,,
+T20048,PRJ-BERO_OB,"Tooling FAT and SAT, pilot builds, IQ and OQ of the lines",P3,Manufacturing,Complete,LH,A,,2026-07-11
+T20049,PRJ-BERO_OB,Engineering builds with real-time deviation monitoring,P3,Manufacturing,In Progress,LH,A,,
+T20050,PRJ-BERO_OB,Root cause analysis and CAPA on build deviations,P3,Manufacturing,At Risk,LH,A,,
+T20051,PRJ-BERO_OB,"Component PPAP and first-article inspection, capacity commitments",P3,Sourcing,Complete,MO,A,,2026-08-13
+T20052,PRJ-BERO_OB,"Release long-lead POs, supplier risk monitoring live",P3,Sourcing,At Risk,MO,A,,
+T20053,PRJ-BERO_OB,Book the CMO fill-finish and 3PL slots for the PPQ batches,P3,Sourcing,Late,MO,A,,
+T20054,PRJ-BERO_OB,Lock the launch inventory build plan,P3,Supply Chain,Complete,AP,A,,2026-08-11
+T20055,PRJ-BERO_OB,"Execute the 3PL and distributor contracts, validate GDP lanes",P3,Supply Chain,Complete,RD,A,,2026-06-11
+T20056,PRJ-BERO_OB,"File import, export and country registration licences pre-approval",P3,Supply Chain,In Progress,AGENT,A,,
+T20057,PRJ-BERO_OB,Build the hospital P&T formulary dossier,P3,Commercial,In Progress,TB,A,,
+T20058,PRJ-BERO_OB,"HEOR studies, economic model, payer evidence-gap tracker",P3,Market Access,Complete,DM,A,,2026-06-10
+T20059,PRJ-BERO_OB,"Integration testing PLM to ERP to QMS to MES, serialisation feed test",P3,IT / Digital,Complete,RM,A,,2026-06-10
+T20060,PRJ-BERO_OB,"Track spend vs approved budget, refresh margin at actual cost",P3,Finance,In Progress,TB,A,,
+T20061,PRJ-BERO_OB,"Sign supplier and CMO contracts, licensing and compliance review",P3,Finance,Complete,JR,A,,2026-06-13
+T20062,PRJ-BERO_OB,"Manage cross-functional execution, weekly gate-risk review",P4,Governance,Not Started,HF,A,,
+T20063,PRJ-BERO_OB,"Design transfer to manufacturing: release the Master Batch Record, close the CTD",P4,R&D / CMC,Not Started,KT,A,,
+T20064,PRJ-BERO_OB,Respond to agency and CHMP rapporteur technical queries,P4,R&D / CMC,Not Started,KT,A,,
+T20065,PRJ-BERO_OB,"Support clinical query responses, publication plan",P4,Clinical,Not Started,JT,A,,
+T20066,PRJ-BERO_OB,Submit the BLA (FDA) and the MAA centralised dossier (EMA),P4,Regulatory,Not Started,SL,H,,
+T20067,PRJ-BERO_OB,Activate the parallel local submissions at lead-market filing,P4,Regulatory,Not Started,AGENT,A,,
+T20068,PRJ-BERO_OB,"Manage agency and NB query cycles, track clock-stops",P4,Regulatory,Not Started,AGENT,A,,
+T20069,PRJ-BERO_OB,Trigger the label and IFU artwork workflow at labelling lock,P4,Regulatory,Not Started,AGENT,A,,
+T20070,PRJ-BERO_OB,"Host the pre-approval and NB inspection, close findings",P4,Quality,Not Started,AK,A,,
+T20071,PRJ-BERO_OB,Bring the lot release process and Certificate of Analysis live,P4,Quality,Not Started,AK,A,,
+T20072,PRJ-BERO_OB,Process validation PQ: three consecutive conforming lots,P4,Manufacturing,Not Started,LH,A,,
+T20073,PRJ-BERO_OB,"Operator training and certification, MES recipes live",P4,Manufacturing,Not Started,LH,A,,
+T20074,PRJ-BERO_OB,At-risk commercial build ahead of clearance,P4,Manufacturing,At Risk,LH,R,,
+T20075,PRJ-BERO_OB,"Enforce the supplier capacity ramp, monitor risk signals",P4,Sourcing,Not Started,MO,A,,
+T20076,PRJ-BERO_OB,"Pre-position at-risk inventory at the 3PLs, kitting and packs",P4,Supply Chain,Not Started,AP,A,,
+T20077,PRJ-BERO_OB,Activate the weekly demand-supply reconciliation cadence,P4,Supply Chain,Not Started,AGENT,A,,
+T20078,PRJ-BERO_OB,"Schedule the fill-finish cycles, serialised goods receipt",P4,Supply Chain,Not Started,RD,A,,
+T20079,PRJ-BERO_OB,"Build field-force training, schedule MSLs, account plans",P4,Commercial,Not Started,TB,A,,
+T20080,PRJ-BERO_OB,"Submit HTA and tender dossiers, payer and GPO contracting",P4,Market Access,Not Started,DM,A,,
+T20081,PRJ-BERO_OB,"Configure order-to-cash, consignment and launch stock tracking",P4,IT / Digital,Not Started,RM,A,,
+T20082,PRJ-BERO_OB,"Track at-risk inventory exposure, refresh the business case",P4,Finance,Not Started,TB,A,,
+T20083,PRJ-BERO_OB,"Approve the label, the IFU and the promotional material",P4,Finance,Not Started,JR,R,,
+T20084,PRJ-BERO_OB,"Monitor the launch scorecard, chase the red criteria",P5,Governance,Not Started,HF,A,,
+T20085,PRJ-BERO_OB,"KOL education calendar, MSL roster, launch medical support",P5,Clinical,Not Started,JT,A,,
+T20086,PRJ-BERO_OB,"Confirm launch readiness per market, serialisation/DSCSA and EU FMD",P5,Regulatory,Not Started,AGENT,A,,
+T20087,PRJ-BERO_OB,Final lot review and quality release of the launch inventory,P5,Quality,Not Started,AK,A,,
+T20088,PRJ-BERO_OB,Bring complaint handling and vigilance live before first ship,P5,Quality,Not Started,AK,A,,
+T20089,PRJ-BERO_OB,Confirm manufacturing readiness and the ramp curve,P5,Manufacturing,Not Started,LH,A,,
+T20090,PRJ-BERO_OB,"Confirm the launch inventory in-market, by DC and country",P5,Supply Chain,Not Started,AP,A,,
+T20091,PRJ-BERO_OB,"Activate the returns, expiry and consignment protocol",P5,Supply Chain,Not Started,AGENT,A,,
+T20092,PRJ-BERO_OB,"Validate global trade, customs classification and GDP lanes",P5,Supply Chain,Not Started,RD,A,,
+T20093,PRJ-BERO_OB,Bring the launch stock and replenishment model live,P5,Supply Chain,Not Started,RD,A,,
+T20094,PRJ-BERO_OB,"Train the affiliate field teams, secure payer listings at launch accounts",P5,Commercial,Not Started,TB,A,,
+T20095,PRJ-BERO_OB,"Confirm price, reimbursement and contract status per market",P5,Market Access,Not Started,DM,A,,
+T20096,PRJ-BERO_OB,"Master-data final switch, live order-to-cash test with real SKUs",P5,IT / Digital,Not Started,RM,A,,
+T20097,PRJ-BERO_OB,"Lock the launch P&L, configure revenue recognition",P5,Finance,Not Started,TB,A,,
+T20098,PRJ-BERO_OB,"Review learnings, recalibrate the NPI model for the next product",P6,Governance,Not Started,HF,A,,
+T20099,PRJ-BERO_OB,"Execute post-authorisation safety study, registry data",P6,Clinical,Not Started,JT,A,,
+T20100,PRJ-BERO_OB,"PMS plan, PSUR, vigilance reporting, registration long tail",P6,Regulatory,Not Started,AGENT,A,,
+T20101,PRJ-BERO_OB,"Complaint trending, CAPA, field-action and recall readiness",P6,Quality,Not Started,AK,A,,
+T20102,PRJ-BERO_OB,"Yield and scrap optimisation, second-source activation",P6,Manufacturing,Not Started,LH,A,,
+T20103,PRJ-BERO_OB,"Dynamic safety stock, reroute to markets with active access",P6,Supply Chain,Not Started,AGENT,A,,
+T20104,PRJ-BERO_OB,"Adoption vs plan by account, escalate access barriers",P6,Commercial,Not Started,TB,A,,
+T20105,PRJ-BERO_OB,Twin-based network monitoring and control,P6,IT / Digital,Not Started,RM,A,,
+T20106,PRJ-BERO_OB,Transfer to business as usual — formal handover signed,P6,Governance,Not Started,HF,H,,

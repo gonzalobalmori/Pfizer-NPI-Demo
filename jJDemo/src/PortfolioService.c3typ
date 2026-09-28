@@ -70,9 +70,9 @@ entity type PortfolioService {
   timeImpact: function(): json js
 
   /**
-   * The full Launch record (§5) for one launch: the Overview (device facts,
+   * The full Launch record (§5) for one launch: the Overview (product facts,
    * health, gates, exposure), the Workflow detail (all its {@link Activity}s
-   * grouped into the six phase columns with the gate at the foot of each and the
+   * grouped into the nine phase columns with the gate at the foot of each and the
    * domain/status tallies for the recounting filters) and the Documents register
    * (the launch's {@link Document}s grouped into their eight groups, missing ones
    * flagged).
@@ -82,7 +82,7 @@ entity type PortfolioService {
   launchRecord: function(launchId: string): json js
 
   /**
-   * The launch picker (§5) — the nine {@link Launch}es with id, device name,
+   * The launch picker (§5) — the nine {@link Launch}es with id, product name,
    * short name, franchise, phase and health, sorted worst-first, for the record
    * index / navigation.
    */

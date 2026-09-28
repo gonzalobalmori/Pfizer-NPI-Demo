@@ -1,8 +1,8 @@
 [
   {
-    "id": "seed_mcom_abrysvo_us",
+    "id": "seed_mcom_berobenatide_t2d_us",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "market": {
       "id": "seed_market_us"
@@ -19,13 +19,13 @@
     "contractPenalty": false,
     "status": "COMMITTED",
     "marketLaunch": {
-      "id": "seed_ml_octaray_g2_us"
+      "id": "seed_ml_berobenatide_t2d_us"
     }
   },
   {
-    "id": "seed_mcom_abrysvo_de",
+    "id": "seed_mcom_berobenatide_t2d_de",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "market": {
       "id": "seed_market_de"
@@ -42,14 +42,14 @@
     "contractPenalty": true,
     "status": "COMMITTED",
     "marketLaunch": {
-      "id": "seed_ml_octaray_g2_de"
+      "id": "seed_ml_berobenatide_t2d_de"
     },
     "tenderDeadline": "2026-11-30"
   },
   {
-    "id": "seed_mcom_abrysvo_jp",
+    "id": "seed_mcom_berobenatide_t2d_jp",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "market": {
       "id": "seed_market_jp"
@@ -66,14 +66,14 @@
     "contractPenalty": true,
     "status": "COMMITTED",
     "marketLaunch": {
-      "id": "seed_ml_octaray_g2_jp"
+      "id": "seed_ml_berobenatide_t2d_jp"
     },
     "tenderDeadline": "2026-12-15"
   },
   {
-    "id": "seed_mcom_abrysvo_uk",
+    "id": "seed_mcom_berobenatide_t2d_uk",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "market": {
       "id": "seed_market_uk"
@@ -90,13 +90,13 @@
     "contractPenalty": false,
     "status": "COMMITTED",
     "marketLaunch": {
-      "id": "seed_ml_octaray_g2_uk"
+      "id": "seed_ml_berobenatide_t2d_uk"
     }
   },
   {
-    "id": "seed_mcom_abrysvo_fr",
+    "id": "seed_mcom_berobenatide_t2d_fr",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "market": {
       "id": "seed_market_fr"
@@ -113,14 +113,14 @@
     "contractPenalty": true,
     "status": "COMMITTED",
     "marketLaunch": {
-      "id": "seed_ml_octaray_g2_fr"
+      "id": "seed_ml_berobenatide_t2d_fr"
     },
     "tenderDeadline": "2027-01-31"
   },
   {
-    "id": "seed_mcom_abrysvo_it",
+    "id": "seed_mcom_berobenatide_t2d_it",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "market": {
       "id": "seed_market_it"
@@ -138,9 +138,9 @@
     "status": "COMMITTED"
   },
   {
-    "id": "seed_mcom_abrysvo_es",
+    "id": "seed_mcom_berobenatide_t2d_es",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "market": {
       "id": "seed_market_es"
@@ -158,9 +158,9 @@
     "status": "COMMITTED"
   },
   {
-    "id": "seed_mcom_abrysvo_au",
+    "id": "seed_mcom_berobenatide_t2d_au",
     "launch": {
-      "id": "seed_launch_octaray_g2"
+      "id": "seed_launch_berobenatide_t2d"
     },
     "market": {
       "id": "seed_market_au"
@@ -178,9 +178,9 @@
     "status": "COMMITTED"
   },
   {
-    "id": "seed_mcom_comirnaty_de",
+    "id": "seed_mcom_berobenatide_obesity_de",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_de"
@@ -188,7 +188,7 @@
     "priorityRank": 1,
     "priorityTier": "CRITICAL",
     "committedDoses": 420000,
-    "skuCode": "COM-DE-MDV-6",
+    "skuCode": "BER-DE-MDV-6",
     "presentation": "6-dose multi-dose vial",
     "firstShipDate": "2026-11-09",
     "wave": "Wave 1",
@@ -197,14 +197,14 @@
     "contractPenalty": true,
     "status": "COMMITTED",
     "marketLaunch": {
-      "id": "seed_ml_varipulse_g2_de"
+      "id": "seed_ml_berobenatide_obesity_g2_de"
     },
     "tenderDeadline": "2026-12-11"
   },
   {
-    "id": "seed_mcom_comirnaty_us",
+    "id": "seed_mcom_berobenatide_obesity_us",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_us"
@@ -221,13 +221,13 @@
     "contractPenalty": false,
     "status": "COMMITTED",
     "marketLaunch": {
-      "id": "seed_ml_varipulse_g2_us"
+      "id": "seed_ml_berobenatide_obesity_g2_us"
     }
   },
   {
-    "id": "seed_mcom_comirnaty_uk",
+    "id": "seed_mcom_berobenatide_obesity_uk",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_uk"
@@ -244,14 +244,14 @@
     "contractPenalty": true,
     "status": "COMMITTED",
     "marketLaunch": {
-      "id": "seed_ml_varipulse_g2_uk"
+      "id": "seed_ml_berobenatide_obesity_g2_uk"
     },
     "tenderDeadline": "2027-01-15"
   },
   {
-    "id": "seed_mcom_comirnaty_fr",
+    "id": "seed_mcom_berobenatide_obesity_fr",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_fr"
@@ -268,14 +268,14 @@
     "contractPenalty": true,
     "status": "COMMITTED",
     "marketLaunch": {
-      "id": "seed_ml_varipulse_g2_fr"
+      "id": "seed_ml_berobenatide_obesity_g2_fr"
     },
     "tenderDeadline": "2027-01-31"
   },
   {
-    "id": "seed_mcom_comirnaty_it",
+    "id": "seed_mcom_berobenatide_obesity_it",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_it"
@@ -293,9 +293,9 @@
     "status": "COMMITTED"
   },
   {
-    "id": "seed_mcom_comirnaty_es",
+    "id": "seed_mcom_berobenatide_obesity_es",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_es"
@@ -312,14 +312,14 @@
     "contractPenalty": true,
     "status": "COMMITTED",
     "marketLaunch": {
-      "id": "seed_ml_varipulse_g2_es"
+      "id": "seed_ml_berobenatide_obesity_g2_es"
     },
     "tenderDeadline": "2027-02-28"
   },
   {
-    "id": "seed_mcom_comirnaty_nl",
+    "id": "seed_mcom_berobenatide_obesity_nl",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_nl"
@@ -337,9 +337,9 @@
     "status": "COMMITTED"
   },
   {
-    "id": "seed_mcom_comirnaty_se",
+    "id": "seed_mcom_berobenatide_obesity_se",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_se"
@@ -357,9 +357,9 @@
     "status": "COMMITTED"
   },
   {
-    "id": "seed_mcom_comirnaty_pl",
+    "id": "seed_mcom_berobenatide_obesity_pl",
     "launch": {
-      "id": "seed_launch_varipulse_g2"
+      "id": "seed_launch_berobenatide_obesity"
     },
     "market": {
       "id": "seed_market_pl"

@@ -18,7 +18,7 @@
  */
 entity type QualityEvent {
 
-  /** Seed key, e.g. {@code seed_qe_abrysvo_stopper}. */
+  /** Seed key, e.g. {@code seed_qe_berobenatide_t2d_stopper}. */
   id: !string
 
   /** Deviation number as raised in the quality system, e.g. {@code DEV-26-0881}. */

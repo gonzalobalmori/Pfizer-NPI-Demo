@@ -2,7 +2,7 @@
  * An immutable, append-only entry in a {@link Launch}'s CTD dossier
  * (model invariant §3.6.6). This is the regulatory-defensibility spine: a
  * CHMP rapporteur auditor must be able to reconstruct every agent action against a
- * device's CTD (§1). The approve transaction appends one entry — it never edits
+ * launch's CTD (§1). The approve transaction appends one entry — it never edits
  * or removes existing entries.
  */
 entity type DesignHistoryFileEntry {

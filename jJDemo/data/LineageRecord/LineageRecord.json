@@ -1,11 +1,11 @@
 [
   {
-    "id": "Gate__seed_gate_varipulse_g3",
+    "id": "Gate__seed_gate_berobenatide_obesity_g4",
     "targetType": "Gate",
-    "targetId": "seed_gate_varipulse_g3",
+    "targetId": "seed_gate_berobenatide_obesity_g4",
     "feedCode": "PPM_GATE",
     "sourceFile": "ppm/PPM_GATE_20260911.csv",
-    "sourceRowKey": "G-Comirnaty_G3",
+    "sourceRowKey": "G-BEROBENATIDE_OBESITY_G4",
     "transform": "SrcPpmGate-Gate",
     "loadedAt": "2026-09-11T08:42:00"
   },
@@ -13,9 +13,9 @@
     "id": "Finding__seed_finding_417",
     "targetType": "Finding",
     "targetId": "seed_finding_417",
-    "feedCode": "PORTAL_CHAMBER",
-    "sourceFile": "portal/PORTAL_CHAMBER_BOOKING_20260911_08.json",
-    "sourceRowKey": "BK-STERIS-VNL-20261012",
+    "feedCode": "PORTAL_FILLSLOT",
+    "sourceFile": "portal/PORTAL_FILLSLOT_BOOKING_20260911_08.json",
+    "sourceRowKey": "BKG-2026-33412",
     "transform": "(agent trigger — Quality agent raised finding)",
     "loadedAt": "2026-09-11T08:42:00"
   },
