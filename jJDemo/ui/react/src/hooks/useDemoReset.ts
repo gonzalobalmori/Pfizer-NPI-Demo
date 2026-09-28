@@ -3,7 +3,7 @@
  *
  * Why this exists: the demo's actions write real, persisted state. Approving NPI-0417
  * re-baselines a gate, releases €18.4M of exposure, dispatches 21 tasks and appends a
- * DHF entry — so after one walkthrough the app stayed settled, the Approve button was
+ * CTD entry — so after one walkthrough the app stayed settled, the Approve button was
  * replaced by an outcome line, and a second run was refused by the service-layer guard
  * ("Approve runs once"). A refresh now returns the app to its opening state.
  *

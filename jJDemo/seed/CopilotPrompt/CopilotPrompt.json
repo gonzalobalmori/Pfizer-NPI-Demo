@@ -12,8 +12,8 @@
       ],
       "steps": [
         {
-          "title": "NPI-0417 · Dual-source the EO sterilisation slot",
-          "body": "Steris Venlo cancelled the 12 Oct chamber slot. Sourcing priced three alternatives; Sterigenics recovers 38 of the 47 days for €340k. G3 moves 04 Nov → 21 Dec if you do nothing.",
+          "title": "NPI-0417 · Dual-source the aseptic fill-finish slot",
+          "body": "Vetter Ravensburg cancelled the 12 Oct chamber slot. Sourcing priced three alternatives; Siegfried recovers 38 of the 47 days for €340k. G3 moves 04 Nov → 21 Dec if you do nothing.",
           "when": "Due today · 17:00",
           "flag": "r"
         },
@@ -24,7 +24,7 @@
           "flag": "a"
         },
         {
-          "title": "NPI-0388 · Activate the Heraeus second source before G2",
+          "title": "NPI-0388 · Activate the Aptar second source before G2",
           "body": "Same supplier as 0417. Decide 0417 first — if line 3 stops, the second source stops being a choice and becomes the plan. 19 days of float left.",
           "when": "Due 16 Sep",
           "flag": "a"
@@ -38,7 +38,7 @@
       ],
       "rec": "Start with NPI-0417, then NPI-0388",
       "why": [
-        "They are the same supplier: Heraeus. Deciding 0417 first removes one option from 0388",
+        "They are the same supplier: Aptar. Deciding 0417 first removes one option from 0388",
         "0402 and 0371 are independent — take them in any order before their dates",
         "Nothing else needs you this week. 95 of the 107 activities run without asking you"
       ],
@@ -71,7 +71,7 @@
       "evidence": [
         {
           "label": "S. Lindqvist · Regulatory",
-          "value": "NPI-0365 — a Notified Body response needs a qualified signatory. Open 3 days, chased twice, escalated to their manager yesterday."
+          "value": "NPI-0365 — a CHMP rapporteur response needs a qualified signatory. Open 3 days, chased twice, escalated to their manager yesterday."
         },
         {
           "label": "The Launch Board",
@@ -79,7 +79,7 @@
         },
         {
           "label": "R. Devi · Logistics",
-          "value": "NPI-0351 — pricing a second sterilisation lane for the Elrexfio loaner sets. Number due 12 Sep."
+          "value": "NPI-0351 — pricing a second fill-finish lane for the Elrexfio launch stock units. Number due 12 Sep."
         },
         {
           "label": "K. Tanaka · R&D",
@@ -133,7 +133,7 @@
         },
         {
           "label": "Common cause",
-          "value": "Heraeus. Single source on the frozen BOM, downgraded to High financial risk"
+          "value": "Aptar. Single source on the frozen BOM, downgraded to High financial risk"
         },
         {
           "label": "Lead market",
@@ -142,7 +142,7 @@
       ],
       "rec": "Treat this as one supplier decision, not four findings",
       "why": [
-        "NPI-0417 (EO slot) and NPI-0412 (line 3 out of spec) are both Heraeus-driven; NPI-0388 is the Heraeus credit downgrade itself",
+        "NPI-0417 (EO slot) and NPI-0412 (line 3 out of spec) are both Aptar-driven; NPI-0388 is the Aptar credit downgrade itself",
         "Activating the qualified second source at Neuss answers all three at once, and it is cheapest before the G2 freeze on 30 Sep",
         "After G2 the same change costs 11 weeks of change control"
       ],
@@ -175,7 +175,7 @@
     "showsGuardrails": false,
     "answer": {
       "prose": [
-        "One thing: the 12 Oct EO chamber slot at Steris Venlo, cancelled by the supplier. Without it the ISO 11135 validation report slips to 19 Dec, EU MDR section 4.3 stays open, and the BSI Q4 review slot lapses — another 31 days on top of the 47."
+        "One thing: the 12 Oct fill-finish line slot at Vetter Ravensburg, cancelled by the supplier. Without it the PPQ validation report slips to 19 Dec, MAA (EMA) section 4.3 stays open, and the BSI Q4 review slot lapses — another 31 days on top of the 47."
       ],
       "prose2": [
         "The fleet has already done the work. Quality read the cancellation off the portal, Planning recomputed the critical path, Sourcing priced three alternative sites and Regulatory checked the dossier would survive a 9-day shift. What is left is a €340k authorisation, which is yours."
@@ -190,7 +190,7 @@
           "value": "21 Dec 2026 · +47 days"
         },
         {
-          "label": "With Sterigenics",
+          "label": "With Siegfried",
           "value": "13 Nov 2026 · +9 days, for €340k"
         },
         {
@@ -198,7 +198,7 @@
           "value": "BSI Q4 slot holds at +9 days. It does not hold at +47."
         }
       ],
-      "rec": "Dual-source to Sterigenics Grand Rapids",
+      "rec": "Dual-source to Siegfried Hameln",
       "why": [
         "Recovers 38 of the 47 days — the only option of the three that keeps the BSI slot",
         "Switching modality to X-ray costs 62 days and €1.1M and forfeits the slot",
@@ -223,7 +223,7 @@
     "id": "heraeus",
     "groupLabel": "Follow the agents",
     "sortOrder": 5,
-    "question": "Trace the Heraeus line 3 failure agent by agent",
+    "question": "Trace the Aptar line 3 failure agent by agent",
     "subtitle": "Line monitor → Quality → Sourcing → Planning → you",
     "showsGuardrails": false,
     "answer": {
@@ -233,7 +233,7 @@
       "steps": [
         {
           "title": "Line Monitor agent — flagged the dimensional drift",
-          "body": "SPC rule 2 broken on 4 consecutive lots on the ring electrode dimensional check. Raised without anyone asking it to look.",
+          "body": "SPC rule 2 broken on 4 consecutive lots on the lyophilisation stopper dimensional check. Raised without anyone asking it to look.",
           "when": "2m ago",
           "flag": "a"
         },
@@ -256,7 +256,7 @@
           "flag": "a"
         },
         {
-          "title": "It is yours — stop line 3 at Heraeus?",
+          "title": "It is yours — stop line 3 at Aptar?",
           "body": "Quarantine the 4 lots and switch to Neuss. Hits Comirnaty G2, Abrysvo G2 and Elrexfio IV in Germany, France and Spain.",
           "when": "Now",
           "flag": "r"
@@ -334,7 +334,7 @@
     "showsGuardrails": false,
     "answer": {
       "prose": [
-        "Germany is the lead market for five of the nine launches and it carries the most exposure of any market, because the EU MDR path and the BSI review slot both sit behind it."
+        "Germany is the lead market for five of the nine launches and it carries the most exposure of any market, because the MAA (EMA) path and the BSI review slot both sit behind it."
       ],
       "evidence": [
         {
@@ -343,15 +343,15 @@
         },
         {
           "label": "Abrysvo Gen 2",
-          "value": "G2 Design Freeze 30 Sep · two unsigned design inputs and the Heraeus single source. Both are yours this week."
+          "value": "G2 Design Freeze 30 Sep · two unsigned design inputs and the Aptar single source. Both are yours this week."
         },
         {
           "label": "Elrexfio IV",
-          "value": "G5 First Ship 26 Sep · 340 of 520 loaner sets still uncertified. 3PL sterilisation is running 6 days over plan."
+          "value": "G5 First Ship 26 Sep · 340 of 520 launch stock units still uncertified. 3PL fill-finish is running 6 days over plan."
         },
         {
           "label": "Litfulo Toric",
-          "value": "Transit packaging failed ASTM D4169 Sequence D. Re-test 14 Sep."
+          "value": "Transit packaging failed cold-chain transit protocol Sequence D. Re-test 14 Sep."
         },
         {
           "label": "Velsipity",
@@ -393,23 +393,23 @@
       "evidence": [
         {
           "label": "FDA · Comirnaty Gen 2",
-          "value": "NPI-0420 — PMA under review, a deficiency letter is open. 45 days at stake, no approval until the agency responds. This is on the authority, not on us: acting here will not move the date."
+          "value": "NPI-0420 — BLA under review, a deficiency letter is open. 45 days at stake, no approval until the agency responds. This is on the authority, not on us: acting here will not move the date."
         },
         {
-          "label": "BSI Notified Body · Comirnaty Gen 2",
+          "label": "BSI CHMP rapporteur · Comirnaty Gen 2",
           "value": "Q4 review slot holds only while G3 stays at +9 days. Miss the window and the next confirmed slot is February — another 31 days. The slot is the real regulatory deadline, not the validation work."
         },
         {
-          "label": "BSI Notified Body · Prevnar 20",
+          "label": "BSI CHMP rapporteur · Prevnar 20",
           "value": "NPI-0365 — a query-cycle-2 response has been drafted and unsigned for 6 days. The 21-day clock-stop is running. This is the one thread you can move: it needs a qualified signatory, S. Lindqvist, and it is already escalated."
         },
         {
           "label": "Questions on the table",
-          "value": "FDA: sterilisation-residual limits and the biocompatibility bridge. BSI: the clinical evaluation equivalence rationale. Every query has a traced response pack assembled from the CER and the DMR."
+          "value": "FDA: fill-finish-residual limits and the extractables and leachables bridge. BSI: the clinical evaluation equivalence rationale. Every query has a traced response pack assembled from the CER and the Master Batch Record."
         },
         {
           "label": "On-site audit",
-          "value": "BSI unannounced site visit expected this quarter — a gemba walk of Heraeus line 3 and the Neuss second source. The line-3 CAPA and the dimensional SPC record are what they will ask to see."
+          "value": "BSI unannounced site visit expected this quarter — a gemba walk of Aptar line 3 and the Neuss second source. The line-3 CAPA and the dimensional SPC record are what they will ask to see."
         }
       ],
       "rec": "Push NPI-0365 to signature today; keep FDA and the BSI slot un-blocked, don't chase them",
@@ -504,7 +504,7 @@
     "showsGuardrails": false,
     "answer": {
       "prose": [
-        "The FDA moved Velsipity's 510(k) clearance from 02 Nov to 14 Dec — a six-week slip on a date you don't control. Manufacturing has already built launch stock, the loaner kits are staged at the 3PL, and the field is trained for the original go-live. The old way, that slip becomes a ten-week scramble across three teams. Here it cascades in one pass: three commitments re-time themselves, and exactly two need a human."
+        "The FDA moved Velsipity's NDA clearance from 02 Nov to 14 Dec — a six-week slip on a date you don't control. Manufacturing has already built launch stock, the launch stock are staged at the 3PL, and the field is trained for the original go-live. The old way, that slip becomes a ten-week scramble across three teams. Here it cascades in one pass: three commitments re-time themselves, and exactly two need a human."
       ],
       "evidence": [
         {
@@ -513,7 +513,7 @@
         },
         {
           "label": "Logistics · auto-adjusted",
-          "value": "Loaner-kit deployment across the US geographies re-timed to the new go-live. The 3PL is not asked to ship against the old date."
+          "value": "Launch stock deployment across the US geographies re-timed to the new go-live. The 3PL is not asked to ship against the old date."
         },
         {
           "label": "Commercial · auto-adjusted",

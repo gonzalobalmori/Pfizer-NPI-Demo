@@ -37,7 +37,7 @@
   {
     "id": "seed_guardrail_dossier",
     "name": "Dossier integrity",
-    "rule": "A dossier shift must be checked against the Notified Body review window before proposal.",
+    "rule": "A dossier shift must be checked against the CHMP rapporteur review window before proposal.",
     "scope": "Regulatory",
     "breachCount": 0
   }

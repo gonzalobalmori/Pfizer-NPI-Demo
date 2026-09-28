@@ -1,7 +1,7 @@
 [
   {
     "id": "seed_chain_chn09",
-    "title": "Steriliser slot recovery",
+    "title": "Fill-finish slot recovery",
     "handoffCount": 4,
     "outcome": "USER",
     "startedAt": "2026-09-11T08:14:00",
@@ -45,7 +45,7 @@
   },
   {
     "id": "seed_chain_chn05",
-    "title": "Notified Body query cycle 2",
+    "title": "CHMP rapporteur query cycle 2",
     "handoffCount": 2,
     "outcome": "HELD",
     "startedAt": "2026-09-07T08:42:00",
@@ -76,7 +76,7 @@
   },
   {
     "id": "seed_chain_iz412",
-    "title": "Heraeus line 3 — 4 of 12 lots out of spec on the ring electrode dimensional check",
+    "title": "Aptar line 3 — 4 of 12 lots out of spec on the lyophilisation stopper dimensional check",
     "handoffCount": 3,
     "outcome": "USER",
     "startedAt": "2026-09-11T08:40:00",
@@ -87,7 +87,7 @@
   },
   {
     "id": "seed_chain_iz359",
-    "title": "Secondary packaging deformed at Sequence D of the ASTM D4169 transit battery",
+    "title": "Secondary packaging deformed at Sequence D of the cold-chain transit protocol transit battery",
     "handoffCount": 1,
     "outcome": "RUNNING",
     "startedAt": "2026-09-06T08:42:00",
@@ -98,7 +98,7 @@
   },
   {
     "id": "seed_chain_iz351",
-    "title": "340 of 520 loaner sets still awaiting a final sterilisation cycle",
+    "title": "340 of 520 launch stock units still awaiting a final QC release check",
     "handoffCount": 1,
     "outcome": "RUNNING",
     "startedAt": "2026-09-09T08:42:00",

@@ -276,7 +276,7 @@ export default function EodCapture({ onCommitted, onCancel }: EodCaptureProps) {
             id="eod-free"
             value={freeText}
             onChange={(e) => setFreeText(e.target.value)}
-            placeholder="e.g. The EO sterilisation slot for Comirnaty fell through, the supplier won't confirm until Thursday. The Abrysvo validation report is signed off. Worried the Hospital field force won't be certified in time…"
+            placeholder="e.g. The aseptic fill-finish slot for Comirnaty fell through, the supplier won't confirm until Thursday. The Abrysvo validation report is signed off. Worried the Hospital field force won't be certified in time…"
             rows={6}
             style={{
               width: '100%',

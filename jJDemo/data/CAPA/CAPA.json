@@ -2,7 +2,7 @@
   {
     "id": "seed_capa_0412",
     "capaId": "CAPA-2026-0149",
-    "openedAgainstProcess": "Comirnaty commercial-batch manufacturing — line 3 (ring-electrode assembly)",
+    "openedAgainstProcess": "Comirnaty commercial-batch manufacturing — line 3 (stopper and closure assembly)",
     "openedBy": "Quality agent",
     "openedAt": "2026-09-15T08:20:00",
     "containmentAction": "Hold the 3 out-of-spec line-3 batches; continue commercial supply from line 5.",
@@ -21,7 +21,7 @@
   {
     "id": "seed_capa_0151",
     "capaId": "CAPA-2026-0151",
-    "openedAgainstProcess": "Transit packaging (ASTM D4169 Seq. D)",
+    "openedAgainstProcess": "Transit packaging (cold-chain transit protocol Seq. D)",
     "openedBy": "Quality agent",
     "openedAt": "2026-09-06T16:44:00",
     "containmentAction": "Redesign the thermoform insert; re-test 14 Sep.",

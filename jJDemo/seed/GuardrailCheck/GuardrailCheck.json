@@ -37,7 +37,7 @@
     "id": "seed_gcheck_417_3",
     "name": "Second site approved & audited?",
     "threshold": "approved + audit current",
-    "observed": "Sterigenics approved, audit to Mar 2028",
+    "observed": "Siegfried approved, audit to Mar 2028",
     "result": "PASS",
     "evaluatedAt": "2026-09-11T08:23:00",
     "finding": {
@@ -54,7 +54,7 @@
     "id": "seed_gcheck_417_4",
     "name": "Modality unchanged?",
     "threshold": "same modality",
-    "observed": "EO unchanged — half-cycle revalidation",
+    "observed": "Fill-finish route unchanged — reduced PPQ",
     "result": "PASS",
     "evaluatedAt": "2026-09-11T08:23:00",
     "finding": {

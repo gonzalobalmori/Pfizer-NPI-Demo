@@ -5,7 +5,7 @@
     "kind": "MY",
     "status": "RUNNING",
     "sortOrder": 0,
-    "label": "You opened the resolution on the Heraeus line-3 ring-electrode drift and weighed the three containment options",
+    "label": "You opened the resolution on the Aptar line-3 stopper dimensional drift and weighed the three containment options",
     "subLine": "Decision still open — reroute to line 5 to hold G3, with the Neuss hedge reserved.",
     "occurredAt": "2026-09-11T08:16:00",
     "noteAuthor": "Sourcing agent",
@@ -19,13 +19,13 @@
     "kind": "MY",
     "status": "RUNNING",
     "sortOrder": 1,
-    "label": "You opened the resolution on the cancelled EO sterilisation validation slot and asked the Sourcing agent to verify the contract position",
+    "label": "You opened the resolution on the cancelled aseptic fill-finish PPQ slot and asked the Sourcing agent to verify the contract position",
     "subLine": "Decision still open — due 17:00 today.",
     "occurredAt": "2026-09-11T08:14:00",
     "noteAuthor": "Quality agent",
     "noteRole": "",
     "noteAt": "2026-09-11T08:03:00",
-    "noteBody": "Signature recorded against DHF-0455 rev 7. One input outstanding: ASTM D4169 transit summary."
+    "noteBody": "Signature recorded against CTD-0455 rev 7. One input outstanding: cold-chain transit summary."
   },
   {
     "id": "hist_0371",
@@ -39,7 +39,7 @@
     "noteAuthor": "Quality agent",
     "noteRole": "",
     "noteAt": "2026-09-11T08:03:00",
-    "noteBody": "Signature recorded against DHF-0455 rev 7. One input outstanding: ASTM D4169 transit summary."
+    "noteBody": "Signature recorded against CTD-0455 rev 7. One input outstanding: cold-chain transit summary."
   },
   {
     "id": "hist_0409",
@@ -61,7 +61,7 @@
     "kind": "ESC",
     "status": "ESCALATED",
     "sortOrder": 4,
-    "label": "You escalated the unsigned Notified Body response pack on Prevnar 20 for a qualified signature",
+    "label": "You escalated the unsigned CHMP rapporteur response pack on Prevnar 20 for a qualified signature",
     "subLine": "Drafted by the agents and unsigned for 6 days, chased twice. Raised to S. Lindqvist — still open.",
     "occurredAt": "2026-09-08T09:05:00",
     "noteAuthor": "S. Lindqvist",
@@ -104,7 +104,7 @@
     "status": "RESOLVED",
     "sortOrder": 6,
     "label": "You rejected the request to waive the transit validation re-test and required a full re-test",
-    "subLine": "Reason recorded: the waiver would have needed a Notified Body concession you did not want to spend.",
+    "subLine": "Reason recorded: the waiver would have needed a CHMP rapporteur concession you did not want to spend.",
     "occurredAt": "2026-09-01T09:30:00",
     "noteAuthor": "K. Tanaka",
     "noteRole": "R&D",

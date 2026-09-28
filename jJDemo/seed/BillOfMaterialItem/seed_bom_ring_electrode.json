@@ -1,7 +1,7 @@
 [
   {
     "id": "seed_bom_ring_electrode_varipulse",
-    "partName": "Ring electrode subassembly",
+    "partName": "Lyophilisation stopper",
     "sourcingMode": "SINGLE_SOURCE",
     "frozenAtGate": "G2",
     "launch": {
@@ -13,7 +13,7 @@
   },
   {
     "id": "seed_bom_ring_electrode_octaray",
-    "partName": "Ring electrode subassembly",
+    "partName": "Lyophilisation stopper",
     "sourcingMode": "SINGLE_SOURCE",
     "frozenAtGate": "G2",
     "launch": {
@@ -25,7 +25,7 @@
   },
   {
     "id": "seed_bom_ring_electrode_embotrap",
-    "partName": "Ring electrode subassembly",
+    "partName": "Lyophilisation stopper",
     "sourcingMode": "SINGLE_SOURCE",
     "frozenAtGate": "G2",
     "launch": {
@@ -37,7 +37,7 @@
   },
   {
     "id": "seed_bom_ring_electrode_javelin",
-    "partName": "Ring electrode subassembly",
+    "partName": "Lyophilisation stopper",
     "sourcingMode": "SINGLE_SOURCE",
     "frozenAtGate": "G2",
     "launch": {

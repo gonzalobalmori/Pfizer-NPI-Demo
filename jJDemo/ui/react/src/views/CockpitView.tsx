@@ -529,7 +529,7 @@ export default function CockpitView() {
       {/* Where the schedule time is — recoverable by acting vs. a fixed wait on
           an outside authority. This is the critical-path message made concrete:
           the green length is time you win back by working faster; the grey is a
-          regulatory wait (FDA, Notified Body, reimbursement) that acting cannot
+          regulatory wait (FDA, CHMP rapporteur, reimbursement) that acting cannot
           compress. Same open findings as the Open-issues list, so it reconciles. */}
       {tiTotals && tiRows.length > 0 ? (
         <div className="pnl ti-pnl">

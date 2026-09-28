@@ -1,9 +1,9 @@
 [
   {
     "id": "seed_gc_varipulse_g3_sterilisation",
-    "name": "ISO 11135 sterilisation validation report",
+    "name": "Process Performance Qualification report",
     "met": false,
-    "outstandingReason": "EO sterilisation validation slot cancelled; report slips to 19 Dec (NPI-0417)",
+    "outstandingReason": "Aseptic fill-finish PPQ slot cancelled; report slips to 19 Dec (NPI-0417)",
     "gate": {
       "id": "seed_gate_varipulse_g3"
     },
@@ -37,7 +37,7 @@
   },
   {
     "id": "seed_gc_varipulse_g3_4",
-    "name": "EU MDR Technical Documentation 96% complete",
+    "name": "CTD Module 3 quality dossier 96% complete",
     "met": true,
     "gate": {
       "id": "seed_gate_varipulse_g3"
@@ -102,7 +102,7 @@
   },
   {
     "id": "seed_gc_embotrap_g5_1",
-    "name": "Regulatory clearance / CE certificate received",
+    "name": "Marketing Authorisation received",
     "met": true,
     "gate": {
       "id": "seed_gate_embotrap_iv_g5"
@@ -118,7 +118,7 @@
   },
   {
     "id": "seed_gc_embotrap_g5_3",
-    "name": "Field force trained and certified",
+    "name": "Affiliate field teams trained and certified",
     "met": true,
     "gate": {
       "id": "seed_gate_embotrap_iv_g5"
@@ -139,7 +139,7 @@
     "gate": {
       "id": "seed_gate_embotrap_iv_g5"
     },
-    "outstandingReason": "VAC approvals behind target across key accounts"
+    "outstandingReason": "Payer listings behind target across key accounts"
   },
   {
     "id": "seed_gc_embotrap_g5_6",
@@ -176,7 +176,7 @@
   },
   {
     "id": "seed_gc_impella_g4_4",
-    "name": "Notified Body / FDA queries closed",
+    "name": "CHMP / FDA queries closed",
     "met": true,
     "gate": {
       "id": "seed_gate_impella_ecp_g4"
@@ -200,7 +200,7 @@
   },
   {
     "id": "seed_gc_javelin_g5_1",
-    "name": "Regulatory clearance / CE certificate received",
+    "name": "Marketing Authorisation received",
     "met": true,
     "gate": {
       "id": "seed_gate_javelin_xl_g5"
@@ -216,7 +216,7 @@
   },
   {
     "id": "seed_gc_javelin_g5_3",
-    "name": "Field force trained and certified",
+    "name": "Affiliate field teams trained and certified",
     "met": true,
     "gate": {
       "id": "seed_gate_javelin_xl_g5"
@@ -272,7 +272,7 @@
   },
   {
     "id": "seed_gc_ethicon_g4_4",
-    "name": "Notified Body / FDA queries closed",
+    "name": "CHMP / FDA queries closed",
     "met": true,
     "gate": {
       "id": "seed_gate_ethicon_4000_g4"
@@ -417,7 +417,7 @@
   },
   {
     "id": "seed_gc_puresee_g3_4",
-    "name": "EU MDR Technical Documentation complete",
+    "name": "CTD Module 3 quality dossier complete",
     "met": true,
     "gate": {
       "id": "seed_gate_puresee_g3"
@@ -433,11 +433,11 @@
   },
   {
     "id": "seed_gc_puresee_g3_6",
-    "name": "Sterilisation validation report approved",
+    "name": "Process Performance Qualification report approved",
     "met": false,
     "gate": {
       "id": "seed_gate_puresee_g3"
     },
-    "outstandingReason": "Sterilisation validation slot slipped; report awaiting site data"
+    "outstandingReason": "Fill-finish validation slot slipped; report awaiting site data"
   }
 ]

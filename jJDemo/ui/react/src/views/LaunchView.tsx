@@ -91,9 +91,9 @@ export default function LaunchView() {
   const slipText = nextGate && nextGate.slipDays != null ? `+${nextGate.slipDays}d` : '—';
 
   // Derive the US/EU regulatory pathways from the live route rather than
-  // hardcoding Comirnaty's PMA/MDR (fixes the Zavzpret Class II/III mismatch).
+  // hardcoding Comirnaty's BLA/MAA (fixes the Zavzpret biologic/small-molecule mismatch).
   const route = o.regulatoryRoute ?? '';
-  const usPathway = route.includes('PMA') ? 'PMA' : route.includes('510') ? '510(k)' : route.includes('De Novo') ? 'De Novo' : '—';
+  const usPathway = route.includes('BLA') ? 'BLA' : route.includes('510') ? 'NDA' : route.includes('505(b)(2)') ? '505(b)(2)' : '—';
   const euPathway = route.includes('MDR') ? 'MDR · BSI' : '—';
 
   // Per-market rollout (Scope C) for this launch — the same derived data the
@@ -205,9 +205,9 @@ export default function LaunchView() {
             <div className="ld-kv"><span>Classification</span><b>{o.deviceClass ?? '—'}</b></div>
             <div className="ld-kv"><span>US pathway</span><b>{usPathway}</b></div>
             <div className="ld-kv"><span>EU pathway</span><b>{euPathway}</b></div>
-            <div className="ld-kv"><span>Sterilisation</span><b>{o.sterilisationMethod ?? '—'}</b></div>
+            <div className="ld-kv"><span>Fill-finish</span><b>{o.sterilisationMethod ?? '—'}</b></div>
             <div className="ld-kv"><span>Manufacture</span><b>{o.manufactureSite ?? '—'}</b></div>
-            <div className="ld-kv"><span>DHF status</span><b>{o.health === 'LAUNCHED' ? 'Closed' : 'Open'}</b></div>
+            <div className="ld-kv"><span>Dossier status</span><b>{o.health === 'LAUNCHED' ? 'Closed' : 'Open'}</b></div>
           </div>
 
           <div className="ld-card">
@@ -216,7 +216,7 @@ export default function LaunchView() {
             <div className="ld-kv"><span>Registrations filed</span><b>{o.registrationsFiled ?? 0} of {o.registrationsTotal ?? 0}</b></div>
             <div className="ld-kv"><span>Launch build</span><b>{(o.launchBuildUnits ?? 0).toLocaleString()} units</b></div>
             <div className="ld-kv"><span>Field force</span><b>{o.fieldForceCertified ?? 0} certified / {o.fieldForceTotal ?? 0}</b></div>
-            <div className="ld-kv"><span>VAC approvals</span><b>{o.vacApprovalsFiled ?? 0} of {o.vacApprovalsTotal ?? 0} accounts</b></div>
+            <div className="ld-kv"><span>payer listings</span><b>{o.vacApprovalsFiled ?? 0} of {o.vacApprovalsTotal ?? 0} accounts</b></div>
           </div>
 
           {o.criticalSupply && o.criticalSupply.length > 0 ? (

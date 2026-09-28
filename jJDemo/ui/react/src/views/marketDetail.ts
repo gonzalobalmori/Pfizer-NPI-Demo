@@ -59,7 +59,7 @@ const chat = (): MkRiskAction => ({ kind: 'chat' });
 export const MK_MARKETS: Record<string, MkMarket> = {
   DE: {
     name: 'Germany',
-    reg: 'EU MDR · G-BA appraisal · hospital tenders Q2 and Q4',
+    reg: 'MAA (EMA) · G-BA appraisal · hospital tenders Q2 and Q4',
     status: 'ct',
     kpis: [
       { value: '6', label: 'launches', tone: '' },
@@ -70,7 +70,7 @@ export const MK_MARKETS: Record<string, MkMarket> = {
       {
         status: 'ct',
         title: 'Comirnaty G2 has missed the Q2 2027 tender window',
-        detail: 'NPI-0417 · sterilisation slip',
+        detail: 'NPI-0417 · fill-finish slip',
         action: issue('417'),
       },
       {
@@ -91,7 +91,7 @@ export const MK_MARKETS: Record<string, MkMarket> = {
   },
   FR: {
     name: 'France',
-    reg: 'EU MDR · HAS assessment · CEPS pricing committee',
+    reg: 'MAA (EMA) · HAS assessment · CEPS pricing committee',
     status: 'ct',
     kpis: [
       { value: '5', label: 'launches', tone: '' },
@@ -102,7 +102,7 @@ export const MK_MARKETS: Record<string, MkMarket> = {
       {
         status: 'ct',
         title: 'Comirnaty G2 has missed the Q2 2027 tender window',
-        detail: 'NPI-0417 · sterilisation slip',
+        detail: 'NPI-0417 · fill-finish slip',
         action: issue('417'),
       },
       {
@@ -122,7 +122,7 @@ export const MK_MARKETS: Record<string, MkMarket> = {
   },
   US: {
     name: 'United States',
-    reg: 'FDA PMA and 510(k) · CMS · GPO and IDN contracting',
+    reg: 'FDA BLA and NDA · CMS · GPO and IDN contracting',
     status: 'rk',
     kpis: [
       { value: '6', label: 'launches', tone: '' },
@@ -154,7 +154,7 @@ export const MK_MARKETS: Record<string, MkMarket> = {
   },
   UK: {
     name: 'United Kingdom',
-    reg: 'UKCA and EU MDR · NICE · NHS Supply Chain',
+    reg: 'MHRA and MAA (EMA) · NICE · NHS Supply Chain',
     status: 'rk',
     kpis: [
       { value: '5', label: 'launches', tone: '' },
@@ -164,7 +164,7 @@ export const MK_MARKETS: Record<string, MkMarket> = {
     risks: [
       {
         status: 'rk',
-        title: 'Prevnar 20 delayed by a Notified Body query cycle',
+        title: 'Prevnar 20 delayed by a CHMP rapporteur query cycle',
         detail: 'NPI-0365 · 21-day clock-stop',
         action: issue('365'),
       },
@@ -179,7 +179,7 @@ export const MK_MARKETS: Record<string, MkMarket> = {
   },
   ES: {
     name: 'Spain',
-    reg: 'EU MDR · regional tenders across 17 communities',
+    reg: 'MAA (EMA) · regional tenders across 17 communities',
     status: 'rk',
     kpis: [
       { value: '5', label: 'launches', tone: '' },
@@ -238,7 +238,7 @@ export const MK_MARKETS: Record<string, MkMarket> = {
     risks: [
       {
         status: 'rk',
-        title: 'Comirnaty G2 registration depends on the EU MDR file',
+        title: 'Comirnaty G2 registration depends on the MAA (EMA) file',
         detail: 'downstream of the G3 slip',
         action: chat(),
       },
@@ -267,7 +267,7 @@ export const MK_MARKETS: Record<string, MkMarket> = {
   },
   IT: {
     name: 'Italy',
-    reg: 'EU MDR · regional tender cycles · AIFA device register',
+    reg: 'MAA (EMA) · regional tender cycles · AIFA transparency list',
     status: 'rk',
     kpis: [
       { value: '3', label: 'launches', tone: '' },
@@ -339,9 +339,9 @@ export const MK_MARKETS: Record<string, MkMarket> = {
 export const MK_SMALL: Record<string, MkSmall> = {
   MX: { name: 'Mexico', reg: 'COFEPRIS · IMSS and ISSSTE tender cycles', launchesPlanned: 2, wave: 'Wave 2 · from Q1 2028' },
   AR: { name: 'Argentina', reg: 'ANMAT · provincial tenders', launchesPlanned: 1, wave: 'Wave 3 · from Q3 2028' },
-  NL: { name: 'Netherlands', reg: 'EU MDR · hospital purchasing groups', launchesPlanned: 3, wave: 'Wave 1 · from Q4 2026' },
-  SE: { name: 'Sweden', reg: 'EU MDR · regional procurement', launchesPlanned: 2, wave: 'Wave 2 · from Q2 2027' },
-  PL: { name: 'Poland', reg: 'EU MDR · AOTMiT appraisal', launchesPlanned: 2, wave: 'Wave 2 · from Q3 2027' },
+  NL: { name: 'Netherlands', reg: 'MAA (EMA) · hospital purchasing groups', launchesPlanned: 3, wave: 'Wave 1 · from Q4 2026' },
+  SE: { name: 'Sweden', reg: 'MAA (EMA) · regional procurement', launchesPlanned: 2, wave: 'Wave 2 · from Q2 2027' },
+  PL: { name: 'Poland', reg: 'MAA (EMA) · AOTMiT appraisal', launchesPlanned: 2, wave: 'Wave 2 · from Q3 2027' },
   TR: { name: 'Türkiye', reg: 'İTCK · SGK reimbursement list', launchesPlanned: 1, wave: 'Wave 3 · from Q1 2028' },
   AE: { name: 'United Arab Emirates', reg: 'MoHAP · DoH Abu Dhabi registration', launchesPlanned: 1, wave: 'Wave 2 · from Q4 2027' },
   ZA: { name: 'South Africa', reg: 'SAHPRA · private group contracting', launchesPlanned: 1, wave: 'Wave 3 · from Q2 2028' },

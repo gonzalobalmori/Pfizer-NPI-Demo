@@ -132,7 +132,7 @@ export default function IssueView() {
   const cat = catInfo(f.category);
   const held = !!decision && decision.heldBy !== 'USER';
   const hold = decision ? holdInfo(decision.heldBy) : null;
-  /* An issue whose next step depends on an outside authority (FDA / Notified Body /
+  /* An issue whose next step depends on an outside authority (FDA / CHMP rapporteur /
      reimbursement payer) cannot be resolved by acting — approving an option here
      would misrepresent who moves it. For those findings the workspace is view-only:
      no Approve/Reject/Reassign, only a "View detail" affordance. */
@@ -433,7 +433,7 @@ export default function IssueView() {
       <ActionToast
         open={!!justApproved}
         title={`${justApproved} approved`}
-        detail="Gate re-baselined · exposure released · tasks dispatched · DHF entry written"
+        detail="Gate re-baselined · exposure released · tasks dispatched · CTD entry written"
         onDismiss={() => setJustApproved(null)}
       />
     </div>

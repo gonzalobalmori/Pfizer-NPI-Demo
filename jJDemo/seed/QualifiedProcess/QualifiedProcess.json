@@ -1,7 +1,7 @@
 [
   {
     "id": "seed_qp_grandrapids_eo",
-    "processType": "EO sterilisation",
+    "processType": "aseptic fill-finish",
     "qualifiedForLaunches": "Abrysvo G2, Elrexfio IV",
     "qualificationDepth": "half-cycle",
     "site": {
@@ -10,7 +10,7 @@
   },
   {
     "id": "seed_qp_venlo_eo",
-    "processType": "EO sterilisation",
+    "processType": "aseptic fill-finish",
     "qualifiedForLaunches": "Comirnaty G2",
     "qualificationDepth": "full",
     "site": {
@@ -19,7 +19,7 @@
   },
   {
     "id": "seed_qp_neuss_electrode",
-    "processType": "Ring electrode subassembly",
+    "processType": "Lyophilisation stopper",
     "qualifiedForLaunches": "Comirnaty G2, Abrysvo G2",
     "qualificationDepth": "full",
     "site": {

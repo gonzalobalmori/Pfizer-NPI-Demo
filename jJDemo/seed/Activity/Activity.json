@@ -24,10 +24,10 @@
   },
   {
     "id": "seed_activity_varipulse_p1_1",
-    "name": "Open the Design History File and draft the design & development plan",
+    "name": "Open the CTD dossier and draft the development and CMC plan",
     "status": "Complete",
     "statusCode": "ok",
-    "detail": "DHF-0720 opened",
+    "detail": "CTD-0720 opened",
     "phase": {
       "id": "seed_phase_p1"
     },
@@ -70,7 +70,7 @@
   },
   {
     "id": "seed_activity_varipulse_p1_3",
-    "name": "Confirm classification and pathway: Class III, PMA + EU MDR",
+    "name": "Confirm modality and pathway: biologic, BLA (FDA) + MAA (EMA)",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "confirmed 02 May 24",
@@ -116,7 +116,7 @@
   },
   {
     "id": "seed_activity_varipulse_p1_5",
-    "name": "Book the FDA Q-Sub and reserve a Notified Body slot",
+    "name": "Book the FDA Type C meeting and reserve EMA scientific advice",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "BSI slot Q4 26",
@@ -139,7 +139,7 @@
   },
   {
     "id": "seed_activity_varipulse_p1_6",
-    "name": "Define design-control and audit expectations, 21 CFR 820.30",
+    "name": "Define GxP and audit expectations, 21 CFR 210/211",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "signed 20 May 24",
@@ -208,10 +208,10 @@
   },
   {
     "id": "seed_activity_varipulse_p1_9",
-    "name": "Decide sterilisation modality and scan steriliser capacity",
+    "name": "Decide the fill-finish route and scan CMO capacity",
     "status": "Complete",
     "statusCode": "ok",
-    "detail": "EO selected",
+    "detail": "Aseptic fill selected",
     "phase": {
       "id": "seed_phase_p1"
     },
@@ -231,10 +231,10 @@
   },
   {
     "id": "seed_activity_varipulse_p1_10",
-    "name": "Initial network assumptions, serialisation and UDI architecture",
+    "name": "Initial network assumptions, serialisation and track-and-trace architecture",
     "status": "Complete",
     "statusCode": "ok",
-    "detail": "GS1 / UDI-DI",
+    "detail": "GS1 / GTIN",
     "phase": {
       "id": "seed_phase_p1"
     },
@@ -415,10 +415,10 @@
   },
   {
     "id": "seed_activity_varipulse_p2_2",
-    "name": "Design outputs: drawings, specs, software SRS, draft DMR",
+    "name": "CMC outputs: process description, specifications, draft Master Batch Record",
     "status": "Complete",
     "statusCode": "ok",
-    "detail": "DMR draft rel. 3",
+    "detail": "MBR draft rel. 3",
     "phase": {
       "id": "seed_phase_p2"
     },
@@ -438,7 +438,7 @@
   },
   {
     "id": "seed_activity_varipulse_p2_3",
-    "name": "Hold design reviews at checkpoints, minuted into the DHF",
+    "name": "Hold stage-gate reviews at checkpoints, minuted into the CTD",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "6 reviews closed",
@@ -461,10 +461,10 @@
   },
   {
     "id": "seed_activity_varipulse_p2_4",
-    "name": "Clinical evaluation plan, decide whether an IDE is needed",
+    "name": "Clinical evidence plan, decide whether an IND amendment is needed",
     "status": "Complete",
     "statusCode": "ok",
-    "detail": "IDE required",
+    "detail": "IND required",
     "phase": {
       "id": "seed_phase_p2"
     },
@@ -599,7 +599,7 @@
   },
   {
     "id": "seed_activity_varipulse_p2_10",
-    "name": "Supplier identification and qualification, ISO 13485 audits",
+    "name": "Supplier identification and qualification, EU GMP audits",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "38 audits closed",
@@ -691,7 +691,7 @@
   },
   {
     "id": "seed_activity_varipulse_p2_14",
-    "name": "Network design: DCs, 3PLs, consignment and loaner-kit model",
+    "name": "Network design: DCs, 3PLs, cold chain and launch stock model",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "6 EU DCs",
@@ -760,7 +760,7 @@
   },
   {
     "id": "seed_activity_varipulse_p2_17",
-    "name": "Master data in ERP / MDM / PLM, UDI-DI assignment logic",
+    "name": "Master data in ERP / MDM, GTIN assignment logic",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "live",
@@ -875,7 +875,7 @@
   },
   {
     "id": "seed_activity_varipulse_p3_3",
-    "name": "Biocompatibility ISO 10993, shelf-life and accelerated ageing",
+    "name": "Extractables and leachables, stability and accelerated ageing",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "24-mo claim",
@@ -898,7 +898,7 @@
   },
   {
     "id": "seed_activity_varipulse_p3_4",
-    "name": "Package and transit validation ASTM D4169, sterile-barrier integrity",
+    "name": "Cold-chain transit validation, container closure integrity",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "Seq. A-D passed",
@@ -921,7 +921,7 @@
   },
   {
     "id": "seed_activity_varipulse_p3_5",
-    "name": "Execute the IDE study and collect data for the CER",
+    "name": "Execute the Phase III study and collect data for the clinical dossier",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "412 patients",
@@ -967,7 +967,7 @@
   },
   {
     "id": "seed_activity_varipulse_p3_7",
-    "name": "Assemble the EU MDR Technical Documentation, live completeness",
+    "name": "Assemble the CTD Module 3 quality dossier, live completeness",
     "status": "In progress",
     "statusCode": "run",
     "detail": "96% · 1 section open",
@@ -1013,7 +1013,7 @@
   },
   {
     "id": "seed_activity_varipulse_p3_9",
-    "name": "Review the sterilisation validation protocols with the Notified Body",
+    "name": "Review the PPQ protocols with the CHMP rapporteur",
     "status": "At risk",
     "statusCode": "rk",
     "detail": "holding for site data",
@@ -1059,7 +1059,7 @@
   },
   {
     "id": "seed_activity_varipulse_p3_11",
-    "name": "Execute sterilisation validation and bioburden baseline, ISO 11135",
+    "name": "Execute Process Performance Qualification and bioburden baseline",
     "status": "Late",
     "statusCode": "late",
     "detail": "47 days late",
@@ -1220,7 +1220,7 @@
   },
   {
     "id": "seed_activity_varipulse_p3_18",
-    "name": "Book the steriliser and 3PL slots for the validation lots",
+    "name": "Book the CMO fill-finish and 3PL slots for the PPQ batches",
     "status": "Late",
     "statusCode": "late",
     "detail": "slot cancelled",
@@ -1358,7 +1358,7 @@
   },
   {
     "id": "seed_activity_varipulse_p3_24",
-    "name": "Integration testing PLM to ERP to QMS to MES, UDI feed test",
+    "name": "Integration testing ERP to QMS to MES, serialisation feed test",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "all green",
@@ -1450,7 +1450,7 @@
   },
   {
     "id": "seed_activity_varipulse_p4_1",
-    "name": "Design transfer to manufacturing: release the DMR, close the DHF",
+    "name": "Tech transfer to manufacturing: release the Master Batch Record, lock the CTD",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -1473,7 +1473,7 @@
   },
   {
     "id": "seed_activity_varipulse_p4_2",
-    "name": "Respond to agency and Notified Body technical queries",
+    "name": "Respond to FDA and CHMP rapporteur technical queries",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -1519,7 +1519,7 @@
   },
   {
     "id": "seed_activity_varipulse_p4_4",
-    "name": "Submit the PMA and the EU MDR Technical Documentation",
+    "name": "Submit the BLA (FDA) and the MAA centralised dossier (EMA)",
     "status": "Not started",
     "statusCode": "no",
     "detail": "human decision",
@@ -1749,7 +1749,7 @@
   },
   {
     "id": "seed_activity_varipulse_p4_14",
-    "name": "Pre-position at-risk inventory at the 3PLs, kitting and trays",
+    "name": "Pre-position at-risk inventory at the 3PLs, kitting and packs",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -1795,7 +1795,7 @@
   },
   {
     "id": "seed_activity_varipulse_p4_16",
-    "name": "Schedule the sterilisation cycles, serialised goods receipt",
+    "name": "Schedule the fill-finish campaigns, serialised goods receipt",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -1864,7 +1864,7 @@
   },
   {
     "id": "seed_activity_varipulse_p4_19",
-    "name": "Configure order-to-cash, consignment and loaner-set tracking",
+    "name": "Configure order-to-cash, consignment and launch stock tracking",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -1979,7 +1979,7 @@
   },
   {
     "id": "seed_activity_varipulse_p5_2",
-    "name": "Confirm launch readiness per market, UDI/GUDID and EUDAMED",
+    "name": "Confirm launch readiness per market, serialisation into EMVS and DSCSA",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -2140,7 +2140,7 @@
   },
   {
     "id": "seed_activity_varipulse_p5_9",
-    "name": "Bring the loaner-kit and instrument-set turnaround model live",
+    "name": "Bring the launch stock and replenishment model live",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -2163,7 +2163,7 @@
   },
   {
     "id": "seed_activity_varipulse_p5_10",
-    "name": "Certify the field force, secure VAC approvals at launch accounts",
+    "name": "Train the affiliate field teams, secure payer listings at launch accounts",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -2255,7 +2255,7 @@
   },
   {
     "id": "seed_activity_varipulse_p6_0",
-    "name": "Review learnings, recalibrate the NPI model for the next device",
+    "name": "Review learnings, recalibrate the NPI model for the next product",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -2485,7 +2485,7 @@
   },
   {
     "id": "seed_activity_octaray_p1_1",
-    "name": "Open the Design History File and draft the design & development plan",
+    "name": "Open the CTD dossier and draft the development and CMC plan",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -2531,7 +2531,7 @@
   },
   {
     "id": "seed_activity_octaray_p1_3",
-    "name": "Confirm classification and pathway: Class III, PMA + EU MDR",
+    "name": "Confirm modality and pathway: biologic, BLA (FDA) + MAA (EMA)",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -2577,7 +2577,7 @@
   },
   {
     "id": "seed_activity_octaray_p1_5",
-    "name": "Book the FDA Q-Sub and reserve a Notified Body slot",
+    "name": "Book the FDA Type C meeting and reserve EMA scientific advice",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -2600,7 +2600,7 @@
   },
   {
     "id": "seed_activity_octaray_p1_6",
-    "name": "Define design-control and audit expectations, 21 CFR 820.30",
+    "name": "Define GxP and audit expectations, 21 CFR 210/211",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -2669,7 +2669,7 @@
   },
   {
     "id": "seed_activity_octaray_p1_9",
-    "name": "Decide sterilisation modality and scan steriliser capacity",
+    "name": "Decide the fill-finish route and scan CMO capacity",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -2692,7 +2692,7 @@
   },
   {
     "id": "seed_activity_octaray_p1_10",
-    "name": "Initial network assumptions, serialisation and UDI architecture",
+    "name": "Initial network assumptions, serialisation and track-and-trace architecture",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -2876,7 +2876,7 @@
   },
   {
     "id": "seed_activity_octaray_p2_2",
-    "name": "Design outputs: drawings, specs, software SRS, draft DMR",
+    "name": "CMC outputs: process description, specifications, draft Master Batch Record",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -2899,7 +2899,7 @@
   },
   {
     "id": "seed_activity_octaray_p2_3",
-    "name": "Hold design reviews at checkpoints, minuted into the DHF",
+    "name": "Hold stage-gate reviews at checkpoints, minuted into the CTD",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -2922,7 +2922,7 @@
   },
   {
     "id": "seed_activity_octaray_p2_4",
-    "name": "Clinical evaluation plan, decide whether an IDE is needed",
+    "name": "Clinical evidence plan, decide whether an IND amendment is needed",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -3060,7 +3060,7 @@
   },
   {
     "id": "seed_activity_octaray_p2_10",
-    "name": "Supplier identification and qualification, ISO 13485 audits",
+    "name": "Supplier identification and qualification, EU GMP audits",
     "status": "At risk",
     "statusCode": "rk",
     "detail": "holding for input",
@@ -3152,7 +3152,7 @@
   },
   {
     "id": "seed_activity_octaray_p2_14",
-    "name": "Network design: DCs, 3PLs, consignment and loaner-kit model",
+    "name": "Network design: DCs, 3PLs, cold chain and launch stock model",
     "status": "In progress",
     "statusCode": "run",
     "detail": "in progress",
@@ -3221,7 +3221,7 @@
   },
   {
     "id": "seed_activity_octaray_p2_17",
-    "name": "Master data in ERP / MDM / PLM, UDI-DI assignment logic",
+    "name": "Master data in ERP / MDM, GTIN assignment logic",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -3336,7 +3336,7 @@
   },
   {
     "id": "seed_activity_octaray_p3_3",
-    "name": "Biocompatibility ISO 10993, shelf-life and accelerated ageing",
+    "name": "Extractables and leachables, stability and accelerated ageing",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -3359,7 +3359,7 @@
   },
   {
     "id": "seed_activity_octaray_p3_4",
-    "name": "Package and transit validation ASTM D4169, sterile-barrier integrity",
+    "name": "Cold-chain transit validation, container closure integrity",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -3382,7 +3382,7 @@
   },
   {
     "id": "seed_activity_octaray_p3_5",
-    "name": "Execute the IDE study and collect data for the CER",
+    "name": "Execute the Phase III study and collect data for the clinical dossier",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -3428,7 +3428,7 @@
   },
   {
     "id": "seed_activity_octaray_p3_7",
-    "name": "Assemble the EU MDR Technical Documentation, live completeness",
+    "name": "Assemble the CTD Module 3 quality dossier, live completeness",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -3474,7 +3474,7 @@
   },
   {
     "id": "seed_activity_octaray_p3_9",
-    "name": "Review the sterilisation validation protocols with the Notified Body",
+    "name": "Review the PPQ protocols with the CHMP rapporteur",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -3520,7 +3520,7 @@
   },
   {
     "id": "seed_activity_octaray_p3_11",
-    "name": "Execute sterilisation validation and bioburden baseline, ISO 11135",
+    "name": "Execute Process Performance Qualification and bioburden baseline",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -3681,7 +3681,7 @@
   },
   {
     "id": "seed_activity_octaray_p3_18",
-    "name": "Book the steriliser and 3PL slots for the validation lots",
+    "name": "Book the CMO fill-finish and 3PL slots for the PPQ batches",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -3819,7 +3819,7 @@
   },
   {
     "id": "seed_activity_octaray_p3_24",
-    "name": "Integration testing PLM to ERP to QMS to MES, UDI feed test",
+    "name": "Integration testing ERP to QMS to MES, serialisation feed test",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -3911,7 +3911,7 @@
   },
   {
     "id": "seed_activity_octaray_p4_1",
-    "name": "Design transfer to manufacturing: release the DMR, close the DHF",
+    "name": "Tech transfer to manufacturing: release the Master Batch Record, lock the CTD",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -3934,7 +3934,7 @@
   },
   {
     "id": "seed_activity_octaray_p4_2",
-    "name": "Respond to agency and Notified Body technical queries",
+    "name": "Respond to FDA and CHMP rapporteur technical queries",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -3980,7 +3980,7 @@
   },
   {
     "id": "seed_activity_octaray_p4_4",
-    "name": "Submit the PMA and the EU MDR Technical Documentation",
+    "name": "Submit the BLA (FDA) and the MAA centralised dossier (EMA)",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -4210,7 +4210,7 @@
   },
   {
     "id": "seed_activity_octaray_p4_14",
-    "name": "Pre-position at-risk inventory at the 3PLs, kitting and trays",
+    "name": "Pre-position at-risk inventory at the 3PLs, kitting and packs",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -4256,7 +4256,7 @@
   },
   {
     "id": "seed_activity_octaray_p4_16",
-    "name": "Schedule the sterilisation cycles, serialised goods receipt",
+    "name": "Schedule the fill-finish campaigns, serialised goods receipt",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -4325,7 +4325,7 @@
   },
   {
     "id": "seed_activity_octaray_p4_19",
-    "name": "Configure order-to-cash, consignment and loaner-set tracking",
+    "name": "Configure order-to-cash, consignment and launch stock tracking",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -4440,7 +4440,7 @@
   },
   {
     "id": "seed_activity_octaray_p5_2",
-    "name": "Confirm launch readiness per market, UDI/GUDID and EUDAMED",
+    "name": "Confirm launch readiness per market, serialisation into EMVS and DSCSA",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -4601,7 +4601,7 @@
   },
   {
     "id": "seed_activity_octaray_p5_9",
-    "name": "Bring the loaner-kit and instrument-set turnaround model live",
+    "name": "Bring the launch stock and replenishment model live",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -4624,7 +4624,7 @@
   },
   {
     "id": "seed_activity_octaray_p5_10",
-    "name": "Certify the field force, secure VAC approvals at launch accounts",
+    "name": "Train the affiliate field teams, secure payer listings at launch accounts",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -4716,7 +4716,7 @@
   },
   {
     "id": "seed_activity_octaray_p6_0",
-    "name": "Review learnings, recalibrate the NPI model for the next device",
+    "name": "Review learnings, recalibrate the NPI model for the next product",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -4946,7 +4946,7 @@
   },
   {
     "id": "seed_activity_embotrap_p1_1",
-    "name": "Open the Design History File and draft the design & development plan",
+    "name": "Open the CTD dossier and draft the development and CMC plan",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -4992,7 +4992,7 @@
   },
   {
     "id": "seed_activity_embotrap_p1_3",
-    "name": "Confirm classification and pathway: Class III, PMA + EU MDR",
+    "name": "Confirm modality and pathway: biologic, BLA (FDA) + MAA (EMA)",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5038,7 +5038,7 @@
   },
   {
     "id": "seed_activity_embotrap_p1_5",
-    "name": "Book the FDA Q-Sub and reserve a Notified Body slot",
+    "name": "Book the FDA Type C meeting and reserve EMA scientific advice",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5061,7 +5061,7 @@
   },
   {
     "id": "seed_activity_embotrap_p1_6",
-    "name": "Define design-control and audit expectations, 21 CFR 820.30",
+    "name": "Define GxP and audit expectations, 21 CFR 210/211",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5130,7 +5130,7 @@
   },
   {
     "id": "seed_activity_embotrap_p1_9",
-    "name": "Decide sterilisation modality and scan steriliser capacity",
+    "name": "Decide the fill-finish route and scan CMO capacity",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5153,7 +5153,7 @@
   },
   {
     "id": "seed_activity_embotrap_p1_10",
-    "name": "Initial network assumptions, serialisation and UDI architecture",
+    "name": "Initial network assumptions, serialisation and track-and-trace architecture",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5337,7 +5337,7 @@
   },
   {
     "id": "seed_activity_embotrap_p2_2",
-    "name": "Design outputs: drawings, specs, software SRS, draft DMR",
+    "name": "CMC outputs: process description, specifications, draft Master Batch Record",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5360,7 +5360,7 @@
   },
   {
     "id": "seed_activity_embotrap_p2_3",
-    "name": "Hold design reviews at checkpoints, minuted into the DHF",
+    "name": "Hold stage-gate reviews at checkpoints, minuted into the CTD",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5383,7 +5383,7 @@
   },
   {
     "id": "seed_activity_embotrap_p2_4",
-    "name": "Clinical evaluation plan, decide whether an IDE is needed",
+    "name": "Clinical evidence plan, decide whether an IND amendment is needed",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5521,7 +5521,7 @@
   },
   {
     "id": "seed_activity_embotrap_p2_10",
-    "name": "Supplier identification and qualification, ISO 13485 audits",
+    "name": "Supplier identification and qualification, EU GMP audits",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5613,7 +5613,7 @@
   },
   {
     "id": "seed_activity_embotrap_p2_14",
-    "name": "Network design: DCs, 3PLs, consignment and loaner-kit model",
+    "name": "Network design: DCs, 3PLs, cold chain and launch stock model",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5682,7 +5682,7 @@
   },
   {
     "id": "seed_activity_embotrap_p2_17",
-    "name": "Master data in ERP / MDM / PLM, UDI-DI assignment logic",
+    "name": "Master data in ERP / MDM, GTIN assignment logic",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5797,7 +5797,7 @@
   },
   {
     "id": "seed_activity_embotrap_p3_3",
-    "name": "Biocompatibility ISO 10993, shelf-life and accelerated ageing",
+    "name": "Extractables and leachables, stability and accelerated ageing",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5820,7 +5820,7 @@
   },
   {
     "id": "seed_activity_embotrap_p3_4",
-    "name": "Package and transit validation ASTM D4169, sterile-barrier integrity",
+    "name": "Cold-chain transit validation, container closure integrity",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5843,7 +5843,7 @@
   },
   {
     "id": "seed_activity_embotrap_p3_5",
-    "name": "Execute the IDE study and collect data for the CER",
+    "name": "Execute the Phase III study and collect data for the clinical dossier",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5889,7 +5889,7 @@
   },
   {
     "id": "seed_activity_embotrap_p3_7",
-    "name": "Assemble the EU MDR Technical Documentation, live completeness",
+    "name": "Assemble the CTD Module 3 quality dossier, live completeness",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5935,7 +5935,7 @@
   },
   {
     "id": "seed_activity_embotrap_p3_9",
-    "name": "Review the sterilisation validation protocols with the Notified Body",
+    "name": "Review the PPQ protocols with the CHMP rapporteur",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5981,7 +5981,7 @@
   },
   {
     "id": "seed_activity_embotrap_p3_11",
-    "name": "Execute sterilisation validation and bioburden baseline, ISO 11135",
+    "name": "Execute Process Performance Qualification and bioburden baseline",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -6142,7 +6142,7 @@
   },
   {
     "id": "seed_activity_embotrap_p3_18",
-    "name": "Book the steriliser and 3PL slots for the validation lots",
+    "name": "Book the CMO fill-finish and 3PL slots for the PPQ batches",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -6280,7 +6280,7 @@
   },
   {
     "id": "seed_activity_embotrap_p3_24",
-    "name": "Integration testing PLM to ERP to QMS to MES, UDI feed test",
+    "name": "Integration testing ERP to QMS to MES, serialisation feed test",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -6372,7 +6372,7 @@
   },
   {
     "id": "seed_activity_embotrap_p4_1",
-    "name": "Design transfer to manufacturing: release the DMR, close the DHF",
+    "name": "Tech transfer to manufacturing: release the Master Batch Record, lock the CTD",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -6395,7 +6395,7 @@
   },
   {
     "id": "seed_activity_embotrap_p4_2",
-    "name": "Respond to agency and Notified Body technical queries",
+    "name": "Respond to FDA and CHMP rapporteur technical queries",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -6441,7 +6441,7 @@
   },
   {
     "id": "seed_activity_embotrap_p4_4",
-    "name": "Submit the PMA and the EU MDR Technical Documentation",
+    "name": "Submit the BLA (FDA) and the MAA centralised dossier (EMA)",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -6671,7 +6671,7 @@
   },
   {
     "id": "seed_activity_embotrap_p4_14",
-    "name": "Pre-position at-risk inventory at the 3PLs, kitting and trays",
+    "name": "Pre-position at-risk inventory at the 3PLs, kitting and packs",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -6717,7 +6717,7 @@
   },
   {
     "id": "seed_activity_embotrap_p4_16",
-    "name": "Schedule the sterilisation cycles, serialised goods receipt",
+    "name": "Schedule the fill-finish campaigns, serialised goods receipt",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -6786,7 +6786,7 @@
   },
   {
     "id": "seed_activity_embotrap_p4_19",
-    "name": "Configure order-to-cash, consignment and loaner-set tracking",
+    "name": "Configure order-to-cash, consignment and launch stock tracking",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -6901,7 +6901,7 @@
   },
   {
     "id": "seed_activity_embotrap_p5_2",
-    "name": "Confirm launch readiness per market, UDI/GUDID and EUDAMED",
+    "name": "Confirm launch readiness per market, serialisation into EMVS and DSCSA",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -7062,7 +7062,7 @@
   },
   {
     "id": "seed_activity_embotrap_p5_9",
-    "name": "Bring the loaner-kit and instrument-set turnaround model live",
+    "name": "Bring the launch stock and replenishment model live",
     "status": "At risk",
     "statusCode": "rk",
     "detail": "holding for input",
@@ -7085,7 +7085,7 @@
   },
   {
     "id": "seed_activity_embotrap_p5_10",
-    "name": "Certify the field force, secure VAC approvals at launch accounts",
+    "name": "Train the affiliate field teams, secure payer listings at launch accounts",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -7177,7 +7177,7 @@
   },
   {
     "id": "seed_activity_embotrap_p6_0",
-    "name": "Review learnings, recalibrate the NPI model for the next device",
+    "name": "Review learnings, recalibrate the NPI model for the next product",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -7407,7 +7407,7 @@
   },
   {
     "id": "seed_activity_impella_p1_1",
-    "name": "Open the Design History File and draft the design & development plan",
+    "name": "Open the CTD dossier and draft the development and CMC plan",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -7453,7 +7453,7 @@
   },
   {
     "id": "seed_activity_impella_p1_3",
-    "name": "Confirm classification and pathway: Class III, PMA + EU MDR",
+    "name": "Confirm modality and pathway: biologic, BLA (FDA) + MAA (EMA)",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -7499,7 +7499,7 @@
   },
   {
     "id": "seed_activity_impella_p1_5",
-    "name": "Book the FDA Q-Sub and reserve a Notified Body slot",
+    "name": "Book the FDA Type C meeting and reserve EMA scientific advice",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -7522,7 +7522,7 @@
   },
   {
     "id": "seed_activity_impella_p1_6",
-    "name": "Define design-control and audit expectations, 21 CFR 820.30",
+    "name": "Define GxP and audit expectations, 21 CFR 210/211",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -7591,7 +7591,7 @@
   },
   {
     "id": "seed_activity_impella_p1_9",
-    "name": "Decide sterilisation modality and scan steriliser capacity",
+    "name": "Decide the fill-finish route and scan CMO capacity",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -7614,7 +7614,7 @@
   },
   {
     "id": "seed_activity_impella_p1_10",
-    "name": "Initial network assumptions, serialisation and UDI architecture",
+    "name": "Initial network assumptions, serialisation and track-and-trace architecture",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -7798,7 +7798,7 @@
   },
   {
     "id": "seed_activity_impella_p2_2",
-    "name": "Design outputs: drawings, specs, software SRS, draft DMR",
+    "name": "CMC outputs: process description, specifications, draft Master Batch Record",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -7821,7 +7821,7 @@
   },
   {
     "id": "seed_activity_impella_p2_3",
-    "name": "Hold design reviews at checkpoints, minuted into the DHF",
+    "name": "Hold stage-gate reviews at checkpoints, minuted into the CTD",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -7844,7 +7844,7 @@
   },
   {
     "id": "seed_activity_impella_p2_4",
-    "name": "Clinical evaluation plan, decide whether an IDE is needed",
+    "name": "Clinical evidence plan, decide whether an IND amendment is needed",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -7982,7 +7982,7 @@
   },
   {
     "id": "seed_activity_impella_p2_10",
-    "name": "Supplier identification and qualification, ISO 13485 audits",
+    "name": "Supplier identification and qualification, EU GMP audits",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -8074,7 +8074,7 @@
   },
   {
     "id": "seed_activity_impella_p2_14",
-    "name": "Network design: DCs, 3PLs, consignment and loaner-kit model",
+    "name": "Network design: DCs, 3PLs, cold chain and launch stock model",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -8143,7 +8143,7 @@
   },
   {
     "id": "seed_activity_impella_p2_17",
-    "name": "Master data in ERP / MDM / PLM, UDI-DI assignment logic",
+    "name": "Master data in ERP / MDM, GTIN assignment logic",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -8258,7 +8258,7 @@
   },
   {
     "id": "seed_activity_impella_p3_3",
-    "name": "Biocompatibility ISO 10993, shelf-life and accelerated ageing",
+    "name": "Extractables and leachables, stability and accelerated ageing",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -8281,7 +8281,7 @@
   },
   {
     "id": "seed_activity_impella_p3_4",
-    "name": "Package and transit validation ASTM D4169, sterile-barrier integrity",
+    "name": "Cold-chain transit validation, container closure integrity",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -8304,7 +8304,7 @@
   },
   {
     "id": "seed_activity_impella_p3_5",
-    "name": "Execute the IDE study and collect data for the CER",
+    "name": "Execute the Phase III study and collect data for the clinical dossier",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -8350,7 +8350,7 @@
   },
   {
     "id": "seed_activity_impella_p3_7",
-    "name": "Assemble the EU MDR Technical Documentation, live completeness",
+    "name": "Assemble the CTD Module 3 quality dossier, live completeness",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -8396,7 +8396,7 @@
   },
   {
     "id": "seed_activity_impella_p3_9",
-    "name": "Review the sterilisation validation protocols with the Notified Body",
+    "name": "Review the PPQ protocols with the CHMP rapporteur",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -8442,7 +8442,7 @@
   },
   {
     "id": "seed_activity_impella_p3_11",
-    "name": "Execute sterilisation validation and bioburden baseline, ISO 11135",
+    "name": "Execute Process Performance Qualification and bioburden baseline",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -8603,7 +8603,7 @@
   },
   {
     "id": "seed_activity_impella_p3_18",
-    "name": "Book the steriliser and 3PL slots for the validation lots",
+    "name": "Book the CMO fill-finish and 3PL slots for the PPQ batches",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -8741,7 +8741,7 @@
   },
   {
     "id": "seed_activity_impella_p3_24",
-    "name": "Integration testing PLM to ERP to QMS to MES, UDI feed test",
+    "name": "Integration testing ERP to QMS to MES, serialisation feed test",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -8833,7 +8833,7 @@
   },
   {
     "id": "seed_activity_impella_p4_1",
-    "name": "Design transfer to manufacturing: release the DMR, close the DHF",
+    "name": "Tech transfer to manufacturing: release the Master Batch Record, lock the CTD",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -8856,7 +8856,7 @@
   },
   {
     "id": "seed_activity_impella_p4_2",
-    "name": "Respond to agency and Notified Body technical queries",
+    "name": "Respond to FDA and CHMP rapporteur technical queries",
     "status": "In progress",
     "statusCode": "run",
     "detail": "in progress",
@@ -8902,7 +8902,7 @@
   },
   {
     "id": "seed_activity_impella_p4_4",
-    "name": "Submit the PMA and the EU MDR Technical Documentation",
+    "name": "Submit the BLA (FDA) and the MAA centralised dossier (EMA)",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -9132,7 +9132,7 @@
   },
   {
     "id": "seed_activity_impella_p4_14",
-    "name": "Pre-position at-risk inventory at the 3PLs, kitting and trays",
+    "name": "Pre-position at-risk inventory at the 3PLs, kitting and packs",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -9178,7 +9178,7 @@
   },
   {
     "id": "seed_activity_impella_p4_16",
-    "name": "Schedule the sterilisation cycles, serialised goods receipt",
+    "name": "Schedule the fill-finish campaigns, serialised goods receipt",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -9247,7 +9247,7 @@
   },
   {
     "id": "seed_activity_impella_p4_19",
-    "name": "Configure order-to-cash, consignment and loaner-set tracking",
+    "name": "Configure order-to-cash, consignment and launch stock tracking",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -9362,7 +9362,7 @@
   },
   {
     "id": "seed_activity_impella_p5_2",
-    "name": "Confirm launch readiness per market, UDI/GUDID and EUDAMED",
+    "name": "Confirm launch readiness per market, serialisation into EMVS and DSCSA",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -9523,7 +9523,7 @@
   },
   {
     "id": "seed_activity_impella_p5_9",
-    "name": "Bring the loaner-kit and instrument-set turnaround model live",
+    "name": "Bring the launch stock and replenishment model live",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -9546,7 +9546,7 @@
   },
   {
     "id": "seed_activity_impella_p5_10",
-    "name": "Certify the field force, secure VAC approvals at launch accounts",
+    "name": "Train the affiliate field teams, secure payer listings at launch accounts",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -9638,7 +9638,7 @@
   },
   {
     "id": "seed_activity_impella_p6_0",
-    "name": "Review learnings, recalibrate the NPI model for the next device",
+    "name": "Review learnings, recalibrate the NPI model for the next product",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -9868,7 +9868,7 @@
   },
   {
     "id": "seed_activity_javelin_p1_1",
-    "name": "Open the Design History File and draft the design & development plan",
+    "name": "Open the CTD dossier and draft the development and CMC plan",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -9914,7 +9914,7 @@
   },
   {
     "id": "seed_activity_javelin_p1_3",
-    "name": "Confirm classification and pathway: Class III, PMA + EU MDR",
+    "name": "Confirm modality and pathway: biologic, BLA (FDA) + MAA (EMA)",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -9960,7 +9960,7 @@
   },
   {
     "id": "seed_activity_javelin_p1_5",
-    "name": "Book the FDA Q-Sub and reserve a Notified Body slot",
+    "name": "Book the FDA Type C meeting and reserve EMA scientific advice",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -9983,7 +9983,7 @@
   },
   {
     "id": "seed_activity_javelin_p1_6",
-    "name": "Define design-control and audit expectations, 21 CFR 820.30",
+    "name": "Define GxP and audit expectations, 21 CFR 210/211",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10052,7 +10052,7 @@
   },
   {
     "id": "seed_activity_javelin_p1_9",
-    "name": "Decide sterilisation modality and scan steriliser capacity",
+    "name": "Decide the fill-finish route and scan CMO capacity",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10075,7 +10075,7 @@
   },
   {
     "id": "seed_activity_javelin_p1_10",
-    "name": "Initial network assumptions, serialisation and UDI architecture",
+    "name": "Initial network assumptions, serialisation and track-and-trace architecture",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10259,7 +10259,7 @@
   },
   {
     "id": "seed_activity_javelin_p2_2",
-    "name": "Design outputs: drawings, specs, software SRS, draft DMR",
+    "name": "CMC outputs: process description, specifications, draft Master Batch Record",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10282,7 +10282,7 @@
   },
   {
     "id": "seed_activity_javelin_p2_3",
-    "name": "Hold design reviews at checkpoints, minuted into the DHF",
+    "name": "Hold stage-gate reviews at checkpoints, minuted into the CTD",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10305,7 +10305,7 @@
   },
   {
     "id": "seed_activity_javelin_p2_4",
-    "name": "Clinical evaluation plan, decide whether an IDE is needed",
+    "name": "Clinical evidence plan, decide whether an IND amendment is needed",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10443,7 +10443,7 @@
   },
   {
     "id": "seed_activity_javelin_p2_10",
-    "name": "Supplier identification and qualification, ISO 13485 audits",
+    "name": "Supplier identification and qualification, EU GMP audits",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10535,7 +10535,7 @@
   },
   {
     "id": "seed_activity_javelin_p2_14",
-    "name": "Network design: DCs, 3PLs, consignment and loaner-kit model",
+    "name": "Network design: DCs, 3PLs, cold chain and launch stock model",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10604,7 +10604,7 @@
   },
   {
     "id": "seed_activity_javelin_p2_17",
-    "name": "Master data in ERP / MDM / PLM, UDI-DI assignment logic",
+    "name": "Master data in ERP / MDM, GTIN assignment logic",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10719,7 +10719,7 @@
   },
   {
     "id": "seed_activity_javelin_p3_3",
-    "name": "Biocompatibility ISO 10993, shelf-life and accelerated ageing",
+    "name": "Extractables and leachables, stability and accelerated ageing",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10742,7 +10742,7 @@
   },
   {
     "id": "seed_activity_javelin_p3_4",
-    "name": "Package and transit validation ASTM D4169, sterile-barrier integrity",
+    "name": "Cold-chain transit validation, container closure integrity",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10765,7 +10765,7 @@
   },
   {
     "id": "seed_activity_javelin_p3_5",
-    "name": "Execute the IDE study and collect data for the CER",
+    "name": "Execute the Phase III study and collect data for the clinical dossier",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10811,7 +10811,7 @@
   },
   {
     "id": "seed_activity_javelin_p3_7",
-    "name": "Assemble the EU MDR Technical Documentation, live completeness",
+    "name": "Assemble the CTD Module 3 quality dossier, live completeness",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10857,7 +10857,7 @@
   },
   {
     "id": "seed_activity_javelin_p3_9",
-    "name": "Review the sterilisation validation protocols with the Notified Body",
+    "name": "Review the PPQ protocols with the CHMP rapporteur",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10903,7 +10903,7 @@
   },
   {
     "id": "seed_activity_javelin_p3_11",
-    "name": "Execute sterilisation validation and bioburden baseline, ISO 11135",
+    "name": "Execute Process Performance Qualification and bioburden baseline",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -11064,7 +11064,7 @@
   },
   {
     "id": "seed_activity_javelin_p3_18",
-    "name": "Book the steriliser and 3PL slots for the validation lots",
+    "name": "Book the CMO fill-finish and 3PL slots for the PPQ batches",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -11202,7 +11202,7 @@
   },
   {
     "id": "seed_activity_javelin_p3_24",
-    "name": "Integration testing PLM to ERP to QMS to MES, UDI feed test",
+    "name": "Integration testing ERP to QMS to MES, serialisation feed test",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -11294,7 +11294,7 @@
   },
   {
     "id": "seed_activity_javelin_p4_1",
-    "name": "Design transfer to manufacturing: release the DMR, close the DHF",
+    "name": "Tech transfer to manufacturing: release the Master Batch Record, lock the CTD",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -11317,7 +11317,7 @@
   },
   {
     "id": "seed_activity_javelin_p4_2",
-    "name": "Respond to agency and Notified Body technical queries",
+    "name": "Respond to FDA and CHMP rapporteur technical queries",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -11363,7 +11363,7 @@
   },
   {
     "id": "seed_activity_javelin_p4_4",
-    "name": "Submit the PMA and the EU MDR Technical Documentation",
+    "name": "Submit the BLA (FDA) and the MAA centralised dossier (EMA)",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -11593,7 +11593,7 @@
   },
   {
     "id": "seed_activity_javelin_p4_14",
-    "name": "Pre-position at-risk inventory at the 3PLs, kitting and trays",
+    "name": "Pre-position at-risk inventory at the 3PLs, kitting and packs",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -11639,7 +11639,7 @@
   },
   {
     "id": "seed_activity_javelin_p4_16",
-    "name": "Schedule the sterilisation cycles, serialised goods receipt",
+    "name": "Schedule the fill-finish campaigns, serialised goods receipt",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -11708,7 +11708,7 @@
   },
   {
     "id": "seed_activity_javelin_p4_19",
-    "name": "Configure order-to-cash, consignment and loaner-set tracking",
+    "name": "Configure order-to-cash, consignment and launch stock tracking",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -11823,7 +11823,7 @@
   },
   {
     "id": "seed_activity_javelin_p5_2",
-    "name": "Confirm launch readiness per market, UDI/GUDID and EUDAMED",
+    "name": "Confirm launch readiness per market, serialisation into EMVS and DSCSA",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -11984,7 +11984,7 @@
   },
   {
     "id": "seed_activity_javelin_p5_9",
-    "name": "Bring the loaner-kit and instrument-set turnaround model live",
+    "name": "Bring the launch stock and replenishment model live",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -12007,7 +12007,7 @@
   },
   {
     "id": "seed_activity_javelin_p5_10",
-    "name": "Certify the field force, secure VAC approvals at launch accounts",
+    "name": "Train the affiliate field teams, secure payer listings at launch accounts",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -12099,7 +12099,7 @@
   },
   {
     "id": "seed_activity_javelin_p6_0",
-    "name": "Review learnings, recalibrate the NPI model for the next device",
+    "name": "Review learnings, recalibrate the NPI model for the next product",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -12329,7 +12329,7 @@
   },
   {
     "id": "seed_activity_ethicon_p1_1",
-    "name": "Open the Design History File and draft the design & development plan",
+    "name": "Open the CTD dossier and draft the development and CMC plan",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -12375,7 +12375,7 @@
   },
   {
     "id": "seed_activity_ethicon_p1_3",
-    "name": "Confirm classification and pathway: Class III, PMA + EU MDR",
+    "name": "Confirm modality and pathway: biologic, BLA (FDA) + MAA (EMA)",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -12421,7 +12421,7 @@
   },
   {
     "id": "seed_activity_ethicon_p1_5",
-    "name": "Book the FDA Q-Sub and reserve a Notified Body slot",
+    "name": "Book the FDA Type C meeting and reserve EMA scientific advice",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -12444,7 +12444,7 @@
   },
   {
     "id": "seed_activity_ethicon_p1_6",
-    "name": "Define design-control and audit expectations, 21 CFR 820.30",
+    "name": "Define GxP and audit expectations, 21 CFR 210/211",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -12513,7 +12513,7 @@
   },
   {
     "id": "seed_activity_ethicon_p1_9",
-    "name": "Decide sterilisation modality and scan steriliser capacity",
+    "name": "Decide the fill-finish route and scan CMO capacity",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -12536,7 +12536,7 @@
   },
   {
     "id": "seed_activity_ethicon_p1_10",
-    "name": "Initial network assumptions, serialisation and UDI architecture",
+    "name": "Initial network assumptions, serialisation and track-and-trace architecture",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -12720,7 +12720,7 @@
   },
   {
     "id": "seed_activity_ethicon_p2_2",
-    "name": "Design outputs: drawings, specs, software SRS, draft DMR",
+    "name": "CMC outputs: process description, specifications, draft Master Batch Record",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -12743,7 +12743,7 @@
   },
   {
     "id": "seed_activity_ethicon_p2_3",
-    "name": "Hold design reviews at checkpoints, minuted into the DHF",
+    "name": "Hold stage-gate reviews at checkpoints, minuted into the CTD",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -12766,7 +12766,7 @@
   },
   {
     "id": "seed_activity_ethicon_p2_4",
-    "name": "Clinical evaluation plan, decide whether an IDE is needed",
+    "name": "Clinical evidence plan, decide whether an IND amendment is needed",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -12904,7 +12904,7 @@
   },
   {
     "id": "seed_activity_ethicon_p2_10",
-    "name": "Supplier identification and qualification, ISO 13485 audits",
+    "name": "Supplier identification and qualification, EU GMP audits",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -12996,7 +12996,7 @@
   },
   {
     "id": "seed_activity_ethicon_p2_14",
-    "name": "Network design: DCs, 3PLs, consignment and loaner-kit model",
+    "name": "Network design: DCs, 3PLs, cold chain and launch stock model",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -13065,7 +13065,7 @@
   },
   {
     "id": "seed_activity_ethicon_p2_17",
-    "name": "Master data in ERP / MDM / PLM, UDI-DI assignment logic",
+    "name": "Master data in ERP / MDM, GTIN assignment logic",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -13180,7 +13180,7 @@
   },
   {
     "id": "seed_activity_ethicon_p3_3",
-    "name": "Biocompatibility ISO 10993, shelf-life and accelerated ageing",
+    "name": "Extractables and leachables, stability and accelerated ageing",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -13203,7 +13203,7 @@
   },
   {
     "id": "seed_activity_ethicon_p3_4",
-    "name": "Package and transit validation ASTM D4169, sterile-barrier integrity",
+    "name": "Cold-chain transit validation, container closure integrity",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -13226,7 +13226,7 @@
   },
   {
     "id": "seed_activity_ethicon_p3_5",
-    "name": "Execute the IDE study and collect data for the CER",
+    "name": "Execute the Phase III study and collect data for the clinical dossier",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -13272,7 +13272,7 @@
   },
   {
     "id": "seed_activity_ethicon_p3_7",
-    "name": "Assemble the EU MDR Technical Documentation, live completeness",
+    "name": "Assemble the CTD Module 3 quality dossier, live completeness",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -13318,7 +13318,7 @@
   },
   {
     "id": "seed_activity_ethicon_p3_9",
-    "name": "Review the sterilisation validation protocols with the Notified Body",
+    "name": "Review the PPQ protocols with the CHMP rapporteur",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -13364,7 +13364,7 @@
   },
   {
     "id": "seed_activity_ethicon_p3_11",
-    "name": "Execute sterilisation validation and bioburden baseline, ISO 11135",
+    "name": "Execute Process Performance Qualification and bioburden baseline",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -13525,7 +13525,7 @@
   },
   {
     "id": "seed_activity_ethicon_p3_18",
-    "name": "Book the steriliser and 3PL slots for the validation lots",
+    "name": "Book the CMO fill-finish and 3PL slots for the PPQ batches",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -13663,7 +13663,7 @@
   },
   {
     "id": "seed_activity_ethicon_p3_24",
-    "name": "Integration testing PLM to ERP to QMS to MES, UDI feed test",
+    "name": "Integration testing ERP to QMS to MES, serialisation feed test",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -13755,7 +13755,7 @@
   },
   {
     "id": "seed_activity_ethicon_p4_1",
-    "name": "Design transfer to manufacturing: release the DMR, close the DHF",
+    "name": "Tech transfer to manufacturing: release the Master Batch Record, lock the CTD",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -13778,7 +13778,7 @@
   },
   {
     "id": "seed_activity_ethicon_p4_2",
-    "name": "Respond to agency and Notified Body technical queries",
+    "name": "Respond to FDA and CHMP rapporteur technical queries",
     "status": "Late",
     "statusCode": "late",
     "detail": "37 days late",
@@ -13824,7 +13824,7 @@
   },
   {
     "id": "seed_activity_ethicon_p4_4",
-    "name": "Submit the PMA and the EU MDR Technical Documentation",
+    "name": "Submit the BLA (FDA) and the MAA centralised dossier (EMA)",
     "status": "In progress",
     "statusCode": "run",
     "detail": "in progress",
@@ -14054,7 +14054,7 @@
   },
   {
     "id": "seed_activity_ethicon_p4_14",
-    "name": "Pre-position at-risk inventory at the 3PLs, kitting and trays",
+    "name": "Pre-position at-risk inventory at the 3PLs, kitting and packs",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -14100,7 +14100,7 @@
   },
   {
     "id": "seed_activity_ethicon_p4_16",
-    "name": "Schedule the sterilisation cycles, serialised goods receipt",
+    "name": "Schedule the fill-finish campaigns, serialised goods receipt",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -14169,7 +14169,7 @@
   },
   {
     "id": "seed_activity_ethicon_p4_19",
-    "name": "Configure order-to-cash, consignment and loaner-set tracking",
+    "name": "Configure order-to-cash, consignment and launch stock tracking",
     "status": "At risk",
     "statusCode": "rk",
     "detail": "holding for input",
@@ -14284,7 +14284,7 @@
   },
   {
     "id": "seed_activity_ethicon_p5_2",
-    "name": "Confirm launch readiness per market, UDI/GUDID and EUDAMED",
+    "name": "Confirm launch readiness per market, serialisation into EMVS and DSCSA",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -14445,7 +14445,7 @@
   },
   {
     "id": "seed_activity_ethicon_p5_9",
-    "name": "Bring the loaner-kit and instrument-set turnaround model live",
+    "name": "Bring the launch stock and replenishment model live",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -14468,7 +14468,7 @@
   },
   {
     "id": "seed_activity_ethicon_p5_10",
-    "name": "Certify the field force, secure VAC approvals at launch accounts",
+    "name": "Train the affiliate field teams, secure payer listings at launch accounts",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -14560,7 +14560,7 @@
   },
   {
     "id": "seed_activity_ethicon_p6_0",
-    "name": "Review learnings, recalibrate the NPI model for the next device",
+    "name": "Review learnings, recalibrate the NPI model for the next product",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -14790,7 +14790,7 @@
   },
   {
     "id": "seed_activity_dualto_p1_1",
-    "name": "Open the Design History File and draft the design & development plan",
+    "name": "Open the CTD dossier and draft the development and CMC plan",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -14836,7 +14836,7 @@
   },
   {
     "id": "seed_activity_dualto_p1_3",
-    "name": "Confirm classification and pathway: Class III, PMA + EU MDR",
+    "name": "Confirm modality and pathway: biologic, BLA (FDA) + MAA (EMA)",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -14882,7 +14882,7 @@
   },
   {
     "id": "seed_activity_dualto_p1_5",
-    "name": "Book the FDA Q-Sub and reserve a Notified Body slot",
+    "name": "Book the FDA Type C meeting and reserve EMA scientific advice",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -14905,7 +14905,7 @@
   },
   {
     "id": "seed_activity_dualto_p1_6",
-    "name": "Define design-control and audit expectations, 21 CFR 820.30",
+    "name": "Define GxP and audit expectations, 21 CFR 210/211",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -14974,7 +14974,7 @@
   },
   {
     "id": "seed_activity_dualto_p1_9",
-    "name": "Decide sterilisation modality and scan steriliser capacity",
+    "name": "Decide the fill-finish route and scan CMO capacity",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -14997,7 +14997,7 @@
   },
   {
     "id": "seed_activity_dualto_p1_10",
-    "name": "Initial network assumptions, serialisation and UDI architecture",
+    "name": "Initial network assumptions, serialisation and track-and-trace architecture",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -15181,7 +15181,7 @@
   },
   {
     "id": "seed_activity_dualto_p2_2",
-    "name": "Design outputs: drawings, specs, software SRS, draft DMR",
+    "name": "CMC outputs: process description, specifications, draft Master Batch Record",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -15204,7 +15204,7 @@
   },
   {
     "id": "seed_activity_dualto_p2_3",
-    "name": "Hold design reviews at checkpoints, minuted into the DHF",
+    "name": "Hold stage-gate reviews at checkpoints, minuted into the CTD",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -15227,7 +15227,7 @@
   },
   {
     "id": "seed_activity_dualto_p2_4",
-    "name": "Clinical evaluation plan, decide whether an IDE is needed",
+    "name": "Clinical evidence plan, decide whether an IND amendment is needed",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -15365,7 +15365,7 @@
   },
   {
     "id": "seed_activity_dualto_p2_10",
-    "name": "Supplier identification and qualification, ISO 13485 audits",
+    "name": "Supplier identification and qualification, EU GMP audits",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -15457,7 +15457,7 @@
   },
   {
     "id": "seed_activity_dualto_p2_14",
-    "name": "Network design: DCs, 3PLs, consignment and loaner-kit model",
+    "name": "Network design: DCs, 3PLs, cold chain and launch stock model",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -15526,7 +15526,7 @@
   },
   {
     "id": "seed_activity_dualto_p2_17",
-    "name": "Master data in ERP / MDM / PLM, UDI-DI assignment logic",
+    "name": "Master data in ERP / MDM, GTIN assignment logic",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -15641,7 +15641,7 @@
   },
   {
     "id": "seed_activity_dualto_p3_3",
-    "name": "Biocompatibility ISO 10993, shelf-life and accelerated ageing",
+    "name": "Extractables and leachables, stability and accelerated ageing",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -15664,7 +15664,7 @@
   },
   {
     "id": "seed_activity_dualto_p3_4",
-    "name": "Package and transit validation ASTM D4169, sterile-barrier integrity",
+    "name": "Cold-chain transit validation, container closure integrity",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -15687,7 +15687,7 @@
   },
   {
     "id": "seed_activity_dualto_p3_5",
-    "name": "Execute the IDE study and collect data for the CER",
+    "name": "Execute the Phase III study and collect data for the clinical dossier",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -15733,7 +15733,7 @@
   },
   {
     "id": "seed_activity_dualto_p3_7",
-    "name": "Assemble the EU MDR Technical Documentation, live completeness",
+    "name": "Assemble the CTD Module 3 quality dossier, live completeness",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -15779,7 +15779,7 @@
   },
   {
     "id": "seed_activity_dualto_p3_9",
-    "name": "Review the sterilisation validation protocols with the Notified Body",
+    "name": "Review the PPQ protocols with the CHMP rapporteur",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -15825,7 +15825,7 @@
   },
   {
     "id": "seed_activity_dualto_p3_11",
-    "name": "Execute sterilisation validation and bioburden baseline, ISO 11135",
+    "name": "Execute Process Performance Qualification and bioburden baseline",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -15986,7 +15986,7 @@
   },
   {
     "id": "seed_activity_dualto_p3_18",
-    "name": "Book the steriliser and 3PL slots for the validation lots",
+    "name": "Book the CMO fill-finish and 3PL slots for the PPQ batches",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -16124,7 +16124,7 @@
   },
   {
     "id": "seed_activity_dualto_p3_24",
-    "name": "Integration testing PLM to ERP to QMS to MES, UDI feed test",
+    "name": "Integration testing ERP to QMS to MES, serialisation feed test",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -16216,7 +16216,7 @@
   },
   {
     "id": "seed_activity_dualto_p4_1",
-    "name": "Design transfer to manufacturing: release the DMR, close the DHF",
+    "name": "Tech transfer to manufacturing: release the Master Batch Record, lock the CTD",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -16239,7 +16239,7 @@
   },
   {
     "id": "seed_activity_dualto_p4_2",
-    "name": "Respond to agency and Notified Body technical queries",
+    "name": "Respond to FDA and CHMP rapporteur technical queries",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -16285,7 +16285,7 @@
   },
   {
     "id": "seed_activity_dualto_p4_4",
-    "name": "Submit the PMA and the EU MDR Technical Documentation",
+    "name": "Submit the BLA (FDA) and the MAA centralised dossier (EMA)",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -16515,7 +16515,7 @@
   },
   {
     "id": "seed_activity_dualto_p4_14",
-    "name": "Pre-position at-risk inventory at the 3PLs, kitting and trays",
+    "name": "Pre-position at-risk inventory at the 3PLs, kitting and packs",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -16561,7 +16561,7 @@
   },
   {
     "id": "seed_activity_dualto_p4_16",
-    "name": "Schedule the sterilisation cycles, serialised goods receipt",
+    "name": "Schedule the fill-finish campaigns, serialised goods receipt",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -16630,7 +16630,7 @@
   },
   {
     "id": "seed_activity_dualto_p4_19",
-    "name": "Configure order-to-cash, consignment and loaner-set tracking",
+    "name": "Configure order-to-cash, consignment and launch stock tracking",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -16745,7 +16745,7 @@
   },
   {
     "id": "seed_activity_dualto_p5_2",
-    "name": "Confirm launch readiness per market, UDI/GUDID and EUDAMED",
+    "name": "Confirm launch readiness per market, serialisation into EMVS and DSCSA",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -16906,7 +16906,7 @@
   },
   {
     "id": "seed_activity_dualto_p5_9",
-    "name": "Bring the loaner-kit and instrument-set turnaround model live",
+    "name": "Bring the launch stock and replenishment model live",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -16929,7 +16929,7 @@
   },
   {
     "id": "seed_activity_dualto_p5_10",
-    "name": "Certify the field force, secure VAC approvals at launch accounts",
+    "name": "Train the affiliate field teams, secure payer listings at launch accounts",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -17021,7 +17021,7 @@
   },
   {
     "id": "seed_activity_dualto_p6_0",
-    "name": "Review learnings, recalibrate the NPI model for the next device",
+    "name": "Review learnings, recalibrate the NPI model for the next product",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -17251,7 +17251,7 @@
   },
   {
     "id": "seed_activity_ottava_p1_1",
-    "name": "Open the Design History File and draft the design & development plan",
+    "name": "Open the CTD dossier and draft the development and CMC plan",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -17297,7 +17297,7 @@
   },
   {
     "id": "seed_activity_ottava_p1_3",
-    "name": "Confirm classification and pathway: Class III, PMA + EU MDR",
+    "name": "Confirm modality and pathway: biologic, BLA (FDA) + MAA (EMA)",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -17343,7 +17343,7 @@
   },
   {
     "id": "seed_activity_ottava_p1_5",
-    "name": "Book the FDA Q-Sub and reserve a Notified Body slot",
+    "name": "Book the FDA Type C meeting and reserve EMA scientific advice",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -17366,7 +17366,7 @@
   },
   {
     "id": "seed_activity_ottava_p1_6",
-    "name": "Define design-control and audit expectations, 21 CFR 820.30",
+    "name": "Define GxP and audit expectations, 21 CFR 210/211",
     "status": "In progress",
     "statusCode": "run",
     "detail": "in progress",
@@ -17435,7 +17435,7 @@
   },
   {
     "id": "seed_activity_ottava_p1_9",
-    "name": "Decide sterilisation modality and scan steriliser capacity",
+    "name": "Decide the fill-finish route and scan CMO capacity",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -17458,7 +17458,7 @@
   },
   {
     "id": "seed_activity_ottava_p1_10",
-    "name": "Initial network assumptions, serialisation and UDI architecture",
+    "name": "Initial network assumptions, serialisation and track-and-trace architecture",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -17642,7 +17642,7 @@
   },
   {
     "id": "seed_activity_ottava_p2_2",
-    "name": "Design outputs: drawings, specs, software SRS, draft DMR",
+    "name": "CMC outputs: process description, specifications, draft Master Batch Record",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -17665,7 +17665,7 @@
   },
   {
     "id": "seed_activity_ottava_p2_3",
-    "name": "Hold design reviews at checkpoints, minuted into the DHF",
+    "name": "Hold stage-gate reviews at checkpoints, minuted into the CTD",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -17688,7 +17688,7 @@
   },
   {
     "id": "seed_activity_ottava_p2_4",
-    "name": "Clinical evaluation plan, decide whether an IDE is needed",
+    "name": "Clinical evidence plan, decide whether an IND amendment is needed",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -17826,7 +17826,7 @@
   },
   {
     "id": "seed_activity_ottava_p2_10",
-    "name": "Supplier identification and qualification, ISO 13485 audits",
+    "name": "Supplier identification and qualification, EU GMP audits",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -17918,7 +17918,7 @@
   },
   {
     "id": "seed_activity_ottava_p2_14",
-    "name": "Network design: DCs, 3PLs, consignment and loaner-kit model",
+    "name": "Network design: DCs, 3PLs, cold chain and launch stock model",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -17987,7 +17987,7 @@
   },
   {
     "id": "seed_activity_ottava_p2_17",
-    "name": "Master data in ERP / MDM / PLM, UDI-DI assignment logic",
+    "name": "Master data in ERP / MDM, GTIN assignment logic",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -18102,7 +18102,7 @@
   },
   {
     "id": "seed_activity_ottava_p3_3",
-    "name": "Biocompatibility ISO 10993, shelf-life and accelerated ageing",
+    "name": "Extractables and leachables, stability and accelerated ageing",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -18125,7 +18125,7 @@
   },
   {
     "id": "seed_activity_ottava_p3_4",
-    "name": "Package and transit validation ASTM D4169, sterile-barrier integrity",
+    "name": "Cold-chain transit validation, container closure integrity",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -18148,7 +18148,7 @@
   },
   {
     "id": "seed_activity_ottava_p3_5",
-    "name": "Execute the IDE study and collect data for the CER",
+    "name": "Execute the Phase III study and collect data for the clinical dossier",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -18194,7 +18194,7 @@
   },
   {
     "id": "seed_activity_ottava_p3_7",
-    "name": "Assemble the EU MDR Technical Documentation, live completeness",
+    "name": "Assemble the CTD Module 3 quality dossier, live completeness",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -18240,7 +18240,7 @@
   },
   {
     "id": "seed_activity_ottava_p3_9",
-    "name": "Review the sterilisation validation protocols with the Notified Body",
+    "name": "Review the PPQ protocols with the CHMP rapporteur",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -18286,7 +18286,7 @@
   },
   {
     "id": "seed_activity_ottava_p3_11",
-    "name": "Execute sterilisation validation and bioburden baseline, ISO 11135",
+    "name": "Execute Process Performance Qualification and bioburden baseline",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -18447,7 +18447,7 @@
   },
   {
     "id": "seed_activity_ottava_p3_18",
-    "name": "Book the steriliser and 3PL slots for the validation lots",
+    "name": "Book the CMO fill-finish and 3PL slots for the PPQ batches",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -18585,7 +18585,7 @@
   },
   {
     "id": "seed_activity_ottava_p3_24",
-    "name": "Integration testing PLM to ERP to QMS to MES, UDI feed test",
+    "name": "Integration testing ERP to QMS to MES, serialisation feed test",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -18677,7 +18677,7 @@
   },
   {
     "id": "seed_activity_ottava_p4_1",
-    "name": "Design transfer to manufacturing: release the DMR, close the DHF",
+    "name": "Tech transfer to manufacturing: release the Master Batch Record, lock the CTD",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -18700,7 +18700,7 @@
   },
   {
     "id": "seed_activity_ottava_p4_2",
-    "name": "Respond to agency and Notified Body technical queries",
+    "name": "Respond to FDA and CHMP rapporteur technical queries",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -18746,7 +18746,7 @@
   },
   {
     "id": "seed_activity_ottava_p4_4",
-    "name": "Submit the PMA and the EU MDR Technical Documentation",
+    "name": "Submit the BLA (FDA) and the MAA centralised dossier (EMA)",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -18976,7 +18976,7 @@
   },
   {
     "id": "seed_activity_ottava_p4_14",
-    "name": "Pre-position at-risk inventory at the 3PLs, kitting and trays",
+    "name": "Pre-position at-risk inventory at the 3PLs, kitting and packs",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -19022,7 +19022,7 @@
   },
   {
     "id": "seed_activity_ottava_p4_16",
-    "name": "Schedule the sterilisation cycles, serialised goods receipt",
+    "name": "Schedule the fill-finish campaigns, serialised goods receipt",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -19091,7 +19091,7 @@
   },
   {
     "id": "seed_activity_ottava_p4_19",
-    "name": "Configure order-to-cash, consignment and loaner-set tracking",
+    "name": "Configure order-to-cash, consignment and launch stock tracking",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -19206,7 +19206,7 @@
   },
   {
     "id": "seed_activity_ottava_p5_2",
-    "name": "Confirm launch readiness per market, UDI/GUDID and EUDAMED",
+    "name": "Confirm launch readiness per market, serialisation into EMVS and DSCSA",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -19367,7 +19367,7 @@
   },
   {
     "id": "seed_activity_ottava_p5_9",
-    "name": "Bring the loaner-kit and instrument-set turnaround model live",
+    "name": "Bring the launch stock and replenishment model live",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -19390,7 +19390,7 @@
   },
   {
     "id": "seed_activity_ottava_p5_10",
-    "name": "Certify the field force, secure VAC approvals at launch accounts",
+    "name": "Train the affiliate field teams, secure payer listings at launch accounts",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -19482,7 +19482,7 @@
   },
   {
     "id": "seed_activity_ottava_p6_0",
-    "name": "Review learnings, recalibrate the NPI model for the next device",
+    "name": "Review learnings, recalibrate the NPI model for the next product",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -19712,7 +19712,7 @@
   },
   {
     "id": "seed_activity_puresee_p1_1",
-    "name": "Open the Design History File and draft the design & development plan",
+    "name": "Open the CTD dossier and draft the development and CMC plan",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -19758,7 +19758,7 @@
   },
   {
     "id": "seed_activity_puresee_p1_3",
-    "name": "Confirm classification and pathway: Class III, PMA + EU MDR",
+    "name": "Confirm modality and pathway: biologic, BLA (FDA) + MAA (EMA)",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -19804,7 +19804,7 @@
   },
   {
     "id": "seed_activity_puresee_p1_5",
-    "name": "Book the FDA Q-Sub and reserve a Notified Body slot",
+    "name": "Book the FDA Type C meeting and reserve EMA scientific advice",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -19827,7 +19827,7 @@
   },
   {
     "id": "seed_activity_puresee_p1_6",
-    "name": "Define design-control and audit expectations, 21 CFR 820.30",
+    "name": "Define GxP and audit expectations, 21 CFR 210/211",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -19896,7 +19896,7 @@
   },
   {
     "id": "seed_activity_puresee_p1_9",
-    "name": "Decide sterilisation modality and scan steriliser capacity",
+    "name": "Decide the fill-finish route and scan CMO capacity",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -19919,7 +19919,7 @@
   },
   {
     "id": "seed_activity_puresee_p1_10",
-    "name": "Initial network assumptions, serialisation and UDI architecture",
+    "name": "Initial network assumptions, serialisation and track-and-trace architecture",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -20103,7 +20103,7 @@
   },
   {
     "id": "seed_activity_puresee_p2_2",
-    "name": "Design outputs: drawings, specs, software SRS, draft DMR",
+    "name": "CMC outputs: process description, specifications, draft Master Batch Record",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -20126,7 +20126,7 @@
   },
   {
     "id": "seed_activity_puresee_p2_3",
-    "name": "Hold design reviews at checkpoints, minuted into the DHF",
+    "name": "Hold stage-gate reviews at checkpoints, minuted into the CTD",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -20149,7 +20149,7 @@
   },
   {
     "id": "seed_activity_puresee_p2_4",
-    "name": "Clinical evaluation plan, decide whether an IDE is needed",
+    "name": "Clinical evidence plan, decide whether an IND amendment is needed",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -20287,7 +20287,7 @@
   },
   {
     "id": "seed_activity_puresee_p2_10",
-    "name": "Supplier identification and qualification, ISO 13485 audits",
+    "name": "Supplier identification and qualification, EU GMP audits",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -20379,7 +20379,7 @@
   },
   {
     "id": "seed_activity_puresee_p2_14",
-    "name": "Network design: DCs, 3PLs, consignment and loaner-kit model",
+    "name": "Network design: DCs, 3PLs, cold chain and launch stock model",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -20448,7 +20448,7 @@
   },
   {
     "id": "seed_activity_puresee_p2_17",
-    "name": "Master data in ERP / MDM / PLM, UDI-DI assignment logic",
+    "name": "Master data in ERP / MDM, GTIN assignment logic",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -20563,7 +20563,7 @@
   },
   {
     "id": "seed_activity_puresee_p3_3",
-    "name": "Biocompatibility ISO 10993, shelf-life and accelerated ageing",
+    "name": "Extractables and leachables, stability and accelerated ageing",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -20586,7 +20586,7 @@
   },
   {
     "id": "seed_activity_puresee_p3_4",
-    "name": "Package and transit validation ASTM D4169, sterile-barrier integrity",
+    "name": "Cold-chain transit validation, container closure integrity",
     "status": "At risk",
     "statusCode": "rk",
     "detail": "holding for input",
@@ -20609,7 +20609,7 @@
   },
   {
     "id": "seed_activity_puresee_p3_5",
-    "name": "Execute the IDE study and collect data for the CER",
+    "name": "Execute the Phase III study and collect data for the clinical dossier",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -20655,7 +20655,7 @@
   },
   {
     "id": "seed_activity_puresee_p3_7",
-    "name": "Assemble the EU MDR Technical Documentation, live completeness",
+    "name": "Assemble the CTD Module 3 quality dossier, live completeness",
     "status": "Late",
     "statusCode": "late",
     "detail": "16 days late",
@@ -20701,7 +20701,7 @@
   },
   {
     "id": "seed_activity_puresee_p3_9",
-    "name": "Review the sterilisation validation protocols with the Notified Body",
+    "name": "Review the PPQ protocols with the CHMP rapporteur",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -20747,7 +20747,7 @@
   },
   {
     "id": "seed_activity_puresee_p3_11",
-    "name": "Execute sterilisation validation and bioburden baseline, ISO 11135",
+    "name": "Execute Process Performance Qualification and bioburden baseline",
     "status": "At risk",
     "statusCode": "rk",
     "detail": "holding for input",
@@ -20908,7 +20908,7 @@
   },
   {
     "id": "seed_activity_puresee_p3_18",
-    "name": "Book the steriliser and 3PL slots for the validation lots",
+    "name": "Book the CMO fill-finish and 3PL slots for the PPQ batches",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -21046,7 +21046,7 @@
   },
   {
     "id": "seed_activity_puresee_p3_24",
-    "name": "Integration testing PLM to ERP to QMS to MES, UDI feed test",
+    "name": "Integration testing ERP to QMS to MES, serialisation feed test",
     "status": "In progress",
     "statusCode": "run",
     "detail": "in progress",
@@ -21138,7 +21138,7 @@
   },
   {
     "id": "seed_activity_puresee_p4_1",
-    "name": "Design transfer to manufacturing: release the DMR, close the DHF",
+    "name": "Tech transfer to manufacturing: release the Master Batch Record, lock the CTD",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -21161,7 +21161,7 @@
   },
   {
     "id": "seed_activity_puresee_p4_2",
-    "name": "Respond to agency and Notified Body technical queries",
+    "name": "Respond to FDA and CHMP rapporteur technical queries",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -21207,7 +21207,7 @@
   },
   {
     "id": "seed_activity_puresee_p4_4",
-    "name": "Submit the PMA and the EU MDR Technical Documentation",
+    "name": "Submit the BLA (FDA) and the MAA centralised dossier (EMA)",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -21437,7 +21437,7 @@
   },
   {
     "id": "seed_activity_puresee_p4_14",
-    "name": "Pre-position at-risk inventory at the 3PLs, kitting and trays",
+    "name": "Pre-position at-risk inventory at the 3PLs, kitting and packs",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -21483,7 +21483,7 @@
   },
   {
     "id": "seed_activity_puresee_p4_16",
-    "name": "Schedule the sterilisation cycles, serialised goods receipt",
+    "name": "Schedule the fill-finish campaigns, serialised goods receipt",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -21552,7 +21552,7 @@
   },
   {
     "id": "seed_activity_puresee_p4_19",
-    "name": "Configure order-to-cash, consignment and loaner-set tracking",
+    "name": "Configure order-to-cash, consignment and launch stock tracking",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -21667,7 +21667,7 @@
   },
   {
     "id": "seed_activity_puresee_p5_2",
-    "name": "Confirm launch readiness per market, UDI/GUDID and EUDAMED",
+    "name": "Confirm launch readiness per market, serialisation into EMVS and DSCSA",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -21828,7 +21828,7 @@
   },
   {
     "id": "seed_activity_puresee_p5_9",
-    "name": "Bring the loaner-kit and instrument-set turnaround model live",
+    "name": "Bring the launch stock and replenishment model live",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -21851,7 +21851,7 @@
   },
   {
     "id": "seed_activity_puresee_p5_10",
-    "name": "Certify the field force, secure VAC approvals at launch accounts",
+    "name": "Train the affiliate field teams, secure payer listings at launch accounts",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -21943,7 +21943,7 @@
   },
   {
     "id": "seed_activity_puresee_p6_0",
-    "name": "Review learnings, recalibrate the NPI model for the next device",
+    "name": "Review learnings, recalibrate the NPI model for the next product",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",

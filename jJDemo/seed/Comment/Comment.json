@@ -4,7 +4,7 @@
     "author": "M. Okafor",
     "authorRole": "Sourcing",
     "commentedAt": "2026-09-10T19:40:00",
-    "body": "Steris have cancelled our 12 Oct slot. I pushed back on the phone — they have a genuine chamber deviation and cannot hold it. Nothing earlier across Venlo, Petten or Daventry. Escalating because this is the validation lot, not a routine cycle.",
+    "body": "Vetter have cancelled our 12 Oct slot. I pushed back on the phone — they have a genuine chamber deviation and cannot hold it. Nothing earlier across Venlo, Petten or Daventry. Escalating because this is the validation lot, not a routine cycle.",
     "isAutomatedCheck": false,
     "sourcesRead": "",
     "decision": {
@@ -16,7 +16,7 @@
     "author": "Sourcing agent",
     "authorRole": "Automated check",
     "commentedAt": "2026-09-11T06:05:00",
-    "body": "Checked the master agreement: the booking was a non-committed capacity reservation, clause 7.3 permits reallocation on 30 days notice. No contractual claim and no penalty available. Scanned the ASL for EO alternatives — Sterigenics Grand Rapids is approved, audit current to Mar 2028, already qualified for Abrysvo G2 and Elrexfio IV, and has capacity from 29 Sep.",
+    "body": "Checked the master agreement: the booking was a non-committed capacity reservation, clause 7.3 permits reallocation on 30 days notice. No contractual claim and no penalty available. Scanned the ASL for alternative fill-finish capacity — Siegfried Hameln is approved, audit current to Mar 2028, already qualified for Abrysvo G2 and Elrexfio IV, and has capacity from 29 Sep.",
     "isAutomatedCheck": true,
     "sourcesRead": "master agreement clause 7.3, Approved Supplier List, audit validity",
     "decision": {
@@ -112,7 +112,7 @@
     "author": "Supply Chain agent",
     "authorRole": "Automated check",
     "commentedAt": "2026-09-09T05:12:00",
-    "body": "340 of 520 loaner sets are still awaiting their final sterilisation cycle. The 3PL is running a 6-day turnaround against a 4-day plan. At the current rate first-case coverage is short by 11 days.",
+    "body": "340 of 520 launch stock units are still awaiting their final QC release check. The 3PL is running a 6-day turnaround against a 4-day plan. At the current rate first-case coverage is short by 11 days.",
     "isAutomatedCheck": true,
     "sourcesRead": "",
     "decision": {
@@ -136,7 +136,7 @@
     "author": "Quality agent",
     "authorRole": "Automated check",
     "commentedAt": "2026-09-06T16:44:00",
-    "body": "Sequence D of the ASTM D4169 battery produced visible deformation of the secondary carton on 3 of 12 units. Sterile barrier integrity held on all twelve. The protocol cannot be signed as-is.",
+    "body": "Sequence D of the cold-chain transit protocol battery produced visible deformation of the secondary carton on 3 of 12 units. Container closure integrity integrity held on all twelve. The protocol cannot be signed as-is.",
     "isAutomatedCheck": true,
     "sourcesRead": "",
     "decision": {
@@ -148,7 +148,7 @@
     "author": "K. Tanaka",
     "authorRole": "R&D",
     "commentedAt": "2026-09-07T09:05:00",
-    "body": "Agreed, and I would not want to go to the Notified Body with a concession request on packaging. Redesigning the insert — it is a tooling change on the thermoform, not a device change. Re-test booked for the 14th.",
+    "body": "Agreed, and I would not want to go to the CHMP rapporteur with a concession request on packaging. Redesigning the insert — it is a tooling change on the thermoform, not a formulation change. Re-test booked for the 14th.",
     "isAutomatedCheck": false,
     "sourcesRead": "",
     "decision": {
@@ -208,7 +208,7 @@
     "author": "Quality agent",
     "authorRole": "Automated check",
     "commentedAt": "2026-09-05T08:31:00",
-    "body": "Both drafts traced to the design input matrix, no acceptance criteria waived. IEC 62366 summative passed with zero use errors in the critical tasks. ASTM D4169 Sequences A to D passed with the sterile barrier intact. Ready for signature.",
+    "body": "Both drafts traced to the design input matrix, no acceptance criteria waived. human factors summative passed with zero use errors in the critical tasks. cold-chain transit protocol Sequences A to D passed with the container closure integrity intact. Ready for signature.",
     "isAutomatedCheck": true,
     "sourcesRead": "",
     "decision": {
@@ -220,7 +220,7 @@
     "author": "Sourcing agent",
     "authorRole": "Automated check",
     "commentedAt": "2026-09-07T06:12:00",
-    "body": "Heraeus downgraded to High financial risk — 34-day payables extension, second consecutive quarter. They are single source on the ring electrode subassembly across Comirnaty G2, Abrysvo G2 and two other Vaccines catheters.",
+    "body": "Aptar downgraded to High financial risk — 34-day payables extension, second consecutive quarter. They are single source on the lyophilisation stopper across Comirnaty G2, Abrysvo G2 and two other Vaccines presentations.",
     "isAutomatedCheck": true,
     "sourcesRead": "",
     "decision": {

@@ -2,7 +2,7 @@
   {
     "id": "seed_option_417_a",
     "optionKey": "a",
-    "label": "Dual-source to Sterigenics Grand Rapids",
+    "label": "Dual-source to Siegfried Hameln",
     "subLabel": "Half-cycle revalidation at an approved site, same modality",
     "daysRecovered": 38,
     "slipLabel": "+9d instead of +47",
@@ -22,7 +22,7 @@
     "id": "seed_option_417_b",
     "optionKey": "b",
     "label": "Switch modality to X-ray at Marcoule",
-    "subLabel": "Needs biocompatibility bridging and a dossier rewrite",
+    "subLabel": "Needs extractables and leachables bridging and a dossier rewrite",
     "daysRecovered": -15,
     "slipLabel": "+62d",
     "cost": 1100000,
@@ -41,7 +41,7 @@
     "id": "seed_option_417_c",
     "optionKey": "c",
     "label": "Re-sequence — US first, EU wave 2",
-    "subLabel": "Irvine steriliser is unaffected; needs a G1 decision reversal",
+    "subLabel": "Irvine fill-finish line is unaffected; needs a G1 decision reversal",
     "daysRecovered": 0,
     "slipLabel": "+78d in EU, none in US",
     "cost": 0,
@@ -50,7 +50,7 @@
     "forfeits": "Two EU tender windows; €7.2M moved to FY28",
     "recommended": false,
     "confidence": "Medium",
-    "basis": "Irvine in-house EO unaffected, but unwinds a gate decision",
+    "basis": "Irvine in-house fill-finish unaffected, but unwinds a gate decision",
     "riskBand": "Low",
     "decision": {
       "id": "seed_decision_417"
@@ -108,7 +108,7 @@
     "subLabel": "Document change now vs 11 weeks of change control after G2",
     "recommended": true,
     "confidence": "High",
-    "basis": "BOM trace machine-read from the released DMR",
+    "basis": "BOM trace machine-read from the released Master Batch Record",
     "riskBand": "Low",
     "gateImpact": "Protects G2 Design Freeze",
     "decision": {
@@ -179,7 +179,7 @@
     "subLabel": "Both drafts traced to the input matrix; no criteria waived",
     "recommended": true,
     "confidence": "High",
-    "basis": "IEC 62366 + ASTM D4169 evidence complete",
+    "basis": "IEC 62366 + cold-chain transit protocol evidence complete",
     "riskBand": "Low",
     "gateImpact": "G2 closes on schedule",
     "decision": {

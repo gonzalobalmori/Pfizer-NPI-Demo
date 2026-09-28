@@ -1,9 +1,9 @@
 [
   {
     "id": "seed_site_venlo",
-    "name": "Steris Venlo EO facility",
+    "name": "Vetter Ravensburg",
     "location": "Venlo, NL",
-    "capabilities": "EO sterilisation",
+    "capabilities": "aseptic fill-finish",
     "capacityAvailableFrom": "2026-11-28",
     "supplier": {
       "id": "seed_supplier_steris"
@@ -11,9 +11,9 @@
   },
   {
     "id": "seed_site_grandrapids",
-    "name": "Sterigenics Grand Rapids",
+    "name": "Siegfried Hameln",
     "location": "Grand Rapids, US",
-    "capabilities": "EO sterilisation",
+    "capabilities": "aseptic fill-finish",
     "capacityAvailableFrom": "2026-09-29",
     "supplier": {
       "id": "seed_supplier_sterigenics"
@@ -23,7 +23,7 @@
     "id": "seed_site_cashel",
     "name": "Cashel",
     "location": "Cashel, IE",
-    "capabilities": "Device manufacturing",
+    "capabilities": "Oral solid dose manufacture and packaging",
     "capacityAvailableFrom": "2026-09-01",
     "supplier": {
       "id": "seed_supplier_heraeus"
@@ -33,7 +33,7 @@
     "id": "seed_site_neuss",
     "name": "Neuss",
     "location": "Neuss, DE",
-    "capabilities": "Ring electrode subassembly; sterilisation lane",
+    "capabilities": "Elastomeric closures; nasal spray actuators",
     "capacityAvailableFrom": "2026-09-15",
     "supplier": {
       "id": "seed_supplier_heraeus"

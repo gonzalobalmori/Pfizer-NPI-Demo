@@ -4,7 +4,7 @@
     "displayId": "REG-Velsipity-FDA",
     "launch": { "id": "seed_launch_ottava" },
     "authority": "FDA",
-    "milestoneName": "FDA 510(k) Clearance — US launch",
+    "milestoneName": "FDA BLA Approval — US launch",
     "baselineDate": "2026-11-02",
     "currentDate": "2026-11-02",
     "slipDays": 0,

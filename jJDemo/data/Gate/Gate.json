@@ -47,7 +47,7 @@
   {
     "id": "seed_gate_dualto_g4",
     "code": "G4",
-    "name": "Clearance / CE Certificate",
+    "name": "Approval / Marketing Authorisation",
     "baselineDate": "2025-02-15",
     "forecastDate": "2025-02-15",
     "slipDays": 0,
@@ -137,7 +137,7 @@
   {
     "id": "seed_gate_embotrap_iv_g4",
     "code": "G4",
-    "name": "Clearance / CE Certificate",
+    "name": "Approval / Marketing Authorisation",
     "baselineDate": "2026-04-19",
     "forecastDate": "2026-04-19",
     "slipDays": 0,
@@ -227,7 +227,7 @@
   {
     "id": "seed_gate_ethicon_4000_g4",
     "code": "G4",
-    "name": "Clearance / CE Certificate",
+    "name": "Approval / Marketing Authorisation",
     "baselineDate": "2026-10-12",
     "forecastDate": "2026-11-02",
     "slipDays": 21,
@@ -302,7 +302,7 @@
   {
     "id": "seed_gate_impella_ecp_g4",
     "code": "G4",
-    "name": "Clearance / CE Certificate",
+    "name": "Approval / Marketing Authorisation",
     "baselineDate": "2027-12-15",
     "forecastDate": "2027-12-15",
     "slipDays": 0,
@@ -377,7 +377,7 @@
   {
     "id": "seed_gate_javelin_xl_g4",
     "code": "G4",
-    "name": "Clearance / CE Certificate",
+    "name": "Approval / Marketing Authorisation",
     "baselineDate": "2027-07-08",
     "forecastDate": "2027-07-08",
     "slipDays": 0,
@@ -467,7 +467,7 @@
   {
     "id": "seed_gate_octaray_g2_g4",
     "code": "G4",
-    "name": "Clearance / CE Certificate",
+    "name": "Approval / Marketing Authorisation",
     "baselineDate": "2027-08-15",
     "forecastDate": "2027-08-15",
     "slipDays": 0,
@@ -542,7 +542,7 @@
   {
     "id": "seed_gate_ottava_g4",
     "code": "G4",
-    "name": "Clearance / CE Certificate",
+    "name": "Approval / Marketing Authorisation",
     "baselineDate": "2028-10-22",
     "forecastDate": "2028-10-22",
     "slipDays": 0,
@@ -617,7 +617,7 @@
   {
     "id": "seed_gate_puresee_g4",
     "code": "G4",
-    "name": "Clearance / CE Certificate",
+    "name": "Approval / Marketing Authorisation",
     "baselineDate": "2027-06-15",
     "forecastDate": "2027-06-15",
     "slipDays": 0,
@@ -692,7 +692,7 @@
   {
     "id": "seed_gate_varipulse_g4",
     "code": "G4",
-    "name": "Clearance / CE Certificate",
+    "name": "Approval / Marketing Authorisation",
     "baselineDate": "2027-05-18",
     "forecastDate": "2027-05-18",
     "slipDays": 0,

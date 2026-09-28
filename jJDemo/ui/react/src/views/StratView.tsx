@@ -58,7 +58,7 @@ export default function StratView() {
           <div className="st-t">Suppliers</div>
           <div className="st-d">
             Identification, qualification and risk assessment across the multi-level BOM, with the Approved Supplier
-            List and ISO 13485 audit status.
+            List and EU GMP audit status.
           </div>
           <div className="st-u">
             Feeds gate <b>G2 Design Freeze</b> · agent qualifies, human approves
@@ -72,7 +72,7 @@ export default function StratView() {
           </div>
           <div className="st-t">Supply chain risk &amp; resilience</div>
           <div className="st-d">
-            Network exposure: single-source components, geographic concentration, sterilisation capacity, Notified Body
+            Network exposure: single-source components, geographic concentration, fill-finish capacity, CHMP rapporteur
             dependency.
           </div>
           <div className="st-u">
@@ -88,7 +88,7 @@ export default function StratView() {
           </div>
           <div className="st-t">Scenario analysis and digital twins</div>
           <div className="st-d">
-            Simulation before committing: what if this site slips, what if we launch US first, what if the steriliser
+            Simulation before committing: what if this site slips, what if we launch US first, what if the CMO line
             has no capacity.
           </div>
           <div className="st-u">

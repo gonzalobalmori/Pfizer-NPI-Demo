@@ -1,7 +1,7 @@
 [
   {
     "id": "seed_task_417_a_1",
-    "name": "Book the 29 Sep chamber slot at Sterigenics and issue the capacity PO",
+    "name": "Book the 29 Sep chamber slot at Siegfried and issue the capacity PO",
     "owner": "Sourcing agent",
     "detail": "Sourcing agent · within guardrails · reversible for 24h",
     "agentRunnable": true,
@@ -53,7 +53,7 @@
   },
   {
     "id": "seed_task_417_a_5",
-    "name": "Execute a take-or-pay amendment on both sterilisers to stop this recurring",
+    "name": "Execute a take-or-pay amendment on both CMO lines to stop this recurring",
     "owner": "MO",
     "detail": "M. Okafor · Sourcing · needs Legal countersignature",
     "agentRunnable": false,
@@ -105,7 +105,7 @@
   },
   {
     "id": "seed_task_417_b_2",
-    "name": "Commission the ISO 10993 biocompatibility bridging study",
+    "name": "Commission the extractables and leachables bridging study",
     "owner": "Quality agent",
     "detail": "Quality agent · drafts the protocol, K. Tanaka approves",
     "agentRunnable": true,
@@ -131,7 +131,7 @@
   },
   {
     "id": "seed_task_417_b_4",
-    "name": "Rewrite EU MDR Technical Documentation section 4.3 for the new modality",
+    "name": "Rewrite CTD Module 3 quality dossier section 4.3 for the new modality",
     "owner": "Regulatory agent",
     "detail": "Regulatory agent · full rewrite, not a site swap",
     "agentRunnable": true,
@@ -157,7 +157,7 @@
   },
   {
     "id": "seed_task_417_b_6",
-    "name": "Requalify the sterile barrier at the new radiation dose",
+    "name": "Requalify container closure integrity at the new process parameters",
     "owner": "AK",
     "detail": "A. Kowalski · Quality · packaging may need respecification",
     "agentRunnable": false,
@@ -196,7 +196,7 @@
   },
   {
     "id": "seed_task_417_c_2",
-    "name": "Confirm Irvine in-house EO capacity for the US validation lots",
+    "name": "Confirm Irvine in-house fill-finish capacity for the US validation lots",
     "owner": "Sourcing agent",
     "detail": "Sourcing agent · in-house, unaffected by the cancellation",
     "agentRunnable": true,
@@ -209,7 +209,7 @@
   },
   {
     "id": "seed_task_417_c_3",
-    "name": "Split the dossier: file the US PMA on schedule, hold the EU Technical Documentation",
+    "name": "Split the dossier: file the US BLA on schedule, hold the EU Technical Documentation",
     "owner": "Regulatory agent",
     "detail": "Regulatory agent · the modular architecture makes this possible",
     "agentRunnable": true,

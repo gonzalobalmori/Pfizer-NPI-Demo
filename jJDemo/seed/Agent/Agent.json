@@ -24,7 +24,7 @@
     "code": "rnd",
     "name": "Design agent",
     "autonomyBand": "Autonomous within guardrails",
-    "toolsPermitted": "Design inputs, outputs, V&V and the DHF",
+    "toolsPermitted": "Design inputs, outputs, V&V and the CTD",
     "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
     "domain": {
       "id": "seed_domain_rnd"
@@ -46,7 +46,7 @@
     "code": "reg",
     "name": "Regulatory agent",
     "autonomyBand": "Autonomous within guardrails",
-    "toolsPermitted": "Dossiers, agency and Notified Body queries",
+    "toolsPermitted": "Dossiers, agency and CHMP rapporteur queries",
     "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
     "domain": {
       "id": "seed_domain_reg"
@@ -90,7 +90,7 @@
     "code": "sc",
     "name": "Supply Chain agent",
     "autonomyBand": "Autonomous within guardrails",
-    "toolsPermitted": "Demand, inventory, logistics and loaner kits",
+    "toolsPermitted": "Demand, inventory, logistics and launch stock",
     "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
     "domain": {
       "id": "seed_domain_sc"
@@ -101,7 +101,7 @@
     "code": "com",
     "name": "Commercial agent",
     "autonomyBand": "Autonomous within guardrails",
-    "toolsPermitted": "Field force, accounts and launch readiness",
+    "toolsPermitted": "Affiliate field teams, accounts and launch readiness",
     "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
     "domain": {
       "id": "seed_domain_com"
@@ -123,7 +123,7 @@
     "code": "it",
     "name": "IT / Data agent",
     "autonomyBand": "Autonomous within guardrails",
-    "toolsPermitted": "Master data, UDI feeds and system integration",
+    "toolsPermitted": "Master data, serialisation feeds and system integration",
     "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
     "domain": {
       "id": "seed_domain_it"

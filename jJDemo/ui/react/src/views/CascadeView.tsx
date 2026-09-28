@@ -2,7 +2,7 @@
  * Milestone replan (#v-cascade) — SCENARIO 1: connected milestone management +
  * dynamic cascade replan. An outside authority (the FDA) moves a launch's
  * clearance date; the platform fans the impact across every downstream
- * commitment — manufacturing schedule, loaner-kit deployment, commercial comms,
+ * commitment — manufacturing schedule, launch stock deployment, commercial comms,
  * carrying cost — auto-adjusting what it safely can and surfacing only the items
  * that genuinely need a human. The screen IS the exception dashboard Jordan/George
  * gets: "N auto-adjusted, M require a human decision."
@@ -287,7 +287,7 @@ export default function CascadeView() {
 
       {!slipped && (
         <div className="cs-hint">
-          The FDA clearance date has not moved yet. Manufacturing has built launch stock, loaner kits are
+          The FDA clearance date has not moved yet. Manufacturing has built launch stock, launch stock are
           staged at the 3PL, and the field is trained for the original go-live. Press{' '}
           <b>run cascade replan</b> to see the six-week slip fan out across every downstream plan.
         </div>

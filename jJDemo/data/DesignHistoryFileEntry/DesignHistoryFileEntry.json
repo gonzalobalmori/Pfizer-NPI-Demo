@@ -3,8 +3,8 @@
     "id": "seed_dhf_varipulse_1",
     "entryAt": "2024-04-12T00:00:00",
     "actor": "R&D",
-    "action": "Design History File opened",
-    "recordRef": "DHF-0720",
+    "action": "CTD dossier opened",
+    "recordRef": "CTD-0720",
     "immutable": true,
     "launch": {
       "id": "seed_launch_varipulse_g2"
@@ -25,7 +25,7 @@
     "id": "seed_dhf_varipulse_3",
     "entryAt": "2026-09-11T06:05:00",
     "actor": "Quality agent",
-    "action": "CAPA-2026-0148 opened against supplier-managed EO sterilisation",
+    "action": "CAPA-2026-0148 opened against supplier-managed fill-finish fill-finish",
     "recordRef": "CAPA-2026-0148",
     "immutable": true,
     "launch": {

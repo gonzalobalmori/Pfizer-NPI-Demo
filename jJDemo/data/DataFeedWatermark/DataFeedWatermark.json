@@ -183,7 +183,7 @@
     "id": "wm_mes_spc",
     "feedCode": "MES_SPC",
     "sourceSystem": "mes",
-    "targetType": "ProcessMeasurement -> Heraeus Finding",
+    "targetType": "ProcessMeasurement -> Aptar Finding",
     "lastWatermark": "20260911",
     "lastLoadedAt": "2026-09-11T08:42:00",
     "lastRowCount": 1817,

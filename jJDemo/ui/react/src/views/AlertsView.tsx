@@ -177,8 +177,8 @@ export default function AlertsView() {
         <div className="hb-m">
           <span className="hb-lb">Waiting on an authority</span>
           <b>{regulatorDays} d</b>
-          {/* Pharma authorities. "Notified Body" is a medical-device conformity
-              assessor under EU MDR and has no role in a pharmaceutical launch — the
+          {/* Pharma authorities. "CHMP rapporteur" is a medical-device conformity
+              assessor under MAA (EMA) and has no role in a pharmaceutical launch — the
               EU reviewer is EMA/CHMP. Corrected as part of the device→pharma
               vocabulary pass; the wider sweep is tracked for M2. */}
           <span className="hb-sb">FDA &middot; EMA &middot; payer</span>
@@ -306,7 +306,7 @@ function AlertRow({ row, onOpen }: { row: IssueRow; onOpen: () => void }) {
  * Time-impact chip — the calendar days this finding is holding on the critical
  * path and whether acting can win them back. `recoverable` (from the backend) is
  * true when the whole cost is accelerable by your own org (SELF / TEAM / AGENT);
- * an AUTHORITY finding is a fixed wait (FDA / Notified Body / reimbursement) that
+ * an AUTHORITY finding is a fixed wait (FDA / CHMP rapporteur / reimbursement) that
  * acting faster cannot compress — the message the user asked to surface.
  */
 function TimeImpactChip({ row }: { row: IssueRow }) {

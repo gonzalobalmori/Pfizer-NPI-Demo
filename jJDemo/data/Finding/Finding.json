@@ -31,8 +31,8 @@
   {
     "id": "seed_finding_417",
     "displayId": "NPI-0417",
-    "headline": "Dual-source to Sterigenics?",
-    "description": "EO sterilisation validation slot cancelled",
+    "headline": "Dual-source to Siegfried?",
+    "description": "Aseptic fill-finish PPQ slot cancelled",
     "signalSource": "10 Sep 19:40 · M. Okafor",
     "detectedAt": "2026-09-10T19:40:00",
     "outcome": "USER",
@@ -40,7 +40,7 @@
     "dependency": "SELF",
     "daysAtStake": 12,
     "exposure": 18400000,
-    "exposureCause": "G3 Submission Commit slip — full Comirnaty first-year launch revenue at risk if the EO sterilisation window is missed",
+    "exposureCause": "G3 Submission Commit slip — full Comirnaty first-year launch revenue at risk if the aseptic fill-finish window is missed",
     "phase": {
       "id": "seed_phase_p3"
     },
@@ -56,7 +56,7 @@
     "id": "seed_finding_388",
     "displayId": "NPI-0388",
     "headline": "Activate the second source before G2?",
-    "description": "Single-source ring electrode supplier at High financial risk",
+    "description": "Single-source lyophilisation stopper supplier at High financial risk",
     "signalSource": "07 Sep 06:12 · agent",
     "detectedAt": "2026-09-07T06:12:00",
     "outcome": "USER",
@@ -64,7 +64,7 @@
     "dependency": "SELF",
     "daysAtStake": 9,
     "exposure": 6200000,
-    "exposureCause": "Single-source ring electrode supplier — Abrysvo G2 Design Freeze exposure if the second source is not activated before the gate",
+    "exposureCause": "Single-source lyophilisation stopper supplier — Abrysvo G2 Design Freeze exposure if the second source is not activated before the gate",
     "phase": {
       "id": "seed_phase_p2"
     },
@@ -135,8 +135,8 @@
   {
     "id": "seed_finding_351",
     "displayId": "NPI-0351",
-    "headline": "Pricing a second sterilisation lane",
-    "description": "Loaner instrument sets not certified for first-case coverage",
+    "headline": "Pricing a second fill-finish lane",
+    "description": "Pre-launch stock not certified for first-case coverage",
     "signalSource": "09 Sep 05:12 · agent",
     "detectedAt": "2026-09-09T05:12:00",
     "outcome": "RUNNING",
@@ -144,7 +144,7 @@
     "dependency": "AGENT",
     "daysAtStake": 8,
     "exposure": 3100000,
-    "exposureCause": "Loaner instrument sets not certified for first-case coverage — Elrexfio G5 launch revenue at risk until a second sterilisation lane is priced",
+    "exposureCause": "Pre-launch stock not certified for first-case coverage — Elrexfio G5 launch revenue at risk until a second fill-finish lane is priced",
     "phase": {
       "id": "seed_phase_p5"
     },
@@ -160,7 +160,7 @@
     "id": "seed_finding_365",
     "displayId": "NPI-0365",
     "headline": "Routed it for signature and chased twice",
-    "description": "Notified Body query cycle 2 — clinical evaluation section",
+    "description": "CHMP rapporteur query cycle 2 — clinical evaluation section",
     "signalSource": "08 Sep 11:20 · you",
     "detectedAt": "2026-09-08T11:20:00",
     "outcome": "HELD",
@@ -190,7 +190,7 @@
     "dependency": "SELF",
     "daysAtStake": 7,
     "exposure": 2800000,
-    "exposureCause": "At-risk build write-off exposure — 2,600 Comirnaty units authorised above delegated authority ahead of G4 CE Certificate",
+    "exposureCause": "At-risk build write-off exposure — 2,600 Comirnaty units authorised above delegated authority ahead of G4 Marketing Authorisation",
     "phase": {
       "id": "seed_phase_p4"
     },
@@ -252,7 +252,7 @@
     "id": "seed_finding_420",
     "displayId": "NPI-0420",
     "headline": "Awaiting FDA deficiency-letter response",
-    "description": "PMA under FDA review — deficiency letter open; no approval until the agency responds",
+    "description": "BLA under FDA review — deficiency letter open; no approval until the agency responds",
     "signalSource": "11 Sep 09:15 · agent",
     "detectedAt": "2026-09-11T09:15:00",
     "outcome": "HELD",
