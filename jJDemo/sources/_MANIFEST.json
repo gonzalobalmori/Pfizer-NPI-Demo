@@ -131,7 +131,7 @@
       "rows": 1,
       "frequency": "daily",
       "arrivalWindow": "03:00 CET",
-      "target": "BSI review window (guardrail check)"
+      "target": "CHMP review window (guardrail check)"
     },
     {
       "system": "lims",
@@ -161,7 +161,7 @@
       "rows": 1817,
       "frequency": "streaming (5-min micro-batch)",
       "arrivalWindow": "continuous",
-      "target": "ProcessMeasurement → Heraeus Finding"
+      "target": "ProcessMeasurement → Aptar Finding"
     },
     {
       "system": "ppm",
@@ -207,8 +207,8 @@
   "intentional_data_quality_issues": [
     "SAP LFA1: LIFNR 0001007988 emitted with trailing whitespace (DQ: trim + still resolve).",
     "SAP LFA1: one duplicate vendor row (DQ: de-dupe on LIFNR).",
-    "D&B: Heraeus Medical Components intentionally has NO DUNS match (partial resolution — resolves as Supplier, flags missing risk rating).",
-    "Crosswalk: Sterigenics certificate name \"Sterigenics US LLC\" ≠ Ariba \"Sterigenics Grand Rapids\" (fuzzy-name miss → manual crosswalk entry resolves on stage).",
+    "D&B: Aptar Pharma Le Vaudreuil intentionally has NO DUNS match (partial resolution — resolves as Supplier, flags missing risk rating).",
+    "Crosswalk: Siegfried certificate name \"Siegfried US LLC\" ≠ Ariba \"Siegfried Hameln\" (fuzzy-name miss → manual crosswalk entry resolves on stage).",
     "LIMS: sample OCT-BIO-07 result_date in DD/MM/YYYY (02/09/2026) not ISO (DQ: normalise date format)."
   ]
 }

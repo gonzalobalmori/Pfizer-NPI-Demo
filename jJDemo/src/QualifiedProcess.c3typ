@@ -1,11 +1,11 @@
 /**
  * A manufacturing/fill-finish process qualified at a {@link Site}. The anchor
- * case hinges on this: Sterigenics Grand Rapids already holds a qualified EO
+ * case hinges on this: Siegfried Hameln already holds a qualified EO
  * fill-finish process (qualified for Abrysvo G2 and Elrexfio IV), so moving to
  * it is a half-cycle revalidation (~21 days) rather than a full one.
  */
 entity type QualifiedProcess mixes SeedData {
-  /** Process type, e.g. "EO sterilisation", "X-ray sterilisation". */
+  /** Process type, e.g. "aseptic fill-finish", "X-ray fill-finish". */
   processType: !string
 
   /** Launches this process is already qualified for, e.g. "Abrysvo G2, Elrexfio IV". */

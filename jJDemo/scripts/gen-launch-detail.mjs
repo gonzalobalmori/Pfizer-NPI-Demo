@@ -6,7 +6,7 @@
  * no-op diff):
  *   1. data/Launch/Launch.json      — augments each launch with attested scope
  *                                     fields (launch value, build units, field
- *                                     force, VAC, registrations, sterilisation,
+ *                                     force, payer, registrations, fill-finish,
  *                                     manufacture site).
  *   2. data/Gate/Gate.json          — completes each launch's G1..G5 (+BAU where
  *                                     it ships) ladder so phases behind the
@@ -124,26 +124,26 @@ const AUTHORED = {
 /* ── criteria templates per gate code ────────────────────────────── */
 const CRITERIA = {
   G1: ['Business case approved', 'Development & CMC Plan baselined', 'Regulatory strategy and pathway defined', 'Project RACI and budget approved', 'Feasibility risk assessment complete', 'Clinical strategy outlined'],
-  G2: ['Design inputs frozen', 'Design FMEA complete', 'Requirements traceability established', 'Design review minutes signed off', 'Risk management file drafted', 'Verification protocols approved'],
-  G3: ['Design verification complete', 'Design validation complete', 'Clinical evaluation report approved', 'EU MDR Technical Documentation complete', 'Risk management file current', 'Sterilisation validation report approved'],
+  G2: ['CMC package locked', 'Design FMEA complete', 'Requirements traceability established', 'Design review minutes signed off', 'Risk management file drafted', 'Verification protocols approved'],
+  G3: ['Analytical verification complete', 'Process validation complete', 'Clinical study report approved', 'CTD Module 3 quality dossier complete', 'Risk management file current', 'Process Performance Qualification report approved'],
   G4: ['Regulatory submission accepted for review', 'Design transfer to manufacturing complete', 'Process validation (IQ/OQ/PQ) complete', 'CHMP rapporteur / FDA queries closed', 'Labelling and IFU finalised', 'QMS audit readiness confirmed'],
-  G5: ['Regulatory clearance / CE certificate received', 'Launch build complete and released', 'Field force trained and certified', 'Distribution and 3PL agreements signed', 'Value Analysis Committee approvals secured', 'Pharmacovigilance & post-launch plan in place'],
+  G5: ['Marketing Authorisation received', 'Launch build complete and released', 'Affiliate field teams trained and certified', 'Distribution and 3PL agreements signed', 'Value Analysis Committee approvals secured', 'Pharmacovigilance & post-launch plan in place'],
   BAU: ['Launch KPIs meeting target', 'Complaint handling in steady state', 'PMCF plan active', 'Supply chain at safety stock', 'Commercial ramp on plan', 'Programme handed to BAU owner'],
 };
 /* short outstanding reasons keyed by "<code>#<criterion index>" for late gates. */
 function reasonFor(code, name) {
   const R = {
-    'Sterilisation validation report approved': 'Sterilisation validation slot slipped; report awaiting site data',
-    'EU MDR Technical Documentation complete': 'Technical documentation at 96%; two annexes outstanding with the CHMP rapporteur',
-    'CMC Lock': 'Design inputs not yet frozen; late change request under review',
-    'Design inputs frozen': 'Late change request under review; freeze held pending disposition',
+    'Process Performance Qualification report approved': 'Fill-finish validation slot slipped; report awaiting site data',
+    'CTD Module 3 quality dossier complete': 'Technical documentation at 96%; two annexes outstanding with the CHMP rapporteur',
+    'CMC Lock': 'Target product profile not yet frozen; late change request under review',
+    'CMC package locked': 'Late change request under review; freeze held pending disposition',
     'Verification protocols approved': 'Two verification protocols awaiting sign-off',
     'Regulatory submission accepted for review': 'Submission returned with deficiency questions; response in preparation',
-    'CHMP rapporteur / FDA queries closed': 'Open CHMP rapporteur queries on biocompatibility not yet closed',
+    'CHMP rapporteur / FDA queries closed': 'Open CHMP rapporteur queries on extractables and leachables not yet closed',
     'Process validation (IQ/OQ/PQ) complete': 'PQ run held for equipment qualification',
-    'Regulatory clearance / CE certificate received': 'Certificate pending — CHMP rapporteur review slot at risk',
-    'Field force trained and certified': 'Field-force certification behind plan',
-    'Value Analysis Committee approvals secured': 'VAC approvals behind target across key accounts',
+    'Marketing Authorisation received': 'Certificate pending — CHMP rapporteur review slot at risk',
+    'Affiliate field teams trained and certified': 'Field-force certification behind plan',
+    'Value Analysis Committee approvals secured': 'Payer listings behind target across key accounts',
   };
   return R[name] || `${name} outstanding — action open`;
 }

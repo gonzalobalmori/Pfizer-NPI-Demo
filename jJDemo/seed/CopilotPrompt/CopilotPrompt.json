@@ -30,8 +30,8 @@
           "flag": "a"
         },
         {
-          "title": "NPI-0371 · Sign the two G2 design inputs",
-          "body": "Usability and transit summaries. Quality drafted both from the test data, traced, no criteria waived. G2 closes on schedule if you sign.",
+          "title": "NPI-0371 · Sign the two G2 target product profile",
+          "body": "Human factors and transit summaries. Quality drafted both from the test data, traced, no criteria waived. G2 closes on schedule if you sign.",
           "when": "Due 18 Sep",
           "flag": "a"
         }
@@ -137,7 +137,7 @@
         },
         {
           "label": "Lead market",
-          "value": "Germany, then France and Spain · BSI Q4 review slot holds for now"
+          "value": "Germany, then France and Spain · CHMP Q4 review slot holds for now"
         }
       ],
       "rec": "Treat this as one supplier decision, not four findings",
@@ -175,7 +175,7 @@
     "showsGuardrails": false,
     "answer": {
       "prose": [
-        "One thing: the 12 Oct fill-finish line slot at Vetter Ravensburg, cancelled by the supplier. Without it the PPQ validation report slips to 19 Dec, MAA (EMA) section 4.3 stays open, and the BSI Q4 review slot lapses — another 31 days on top of the 47."
+        "One thing: the 12 Oct fill-finish line slot at Vetter Ravensburg, cancelled by the supplier. Without it the PPQ validation report slips to 19 Dec, MAA (EMA) section 4.3 stays open, and the CHMP Q4 review slot lapses — another 31 days on top of the 47."
       ],
       "prose2": [
         "The fleet has already done the work. Quality read the cancellation off the portal, Planning recomputed the critical path, Sourcing priced three alternative sites and Regulatory checked the dossier would survive a 9-day shift. What is left is a €340k authorisation, which is yours."
@@ -195,12 +195,12 @@
         },
         {
           "label": "Checked against",
-          "value": "BSI Q4 slot holds at +9 days. It does not hold at +47."
+          "value": "CHMP Q4 slot holds at +9 days. It does not hold at +47."
         }
       ],
       "rec": "Dual-source to Siegfried Hameln",
       "why": [
-        "Recovers 38 of the 47 days — the only option of the three that keeps the BSI slot",
+        "Recovers 38 of the 47 days — the only option of the three that keeps the CHMP slot",
         "Switching modality to X-ray costs 62 days and €1.1M and forfeits the slot",
         "Going US-first needs a G1 reversal, which is a bigger decision than this one"
       ],
@@ -334,16 +334,16 @@
     "showsGuardrails": false,
     "answer": {
       "prose": [
-        "Germany is the lead market for five of the nine launches and it carries the most exposure of any market, because the MAA (EMA) path and the BSI review slot both sit behind it."
+        "Germany is the lead market for five of the nine launches and it carries the most exposure of any market, because the MAA (EMA) path and the CHMP review slot both sit behind it."
       ],
       "evidence": [
         {
           "label": "Comirnaty Gen 2",
-          "value": "G3 Submission Commit · €18.4M exposed on the EO slot. The BSI Q4 slot is the constraint, not the validation work."
+          "value": "G3 Submission Commit · €18.4M exposed on the EO slot. The CHMP Q4 slot is the constraint, not the validation work."
         },
         {
           "label": "Abrysvo Gen 2",
-          "value": "G2 CMC Lock 30 Sep · two unsigned design inputs and the Aptar single source. Both are yours this week."
+          "value": "G2 CMC Lock 30 Sep · two unsigned target product profile and the Aptar single source. Both are yours this week."
         },
         {
           "label": "Elrexfio IV",
@@ -396,27 +396,27 @@
           "value": "NPI-0420 — BLA under review, a deficiency letter is open. 45 days at stake, no approval until the agency responds. This is on the authority, not on us: acting here will not move the date."
         },
         {
-          "label": "BSI CHMP rapporteur · Comirnaty Gen 2",
+          "label": "CHMP CHMP rapporteur · Comirnaty Gen 2",
           "value": "Q4 review slot holds only while G3 stays at +9 days. Miss the window and the next confirmed slot is February — another 31 days. The slot is the real regulatory deadline, not the validation work."
         },
         {
-          "label": "BSI CHMP rapporteur · Prevnar 20",
+          "label": "CHMP CHMP rapporteur · Prevnar 20",
           "value": "NPI-0365 — a query-cycle-2 response has been drafted and unsigned for 6 days. The 21-day clock-stop is running. This is the one thread you can move: it needs a qualified signatory, S. Lindqvist, and it is already escalated."
         },
         {
           "label": "Questions on the table",
-          "value": "FDA: fill-finish-residual limits and the extractables and leachables bridge. BSI: the clinical evaluation equivalence rationale. Every query has a traced response pack assembled from the CER and the Master Batch Record."
+          "value": "FDA: fill-finish-residual limits and the extractables and leachables bridge. BSI: the clinical evidence equivalence rationale. Every query has a traced response pack assembled from the CSR and the Master Batch Record."
         },
         {
           "label": "On-site audit",
-          "value": "BSI unannounced site visit expected this quarter — a gemba walk of Aptar line 3 and the Neuss second source. The line-3 CAPA and the dimensional SPC record are what they will ask to see."
+          "value": "CHMP unannounced site visit expected this quarter — a gemba walk of Aptar line 3 and the Neuss second source. The line-3 CAPA and the dimensional SPC record are what they will ask to see."
         }
       ],
-      "rec": "Push NPI-0365 to signature today; keep FDA and the BSI slot un-blocked, don't chase them",
+      "rec": "Push NPI-0365 to signature today; keep FDA and the CHMP slot un-blocked, don't chase them",
       "why": [
         "NPI-0365 is the only agency thread where the next step is yours — every unsigned day is a day of G4",
         "The FDA deficiency clock (NPI-0420) is on the authority; acting here won't move it, so the workspace is view-only by design",
-        "The BSI Q4 slot survives at +9 days and lapses at +47 — protecting the G3 date is what protects the review window"
+        "The CHMP Q4 slot survives at +9 days and lapses at +47 — protecting the G3 date is what protects the review window"
       ],
       "confidence": "Read from the ownership field on each agency thread, not a status someone typed. Two are authority-bound; one is yours.",
       "actions": [

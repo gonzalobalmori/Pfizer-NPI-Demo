@@ -1,7 +1,7 @@
 /**
- * A physical site operated by a {@link Supplier} — e.g. Sterigenics Grand
- * Rapids, Steris Venlo, Heraeus Cashel (IE) and Neuss (DE). A site holds the
- * {@link QualifiedProcess}es (such as EO sterilisation) that determine whether
+ * A physical site operated by a {@link Supplier} — e.g. Siegfried Grand
+ * Rapids, Vetter Ravensburg, Aptar Cashel (IE) and Neuss (DE). A site holds the
+ * {@link QualifiedProcess}es (such as aseptic fill-finish) that determine whether
  * it can execute a validation lot.
  */
 entity type Site mixes SeedData {
@@ -11,10 +11,10 @@ entity type Site mixes SeedData {
   /** Location, e.g. "Grand Rapids, MI, US" or "Cashel, IE". */
   location: string
 
-  /** Capabilities summary, e.g. "EO sterilisation". */
+  /** Capabilities summary, e.g. "aseptic fill-finish". */
   capabilities: string
 
-  /** Date from which capacity becomes available, e.g. 29 Sep for Sterigenics. */
+  /** Date from which capacity becomes available, e.g. 29 Sep for Siegfried. */
   capacityAvailableFrom: datetime
 
   /** The supplier that operates this site. */

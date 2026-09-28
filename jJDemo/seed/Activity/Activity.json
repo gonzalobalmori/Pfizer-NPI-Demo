@@ -47,7 +47,7 @@
   },
   {
     "id": "seed_activity_varipulse_p1_2",
-    "name": "Initiate the risk management file, ISO 14971 hazard analysis",
+    "name": "Initiate the risk management plan, ICH Q9 risk assessment",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "rev 4 current",
@@ -119,7 +119,7 @@
     "name": "Book the FDA Type C meeting and reserve EMA scientific advice",
     "status": "Complete",
     "statusCode": "ok",
-    "detail": "BSI slot Q4 26",
+    "detail": "CHMP slot Q4 26",
     "phase": {
       "id": "seed_phase_p1"
     },
@@ -392,7 +392,7 @@
   },
   {
     "id": "seed_activity_varipulse_p2_1",
-    "name": "Lock the design inputs and build the traceability matrix",
+    "name": "Lock the target product profile and build the traceability matrix",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "DIR v6 locked",
@@ -507,7 +507,7 @@
   },
   {
     "id": "seed_activity_varipulse_p2_6",
-    "name": "Incorporate pre-sub feedback, agree the V&V battery with FDA",
+    "name": "Incorporate pre-submission feedback, agree the validation package with FDA",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "agreed 11 Feb 25",
@@ -829,7 +829,7 @@
   },
   {
     "id": "seed_activity_varipulse_p3_1",
-    "name": "Design verification: bench, mechanical, electrical and software V&V",
+    "name": "Analytical verification: assay, stability and process validation",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "34 protocols passed",
@@ -852,7 +852,7 @@
   },
   {
     "id": "seed_activity_varipulse_p3_2",
-    "name": "Design validation: usability and human factors, IEC 62366",
+    "name": "Human factors validation for the combination presentation",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "signed 22 Aug",
@@ -875,7 +875,7 @@
   },
   {
     "id": "seed_activity_varipulse_p3_3",
-    "name": "Extractables and leachables, stability and accelerated ageing",
+    "name": "Extractables and leachables, stability and accelerated stability",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "24-mo claim",
@@ -944,7 +944,7 @@
   },
   {
     "id": "seed_activity_varipulse_p3_6",
-    "name": "Identify the proctor faculty and plan the labs",
+    "name": "Identify the MSL faculty and plan the advisory boards",
     "status": "In progress",
     "statusCode": "run",
     "detail": "9 of 14 confirmed",
@@ -1818,7 +1818,7 @@
   },
   {
     "id": "seed_activity_varipulse_p4_17",
-    "name": "Build field-force training, schedule proctors, account plans",
+    "name": "Build field-force training, schedule MSLs, account plans",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -1956,7 +1956,7 @@
   },
   {
     "id": "seed_activity_varipulse_p5_1",
-    "name": "KOL education calendar, proctor roster, first-case support",
+    "name": "KOL education calendar, MSL roster, launch medical support",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -2278,7 +2278,7 @@
   },
   {
     "id": "seed_activity_varipulse_p6_1",
-    "name": "Execute post-market clinical follow-up, registry data",
+    "name": "Execute post-authorisation safety study, registry data",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -2508,7 +2508,7 @@
   },
   {
     "id": "seed_activity_octaray_p1_2",
-    "name": "Initiate the risk management file, ISO 14971 hazard analysis",
+    "name": "Initiate the risk management plan, ICH Q9 risk assessment",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -2853,7 +2853,7 @@
   },
   {
     "id": "seed_activity_octaray_p2_1",
-    "name": "Lock the design inputs and build the traceability matrix",
+    "name": "Lock the target product profile and build the traceability matrix",
     "status": "In progress",
     "statusCode": "run",
     "detail": "in progress",
@@ -2968,7 +2968,7 @@
   },
   {
     "id": "seed_activity_octaray_p2_6",
-    "name": "Incorporate pre-sub feedback, agree the V&V battery with FDA",
+    "name": "Incorporate pre-submission feedback, agree the validation package with FDA",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -3290,7 +3290,7 @@
   },
   {
     "id": "seed_activity_octaray_p3_1",
-    "name": "Design verification: bench, mechanical, electrical and software V&V",
+    "name": "Analytical verification: assay, stability and process validation",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -3313,7 +3313,7 @@
   },
   {
     "id": "seed_activity_octaray_p3_2",
-    "name": "Design validation: usability and human factors, IEC 62366",
+    "name": "Human factors validation for the combination presentation",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -3336,7 +3336,7 @@
   },
   {
     "id": "seed_activity_octaray_p3_3",
-    "name": "Extractables and leachables, stability and accelerated ageing",
+    "name": "Extractables and leachables, stability and accelerated stability",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -3405,7 +3405,7 @@
   },
   {
     "id": "seed_activity_octaray_p3_6",
-    "name": "Identify the proctor faculty and plan the labs",
+    "name": "Identify the MSL faculty and plan the advisory boards",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -4279,7 +4279,7 @@
   },
   {
     "id": "seed_activity_octaray_p4_17",
-    "name": "Build field-force training, schedule proctors, account plans",
+    "name": "Build field-force training, schedule MSLs, account plans",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -4417,7 +4417,7 @@
   },
   {
     "id": "seed_activity_octaray_p5_1",
-    "name": "KOL education calendar, proctor roster, first-case support",
+    "name": "KOL education calendar, MSL roster, launch medical support",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -4739,7 +4739,7 @@
   },
   {
     "id": "seed_activity_octaray_p6_1",
-    "name": "Execute post-market clinical follow-up, registry data",
+    "name": "Execute post-authorisation safety study, registry data",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -4969,7 +4969,7 @@
   },
   {
     "id": "seed_activity_embotrap_p1_2",
-    "name": "Initiate the risk management file, ISO 14971 hazard analysis",
+    "name": "Initiate the risk management plan, ICH Q9 risk assessment",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5314,7 +5314,7 @@
   },
   {
     "id": "seed_activity_embotrap_p2_1",
-    "name": "Lock the design inputs and build the traceability matrix",
+    "name": "Lock the target product profile and build the traceability matrix",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5429,7 +5429,7 @@
   },
   {
     "id": "seed_activity_embotrap_p2_6",
-    "name": "Incorporate pre-sub feedback, agree the V&V battery with FDA",
+    "name": "Incorporate pre-submission feedback, agree the validation package with FDA",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5751,7 +5751,7 @@
   },
   {
     "id": "seed_activity_embotrap_p3_1",
-    "name": "Design verification: bench, mechanical, electrical and software V&V",
+    "name": "Analytical verification: assay, stability and process validation",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5774,7 +5774,7 @@
   },
   {
     "id": "seed_activity_embotrap_p3_2",
-    "name": "Design validation: usability and human factors, IEC 62366",
+    "name": "Human factors validation for the combination presentation",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5797,7 +5797,7 @@
   },
   {
     "id": "seed_activity_embotrap_p3_3",
-    "name": "Extractables and leachables, stability and accelerated ageing",
+    "name": "Extractables and leachables, stability and accelerated stability",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -5866,7 +5866,7 @@
   },
   {
     "id": "seed_activity_embotrap_p3_6",
-    "name": "Identify the proctor faculty and plan the labs",
+    "name": "Identify the MSL faculty and plan the advisory boards",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -6740,7 +6740,7 @@
   },
   {
     "id": "seed_activity_embotrap_p4_17",
-    "name": "Build field-force training, schedule proctors, account plans",
+    "name": "Build field-force training, schedule MSLs, account plans",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -6878,7 +6878,7 @@
   },
   {
     "id": "seed_activity_embotrap_p5_1",
-    "name": "KOL education calendar, proctor roster, first-case support",
+    "name": "KOL education calendar, MSL roster, launch medical support",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -7200,7 +7200,7 @@
   },
   {
     "id": "seed_activity_embotrap_p6_1",
-    "name": "Execute post-market clinical follow-up, registry data",
+    "name": "Execute post-authorisation safety study, registry data",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -7430,7 +7430,7 @@
   },
   {
     "id": "seed_activity_impella_p1_2",
-    "name": "Initiate the risk management file, ISO 14971 hazard analysis",
+    "name": "Initiate the risk management plan, ICH Q9 risk assessment",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -7775,7 +7775,7 @@
   },
   {
     "id": "seed_activity_impella_p2_1",
-    "name": "Lock the design inputs and build the traceability matrix",
+    "name": "Lock the target product profile and build the traceability matrix",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -7890,7 +7890,7 @@
   },
   {
     "id": "seed_activity_impella_p2_6",
-    "name": "Incorporate pre-sub feedback, agree the V&V battery with FDA",
+    "name": "Incorporate pre-submission feedback, agree the validation package with FDA",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -8212,7 +8212,7 @@
   },
   {
     "id": "seed_activity_impella_p3_1",
-    "name": "Design verification: bench, mechanical, electrical and software V&V",
+    "name": "Analytical verification: assay, stability and process validation",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -8235,7 +8235,7 @@
   },
   {
     "id": "seed_activity_impella_p3_2",
-    "name": "Design validation: usability and human factors, IEC 62366",
+    "name": "Human factors validation for the combination presentation",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -8258,7 +8258,7 @@
   },
   {
     "id": "seed_activity_impella_p3_3",
-    "name": "Extractables and leachables, stability and accelerated ageing",
+    "name": "Extractables and leachables, stability and accelerated stability",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -8327,7 +8327,7 @@
   },
   {
     "id": "seed_activity_impella_p3_6",
-    "name": "Identify the proctor faculty and plan the labs",
+    "name": "Identify the MSL faculty and plan the advisory boards",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -9201,7 +9201,7 @@
   },
   {
     "id": "seed_activity_impella_p4_17",
-    "name": "Build field-force training, schedule proctors, account plans",
+    "name": "Build field-force training, schedule MSLs, account plans",
     "status": "In progress",
     "statusCode": "run",
     "detail": "in progress",
@@ -9339,7 +9339,7 @@
   },
   {
     "id": "seed_activity_impella_p5_1",
-    "name": "KOL education calendar, proctor roster, first-case support",
+    "name": "KOL education calendar, MSL roster, launch medical support",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -9661,7 +9661,7 @@
   },
   {
     "id": "seed_activity_impella_p6_1",
-    "name": "Execute post-market clinical follow-up, registry data",
+    "name": "Execute post-authorisation safety study, registry data",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -9891,7 +9891,7 @@
   },
   {
     "id": "seed_activity_javelin_p1_2",
-    "name": "Initiate the risk management file, ISO 14971 hazard analysis",
+    "name": "Initiate the risk management plan, ICH Q9 risk assessment",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10236,7 +10236,7 @@
   },
   {
     "id": "seed_activity_javelin_p2_1",
-    "name": "Lock the design inputs and build the traceability matrix",
+    "name": "Lock the target product profile and build the traceability matrix",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10351,7 +10351,7 @@
   },
   {
     "id": "seed_activity_javelin_p2_6",
-    "name": "Incorporate pre-sub feedback, agree the V&V battery with FDA",
+    "name": "Incorporate pre-submission feedback, agree the validation package with FDA",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10673,7 +10673,7 @@
   },
   {
     "id": "seed_activity_javelin_p3_1",
-    "name": "Design verification: bench, mechanical, electrical and software V&V",
+    "name": "Analytical verification: assay, stability and process validation",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10696,7 +10696,7 @@
   },
   {
     "id": "seed_activity_javelin_p3_2",
-    "name": "Design validation: usability and human factors, IEC 62366",
+    "name": "Human factors validation for the combination presentation",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10719,7 +10719,7 @@
   },
   {
     "id": "seed_activity_javelin_p3_3",
-    "name": "Extractables and leachables, stability and accelerated ageing",
+    "name": "Extractables and leachables, stability and accelerated stability",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -10788,7 +10788,7 @@
   },
   {
     "id": "seed_activity_javelin_p3_6",
-    "name": "Identify the proctor faculty and plan the labs",
+    "name": "Identify the MSL faculty and plan the advisory boards",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -11662,7 +11662,7 @@
   },
   {
     "id": "seed_activity_javelin_p4_17",
-    "name": "Build field-force training, schedule proctors, account plans",
+    "name": "Build field-force training, schedule MSLs, account plans",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -11800,7 +11800,7 @@
   },
   {
     "id": "seed_activity_javelin_p5_1",
-    "name": "KOL education calendar, proctor roster, first-case support",
+    "name": "KOL education calendar, MSL roster, launch medical support",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -12122,7 +12122,7 @@
   },
   {
     "id": "seed_activity_javelin_p6_1",
-    "name": "Execute post-market clinical follow-up, registry data",
+    "name": "Execute post-authorisation safety study, registry data",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -12352,7 +12352,7 @@
   },
   {
     "id": "seed_activity_ethicon_p1_2",
-    "name": "Initiate the risk management file, ISO 14971 hazard analysis",
+    "name": "Initiate the risk management plan, ICH Q9 risk assessment",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -12697,7 +12697,7 @@
   },
   {
     "id": "seed_activity_ethicon_p2_1",
-    "name": "Lock the design inputs and build the traceability matrix",
+    "name": "Lock the target product profile and build the traceability matrix",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -12812,7 +12812,7 @@
   },
   {
     "id": "seed_activity_ethicon_p2_6",
-    "name": "Incorporate pre-sub feedback, agree the V&V battery with FDA",
+    "name": "Incorporate pre-submission feedback, agree the validation package with FDA",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -13134,7 +13134,7 @@
   },
   {
     "id": "seed_activity_ethicon_p3_1",
-    "name": "Design verification: bench, mechanical, electrical and software V&V",
+    "name": "Analytical verification: assay, stability and process validation",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -13157,7 +13157,7 @@
   },
   {
     "id": "seed_activity_ethicon_p3_2",
-    "name": "Design validation: usability and human factors, IEC 62366",
+    "name": "Human factors validation for the combination presentation",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -13180,7 +13180,7 @@
   },
   {
     "id": "seed_activity_ethicon_p3_3",
-    "name": "Extractables and leachables, stability and accelerated ageing",
+    "name": "Extractables and leachables, stability and accelerated stability",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -13249,7 +13249,7 @@
   },
   {
     "id": "seed_activity_ethicon_p3_6",
-    "name": "Identify the proctor faculty and plan the labs",
+    "name": "Identify the MSL faculty and plan the advisory boards",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -14123,7 +14123,7 @@
   },
   {
     "id": "seed_activity_ethicon_p4_17",
-    "name": "Build field-force training, schedule proctors, account plans",
+    "name": "Build field-force training, schedule MSLs, account plans",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -14261,7 +14261,7 @@
   },
   {
     "id": "seed_activity_ethicon_p5_1",
-    "name": "KOL education calendar, proctor roster, first-case support",
+    "name": "KOL education calendar, MSL roster, launch medical support",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -14583,7 +14583,7 @@
   },
   {
     "id": "seed_activity_ethicon_p6_1",
-    "name": "Execute post-market clinical follow-up, registry data",
+    "name": "Execute post-authorisation safety study, registry data",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -14813,7 +14813,7 @@
   },
   {
     "id": "seed_activity_dualto_p1_2",
-    "name": "Initiate the risk management file, ISO 14971 hazard analysis",
+    "name": "Initiate the risk management plan, ICH Q9 risk assessment",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -15158,7 +15158,7 @@
   },
   {
     "id": "seed_activity_dualto_p2_1",
-    "name": "Lock the design inputs and build the traceability matrix",
+    "name": "Lock the target product profile and build the traceability matrix",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -15273,7 +15273,7 @@
   },
   {
     "id": "seed_activity_dualto_p2_6",
-    "name": "Incorporate pre-sub feedback, agree the V&V battery with FDA",
+    "name": "Incorporate pre-submission feedback, agree the validation package with FDA",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -15595,7 +15595,7 @@
   },
   {
     "id": "seed_activity_dualto_p3_1",
-    "name": "Design verification: bench, mechanical, electrical and software V&V",
+    "name": "Analytical verification: assay, stability and process validation",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -15618,7 +15618,7 @@
   },
   {
     "id": "seed_activity_dualto_p3_2",
-    "name": "Design validation: usability and human factors, IEC 62366",
+    "name": "Human factors validation for the combination presentation",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -15641,7 +15641,7 @@
   },
   {
     "id": "seed_activity_dualto_p3_3",
-    "name": "Extractables and leachables, stability and accelerated ageing",
+    "name": "Extractables and leachables, stability and accelerated stability",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -15710,7 +15710,7 @@
   },
   {
     "id": "seed_activity_dualto_p3_6",
-    "name": "Identify the proctor faculty and plan the labs",
+    "name": "Identify the MSL faculty and plan the advisory boards",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -16584,7 +16584,7 @@
   },
   {
     "id": "seed_activity_dualto_p4_17",
-    "name": "Build field-force training, schedule proctors, account plans",
+    "name": "Build field-force training, schedule MSLs, account plans",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -16722,7 +16722,7 @@
   },
   {
     "id": "seed_activity_dualto_p5_1",
-    "name": "KOL education calendar, proctor roster, first-case support",
+    "name": "KOL education calendar, MSL roster, launch medical support",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -17044,7 +17044,7 @@
   },
   {
     "id": "seed_activity_dualto_p6_1",
-    "name": "Execute post-market clinical follow-up, registry data",
+    "name": "Execute post-authorisation safety study, registry data",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -17274,7 +17274,7 @@
   },
   {
     "id": "seed_activity_ottava_p1_2",
-    "name": "Initiate the risk management file, ISO 14971 hazard analysis",
+    "name": "Initiate the risk management plan, ICH Q9 risk assessment",
     "status": "In progress",
     "statusCode": "run",
     "detail": "in progress",
@@ -17619,7 +17619,7 @@
   },
   {
     "id": "seed_activity_ottava_p2_1",
-    "name": "Lock the design inputs and build the traceability matrix",
+    "name": "Lock the target product profile and build the traceability matrix",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -17734,7 +17734,7 @@
   },
   {
     "id": "seed_activity_ottava_p2_6",
-    "name": "Incorporate pre-sub feedback, agree the V&V battery with FDA",
+    "name": "Incorporate pre-submission feedback, agree the validation package with FDA",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -18056,7 +18056,7 @@
   },
   {
     "id": "seed_activity_ottava_p3_1",
-    "name": "Design verification: bench, mechanical, electrical and software V&V",
+    "name": "Analytical verification: assay, stability and process validation",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -18079,7 +18079,7 @@
   },
   {
     "id": "seed_activity_ottava_p3_2",
-    "name": "Design validation: usability and human factors, IEC 62366",
+    "name": "Human factors validation for the combination presentation",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -18102,7 +18102,7 @@
   },
   {
     "id": "seed_activity_ottava_p3_3",
-    "name": "Extractables and leachables, stability and accelerated ageing",
+    "name": "Extractables and leachables, stability and accelerated stability",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -18171,7 +18171,7 @@
   },
   {
     "id": "seed_activity_ottava_p3_6",
-    "name": "Identify the proctor faculty and plan the labs",
+    "name": "Identify the MSL faculty and plan the advisory boards",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -19045,7 +19045,7 @@
   },
   {
     "id": "seed_activity_ottava_p4_17",
-    "name": "Build field-force training, schedule proctors, account plans",
+    "name": "Build field-force training, schedule MSLs, account plans",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -19183,7 +19183,7 @@
   },
   {
     "id": "seed_activity_ottava_p5_1",
-    "name": "KOL education calendar, proctor roster, first-case support",
+    "name": "KOL education calendar, MSL roster, launch medical support",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -19505,7 +19505,7 @@
   },
   {
     "id": "seed_activity_ottava_p6_1",
-    "name": "Execute post-market clinical follow-up, registry data",
+    "name": "Execute post-authorisation safety study, registry data",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -19735,7 +19735,7 @@
   },
   {
     "id": "seed_activity_puresee_p1_2",
-    "name": "Initiate the risk management file, ISO 14971 hazard analysis",
+    "name": "Initiate the risk management plan, ICH Q9 risk assessment",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -20080,7 +20080,7 @@
   },
   {
     "id": "seed_activity_puresee_p2_1",
-    "name": "Lock the design inputs and build the traceability matrix",
+    "name": "Lock the target product profile and build the traceability matrix",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -20195,7 +20195,7 @@
   },
   {
     "id": "seed_activity_puresee_p2_6",
-    "name": "Incorporate pre-sub feedback, agree the V&V battery with FDA",
+    "name": "Incorporate pre-submission feedback, agree the validation package with FDA",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -20517,7 +20517,7 @@
   },
   {
     "id": "seed_activity_puresee_p3_1",
-    "name": "Design verification: bench, mechanical, electrical and software V&V",
+    "name": "Analytical verification: assay, stability and process validation",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -20540,7 +20540,7 @@
   },
   {
     "id": "seed_activity_puresee_p3_2",
-    "name": "Design validation: usability and human factors, IEC 62366",
+    "name": "Human factors validation for the combination presentation",
     "status": "In progress",
     "statusCode": "run",
     "detail": "in progress",
@@ -20563,7 +20563,7 @@
   },
   {
     "id": "seed_activity_puresee_p3_3",
-    "name": "Extractables and leachables, stability and accelerated ageing",
+    "name": "Extractables and leachables, stability and accelerated stability",
     "status": "Complete",
     "statusCode": "ok",
     "detail": "complete",
@@ -20632,7 +20632,7 @@
   },
   {
     "id": "seed_activity_puresee_p3_6",
-    "name": "Identify the proctor faculty and plan the labs",
+    "name": "Identify the MSL faculty and plan the advisory boards",
     "status": "In progress",
     "statusCode": "run",
     "detail": "in progress",
@@ -21506,7 +21506,7 @@
   },
   {
     "id": "seed_activity_puresee_p4_17",
-    "name": "Build field-force training, schedule proctors, account plans",
+    "name": "Build field-force training, schedule MSLs, account plans",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -21644,7 +21644,7 @@
   },
   {
     "id": "seed_activity_puresee_p5_1",
-    "name": "KOL education calendar, proctor roster, first-case support",
+    "name": "KOL education calendar, MSL roster, launch medical support",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",
@@ -21966,7 +21966,7 @@
   },
   {
     "id": "seed_activity_puresee_p6_1",
-    "name": "Execute post-market clinical follow-up, registry data",
+    "name": "Execute post-authorisation safety study, registry data",
     "status": "Not started",
     "statusCode": "no",
     "detail": "",

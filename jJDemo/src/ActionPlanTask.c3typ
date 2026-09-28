@@ -5,7 +5,7 @@
  * dispatched — part of the atomic cascade.
  */
 entity type ActionPlanTask {
-  /** Task description, e.g. "Book the 29 Sep chamber slot at Sterigenics and issue the capacity PO". */
+  /** Task description, e.g. "Book the 29 Sep chamber slot at Siegfried and issue the capacity PO". */
   name: !string
 
   /** Owner — an agent code or a person's initials, e.g. "Sourcing agent", "M. Okafor". */

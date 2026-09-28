@@ -1,42 +1,42 @@
 [
   {
     "supplier_id": "AN01-STERIS-VENLO",
-    "supplier_name": "Steris Venlo",
+    "supplier_name": "Vetter Ravensburg",
     "qualification_status": "Qualified",
     "audit_valid_to": "2027-12-31",
     "asl_flag": "Y",
     "capacity_available_from": "2026-11-28",
     "single_source": "N",
-    "category": "Sterilisation & Contract Mfg"
+    "category": "Fill-finish & Contract Mfg"
   },
   {
     "supplier_id": "AN02-STERIGENICS-GR",
-    "supplier_name": "Sterigenics Grand Rapids",
+    "supplier_name": "Siegfried Hameln",
     "qualification_status": "Qualified",
     "audit_valid_to": "2028-03-22",
     "asl_flag": "Y",
     "capacity_available_from": "2026-09-29",
     "single_source": "N",
-    "category": "Sterilisation & Contract Mfg"
+    "category": "Fill-finish & Contract Mfg"
   },
   {
     "supplier_id": "AN05-HERAEUS-MC",
-    "supplier_name": "Heraeus Medical Components",
+    "supplier_name": "Aptar Pharma Le Vaudreuil",
     "qualification_status": "Conditional",
     "audit_valid_to": "2027-06-30",
     "asl_flag": "Y",
     "capacity_available_from": "2026-09-01",
     "single_source": "Y",
-    "category": "Sterilisation & Contract Mfg"
+    "category": "Fill-finish & Contract Mfg"
   },
   {
     "supplier_id": "AN09-BSI-NB",
-    "supplier_name": "BSI (Notified Body)",
+    "supplier_name": "Eurofins Scientific",
     "qualification_status": "Qualified",
     "audit_valid_to": "2028-01-31",
     "asl_flag": "Y",
     "capacity_available_from": "",
     "single_source": "N",
-    "category": "Sterilisation & Contract Mfg"
+    "category": "Fill-finish & Contract Mfg"
   }
 ]

@@ -516,7 +516,7 @@ function evaluateOptions(eventId) {
 
   /* ---- Option A: rework the held batches -------------------------------- *
    * Ruled out by container-closure integrity: a lyophilised product cannot be
-   * de-stoppered and re-stoppered without breaching the sterile barrier.      */
+   * de-stoppered and re-stoppered without breaching the container closure integrity.      */
   var isLyo = ('' + (e.launch && e.launch.deviceName || '')).length > 0 &&
               batches.length > 0 &&
               ('' + (batches[0].presentation || '')).toLowerCase().indexOf('lyophilis') >= 0;

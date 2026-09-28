@@ -39,7 +39,7 @@ entity type PipelineOrchestrator {
    * ("sapVendor" | "aribaSupplierId" | "qmsAuditSubject" | "dunsNumber") and its
    * value, walks {@link SupplierCrosswalk} and returns the matching canonical
    * supplier id, its canonical name and resolution state — or a not-resolved
-   * result naming why (e.g. Heraeus has no DUNS, so a D&B lookup cannot match).
+   * result naming why (e.g. Aptar has no DUNS, so a D&B lookup cannot match).
    */
   resolveSupplier: function(keyKind: string, keyValue: string): json js
 

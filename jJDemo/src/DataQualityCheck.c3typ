@@ -25,7 +25,7 @@ entity type DataQualityCheck {
   /**
    * DQ-KEY-01 — Key hygiene on SAP_LFA1.LIFNR: a business key must have no
    * leading/trailing whitespace (a whitespace key silently fails every join).
-   * Expected FAIL with 1 offender (the padded Sterigenics vendor number).
+   * Expected FAIL with 1 offender (the padded Siegfried vendor number).
    */
   checkKeyHygiene: function(): json js
 
@@ -46,7 +46,7 @@ entity type DataQualityCheck {
   /**
    * DQ-REF-01 — Referential integrity on the supplier crosswalk: flag any
    * supplier whose D&B key (DUNS) is missing, so a credit-risk lookup cannot
-   * resolve it. Expected FAIL with 1 offender (Heraeus, deliberately un-DUNSed).
+   * resolve it. Expected FAIL with 1 offender (Aptar, deliberately un-DUNSed).
    */
   checkReferentialIntegrity: function(): json js
 

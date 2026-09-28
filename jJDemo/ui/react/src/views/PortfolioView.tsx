@@ -126,19 +126,19 @@ function ProductPane({ data, open }: { data: ProductLens; open: (id: string) => 
           <div className="tk-c1">Launch</div>
           <div className="tk-c2">
             <span className="ax">
-              P1<i>Feasibility</i>
+              P1<i>NPI Strategy</i>
             </span>
             <span className="axg">G1</span>
             <span className="ax">
-              P2<i>Design inputs</i>
+              P2<i>NPI Planning</i>
             </span>
             <span className="axg">G2</span>
             <span className="ax">
-              P3<i>V&amp;V</i>
+              P3<i>PPQ</i>
             </span>
             <span className="axg">G3</span>
             <span className="ax">
-              P4<i>Transfer</i>
+              P4<i>Reg review</i>
             </span>
             <span className="axg">G4</span>
             <span className="ax">
@@ -146,7 +146,7 @@ function ProductPane({ data, open }: { data: ProductLens; open: (id: string) => 
             </span>
             <span className="axg">G5</span>
             <span className="ax">
-              P6<i>Post-market</i>
+              P6<i>Post-launch</i>
             </span>
           </div>
           <div className="tk-c3">Current phase</div>

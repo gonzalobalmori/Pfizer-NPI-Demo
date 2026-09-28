@@ -35,11 +35,11 @@
   {
     "id": "seed_supplier_bsi",
     "supplierId": "seed_supplier_bsi",
-    "canonicalName": "EMA (CHMP Rapporteur)",
+    "canonicalName": "Eurofins Scientific",
     "sapVendor": "0001009003",
     "aribaSupplierId": "AN09-BSI-NB",
     "qmsAuditSubject": "SUP-BSI-NB",
-    "certificateName": "BSI Group",
+    "certificateName": "Eurofins Scientific",
     "dunsNumber": "21-004-1177",
     "resolutionState": "AUTO"
   }

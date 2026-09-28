@@ -24,7 +24,7 @@
     "code": "rnd",
     "name": "Design agent",
     "autonomyBand": "Autonomous within guardrails",
-    "toolsPermitted": "Design inputs, outputs, V&V and the CTD",
+    "toolsPermitted": "Target product profile, outputs, V&V and the CTD",
     "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
     "domain": {
       "id": "seed_domain_rnd"
@@ -35,7 +35,7 @@
     "code": "cli",
     "name": "Clinical agent",
     "autonomyBand": "Autonomous within guardrails",
-    "toolsPermitted": "Clinical evaluation, CER and proctor faculty",
+    "toolsPermitted": "Clinical evidence, CSR and medical affairs faculty",
     "escalationRules": "Route to a human when a gate date moves or spend exceeds delegated authority",
     "domain": {
       "id": "seed_domain_cli"

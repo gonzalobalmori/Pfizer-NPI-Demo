@@ -1,6 +1,6 @@
 /**
  * A functional domain that owns work in the NPI programme. Twelve are modelled,
- * exactly the business list: Governance, R&D / Design, Clinical, Regulatory,
+ * exactly the business list: Governance, R&D / CMC, Clinical, Regulatory,
  * Quality, Manufacturing, Sourcing, Supply Chain, Commercial, Market Access,
  * IT / Digital, Finance.
  *

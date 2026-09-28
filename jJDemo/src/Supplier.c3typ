@@ -1,24 +1,24 @@
 /**
  * A supplier in the launch supply chain. The anchor case turns on four:
- * Steris Venlo (contract EO steriliser that cancelled the booking),
- * Sterigenics Grand Rapids (approved alternative, audit current to Mar 2028),
- * Heraeus Medical Components (single source on the frozen BOM, downgraded to
- * High financial risk) and BSI (the CHMP rapporteur).
+ * Vetter Ravensburg (contract EO steriliser that cancelled the booking),
+ * Siegfried Hameln (approved alternative, audit current to Mar 2028),
+ * Aptar Pharma Le Vaudreuil (single source on the frozen BOM, downgraded to
+ * High financial risk) and CHMP (the CHMP rapporteur).
  *
  * A supplier has many {@link Site}s, {@link QualifiedProcess}es and
  * {@link ContractTerm}s.
  */
 entity type Supplier mixes SeedData {
-  /** Supplier name, e.g. "Sterigenics Grand Rapids". */
+  /** Supplier name, e.g. "Siegfried Hameln". */
   name: !string
 
   /** Approval status against the Approved Supplier List. */
   approvalStatus: string enum('APPROVED', 'CONDITIONAL', 'NOT_APPROVED')
 
-  /** Date the supplier's audit is valid until, e.g. Mar 2028 for Sterigenics. */
+  /** Date the supplier's audit is valid until, e.g. Mar 2028 for Siegfried. */
   auditValidUntil: datetime
 
-  /** Financial risk rating — Heraeus was downgraded to "High". */
+  /** Financial risk rating — Aptar was downgraded to "High". */
   financialRiskRating: string enum('Low', 'Medium', 'High')
 
   /** True where the supplier is the only qualified source for a critical component. */

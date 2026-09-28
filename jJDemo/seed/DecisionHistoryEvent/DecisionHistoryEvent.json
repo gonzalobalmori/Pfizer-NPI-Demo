@@ -33,8 +33,8 @@
     "kind": "MY",
     "status": "RESOLVED",
     "sortOrder": 2,
-    "label": "You signed the IEC 62366 usability engineering report",
-    "subLine": "13 of 14 G2 design inputs now closed.",
+    "label": "You signed the human factors engineering report",
+    "subLine": "13 of 14 G2 target product profile now closed.",
     "occurredAt": "2026-09-11T08:02:00",
     "noteAuthor": "Quality agent",
     "noteRole": "",
@@ -66,7 +66,7 @@
     "occurredAt": "2026-09-08T09:05:00",
     "noteAuthor": "S. Lindqvist",
     "noteRole": "Regulatory Affairs Director",
-    "noteBody": "Reviewing the response pack against BSI's query cycle 2 today. The clinical evaluation and equivalence rationale look complete; I will sign once I have confirmed the CER cross-references. Nothing here is waiting on BSI — it is waiting on my signature.",
+    "noteBody": "Reviewing the response pack against the rapporteur's query cycle 2 today. The clinical evidence and equivalence rationale look complete; I will sign once I have confirmed the CSR cross-references. Nothing here is waiting on CHMP — it is waiting on my signature.",
     "noteAt": "2026-09-08T15:30:00"
   },
   {

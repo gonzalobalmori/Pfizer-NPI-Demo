@@ -23,10 +23,10 @@ entity type Launch mixes HasExposure {
    */
   shortName: string
 
-  /** Regulatory device class, e.g. "Class III". */
+  /** Regulatory device class, e.g. "biologic". */
   deviceClass: string
 
-  /** Regulatory route, e.g. "PMA + EU MDR". */
+  /** Regulatory route, e.g. "BLA (FDA) + MAA (EMA)". */
   regulatoryRoute: string
 
   /** The lead market this launch files into first. */
@@ -69,7 +69,7 @@ entity type Launch mixes HasExposure {
   launchValue: double
 
   /**
-   * Terminal sterilisation method for the device, e.g. "EO" (ethylene oxide),
+   * Terminal fill-finish method for the device, e.g. "EO" (ethylene oxide),
    * "Gamma", "e-beam", or "N/A" for a non-sterile capital device. Shown on the
    * Product-detail Device card; drives, for Comirnaty, the EO steriliser-slot
    * risk narrative.
@@ -100,7 +100,7 @@ entity type Launch mixes HasExposure {
   /** Value-Analysis-Committee approvals secured, in accounts (numerator of "N of M accounts"). */
   vacApprovalsFiled: int
 
-  /** Total target accounts requiring a VAC approval (denominator). */
+  /** Total target accounts requiring a payer approval (denominator). */
   vacApprovalsTotal: int
 
   /** The franchise this launch belongs to. */
@@ -121,7 +121,7 @@ entity type Launch mixes HasExposure {
   /** Documents filed for this launch. Inverse of {@link Document#launch}. */
   documents: [Document](launch)
 
-  /** The launch's Design History File — an immutable, append-only audit trail. Inverse of {@link DesignHistoryFileEntry#launch}. */
+  /** The launch's CTD dossier — an immutable, append-only audit trail. Inverse of {@link DesignHistoryFileEntry#launch}. */
   dhfEntries: [DesignHistoryFileEntry](launch)
 
   /** Bill-of-material items for this launch. Inverse of {@link BillOfMaterialItem#launch}. */

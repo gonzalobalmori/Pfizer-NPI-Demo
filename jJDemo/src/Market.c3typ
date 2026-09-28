@@ -14,7 +14,7 @@ entity type Market mixes SeedData {
   /** Country name, e.g. "Germany". */
   name: !string
 
-  /** Real regulatory body/route, e.g. "EU MDR · G-BA appraisal · hospital tenders". */
+  /** Real regulatory body/route, e.g. "MAA (EMA) · G-BA appraisal · hospital tenders". */
   regulatoryBody: string
 
   /** Regulatory route summary where distinct from {@link Market#regulatoryBody}. */

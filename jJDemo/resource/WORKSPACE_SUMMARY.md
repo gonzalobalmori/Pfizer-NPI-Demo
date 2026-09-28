@@ -128,7 +128,7 @@ Feedback doc `.attachments/docx_extract/` (~28 items, Spanish, 11 screenshots). 
 - **Cockpit "Next gate" column:** was showing markets; now shows the launch's actual next open gate via
   `nextGateByLaunch` lookup (`cockpit()`), with a code-vs-name dedup so "BAU handover" doesn't double.
 - **Item 1 — IssueView false CAPA framing:** `IssueView.tsx` hard-coded Comirnaty-G2 supplier-quality/CAPA copy
-  (CAPA-2026-0148, "Quality agent opened CAPA…", G3/+47d, validation/BSI impact) that rendered for ANY finding —
+  (CAPA-2026-0148, "Quality agent opened CAPA…", G3/+47d, validation/CHMP impact) that rendered for ANY finding —
   so Somavert's commercial NPI-0319 showed a false quality/CAPA story. Now data-driven: `resolutionWorkspace()` returns
   `capa` (from `CAPA.fetch` by finding) + `gateAtRisk` (launch's next open gate); the CAPA chip, quality tag, CAPA
   paragraph, gate meta, and impact block render conditionally on `ws.capa`/slip. Verified: 0319 → no CAPA, "Commercial"
@@ -173,8 +173,8 @@ Runtime gotcha: after editing backend `.js`, `runJsCode` can be stale — call `
   - **Two lanes honored:** operational types in `data/` accept idempotent load updates; `SeedData` types (Comment etc.) are LOCKED — the escalation thread cannot be mutated by any load, so QMS_COMMENT is STAGED + reconciled, never written over.
 - **Item 5 — DQ + reconciliation tests (DONE, failing-first):**
   - **`src/DataQualityCheck.{c3typ,js}`** — 7-rule engine, uniform verdict shape `{rule, feed, field, rowsChecked, failures, offenders[], status}` (PASS/WARN/FAIL). DQ-* read raw `meta://` extracts; RECON-* read loaded ontology. `runAll()` = scoreboard. NOTE: native JS arrays (split/JSON.parse/literals) lack C3 `.each()` → use the `forEach()` helper; only `.objs` fetch results keep `.each()`.
-  - Rules + verified verdicts: **DQ-KEY-01** (SAP_LFA1.LIFNR trailing space → FAIL, Sterigenics `0001007988 ` line 3), **DQ-UNIQ-01** (dup → FAIL, BSI `0001009003` ×2), **DQ-DATE-01** (LIMS non-ISO → FAIL, OCT-BIO-07 `02/09/2026`), **DQ-REF-01** (missing DUNS → FAIL, Heraeus PARTIAL), **DQ-COMPLETE-01** (STCEG nulls → WARN 52/57, non-blocking), **RECON-SPC-01** (366 breaches all in HOLD lots → PASS), **RECON-THREAD-01** (staged QMS_COMMENT == locked golden NPI-0417 thread → PASS, the regression guard).
-  - **DQ-GATE-01 — enforcing admission gate (`supplierAdmissionGate()`):** the "80/20" mechanism the user asked for. Sorts all 57 SAP_LFA1 rows into 3 buckets, none lost: **ADMITTED 55** (clean, load as-is), **CLEANSED 1** (Sterigenics padded key trimmed inline then admitted), **QUARANTINED 1** (BSI duplicate, refused with reason, never loaded). Returns `{status:'GATED', rowsChecked:57, admittedCount:55, cleansedCount:1, quarantinedCount:1, admittedRate:98.2}`. Surfaced in `runAll()` under `.gate` (status GATED, NOT counted in the PASS/WARN/FAIL scoreboard so the 4/1/2 tally stays clean).
+  - Rules + verified verdicts: **DQ-KEY-01** (SAP_LFA1.LIFNR trailing space → FAIL, Sterigenics `0001007988 ` line 3), **DQ-UNIQ-01** (dup → FAIL, CHMP `0001009003` ×2), **DQ-DATE-01** (LIMS non-ISO → FAIL, OCT-BIO-07 `02/09/2026`), **DQ-REF-01** (missing DUNS → FAIL, Heraeus PARTIAL), **DQ-COMPLETE-01** (STCEG nulls → WARN 52/57, non-blocking), **RECON-SPC-01** (366 breaches all in HOLD lots → PASS), **RECON-THREAD-01** (staged QMS_COMMENT == locked golden NPI-0417 thread → PASS, the regression guard).
+  - **DQ-GATE-01 — enforcing admission gate (`supplierAdmissionGate()`):** the "80/20" mechanism the user asked for. Sorts all 57 SAP_LFA1 rows into 3 buckets, none lost: **ADMITTED 55** (clean, load as-is), **CLEANSED 1** (Sterigenics padded key trimmed inline then admitted), **QUARANTINED 1** (CHMP duplicate, refused with reason, never loaded). Returns `{status:'GATED', rowsChecked:57, admittedCount:55, cleansedCount:1, quarantinedCount:1, admittedRate:98.2}`. Surfaced in `runAll()` under `.gate` (status GATED, NOT counted in the PASS/WARN/FAIL scoreboard so the 4/1/2 tally stays clean).
   - Tests: **`test/js-rhino/unit/test_DataQuality.js`** — 20 specs, all green (each DQ test asserts the rule CATCHES its planted defect: right count AND right key — "failing-first" = non-vacuous; 5 specs cover DQ-GATE-01 buckets/repair/quarantine/98.2% admit). `runAll` scoreboard test pins 4 FAIL / 1 WARN / 2 PASS. Existing `test_Reconciliation.js` (11) + `test_DecisionGuard.js` still green.
   - **Env note (§7):** Data Lakehouse + Data Sharing sections are NOT provisioned in this sandbox (route `/lakehouse` returns "No page found") — demo Data Integration + Object Model + Data Validation, which are fully real here.
   - **Native platform DataValidation.Rule registration (DONE — the user's actual ask):** the ontology-level DQ rules are ALSO registered as native `DataValidation.Rule` objects so they appear + are editable in Studio's **Configure → Data Fusion → Data Validation** screen (not only as `c3Action` methods). Two new `DataQualityCheck` methods make this reproducible in-repo: **`registerValidationRules()`** (idempotent — removes prior draft by id, then authors 6 rules) and **`runValidationRules()`** (registers + runs all 6, returns runIds). Both live in `src/DataQualityCheck.js` with signatures in the `.c3typ`.
@@ -412,9 +412,9 @@ The React app reproduces the prototype's **screen model**, not React-Router rout
   - **Demo 1 `capa` (16 steps, chip CAPA-2026-0148):** the original Comirnaty sterilisation-slot CAPA
     (NPI-0417), verbatim — the template arc all three mirror.
   - **Demo 2 `regulatory` (16 steps, chip REGULATORY):** regulatory-agency angle, anchored on **FDA 0420**
-    (Comirnaty G2 deficiency letter, view-only / authority-bound — no Approve) + **BSI 0365** (Hospital 4000+,
+    (Comirnaty G2 deficiency letter, view-only / authority-bound — no Approve) + **CHMP 0365** (Hospital 4000+,
     CHMP rapporteur signature we owe, movable). **INVARIANT (post-review): there is exactly ONE authority-bound
-    thread — NPI-0420/FDA (45 fixed/grey days in `PortfolioService.timeImpact()`). NPI-0365/BSI is 100%
+    thread — NPI-0420/FDA (45 fixed/grey days in `PortfolioService.timeImpact()`). NPI-0365/CHMP is 100%
     recoverable (a signature Helena owes, not an agency wait). No card may claim "two agency clocks/threads on
     the authority."** Arc: menu → cockpit **time-recovery panel** (card 2 spots `.ti-pnl` / `.ti-card.reg`
     "Waiting on an authority" 45d / `.ti-card.rec`; the ONE authority thread, FDA) → **Comirnaty launch detail**
@@ -430,7 +430,7 @@ The React app reproduces the prototype's **screen model**, not React-Router rout
     scrolled off) → history (card 14 spots `.fb2[data-f=esc]` + `#v-actions .sb-p.on .ev[data-npi="NPI-0365"]` —
     the Prevnar 20 escalation from THIS tour; ActionsView history rows now carry `data-npi`) → fleet log (all
     franchises) → Copilot `chatAsk='regulatory'` (`.cq-ev`/`.cq-rec`/`.cq-act`; card 16 copy = "one FDA clock +
-    one signature + BSI slot + site visit", NOT "two agency clocks"). **Data:** `hist_0365` ESCALATED
+    one signature + CHMP slot + site visit", NOT "two agency clocks"). **Data:** `hist_0365` ESCALATED
     `DecisionHistoryEvent` seeded so History genuinely contains the NPI-0365 escalation
     (`decisionHistory().counts` = {taken:6, escalations:2, total:8}); reconciles History escalations with the KPI
     band ("Escalations open: 2") and the Escalated pane (0344 + 0365). `test_Reconciliation` unaffected (11/11).
@@ -807,12 +807,12 @@ decir si fue automnoma o fue human in the loop". Both done:
 ### Set L — Demo 2 (regulatory) critique fixes, 8 items (`shell/GuidedTour.tsx`, GD2 only)
 Governing rule reaffirmed: each client sees only ONE demo, so no demo may say "the same X as another demo".
 Core theme fixed across Demo 2: there is exactly ONE authority-bound thread — **NPI-0420/FDA** (45 fixed grey
-days); **NPI-0365/BSI is a recoverable signature Helena owes** (drafted, unsigned 6 days), NOT an agency wait.
+days); **NPI-0365/CHMP is a recoverable signature Helena owes** (drafted, unsigned 6 days), NOT an agency wait.
 All "two agency clocks/threads" over-claims corrected. Edited GD2 cards 2,3,4,5,8,13,14,16: card 2 → cockpit
 time-recovery panel (`.ti-pnl`/`.ti-card.reg` 45d/`.ti-card.rec`); card 3 lands on Comirnaty launch detail; card 4
 market lens UK→US with both pins; card 5 singularised to one authority row; card 8 board card `#c-seed_finding_420`;
 card 13 short `.dc-gh` headers; card 14 spots `.fb2[data-f=esc]` + `.ev[data-npi="NPI-0365"]`; card 16 "one FDA
-clock + one signature + BSI slot + site visit". Verified: 11/11 reconciliation, build/lint green, browser confirmed.
+clock + one signature + CHMP slot + site visit". Verified: 11/11 reconciliation, build/lint green, browser confirmed.
 
 ### Set M — Demo 3 (supplier change) critique fixes, 3 items (governing "cuadrar" rule)
 User (verbatim): "en la demo tres donde veo yo que tienen el mismo supplier, deberia estar en el detalle … que

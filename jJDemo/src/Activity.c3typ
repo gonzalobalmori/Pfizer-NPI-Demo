@@ -12,7 +12,7 @@ entity type Activity mixes SeedData {
   /** Stable activity id, e.g. "ACT-VPG2-P3-11". */
   id: !string
 
-  /** Activity description, e.g. "Execute sterilisation validation and bioburden baseline, ISO 11135". */
+  /** Activity description, e.g. "Execute Process Performance Qualification and bioburden baseline". */
   name: !string
 
   /** Planned completion date. */

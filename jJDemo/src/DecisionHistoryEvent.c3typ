@@ -29,10 +29,10 @@ entity type DecisionHistoryEvent mixes SeedData {
    */
   status: string enum('RUNNING', 'RESOLVED', 'ESCALATED')
 
-  /** The event label — what she did, e.g. "You signed the IEC 62366 usability engineering report". */
+  /** The event label — what she did, e.g. "You signed the human factors engineering report". */
   label: string
 
-  /** The sub-line under the label, e.g. "13 of 14 G2 design inputs now closed." */
+  /** The sub-line under the label, e.g. "13 of 14 G2 target product profile now closed." */
   subLine: string
 
   /** Absolute time the event occurred (the row shows a relative age off this). */

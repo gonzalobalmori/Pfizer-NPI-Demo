@@ -7,9 +7,9 @@
  *
  * The demo deliberately plants three imperfections so the exception path is
  * showable (see {@link SupplierCrosswalk#resolutionState}):
- *  - Sterigenics: certificate name "Sterigenics US LLC" disagrees with the Ariba
+ *  - Siegfried: certificate name "Siegfried US LLC" disagrees with the Ariba
  *    name — a fuzzy-match miss resolved by a MANUAL crosswalk entry;
- *  - Heraeus: no D&B/DUNS match — PARTIAL resolution (resolves as a supplier but
+ *  - Aptar: no D&B/DUNS match — PARTIAL resolution (resolves as a supplier but
  *    the financial-risk rating is flagged missing);
  *  - one SAP vendor key arrives with trailing whitespace and must trim-and-still-resolve.
  *
@@ -35,7 +35,7 @@ entity type SupplierCrosswalk {
   /** Free-text name as it appears on the fill-finish certificate. */
   certificateName: string
 
-  /** D&B DUNS number; empty where no D&B match exists (Heraeus). */
+  /** D&B DUNS number; empty where no D&B match exists (Aptar). */
   dunsNumber: string
 
   /** How this identity was resolved: AUTO (all keys agree), MANUAL (a curator

@@ -10,7 +10,7 @@
   {
     "id": "seed_domain_rnd",
     "code": "rnd",
-    "name": "R&D / Design",
+    "name": "R&D / CMC",
     "agent": {
       "id": "seed_agent_rnd"
     }

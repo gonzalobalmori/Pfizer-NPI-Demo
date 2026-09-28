@@ -69,7 +69,7 @@
   },
   {
     "id": "seed_gcheck_417_5",
-    "name": "BSI review window holds?",
+    "name": "CHMP review window holds?",
     "threshold": "dossier complete before slot",
     "observed": "holds at +9 days",
     "result": "PASS",

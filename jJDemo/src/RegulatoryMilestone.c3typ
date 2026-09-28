@@ -6,7 +6,7 @@
  * RegulatoryMilestone is a date owned by an authority that the programme cannot
  * move — it can only react when the authority moves it.
  *
- * The anchor case is Velsipity's US market rollout: the CE mark (EU MDR) is the
+ * The anchor case is Velsipity's US market rollout: the CE mark (MAA (EMA)) is the
  * lead train, and the FDA NDA Clearance is a separate milestone the US
  * launch — manufacturing build, loaner-kit staging, field certification and
  * commercial pre-announcement — is all committed against. When the FDA slips
@@ -27,7 +27,7 @@ entity type RegulatoryMilestone {
   /** The launch this milestone gates. */
   launch: Launch
 
-  /** The authority that owns the date, e.g. "FDA", "BSI", "CE (EU MDR)". */
+  /** The authority that owns the date, e.g. "FDA", "BSI", "CE (MAA (EMA))". */
   authority: !string
 
   /** Milestone name, e.g. "FDA NDA Clearance — US". */

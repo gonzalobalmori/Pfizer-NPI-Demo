@@ -1,12 +1,12 @@
 /**
- * A part on a launch's bill of materials. The ring electrode subassembly is the
- * one that matters: single-source on Heraeus across four Vaccines
+ * A part on a launch's bill of materials. The lyophilisation stopper is the
+ * one that matters: single-source on Aptar across four Vaccines
  * catheters, on a BOM that freezes at G2 — the substance of finding NPI-0388.
  *
  * An item belongs to one {@link Launch} and is supplied by one {@link Supplier}.
  */
 entity type BillOfMaterialItem mixes SeedData {
-  /** Part name, e.g. "Ring electrode subassembly". */
+  /** Part name, e.g. "Lyophilisation stopper". */
   partName: !string
 
   /** Sourcing mode. */

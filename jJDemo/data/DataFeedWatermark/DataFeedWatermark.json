@@ -147,7 +147,7 @@
     "id": "wm_rim_nb",
     "feedCode": "RIM_NB",
     "sourceSystem": "veeva_rim",
-    "targetType": "BSI review window (guardrail check)",
+    "targetType": "CHMP review window (guardrail check)",
     "lastWatermark": "20260911",
     "lastLoadedAt": "2026-09-11T08:42:00",
     "lastRowCount": 1,

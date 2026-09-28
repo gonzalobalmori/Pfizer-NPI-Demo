@@ -22,7 +22,7 @@ entity type CAPA {
   /** Business CAPA id, e.g. "CAPA-2026-0148". */
   capaId: string
 
-  /** The process the CAPA was opened against, e.g. "Supplier-managed EO sterilisation". */
+  /** The process the CAPA was opened against, e.g. "Supplier-managed aseptic fill-finish". */
   openedAgainstProcess: string
 
   /** Who opened it, e.g. "Quality agent". */
@@ -34,7 +34,7 @@ entity type CAPA {
   /** The containment action — what gets the validation executed in time. */
   containmentAction: string
 
-  /** The corrective action — permanent Sterigenics qualification + committed-capacity clause. */
+  /** The corrective action — permanent Siegfried qualification + committed-capacity clause. */
   correctiveAction: string
 
   /** The effectiveness check — validation report delivered by 06 Nov, ahead of the gate. */

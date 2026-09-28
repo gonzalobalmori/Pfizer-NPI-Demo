@@ -27,7 +27,7 @@
   },
   {
     "id": "seed_task_417_a_3",
-    "name": "Notify BSI of the 9-day dossier shift and confirm the Q4 slot is held",
+    "name": "Notify CHMP of the 9-day dossier shift and confirm the Q4 slot is held",
     "owner": "Regulatory agent",
     "detail": "Regulatory agent · S. Lindqvist countersigns the letter",
     "agentRunnable": true,
@@ -144,7 +144,7 @@
   },
   {
     "id": "seed_task_417_b_5",
-    "name": "Pre-notify BSI of the modality change and request a new review slot",
+    "name": "Pre-notify CHMP of the modality change and request a new review slot",
     "owner": "SL",
     "detail": "S. Lindqvist · Regulatory · the Q4 window will be lost",
     "agentRunnable": false,
@@ -222,7 +222,7 @@
   },
   {
     "id": "seed_task_417_c_4",
-    "name": "Release the BSI Q4 slot and request February",
+    "name": "Release the CHMP Q4 slot and request February",
     "owner": "SL",
     "detail": "S. Lindqvist · Regulatory · the slot cannot be held unused",
     "agentRunnable": false,

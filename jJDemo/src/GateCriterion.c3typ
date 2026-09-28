@@ -1,13 +1,13 @@
 /**
  * A single criterion that must be met for a {@link Gate} to close. G3 Submission
- * Commit for Comirnaty G2 stands at "5 of 6 criteria met" — the ISO 11135
- * sterilisation validation is the only one outstanding, which is precisely what
+ * Commit for Comirnaty G2 stands at "5 of 6 criteria met" — the PPQ
+ * process validation is the only one outstanding, which is precisely what
  * holds the gate in the anchor case.
  *
  * A criterion is evidenced by a {@link Document} (e.g. the validation report).
  */
 entity type GateCriterion mixes SeedData {
-  /** Criterion name, e.g. "Sterilisation validation report (ISO 11135)". */
+  /** Criterion name, e.g. "Fill-finish validation report (PPQ)". */
   name: !string
 
   /** Whether the criterion is currently met. */

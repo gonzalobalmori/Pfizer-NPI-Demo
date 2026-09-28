@@ -1,7 +1,7 @@
 /**
  * A single in-process SPC (statistical process control) measurement streamed
- * from the MES for a {@link Lot}. For the Heraeus contrasting case these are the
- * ring-electrode outer-diameter readings (parameter `ring_electrode_od_mm`,
+ * from the MES for a {@link Lot}. For the Aptar contrasting case these are the
+ * ring-electrode outer-diameter readings (parameter `stopper_flange_od_mm`,
  * nominal 2.50mm, spec 2.45–2.55): ~150 per lot, ~1,800 in total, with the four
  * out-of-spec lots breaking SPC rule 2 (four consecutive points on one side of
  * the mean) — the signal that lets the Line-Monitor agent open a finding without
@@ -17,7 +17,7 @@ entity type ProcessMeasurement {
   /** The lot this reading belongs to. */
   lot: Lot
 
-  /** The measured parameter, e.g. "ring_electrode_od_mm". */
+  /** The measured parameter, e.g. "stopper_flange_od_mm". */
   parameter: string
 
   /** Measured value in the parameter's units (mm here). */

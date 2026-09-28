@@ -177,44 +177,44 @@ const LAUNCHES = [
  * 4200, 62/78, 9/22). Numbers are phase-appropriate: pre-market programmes have
  * little commercial scope built yet; launched programmes are complete.
  *
- * fields: launchValue, sterilisation, manufacture, regsFiled/regsTotal,
+ * fields: launchValue, fill-finish, manufacture, regsFiled/regsTotal,
  *         buildUnits, ffCertified/ffTotal, vacFiled/vacTotal.
  */
 const SCOPE = {
   seed_launch_varipulse_g2: {
-    launchValue: 96000000, sterilisation: 'EO', manufacture: 'Irvine + CMO',
+    launchValue: 96000000, fill-finish: 'EO', manufacture: 'Irvine + CMO',
     regsFiled: 11, regsTotal: 14, buildUnits: 4200, ffCertified: 62, ffTotal: 78, vacFiled: 9, vacTotal: 22
   },
   seed_launch_octaray_g2: {
-    launchValue: 54000000, sterilisation: 'EO', manufacture: 'Irwindale',
+    launchValue: 54000000, fill-finish: 'EO', manufacture: 'Irwindale',
     regsFiled: 3, regsTotal: 12, buildUnits: 0, ffCertified: 0, ffTotal: 64, vacFiled: 0, vacTotal: 18
   },
   seed_launch_embotrap_iv: {
-    launchValue: 41000000, sterilisation: 'e-beam', manufacture: 'Galway',
+    launchValue: 41000000, fill-finish: 'e-beam', manufacture: 'Galway',
     regsFiled: 9, regsTotal: 11, buildUnits: 6800, ffCertified: 44, ffTotal: 52, vacFiled: 12, vacTotal: 19
   },
   seed_launch_impella_ecp: {
-    launchValue: 120000000, sterilisation: 'EO', manufacture: 'Danvers',
+    launchValue: 120000000, fill-finish: 'EO', manufacture: 'Danvers',
     regsFiled: 2, regsTotal: 6, buildUnits: 900, ffCertified: 18, ffTotal: 70, vacFiled: 2, vacTotal: 15
   },
   seed_launch_javelin_xl: {
-    launchValue: 88000000, sterilisation: 'EO', manufacture: 'Santa Clara',
+    launchValue: 88000000, fill-finish: 'EO', manufacture: 'Santa Clara',
     regsFiled: 7, regsTotal: 9, buildUnits: 5200, ffCertified: 58, ffTotal: 66, vacFiled: 14, vacTotal: 20
   },
   seed_launch_ethicon_4000: {
-    launchValue: 76000000, sterilisation: 'Gamma', manufacture: 'Cincinnati + CMO',
+    launchValue: 76000000, fill-finish: 'Gamma', manufacture: 'Cincinnati + CMO',
     regsFiled: 6, regsTotal: 12, buildUnits: 3100, ffCertified: 31, ffTotal: 84, vacFiled: 5, vacTotal: 24
   },
   seed_launch_dualto: {
-    launchValue: 62000000, sterilisation: 'N/A', manufacture: 'Cincinnati',
+    launchValue: 62000000, fill-finish: 'N/A', manufacture: 'Cincinnati',
     regsFiled: 9, regsTotal: 9, buildUnits: 480, ffCertified: 112, ffTotal: 112, vacFiled: 28, vacTotal: 28
   },
   seed_launch_ottava: {
-    launchValue: 210000000, sterilisation: 'N/A', manufacture: 'Santa Clara',
+    launchValue: 210000000, fill-finish: 'N/A', manufacture: 'Santa Clara',
     regsFiled: 0, regsTotal: 8, buildUnits: 0, ffCertified: 0, ffTotal: 90, vacFiled: 0, vacTotal: 30
   },
   seed_launch_puresee: {
-    launchValue: 47000000, sterilisation: 'Gamma', manufacture: 'Groningen',
+    launchValue: 47000000, fill-finish: 'Gamma', manufacture: 'Groningen',
     regsFiled: 4, regsTotal: 13, buildUnits: 1200, ffCertified: 12, ffTotal: 48, vacFiled: 3, vacTotal: 21
   }
 };
@@ -226,26 +226,26 @@ const SCOPE = {
 const CRIT_TEMPLATE = {
   G1: [
     ['Development & CMC Plan approved', 'Development plan in review with the core team'],
-    ['Risk Management File opened (ISO 14971)', 'Initial hazard analysis still being compiled'],
+    ['Risk Management File opened (ICH Q9)', 'Initial hazard analysis still being compiled'],
     ['Regulatory strategy and pathway confirmed', 'Pathway pending a pre-submission meeting'],
-    ['Clinical Evaluation Plan drafted', 'Clinical plan awaiting KOL input'],
+    ['Clinical Development Plan drafted', 'Clinical plan awaiting KOL input'],
     ['Programme budget and RACI approved', 'Budget approval pending the portfolio review']
   ],
   G2: [
-    ['Design inputs signed off', 'Two of the design inputs remain unsigned'],
+    ['Target product profile signed off', 'Two of the target product profile remain unsigned'],
     ['Design FMEA complete', 'FMEA review actions still open'],
-    ['Design verification & validation plan approved', 'V&V plan in second review cycle'],
-    ['Biocompatibility evaluation plan complete', 'Biocompatibility strategy under review'],
+    ['Analytical verification & validation plan approved', 'V&V plan in second review cycle'],
+    ['Extractables and leachables evaluation plan complete', 'Extractables and leachables strategy under review'],
     ['Critical suppliers qualified / second-sourced', 'Single-source supplier not yet dual-sourced'],
     ['Design review minutes closed', 'Design review actions being closed out']
   ],
   G3: [
-    ['Design verification complete', 'Verification report awaiting sign-off'],
-    ['Design validation complete', 'Validation runs in progress'],
+    ['Analytical verification complete', 'Verification report awaiting sign-off'],
+    ['Process validation complete', 'Validation runs in progress'],
     ['Clinical Evaluation Report approved', 'CER in CHMP rapporteur query cycle'],
-    ['Sterilisation validation report (ISO 11135)', 'Sterilisation validation slot cancelled; report slips'],
+    ['Fill-finish validation report (PPQ)', 'Fill-finish validation slot cancelled; report slips'],
     ['Risk management file current', 'Risk file update pending latest test data'],
-    ['EU MDR Technical Documentation complete', 'Technical documentation 96% complete']
+    ['CTD Module 3 quality dossier complete', 'Technical documentation 96% complete']
   ],
   G4: [
     ['CHMP rapporteur / FDA review closed', 'Query cycle 2 open on the clinical section'],
@@ -253,18 +253,18 @@ const CRIT_TEMPLATE = {
     ['Design transfer to manufacturing complete', 'Design transfer package being finalised'],
     ['Labelling and IFU approved', 'IFU artwork in MLR review'],
     ['CAPAs and non-conformances closed', 'Two CAPAs remain open from the at-risk build'],
-    ['Declaration of Conformity ready', 'DoC held pending certificate issuance']
+    ['QP Declaration ready', 'DoC held pending certificate issuance']
   ],
   G5: [
     ['Launch build and safety stock complete', 'At-risk build authorisation above delegated authority'],
     ['Field-force certification >= 95%', 'Certification at 91% against a 95% target'],
     ['Country registrations filed', 'Country dossiers pending final registration'],
     ['Distribution and 3PL agreements signed', '3PL agreement in legal review'],
-    ['VAC approvals and reimbursement secured', 'CPT code application pending — no US reimbursement path yet'],
-    ['First-case loaner sets certified', 'Loaner instrument sets not certified for first-case coverage']
+    ['payer listings and reimbursement secured', 'CPT code application pending — no US reimbursement path yet'],
+    ['First-case launch stock units certified', 'Pre-launch stock not certified for launch supply coverage']
   ],
   BAU: [
-    ['Post-Market Surveillance plan active', 'PMS plan being handed to the BAU team'],
+    ['Pharmacovigilance system master file active', 'PMS plan being handed to the BAU team'],
     ['Complaint handling and vigilance live', 'Vigilance procedure transfer in progress'],
     ['First production lots released', 'First lots released to distribution'],
     ['Surveillance ownership transferred to BAU', 'Final BAU handover sign-off outstanding']
@@ -277,13 +277,13 @@ const CRIT_TEMPLATE = {
 const ACT_TEMPLATE = {
   P1: [
     ['Activate NPI governance and assign workstream owners', 'gov'],
-    ['Open the Design History File and draft the development plan', 'rnd'],
+    ['Open the CTD dossier and draft the development plan', 'rnd'],
     ['Confirm device classification and regulatory pathway', 'reg'],
-    ['Draft the clinical evaluation plan', 'cli'],
+    ['Draft the clinical evidence plan', 'cli'],
     ['Approve the programme budget and business case', 'fin']
   ],
   P2: [
-    ['Freeze design inputs and requirements', 'rnd'],
+    ['Freeze target product profile and requirements', 'rnd'],
     ['Complete the design FMEA and risk analysis', 'rnd'],
     ['Approve the design verification & validation plan', 'qua'],
     ['Qualify critical suppliers and activate second sources', 'src'],
@@ -291,10 +291,10 @@ const ACT_TEMPLATE = {
   ],
   P3: [
     ['Execute design verification testing', 'rnd'],
-    ['Execute design validation and biocompatibility', 'qua'],
-    ['Complete sterilisation validation (ISO 11135)', 'qua'],
-    ['Finalise the clinical evaluation report', 'cli'],
-    ['Assemble the EU MDR technical documentation', 'reg']
+    ['Execute design validation and extractables and leachables', 'qua'],
+    ['Complete process validation (PPQ)', 'qua'],
+    ['Finalise the clinical evidence report', 'cli'],
+    ['Assemble the MAA (EMA) technical documentation', 'reg']
   ],
   P4: [
     ['Complete process validation (IQ/OQ/PQ)', 'mfg'],
@@ -307,7 +307,7 @@ const ACT_TEMPLATE = {
     ['Complete the launch build and safety stock', 'sc'],
     ['Certify the field force and complete training', 'com'],
     ['File country registrations', 'reg'],
-    ['Secure VAC approvals and reimbursement', 'ma'],
+    ['Secure payer listings and reimbursement', 'ma'],
     ['Sign distribution and 3PL agreements', 'sc']
   ],
   P6: [
@@ -467,7 +467,7 @@ for (const L of launches) {
   const s = SCOPE[L.id];
   if (!s) throw new Error(`No SCOPE entry for launch ${L.id}`);
   L.launchValue = s.launchValue;
-  L.sterilisationMethod = s.sterilisation;
+  L.sterilisationMethod = s.fill-finish;
   L.manufactureSite = s.manufacture;
   L.registrationsFiled = s.regsFiled;
   L.registrationsTotal = s.regsTotal;

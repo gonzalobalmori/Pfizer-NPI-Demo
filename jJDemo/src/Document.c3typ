@@ -13,7 +13,7 @@
  * {@code scripts/gen-documents.mjs}, which grades each document's status from the
  * launch's current phase against the phase the document is normally completed by
  * (a launched product reads mostly Approved; an early-phase one mostly Not
- * started). A document can evidence a {@link GateCriterion} (e.g. the ISO 11135
+ * started). A document can evidence a {@link GateCriterion} (e.g. the PPQ
  * validation report evidences the outstanding G3 criterion).
  */
 entity type Document mixes SeedData {

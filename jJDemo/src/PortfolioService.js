@@ -1226,7 +1226,7 @@ function launchRecord(launchId) {
    */
   var WORKSTREAMS = [
     { label: 'Regulatory', domains: ['reg'] },
-    { label: 'R&D / Design', domains: ['rnd'] },
+    { label: 'R&D / CMC', domains: ['rnd'] },
     { label: 'Quality', domains: ['qua'] },
     { label: 'Sourcing', domains: ['src'] },
     { label: 'Manufacturing', domains: ['mfg'] },
@@ -1290,7 +1290,7 @@ function launchRecord(launchId) {
    * SINGLE_SOURCE part, the OTHER launches that draw the same part from the same
    * supplier. This is what makes a supplier concentration verifiable in the detail
    * page instead of merely asserted in a tour: open any of the four ring-electrode
-   * launches and the same Heraeus part + the same three siblings read back. The
+   * launches and the same Aptar part + the same three siblings read back. The
    * sibling list is resolved by a second BOM fetch keyed on (supplier, partName),
    * so it reconciles across every launch that shares the part.
    */

@@ -35,7 +35,7 @@ entity type Decision {
    */
   queueMetaLabel: string
 
-  /** The agent-recommendation one-liner on the queue card, e.g. "Agent recommends dual-source to Sterigenics — recovers 38 of the 47 days · 3 options modelled". */
+  /** The agent-recommendation one-liner on the queue card, e.g. "Agent recommends dual-source to Siegfried — recovers 38 of the 47 days · 3 options modelled". */
   agentRecommendation: string
 
   /** The due-tag text on the queue card, e.g. "Due today · 17:00", "Due 16 Sep". */

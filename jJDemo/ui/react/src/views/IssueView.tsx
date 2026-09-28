@@ -333,7 +333,7 @@ export default function IssueView() {
           <div className="sec-h">Options<span className="sec-n">Modelled against the live launch plan · selecting one rebuilds the action plan below</span></div>
           <div className="sec-b p0">
             <div className="opt-t">
-              <div className="ot-h"><span /><span>Option</span><span>Slip</span><span>Cost</span><span>BSI slot</span><span>Revenue kept</span><span>Risk</span></div>
+              <div className="ot-h"><span /><span>Option</span><span>Slip</span><span>Cost</span><span>CHMP slot</span><span>Revenue kept</span><span>Risk</span></div>
               {ws.options.map((o) => {
                 const sel = o.optionKey === selectedKey;
                 const slipTone = o.recommended ? 'g' : 'r';

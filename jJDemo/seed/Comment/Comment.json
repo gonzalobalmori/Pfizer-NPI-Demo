@@ -40,7 +40,7 @@
     "author": "S. Lindqvist",
     "authorRole": "Regulatory",
     "commentedAt": "2026-09-11T08:04:00",
-    "body": "The bigger risk is not the 47 days, it is the BSI review slot. We hold a Q4 window. If the dossier is not complete by mid-November we lose it and the next confirmed slot is February — that is another 31 days on top. Please treat the BSI date as the real deadline.",
+    "body": "The bigger risk is not the 47 days, it is the CHMP review slot. We hold a Q4 window. If the dossier is not complete by mid-November we lose it and the next confirmed slot is February — that is another 31 days on top. Please treat the CHMP date as the real deadline.",
     "isAutomatedCheck": false,
     "sourcesRead": "",
     "decision": {
@@ -112,7 +112,7 @@
     "author": "Supply Chain agent",
     "authorRole": "Automated check",
     "commentedAt": "2026-09-09T05:12:00",
-    "body": "340 of 520 launch stock units are still awaiting their final QC release check. The 3PL is running a 6-day turnaround against a 4-day plan. At the current rate first-case coverage is short by 11 days.",
+    "body": "340 of 520 launch stock units are still awaiting their final QC release check. The 3PL is running a 6-day turnaround against a 4-day plan. At the current rate launch supply coverage is short by 11 days.",
     "isAutomatedCheck": true,
     "sourcesRead": "",
     "decision": {
@@ -124,7 +124,7 @@
     "author": "R. Devi",
     "authorRole": "Logistics",
     "commentedAt": "2026-09-09T08:30:00",
-    "body": "Pricing a second lane at Neuss. The alternative is shipping first cases with a reduced set count, which the proctors will push back on. I will have a number by the 12th.",
+    "body": "Pricing a second lane at Neuss. The alternative is shipping first cases with a reduced set count, which the MSLs will push back on. I will have a number by the 12th.",
     "isAutomatedCheck": false,
     "sourcesRead": "",
     "decision": {
@@ -160,7 +160,7 @@
     "author": "Regulatory agent",
     "authorRole": "Automated check",
     "commentedAt": "2026-09-07T22:15:00",
-    "body": "Second query cycle opened on the clinical evaluation section. Response pack assembled from the CER and the equivalence rationale — 14 pages, every query answered with a traced source. The 21-day clock-stop started 07 Sep. I cannot submit without a qualified signatory.",
+    "body": "Second query cycle opened on the clinical section. Response pack assembled from the CSR and the equivalence rationale — 14 pages, every query answered with a traced source. The 21-day clock-stop started 07 Sep. I cannot submit without a qualified signatory.",
     "isAutomatedCheck": true,
     "sourcesRead": "",
     "decision": {
@@ -196,7 +196,7 @@
     "author": "K. Tanaka",
     "authorRole": "R&D",
     "commentedAt": "2026-09-05T08:20:00",
-    "body": "Twelve of fourteen design inputs are signed. The two outstanding are the usability report and the transit summary, both of which the agent has drafted from the test data. I have reviewed both and I am content technically.",
+    "body": "Twelve of fourteen CMC deliverables are signed. The two outstanding are the human factors report and the transit summary, both of which the agent has drafted from the test data. I have reviewed both and I am content technically.",
     "isAutomatedCheck": false,
     "sourcesRead": "",
     "decision": {

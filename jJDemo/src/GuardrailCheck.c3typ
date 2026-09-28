@@ -5,7 +5,7 @@
  * the "zero breaches in 90 days" headline.
  */
 entity type GuardrailCheck mixes SeedData {
-  /** Check name, e.g. "BSI Q4 review window holds a 9-day shift". */
+  /** Check name, e.g. "CHMP Q4 review window holds a 9-day shift". */
   name: !string
 
   /** The threshold evaluated, e.g. "≤ 14 days dossier shift". */

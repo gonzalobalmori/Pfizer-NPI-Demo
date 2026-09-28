@@ -2,7 +2,7 @@
  * Idempotent merge of per-launch scope + device facts into data/Launch/Launch.json.
  *
  * WHY (manager review): the Product-detail page hard-coded Comirnaty's scope for
- * EVERY product ("Class", launch scope, units built, sterilisation, manufacture,
+ * EVERY product ("Class", launch scope, units built, fill-finish, manufacture,
  * workstream readiness). These must be attested per launch so each product's
  * detail matches its own context. This script writes those attested facts onto
  * the Launch records (keyed by id) without disturbing existing fields.

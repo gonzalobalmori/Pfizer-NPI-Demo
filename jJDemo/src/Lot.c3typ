@@ -1,7 +1,7 @@
 /**
  * A manufacturing lot produced on a supplier or internal production line, as
  * reported by the MES (Siemens Opcenter). Lots are the unit the Line-Monitor
- * agent watches: the Heraeus contrasting case turns on twelve ring-electrode
+ * agent watches: the Aptar contrasting case turns on twelve ring-electrode
  * lots (`HRS-RE-2609-01`…`-12`), the last four of which drift out of spec and
  * are placed on {@link Lot#lotState} `HOLD`.
  *
@@ -16,7 +16,7 @@ entity type Lot {
   /** SAP material number this lot builds, 18-char zero-padded (e.g. "000000000000100200"). */
   materialNo: string
 
-  /** The manufacturing operation, e.g. "OP40-RING-ELECTRODE". */
+  /** The manufacturing operation, e.g. "OP40-STOPPER-SEAT". */
   operation: string
 
   /** Equipment / line identifier, e.g. "CASHEL-L4". */
