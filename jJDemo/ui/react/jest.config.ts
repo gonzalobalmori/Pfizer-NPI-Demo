@@ -31,6 +31,9 @@ const jestConfig = {
   moduleNameMapper: {
     '\\.(gif|ttf|eot|svg|png)$': '<rootDir>/tests/__mocks__/fileMocks.js',
     '\\.(css|less|sass|scss)$': 'identity-obj-proxy',
+    /* Mirrors the `@/` alias vite and tsconfig use, so components can be
+       rendered in tests rather than only typechecked. */
+    '^@/(.*)$': '<rootDir>/src/$1',
   },
   setupFilesAfterEnv: ['./jest.setup.ts'],
 };

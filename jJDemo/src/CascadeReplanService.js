@@ -142,6 +142,38 @@ function plan(launchId) {
   return buildBundle(m);
 }
 
+/* ── the scenario picker's list ──────────────────────────────────── */
+function scenarios() {
+  var ms = RegulatoryMilestone.fetch({
+    include: 'this, launch.id, launch.productName, launch.shortName',
+    order: 'baselineDate',
+    limit: -1
+  }).objs;
+  var out = [];
+  if (ms) {
+    ms.each(function (m) {
+      out.push({
+        id: m.id,
+        displayId: m.displayId,
+        authority: m.authority,
+        milestoneName: m.milestoneName,
+        launchId: m.launch ? m.launch.id : null,
+        product: m.launch ? (m.launch.shortName || m.launch.productName) : null,
+        baselineDate: iso(m.baselineDate),
+        currentDate: iso(m.currentDate),
+        slipDays: m.slipDays || 0,
+        status: m.status
+      });
+    });
+  }
+  return { scenarios: out };
+}
+
+/* Address the bundle by milestone — a launch can carry several. */
+function planFor(milestoneId) {
+  return buildBundle(findMilestone(null, milestoneId));
+}
+
 /* ── the cascade: cascadeReplan(milestoneId, newDateIso) ────────── */
 function cascadeReplan(milestoneId, newDateIso) {
   var m = findMilestone(null, milestoneId);

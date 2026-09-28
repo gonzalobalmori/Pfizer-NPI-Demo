@@ -16,15 +16,20 @@ import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNav } from '@/nav/NavContext';
 import {
   getCascadePlan,
+  getCascadePlanFor,
+  getCascadeScenarios,
   runCascadeReplan,
   resolveCascadeImpact,
   resetCascade,
   PF3945_LAUNCH_ID,
+  PF3945_FDA_MILESTONE_ID,
 } from '@/api/cascade';
+import type { CascadeScenario } from '@/api/cascade';
 import { fmtDate, fmtEuro } from '@/lib/format';
 import type { CascadePlan, CascadeItem } from '@/types/portfolio';
 import Glyph from '@/components/Brand/Glyph';
 import DomainIcon from '@/components/Brand/DomainIcon';
+import { SUGGESTED_SLIP_DAYS, DEFAULT_SLIP_DAYS } from '@/execution/slipDefaults';
 
 /* The six-week FDA slip the scenario describes, applied against the milestone
  * baseline (2026-11-02 → 2026-12-14 = +42 days). Kept here so the "book the slip"
@@ -113,19 +118,67 @@ export default function CascadeView() {
   const [error, setError] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
 
-  const load = useCallback(async () => {
+  /*
+   * Scenarios are read from the environment rather than hard-coded. The screen
+   * used to be pinned to one milestone id, so renaming the seed left it blank —
+   * and there was no way to show that the cascade differs by authority.
+   *
+   * If `scenarios` is unavailable (an environment predating it) the screen falls
+   * back to the default launch, so it degrades to its old behaviour instead of
+   * failing outright.
+   */
+  const [scenarios, setScenarios] = useState<CascadeScenario[]>([]);
+  const [selectedId, setSelectedId] = useState<string | null>(null);
+  const [newDate, setNewDate] = useState('');
+
+  const loadPlan = useCallback(async (id: string | null) => {
     setError(null);
     try {
-      const p = await getCascadePlan(PF3945_LAUNCH_ID);
+      const p = id ? await getCascadePlanFor(id) : await getCascadePlan(PF3945_LAUNCH_ID);
       setPlan(p);
+      return p;
     } catch (err) {
       setError(typeof err === 'string' ? err : 'Failed to load the replan dashboard.');
+      return null;
     }
   }, []);
 
   useEffect(() => {
-    load();
-  }, [load]);
+    let cancelled = false;
+    (async () => {
+      let list: CascadeScenario[] = [];
+      try {
+        list = (await getCascadeScenarios()).scenarios ?? [];
+      } catch {
+        /* older environment — leave the list empty and use the default launch */
+      }
+      if (cancelled) return;
+      setScenarios(list);
+      const first = list.find((s) => s.id === PF3945_FDA_MILESTONE_ID) ?? list[0] ?? null;
+      setSelectedId(first?.id ?? null);
+      await loadPlan(first?.id ?? null);
+    })();
+    return () => { cancelled = true; };
+  }, [loadPlan]);
+
+  /* When the scenario changes, open on its suggested slip so a demo does not
+     start by asking the presenter to invent a date. */
+  useEffect(() => {
+    if (!plan) return;
+    const base = plan.milestone.baselineDate;
+    if (!base) return;
+    const days = (selectedId ? SUGGESTED_SLIP_DAYS[selectedId] : undefined) ?? DEFAULT_SLIP_DAYS;
+    const d = new Date(base);
+    if (Number.isNaN(d.getTime())) return;
+    d.setDate(d.getDate() + days);
+    setNewDate(d.toISOString().slice(0, 10));
+  }, [plan?.milestone.baselineDate, selectedId]);
+
+  const pickScenario = useCallback(async (id: string) => {
+    setSelectedId(id);
+    setPlan(null);
+    await loadPlan(id);
+  }, [loadPlan]);
 
   /* The guided tour can land here already showing the cascade result. */
   const cascadeRun = intent?.cascadeRun;
@@ -155,14 +208,14 @@ export default function CascadeView() {
     setBusy(true);
     setError(null);
     try {
-      const p = await runCascadeReplan(plan.milestone.id, SLIP_TARGET_ISO);
+      const p = await runCascadeReplan(plan.milestone.id, newDate || SLIP_TARGET_ISO);
       setPlan(p);
     } catch (err) {
       setError(typeof err === 'string' ? err : 'Cascade failed.');
     } finally {
       setBusy(false);
     }
-  }, [plan]);
+  }, [plan, newDate]);
 
   const doReset = useCallback(async () => {
     if (!plan) return;
@@ -209,6 +262,15 @@ export default function CascadeView() {
   const m = plan.milestone;
   const s = plan.summary;
   const slipped = m.status === 'REPLANNED' && m.slipDays > 0;
+  /* Days between the baseline and whatever date is currently typed — shown on
+     the run button so the consequence is stated before the click. */
+  const slipDaysFromInput = (() => {
+    if (!newDate || !m.baselineDate) return 0;
+    const a = new Date(m.baselineDate).getTime();
+    const b = new Date(newDate).getTime();
+    if (Number.isNaN(a) || Number.isNaN(b)) return 0;
+    return Math.max(0, Math.round((b - a) / 86400000));
+  })();
 
   return (
     <div className="view on" id="v-cascade">
@@ -226,12 +288,47 @@ export default function CascadeView() {
               Reset scenario
             </button>
           ) : (
-            <button type="button" className="btn p" id="cs-run" disabled={busy} onClick={runCascade}>
-              {busy ? 'Cascading…' : 'FDA slips 6 weeks — run cascade replan'}
-            </button>
+            <>
+              {/* The date is an input, not a constant. Any authority can be
+                  slipped by any amount, which is what makes this a tool rather
+                  than one canned story. */}
+              <label className="cs-date">
+                <span>New authority date</span>
+                <input
+                  type="date"
+                  value={newDate}
+                  min={m.baselineDate?.slice(0, 10) || undefined}
+                  onChange={(e) => setNewDate(e.target.value)}
+                />
+              </label>
+              <button type="button" className="btn p" id="cs-run" disabled={busy || !newDate} onClick={runCascade}>
+                {busy ? 'Cascading…' : `${m.authority ?? 'Authority'} slips ${slipDaysFromInput}d — run cascade replan`}
+              </button>
+            </>
           )}
         </div>
       </div>
+
+      {/* Scenario picker. Hidden when the environment exposes only one, so a
+          single-scenario install does not grow a pointless control. */}
+      {scenarios.length > 1 ? (
+        <div className="cs-scn">
+          <span className="cs-scn-l">Scenario</span>
+          {scenarios.map((sc) => (
+            <button
+              type="button"
+              key={sc.id}
+              className={`cs-scn-b${sc.id === selectedId ? ' on' : ''}`}
+              disabled={busy}
+              onClick={() => pickScenario(sc.id)}
+            >
+              <b>{sc.authority}</b>
+              <em>{sc.product} · {sc.milestoneName}</em>
+              {sc.slipDays ? <i className="cs-scn-s">+{sc.slipDays}d</i> : null}
+            </button>
+          ))}
+        </div>
+      ) : null}
 
       {/* milestone + exception summary KPI band */}
       <div className="kgrid" id="cs-kpis" style={{ gridTemplateColumns: 'repeat(4,1fr)' }}>

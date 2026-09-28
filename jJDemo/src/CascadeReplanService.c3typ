@@ -23,6 +23,22 @@ entity type CascadeReplanService {
   plan: function(launchId: string): json js
 
   /**
+   * Every replan scenario available, for the screen's scenario picker: each
+   * {@link RegulatoryMilestone} with its authority, the launch it belongs to and
+   * its current slip state. The screen used to be pinned to a single FDA
+   * milestone, which made it impossible to show that the cascade differs by
+   * authority — an EMA opinion hits tender windows, an NMPA approval hits import
+   * licences. Read-only.
+   */
+  scenarios: function(): json js
+
+  /**
+   * The same bundle as {@link #plan}, addressed by milestone rather than by
+   * launch — needed because a launch can carry more than one milestone.
+   */
+  planFor: function(milestoneId: string): json js
+
+  /**
    * The cascade (SCENARIO 1 core). Moves {@link RegulatoryMilestone#currentDate}
    * to {@code newDateIso}, recomputes the slip, then walks every downstream
    * {@link CascadeImpactItem}: AUTO items are re-timed / held and stamped

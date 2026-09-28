@@ -257,6 +257,21 @@ button{font-family:inherit;font-size:inherit;cursor:pointer;border:none;backgrou
 .m-sub{font-size:11px;color:var(--g500);padding-left:14px;
   border-left:1px solid var(--g300);letter-spacing:.2px}
 .m-top .h-gd{margin-left:auto}
+/* reset control sits beside the guided-demo button, quieter than it — it is a
+   presenter tool, not a call to action */
+.m-top .h-rs-wrap,.m-top .h-rs{margin-left:10px}
+.h-rs-wrap{display:inline-flex;align-items:center;gap:8px}
+.h-rs{display:inline-flex;align-items:center;gap:7px;background:var(--white);
+  color:var(--g700);border:1px solid var(--g300);border-radius:8px;padding:7px 12px;
+  font-size:11px;font-weight:650;white-space:nowrap}
+.h-rs:hover{border-color:var(--g900);color:var(--g900)}
+.h-rs:disabled{opacity:.6}
+.h-rs svg{width:12px;height:12px;stroke:currentColor;fill:none;flex:none}
+.h-rs.go{background:var(--g900);color:#fff;border-color:var(--g900)}
+.h-rs.go:hover{background:var(--brand);border-color:var(--brand)}
+.h-rs.bad{border-color:var(--red500);color:var(--red600)}
+.h-rs-q{font-size:11px;color:var(--g700)}
+.h-rs-err{font-size:10.5px;color:var(--red600);max-width:38ch;line-height:1.4}
 /* bottom padding clears the fixed .dsc disclaimer bar (R-BASE-05) */
 .m-shell{flex:1;display:flex;gap:18px;padding:18px 18px 42px;align-items:stretch}
 .m-stage{flex:1;background:var(--white);border-radius:14px;padding:40px 36px 34px;
@@ -1396,6 +1411,107 @@ html{scroll-padding-top:180px}
 .ac-wbnote b{font-weight:750;color:var(--g900)}
 /* agent-runnable rows offer both paths: the agent, or the user */
 .ac-run{display:flex;gap:6px;justify-content:flex-end;align-items:center}
+/* the receipt a write returned — reference, actor, time. Without this, "Done"
+   is only a colour, and the audit-trail claim is unevidenced. */
+.ac-rc{display:inline-flex;align-items:center;gap:6px;margin-top:5px;padding:3px 8px 3px 6px;
+  border:1px solid var(--ok-bd,#b7e0c8);border-radius:5px;background:var(--ok-bg,#e7f5ee);
+  font-size:10px;color:var(--g700)}
+.ac-rc svg{width:11px;height:11px;color:var(--ok);flex:none}
+.ac-rc b{display:inline;font-size:10px;font-weight:750;color:var(--g900);
+  font-variant-numeric:tabular-nums}
+.ac-rc.as{border-color:#bfd6ff;background:#eef4ff}
+.ac-rc.as svg{color:var(--brand)}
+.ac-nt{display:block;margin-top:5px;font-size:10.5px;color:var(--g600);font-style:italic}
+.ac-done-l{display:inline-flex;align-items:center;gap:5px;justify-content:flex-end;
+  font-size:10.5px;font-weight:700;color:var(--ok)}
+.ac-done-l svg{width:12px;height:12px}
+/* plan oversight strip: how far the approved plan actually got */
+.ac-prog{display:flex;align-items:center;gap:14px;padding:11px 18px;background:var(--white);
+  border-bottom:1px solid var(--g200)}
+.ac-prog-t{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--g600);
+  white-space:nowrap}
+.ac-prog-t b{font-size:12.5px;font-weight:750;color:var(--g900);font-variant-numeric:tabular-nums}
+.ac-prog-t span{color:var(--g300)}
+.ac-prog-p{font-size:12px;font-weight:750;color:var(--g900);font-variant-numeric:tabular-nums;
+  min-width:38px;text-align:right}
+.ac-prog-sys{padding:9px 18px;background:var(--ok-bg,#e7f5ee);border-bottom:1px solid var(--g200);
+  font-size:10.5px;color:var(--g700);display:flex;gap:7px;flex-wrap:wrap;align-items:center}
+.ac-prog-sys b{font-weight:700;color:var(--g900);background:var(--white);
+  border:1px solid var(--ok-bd,#b7e0c8);border-radius:4px;padding:2px 7px}
+
+/* ══ APPROVED PLAN — oversight drawer ══ */
+.pl-rw{width:min(760px,94vw);background:var(--white);overflow-y:auto}
+.pl-h{display:flex;align-items:flex-start;gap:14px;padding:20px 24px 16px;
+  border-bottom:1px solid var(--g200)}
+.pl-h>div:first-child{min-width:0}
+.pl-h .rw-x{margin-left:auto}
+.pl-sub{font-size:12px;color:var(--g600);margin-top:6px;line-height:1.5}
+.pl-sig{display:flex;align-items:center;gap:11px;padding:13px 24px;background:var(--ok-bg,#e7f5ee);
+  border-bottom:1px solid var(--g200)}
+.pl-sig svg{width:15px;height:15px;color:var(--ok);flex:none}
+.pl-sig b{display:block;font-size:12.5px;font-weight:700;color:var(--g900)}
+.pl-sig span{display:block;font-size:10.5px;color:var(--g700);margin-top:2px}
+.pl-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--g200)}
+.pl-grid>div{background:var(--g50);padding:13px 16px;min-width:0}
+.pl-grid span{display:block;font-size:9.5px;font-weight:700;letter-spacing:.4px;
+  text-transform:uppercase;color:var(--g600);margin-bottom:5px}
+.pl-grid b{display:block;font-size:12.5px;font-weight:700;color:var(--g900);line-height:1.4}
+.pl-grid i{display:block;font-style:normal;font-size:10px;color:var(--g600);margin-top:3px}
+.pl-prog{padding:15px 24px 13px;display:flex;flex-direction:column;gap:9px}
+.pl-prog-h{font-size:11.5px;color:var(--g600)}
+.pl-prog-h b{font-size:13px;font-weight:750;color:var(--g900);font-variant-numeric:tabular-nums}
+.pl-sys{display:flex;align-items:center;gap:7px;flex-wrap:wrap;padding:0 24px 15px}
+.pl-sys>span{font-size:9.5px;font-weight:700;letter-spacing:.4px;text-transform:uppercase;
+  color:var(--g600)}
+.pl-sys b{font-size:10.5px;font-weight:700;color:var(--g900);background:var(--ok-bg,#e7f5ee);
+  border:1px solid var(--ok-bd,#b7e0c8);border-radius:5px;padding:3px 8px}
+.pl-sys.none>span{text-transform:none;letter-spacing:0;font-weight:400;font-size:11px;
+  color:var(--g600)}
+.pl-body{border-top:1px solid var(--g200)}
+.pl-r{padding:14px 24px;border-bottom:1px solid var(--g100);display:flex;flex-direction:column;
+  gap:7px}
+.pl-r:last-child{border-bottom:none}
+.pl-r.done{background:var(--ok-bg,#e7f5ee)}
+.pl-r-t b{display:block;font-size:12.5px;font-weight:650;color:var(--g900);line-height:1.45}
+.pl-r-t em{font-style:normal;display:block;font-size:10.5px;color:var(--g600);margin-top:2px}
+.pl-r-w{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;color:var(--g700);
+  align-self:flex-start;border:1px solid var(--g200);border-radius:5px;padding:3px 8px 3px 6px;
+  background:var(--white)}
+.pl-r-w svg{width:11px;height:11px;color:var(--purple);flex:none}
+.pl-r-w b{font-weight:750;color:var(--g900)}
+.pl-r-rc{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;font-size:10.5px;
+  color:var(--g700)}
+.pl-r-rc svg{width:12px;height:12px;color:var(--ok);flex:none}
+.pl-r-rc b{font-weight:750;color:var(--g900);font-variant-numeric:tabular-nums}
+.pl-r-rc.as svg{color:var(--brand)}
+.pl-r-a{display:flex;gap:7px}
+@media(max-width:620px){.pl-grid{grid-template-columns:1fr 1fr}}
+
+/* ══ MILESTONE REPLAN — scenario picker + date control ══ */
+.cs-date{display:inline-flex;flex-direction:column;gap:3px;margin-right:4px}
+.cs-date span{font-size:9px;font-weight:700;letter-spacing:.45px;text-transform:uppercase;
+  color:var(--g600)}
+.cs-date input{font:inherit;font-size:12px;color:var(--g900);background:var(--white);
+  border:1px solid var(--g300);border-radius:7px;padding:6px 9px;
+  font-variant-numeric:tabular-nums}
+.cs-date input:focus{outline:none;border-color:var(--g900);box-shadow:0 0 0 3px var(--g100)}
+.cs-scn{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:0 0 18px}
+.cs-scn-l{font-size:9.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
+  color:var(--g500);margin-right:2px}
+.cs-scn-b{display:inline-flex;flex-direction:column;align-items:flex-start;gap:2px;
+  background:var(--white);border:1px solid var(--g300);border-radius:9px;padding:7px 12px;
+  text-align:left;position:relative;max-width:290px}
+.cs-scn-b b{font-size:10px;font-weight:750;letter-spacing:.3px;color:var(--g700)}
+.cs-scn-b em{font-style:normal;font-size:11.5px;font-weight:600;color:var(--g900);
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:266px}
+.cs-scn-b:hover{border-color:var(--g500)}
+.cs-scn-b.on{border-color:var(--g900);background:var(--g900)}
+.cs-scn-b.on b{color:rgba(255,255,255,.72)}
+.cs-scn-b.on em{color:#fff}
+.cs-scn-b:disabled{opacity:.55}
+.cs-scn-s{position:absolute;top:-6px;right:-6px;font-style:normal;font-size:9px;font-weight:750;
+  background:var(--red500);color:#fff;border-radius:9px;padding:1px 6px;
+  font-variant-numeric:tabular-nums}
 .ac-d{font-size:11px;color:var(--g600);font-variant-numeric:tabular-nums}
 .ac-s{font-size:10px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;
   padding:4px 8px;border-radius:4px;text-align:center;background:var(--g100);color:var(--g600)}
@@ -2205,6 +2321,28 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .pk-f{display:flex;align-items:center;gap:10px;padding:14px 22px;background:var(--g50);
   border-top:1px solid var(--g200)}
 .pk-f .pk-note{font-size:10.5px;color:var(--g600);margin-right:auto}
+.pk-rec svg.ai-spark{width:15px;height:15px;fill:var(--purple);stroke:none;flex:none}
+/* execution sheet: colleague search + picker, and the note field */
+.pk-search,.pk-note-in{width:100%;box-sizing:border-box;font:inherit;font-size:12.5px;
+  color:var(--g900);background:var(--white);border:1px solid var(--g300);border-radius:8px;
+  padding:9px 11px;margin-bottom:14px}
+.pk-search:focus,.pk-note-in:focus{outline:none;border-color:var(--g900);box-shadow:0 0 0 3px var(--g100)}
+.pk-note-in{resize:vertical;line-height:1.5}
+.pk-people{max-height:232px;overflow-y:auto;border:1px solid var(--g200);border-radius:9px;
+  margin-bottom:14px}
+.pk-person{display:flex;align-items:center;gap:11px;width:100%;text-align:left;
+  padding:9px 12px;background:var(--white);border:none;border-bottom:1px solid var(--g100)}
+.pk-person:last-child{border-bottom:none}
+.pk-person:hover{background:var(--g50)}
+.pk-person.on{background:var(--brand-bg,#eef4ff);box-shadow:inset 2px 0 0 var(--brand)}
+.pk-person svg{width:13px;height:13px;margin-left:auto;color:var(--brand);flex:none}
+.pk-av{width:27px;height:27px;border-radius:7px;background:var(--g800);color:#fff;flex:none;
+  display:grid;place-items:center;font-size:9.5px;font-weight:700}
+.pk-person.on .pk-av{background:var(--brand)}
+.pk-pn{min-width:0}
+.pk-pn b{display:block;font-size:12.5px;font-weight:650;color:var(--g900)}
+.pk-pn em{font-style:normal;display:block;font-size:10.5px;color:var(--g600);margin-top:1px}
+.pk-empty{padding:16px;font-size:11.5px;color:var(--g600);text-align:center}
 @media(max-width:620px){
   .pk-kv{grid-template-columns:1fr 1fr}
   .pk-kv>div:last-child{grid-column:1/-1}

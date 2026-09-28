@@ -10,6 +10,7 @@ import { useNav } from '@/nav/NavContext';
 import { usePortfolioCounts } from '@/contexts/PortfolioCountsProvider';
 import { startGuidedTour } from '@/shell/GuidedTour';
 import PfizerLogo from '@/components/Brand/PfizerLogo';
+import ResetDemoButton from '@/shell/ResetDemoButton';
 
 export default function MenuScreen() {
   const { go } = useNav();
@@ -26,6 +27,7 @@ export default function MenuScreen() {
           </svg>
           Guided demo
         </button>
+        <ResetDemoButton />
       </div>
 
       <div className="m-shell">
