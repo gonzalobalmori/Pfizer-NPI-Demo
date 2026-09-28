@@ -8,7 +8,7 @@
  * the Launch records (keyed by id) without disturbing existing fields.
  *
  * Berobenatide keeps its authored prototype figures verbatim (€96M value, EO,
- * Irvine + CMO, 11 of 14, 4,200 units, 62/78, 9 of 22).
+ * Puurs + Vetter Ravensburg, 11 of 14, 4,200 units, 62/78, 9 of 22).
  *
  * RUN: node scripts/add-launch-scope.mjs   (from the jJDemo pkg root)
  */
@@ -23,7 +23,7 @@ const LAUNCH_JSON = join(HERE, '..', 'data', 'Launch', 'Launch.json');
  * read near-complete; early-phase products read mostly unstarted. */
 const SCOPE = {
   seed_launch_berobenatide_obesity: {
-    launchValue: 96000000, fillFinishRoute: 'EO', manufactureSite: 'Irvine + CMO',
+    launchValue: 96000000, fillFinishRoute: 'EO', manufactureSite: 'Puurs + Vetter Ravensburg',
     registrationsFiled: 11, registrationsTotal: 14, launchBuildUnits: 4200,
     fieldForceCertified: 62, fieldForceTotal: 78, vacApprovalsFiled: 9, vacApprovalsTotal: 22
   },

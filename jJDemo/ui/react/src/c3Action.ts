@@ -11,6 +11,8 @@
 
 import axios from 'axios';
 
+import { pharmaDeep } from '@/pharmaText';
+
 interface AxiosResponse {
   data: any;
 }
@@ -48,7 +50,12 @@ export function getAppBaseUrl(): string {
 const _doAxiosPost = async (url: string, payload: any): Promise<any> => {
   try {
     const response: AxiosResponse = await axios.post(url, payload);
-    return response.data;
+    /* Every response passes through pharmaDeep so the whole app reads as pharma
+       even when the C3 environment is still serving an older, device-era seed.
+       Applied here rather than per view, because per view meant any screen
+       nobody had inspected yet kept showing retired products and vocabulary.
+       Identifier keys are left untouched — see pharmaText.pharmaDeep. */
+    return pharmaDeep(response.data);
   } catch (error: any) {
     if (error.response && error.response.data) {
       throw error.response.data.message;

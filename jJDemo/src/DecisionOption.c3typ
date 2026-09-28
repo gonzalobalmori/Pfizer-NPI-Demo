@@ -2,7 +2,7 @@
  * One of the three modelled alternatives on a {@link Decision}, each costed
  * against the live plan (§2.4 section 5). For the anchor case: Option A
  * (dual-source to Siegfried, +9d, €340k, recommended), Option B (X-ray at
- * Marcoule, +62d, €1.1M) and Option C (US-first re-sequence, needs a G1
+ * Hameln, +62d, €1.1M) and Option C (US-first re-sequence, needs a G1
  * reversal). Selecting one rebuilds the action plan.
  */
 entity type DecisionOption mixes SeedData {
@@ -12,7 +12,7 @@ entity type DecisionOption mixes SeedData {
   /** Option label, e.g. "Dual-source to Siegfried Hameln". */
   label: string
 
-  /** Sub-label, e.g. "Half-cycle revalidation at an approved site, same modality". */
+  /** Sub-label, e.g. "Bracketed revalidation at an approved site, same modality". */
   subLabel: string
 
   /** Days recovered / net slip for this option, e.g. +9 (net) — display uses the sign. */

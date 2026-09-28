@@ -3,7 +3,7 @@
     "id": "seed_option_417_a",
     "optionKey": "a",
     "label": "Dual-source to Siegfried Hameln",
-    "subLabel": "Half-cycle revalidation at an approved site, same modality",
+    "subLabel": "Bracketed revalidation at an approved site, same modality",
     "daysRecovered": 38,
     "slipLabel": "+9d instead of +47",
     "cost": 340000,
@@ -21,7 +21,7 @@
   {
     "id": "seed_option_417_b",
     "optionKey": "b",
-    "label": "Switch modality to X-ray at Marcoule",
+    "label": "Switch fill site to Siegfried Hameln",
     "subLabel": "Needs extractables and leachables bridging and a dossier rewrite",
     "daysRecovered": -15,
     "slipLabel": "+62d",
@@ -41,7 +41,7 @@
     "id": "seed_option_417_c",
     "optionKey": "c",
     "label": "Re-sequence — US first, EU wave 2",
-    "subLabel": "Irvine fill-finish line is unaffected; needs a G1 decision reversal",
+    "subLabel": "Kalamazoo fill-finish line is unaffected; needs a G1 decision reversal",
     "daysRecovered": 0,
     "slipLabel": "+78d in EU, none in US",
     "cost": 0,
@@ -50,7 +50,7 @@
     "forfeits": "Two EU tender windows; €7.2M moved to FY28",
     "recommended": false,
     "confidence": "Medium",
-    "basis": "Irvine in-house fill-finish unaffected, but unwinds a gate decision",
+    "basis": "Kalamazoo in-house fill-finish unaffected, but unwinds a gate decision",
     "riskBand": "Low",
     "decision": {
       "id": "seed_decision_417"

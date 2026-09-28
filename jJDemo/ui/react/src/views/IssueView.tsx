@@ -20,6 +20,20 @@ import Glyph from '@/components/Brand/Glyph';
 import ActionToast from '@/components/Feedback/ActionToast';
 import { labelFor } from '@/productLabel';
 import { pharma } from '@/pharmaText';
+import { WRITE_BACK } from '@/writeBackMap';
+
+/**
+ * The system of record a task writes into, and the write it performs.
+ *
+ * Prefers what the backend sent; falls back to the generated map so the
+ * write-back story still renders against a C3 environment that predates the
+ * targetSystem/writeBack fields.
+ */
+function writeBackFor(t: { id?: string | null; targetSystem?: string | null; writeBack?: string | null }): [string, string] {
+  if (t.targetSystem) return [t.targetSystem, t.writeBack ?? ''];
+  const hit = t.id ? WRITE_BACK[t.id] : undefined;
+  return hit ?? ['', ''];
+}
 
 /** The recurring 4-point spark glyph used for agent avatars and the copilot CTA. */
 function Spark() {
@@ -143,6 +157,8 @@ export default function IssueView() {
   const selectedOption = ws.options.find((o) => o.optionKey === selectedKey) ?? null;
   const planTasks = ws.tasks.filter((t) => !selectedKey || t.optionKey == null || t.optionKey === selectedKey);
   const agentTaskCount = planTasks.filter((t) => t.agentRunnable).length;
+  /* Distinct systems this plan writes into, in the order they first appear. */
+  const writeBackSystems = [...new Set(planTasks.map((t) => writeBackFor(t)[0]).filter(Boolean))];
 
   const canApprove = !authorityBound && !held && !!decision && !decision.approvedAt && !!selectedOption && !approving;
   /* The decision is settled — the cascade has run and re-approving is refused by
@@ -361,20 +377,42 @@ export default function IssueView() {
         </section>
 
         <section className="sec you-only">
-          <div className="sec-h">Action plan<span className="sec-n" id="act-prog">0 of {planTasks.length} done · {agentTaskCount} can be run by agents</span>
+          <div className="sec-h">Action plan<span className="sec-n" id="act-prog">0 of {planTasks.length} done · {agentTaskCount} can be run by agents · writes back to {writeBackSystems.length} source systems</span>
             <button type="button" className="btn s sm" id="run-all">Run all {agentTaskCount} agent actions</button></div>
+          {/* Stated once, above the list: executing an action is a write into the
+              system that owns the data, not a reminder to go and do it by hand.
+              That is the difference the demo is meant to land. */}
+          <div className="ac-wbnote">
+            Approving this decision <b>writes back into the systems of record</b> —{' '}
+            {writeBackSystems.join(' · ')}. Each action can be executed by its agent within
+            guardrails, or by you.
+          </div>
           <div className="sec-b p0">
             <div className="acts" id="acts">
               {planTasks.map((t, i) => {
                 const isAg = !!t.agentRunnable;
+                const [sys, write] = writeBackFor(t);
                 return (
                   <div className={`ac-r${isAg ? '' : ' man'}`} data-k={i + 1} key={i}>
                     <span className={`ac-w${isAg ? ' ag' : ''}`}>{isAg ? <Spark /> : initials(t.owner)}</span>
-                    <span className="ac-b"><b>{pharma(t.name)}</b><em>{pharma(t.detail)}</em></span>
+                    <span className="ac-b"><b>{pharma(t.name)}</b><em>{pharma(t.detail)}</em>
+                      {sys ? (
+                        <span className="ac-wb">
+                          <Glyph name="arrow-right" className="sm" />
+                          <b>{sys}</b>
+                          {write ? <span>{write}</span> : null}
+                        </span>
+                      ) : null}
+                    </span>
                     <span className="ac-d">{fmtDate(t.dueDate) || t.dueDate || ''}</span>
                     <span className="ac-s" data-s="0">Not started</span>
                     {isAg
-                      ? <button type="button" className="btn p sm ac-go">Ask agent to run</button>
+                      ? (
+                        <span className="ac-run">
+                          <button type="button" className="btn p sm ac-go">Ask agent to run</button>
+                          <button type="button" className="btn s sm ac-go">Run myself</button>
+                        </span>
+                      )
                       : <button type="button" className="btn s sm ac-go">Assign</button>}
                   </div>
                 );

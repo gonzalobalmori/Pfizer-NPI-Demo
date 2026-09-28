@@ -977,9 +977,9 @@ function reset(eventId) {
    * one from the suspect lot that had already shipped, which is what makes the
    * recall assessment fire. Everything else on this launch starts on HOLD. */
   var SEEDED_RELEASED = {
-    seed_batch_abr_0396: '2026-07-29',
-    seed_batch_abr_0405: '2026-08-05',
-    seed_batch_abr_0407: '2026-08-14'
+    seed_batch_sas_0396: '2026-07-29',
+    seed_batch_sas_0405: '2026-08-05',
+    seed_batch_sas_0407: '2026-08-14'
   };
 
   /* Rebuild each batch so disposition fields genuinely clear. */

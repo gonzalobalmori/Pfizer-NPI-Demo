@@ -19,7 +19,7 @@ entity type Lot {
   /** The manufacturing operation, e.g. "OP40-STOPPER-SEAT". */
   operation: string
 
-  /** Equipment / line identifier, e.g. "CASHEL-L4". */
+  /** Equipment / line identifier, e.g. "FERENTINO-L4". */
   equipmentId: string
 
   /** Lot quantity (units produced). */

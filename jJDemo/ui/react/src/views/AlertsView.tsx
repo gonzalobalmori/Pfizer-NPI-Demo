@@ -180,8 +180,7 @@ export default function AlertsView() {
           <span className="hb-lb">Waiting on an authority</span>
           <b>{regulatorDays} d</b>
           {/* The authorities a drug launch actually waits on: FDA in the US,
-              EMA/CHMP in the EU, then payer/reimbursement. A notified body — the
-              conformity assessor for a device under EU MDR — has no role here. */}
+              EMA/CHMP in the EU, then payer/reimbursement. */}
           <span className="hb-sb">FDA &middot; EMA &middot; payer</span>
           <span className="hb-d">acting won&apos;t move it</span>
         </div>

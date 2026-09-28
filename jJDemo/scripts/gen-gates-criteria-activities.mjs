@@ -121,7 +121,7 @@ const SCOPE = {
     regsFiled: 11, regsTotal: 14, buildUnits: 4200, ffCertified: 62, ffTotal: 78, vacFiled: 9, vacTotal: 22
   },
   seed_launch_berobenatide_t2d: {
-    launchValue: 54000000, fillFinish: 'Aseptic fill — single-use vial', manufacture: 'Puurs',
+    launchValue: 54000000, fillFinish: 'Lyophilised — single-use vial', manufacture: 'Puurs',
     regsFiled: 3, regsTotal: 12, buildUnits: 0, ffCertified: 0, ffTotal: 64, vacFiled: 0, vacTotal: 18
   },
   seed_launch_sigvotatug_nsclc: {

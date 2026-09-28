@@ -124,7 +124,7 @@
     "author": "R. Devi",
     "authorRole": "Logistics",
     "commentedAt": "2026-09-09T08:30:00",
-    "body": "Pricing a second lane at Neuss. The alternative is shipping first cases with a reduced set count, which the MSLs will push back on. I will have a number by the 12th.",
+    "body": "Pricing a second lane at Alterkülz. The alternative is shipping first cases with a reduced set count, which the MSLs will push back on. I will have a number by the 12th.",
     "isAutomatedCheck": false,
     "sourcesRead": "",
     "decision": {
@@ -208,7 +208,7 @@
     "author": "Quality agent",
     "authorRole": "Automated check",
     "commentedAt": "2026-09-05T08:31:00",
-    "body": "Both drafts traced to the design input matrix, no acceptance criteria waived. human factors summative passed with zero use errors in the critical tasks. cold-chain transit protocol Sequences A to D passed with the container closure integrity intact. Ready for signature.",
+    "body": "Both drafts traced to the CMC input matrix, no acceptance criteria waived. human factors summative passed with zero use errors in the critical tasks. cold-chain transit protocol Sequences A to D passed with the container closure integrity intact. Ready for signature.",
     "isAutomatedCheck": true,
     "sourcesRead": "",
     "decision": {
@@ -304,7 +304,7 @@
     "author": "L. Haugen",
     "authorRole": "Manufacturing",
     "commentedAt": "2026-09-09T11:05:00",
-    "body": "Tooling and line time are booked from 02 Nov. If we do not release the build in the next week the slot goes to the Irvine transfer and we lose eight weeks. I cannot authorise this volume myself — the exposure is over the delegated limit.",
+    "body": "Tooling and line time are booked from 02 Nov. If we do not release the build in the next week the slot goes to the Kalamazoo transfer and we lose eight weeks. I cannot authorise this volume myself — the exposure is over the delegated limit.",
     "isAutomatedCheck": false,
     "sourcesRead": "",
     "decision": {

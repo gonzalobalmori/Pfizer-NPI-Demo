@@ -28,7 +28,7 @@ entity type RegulatoryMilestone {
   /** The launch this milestone gates. */
   launch: Launch
 
-  /** The authority that owns the date, e.g. "FDA", "BSI", "CE (MAA (EMA))". */
+  /** The authority that owns the date, e.g. "FDA", "EMA", "CE (MAA (EMA))". */
   authority: !string
 
   /** Milestone name, e.g. "FDA NDA Clearance — US". */

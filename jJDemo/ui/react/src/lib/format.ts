@@ -68,7 +68,7 @@ export function fmtEuro(value: number | null | undefined): string {
   return `${sign}€${Math.round(abs)}`;
 }
 
-/** Joins a code and human-readable name with an em dash, e.g. "G3 — Design Freeze". */
+/** Joins a code and human-readable name with an em dash, e.g. "G3 — NPL Plan Approved". */
 function joinCodeName(code: string | null | undefined, name: string | null | undefined): string {
   const c = (code ?? '').trim();
   const n = (name ?? '').trim();
@@ -77,7 +77,7 @@ function joinCodeName(code: string | null | undefined, name: string | null | und
 }
 
 /**
- * Formats a gate code and name, e.g. "G3 — Design Freeze".
+ * Formats a gate code and name, e.g. "G3 — NPL Plan Approved".
  * Falls back to whichever value is present, or an empty string when both are empty.
  */
 export function fmtGate(code: string | null | undefined, name?: string | null | undefined): string {

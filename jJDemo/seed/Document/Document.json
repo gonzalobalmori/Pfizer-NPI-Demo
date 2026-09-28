@@ -547,7 +547,7 @@
   },
   {
     "id": "seed_doc_berobenatide_obesity_40",
-    "name": "EU GMP certificate — Irvine",
+    "name": "EU GMP certificate — Kalamazoo",
     "docType": "Certificate",
     "group": "cert",
     "revision": "valid",
@@ -701,7 +701,7 @@
   },
   {
     "id": "seed_doc_berobenatide_obesity_51",
-    "name": "Installation Qualification (IQ) report — Irvine",
+    "name": "Installation Qualification (IQ) report — Kalamazoo",
     "docType": "Report",
     "group": "mfg",
     "revision": "rev 1",
@@ -715,7 +715,7 @@
   },
   {
     "id": "seed_doc_berobenatide_obesity_52",
-    "name": "Operational Qualification (OQ) report — Irvine",
+    "name": "Operational Qualification (OQ) report — Kalamazoo",
     "docType": "Report",
     "group": "mfg",
     "revision": "rev 1",

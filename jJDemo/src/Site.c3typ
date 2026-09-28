@@ -1,14 +1,14 @@
 /**
  * A physical site operated by a {@link Supplier} — e.g. Siegfried Grand
- * Rapids, Vetter Ravensburg, Aptar Cashel (IE) and Neuss (DE). A site holds the
+ * Rapids, Vetter Ravensburg, Aptar Ferentino (IE) and Alterkülz (DE). A site holds the
  * {@link QualifiedProcess}es (such as aseptic fill-finish) that determine whether
  * it can execute a validation lot.
  */
 entity type Site mixes SeedData {
-  /** Site name, e.g. "Grand Rapids". */
+  /** Site name, e.g. "Hameln". */
   name: !string
 
-  /** Location, e.g. "Grand Rapids, MI, US" or "Cashel, IE". */
+  /** Location, e.g. "Hameln, MI, US" or "Ferentino, IE". */
   location: string
 
   /** Capabilities summary, e.g. "aseptic fill-finish". */

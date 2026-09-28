@@ -10,7 +10,9 @@
     "dueDate": null,
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "SAP Ariba",
+    "writeBack": "Convert requisition to purchase order (capacity PO)"
   },
   {
     "id": "seed_task_417_a_2",
@@ -23,7 +25,9 @@
     "dueDate": "2026-09-15T00:00:00",
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "Veeva Vault QMS",
+    "writeBack": "Create validation protocol record from precedent"
   },
   {
     "id": "seed_task_417_a_3",
@@ -36,7 +40,9 @@
     "dueDate": null,
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "Veeva Vault RIM",
+    "writeBack": "Log health-authority interaction and hold the review slot"
   },
   {
     "id": "seed_task_417_a_4",
@@ -49,7 +55,9 @@
     "dueDate": null,
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "Planisware",
+    "writeBack": "Re-baseline G3 and cascade the dependent milestones"
   },
   {
     "id": "seed_task_417_a_5",
@@ -62,7 +70,9 @@
     "dueDate": "2026-09-18T00:00:00",
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "SAP SRM",
+    "writeBack": "Raise contract amendment — take-or-pay clause"
   },
   {
     "id": "seed_task_417_a_6",
@@ -75,7 +85,9 @@
     "dueDate": "2026-09-22T00:00:00",
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "Veeva Vault QMS",
+    "writeBack": "Approve protocol and release the validation lots"
   },
   {
     "id": "seed_task_417_a_7",
@@ -88,11 +100,13 @@
     "dueDate": "2026-09-16T00:00:00",
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "SAP ECC",
+    "writeBack": "Release budget against the NPI contingency line (FM)"
   },
   {
     "id": "seed_task_417_b_1",
-    "name": "Book X-ray capacity at Synergy Health Marcoule for the validation lots",
+    "name": "Book aseptic fill capacity at Siegfried Hameln for the validation lots",
     "owner": "Sourcing agent",
     "detail": "Sourcing agent · site already on the ASL for radiation",
     "agentRunnable": true,
@@ -101,7 +115,9 @@
     "dueDate": null,
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "Supplier portal",
+    "writeBack": "Reserve the aseptic fill slot"
   },
   {
     "id": "seed_task_417_b_2",
@@ -114,7 +130,9 @@
     "dueDate": "2026-09-20T00:00:00",
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "LabWare LIMS",
+    "writeBack": "Create the extractables and leachables study"
   },
   {
     "id": "seed_task_417_b_3",
@@ -127,7 +145,9 @@
     "dueDate": "2026-09-25T00:00:00",
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "Veeva Vault QMS",
+    "writeBack": "Approve the bridging protocol"
   },
   {
     "id": "seed_task_417_b_4",
@@ -140,7 +160,9 @@
     "dueDate": "2026-10-10T00:00:00",
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "Veeva Vault RIM",
+    "writeBack": "Revise CTD Module 3 section 4.3"
   },
   {
     "id": "seed_task_417_b_5",
@@ -153,7 +175,9 @@
     "dueDate": "2026-09-22T00:00:00",
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "Veeva Vault RIM",
+    "writeBack": "File pre-notification and request a review slot"
   },
   {
     "id": "seed_task_417_b_6",
@@ -166,7 +190,9 @@
     "dueDate": "2026-11-05T00:00:00",
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "LabWare LIMS",
+    "writeBack": "Raise container-closure integrity requalification order"
   },
   {
     "id": "seed_task_417_b_7",
@@ -179,7 +205,9 @@
     "dueDate": "2026-09-18T00:00:00",
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "SAP ECC",
+    "writeBack": "Release budget against the NPI contingency line (FM)"
   },
   {
     "id": "seed_task_417_c_1",
@@ -192,11 +220,13 @@
     "dueDate": "2026-09-24T00:00:00",
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "Planisware",
+    "writeBack": "Reverse the G1 gate decision and re-open the sequence"
   },
   {
     "id": "seed_task_417_c_2",
-    "name": "Confirm Irvine in-house fill-finish capacity for the US validation lots",
+    "name": "Confirm Kalamazoo in-house fill-finish capacity for the US validation lots",
     "owner": "Sourcing agent",
     "detail": "Sourcing agent · in-house, unaffected by the cancellation",
     "agentRunnable": true,
@@ -205,7 +235,9 @@
     "dueDate": null,
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "SAP ECC",
+    "writeBack": "Confirm in-house fill capacity (PP capacity check)"
   },
   {
     "id": "seed_task_417_c_3",
@@ -218,7 +250,9 @@
     "dueDate": "2026-09-18T00:00:00",
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "Veeva Vault RIM",
+    "writeBack": "Split the dossier — separate US and EU submissions"
   },
   {
     "id": "seed_task_417_c_4",
@@ -231,7 +265,9 @@
     "dueDate": "2026-09-19T00:00:00",
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "Veeva Vault RIM",
+    "writeBack": "Release the review slot and request the next window"
   },
   {
     "id": "seed_task_417_c_5",
@@ -244,7 +280,9 @@
     "dueDate": "2026-09-22T00:00:00",
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "SAP ECC",
+    "writeBack": "Re-phase the launch plan (CO-PA)"
   },
   {
     "id": "seed_task_417_c_6",
@@ -257,7 +295,9 @@
     "dueDate": null,
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "Pfizer Connect",
+    "writeBack": "Re-sequence market activation and notify affiliates"
   },
   {
     "id": "seed_task_417_c_7",
@@ -270,7 +310,9 @@
     "dueDate": "2026-09-30T00:00:00",
     "decision": {
       "id": "seed_decision_417"
-    }
+    },
+    "targetSystem": "Planisware",
+    "writeBack": "Re-time the DE and FR tender milestones"
   },
   {
     "id": "seed_task_412_a_1",
@@ -283,7 +325,9 @@
     "dueDate": null,
     "decision": {
       "id": "seed_decision_412"
-    }
+    },
+    "targetSystem": "SAP ECC",
+    "writeBack": "Place stock in quarantine — QM inspection block"
   },
   {
     "id": "seed_task_412_a_2",
@@ -296,7 +340,9 @@
     "dueDate": null,
     "decision": {
       "id": "seed_decision_412"
-    }
+    },
+    "targetSystem": "MES",
+    "writeBack": "Update the inspection plan to 100% dimensional check"
   },
   {
     "id": "seed_task_412_a_3",
@@ -309,7 +355,9 @@
     "dueDate": null,
     "decision": {
       "id": "seed_decision_412"
-    }
+    },
+    "targetSystem": "SAP IBP",
+    "writeBack": "Re-weight the market allocation"
   },
   {
     "id": "seed_task_412_a_4",
@@ -322,7 +370,9 @@
     "dueDate": null,
     "decision": {
       "id": "seed_decision_412"
-    }
+    },
+    "targetSystem": "Planisware",
+    "writeBack": "Re-baseline the P3 activities and cascade the shortfall"
   },
   {
     "id": "seed_task_412_a_5",
@@ -335,6 +385,8 @@
     "dueDate": "2026-09-19T00:00:00",
     "decision": {
       "id": "seed_decision_412"
-    }
+    },
+    "targetSystem": "SAP IBP",
+    "writeBack": "Approve and publish the revised allocation"
   }
 ]

@@ -82,7 +82,7 @@ const SASANLIMAB: ProductLabel = {
   product: 'Sasanlimab', modality: 'Anti-PD-1 monoclonal antibody', franchise: ONC, segment: ONC_SEG,
   indication: 'Non-muscle-invasive bladder cancer', developmentPhase: 'Phase 3',
   estimatedLaunch: '2027–2028', targetMarkets: 'US, EU', regulatoryRoute: BLA_MAA,
-  fillFinishRoute: 'Aseptic fill — single-use vial', manufactureSite: 'Puurs',
+  fillFinishRoute: 'Lyophilised — single-use vial', manufactureSite: 'Puurs',
 };
 const VEPDEGESTRANT: ProductLabel = {
   product: 'Vepdegestrant', modality: 'Oral ER degrader (PROTAC)', franchise: ONC, segment: ONC_SEG,

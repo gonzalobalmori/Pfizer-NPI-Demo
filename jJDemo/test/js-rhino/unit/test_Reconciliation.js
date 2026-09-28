@@ -71,7 +71,7 @@ describe(filename, function () {
     // (The third HELD is NPI-0420, the FDA BLA-review finding added for the
     // time-recovery feature: it depends on a regulator, so it sits HELD while the
     // agency responds.)
-    // The two post-launch (P6) AUTO findings — I-331 (Cashel yield) and I-328
+    // The two post-launch (P6) AUTO findings — I-331 (Ferentino yield) and I-328
     // (EU FMD) on the LAUNCHED PF-3945 — were removed with all post-launch agent
     // activity: post-launch is out of launch-control scope. That drops AUTO 3→1
     // and the finding total 13→11.

@@ -11,7 +11,7 @@ working. The only known gap is `runTest` suite discovery (see below).
 | Milestone | Scope | State |
 |---|---|---|
 | M1 | Traceability core + type skeleton (§4, §5) | **Complete** — see COVERAGE.md |
-| M2 | Domain model + seed data (§6, §7, §10) | **Next — and larger than first scoped.** An audit against the supplied six-product table found R-DM-04 **not met** and R-BASE-04 **not met in the domain model**: all 9 launches are J&J/Abbott *device* form factors with Pfizer names pasted on, J&J operating companies survive as franchise primary keys, and none of the six products exists as a record. M2 must re-model `Launch` for pharma (indication/modality/trial phase have nowhere to be stored), swap 510(k)/PMA/EU MDR for BLA/NDA/MAA, and replace the EO-sterilisation suppliers with CMO/API/primary-packaging vendors. See COVERAGE.md "Product / master-data audit". |
+| M2 | Domain model + seed data (§6, §7, §10) | **Next — and larger than first scoped.** An audit against the supplied six-product table found R-DM-04 **not met** and R-BASE-04 **not met in the domain model**: all 9 launches are J&J/Abbott *device* form factors with Pfizer names pasted on, J&J operating companies survive as franchise primary keys, and none of the six products exists as a record. M2 must re-model `Launch` for pharma (indication/modality/trial phase have nowhere to be stored), swap NDA/PMA/EMA for BLA/NDA/MAA, and replace the EO-sterilisation suppliers with CMO/API/primary-packaging vendors. See COVERAGE.md "Product / master-data audit". |
 | M3 | Scenario 1 end-to-end (§8.1) | Not started |
 | M4 | Scenario 2 end-to-end (§8.2) | Not started |
 | M5 | UI shell + Resolution Workspace + Cockpit + Portfolio + Open issues (§9) | Not started |

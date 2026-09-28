@@ -45,7 +45,7 @@ describe(filename, function () {
     it('names the padded value (a trailing space)', function () {
       var off = this.keyHygiene.offenders[0];
       expect(off.value).toContain(' ');
-      expect(off.name).toBe('Sterigenics Grand Rapids');
+      expect(off.name).toBe('Siegfried Hameln');
     });
   });
 
@@ -78,7 +78,7 @@ describe(filename, function () {
       expect(this.refIntegrity.status).toBe('FAIL');
       expect(this.refIntegrity.failures).toBe(1);
     });
-    it('identifies Heraeus (PARTIAL resolution, no D&B match)', function () {
+    it('identifies Aptar (PARTIAL resolution, no D&B match)', function () {
       var off = this.refIntegrity.offenders[0];
       expect(off.supplierId).toBe('seed_supplier_aptar');
       expect(off.resolutionState).toBe('PARTIAL');
@@ -123,9 +123,9 @@ describe(filename, function () {
       expect(sum).toBe(this.gate.rowsChecked);
       expect(this.gate.rowsChecked).toBe(57);
     });
-    it('repairs the padded key inline (Sterigenics) rather than dropping it', function () {
+    it('repairs the padded key inline (Siegfried) rather than dropping it', function () {
       expect(this.gate.cleansedCount).toBe(1);
-      expect(this.gate.cleansed[0].name).toBe('Sterigenics Grand Rapids');
+      expect(this.gate.cleansed[0].name).toBe('Siegfried Hameln');
       expect(this.gate.cleansed[0].key).toBe('0001007988');
     });
     it('quarantines the duplicate (Eurofins) with a reason, never loading it', function () {

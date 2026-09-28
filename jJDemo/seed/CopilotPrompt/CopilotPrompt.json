@@ -125,7 +125,7 @@
         },
         {
           "label": "Revenue exposed",
-          "value": "€18.4M on the G3 slip, €6.2M on the G2 design freeze"
+          "value": "€18.4M on the G3 slip, €6.2M on the G2 CMC lock"
         },
         {
           "label": "Open findings",
@@ -143,7 +143,7 @@
       "rec": "Treat this as one supplier decision, not four findings",
       "why": [
         "NPI-0417 (fill-finish slot) and NPI-0412 (line 3 out of spec) are both Aptar-driven; NPI-0388 is the Aptar credit downgrade itself",
-        "Activating the qualified second source at Neuss answers all three at once, and it is cheapest before the G2 freeze on 30 Sep",
+        "Activating the qualified second source at Alterkülz answers all three at once, and it is cheapest before the G2 freeze on 30 Sep",
         "After G2 the same change costs 11 weeks of change control"
       ],
       "confidence": "High confidence · the BOM trace, the credit file and the SPC data all point at one part.",
@@ -245,7 +245,7 @@
         },
         {
           "title": "Sourcing agent — checked the qualified alternatives",
-          "body": "2 approved sites, 1 with capacity now. Neuss can take the volume.",
+          "body": "2 approved sites, 1 with capacity now. Alterkülz can take the volume.",
           "when": "1m ago",
           "flag": "a"
         },
@@ -257,12 +257,12 @@
         },
         {
           "title": "It is yours — stop line 3 at Aptar?",
-          "body": "Quarantine the 4 lots and switch to Neuss. Hits Berobenatide, Sasanlimab and Sigvotatug in Germany, France and Spain.",
+          "body": "Quarantine the 4 lots and switch to Alterkülz. Hits Berobenatide, Sasanlimab and Sigvotatug in Germany, France and Spain.",
           "when": "Now",
           "flag": "r"
         }
       ],
-      "rec": "Stop the line and switch to Neuss",
+      "rec": "Stop the line and switch to Alterkülz",
       "why": [
         "The 5-day window is what makes this cheap. Inside it, G3 does not move at all",
         "Three launches share the part, so a wrong call here is a wrong call three times",
@@ -409,7 +409,7 @@
         },
         {
           "label": "On-site audit",
-          "value": "CHMP unannounced site visit expected this quarter — a gemba walk of Aptar line 3 and the Neuss second source. The line-3 CAPA and the dimensional SPC record are what they will ask to see."
+          "value": "CHMP unannounced site visit expected this quarter — a gemba walk of Aptar line 3 and the Alterkülz second source. The line-3 CAPA and the dimensional SPC record are what they will ask to see."
         }
       ],
       "rec": "Push NPI-0365 to signature today; keep FDA and the CHMP slot un-blocked, don't chase them",

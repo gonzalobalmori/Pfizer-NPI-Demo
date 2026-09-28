@@ -11,7 +11,7 @@
     "componentLot": {
       "id": "seed_complot_west_4471"
     },
-    "defectDescription": "Routine 100% visual inspection of BER-26-0431 found stopper flange lift with partial seal displacement at 1,640 ppm against a 500 ppm action limit. Defect traced to West lot WPS-26-4471; batch placed on hold pending scope determination.",
+    "defectDescription": "Routine 100% visual inspection of SAS-26-0431 found stopper flange lift with partial seal displacement at 1,640 ppm against a 500 ppm action limit. Defect traced to West lot WPS-26-4471; batch placed on hold pending scope determination.",
     "defectCategory": "STOPPER_DEFECT",
     "detectionMethod": "VISUAL_INSPECTION",
     "severity": "MAJOR",

@@ -1,12 +1,12 @@
 [
   {
-    "id": "seed_batch_abr_0412",
-    "batchNo": "BER-26-0412",
+    "id": "seed_batch_sas_0412",
+    "batchNo": "SAS-26-0412",
     "launch": {
       "id": "seed_launch_berobenatide_t2d"
     },
     "site": {
-      "id": "seed_site_kzo"
+      "id": "seed_site_puurs"
     },
     "presentation": "Lyophilised vial, 13mm stopper",
     "doseCount": 184000,
@@ -21,13 +21,13 @@
     "inspectionRejectPpm": 340
   },
   {
-    "id": "seed_batch_abr_0418",
-    "batchNo": "BER-26-0418",
+    "id": "seed_batch_sas_0418",
+    "batchNo": "SAS-26-0418",
     "launch": {
       "id": "seed_launch_berobenatide_t2d"
     },
     "site": {
-      "id": "seed_site_kzo"
+      "id": "seed_site_puurs"
     },
     "presentation": "Lyophilised vial, 13mm stopper",
     "doseCount": 156000,
@@ -42,13 +42,13 @@
     "inspectionRejectPpm": 480
   },
   {
-    "id": "seed_batch_abr_0423",
-    "batchNo": "BER-26-0423",
+    "id": "seed_batch_sas_0423",
+    "batchNo": "SAS-26-0423",
     "launch": {
       "id": "seed_launch_berobenatide_t2d"
     },
     "site": {
-      "id": "seed_site_kzo"
+      "id": "seed_site_puurs"
     },
     "presentation": "Lyophilised vial, 13mm stopper",
     "doseCount": 142000,
@@ -63,13 +63,13 @@
     "inspectionRejectPpm": 1180
   },
   {
-    "id": "seed_batch_abr_0431",
-    "batchNo": "BER-26-0431",
+    "id": "seed_batch_sas_0431",
+    "batchNo": "SAS-26-0431",
     "launch": {
       "id": "seed_launch_berobenatide_t2d"
     },
     "site": {
-      "id": "seed_site_kzo"
+      "id": "seed_site_puurs"
     },
     "presentation": "Lyophilised vial, 13mm stopper",
     "doseCount": 130000,
@@ -84,13 +84,13 @@
     "inspectionRejectPpm": 1640
   },
   {
-    "id": "seed_batch_abr_0407",
-    "batchNo": "BER-26-0407",
+    "id": "seed_batch_sas_0407",
+    "batchNo": "SAS-26-0407",
     "launch": {
       "id": "seed_launch_berobenatide_t2d"
     },
     "site": {
-      "id": "seed_site_kzo"
+      "id": "seed_site_puurs"
     },
     "presentation": "Lyophilised vial, 13mm stopper",
     "doseCount": 96000,
@@ -108,13 +108,13 @@
     "inspectionRejectPpm": 290
   },
   {
-    "id": "seed_batch_abr_0396",
-    "batchNo": "BER-26-0396",
+    "id": "seed_batch_sas_0396",
+    "batchNo": "SAS-26-0396",
     "launch": {
       "id": "seed_launch_berobenatide_t2d"
     },
     "site": {
-      "id": "seed_site_kzo"
+      "id": "seed_site_puurs"
     },
     "presentation": "Lyophilised vial, 13mm stopper",
     "doseCount": 98000,
@@ -132,13 +132,13 @@
     "inspectionRejectPpm": 30
   },
   {
-    "id": "seed_batch_abr_0405",
-    "batchNo": "BER-26-0405",
+    "id": "seed_batch_sas_0405",
+    "batchNo": "SAS-26-0405",
     "launch": {
       "id": "seed_launch_berobenatide_t2d"
     },
     "site": {
-      "id": "seed_site_kzo"
+      "id": "seed_site_puurs"
     },
     "presentation": "Lyophilised vial, 13mm stopper",
     "doseCount": 92000,

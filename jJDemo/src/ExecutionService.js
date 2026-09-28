@@ -500,13 +500,19 @@ function resolutionWorkspace(findingId) {
     }).objs;
     ts.each(function (t) {
       tasks.push({
+        id: t.id,
         name: t.name,
         owner: t.owner,
         detail: t.detail,
         agentRunnable: t.agentRunnable,
         optionKey: t.optionKey,
         status: t.status,
-        dueDate: iso(t.dueDate)
+        dueDate: iso(t.dueDate),
+        /* The system of record the action writes into when it runs, and the
+           write itself — so the plan states where the change lands, not just
+           that it was dispatched. */
+        targetSystem: t.targetSystem,
+        writeBack: t.writeBack
       });
     });
   }

@@ -26,6 +26,22 @@ entity type ActionPlanTask {
   /** Due date for the task, e.g. "16 Sep". */
   dueDate: datetime
 
+  /**
+   * The system of record this task writes into when it executes, e.g.
+   * "SAP Ariba", "Veeva Vault RIM", "Planisware". Naming it is the point: the
+   * tower is not a reporting layer that emails a human to go and type the change
+   * in somewhere else — approving the decision writes back to the system that
+   * owns the data.
+   */
+  targetSystem: string
+
+  /**
+   * The specific write executed there, e.g. "Create purchase order (ME21N)".
+   * Stated so the audit trail records what changed in the source, not merely
+   * that something was dispatched.
+   */
+  writeBack: string
+
   /** The decision this task belongs to. */
   decision: Decision
 }

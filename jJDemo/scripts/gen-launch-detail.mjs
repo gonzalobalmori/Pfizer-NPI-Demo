@@ -74,8 +74,8 @@ const BY_ID = Object.fromEntries(LAUNCHES.map((l) => [l.id, l]));
 
 /* attested per-launch launch scope (device-appropriate, hand-set). */
 const SCOPE = {
-  berobenatide_obesity: { launchValue: 96000000, launchBuildUnits: 4200, fieldForceCertified: 62, fieldForceTotal: 78, vacApprovalsFiled: 9, vacApprovalsTotal: 22, registrationsFiled: 11, registrationsTotal: 14, fillFinishRoute: 'EO', manufactureSite: 'Irvine + CMO' },
-  berobenatide_t2d: { launchValue: 42000000, launchBuildUnits: 3100, fieldForceCertified: 40, fieldForceTotal: 60, vacApprovalsFiled: 6, vacApprovalsTotal: 20, registrationsFiled: 8, registrationsTotal: 14, fillFinishRoute: 'EO', manufactureSite: 'Irvine + CMO' },
+  berobenatide_obesity: { launchValue: 96000000, launchBuildUnits: 4200, fieldForceCertified: 62, fieldForceTotal: 78, vacApprovalsFiled: 9, vacApprovalsTotal: 22, registrationsFiled: 11, registrationsTotal: 14, fillFinishRoute: 'EO', manufactureSite: 'Puurs + Vetter Ravensburg' },
+  berobenatide_t2d: { launchValue: 42000000, launchBuildUnits: 3100, fieldForceCertified: 40, fieldForceTotal: 60, vacApprovalsFiled: 6, vacApprovalsTotal: 20, registrationsFiled: 8, registrationsTotal: 14, fillFinishRoute: 'EO', manufactureSite: 'Puurs + Vetter Ravensburg' },
   sigvotatug_nsclc: { launchValue: 55000000, launchBuildUnits: 5200, fieldForceCertified: 55, fieldForceTotal: 70, vacApprovalsFiled: 12, vacApprovalsTotal: 24, registrationsFiled: 12, registrationsTotal: 14, fillFinishRoute: 'Gamma', manufactureSite: 'Galway' },
   met097_obesity: { launchValue: 120000000, launchBuildUnits: 900, fieldForceCertified: 70, fieldForceTotal: 80, vacApprovalsFiled: 15, vacApprovalsTotal: 28, registrationsFiled: 6, registrationsTotal: 8, fillFinishRoute: 'N/A (capital)', manufactureSite: 'Danvers' },
   berobenatide_knee_oa: { launchValue: 88000000, launchBuildUnits: 6400, fieldForceCertified: 66, fieldForceTotal: 72, vacApprovalsFiled: 18, vacApprovalsTotal: 26, registrationsFiled: 5, registrationsTotal: 6, fillFinishRoute: 'e-beam', manufactureSite: 'Santa Clara' },

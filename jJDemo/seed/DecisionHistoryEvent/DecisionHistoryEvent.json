@@ -6,12 +6,12 @@
     "status": "RUNNING",
     "sortOrder": 0,
     "label": "You opened the resolution on the Aptar line-3 stopper dimensional drift and weighed the three containment options",
-    "subLine": "Decision still open — reroute to line 5 to hold G3, with the Neuss hedge reserved.",
+    "subLine": "Decision still open — reroute to line 5 to hold G3, with the Alterkülz hedge reserved.",
     "occurredAt": "2026-09-11T08:16:00",
     "noteAuthor": "Sourcing agent",
     "noteRole": "",
     "noteAt": "2026-09-11T08:15:00",
-    "noteBody": "Line 3 SPC rule broken: 4 of 12 lots out of tolerance on the dimensional check. Line 5 in-house can absorb the 4 lots and hold G3 if it stops inside 5 days. Neuss is qualified on the identical spec but its tranche is reserved for Sasanlimab."
+    "noteBody": "Line 3 SPC rule broken: 4 of 12 lots out of tolerance on the dimensional check. Line 5 in-house can absorb the 4 lots and hold G3 if it stops inside 5 days. Alterkülz is qualified on the identical spec but its tranche is reserved for Sasanlimab."
   },
   {
     "id": "hist_0417",
@@ -89,13 +89,13 @@
     "kind": "MY",
     "status": "RESOLVED",
     "sortOrder": 6,
-    "label": "You approved re-routing through Diegem while the Neuss cold-chain lane requalified",
+    "label": "You approved re-routing through Diegem while the Alterkülz cold-chain lane requalified",
     "subLine": "Closed in 11 days. No gate impact.",
     "occurredAt": "2026-09-02T09:15:00",
     "noteAuthor": "R. Devi",
     "noteRole": "Logistics",
     "noteAt": "2026-09-02T14:05:00",
-    "noteBody": "Neuss passed requalification on the second attempt. Diegem carried 11 days of volume with no excursions. I have made the Diegem fallback a standing arrangement so we do not have to decide this again."
+    "noteBody": "Alterkülz passed requalification on the second attempt. Diegem carried 11 days of volume with no excursions. I have made the Diegem fallback a standing arrangement so we do not have to decide this again."
   },
   {
     "id": "hist_0391",

@@ -226,6 +226,8 @@ export interface ThreadComment {
   sourcesRead: string | null;
 }
 export interface ActionPlanTaskVm {
+  /** Seed id — also the key for the generated write-back fallback. */
+  id?: string | null;
   name: string | null;
   owner: string | null;
   detail: string | null;
@@ -233,6 +235,10 @@ export interface ActionPlanTaskVm {
   optionKey: string | null;
   status: string | null;
   dueDate: string | null;
+  /** System of record this task writes into on execution, e.g. "SAP Ariba". */
+  targetSystem?: string | null;
+  /** The specific write executed there, e.g. "Create purchase order". */
+  writeBack?: string | null;
 }
 export interface WorkspaceCapa {
   capaId: string | null;

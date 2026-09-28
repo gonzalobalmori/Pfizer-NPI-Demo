@@ -5,25 +5,25 @@
     "qualifiedForLaunches": "Sasanlimab, Sigvotatug",
     "qualificationDepth": "bracketed",
     "site": {
-      "id": "seed_site_grandrapids"
+      "id": "seed_site_hameln"
     }
   },
   {
-    "id": "seed_qp_venlo_eo",
+    "id": "seed_qp_ravensburg_aseptic",
     "processType": "aseptic fill-finish",
     "qualifiedForLaunches": "Berobenatide",
     "qualificationDepth": "full",
     "site": {
-      "id": "seed_site_venlo"
+      "id": "seed_site_ravensburg"
     }
   },
   {
-    "id": "seed_qp_neuss_electrode",
+    "id": "seed_qp_alterkulz_stopper",
     "processType": "Lyophilisation stopper",
     "qualifiedForLaunches": "Berobenatide, Sasanlimab",
     "qualificationDepth": "full",
     "site": {
-      "id": "seed_site_neuss"
+      "id": "seed_site_alterkulz"
     }
   }
 ]

@@ -1,8 +1,8 @@
 [
   {
-    "id": "seed_site_venlo",
+    "id": "seed_site_ravensburg",
     "name": "Vetter Ravensburg",
-    "location": "Venlo, NL",
+    "location": "Ravensburg, DE",
     "capabilities": "aseptic fill-finish",
     "capacityAvailableFrom": "2026-11-28",
     "supplier": {
@@ -10,9 +10,9 @@
     }
   },
   {
-    "id": "seed_site_grandrapids",
+    "id": "seed_site_hameln",
     "name": "Siegfried Hameln",
-    "location": "Grand Rapids, US",
+    "location": "Hameln, DE",
     "capabilities": "aseptic fill-finish",
     "capacityAvailableFrom": "2026-09-29",
     "supplier": {
@@ -20,9 +20,9 @@
     }
   },
   {
-    "id": "seed_site_cashel",
-    "name": "Cashel",
-    "location": "Cashel, IE",
+    "id": "seed_site_ferentino",
+    "name": "Patheon Ferentino",
+    "location": "Ferentino, IT",
     "capabilities": "Oral solid dose manufacture and packaging",
     "capacityAvailableFrom": "2026-09-01",
     "supplier": {
@@ -30,10 +30,10 @@
     }
   },
   {
-    "id": "seed_site_neuss",
-    "name": "Neuss",
-    "location": "Neuss, DE",
-    "capabilities": "Elastomeric closures; nasal spray actuators",
+    "id": "seed_site_alterkulz",
+    "name": "Datwyler Alterkülz",
+    "location": "Alterkülz, DE",
+    "capabilities": "Elastomeric closures and vial stoppers",
     "capacityAvailableFrom": "2026-09-15",
     "supplier": {
       "id": "seed_supplier_aptar"
