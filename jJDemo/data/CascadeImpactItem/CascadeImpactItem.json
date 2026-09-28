@@ -1,82 +1,472 @@
 [
   {
-    "id": "seed_cascade_pf3945_obesity_run2",
-    "milestone": { "id": "seed_milestone_pf3945_obesity_fda" },
+    "id": "seed_cascade_pf3945_obesity_fda_1",
+    "milestone": {
+      "id": "seed_milestone_pf3945_obesity_fda"
+    },
     "sortOrder": 1,
     "domain": "MANUFACTURING",
     "domainLabel": "Manufacturing",
     "targetLabel": "Production Run 2 (launch-stock top-up)",
-    "detail": "Launch stock from Run 1 is already built. Run 2 was scheduled to top up for go-live; with clearance six weeks out it would build inventory that only accrues carrying cost.",
+    "detail": "Launch stock from Run 1 is already built. Run 2 was scheduled to top up for go-live; with approval six weeks out it would build inventory that only accrues carrying cost.",
     "resolution": "AUTO",
-    "autoAction": "Held Run 2 six weeks; freed the Santa Clara line window and notified Manufacturing (L. Haugen). Run 1 stock re-earmarked to cover the shifted go-live.",
     "costImpact": 0,
     "dayShift": 0,
-    "status": "PENDING"
+    "status": "PENDING",
+    "autoAction": "Held Run 2 six weeks; freed the Puurs line window and notified Manufacturing (L. Haugen). Run 1 stock re-earmarked to cover the shifted go-live."
   },
   {
-    "id": "seed_cascade_pf3945_obesity_kits",
-    "milestone": { "id": "seed_milestone_pf3945_obesity_fda" },
+    "id": "seed_cascade_pf3945_obesity_fda_2",
+    "milestone": {
+      "id": "seed_milestone_pf3945_obesity_fda"
+    },
     "sortOrder": 2,
-    "domain": "LOGISTICS",
-    "domainLabel": "Launch stock / 3PL",
-    "targetLabel": "Launch stock deployment — US geographies",
-    "detail": "Launch stock are staged at the 3PL awaiting deployment on the original date. Deployment is re-timed to the new clearance date so kits are not shipped into the field ahead of an approved product.",
+    "domain": "SUPPLY",
+    "domainLabel": "Launch stock",
+    "targetLabel": "Starter-stock staging to the regional DC",
+    "detail": "Staging was timed to land a fortnight before the original approval date. Moving it keeps the stock at the fill site instead of paying to hold it forward.",
     "resolution": "AUTO",
-    "autoAction": "Delayed geography rollout six weeks; kept kits at the 3PL on the existing staging agreement. Field-ops deployment calendar re-issued automatically.",
     "costImpact": 0,
     "dayShift": 0,
-    "status": "PENDING"
+    "status": "PENDING",
+    "autoAction": "Re-timed staging to six weeks later and released the DC inbound slot. Logistics (R. Devi) notified."
   },
   {
-    "id": "seed_cascade_pf3945_obesity_comms",
-    "milestone": { "id": "seed_milestone_pf3945_obesity_fda" },
+    "id": "seed_cascade_pf3945_obesity_fda_3",
+    "milestone": {
+      "id": "seed_milestone_pf3945_obesity_fda"
+    },
     "sortOrder": 3,
     "domain": "COMMERCIAL",
     "domainLabel": "Commercial comms",
-    "targetLabel": "KOL pre-announcement accounts",
-    "detail": "Commercial pre-announced go-live to KOL accounts on the original date. The platform flags the exact accounts that were told a date that has now moved and need proactive outreach.",
+    "targetLabel": "Affiliate launch communications and HCP pre-announcement",
+    "detail": "Pre-announcement was scheduled against the original date. Sending it now would commit the field force to a date the authority has moved.",
     "resolution": "AUTO",
-    "autoAction": "Flagged 7 KOL accounts already pre-announced; drafted revised-timing outreach and queued it for Commercial (T. Bergmann) to send. No account left on a stale date.",
     "costImpact": 0,
     "dayShift": 0,
-    "status": "PENDING"
+    "status": "PENDING",
+    "autoAction": "Paused the pre-announcement sequence and re-based it on the new date. Commercial (T. Bergmann) notified with the revised calendar."
   },
   {
-    "id": "seed_cascade_pf3945_obesity_storage",
-    "milestone": { "id": "seed_milestone_pf3945_obesity_fda" },
+    "id": "seed_cascade_pf3945_obesity_fda_4",
+    "milestone": {
+      "id": "seed_milestone_pf3945_obesity_fda"
+    },
     "sortOrder": 4,
     "domain": "FINANCE",
     "domainLabel": "Working capital",
-    "targetLabel": "Finished-goods storage & carrying cost",
-    "detail": "Six extra weeks of finished-goods storage at the 3PL is a working-capital call: extend the current 3PL storage agreement, or repatriate launch stock to the regional DC to cut carrying cost at the price of a re-stage before go-live.",
+    "targetLabel": "Finished-goods storage and carrying cost",
+    "detail": "Six extra weeks of finished-goods storage at the 3PL is a working-capital call: extend the current agreement, or repatriate launch stock to the regional DC to cut carrying cost at the price of a re-stage before go-live.",
     "resolution": "HUMAN",
+    "costImpact": 48000,
+    "dayShift": 0,
+    "status": "PENDING",
     "decisionPrompt": "Extend 3PL storage six weeks, or repatriate launch stock to the regional DC?",
     "decisionOptions": [
       "Extend 3PL storage +6 weeks (+€48k carrying cost, zero re-stage risk)",
       "Repatriate to regional DC (+€12k move, saves €36k, adds a 9-day re-stage before go-live)"
     ],
-    "owner": { "id": "seed_person_jr" },
-    "costImpact": 48000,
-    "dayShift": 0,
-    "status": "PENDING"
+    "owner": {
+      "id": "seed_person_jr"
+    }
   },
   {
-    "id": "seed_cascade_pf3945_obesity_field",
-    "milestone": { "id": "seed_milestone_pf3945_obesity_fda" },
+    "id": "seed_cascade_pf3945_obesity_fda_5",
+    "milestone": {
+      "id": "seed_milestone_pf3945_obesity_fda"
+    },
     "sortOrder": 5,
     "domain": "COMMERCIAL",
     "domainLabel": "Field readiness",
-    "targetLabel": "Field certification currency",
-    "detail": "The field is trained and certified against the original go-live. A six-week slip pushes some certifications past their 90-day currency window — recertify now and risk a second lapse, or schedule a refresh close to the new date.",
+    "targetLabel": "Field-force certification window",
+    "detail": "Certification completes four weeks before the original date. Holding it means re-certifying lapsed reps; running it now means a six-week gap between certification and first call.",
     "resolution": "HUMAN",
-    "decisionPrompt": "Recertify the field now, or schedule a refresh close to the new go-live?",
-    "decisionOptions": [
-      "Recertify now (keeps everyone current today, risks a second lapse if clearance moves again)",
-      "Schedule a refresh two weeks before the new go-live (single touch, tighter margin)"
-    ],
-    "owner": { "id": "seed_person_tb" },
     "costImpact": 0,
     "dayShift": 0,
-    "status": "PENDING"
+    "status": "PENDING",
+    "decisionPrompt": "Certify now and accept the gap, or re-time certification to the new date?",
+    "decisionOptions": [
+      "Certify on the original window (no re-work, 6-week knowledge gap before first call)",
+      "Re-time certification to the new date (+€22k re-scheduling, field ready at go-live)"
+    ],
+    "owner": {
+      "id": "seed_person_tb"
+    }
+  },
+  {
+    "id": "seed_cascade_berobenatide_obesity_ema_1",
+    "milestone": {
+      "id": "seed_milestone_berobenatide_obesity_ema"
+    },
+    "sortOrder": 1,
+    "domain": "REGULATORY",
+    "domainLabel": "Regulatory",
+    "targetLabel": "National phase filings across the 27 member states",
+    "detail": "National phase cannot start before the opinion. Every downstream national submission date was derived from it.",
+    "resolution": "AUTO",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING",
+    "autoAction": "Re-derived all 27 national submission dates from the new opinion date and re-issued the filing calendar to Regulatory (S. Lindqvist)."
+  },
+  {
+    "id": "seed_cascade_berobenatide_obesity_ema_2",
+    "milestone": {
+      "id": "seed_milestone_berobenatide_obesity_ema"
+    },
+    "sortOrder": 2,
+    "domain": "SUPPLY",
+    "domainLabel": "Packaging",
+    "targetLabel": "EU multi-language artwork and serialisation release",
+    "detail": "Printed components were scheduled to release against the original opinion. Releasing early risks artwork that no longer matches the approved label.",
+    "resolution": "AUTO",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING",
+    "autoAction": "Held printed-component release until opinion+5d and kept the serialisation master in draft. GPLO notified."
+  },
+  {
+    "id": "seed_cascade_berobenatide_obesity_ema_3",
+    "milestone": {
+      "id": "seed_milestone_berobenatide_obesity_ema"
+    },
+    "sortOrder": 3,
+    "domain": "MANUFACTURING",
+    "domainLabel": "Manufacturing",
+    "targetLabel": "Puurs prefilled-syringe launch build",
+    "detail": "The launch build was sequenced to finish just before the opinion. It can hold without losing the line window.",
+    "resolution": "AUTO",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING",
+    "autoAction": "Shifted the build five weeks and re-confirmed the Puurs line window; Vetter Ravensburg secondary capacity released."
+  },
+  {
+    "id": "seed_cascade_berobenatide_obesity_ema_4",
+    "milestone": {
+      "id": "seed_milestone_berobenatide_obesity_ema"
+    },
+    "sortOrder": 4,
+    "domain": "MARKET_ACCESS",
+    "domainLabel": "Market access",
+    "targetLabel": "Germany and France tender windows",
+    "detail": "Germany tenders in Q2 and Q4 only. A five-week slip misses the Q2 window, which means either entering at Q4 or filing for an interim reimbursement price.",
+    "resolution": "HUMAN",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING",
+    "decisionPrompt": "Miss the Q2 German tender and wait for Q4, or seek an interim price?",
+    "decisionOptions": [
+      "Wait for the Q4 tender (no cost, ~€8.4M revenue deferred two quarters)",
+      "File for an interim reimbursement price (enters on time, sets a lower reference price for the EU)"
+    ],
+    "owner": {
+      "id": "seed_person_dm"
+    }
+  },
+  {
+    "id": "seed_cascade_berobenatide_obesity_ema_5",
+    "milestone": {
+      "id": "seed_milestone_berobenatide_obesity_ema"
+    },
+    "sortOrder": 5,
+    "domain": "COMMERCIAL",
+    "domainLabel": "Commercial",
+    "targetLabel": "EU affiliate launch sequence",
+    "detail": "Nine affiliates were sequenced off the opinion date. Holding all nine protects the sequence; releasing the four that do not depend on national pricing gets revenue earlier but breaks the wave.",
+    "resolution": "HUMAN",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING",
+    "decisionPrompt": "Hold all nine affiliates, or release the four that are price-independent?",
+    "decisionOptions": [
+      "Hold all nine to the new date (sequence intact, uniform messaging)",
+      "Release the four price-independent affiliates first (earlier revenue, two-speed launch to manage)"
+    ],
+    "owner": {
+      "id": "seed_person_tb"
+    }
+  },
+  {
+    "id": "seed_cascade_sigvotatug_nsclc_fda_1",
+    "milestone": {
+      "id": "seed_milestone_sigvotatug_nsclc_fda"
+    },
+    "sortOrder": 1,
+    "domain": "MANUFACTURING",
+    "domainLabel": "Drug substance",
+    "targetLabel": "Grange Castle conjugation campaign",
+    "detail": "The conjugation suite was booked to deliver drug substance against the original approval. The campaign can slip three weeks inside the suite booking.",
+    "resolution": "AUTO",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING",
+    "autoAction": "Moved the conjugation campaign three weeks and held the suite booking; PharmSci and Site Grange Castle notified."
+  },
+  {
+    "id": "seed_cascade_sigvotatug_nsclc_fda_2",
+    "milestone": {
+      "id": "seed_milestone_sigvotatug_nsclc_fda"
+    },
+    "sortOrder": 2,
+    "domain": "QUALITY",
+    "domainLabel": "Quality",
+    "targetLabel": "Lyophilisation cycle requalification",
+    "detail": "Requalification was timed to close before approval. A three-week slip keeps it well inside its validity window.",
+    "resolution": "AUTO",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING",
+    "autoAction": "Re-timed the requalification and confirmed the protocol stays valid to Q3 2027. ALIMS notified."
+  },
+  {
+    "id": "seed_cascade_sigvotatug_nsclc_fda_3",
+    "milestone": {
+      "id": "seed_milestone_sigvotatug_nsclc_fda"
+    },
+    "sortOrder": 3,
+    "domain": "SUPPLY",
+    "domainLabel": "Cold chain",
+    "targetLabel": "Cold-chain lane qualification for the US launch",
+    "detail": "Lane qualification shipments were booked to complete before approval; they can move without re-opening the protocol.",
+    "resolution": "AUTO",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING",
+    "autoAction": "Re-booked the qualification shipments with DHL Life Sciences and kept the lane protocol open. Logistics notified."
+  },
+  {
+    "id": "seed_cascade_sigvotatug_nsclc_fda_4",
+    "milestone": {
+      "id": "seed_milestone_sigvotatug_nsclc_fda"
+    },
+    "sortOrder": 4,
+    "domain": "SUPPLY",
+    "domainLabel": "Shelf life",
+    "targetLabel": "Launch-stock expiry against the new go-live",
+    "detail": "Launch stock was filled against the original date. Three more weeks on the shelf leaves under 18 months dating for the wholesaler contracts, which some accounts will reject.",
+    "resolution": "HUMAN",
+    "costImpact": 210000,
+    "dayShift": 0,
+    "status": "PENDING",
+    "decisionPrompt": "Ship the existing stock with shorter dating, or re-fill for full shelf life?",
+    "decisionOptions": [
+      "Ship existing stock (no cost, ~11% of accounts may refuse on dating)",
+      "Re-fill a partial campaign (+€210k, full 24-month dating, needs a Grange Castle slot)"
+    ],
+    "owner": {
+      "id": "seed_person_ap"
+    }
+  },
+  {
+    "id": "seed_cascade_sigvotatug_nsclc_fda_5",
+    "milestone": {
+      "id": "seed_milestone_sigvotatug_nsclc_fda"
+    },
+    "sortOrder": 5,
+    "domain": "COMMERCIAL",
+    "domainLabel": "Market access",
+    "targetLabel": "US payer contracting effective dates",
+    "detail": "Payer contracts were written to an effective date tied to the original approval. Re-papering them costs legal time; leaving them means a three-week window with no contracted price.",
+    "resolution": "HUMAN",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING",
+    "decisionPrompt": "Re-paper the payer contracts, or bridge the three-week gap?",
+    "decisionOptions": [
+      "Re-paper all contracts to the new date (+3 weeks legal effort, clean pricing from day one)",
+      "Bridge with a letter of intent (fast, exposes ~€1.2M to a retroactive rebate claim)"
+    ],
+    "owner": {
+      "id": "seed_person_dm"
+    }
+  },
+  {
+    "id": "seed_cascade_pf08634404_crc_nmpa_1",
+    "milestone": {
+      "id": "seed_milestone_pf08634404_crc_nmpa"
+    },
+    "sortOrder": 1,
+    "domain": "REGULATORY",
+    "domainLabel": "Regulatory",
+    "targetLabel": "Import drug licence application",
+    "detail": "The import licence is filed on approval and gates customs clearance. Its whole timeline derives from the approval date.",
+    "resolution": "AUTO",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING",
+    "autoAction": "Re-based the import licence filing and the customs pre-clearance dossier on the new date. Regulatory China notified."
+  },
+  {
+    "id": "seed_cascade_pf08634404_crc_nmpa_2",
+    "milestone": {
+      "id": "seed_milestone_pf08634404_crc_nmpa"
+    },
+    "sortOrder": 2,
+    "domain": "SUPPLY",
+    "domainLabel": "Packaging",
+    "targetLabel": "Simplified-Chinese artwork and local labelling",
+    "detail": "Local artwork release was set against the original approval; holding it avoids printing a label that may still change.",
+    "resolution": "AUTO",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING",
+    "autoAction": "Held the Simplified-Chinese artwork at approved-draft and re-timed printed-component release two months."
+  },
+  {
+    "id": "seed_cascade_pf08634404_crc_nmpa_3",
+    "milestone": {
+      "id": "seed_milestone_pf08634404_crc_nmpa"
+    },
+    "sortOrder": 3,
+    "domain": "MANUFACTURING",
+    "domainLabel": "Manufacturing",
+    "targetLabel": "China-market fill campaign at Grange Castle",
+    "detail": "The China campaign was slotted immediately before approval. Two months of slip can be absorbed by re-sequencing behind the EU campaign.",
+    "resolution": "AUTO",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING",
+    "autoAction": "Re-sequenced the China campaign behind the EU build and confirmed the Grange Castle slot. Global Supply Chain notified."
+  },
+  {
+    "id": "seed_cascade_pf08634404_crc_nmpa_4",
+    "milestone": {
+      "id": "seed_milestone_pf08634404_crc_nmpa"
+    },
+    "sortOrder": 4,
+    "domain": "COMMERCIAL",
+    "domainLabel": "Partner",
+    "targetLabel": "Local distribution partner commitment",
+    "detail": "The distribution agreement carries a minimum-volume commitment that starts on approval. Two months of slip pushes the first commitment period into the next tender cycle.",
+    "resolution": "HUMAN",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING",
+    "decisionPrompt": "Re-negotiate the commitment start, or absorb the shifted first period?",
+    "decisionOptions": [
+      "Re-negotiate the start date (legal effort, protects the volume floor)",
+      "Absorb the shift (no effort, first-period shortfall risk ~€3.1M against the floor)"
+    ],
+    "owner": {
+      "id": "seed_person_jr"
+    }
+  },
+  {
+    "id": "seed_cascade_pf08634404_crc_nmpa_5",
+    "milestone": {
+      "id": "seed_milestone_pf08634404_crc_nmpa"
+    },
+    "sortOrder": 5,
+    "domain": "MARKET_ACCESS",
+    "domainLabel": "Market access",
+    "targetLabel": "Volume-based procurement cycle entry",
+    "detail": "VBP cycles are annual. A two-month slip misses this cycle, so entry is either next cycle or via provincial listing at a lower volume.",
+    "resolution": "HUMAN",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING",
+    "decisionPrompt": "Wait for the next VBP cycle, or enter via provincial listing?",
+    "decisionOptions": [
+      "Wait for the next national VBP cycle (full volume, ~12 months later)",
+      "Enter via provincial listings now (faster revenue, ~40% of the volume and a lower reference price)"
+    ],
+    "owner": {
+      "id": "seed_person_dm"
+    }
+  },
+  {
+    "id": "seed_cascade_atirmociclib_mbc_ema_1",
+    "milestone": {
+      "id": "seed_milestone_atirmociclib_mbc_ema"
+    },
+    "sortOrder": 1,
+    "domain": "SUPPLY",
+    "domainLabel": "Packaging",
+    "targetLabel": "Updated patient leaflet and carton artwork",
+    "detail": "The variation changes the leaflet. Artwork was scheduled to release on approval; it can hold without affecting in-market supply.",
+    "resolution": "AUTO",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING",
+    "autoAction": "Held the revised artwork and kept the current approved leaflet in production. GPLO notified."
+  },
+  {
+    "id": "seed_cascade_atirmociclib_mbc_ema_2",
+    "milestone": {
+      "id": "seed_milestone_atirmociclib_mbc_ema"
+    },
+    "sortOrder": 2,
+    "domain": "REGULATORY",
+    "domainLabel": "Regulatory",
+    "targetLabel": "National implementation notifications",
+    "detail": "Each member state is notified on approval; the notification calendar derives from it.",
+    "resolution": "AUTO",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING",
+    "autoAction": "Re-based the national notification calendar four weeks and re-issued it to the affiliates."
+  },
+  {
+    "id": "seed_cascade_atirmociclib_mbc_ema_3",
+    "milestone": {
+      "id": "seed_milestone_atirmociclib_mbc_ema"
+    },
+    "sortOrder": 3,
+    "domain": "COMMERCIAL",
+    "domainLabel": "Medical",
+    "targetLabel": "Updated prescriber materials and MSL briefing",
+    "detail": "Materials referencing the extended label cannot be used before approval; the briefing was booked against the original date.",
+    "resolution": "AUTO",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING",
+    "autoAction": "Re-timed the MSL briefing and locked the extended-label materials until approval. Clinical (J. Thomson) notified."
+  },
+  {
+    "id": "seed_cascade_atirmociclib_mbc_ema_4",
+    "milestone": {
+      "id": "seed_milestone_atirmociclib_mbc_ema"
+    },
+    "sortOrder": 4,
+    "domain": "SUPPLY",
+    "domainLabel": "In-market stock",
+    "targetLabel": "Existing in-market stock with the current leaflet",
+    "detail": "Stock in market carries the pre-variation leaflet. Four extra weeks means more of it sells through — acceptable — but the changeover batch now straddles a quarter end.",
+    "resolution": "HUMAN",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING",
+    "decisionPrompt": "Sell through existing stock, or recall-and-relabel the changeover batch?",
+    "decisionOptions": [
+      "Sell through existing stock (no cost, mixed leaflets in market for ~5 weeks)",
+      "Relabel the changeover batch (+€64k, single leaflet version in market)"
+    ],
+    "owner": {
+      "id": "seed_person_ap"
+    }
+  },
+  {
+    "id": "seed_cascade_atirmociclib_mbc_ema_5",
+    "milestone": {
+      "id": "seed_milestone_atirmociclib_mbc_ema"
+    },
+    "sortOrder": 5,
+    "domain": "MARKET_ACCESS",
+    "domainLabel": "Market access",
+    "targetLabel": "Price re-negotiation tied to the extended indication",
+    "detail": "Several markets tie a price review to the label extension. A four-week slip moves those reviews past the annual price-cut date in two of them.",
+    "resolution": "HUMAN",
+    "costImpact": 0,
+    "dayShift": 0,
+    "status": "PENDING",
+    "decisionPrompt": "Open the price reviews now on the current label, or wait for the variation?",
+    "decisionOptions": [
+      "Open reviews now (avoids the annual cut in two markets, weaker negotiating position)",
+      "Wait for the variation (stronger case, exposes ~€1.8M to the annual price cut)"
+    ],
+    "owner": {
+      "id": "seed_person_dm"
+    }
   }
 ]
