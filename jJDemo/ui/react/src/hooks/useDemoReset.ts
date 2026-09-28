@@ -29,7 +29,7 @@
 import { useEffect, useState } from 'react';
 import { resetDecision } from '@/api/execution';
 import { resetQuality, resetWave, QUALITY_EVENT_ID, DEMAND_CHANGE_ID } from '@/api/scenarios';
-import { resetCascade, PF3945_FDA_MILESTONE_ID } from '@/api/cascade';
+import { resetCascade, getCascadeScenarios, PF3945_FDA_MILESTONE_ID } from '@/api/cascade';
 
 export interface DemoResetState {
   /** True once the reset has settled — successfully or not. Views must wait for it. */
@@ -43,13 +43,39 @@ export interface DemoResetState {
  * are settled individually — one branch failing must not prevent the others from
  * rewinding, which would leave the demo half-reset.
  */
-async function runReset(): Promise<string | null> {
+/**
+ * Every replan milestone, so all of them rewind rather than only the one the
+ * screen used to be hard-wired to.
+ *
+ * This used to reset a single hard-coded milestone id. Once the replan screen
+ * gained five scenarios that left four of them permanently slipped after a
+ * walkthrough — the demo could be run once and never cleanly again.
+ *
+ * Falls back to the original id if the environment does not expose the scenario
+ * list, so an older backend still gets its one milestone reset.
+ */
+async function cascadeBranches(): Promise<Array<[string, () => Promise<unknown>]>> {
+  try {
+    const { scenarios } = await getCascadeScenarios();
+    if (scenarios?.length) {
+      return scenarios.map((s) => [
+        `cascade · ${s.authority ?? s.id}`,
+        () => resetCascade(s.id),
+      ]);
+    }
+  } catch {
+    /* older environment — fall through to the single known milestone */
+  }
+  return [['cascade', () => resetCascade(PF3945_FDA_MILESTONE_ID)]];
+}
+
+export async function runReset(): Promise<string | null> {
   const branches: Array<[string, () => Promise<unknown>]> = [
     // Execution: every USER-held decision (the Approve flow on the issue page).
     ['decisions', () => resetDecision()],
     ['quality', () => resetQuality(QUALITY_EVENT_ID)],
     ['market wave', () => resetWave(DEMAND_CHANGE_ID)],
-    ['cascade', () => resetCascade(PF3945_FDA_MILESTONE_ID)],
+    ...(await cascadeBranches()),
   ];
 
   const results = await Promise.allSettled(branches.map(([, run]) => run()));
@@ -59,6 +85,27 @@ async function runReset(): Promise<string | null> {
 
   if (failed.length === 0) return null;
   return `Could not reset: ${failed.join(', ')}. The app is showing whatever state those scenarios were left in.`;
+}
+
+/**
+ * Reset every scenario on demand, then reload.
+ *
+ * The reload is the point rather than an afterthought: some demo state lives in
+ * the page (which action-plan rows have been executed this session, which
+ * option is selected, what a view has already fetched), so rewinding only the
+ * server would leave the screen disagreeing with it. Reloading also re-runs the
+ * startup gate, which is the path already known to produce a clean opening
+ * state.
+ *
+ * Resolves with an error string if any branch failed, in which case the caller
+ * should show it rather than reload — reloading over a failed reset hides the
+ * failure and presents stale state as fresh.
+ */
+export async function resetAllAndReload(): Promise<string | null> {
+  const error = await runReset();
+  if (error) return error;
+  window.location.reload();
+  return null;
 }
 
 /* Module-level so the reset happens once per page load and is shared by all callers. */

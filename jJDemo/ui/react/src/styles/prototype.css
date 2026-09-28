@@ -257,6 +257,21 @@ button{font-family:inherit;font-size:inherit;cursor:pointer;border:none;backgrou
 .m-sub{font-size:11px;color:var(--g500);padding-left:14px;
   border-left:1px solid var(--g300);letter-spacing:.2px}
 .m-top .h-gd{margin-left:auto}
+/* reset control sits beside the guided-demo button, quieter than it — it is a
+   presenter tool, not a call to action */
+.m-top .h-rs-wrap,.m-top .h-rs{margin-left:10px}
+.h-rs-wrap{display:inline-flex;align-items:center;gap:8px}
+.h-rs{display:inline-flex;align-items:center;gap:7px;background:var(--white);
+  color:var(--g700);border:1px solid var(--g300);border-radius:8px;padding:7px 12px;
+  font-size:11px;font-weight:650;white-space:nowrap}
+.h-rs:hover{border-color:var(--g900);color:var(--g900)}
+.h-rs:disabled{opacity:.6}
+.h-rs svg{width:12px;height:12px;stroke:currentColor;fill:none;flex:none}
+.h-rs.go{background:var(--g900);color:#fff;border-color:var(--g900)}
+.h-rs.go:hover{background:var(--brand);border-color:var(--brand)}
+.h-rs.bad{border-color:var(--red500);color:var(--red600)}
+.h-rs-q{font-size:11px;color:var(--g700)}
+.h-rs-err{font-size:10.5px;color:var(--red600);max-width:38ch;line-height:1.4}
 /* bottom padding clears the fixed .dsc disclaimer bar (R-BASE-05) */
 .m-shell{flex:1;display:flex;gap:18px;padding:18px 18px 42px;align-items:stretch}
 .m-stage{flex:1;background:var(--white);border-radius:14px;padding:40px 36px 34px;
