@@ -205,3 +205,6 @@ results/
 .playwright
 .attachments
 .github/copilot-instructions.md
+
+# Word/Office lock files, created while a document is open
+~$*
