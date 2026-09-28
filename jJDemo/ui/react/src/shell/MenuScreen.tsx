@@ -205,7 +205,7 @@ export default function MenuScreen() {
           <div className="mr-av">GH</div>
           <div className="mr-n">George Hall</div>
           <div className="mr-r">
-            Global NPI Lead
+            NPI Senior Manager
           </div>
           <button className="mr-b" onClick={() => go('exec', 'actions')}>
             My Tasks<span className="bdg r">4</span>
