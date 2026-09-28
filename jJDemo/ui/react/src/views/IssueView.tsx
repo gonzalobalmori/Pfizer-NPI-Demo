@@ -21,6 +21,13 @@ import ActionToast from '@/components/Feedback/ActionToast';
 import { labelFor } from '@/productLabel';
 import { pharma } from '@/pharmaText';
 import { WRITE_BACK } from '@/writeBackMap';
+import { PEOPLE } from '@/execution/people';
+import ActionExecutionModal from '@/components/execution/ActionExecutionModal';
+import type { Assignee, ExecTarget } from '@/components/execution/ActionExecutionModal';
+import type { ActionRunMap, RunMode } from '@/execution/actionRuntime';
+import { makeReceipt, planProgress, statusAfter, statusChip } from '@/execution/actionRuntime';
+import ApprovedPlanPanel from '@/components/execution/ApprovedPlanPanel';
+import type { PlanRow } from '@/components/execution/ApprovedPlanPanel';
 
 /**
  * The system of record a task writes into, and the write it performs.
@@ -94,6 +101,13 @@ export default function IssueView() {
   const [error, setError] = useState<string | null>(null);
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
   const [approving, setApproving] = useState(false);
+  /* Execution state for the action plan, held for the session: the demo shows
+     the write-back mechanism, and the environment it runs against may not
+     accept the writes. See execution/actionRuntime for the scope of that. */
+  const [runs, setRuns] = useState<ActionRunMap>({});
+  const [exec, setExec] = useState<{ mode: RunMode; target: ExecTarget } | null>(null);
+  const [runToast, setRunToast] = useState<string | null>(null);
+  const [planOpen, setPlanOpen] = useState(false);
   /* Set only by a click in THIS session, so the toast fires on the user's own
      approval and not on every revisit of an already-approved finding (the
      persistent banner below covers that case). */
@@ -159,6 +173,20 @@ export default function IssueView() {
   const agentTaskCount = planTasks.filter((t) => t.agentRunnable).length;
   /* Distinct systems this plan writes into, in the order they first appear. */
   const writeBackSystems = [...new Set(planTasks.map((t) => writeBackFor(t)[0]).filter(Boolean))];
+  const planTaskIds = planTasks.map((t, i) => t.id ?? `task-${i}`);
+  const progress = planProgress(planTaskIds, runs);
+  /* One resolved row per action, shared by the section list and the oversight
+     drawer so the two can never disagree about status or receipts. */
+  const planRows: PlanRow[] = planTasks.map((t, i) => {
+    const taskId = t.id ?? `task-${i}`;
+    const [system, writeBack] = writeBackFor(t);
+    return {
+      target: { taskId, name: pharma(t.name), owner: t.owner ?? '', detail: pharma(t.detail), system, writeBack },
+      agentRunnable: !!t.agentRunnable,
+      dueDate: t.dueDate ?? null,
+      run: runs[taskId],
+    };
+  });
 
   const canApprove = !authorityBound && !held && !!decision && !decision.approvedAt && !!selectedOption && !approving;
   /* The decision is settled — the cascade has run and re-approving is refused by
@@ -173,6 +201,30 @@ export default function IssueView() {
   const approvedAt = decision?.approvedAt ?? null;
   const approvedLabel = decision?.selectedOption ?? null;
 
+  /* Record an execution (or an assignment) against one action. Assigning is
+     deliberately NOT a write: it hands the action to a person, who still has to
+     execute it — conflating the two would misrepresent what happened. */
+  const handleExecute = (mode: RunMode, assignee?: Assignee, note?: string) => {
+    if (!exec) return;
+    const { target } = exec;
+    const actor = mode === 'agent' ? target.owner : mode === 'self' ? 'You' : (assignee?.name ?? '');
+    setRuns((prev) => ({
+      ...prev,
+      [target.taskId]: {
+        status: statusAfter(mode),
+        assignedTo: mode === 'assign' ? (assignee?.name ?? null) : null,
+        note: note ?? null,
+        receipt: mode === 'assign'
+          ? null
+          : makeReceipt(target.taskId, target.system, target.writeBack, actor),
+      },
+    }));
+    setExec(null);
+    setRunToast(mode === 'assign'
+      ? `Assigned to ${assignee?.name ?? 'colleague'}`
+      : `${target.system}: ${target.writeBack}`);
+  };
+
   const handleApprove = async () => {
     if (!decision || !selectedOption) return;
     const optionName = `Option ${(selectedOption.optionKey ?? '').toUpperCase()}`;
@@ -185,6 +237,9 @@ export default function IssueView() {
          resolved we know the cascade ran. */
       await load();
       setJustApproved(optionName);
+      /* Open the oversight drawer straight away — the approval is the moment
+         the plan becomes real, so that is when it should be on screen. */
+      setPlanOpen(true);
     } catch (err) {
       setError(typeof err === 'string' ? err : 'The approval could not be recorded.');
     } finally {
@@ -378,7 +433,33 @@ export default function IssueView() {
 
         <section className="sec you-only">
           <div className="sec-h">Action plan<span className="sec-n" id="act-prog">0 of {planTasks.length} done · {agentTaskCount} can be run by agents · writes back to {writeBackSystems.length} source systems</span>
-            <button type="button" className="btn s sm" id="run-all">Run all {agentTaskCount} agent actions</button></div>
+            <button
+              type="button"
+              className="btn s sm"
+              id="run-all"
+              onClick={() => {
+                /* Dispatch every agent-runnable action that has not already
+                   run. Each still records its own receipt, so the audit trail
+                   is per-write rather than one lump. */
+                const now = new Date().toISOString();
+                setRuns((prev) => {
+                  const next = { ...prev };
+                  let fired = 0;
+                  planTasks.forEach((t, i) => {
+                    const id = t.id ?? `task-${i}`;
+                    if (!t.agentRunnable || next[id]?.status === 'Done') return;
+                    const [sys, write] = writeBackFor(t);
+                    next[id] = {
+                      status: 'Done',
+                      receipt: { ...makeReceipt(id, sys, write, t.owner ?? 'Agent'), at: now },
+                    };
+                    fired++;
+                  });
+                  if (fired) setRunToast(`${fired} agent actions dispatched`);
+                  return next;
+                });
+              }}
+            >Run all {agentTaskCount} agent actions</button></div>
           {/* Stated once, above the list: executing an action is a write into the
               system that owns the data, not a reminder to go and do it by hand.
               That is the difference the demo is meant to land. */}
@@ -387,13 +468,46 @@ export default function IssueView() {
             {writeBackSystems.join(' · ')}. Each action can be executed by its agent within
             guardrails, or by you.
           </div>
+          {/* Plan oversight — how far the approved plan has actually got, and
+              which systems of record have taken a write. This is the answer to
+              "what happened after I approved?", which used to be a toast and
+              then nothing. */}
+          <div className="ac-prog">
+            <div className="ac-prog-t">
+              <b>{progress.done}</b> executed
+              <span>·</span>
+              <b>{progress.assigned}</b> assigned
+              <span>·</span>
+              <b>{progress.pending}</b> not started
+            </div>
+            <div className="acts-bar" aria-hidden="true">
+              <div className="acts-fill" style={{ width: `${progress.pct}%` }} />
+            </div>
+            <div className="ac-prog-p">{progress.pct}%</div>
+          </div>
+          {progress.systemsWritten.length ? (
+            <div className="ac-prog-sys">
+              Written back to {progress.systemsWritten.map((s) => <b key={s}>{s}</b>)}
+            </div>
+          ) : null}
           <div className="sec-b p0">
             <div className="acts" id="acts">
               {planTasks.map((t, i) => {
                 const isAg = !!t.agentRunnable;
                 const [sys, write] = writeBackFor(t);
+                const taskId = t.id ?? `task-${i}`;
+                const run = runs[taskId];
+                const status = run?.status ?? 'Not started';
+                const target: ExecTarget = {
+                  taskId,
+                  name: pharma(t.name),
+                  owner: t.owner ?? '',
+                  detail: pharma(t.detail),
+                  system: sys,
+                  writeBack: write,
+                };
                 return (
-                  <div className={`ac-r${isAg ? '' : ' man'}`} data-k={i + 1} key={i}>
+                  <div className={`ac-r${isAg ? '' : ' man'}${status === 'Done' ? ' done' : ''}`} data-k={i + 1} key={taskId}>
                     <span className={`ac-w${isAg ? ' ag' : ''}`}>{isAg ? <Spark /> : initials(t.owner)}</span>
                     <span className="ac-b"><b>{pharma(t.name)}</b><em>{pharma(t.detail)}</em>
                       {sys ? (
@@ -403,17 +517,36 @@ export default function IssueView() {
                           {write ? <span>{write}</span> : null}
                         </span>
                       ) : null}
+                      {/* The receipt the write returned — a reference, an actor
+                          and a time. Without it "Done" is just a colour. */}
+                      {run?.receipt ? (
+                        <span className="ac-rc">
+                          <Glyph name="check" className="sm" />
+                          <b>{run.receipt.reference}</b>
+                          <span>{run.receipt.actor} · {fmtDateTime(run.receipt.at)}</span>
+                        </span>
+                      ) : null}
+                      {run?.assignedTo ? (
+                        <span className="ac-rc as">
+                          <Glyph name="arrow-branch" className="sm" />
+                          <b>{run.assignedTo}</b>
+                          <span>to execute in {sys || 'the source system'}</span>
+                        </span>
+                      ) : null}
+                      {run?.note ? <span className="ac-nt">“{run.note}”</span> : null}
                     </span>
                     <span className="ac-d">{fmtDate(t.dueDate) || t.dueDate || ''}</span>
-                    <span className="ac-s" data-s="0">Not started</span>
-                    {isAg
-                      ? (
-                        <span className="ac-run">
-                          <button type="button" className="btn p sm ac-go">Ask agent to run</button>
-                          <button type="button" className="btn s sm ac-go">Run myself</button>
-                        </span>
-                      )
-                      : <button type="button" className="btn s sm ac-go">Assign</button>}
+                    <span className="ac-s" data-s={statusChip(status)}>{status}</span>
+                    {status === 'Done'
+                      ? <span className="ac-done-l"><Glyph name="check" className="sm" />Written</span>
+                      : isAg
+                        ? (
+                          <span className="ac-run">
+                            <button type="button" className="btn p sm ac-go" onClick={() => setExec({ mode: 'agent', target })}>Ask agent to run</button>
+                            <button type="button" className="btn s sm ac-go" onClick={() => setExec({ mode: 'self', target })}>Run myself</button>
+                          </span>
+                        )
+                        : <button type="button" className="btn s sm ac-go" onClick={() => setExec({ mode: 'assign', target })}>{run?.assignedTo ? 'Reassign' : 'Assign'}</button>}
                   </div>
                 );
               })}
@@ -428,7 +561,8 @@ export default function IssueView() {
           <span className="is-sel" id="is-sel">{selectedOption?.label ?? '—'}</span>
           <span className="is-sub" id="is-sub">{selectedOption?.subLabel ?? ''}</span>
         </div>
-        <div className="acts-bar" style={{ maxWidth: 160 }}><div className="acts-fill" id="acts-fill" style={{ width: '0%' }} /></div>
+        {/* Reflects real execution progress; it used to be pinned at 0%. */}
+        <div className="acts-bar" style={{ maxWidth: 160 }}><div className="acts-fill" id="acts-fill" style={{ width: `${progress.pct}%` }} /></div>
         {authorityBound ? (
           /* View-only: the next step is with an outside authority, so there is no
              Approve/Reject/Reassign — acting here cannot move it. */
@@ -444,18 +578,38 @@ export default function IssueView() {
              assertUserCanDecide) and the bar states the outcome instead. Without
              this the only post-click change was the button turning grey, which
              read as "nothing happened". */
-          <span className="is-approved" id="is-approved">
-            <span className="tag done">
-              <Glyph name="check" /> Approved
+          <>
+            <span className="is-approved" id="is-approved">
+              <span className="tag done">
+                <Glyph name="check" /> Approved
+              </span>
+              <span className="is-approved-t">
+                {approvedLabel ?? 'Option'} approved · {fmtDateTime(approvedAt)}
+                <em>
+                  {progress.done} of {progress.total} actions executed
+                  {progress.systemsWritten.length
+                    ? ` · written back to ${progress.systemsWritten.join(', ')}`
+                    : ' · no writes yet'}
+                </em>
+              </span>
             </span>
-            <span className="is-approved-t">
-              {approvedLabel ?? 'Option'} approved · {fmtDateTime(approvedAt)}
-              <em>
-                Gate re-baselined, exposure released and {planTasks.length}{' '}
-                {planTasks.length === 1 ? 'task' : 'tasks'} dispatched. Recorded in the design history file.
-              </em>
+            {/* The plan outlives the approval, so it stays reachable. */}
+            <button type="button" className="btn p" onClick={() => setPlanOpen(true)}>
+              Oversee plan <Glyph name="arrow-right" />
+            </button>
+          </>
+        ) : selectedOption && progress.done > 0 ? (
+          /* Actions have been executed before the decision was signed — the bar
+             should say so rather than only offering Approve. */
+          <>
+            <span className="is-sub" style={{ marginRight: 'auto' }}>
+              {progress.done} of {progress.total} actions already executed
             </span>
-          </span>
+            <button type="button" className="btn s" onClick={() => setPlanOpen(true)}>Oversee plan</button>
+            <button type="button" className="btn p" id="btn-app" disabled={!canApprove} onClick={handleApprove}>
+              {approving ? 'Approving…' : `Approve ${selectedOption.label ?? ''}`}
+            </button>
+          </>
         ) : (
           <>
             <button type="button" className="btn q">Reject all options</button>
@@ -476,6 +630,39 @@ export default function IssueView() {
         detail="Gate re-baselined · exposure released · tasks dispatched · CTD entry written"
         onDismiss={() => setJustApproved(null)}
       />
+
+      {/* Confirms the individual write, naming the system it landed in. */}
+      <ActionToast
+        open={!!runToast}
+        title="Written back"
+        detail={runToast ?? ''}
+        onDismiss={() => setRunToast(null)}
+      />
+
+      {/* The approved plan, overseen. Opens on approval and stays reachable from
+          the bar, because the question "where did that plan get to?" outlives
+          the moment of approving it. */}
+      {planOpen && selectedOption ? (
+        <ApprovedPlanPanel
+          option={selectedOption}
+          decision={decision}
+          gate={ws.gateAtRisk ?? null}
+          rows={planRows}
+          progress={progress}
+          onExec={(mode, target) => { setPlanOpen(false); setExec({ mode, target }); }}
+          onClose={() => setPlanOpen(false)}
+        />
+      ) : null}
+
+      {exec ? (
+        <ActionExecutionModal
+          mode={exec.mode}
+          target={exec.target}
+          people={PEOPLE as Assignee[]}
+          onClose={() => setExec(null)}
+          onConfirm={handleExecute}
+        />
+      ) : null}
     </div>
   );
 }

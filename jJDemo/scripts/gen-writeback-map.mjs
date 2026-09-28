@@ -36,3 +36,33 @@ ${rows.join('\n')}
 const dest = join(ROOT, 'ui', 'react', 'src', 'writeBackMap.ts');
 writeFileSync(dest, out);
 console.log(`wrote ${rows.length} write-back entries -> ui/react/src/writeBackMap.ts`);
+
+/*
+ * The assignable colleagues, for the action-plan assign picker. Same reason as
+ * above: the picker has to work against an environment that may not expose
+ * Person, and a hand-kept second copy of the org would drift.
+ */
+const people = JSON.parse(readFileSync(join(ROOT, 'seed', 'Person', 'Person.json'), 'utf8'))
+  .filter((p) => !p.isBoard)
+  .map((p) => ({ id: p.id, name: p.name, initials: p.initials, role: p.role }));
+
+const peopleOut = `/*
+ * GENERATED — do not edit by hand. Regenerate with scripts/gen-writeback-map.mjs.
+ *
+ * Assignable colleagues for the action-plan assign picker. The Launch Board is
+ * excluded: it is a decision body you escalate to, not a person you assign work to.
+ */
+export interface Person {
+  id: string;
+  name: string;
+  initials: string;
+  role: string;
+}
+
+export const PEOPLE: Person[] = [
+${people.map((p) => `  ${JSON.stringify(p)},`).join('\n')}
+];
+`;
+
+writeFileSync(join(ROOT, 'ui', 'react', 'src', 'execution', 'people.ts'), peopleOut);
+console.log(`wrote ${people.length} assignable people -> ui/react/src/execution/people.ts`);
