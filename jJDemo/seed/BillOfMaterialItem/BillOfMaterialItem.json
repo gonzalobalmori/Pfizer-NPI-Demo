@@ -1,0 +1,122 @@
+[
+  {
+    "id": "seed_bom_comirnaty_vial",
+    "partName": "2mL Type I borosilicate multi-dose vial",
+    "sourcingMode": "DUAL_SOURCE",
+    "frozenAtGate": "G2",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "supplier": {
+      "id": "seed_supplier_schott"
+    }
+  },
+  {
+    "id": "seed_bom_comirnaty_stopper",
+    "partName": "13mm chlorobutyl serum stopper",
+    "sourcingMode": "DUAL_SOURCE",
+    "frozenAtGate": "G2",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "supplier": {
+      "id": "seed_supplier_west"
+    }
+  },
+  {
+    "id": "seed_bom_comirnaty_pfs",
+    "partName": "1mL long prefillable glass syringe, staked needle",
+    "sourcingMode": "SINGLE_SOURCE",
+    "frozenAtGate": "G3",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "supplier": {
+      "id": "seed_supplier_bd"
+    }
+  },
+  {
+    "id": "seed_bom_comirnaty_plunger",
+    "partName": "1mL PFS plunger stopper, FluroTec-coated",
+    "sourcingMode": "SINGLE_SOURCE",
+    "frozenAtGate": "G3",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "supplier": {
+      "id": "seed_supplier_west"
+    }
+  },
+  {
+    "id": "seed_bom_abrysvo_stopper",
+    "partName": "13mm FluroTec-coated lyophilisation stopper",
+    "sourcingMode": "SINGLE_SOURCE",
+    "frozenAtGate": "G2",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "supplier": {
+      "id": "seed_supplier_west"
+    }
+  },
+  {
+    "id": "seed_bom_abrysvo_vial",
+    "partName": "3mL Type I borosilicate lyophilisation vial",
+    "sourcingMode": "DUAL_SOURCE",
+    "frozenAtGate": "G2",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "supplier": {
+      "id": "seed_supplier_schott"
+    }
+  },
+  {
+    "id": "seed_bom_abrysvo_diluent_pfs",
+    "partName": "Sterile water diluent prefilled syringe",
+    "sourcingMode": "SINGLE_SOURCE",
+    "frozenAtGate": "G3",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "supplier": {
+      "id": "seed_supplier_bd"
+    }
+  },
+  {
+    "id": "seed_bom_abrysvo_seal",
+    "partName": "20mm aluminium flip-off seal",
+    "sourcingMode": "MULTI_SOURCE",
+    "frozenAtGate": "G2",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "supplier": {
+      "id": "seed_supplier_datwyler"
+    }
+  },
+  {
+    "id": "seed_bom_hympavzi_pen",
+    "partName": "Prefilled pen injector assembly",
+    "sourcingMode": "SINGLE_SOURCE",
+    "frozenAtGate": "G2",
+    "launch": {
+      "id": "seed_launch_embotrap_iv"
+    },
+    "supplier": {
+      "id": "seed_supplier_stevanato"
+    }
+  },
+  {
+    "id": "seed_bom_velsipity_blister",
+    "partName": "Alu-alu cold-form blister foil",
+    "sourcingMode": "MULTI_SOURCE",
+    "frozenAtGate": "G2",
+    "launch": {
+      "id": "seed_launch_javelin_xl"
+    },
+    "supplier": {
+      "id": "seed_supplier_datwyler"
+    }
+  }
+]

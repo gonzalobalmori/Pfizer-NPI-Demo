@@ -1,0 +1,60 @@
+/**
+ * ComponentLot — one received lot of a primary-packaging component, and the
+ * mechanism by which a single supplier lot explains defects across several
+ * {@link FillBatch} records.
+ *
+ * Scenario 1 turns on this type: a visual inspection finds a stopper-related
+ * defect, and the scope question ("which batches, how many doses, which
+ * markets?") is answered by finding every {@link FillBatch#componentLot} pointing at
+ * the suspect lot. Without it, a defect has no traceable blast radius.
+ *
+ * Complements {@link BillOfMaterialItem}, which says *what part a launch needs
+ * and from whom*; this type says *which physical lot actually arrived, how much
+ * of it is left, and whether it passed incoming inspection*.
+ *
+ * Mutated at runtime (a lot moves to {@code ON_HOLD} then {@code REJECTED} as an
+ * investigation proceeds), so no {@code SeedData} mixin — records live in
+ * {@code data/}.
+ */
+entity type ComponentLot {
+
+  /** Seed key, e.g. {@code seed_complot_west_2588}. */
+  id: !string
+
+  /** The supplier's lot number as it appears on the certificate of analysis. */
+  lotNo: !string
+
+  /** Who supplied it. Joins to {@link Supplier#approvalStatus} and {@link Supplier#auditValidUntil}. */
+  supplier: Supplier
+
+  /** The component, e.g. {@code "13mm Flurotec lyophilisation stopper"}. */
+  componentName: !string
+
+  /** Component class. {@code STOPPER} is the Scenario 1 defect mode. */
+  componentKind: string enum('STOPPER', 'VIAL', 'SYRINGE', 'PLUNGER', 'SEAL', 'CARTON', 'LABEL', 'LEAFLET')
+
+  /** Goods-receipt date. Bounds which batches could possibly have used this lot. */
+  receivedAt: datetime
+
+  /** Units received. */
+  quantityReceived: int
+
+  /** Units still on hand — what an alternate-component option would have to replace. */
+  quantityRemaining: int
+
+  /**
+   * Measured defect rate in parts per million from incoming or in-process
+   * inspection. The number that justifies the hold; compare against
+   * {@link FillBatch#inspectionRejectPpm} on the batches filled from this lot.
+   */
+  defectRatePpm: int
+
+  /** Incoming-inspection verdict. Moves {@code ACCEPTED} → {@code ON_HOLD} → {@code REJECTED}. */
+  acceptanceStatus: string enum('ACCEPTED', 'ON_HOLD', 'REJECTED')
+
+  /** Certificate of analysis / conformance reference, for the audit trail. */
+  certificateRef: string
+
+  /** Every batch filled from this lot — the blast radius of a component defect. */
+  batches: [FillBatch](componentLot)
+}

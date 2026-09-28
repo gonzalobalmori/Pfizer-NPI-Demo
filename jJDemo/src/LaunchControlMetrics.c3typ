@@ -5,17 +5,29 @@
  * reads these methods through {@code c3Action}; it does not aggregate records
  * itself.
  *
- * Each method returns a small structured result (value plus the trend / target /
- * delta the specification calls for) so the UI can render a KPI card without any
- * further computation. This is a stateless computation type — it holds no data of
- * its own.
+ * Each method returns a small structured result — the derived value, the target
+ * it is measured against, and the per-record breakdown behind it — so the UI can
+ * render a KPI card without any further computation. This is a stateless
+ * computation type; it holds no data of its own.
+ *
+ * No method here returns a TREND. Two fields formerly did ({@code deltaPts} on
+ * {@link LaunchControlMetrics#portfolioGateReadiness} and {@code delta30d} on
+ * {@link LaunchControlMetrics#revenueAtRisk}) and both were specification
+ * constants with no computation behind them, which made an invented figure look
+ * measured. No type in this model stores a dated prior value for any KPI, so a
+ * period-over-period change is not derivable; a real trend would need a persisted
+ * snapshot type written on a schedule. What the cards show instead is the
+ * distribution each headline hides — available from {@code byLaunch} /
+ * {@code byGate} on every method below.
  */
 entity type LaunchControlMetrics {
   /**
    * Portfolio gate readiness — the share of the criteria on each launch's next
    * open gate that are met, averaged across the fleet. Returns {@code value}
-   * (percent), {@code target} (85), {@code deltaPts} (30-day trend, −6) and the
-   * per-launch breakdown.
+   * (percent), {@code target} (85) and {@code byLaunch}: one entry per launch with
+   * its gate code, met / total criteria and its own percentage. The cockpit card
+   * plots {@code byLaunch} as the distribution behind the average and counts how
+   * many launches fall below {@code target}.
    */
   portfolioGateReadiness: function(): json js
 
@@ -27,9 +39,10 @@ entity type LaunchControlMetrics {
   launchHealthDistribution: function(): json js
 
   /**
-   * Revenue at risk with its 30-day delta (§3.5). Sums {@link Launch#revenueAtRisk}
-   * across the fleet; returns {@code value} (€30.5M), {@code delta30d} (+€11.2M),
-   * {@code pctOfPortfolio} (of €412M) and the exposure by launch.
+   * Revenue at risk (§3.5). Sums {@link Launch#revenueAtRisk} across the fleet;
+   * returns {@code value}, {@code pctOfPortfolio} against the {@code portfolioBase}
+   * of €412M, and {@code byLaunch} — the exposure per launch, which the cockpit uses
+   * to show how concentrated the total is (one launch or five).
    */
   revenueAtRisk: function(): json js
 

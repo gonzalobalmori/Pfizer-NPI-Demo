@@ -13,6 +13,7 @@ import { useNav } from '@/nav/NavContext';
 import { getLaunchRecord } from '@/api/portfolio';
 import { fmtDateYear } from '@/lib/format';
 import type { LaunchRecord, ActivityCard, WorkflowColumn } from '@/types/portfolio';
+import Glyph, { type GlyphName } from '@/components/Brand/Glyph';
 
 /* Status → label + pip glyph, verbatim from the prototype's FLST / FLPIP. */
 const ST_LABEL: Record<string, string> = {
@@ -22,7 +23,30 @@ const ST_LABEL: Record<string, string> = {
   late: 'Late',
   no: 'Not started',
 };
-const ST_PIP: Record<string, string> = { ok: '✓', run: '●', rk: '!', late: '!', no: '' };
+/*
+ * The status pip inside the activity badge. `✓` and `●` used to sit here as text
+ * and rendered as tofu boxes (no Noto Sans subset covers U+2713/U+25CF), so those
+ * two are drawn by {@link Glyph}; `!` is plain Latin and stays text. `no`
+ * (not started) is deliberately blank — an empty badge IS the "nothing has
+ * happened yet" state.
+ *
+ * The pip is a SECONDARY cue: the badge's colour carries the same state, and the
+ * `title` on every activity names it in words, so state is never colour-alone.
+ */
+const ST_PIP: Record<string, GlyphName | '!' | ''> = {
+  ok: 'check',
+  run: 'dot',
+  rk: '!',
+  late: '!',
+  no: '',
+};
+
+/** Renders one status pip — a drawn glyph, a literal `!`, or nothing. */
+function StatusPip({ status }: { status: string }) {
+  const pip = ST_PIP[status] ?? '';
+  if (pip === '' || pip === '!') return <>{pip}</>;
+  return <Glyph name={pip} className="sm" />;
+}
 /* Autonomy → title, verbatim from the prototype's FLAUT. */
 const AU_TITLE: Record<string, string> = {
   A: 'Executed by agent',
@@ -101,16 +125,16 @@ export default function FlowView() {
   );
 
   if (!param) {
-    return <div className="view on" style={{ padding: 24 }}>Select a launch from the Cockpit or Portfolio.</div>;
+    return <div className="view on v-msg">Select a launch from the Cockpit or Portfolio.</div>;
   }
   if (error) {
-    return <div className="view on" style={{ padding: 24, color: 'var(--red600)' }}>{error}</div>;
+    return <div className="view on v-msg v-err">{error}</div>;
   }
   if (loading) {
-    return <div className="view on" style={{ padding: 24 }}>Loading…</div>;
+    return <div className="view on v-msg">Loading…</div>;
   }
   if (!record) {
-    return <div className="view on" style={{ padding: 24 }}>Select a launch from the Cockpit or Portfolio.</div>;
+    return <div className="view on v-msg">Select a launch from the Cockpit or Portfolio.</div>;
   }
 
   const o = record.overview;
@@ -212,8 +236,8 @@ export default function FlowView() {
       </div>
 
       <div className="fl-lg">
-        <span className="lg2"><i className="fai ok">&#10003;</i>Complete</span>
-        <span className="lg2"><i className="fai run">&#9679;</i>In progress</span>
+        <span className="lg2"><i className="fai ok"><Glyph name="check" className="sm" /></i>Complete</span>
+        <span className="lg2"><i className="fai run"><Glyph name="dot" className="sm" /></i>In progress</span>
         <span className="lg2"><i className="fai rk">!</i>At risk</span>
         <span className="lg2"><i className="fai late">!</i>Late</span>
         <span className="lg2"><i className="fai no"></i>Not started</span>
@@ -282,7 +306,7 @@ function FlowCard({ act }: { act: ActivityCard }) {
   return (
     <div className={`fk ${sc}`} data-c={act.id} data-w={act.domainCode ?? ''}>
       <button className="fk-r" type="button">
-        <span className={`fai ${sc}`}>{ST_PIP[sc]}</span>
+        <span className={`fai ${sc}`}><StatusPip status={sc} /></span>
         <span className="fk-b"><span className="fk-n">{act.name}</span>
           <span className="fa-m"><span className="faw">{act.domainName}</span>
             <span className="fao">{act.owner}</span>

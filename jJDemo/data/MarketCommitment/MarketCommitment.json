@@ -1,0 +1,379 @@
+[
+  {
+    "id": "seed_mcom_abrysvo_us",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "market": {
+      "id": "seed_market_us"
+    },
+    "priorityRank": 1,
+    "priorityTier": "CRITICAL",
+    "committedDoses": 240000,
+    "skuCode": "ABR-US-VIAL-1",
+    "presentation": "Lyophilised vial + diluent PFS",
+    "firstShipDate": "2026-10-05",
+    "wave": "Wave 1",
+    "revenuePerDose": 52.0,
+    "committedRevenue": 12480000.0,
+    "contractPenalty": false,
+    "status": "COMMITTED",
+    "marketLaunch": {
+      "id": "seed_ml_octaray_g2_us"
+    }
+  },
+  {
+    "id": "seed_mcom_abrysvo_de",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "market": {
+      "id": "seed_market_de"
+    },
+    "priorityRank": 2,
+    "priorityTier": "CRITICAL",
+    "committedDoses": 168000,
+    "skuCode": "ABR-DE-VIAL-1",
+    "presentation": "Lyophilised vial + diluent PFS",
+    "firstShipDate": "2026-10-19",
+    "wave": "Wave 1",
+    "revenuePerDose": 48.5,
+    "committedRevenue": 8148000.0,
+    "contractPenalty": true,
+    "status": "COMMITTED",
+    "marketLaunch": {
+      "id": "seed_ml_octaray_g2_de"
+    },
+    "tenderDeadline": "2026-11-30"
+  },
+  {
+    "id": "seed_mcom_abrysvo_jp",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "market": {
+      "id": "seed_market_jp"
+    },
+    "priorityRank": 3,
+    "priorityTier": "HIGH",
+    "committedDoses": 120000,
+    "skuCode": "ABR-JP-VIAL-1",
+    "presentation": "Lyophilised vial + diluent PFS",
+    "firstShipDate": "2026-11-02",
+    "wave": "Wave 1",
+    "revenuePerDose": 55.0,
+    "committedRevenue": 6600000.0,
+    "contractPenalty": true,
+    "status": "COMMITTED",
+    "marketLaunch": {
+      "id": "seed_ml_octaray_g2_jp"
+    },
+    "tenderDeadline": "2026-12-15"
+  },
+  {
+    "id": "seed_mcom_abrysvo_uk",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "market": {
+      "id": "seed_market_uk"
+    },
+    "priorityRank": 4,
+    "priorityTier": "HIGH",
+    "committedDoses": 84000,
+    "skuCode": "ABR-UK-VIAL-1",
+    "presentation": "Lyophilised vial + diluent PFS",
+    "firstShipDate": "2026-11-16",
+    "wave": "Wave 2",
+    "revenuePerDose": 44.0,
+    "committedRevenue": 3696000.0,
+    "contractPenalty": false,
+    "status": "COMMITTED",
+    "marketLaunch": {
+      "id": "seed_ml_octaray_g2_uk"
+    }
+  },
+  {
+    "id": "seed_mcom_abrysvo_fr",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "market": {
+      "id": "seed_market_fr"
+    },
+    "priorityRank": 5,
+    "priorityTier": "STANDARD",
+    "committedDoses": 72000,
+    "skuCode": "ABR-FR-VIAL-1",
+    "presentation": "Lyophilised vial + diluent PFS",
+    "firstShipDate": "2026-11-30",
+    "wave": "Wave 2",
+    "revenuePerDose": 45.0,
+    "committedRevenue": 3240000.0,
+    "contractPenalty": true,
+    "status": "COMMITTED",
+    "marketLaunch": {
+      "id": "seed_ml_octaray_g2_fr"
+    },
+    "tenderDeadline": "2027-01-31"
+  },
+  {
+    "id": "seed_mcom_abrysvo_it",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "market": {
+      "id": "seed_market_it"
+    },
+    "priorityRank": 6,
+    "priorityTier": "STANDARD",
+    "committedDoses": 54000,
+    "skuCode": "ABR-IT-VIAL-1",
+    "presentation": "Lyophilised vial + diluent PFS",
+    "firstShipDate": "2026-12-14",
+    "wave": "Wave 2",
+    "revenuePerDose": 43.0,
+    "committedRevenue": 2322000.0,
+    "contractPenalty": false,
+    "status": "COMMITTED"
+  },
+  {
+    "id": "seed_mcom_abrysvo_es",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "market": {
+      "id": "seed_market_es"
+    },
+    "priorityRank": 7,
+    "priorityTier": "DEFERRABLE",
+    "committedDoses": 38000,
+    "skuCode": "ABR-ES-VIAL-1",
+    "presentation": "Lyophilised vial + diluent PFS",
+    "firstShipDate": "2027-01-11",
+    "wave": "Wave 3",
+    "revenuePerDose": 41.0,
+    "committedRevenue": 1558000.0,
+    "contractPenalty": false,
+    "status": "COMMITTED"
+  },
+  {
+    "id": "seed_mcom_abrysvo_au",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "market": {
+      "id": "seed_market_au"
+    },
+    "priorityRank": 8,
+    "priorityTier": "DEFERRABLE",
+    "committedDoses": 26000,
+    "skuCode": "ABR-AU-VIAL-1",
+    "presentation": "Lyophilised vial + diluent PFS",
+    "firstShipDate": "2027-01-25",
+    "wave": "Wave 3",
+    "revenuePerDose": 47.0,
+    "committedRevenue": 1222000.0,
+    "contractPenalty": false,
+    "status": "COMMITTED"
+  },
+  {
+    "id": "seed_mcom_comirnaty_de",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_de"
+    },
+    "priorityRank": 1,
+    "priorityTier": "CRITICAL",
+    "committedDoses": 420000,
+    "skuCode": "COM-DE-MDV-6",
+    "presentation": "6-dose multi-dose vial",
+    "firstShipDate": "2026-11-09",
+    "wave": "Wave 1",
+    "revenuePerDose": 26.0,
+    "committedRevenue": 10920000.0,
+    "contractPenalty": true,
+    "status": "COMMITTED",
+    "marketLaunch": {
+      "id": "seed_ml_varipulse_g2_de"
+    },
+    "tenderDeadline": "2026-12-11"
+  },
+  {
+    "id": "seed_mcom_comirnaty_us",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_us"
+    },
+    "priorityRank": 2,
+    "priorityTier": "CRITICAL",
+    "committedDoses": 560000,
+    "skuCode": "COM-US-MDV-6",
+    "presentation": "6-dose multi-dose vial",
+    "firstShipDate": "2026-11-09",
+    "wave": "Wave 1",
+    "revenuePerDose": 28.0,
+    "committedRevenue": 15680000.0,
+    "contractPenalty": false,
+    "status": "COMMITTED",
+    "marketLaunch": {
+      "id": "seed_ml_varipulse_g2_us"
+    }
+  },
+  {
+    "id": "seed_mcom_comirnaty_uk",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_uk"
+    },
+    "priorityRank": 3,
+    "priorityTier": "HIGH",
+    "committedDoses": 180000,
+    "skuCode": "COM-UK-MDV-6",
+    "presentation": "6-dose multi-dose vial",
+    "firstShipDate": "2026-11-23",
+    "wave": "Wave 1",
+    "revenuePerDose": 24.0,
+    "committedRevenue": 4320000.0,
+    "contractPenalty": true,
+    "status": "COMMITTED",
+    "marketLaunch": {
+      "id": "seed_ml_varipulse_g2_uk"
+    },
+    "tenderDeadline": "2027-01-15"
+  },
+  {
+    "id": "seed_mcom_comirnaty_fr",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_fr"
+    },
+    "priorityRank": 4,
+    "priorityTier": "HIGH",
+    "committedDoses": 210000,
+    "skuCode": "COM-FR-MDV-6",
+    "presentation": "6-dose multi-dose vial",
+    "firstShipDate": "2026-12-07",
+    "wave": "Wave 2",
+    "revenuePerDose": 25.0,
+    "committedRevenue": 5250000.0,
+    "contractPenalty": true,
+    "status": "COMMITTED",
+    "marketLaunch": {
+      "id": "seed_ml_varipulse_g2_fr"
+    },
+    "tenderDeadline": "2027-01-31"
+  },
+  {
+    "id": "seed_mcom_comirnaty_it",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_it"
+    },
+    "priorityRank": 5,
+    "priorityTier": "STANDARD",
+    "committedDoses": 165000,
+    "skuCode": "COM-IT-MDV-6",
+    "presentation": "6-dose multi-dose vial",
+    "firstShipDate": "2026-12-21",
+    "wave": "Wave 2",
+    "revenuePerDose": 23.5,
+    "committedRevenue": 3877500.0,
+    "contractPenalty": false,
+    "status": "COMMITTED"
+  },
+  {
+    "id": "seed_mcom_comirnaty_es",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_es"
+    },
+    "priorityRank": 6,
+    "priorityTier": "STANDARD",
+    "committedDoses": 140000,
+    "skuCode": "COM-ES-MDV-6",
+    "presentation": "6-dose multi-dose vial",
+    "firstShipDate": "2027-01-11",
+    "wave": "Wave 2",
+    "revenuePerDose": 23.0,
+    "committedRevenue": 3220000.0,
+    "contractPenalty": true,
+    "status": "COMMITTED",
+    "marketLaunch": {
+      "id": "seed_ml_varipulse_g2_es"
+    },
+    "tenderDeadline": "2027-02-28"
+  },
+  {
+    "id": "seed_mcom_comirnaty_nl",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_nl"
+    },
+    "priorityRank": 7,
+    "priorityTier": "DEFERRABLE",
+    "committedDoses": 62000,
+    "skuCode": "COM-NL-MDV-6",
+    "presentation": "6-dose multi-dose vial",
+    "firstShipDate": "2027-01-25",
+    "wave": "Wave 3",
+    "revenuePerDose": 24.5,
+    "committedRevenue": 1519000.0,
+    "contractPenalty": false,
+    "status": "COMMITTED"
+  },
+  {
+    "id": "seed_mcom_comirnaty_se",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_se"
+    },
+    "priorityRank": 8,
+    "priorityTier": "DEFERRABLE",
+    "committedDoses": 48000,
+    "skuCode": "COM-SE-MDV-6",
+    "presentation": "6-dose multi-dose vial",
+    "firstShipDate": "2027-02-08",
+    "wave": "Wave 3",
+    "revenuePerDose": 25.5,
+    "committedRevenue": 1224000.0,
+    "contractPenalty": false,
+    "status": "COMMITTED"
+  },
+  {
+    "id": "seed_mcom_comirnaty_pl",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_pl"
+    },
+    "priorityRank": 9,
+    "priorityTier": "DEFERRABLE",
+    "committedDoses": 75000,
+    "skuCode": "COM-PL-MDV-6",
+    "presentation": "6-dose multi-dose vial",
+    "firstShipDate": "2027-02-22",
+    "wave": "Wave 3",
+    "revenuePerDose": 21.0,
+    "committedRevenue": 1575000.0,
+    "contractPenalty": false,
+    "status": "COMMITTED"
+  }
+]

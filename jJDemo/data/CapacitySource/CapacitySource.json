@@ -1,0 +1,123 @@
+[
+  {
+    "id": "seed_cap_puurs_mdv",
+    "name": "Puurs — fill-finish line 4 (multi-dose vial)",
+    "sourceKind": "INTERNAL_SITE",
+    "site": {
+      "id": "seed_site_puurs"
+    },
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "operation": "FILL_FINISH",
+    "presentation": "6-dose multi-dose vial",
+    "dosesPerWeek": 1200000,
+    "committedDosesPerWeek": 1050000,
+    "availableFrom": "2026-09-14",
+    "qualifiedForLaunch": true,
+    "qualificationLeadDays": 0,
+    "costPerThousandDoses": 310.0,
+    "regulatoryVariationRequired": false
+  },
+  {
+    "id": "seed_cap_puurs_pfs",
+    "name": "Puurs — fill-finish line 7 (prefilled syringe)",
+    "sourceKind": "INTERNAL_SITE",
+    "site": {
+      "id": "seed_site_puurs"
+    },
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "operation": "FILL_FINISH",
+    "presentation": "1-dose prefilled syringe",
+    "dosesPerWeek": 240000,
+    "committedDosesPerWeek": 210000,
+    "availableFrom": "2026-09-14",
+    "qualifiedForLaunch": true,
+    "qualificationLeadDays": 0,
+    "costPerThousandDoses": 540.0,
+    "regulatoryVariationRequired": false
+  },
+  {
+    "id": "seed_cap_halle_cmo",
+    "name": "Baxter Halle — contract vial fill line 2",
+    "sourceKind": "CMO",
+    "supplier": {
+      "id": "seed_supplier_baxter"
+    },
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "operation": "FILL_FINISH",
+    "presentation": "6-dose multi-dose vial",
+    "dosesPerWeek": 420000,
+    "committedDosesPerWeek": 180000,
+    "availableFrom": "2026-10-26",
+    "qualifiedForLaunch": true,
+    "qualificationLeadDays": 0,
+    "costPerThousandDoses": 680.0,
+    "regulatoryVariationRequired": false
+  },
+  {
+    "id": "seed_cap_puurs_pack",
+    "name": "Puurs — secondary packaging hall B",
+    "sourceKind": "INTERNAL_SITE",
+    "site": {
+      "id": "seed_site_puurs"
+    },
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "operation": "PACKAGING",
+    "presentation": "6-dose multi-dose vial",
+    "dosesPerWeek": 600000,
+    "committedDosesPerWeek": 575000,
+    "availableFrom": "2026-09-14",
+    "qualifiedForLaunch": true,
+    "qualificationLeadDays": 0,
+    "costPerThousandDoses": 95.0,
+    "regulatoryVariationRequired": false
+  },
+  {
+    "id": "seed_cap_ferentino_pack",
+    "name": "Patheon Ferentino — contract pack line 3",
+    "sourceKind": "PACKAGING_PARTNER",
+    "supplier": {
+      "id": "seed_supplier_thermofisher"
+    },
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "operation": "PACKAGING",
+    "presentation": "6-dose multi-dose vial",
+    "dosesPerWeek": 300000,
+    "committedDosesPerWeek": 90000,
+    "availableFrom": "2026-11-16",
+    "qualifiedForLaunch": false,
+    "qualificationLeadDays": 42,
+    "costPerThousandDoses": 240.0,
+    "contractTerm": "Qualification run plus a Type IA notification for the added packaging site; 12-month minimum term",
+    "regulatoryVariationRequired": true
+  },
+  {
+    "id": "seed_cap_kzo_lyo",
+    "name": "Kalamazoo — lyophilisation suite 2",
+    "sourceKind": "INTERNAL_SITE",
+    "site": {
+      "id": "seed_site_kzo"
+    },
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "operation": "FILL_FINISH",
+    "presentation": "Lyophilised vial, 13mm stopper",
+    "dosesPerWeek": 210000,
+    "committedDosesPerWeek": 120000,
+    "availableFrom": "2026-10-19",
+    "qualifiedForLaunch": true,
+    "qualificationLeadDays": 0,
+    "costPerThousandDoses": 720.0,
+    "regulatoryVariationRequired": false
+  }
+]

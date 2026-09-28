@@ -1,0 +1,10 @@
+{
+  "author": "{{author}}",
+  "name": "pkgbca8aec7",
+  "description": "Root package for this workspace's app. Thin shell that depends on jJDemo, which holds the actual NPI Launch Control Tower code.",
+  "dependencies": {
+    "mcpServer": "8.11",
+    "jJDemo": "1.0"
+  },
+  "version": "1.0.0"
+}

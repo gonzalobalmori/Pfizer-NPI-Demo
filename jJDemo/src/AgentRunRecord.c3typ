@@ -1,0 +1,100 @@
+/**
+ * One agent invocation, recorded in enough detail to judge after the fact whether the
+ * agent should have been trusted — §5.5 / R-TR-13.
+ *
+ * The existing fleet types ({@link Agent}, {@link AgentAction}, {@link Chain}) model
+ * what the agents *did* as a narrative for the control board. This type records the
+ * *provenance of the reasoning*: which model, on what context, calling which tools,
+ * with what confidence, and — the field that matters most to a reviewer — whether a
+ * human approved the result and which human.
+ *
+ * <h3>Why confidence and tool calls are stored, not just the output</h3>
+ * R-TR-13 lists them explicitly, and the reason is practical: an agent recommendation
+ * that turns out wrong is only diagnosable if you can see what it looked at. A stored
+ * output alone cannot distinguish "the model reasoned badly" from "the model was handed
+ * stale inputs", which are different failures with different fixes.
+ *
+ * <h3>Its role in enforcing R-TR-14</h3>
+ * {@link AuditService#assertAgentMayNotCommit} searches for a human approval before
+ * letting an agent-actored change move a date, pass a gate or allocate supply;
+ * {@link AgentRunRecord#humanApproved} and {@link AgentRunRecord#approvedBy} are what
+ * it finds. Batch disposition is refused outright regardless of this record, per
+ * R-S1-06 check 7 — Annex 16 reserves it to the Qualified Person.
+ *
+ * Operational type (no `SeedData`): written at runtime whenever an agent runs.
+ */
+entity type AgentRunRecord {
+  /** Run id — `arun_<agentKey>_<sequence>`. */
+  id: !string
+
+  /** The agent that ran. */
+  agent: Agent
+
+  /** Agent name captured at run time, e.g. "Traceability agent". Denormalised so a rename cannot rewrite history. */
+  agentName: !string
+
+  /** Agent version at run time, e.g. "2.4.0". Distinguishes behaviour changes between runs. */
+  agentVersion: string
+
+  /** Model id the agent ran on, e.g. "gemini-2.5-pro". Required by R-TR-13. */
+  modelId: string
+
+  /** UTC instant the run started. */
+  startedAt: !datetime
+
+  /** UTC instant the run finished. Null while in flight. */
+  completedAt: datetime
+
+  /**
+   * Summary of the context the agent was given — the records and figures it read.
+   * A summary rather than the full payload, because the point is reviewability, and an
+   * un-skimmable blob defeats that.
+   */
+  inputSummary: string
+
+  /**
+   * The tool calls the agent made, in order, as JSON — each with the tool name and its
+   * arguments. This is the audit of *what the agent actually looked at*, as opposed to
+   * what it was offered.
+   */
+  toolCalls: json
+
+  /** The agent's output — its recommendation or the artefact it produced. */
+  output: string
+
+  /**
+   * The agent's own confidence, 0–1. Rendered on the orchestration board so a reviewer
+   * can weight a recommendation, and deliberately not used to gate anything
+   * automatically: an autonomy band is a policy decision, not a threshold on
+   * self-reported certainty.
+   */
+  confidence: double
+
+  /** True when a human approved this run's result. False or null means it stands unapproved. */
+  humanApproved: boolean
+
+  /** The human who approved. Null when unapproved. */
+  approvedBy: Person
+
+  /** UTC instant of the human approval. Null when unapproved. */
+  approvedAt: datetime
+
+  /** The finding this run was working, where applicable. */
+  finding: Finding
+
+  /** Correlation id tying the run to the gesture and audit events around it (R-BE-08). */
+  correlationId: string
+
+  /**
+   * What class of change the run was attempting, when it attempted one — the value
+   * {@link AuditService#assertAgentMayNotCommit} checks against. Null for a read-only
+   * or advisory run.
+   */
+  attemptedChangeClass: string enum('DATE_MOVE', 'GATE_PASS', 'SUPPLY_ALLOCATION', 'BATCH_DISPOSITION')
+
+  /** True when the run was refused by the autonomy guard, with the reason in {@link AgentRunRecord#refusalReason}. */
+  refused: boolean
+
+  /** Why the run was refused, e.g. "Batch disposition is reserved to the Qualified Person under EU GMP Annex 16." */
+  refusalReason: string
+}

@@ -1,0 +1,83 @@
+/**
+ * MarketCommitment — what a launch has actually promised a given market, in
+ * doses, with a priority rank and a revenue value.
+ *
+ * This is the type both scenarios were missing. {@link MarketLaunch} records
+ * *that* a market is in scope and what quarter it ships
+ * ({@link MarketLaunch#firstShipQuarter}), but carries no volume and no
+ * priority — so "protect priority markets" (Scenario 1) and "Commercial
+ * increases demand for a priority market" (Scenario 2) had nothing to compute
+ * against. {@code MarketCommitment} supplies the quantities:
+ * {@link #committedDoses}, {@link #priorityRank} and {@link #committedRevenue}.
+ *
+ * Both scenarios write to it. Scenario 1 moves a commitment to
+ * {@code CONSTRAINED} or {@code DEFERRED} when supply cannot cover every market;
+ * Scenario 2 writes {@link #revisedDoses}, {@link #revisedWave} and
+ * {@link #revisedFirstShipDate} when a wave is resequenced. That runtime
+ * mutability is why it carries no {@code SeedData} mixin — records live in
+ * {@code data/}, so a governed decision can actually update a market
+ * commitment rather than merely narrate one.
+ */
+entity type MarketCommitment {
+
+  /** Seed key, e.g. {@code seed_mcom_abrysvo_us}. */
+  id: !string
+
+  /** The launch making the promise. */
+  launch: Launch
+
+  /** The market receiving it. Joins to {@link Market#regulatoryBody} and {@link Market#tier}. */
+  market: Market
+
+  /** The rollout row this quantifies, so tone and status stay consistent with {@link MarketLaunch#status}. */
+  marketLaunch: MarketLaunch
+
+  /**
+   * Priority order, 1 = highest. The field that makes "protect priority markets"
+   * an executable instruction: allocation walks commitments in ascending rank
+   * and serves them until supply runs out.
+   */
+  priorityRank: int
+
+  /** Priority band. {@code CRITICAL} markets may not be deferred without a governance reversal. */
+  priorityTier: string enum('CRITICAL', 'HIGH', 'STANDARD', 'DEFERRABLE')
+
+  /** Doses committed under the current plan — the baseline any change is measured against. */
+  committedDoses: int
+
+  /** Doses after a demand change or reallocation. Null until a scenario revises it. */
+  revisedDoses: int
+
+  /** The SKU promised, e.g. {@code COM-EU-PFS-1}. Changes when Commercial alters the pack mix. */
+  skuCode: string
+
+  /** Presentation promised, e.g. {@code "1-dose prefilled syringe"}. Drives which {@link PackComponent} is consumed. */
+  presentation: string
+
+  /** Contractual first-ship date. */
+  firstShipDate: datetime
+
+  /** First-ship date after resequencing. Null until a wave option is applied. */
+  revisedFirstShipDate: datetime
+
+  /** Launch wave this market sits in, e.g. {@code "Wave 1"}. */
+  wave: string
+
+  /** Wave after resequencing — the field the market-wave option actually writes. */
+  revisedWave: string
+
+  /** Net realised revenue per dose in this market. */
+  revenuePerDose: double
+
+  /** {@link #committedDoses} × {@link #revenuePerDose} — the revenue this commitment carries. */
+  committedRevenue: double
+
+  /** Tender or framework-agreement deadline. Missing it forfeits the window, not just the quarter. */
+  tenderDeadline: datetime
+
+  /** Whether late supply triggers a contractual penalty, which raises the cost of deferring this market. */
+  contractPenalty: boolean
+
+  /** Where the commitment stands once a scenario has run against it. */
+  status: string enum('COMMITTED', 'AT_RISK', 'CONSTRAINED', 'DEFERRED', 'REALLOCATED')
+}

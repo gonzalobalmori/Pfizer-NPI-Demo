@@ -1,0 +1,102 @@
+/**
+ * An electronic signature bound to one exact version of one record — the
+ * 21 CFR Part 11-style control required by §5.4.
+ *
+ * Three things must be true of a signature for it to be worth anything to an
+ * inspector, and this type enforces all three:
+ *
+ * <ol>
+ *   <li><b>The signer proved they were present.</b> Signing re-authenticates
+ *       (R-TR-10): {@link ESignature#reauthenticatedAt} and
+ *       {@link ESignature#challengeRef} record that the challenge was answered at
+ *       signing time, not inherited from an hours-old session.</li>
+ *   <li><b>The signature says what it means.</b> A signature with no stated meaning
+ *       is ambiguous between review and release, so
+ *       {@link ESignature#meaning} is a required closed enum (R-TR-10).</li>
+ *   <li><b>It is pinned to what was actually signed.</b>
+ *       {@link ESignature#entityVersion} and {@link ESignature#signedPayloadHash}
+ *       bind the signature to the exact record version (R-TR-11). If the record
+ *       later changes, the signature does not silently travel to the new content —
+ *       {@link AuditService#verifySignature} re-hashes and reports the drift.</li>
+ * </ol>
+ *
+ * <h3>Immutability (R-TR-11)</h3>
+ * Instances are append-only like {@link AuditEvent}. A signature is never edited;
+ * an erroneous one is withdrawn by appending a superseding signature that cites it
+ * in {@link ESignature#supersedesSignature}, leaving both visible. Writing one also
+ * writes an {@link AuditEvent} with `changeType = SIGNATURE`.
+ *
+ * <h3>Where signatures are mandatory</h3>
+ * Gate approvals, batch disposition and finished-product release (R-TR-10). The
+ * Scenario 1 disposition is signed by the Puurs Qualified Person with meaning
+ * `disposition` (R-S1-09); the Scenario 2 wave resequencing is signed by the Launch
+ * Board with meaning `approved` (R-DOD-10). {@link BatchLot#disposition} cannot
+ * reach a released state without one — see R-BE-04d.
+ *
+ * Operational type (no `SeedData`): signatures are written at runtime by the
+ * approval cascades.
+ */
+entity type ESignature {
+  /** Signature id — `sig_<entityTypeName>_<entityId>_<sequence>`. */
+  id: !string
+
+  /** UTC instant of signing. Rendered with an explicit UTC label wherever it appears. */
+  signedAt: !datetime
+
+  /** The signing user. */
+  signer: !Person
+
+  /**
+   * The signer's printed name as it appeared on the signing screen, captured at
+   * signing time. Part 11 expects the printed name of the signer alongside the
+   * identity, and a person record renamed later must not rewrite history.
+   */
+  printedName: !string
+
+  /** The role the signer held when signing, e.g. "QualifiedPerson". Authority at the time, not today's. */
+  signerRoleAtTime: !string
+
+  /**
+   * What the signature asserts. `disposition` is reserved for batch disposition
+   * (never agent-decidable, R-TR-14); `released` for finished-product release;
+   * `approved` for gate and governance approvals; `reviewed` for a review that does
+   * not itself authorise the change.
+   */
+  meaning: !string enum('approved', 'reviewed', 'released', 'disposition')
+
+  /** C3 type name of the signed record, e.g. "BatchLot". */
+  entityTypeName: !string
+
+  /** Id of the signed record. */
+  entityId: !string
+
+  /** The exact snapshot signed, pinning the signature to content (R-TR-11). */
+  entityVersion: EntityVersion
+
+  /**
+   * SHA-256 of the signed record's canonical payload at signing time. Re-hashing the
+   * record and comparing is how a later mutation is detected.
+   */
+  signedPayloadHash: !string
+
+  /** UTC instant the signer re-authenticated. Must be within the signing window (R-TR-10, A-08). */
+  reauthenticatedAt: !datetime
+
+  /** Opaque reference to the authentication challenge answered, evidencing re-auth occurred. */
+  challengeRef: string
+
+  /** Coded reason the signature was required, e.g. "CRITICAL_DEVIATION_DISPOSITION". */
+  reasonCode: string
+
+  /** The signer's own words — the justification shown beside the signature in the UI. */
+  justification: string
+
+  /** Correlation id tying this signature to the cascade it authorised. */
+  correlationId: string
+
+  /**
+   * A prior signature this one withdraws and replaces. Null on a first signature.
+   * Populated instead of editing, so both remain visible (R-TR-11).
+   */
+  supersedesSignature: ESignature
+}

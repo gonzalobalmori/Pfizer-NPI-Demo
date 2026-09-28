@@ -1,0 +1,137 @@
+/**
+ * DemandChange — the Commercial request that opens Scenario 2: more doses for a
+ * priority market and a different SKU or pack mix, arriving a fixed number of
+ * weeks before packaging.
+ *
+ * {@link #weeksBeforePackaging} is what gives the scenario its urgency — at eight
+ * weeks, a component with a longer lead time than that cannot be bought in time,
+ * which is precisely what rules some options out. {@link #requestedDoses} against
+ * {@link #baselineDoses} gives the uplift that {@link CapacitySource} headroom is
+ * tested against, and {@link #requestedPresentation} against
+ * {@link #baselinePresentation} is the pack-mix change that redirects demand onto
+ * a different {@link PackComponent} and a different fill lane.
+ *
+ * Mutated at runtime as the request is evaluated and decided, so no
+ * {@code SeedData} mixin — records live in {@code data/}.
+ */
+entity type DemandChange {
+
+  /** Seed key, e.g. {@code seed_dchg_comirnaty_de}. */
+  id: !string
+
+  /** Change-request number, e.g. {@code DCR-26-0067}. */
+  requestNo: !string
+
+  /** The launch affected. */
+  launch: Launch
+
+  /** The priority market whose demand increased. */
+  market: Market
+
+  /** The specific commitment being revised. */
+  marketCommitment: MarketCommitment
+
+  /** Who raised it, e.g. {@code "Commercial — EU Region Lead"}. */
+  requestedBy: Person
+
+  /** When it was raised. */
+  requestedAt: datetime
+
+  /**
+   * Weeks of runway before packaging starts. The hard clock: any option whose
+   * lead time exceeds this cannot be executed, regardless of cost.
+   */
+  weeksBeforePackaging: !int
+
+  /** The date packaging is scheduled to start — the deadline the clock counts down to. */
+  packagingStartDate: datetime
+
+  /** Doses in the current plan. */
+  baselineDoses: !int
+
+  /** Doses now requested. The uplift is this less {@link #baselineDoses}. */
+  requestedDoses: !int
+
+  /** Percentage uplift, precomputed so the view and the options agree on one figure. */
+  upliftPercent: double
+
+  /** Presentation in the current plan, e.g. {@code "6-dose multi-dose vial"}. */
+  baselinePresentation: string
+
+  /** Presentation now requested, e.g. {@code "1-dose prefilled syringe"}. */
+  requestedPresentation: string
+
+  /** SKU in the current plan. */
+  baselineSku: string
+
+  /** SKU now requested. */
+  requestedSku: string
+
+  /** Commercial's stated reason — the justification weighed against the supply cost. */
+  rationale: string
+
+  /** Incremental revenue if the uplift is served in full. */
+  incrementalRevenue: double
+
+  /** How far evaluation has progressed. The view gates its panels on this. */
+  stage: !string enum('RAISED', 'CONSTRAINTS_ASSESSED', 'OPTIONS_EVALUATED', 'DECIDED', 'COMMITTED')
+
+  /** Whether fill-finish capacity alone can absorb the uplift. Set by constraint assessment. */
+  capacityShortfall: boolean
+
+  /** Doses per week that cannot be covered by qualified capacity. Zero when capacity is sufficient. */
+  capacityGapDosesPerWeek: int
+
+  /** Whether a primary-packaging component is short. Often the true binding constraint. */
+  componentShortfall: boolean
+
+  /** Units of the binding component that are short. */
+  componentGapUnits: int
+
+  /** Whether cold-chain or freight capacity binds on top of manufacturing. */
+  logisticsShortfall: boolean
+
+  /**
+   * Which constraint binds first, written as the sentence a planner has to be able
+   * to repeat in a review — which component or lane, whose supplier, and the
+   * arithmetic that makes it bind. Written by
+   * {@link MarketWaveService#assessConstraints}; it is the headline of the
+   * assessment and the reason clause quoted in
+   * {@link DemandChange#decisionRationale}.
+   *
+   * Example: {@code "1mL long prefillable glass syringe, staked needle (Becton
+   * Dickinson (BD)) — 84-day lead time against a 56-day runway, so only 15,000 of
+   * the requested 690,000 doses can be served as 1-dose prefilled syringe."}
+   *
+   * For the short, groupable form of the same finding — a chip cannot hold a
+   * sentence — {@link MarketWaveService#plan} also returns {@code bindingKind}, one
+   * of {@code COMPONENT_LEAD_TIME}, {@code PACK_CAPACITY}, {@code COMPONENTS},
+   * {@code COLD_CHAIN} or {@code NONE}. Both are derived together from one model
+   * pass, so the key and the prose can never disagree.
+   */
+  bindingConstraint: string
+
+  /** The approved option. */
+  approvedOption: ScenarioOption
+
+  /** The governance body that owns the call, e.g. {@code "Launch Steering Committee"}. */
+  decisionAuthority: string
+
+  /** The signer of record. */
+  decidedBy: Person
+
+  /** When the decision was signed. */
+  decidedAt: datetime
+
+  /** The signer's rationale. */
+  decisionRationale: string
+
+  /** Whether affected plans, owners, sites, partners and market commitments have been updated. */
+  commitmentsUpdated: boolean
+
+  /** Count of commitments rewritten by the commit step. */
+  updatedCommitmentCount: int
+
+  /** Options scored for this change. */
+  options: [ScenarioOption](demandChange)
+}

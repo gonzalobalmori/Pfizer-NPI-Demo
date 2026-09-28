@@ -436,10 +436,10 @@ writeCsv('ppm', feedName('PPM_GATE'), ppmGate, ['GateId', 'ProjectId', 'GateCode
 /* ═══════════════════════════════════════════════════════════════════════════
  * 10 · HR — Workday + AD (people, functions, delegated authority)
  * ═══════════════════════════════════════════════════════════════════════════ */
-const AUTH_EUR = { HF: 5000000, MO: 250000, AK: 250000, SL: 150000, KT: 100000, LH: 100000, AP: 100000, TB: 1500000 };
+const AUTH_EUR = { GH: 5000000, MO: 250000, AK: 250000, SL: 150000, KT: 100000, LH: 100000, AP: 100000, TB: 1500000 };
 const hr = people.filter((p) => !p.isBoard).map((p, i) => ({
   'WorkerId': 'WD' + String(100200 + i), 'samAccountName': (p.initials || '').toLowerCase() + '@its.jnj.com',
-  'LegalName': p.name, 'JobFunction': p.role, 'BusinessTitle': p.role, 'ManagerId': p.initials === 'HF' ? '' : 'WD100200',
+  'LegalName': p.name, 'JobFunction': p.role, 'BusinessTitle': p.role, 'ManagerId': p.initials === 'GH' ? '' : 'WD100200',
   'DelegatedAuthorityEUR': AUTH_EUR[p.initials] != null ? AUTH_EUR[p.initials] : 50000, 'Active': 'Y',
 }));
 writeCsv('workday', feedName('HR_WORKER', false), hr, ['WorkerId', 'samAccountName', 'LegalName', 'JobFunction', 'BusinessTitle', 'ManagerId', 'DelegatedAuthorityEUR', 'Active'],

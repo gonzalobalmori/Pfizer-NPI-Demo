@@ -3,10 +3,10 @@
  * markup and CSS classes (.vhd / .kgrid / .kc / .two / .pnl / .dt / .bar /
  * .pill). Static headings and labels are copied word-for-word; every figure is
  * fed by the live PortfolioService.cockpit c3Action (user's "keep live C3 data"
- * choice). Nothing here is personal to Helena — that lives in My work.
+ * choice). Nothing here is personal to George — that lives in My work.
  */
 
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   Bar,
   BarChart,
@@ -20,14 +20,21 @@ import {
 import { useNav } from '@/nav/NavContext';
 import { getCockpit, getTimeImpact } from '@/api/portfolio';
 import { fmtDate, fmtGate } from '@/lib/format';
+import KpiDistribution, { type KpiDatum } from '@/components/Brand/KpiDistribution';
+import MlDot from '@/components/Brand/MlDot';
 import type { Cockpit, GateClosingRow, Health, MlStatus, TimeImpact } from '@/types/portfolio';
 
-/* Time-recovery chart palette — pulled from the app tokens so the chart reads as
- * part of the cockpit: green = schedule days you can win back by acting
- * (SELF/TEAM/AGENT); grey = a fixed wait on an outside authority (REGULATOR)
- * that acting faster cannot compress. */
-const REC_GREEN = '#15803D'; // --ok
-const REG_GREY = '#A39992'; // --g500
+/*
+ * Time-recovery chart palette. Recharts needs real colour values (it writes
+ * `fill` into the SVG), so these cannot be `var(--…)` references — but they must
+ * stay in lockstep with the tokens, hence the token name on each line:
+ *   green = schedule days you win back by acting (SELF/TEAM/AGENT)
+ *   grey  = a fixed wait on an outside authority (REGULATOR) that acting
+ *           faster cannot compress — inert by design, so it is the one series
+ *           allowed to read as grey.
+ */
+const REC_GREEN = '#15803D'; // --st-ok
+const REG_GREY = '#8493AB'; // --s5 / --g500
 
 function gateTone(s: GateClosingRow['status']): 'r' | 'a' | '' {
   if (s === 'no') return 'r';
@@ -52,30 +59,51 @@ function mlStatusTone(s: MlStatus): 'r' | 'a' | '' {
 }
 
 /*
- * One flattened attention line = a launch × a single market that NEEDS
- * ATTENTION. The user's rule: "solo que salgan los que tienen slip, los demás no
- * porque no need attention" — so we only emit markets whose OWN status
- * (MarketLaunch.status) is at-risk (rk) or off-track (ct); on-plan (ok) markets
- * are dropped. Each line carries the product, the market's phase + gate, and its
- * slip, coloured by mlStatus (the single shared tone source). Launches with no
- * per-market rollout modelled fall back to a single launch-level line.
+ * One attention line = ONE LAUNCH, with the markets needing attention listed
+ * inside it.
+ *
+ * This was previously one row per launch × market, which is the grain the data
+ * does NOT support and it produced a table that misled three ways at once:
+ *   1. Five rows for Comirnaty were byte-identical apart from the market code —
+ *      same status, same 47d slip, same G3 gate — because the backend gives every
+ *      flagged market of a launch the same gate projection. Four of the five rows
+ *      carried no information.
+ *   2. `revenueAtRisk` is a LAUNCH-level figure (Launch.revenueAtRisk), so
+ *      repeating it per market made the €M column sum to ~€106M against a real
+ *      portfolio exposure of €40.6M. A column that does not sum to its own total
+ *      is worse than no column.
+ *   3. Eighteen rows for five launches pushed the genuinely distinct launches
+ *      below the fold, so the panel's own question — which launches need me? —
+ *      got harder to answer the more markets a launch had.
+ *
+ * The launch grain fixes all three: €M appears once per launch so the column
+ * reconciles, and the markets stay visible as chips (the real per-market fact is
+ * *which* markets are affected, which the chips show without repeating a row).
+ * The user's rule still holds — on-plan markets are dropped, never shown.
  */
-interface FlatAttnRow {
+interface AttnMarket {
+  code: string | null;
+  name: string | null;
+  isLead: boolean;
+  mlStatus: MlStatus;
+}
+interface AttnRow {
   key: string;
   launchId: string;
   device: string;
   franchise: string | null;
-  marketCode: string | null;
-  marketName: string | null;
-  isLead: boolean;
   phaseCode: string | null;
   phaseName: string | null;
   gateCode: string | null;
   gateName: string | null;
   slipDays: number | null;
+  /** Worst status across the flagged markets — drives the row's single tone. */
   mlStatus: MlStatus;
   health: Health;
   revenueAtRisk: number | null;
+  markets: AttnMarket[];
+  /** Markets modelled on this launch but on plan — counted, not listed. */
+  onPlanMarkets: number;
 }
 
 /** Days-until, from an ISO forecast date to "now" (rendered under the date). */
@@ -99,11 +127,32 @@ interface TimeImpactDatum {
   pctRecoverable: number;
 }
 
-/* Inside-bar label for the green (recoverable) segment — hidden when 0 so a
- * purely authority-bound launch (Prevnar 20) shows no green tag. */
-function fmtRecLabel(value: React.ReactNode): string {
-  const n = typeof value === 'number' ? value : Number(value);
-  return n > 0 ? `${n}d` : '';
+/*
+ * Bar labels for the days-at-stake chart.
+ *
+ * Only ONE number is printed per bar unless the bar is genuinely SPLIT between
+ * recoverable and authority-bound days. The total always sits at the bar end; the
+ * green segment is labelled inside it only when a grey segment exists to tell it
+ * apart from. Without that test four of five rows printed the same number twice
+ * about 8px apart ("35d 35d", "13d 13d", "8d 8d", "5d 5d"), which reads as a
+ * rendering fault rather than as data. Only Comirnaty is really split (25 green +
+ * 45 grey = 70), so only Comirnaty gets the inside label; every bar still shows
+ * the full breakdown on hover.
+ *
+ * This is written as a `valueAccessor` rather than a `formatter` because Recharts
+ * only passes the row entry to the accessor — and only when `dataKey` is absent
+ * (`value = isNil(dataKey) ? valueAccessor(entry, index) : getValueByDataKey(...)`,
+ * LabelList.js). A `formatter` receives the resolved value alone, so the sibling
+ * field needed for this decision is not reachable there.
+ */
+interface LabelEntry {
+  payload?: TimeImpactDatum;
+}
+/** Inside-bar label: recoverable days, but only on a genuinely split bar. */
+function recLabel(entry: LabelEntry): string {
+  const d = entry?.payload;
+  if (!d || !(d.recoverableDays > 0)) return '';
+  return d.regulatorDays > 0 ? `${d.recoverableDays}d` : '';
 }
 /* End-of-bar label showing the launch's TOTAL days at stake (green + grey). */
 function fmtTotalLabel(value: React.ReactNode): string {
@@ -158,8 +207,61 @@ export default function CockpitView() {
     load();
   }, [load]);
 
-  if (error) return <div className="view on" style={{ padding: 24, color: 'var(--red600)' }}>{error}</div>;
-  if (!data) return <div className="view on" style={{ padding: 24 }}>Loading…</div>;
+  /*
+   * KPI micro-chart data. Each is the KPI's OWN breakdown as returned by the
+   * backend — no invented series (R-BASE-03). Memoised because the parent
+   * re-renders on every nav change and these sort in place. They sit above the
+   * early returns below because hooks must run unconditionally.
+   */
+  const readinessDist: KpiDatum[] = useMemo(() => {
+    const rows = data?.kpis.gateReadiness.byLaunch ?? [];
+    return [...rows]
+      .sort((a, b) => a.pct - b.pct) // worst readiness first
+      .map((x) => ({
+        label: `${x.launch} · ${x.gate}`,
+        value: x.pct,
+        display: `${x.met}/${x.total} criteria met (${Math.round(x.pct)}%)`,
+      }));
+  }, [data]);
+
+  const exposureDist: KpiDatum[] = useMemo(() => {
+    const rows = data?.kpis.revenueExposed.byLaunch ?? [];
+    return [...rows]
+      .sort((a, b) => b.exposure - a.exposure) // largest exposure first
+      .map((x) => ({ label: x.launch, value: x.exposure, display: `€${em(x.exposure)}M exposed` }));
+  }, [data]);
+
+  const slipDist: KpiDatum[] = useMemo(() => {
+    const rows = data?.kpis.scheduleDiscipline.byGate ?? [];
+    return [...rows]
+      .sort((a, b) => b.slipDays - a.slipDays) // worst slip first
+      .map((x) => ({
+        label: `${x.launch ?? 'Portfolio'} · ${x.gate}`,
+        value: x.slipDays,
+        display: `+${x.slipDays} days late`,
+      }));
+  }, [data]);
+
+  /* Sub-headline facts for the KPI cards, derived from the SAME breakdowns the
+     micro-charts plot — so the words under a card always describe the bars above
+     it. These replaced two hard-coded "trend" deltas; see the notes at each card. */
+  const readinessBelow = useMemo(() => {
+    const target = data?.kpis.gateReadiness.target;
+    if (target == null) return 0;
+    return readinessDist.filter((d) => d.value < target).length;
+  }, [readinessDist, data]);
+
+  /* Share of total exposure held by the single largest launch (the list is already
+     sorted largest-first). Null when there is nothing to divide by. */
+  const topExposureShare = useMemo(() => {
+    if (exposureDist.length === 0) return null;
+    const total = exposureDist.reduce((n, d) => n + d.value, 0);
+    if (total <= 0) return null;
+    return Math.round((exposureDist[0].value / total) * 100);
+  }, [exposureDist]);
+
+  if (error) return <div className="view on v-msg v-err">{error}</div>;
+  if (!data) return <div className="view on v-msg">Loading…</div>;
 
   const r = data.kpis.gateReadiness;
   const h = data.kpis.launchHealth;
@@ -176,62 +278,78 @@ export default function CockpitView() {
   const offLaunch = h.byStatus.OFF_TRACK?.launches?.[0] ?? '—';
 
   /*
-   * Flatten each launch into ONE LINE PER MARKET THAT NEEDS ATTENTION. Keep only
-   * markets whose own status is rk/ct (drop on-plan ones) — a market on plan is
-   * not, by definition, "needing attention". A launch with markets modelled but
-   * all on-plan is dropped entirely; a launch with no per-market rollout falls
-   * back to a single launch-level line so nothing silently disappears. Ordered
-   * off-track before at-risk, then by slip.
+   * One row per launch that needs attention, carrying only the markets whose OWN
+   * status is rk/ct — a market on plan is not, by definition, "needing
+   * attention", so it is counted but never listed. A launch with markets
+   * modelled but all on-plan is dropped entirely; a launch with no per-market
+   * rollout falls back to its launch-level figures so nothing disappears.
+   * Ordered off-track before at-risk, then by slip.
    */
   const ML_ATTN_RANK: Record<MlStatus, number> = { ct: 0, rk: 1, ok: 2 };
-  const flatRows: FlatAttnRow[] = data.attention.flatMap((a) => {
-    const flagged = (a.marketGates ?? []).filter((m) => m.mlStatus === 'ct' || m.mlStatus === 'rk');
+  const attnRows: AttnRow[] = data.attention.flatMap((a) => {
+    const gates = a.marketGates ?? [];
+    const flagged = gates.filter((m) => m.mlStatus === 'ct' || m.mlStatus === 'rk');
+
     if (flagged.length > 0) {
-      return flagged.map((m) => ({
-        key: `${a.launchId}-${m.marketCode ?? 'x'}`,
-        launchId: a.launchId,
-        device: a.device,
-        franchise: a.franchise,
-        marketCode: m.marketCode,
-        marketName: m.marketName,
-        isLead: m.isLead,
-        phaseCode: m.phaseCode,
-        phaseName: null,
-        gateCode: m.live ? null : m.gateCode,
-        gateName: m.live ? 'live in market' : m.gateName,
-        slipDays: m.slipDays,
-        mlStatus: m.mlStatus,
-        health: a.health,
-        revenueAtRisk: a.revenueAtRisk,
-      }));
-    }
-    // No per-market rollout modelled — keep the launch as a single line.
-    if ((a.marketGates ?? []).length === 0) {
+      /* Worst status and worst slip across the flagged markets. The launch's own
+         gate projection is taken from the worst market so the Gate column names
+         the gate that is actually holding, not an average. */
+      const worst = flagged.reduce((acc, m) =>
+        ML_ATTN_RANK[m.mlStatus] < ML_ATTN_RANK[acc.mlStatus] ? m : acc, flagged[0]);
+      const maxSlip = flagged.reduce((n, m) => Math.max(n, m.slipDays ?? 0), 0);
       return [{
         key: a.launchId,
         launchId: a.launchId,
         device: a.device,
         franchise: a.franchise,
-        marketCode: a.leadMarket,
-        marketName: null,
-        isLead: true,
+        phaseCode: worst.phaseCode ?? a.phaseCode,
+        phaseName: a.phaseName,
+        gateCode: worst.live ? null : worst.gateCode,
+        gateName: worst.live ? 'live in market' : worst.gateName,
+        slipDays: maxSlip > 0 ? maxSlip : null,
+        mlStatus: worst.mlStatus,
+        health: a.health,
+        revenueAtRisk: a.revenueAtRisk,
+        markets: flagged.map((m) => ({
+          code: m.marketCode, name: m.marketName, isLead: m.isLead, mlStatus: m.mlStatus,
+        })),
+        onPlanMarkets: gates.length - flagged.length,
+      }];
+    }
+
+    if (gates.length === 0) {
+      return [{
+        key: a.launchId,
+        launchId: a.launchId,
+        device: a.device,
+        franchise: a.franchise,
         phaseCode: a.phaseCode,
         phaseName: a.phaseName,
         gateCode: a.nextGateCode,
         gateName: a.nextGateName,
         slipDays: null,
-        mlStatus: a.health === 'OFF_TRACK' ? 'ct' : 'rk',
+        mlStatus: (a.health === 'OFF_TRACK' ? 'ct' : 'rk') as MlStatus,
         health: a.health,
         revenueAtRisk: a.revenueAtRisk,
+        markets: a.leadMarket
+          ? [{ code: a.leadMarket, name: null, isLead: true, mlStatus: (a.health === 'OFF_TRACK' ? 'ct' : 'rk') as MlStatus }]
+          : [],
+        onPlanMarkets: 0,
       }];
     }
     return [];
   });
-  flatRows.sort((x, y) => {
+  attnRows.sort((x, y) => {
     const byStatus = ML_ATTN_RANK[x.mlStatus] - ML_ATTN_RANK[y.mlStatus];
     if (byStatus !== 0) return byStatus;
     return (y.slipDays ?? 0) - (x.slipDays ?? 0);
   });
+  /* The €M column now sums to a real number, so state it — a table whose column
+     reconciles to the portfolio headline is the point of the re-grain. */
+  const attnExposure = attnRows.reduce((n, r) => n + (r.revenueAtRisk ?? 0), 0);
+  const attnMarketCount = attnRows.reduce((n, r) => n + r.markets.length, 0);
+  /* Shared denominator for the slip bars — the worst slip on the panel. */
+  const maxAttnSlip = attnRows.reduce((n, r) => Math.max(n, r.slipDays ?? 0), 0);
 
   /* Time-recovery chart data — one bar per launch that is holding schedule time,
      worst-first (the backend already sorts byLaunch that way). */
@@ -263,13 +381,41 @@ export default function CockpitView() {
               <span className="kc-v">{Math.round(r.value)}</span>
               <span className="kc-u">%</span>
             </div>
-            <svg className="spark" viewBox="0 0 84 30" preserveAspectRatio="none">
-              <polyline points="0,9 14,7 28,11 42,10 56,16 70,20 84,21" className="sl a" />
-              <circle cx="84" cy="21" r="2.6" className="sd a" />
-            </svg>
+            {/* Real per-launch readiness, worst-first — replaces a hard-coded
+                polyline that plotted an invented trend (R-BASE-03).
+                `invert={100}` because readiness is a "higher is better" percentage:
+                bars plot the gap to 100% so the launches in trouble are the TALL
+                ones, matching the exposure and slip cards beside it. Plotted as the
+                value it drew the problem as the smallest mark on the card. */}
+            <KpiDistribution
+              data={readinessDist}
+              threshold={r.target}
+              breach="below"
+              unitNoun="launch"
+              invert={100}
+            />
           </div>
-          <div className="kc-delta down">
-            &#9660; {Math.abs(r.deltaPts)} pts <em>vs last month</em>
+          {/*
+            * Says what the bars above actually show, NOT a month-over-month delta.
+            * This line used to read "▼ 6 pts vs last month" from `deltaPts`, which
+            * looks sourced but is the constant READINESS_DELTA_PTS = -6 written into
+            * LaunchControlMetrics.js — no Gate, Criterion or KPI carries a dated
+            * history, so nothing in this application can compute a 30-day change.
+            * A hard-coded figure is no more true for being hard-coded in the
+            * backend than in the view (R-BASE-03); it is only harder to spot. The
+            * honest, and more useful, statement is the spread the average hides.
+            */}
+          <div className="kc-delta">
+            {readinessBelow > 0 ? (
+              <>
+                <b>{readinessBelow}</b> of {readinessDist.length} {readinessDist.length === 1 ? 'launch' : 'launches'}{' '}
+                <em>below the {r.target}% target</em>
+              </>
+            ) : (
+              <>
+                every launch <em>at or above the {r.target}% target</em>
+              </>
+            )}
           </div>
           <div className="kc-ft">
             <span>Target {r.target}%</span>
@@ -298,10 +444,22 @@ export default function CockpitView() {
               </div>
             </div>
           </div>
+          {/*
+            * The health split as one proportional bar. Red and amber are only ΔE 2.7
+            * apart under protanopia — an IRREDUCIBLE limit of this ramp (eleven ambers
+            * were measured; none clears the ΔE 8 target while also holding the
+            * normal-vision floor and WCAG AA). The dataviz rule permits that band ONLY
+            * with secondary encoding, which is satisfied here three times over: the
+            * counts are stated in words immediately above ("3 on plan · 4 at risk ·
+            * 1 off track"), the segments are separated by a 3px surface gap, and each
+            * carries a `title` naming its state. Colour is the redundant channel, not
+            * the only one. Do not remove the labels above without also solving the
+            * separation problem they license.
+            */}
           <div className="kc-stack">
-            <span className="kb g" style={{ flex: onPlan || 0.01 }} />
-            <span className="kb a" style={{ flex: atRisk || 0.01 }} />
-            <span className="kb r" style={{ flex: offTrack || 0.01 }} />
+            <span className="kb g" style={{ flex: onPlan || 0.01 }} title={`${onPlan} on plan`} />
+            <span className="kb a" style={{ flex: atRisk || 0.01 }} title={`${atRisk} at risk`} />
+            <span className="kb r" style={{ flex: offTrack || 0.01 }} title={`${offTrack} off track`} />
           </div>
           <div className="kc-ft">
             <span>
@@ -320,13 +478,22 @@ export default function CockpitView() {
               <span className="kc-v r">{em(rev.value)}</span>
               <span className="kc-u">M</span>
             </div>
-            <svg className="spark" viewBox="0 0 84 30" preserveAspectRatio="none">
-              <polyline points="0,24 14,22 28,23 42,18 56,14 70,8 84,5" className="sl r" />
-              <circle cx="84" cy="5" r="2.6" className="sd r" />
-            </svg>
+            {/* Real exposure per launch — shows how concentrated the €40.6M is
+                (one launch or five?), which the total alone hides. */}
+            <KpiDistribution data={exposureDist} unitNoun="launch" />
           </div>
-          <div className="kc-delta up r">
-            &#9650; &euro;{em(rev.delta30d)}M <em>in the last 30 days</em>
+          {/* Concentration, not a fabricated 30-day rise. `delta30d` is the constant
+              REVENUE_DELTA_30D = 11200000 in LaunchControlMetrics.js — see the note
+              on the readiness card. What IS true and decision-relevant: how much of
+              the total sits in the single worst launch. */}
+          <div className="kc-delta">
+            {topExposureShare != null ? (
+              <>
+                <b>{topExposureShare}%</b> <em>of it in {exposureDist[0].label}</em>
+              </>
+            ) : (
+              <em>across {exposureDist.length} launches</em>
+            )}
           </div>
           <div className="kc-ft">
             <span>{rev.pctOfPortfolio}% of pipeline value</span>
@@ -342,15 +509,10 @@ export default function CockpitView() {
               <span className="kc-v r">{Math.round(s.value)}</span>
               <span className="kc-u">days</span>
             </div>
-            <svg className="spark" viewBox="0 0 84 30" preserveAspectRatio="none">
-              <rect x="1" y="22" width="9" height="8" className="sb" />
-              <rect x="13" y="19" width="9" height="11" className="sb" />
-              <rect x="25" y="23" width="9" height="7" className="sb" />
-              <rect x="37" y="14" width="9" height="16" className="sb a" />
-              <rect x="49" y="10" width="9" height="20" className="sb a" />
-              <rect x="61" y="6" width="9" height="24" className="sb r" />
-              <rect x="73" y="3" width="9" height="27" className="sb r" />
-            </svg>
+            {/* Real slip per slipped gate, worst-first. The headline is a mean,
+                so the spread matters: 20d avg over one 47d gate and four small
+                ones is a different problem from five even 20d slips. */}
+            <KpiDistribution data={slipDist} threshold={s.target} breach="above" unitNoun="gate" />
           </div>
           <div className="kc-delta down">
             Avg slip across {s.slippedGates} slipped {s.slippedGates === 1 ? 'launch' : 'launches'}
@@ -414,7 +576,14 @@ export default function CockpitView() {
                     margin={{ top: 4, right: 44, bottom: 4, left: 8 }}
                     barCategoryGap="30%"
                   >
-                    <CartesianGrid horizontal={false} stroke="var(--g150,var(--g100))" />
+                    {/* Recessive, and dashed so the verticals read as a scale behind
+                        the bars rather than as marks cutting across them (they paint
+                        under the bars, which are drawn after). */}
+                    <CartesianGrid
+                      horizontal={false}
+                      stroke="var(--g150,var(--g100))"
+                      strokeDasharray="2 3"
+                    />
                     <XAxis
                       type="number"
                       tick={{ fontSize: 11, fill: 'var(--g500)' }}
@@ -440,10 +609,11 @@ export default function CockpitView() {
                       onClick={(d: TimeImpactDatum) => d?.launchId && open('launch', d.launchId)}
                       cursor="pointer"
                     >
+                      {/* No `dataKey` — that is what routes this through
+                          valueAccessor, which receives the whole row. */}
                       <LabelList
-                        dataKey="recoverableDays"
+                        valueAccessor={recLabel}
                         position="insideRight"
-                        formatter={fmtRecLabel}
                         fill="#fff"
                         fontSize={11}
                         fontWeight={700}
@@ -511,31 +681,43 @@ export default function CockpitView() {
         <div className="pnl">
           <div className="pnl-h">
             <div>
-              <div className="pnl-t">Markets needing attention</div>
-              <div className="pnl-s">One line per market with slip · on-plan markets hidden · click to open the launch</div>
+              <div className="pnl-t">Launches needing attention</div>
+              <div className="pnl-s">
+                One line per launch · affected markets listed · on-plan markets hidden · click to open the launch
+              </div>
             </div>
+            {attnRows.length > 0 ? (
+              <div className="pnl-f">
+                <b className="mono">&euro;{em(attnExposure)}M</b>
+                <span>exposed &middot; {attnMarketCount} markets affected</span>
+              </div>
+            ) : null}
           </div>
           <table className="dt atn-t">
             <thead>
               <tr>
                 <th>Launch</th>
-                <th>Market</th>
-                <th>Gate</th>
-                <th>Slip</th>
+                <th>Markets affected</th>
+                <th>Gate holding</th>
+                <th>Worst slip</th>
                 <th className="n">&euro;M</th>
               </tr>
             </thead>
             <tbody>
-              {flatRows.length === 0 ? (
+              {attnRows.length === 0 ? (
                 <tr>
                   <td colSpan={5}>
-                    <div className="sub" style={{ padding: '6px 0' }}>No markets with slip — every market is on plan.</div>
+                    <div className="atn-empty">No markets with slip — every market is on plan.</div>
                   </td>
                 </tr>
               ) : (
-                flatRows.map((f) => {
+                attnRows.map((f) => {
                   const tone = mlStatusTone(f.mlStatus);
                   const slipText = f.slipDays && f.slipDays > 0 ? `+${f.slipDays}d` : f.mlStatus === 'ct' ? 'off track' : 'at risk';
+                  /* Bar width is the launch's slip against the WORST slip on the
+                     panel, so the bars are comparable to each other instead of
+                     the old fixed 100%/45% that encoded nothing. */
+                  const slipPct = maxAttnSlip > 0 && f.slipDays ? Math.max(8, (f.slipDays / maxAttnSlip) * 100) : 100;
                   return (
                     <tr key={f.key} onClick={() => open('launch', f.launchId)}>
                       <td>
@@ -543,10 +725,18 @@ export default function CockpitView() {
                         <div className="sub">{f.franchise}{f.phaseCode ? ` · ${f.phaseCode}` : ''}</div>
                       </td>
                       <td>
-                        <div className="atn-mk-cell">
-                          <span className={`mg-dot ${f.mlStatus}`} aria-hidden />
-                          <b>{f.marketCode ?? '—'}</b>
-                          {f.isLead ? <span className="mg-lead">lead</span> : null}
+                        <div className="atn-mks">
+                          {f.markets.map((m) => (
+                            <span className={`atn-mk ${m.mlStatus}`} key={m.code ?? m.name ?? 'x'}
+                                  title={`${m.name ?? m.code ?? 'market'}${m.isLead ? ' — lead market' : ''}`}>
+                              <MlDot status={m.mlStatus} label={m.name ?? m.code ?? 'market'} />
+                              {m.code ?? '—'}
+                              {m.isLead ? <i>lead</i> : null}
+                            </span>
+                          ))}
+                          {f.onPlanMarkets > 0 ? (
+                            <span className="atn-mk-ok">+{f.onPlanMarkets} on plan</span>
+                          ) : null}
                         </div>
                       </td>
                       <td>
@@ -556,21 +746,13 @@ export default function CockpitView() {
                       <td>
                         <div className="bar">
                           <div className="bar-t">
-                            <div className={`bar-f ${tone}`} style={{ width: f.mlStatus === 'ct' ? '100%' : '45%' }} />
+                            <div className={`bar-f ${tone}`} style={{ width: `${slipPct}%` }} />
                           </div>
                           <span className={`bar-v ${tone}`}>{slipText}</span>
                         </div>
                       </td>
                       <td className="n">
-                        <b
-                          className="mono"
-                          style={{
-                            color: tone === 'r' ? 'var(--red600)' : tone === 'a' ? 'var(--amber)' : 'inherit',
-                            fontWeight: 750,
-                          }}
-                        >
-                          {em(f.revenueAtRisk)}
-                        </b>
+                        <b className={`mono atn-e ${tone}`}>{em(f.revenueAtRisk)}</b>
                       </td>
                     </tr>
                   );
@@ -599,10 +781,31 @@ export default function CockpitView() {
               </tr>
             </thead>
             <tbody>
+              {/*
+                * TWO DIFFERENT MEASURES, TWO DIFFERENT MARKS.
+                *
+                * The readiness bar used to be toned by `gateTone(g.status)` — the
+                * gate's SCHEDULE state (late / not met) — while its LENGTH showed
+                * criteria met. So a gate with every criterion satisfied drew a
+                * full-length RED bar if its date had slipped: Zavzpret at 6/6 was
+                * the most alarming row on the panel while being the most ready one.
+                * A mark whose length says "done" and whose colour says "critical"
+                * cannot be read at all.
+                *
+                * Readiness now tones itself, against the SAME 85% target the
+                * readiness KPI card uses (so the panel and the card agree), and the
+                * schedule slip gets its own chip in the Date cell where the date it
+                * qualifies already lives.
+                */}
               {data.gatesClosing.map((g: GateClosingRow, i: number) => {
-                const tone = gateTone(g.status);
-                const pct = g.criteriaTotal ? Math.round((100 * g.criteriaMet) / g.criteriaTotal) : 0;
+                const hasCriteria = g.criteriaTotal > 0;
+                const pct = hasCriteria ? Math.round((100 * g.criteriaMet) / g.criteriaTotal) : 0;
                 const openCount = Math.max(0, g.criteriaTotal - g.criteriaMet);
+                /* Amber only below the portfolio readiness target — no second
+                   threshold is invented here, and a fully-met gate reads neutral. */
+                const rdTone = !hasCriteria ? '' : pct < r.target ? 'a' : '';
+                const slipTone = gateTone(g.status);
+                const slipped = g.status === 'late' && (g.slipDays ?? 0) > 0;
                 return (
                   <tr key={`${g.gateCode}-${i}`} onClick={() => g.launchId && open('launch', g.launchId)}>
                     <td>
@@ -616,20 +819,35 @@ export default function CockpitView() {
                     </td>
                     <td>
                       <div className="nm mono">{fmtDate(g.forecastDate)}</div>
-                      <div className="sub">{daysUntil(g.forecastDate)}</div>
-                    </td>
-                    <td>
-                      <div className="bar">
-                        <div className="bar-t">
-                          <div className={`bar-f ${tone}`} style={{ width: `${pct}%` }} />
-                        </div>
-                        <span className={`bar-v ${tone}`}>
-                          {g.criteriaMet}/{g.criteriaTotal}
-                        </span>
+                      <div className="sub">
+                        {daysUntil(g.forecastDate)}
+                        {slipped ? <span className={`gc-slip ${slipTone}`}>+{g.slipDays}d</span> : null}
                       </div>
                     </td>
                     <td>
-                      <span className={`pill ${tone}`}>{openCount ? `${openCount} open` : 'ready'}</span>
+                      {hasCriteria ? (
+                        <div className="bar">
+                          <div className="bar-t">
+                            <div className={`bar-f ${rdTone}`} style={{ width: `${pct}%` }} />
+                          </div>
+                          <span className={`bar-v ${rdTone}`}>
+                            {g.criteriaMet}/{g.criteriaTotal}
+                          </span>
+                        </div>
+                      ) : (
+                        <span className="gc-nc">not yet defined</span>
+                      )}
+                    </td>
+                    <td>
+                      {/* "ready" is only true when criteria EXIST and are all met —
+                          0/0 is an undefined checklist, not a satisfied one. */}
+                      {!hasCriteria ? (
+                        <span className="pill">&mdash;</span>
+                      ) : (
+                        <span className={`pill ${openCount ? rdTone : ''}`}>
+                          {openCount ? `${openCount} open` : 'all met'}
+                        </span>
+                      )}
                     </td>
                   </tr>
                 );

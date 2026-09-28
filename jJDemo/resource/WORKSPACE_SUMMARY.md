@@ -187,10 +187,33 @@ Runtime gotcha: after editing backend `.js`, `runJsCode` can be stale — call `
 ## UI shell / views (current — verbatim prototype port)
 
 The React app reproduces the prototype's **screen model**, not React-Router routes:
-- **CSS:** raw prototype CSS ported verbatim to `ui/react/src/styles/prototype.css` (~2266 lines; Pfizer red
-  ramp `--red500:#EB1700`/`--red600`, `--amber`, warm-grey ramp, 13px base). Imported LAST in `main.tsx`
+- **CSS:** raw prototype CSS ported to `ui/react/src/styles/prototype.css` (~2540 lines), then **re-branded to
+  Pfizer** (R-BASE-04). The `:root` block is the single source of truth for the whole shell (~1000 usages), and
+  it deliberately keeps **brand and danger on separate scales** — do NOT merge them:
+  - `--brand:#0000C9` (Pfizer Blue) / `--brand-600` / `--brand-700`, `--sky:#0093D0` (Pfizer light blue),
+    `--brand-bg`/`--brand-bd` → identity + ALL interactive states (selection, active tab, primary CTA, hover,
+    in-progress, "you"/identity accents).
+  - `--red500:#D8232A`/`-600`/`-700` + `--red-bg`/`--red-bd` → **critical/danger states ONLY**
+    (`.tag.crit`, `.bar-f.r`, `.gd.crit`, `.ms-g.crit`, `.kn-v.r`, `.*.late`, `.*.ct`, `.*.miss` …).
+    Repointing these to blue would destroy the risk semantics the control tower exists to communicate.
+  - Cool blue-tinted neutral ramp `--g50:#F7F9FC` … `--g900:#121A25` (replaced a warm taupe ramp — neutrals are
+    ~90% of on-screen pixels, so they carried the old identity more than any accent), `--amber` unchanged,
+    `--purple:#6C4BD8` = agent/AI accent (kept distinct from `--brand` per R-TR-13), 13px base.
+  - Shadows use `rgba(18,26,37,…)` to sit on the cool neutrals.
+  Note `c3ui/*.css` (vendor C3 design-system tokens, incl. its `#2266F0` blue) and the `pages/*` Tailwind layer
+  are NOT user-visible — `App.tsx` mounts only this prototype shell — so they are intentionally left untouched.
+  Imported LAST in `main.tsx`
   so it wins over any residual Tailwind. Verbatim port rules: `class`→`className`, `onclick`→`onClick`,
   inline `style="…"`→`style={{…}}`, void tags self-closed, prototype class names + static text word-for-word.
+- **Branding / disclaimer:** wordmarks render as **text** (`.m-wm` on the menu, `.h-wm` in the header) — there
+  is no logo image asset in use. `index.html` sets the tab title "Pfizer · NPI Launch Control Tower" and a
+  brand-blue monogram `src/assets/favicon.svg`. `shell/DataDisclaimer.tsx` (`.dsc`) renders the R-BASE-05 notice
+  "Synthetic demonstration data — not actual Pfizer data." — mounted once at the `App.tsx` root so it persists
+  across every screen/branch/tab, non-dismissible by construction (no close button, no visibility state), and
+  `pointer-events:none` so it never steals clicks. `.body`/`.m-shell` carry extra bottom padding to clear it.
+  `src/assets/{logo.svg,empty-state.svg,c3Logo.png}` are unreferenced leftovers — must stay on disk anyway,
+  since Tailwind v4's dev-time scan registers them as watched deps and deleting one mid-session 500s
+  `globals.css` until the dev server restarts.
 - **Nav model:** `nav/NavContext.tsx` — two screens (`menu`/`app`), three branches
   (strategy/pipeline/exec) each with a tab set (`BRANCH[branch]`), drivers `go(branch,view)` /
   `open(view,param)` / `tab(view)` / `toMenu()`. `param` carries a launchId/findingId into drill-downs.
@@ -210,11 +233,11 @@ The React app reproduces the prototype's **screen model**, not React-Router rout
   - `CockpitView` → `getCockpit()` (reference pattern: 4 KPI `.kc` cards + 2 `.pnl`/`.dt` panels; rows → `open('launch',id)`)
   - `PortfolioView` → 4 lenses (`getPortfolioProduct/Market/BusinessUnit/Timeline`; Market lens embeds the decorative world-map SVG). **Lens visibility fix:** all four pane roots carry `pf-l sb-p on` (prototype CSS hides `.pf-l`/`.sb-p` unless `on`; originally only the product pane had it, so Market/Business unit/Timeline were invisible — verified all 4 now render). **Business-unit lens redesign (per manager feedback — no static title sections):** `BuPane` now renders a `.filt` **filter-chip bar** ("All units" + one health-toned `.fb` chip per unit w/ launch-count badge) plus `.bu2-row` **expandable rows** (`BuSegmentRow`) — each row summarises the unit (health-mix tally `.bu2-mix` + revenue-at-risk `.bu2-rk`) and expands on click to the existing `BuCardView` franchise cards. Chips are now a **filter** (`filter: string|null` — narrow to one unit or "All units") kept SEPARATE from **expansion** (`expanded: Set<string>` — each row opens/closes independently, initialised to ALL segment names so all three units are expanded by default; per manager feedback that opening one unit shouldn't collapse the others). Backend `getPortfolioBusinessUnit()` unchanged. CSS in `prototype.css` "BY BUSINESS UNIT v4" block (`.filt`/`.fb-n`/`.fb.ct`/`.fb.rk`/`.bu2-*`); note `.ac` is a global 3px pip class — the mix chips use bare `<em>`/`.a`/`.r`, NOT `.ac`. Verified in browser: chips render, rows expand/collapse to franchise cards, no console errors. **Market side panel** (`#map-side`) is populated from `views/marketDetail.ts` (`MK_MARKETS` 12 launch markets + `MK_SMALL` 10 registration markets, ported from prototype MKT/MKS literals); clicking a `.wp[data-m]` map bubble (or the tour driving `marketPick`) fills `.ms-*`/`.mrk` — a risk row's action opens the issue (`open('issue',findingId)`) or hands off to the copilot (`drive({view:'chat'})`).
   - `LaunchView` / `FlowView` / `DocsView` → all read `param` and call `getLaunchRecord(param)` (overview+gates / workflow board / doc register). **Header actions (per manager feedback — the 4 crowded buttons "Resolve blocker / Message workstream leads / Request gate review / Escalate to Launch Board" were fatal):** now just two — **Resolve** (`btn s`) and **Escalate** (`btn p`). LaunchView additionally calls `getOpenIssues()`, filters rows by `launchId`, picks the blocking finding (`category==='ct'`, else first) → `resolveFindingId`; **Resolve** does `open('issue', resolveFindingId)` which routes into the **exec** branch resolution workspace (IssueView) — i.e. "resolve it in Execution". Falls back to `open('flow', param)` if no finding. Escalate opens the same finding (or `alerts`). **Gate label dedup:** the post-market gate is `code="BAU"` / `name="BAU handover"`, so any `${code} ${name}` render doubled to "BAU BAU handover". Added `fmtGate(code,name)` in `lib/format.ts` (drops the code when the name already starts with it) and use it in LaunchView (gate-readiness header + gate schedule) and IssueView (gate-at-risk + impact rows). Product lens (`ngName.startsWith(ngCode)`) and BuLaunchView (code-only `→ BAU`) were already safe. **Descriptive/tour-style `.vs`/`.ld-cs` subtitles removed** from all dashboard view headers (Cockpit, Portfolio all 4 lenses, Launch gate-readiness, Alerts, Actions ×3, Strat) per manager feedback ("frases explicativas que nunca estarían en un dashboard"); Flow/Docs keep the factual count/type lists only.
-  - `IssueView` → `getResolutionWorkspace(param)`; Approve → `approveDecision(id,label)` (enabled only when decision USER-held + option selected; NO withdraw control)
+  - `IssueView` → `getResolutionWorkspace(param)`; Approve → `approveDecision(id,label)` (enabled only when decision USER-held + option selected; NO withdraw control). **Approve confirmation (user: "I click and nothing happens"):** `Decision#approve` ran its full cascade server-side but the ONLY visible change was the Approve button going grey (`canApprove` false once `approvedAt` set) — a successful action read as a broken one, and users re-clicked into the `assertUserCanDecide` "Approve runs once" error. Now three things land: (1) a transient `ActionToast` (`components/Feedback/ActionToast.tsx`, reuses the previously-unused `.toast`/`.tck`/`.ttx` prototype CSS, `role="status"`, auto-dismiss 6s) fired ONLY on your own click via `justApproved` state; (2) an `.is-approved` bar state (green `.tag done` ✓ APPROVED + "Option C approved · <timestamp>" + gate/exposure/task consequences) that REPLACES the approve/reject/reassign controls once `approvedAt` is set, so the outcome stays legible for the rest of the session — **session-only: a refresh rewinds it, see "Reset actions on refresh" below**; (3) `Approving…` button copy while in flight. **Also fixed:** `load()` defaulted `selectedKey` to `recommendedOptionKey`, so approving Option C re-rendered the bar reading Option A — the approval looked ignored or misapplied; it now prefers `decision.selectedOption` when set. Browser-verified end-to-end on NPI-0417 Option C (toast + banner + backend `selectedOption:"Option C"`, 3 tasks Dispatched / 4 Assigned, DHF entry by George Hall), banner persists across reload while the toast correctly does NOT re-fire; **demo data restored to pristine unapproved state afterwards** (gate +47d, €18.4M exposure, 21 tasks "Not started").
   - `ActionsView` → 3 sub-panes `getPendingQueue`/`getEscalatedQueue`/`getDecisionHistory`; cards → `open('issue',findingId)`
   - `TowerView` → `getLiveBoard('all','all')` + `getActivityLog('all','all')`
   - `AlertsView` → `getOpenIssues()`; rows → `open('issue',findingId)`
-  - `ChatView` → **two-mode Copilot** (per user: integrated INTO the Copilot as two modes, NOT a separate tab — the old `EodLogView` + `eod` nav tab were removed). A `.cq-modes` segmented control at the top of `#v-chat` toggles `mode` (`'ask'` default | `'eod'`); each mode keeps its own state so switching never loses an in-progress thread or capture. CSS `.cq-modes`/`.cq-mode(.on)`/`.cq-mode-ic`/`.cq-mode-tx` in prototype.css "COPILOT" block (purple icon accent, Pfizer-red active border).
+  - `ChatView` → **two-mode Copilot** (per user: integrated INTO the Copilot as two modes, NOT a separate tab — the old `EodLogView` + `eod` nav tab were removed). A `.cq-modes` segmented control at the top of `#v-chat` toggles `mode` (`'ask'` default | `'eod'`); each mode keeps its own state so switching never loses an in-progress thread or capture. CSS `.cq-modes`/`.cq-mode(.on)`/`.cq-mode-ic`/`.cq-mode-tx` in prototype.css "COPILOT" block (purple icon accent, Pfizer-blue active border).
     - **Ask** → the existing grounded Q&A copilot: `getCopilot()` (greeting + suggestion prompts; refusal prose rendered VERBATIM, never softened). The guided tour's `chatAsk` forces Ask mode.
     - **End-of-day log** → the conversational capture assistant (`EodMode` sub-component wrapping the shared **`components/EodCapture.tsx`**): a domain owner tells the copilot what happened and it becomes real `Finding` records the tower sees, no form-filling. Two **text-only** modes inside — **Free dump** (`extractEodSignals(domain,text,[])`) and **Guided** (questions from `getEodPrompts(domain)` → `extractEodSignals(domain,'',answers)`); domain chips from `getEodDomains()` (13 incl. "all"→Orchestrator); extraction returns **DRAFTS only** (edit headline, change impact ct/rk/ok, include/exclude, confidence + NEEDS REVIEW badges); **Capture** → `commitEodSignals(approvedDrafts)` (SOLE writer → `outcome='RUNNING'`, `signalSource='eod-log'`, `detectedBy`=domain agent). A "Captured this session" list links each new finding into its resolution workspace via `open('issue',id)`. Wired in `api/execution.ts` (4 fns) + types in `types/execution.ts` (`EodDomain`/`EodPrompt`/`EodAnswer`/`EodDraft`/`EodExtractData`/`EodCommittedFinding`+Data wrappers). **Verified in browser:** mode selector renders, EOD mode fires `domains` + `extractSignals` (both 200 OK), 2 drafts render correctly classified.
   - `StratView` → fully static verbatim port (out-of-scope branch, no data wiring by design)
@@ -293,13 +316,19 @@ The React app reproduces the prototype's **screen model**, not React-Router rout
       Browser-verified: Elrexfio DE/ES/FR/UK now render `ms-sp amb` bar (`width:5%`, baseline `left:0.95%` →
       forecast `left:5.95%`); Comirnaty +47d bars unchanged (wide, red `ms-sp`, to-scale); on-plan markets show
       no bar. 11/11 reconciliation tests still pass; build+lint green.
-  - **(8b) Identity — "You" vs "Helena Fossi".** The signed-in user *is* Helena Fossi (`seed_person_hf` owns
-    all 12 Decisions), so `waitingOnFor` (PortfolioService.js) showed her USER findings as "You" but the two
-    DELEGATED-to-agent RUNNING findings (NPI-0351/0359) as "Helena Fossi" — same person, two labels. Fix:
-    reordered `waitingOnFor` so AUTO/RUNNING/`dependency==='AGENT'` classify as **AGENT** *before* the
-    held-by-person branch, and added `ownerName===SELF_PERSON_NAME` ('Helena Fossi') → collapse to "You". Now
+  - **(8b) Identity — "You" vs the signed-in user's name.** The signed-in user *is* George Hall
+    (`seed_person_hf` owns all 12 Decisions), so `waitingOnFor` (PortfolioService.js) showed his USER findings
+    as "You" but the two DELEGATED-to-agent RUNNING findings (NPI-0351/0359) under his full name — same person,
+    two labels. Fix: reordered `waitingOnFor` so AUTO/RUNNING/`dependency==='AGENT'` classify as **AGENT**
+    *before* the held-by-person branch, and added `ownerName===SELF_PERSON_NAME` → collapse to "You". Now
     the user is only ever "You"; NPI-0351/0359 read "Supply Chain agent"/"Quality agent". Open-issues lens
     counts: YOU 5 / someone-else **0** / **agent 2** / authority 3 (was agent 0 / person 2).
+    ⚠️ **Renaming the signed-in persona is a coupled, 2-place change**: `SELF_PERSON_NAME` in
+    `src/PortfolioService.js` is matched by **literal name** against `Person.name` of `seed_person_hf` in
+    `seed/Person/Person.json`. Change one without the other and the duplicate "You" / "<full name>" bug above
+    silently returns. (Persona renamed Helena Fossi → **George Hall** / initials `HF` → `GH`, 2026-09-25;
+    ids such as `seed_person_hf` deliberately left alone — ~110 refs across seed/data/tests key off them.
+    Note `DHF` = Design History File, unrelated to the `HF` initials — do not blind-replace.)
   - **(8c) Authority items are view-only.** AlertsView `AlertRow` rendered "Resolve →" for every row; now
     `waitingOn==='AUTHORITY'` rows show **"View detail →"**. IssueView: added `authorityBound =
     finding.dependency==='REGULATOR'` — the bottom bar drops Approve/Reject/Reassign and shows a view-only
@@ -615,7 +644,7 @@ missing). Fixed end-to-end:
   markers on the axis. `LaunchView` adds a "Market rollout — where each country stands" `.ld-card` (one row/market:
   dot, name, `lead`, derived gate + slip, `mlPill`/`mlLabel` status pill, first-ship quarter). New CSS `.mg-rows`/
   `.mg-row`/`.mg-dot`/`.mg-mk`/`.mg-lead`/`.mg-gate`/`.mg-q` + `.msr-name`/`.msr-cv`/`.msr-mks`/`.msr-mk*` in
-  `prototype.css`. Tone map: ct→red, rk→amber, ok→green.
+  `prototype.css`. Tone map: ct→red, rk→amber, ok→green (danger scale only; brand blue is never a health tone).
 - **Verified live (all four tabs reconcile):** cockpit shows 40 per-country rows; timeline expands 0→10 sub-rows on
   click; launch record shows 10-market rollout — same `mlStatus` colours across all (e.g. Comirnaty Gen2 PFA: DE/FR=ct
   red, ES/UK/US/AU/BR/CA/CN/JP=ok green). Build+lint green, no critical pkg issues, 0 console errors.
@@ -933,3 +962,178 @@ are not Finding/Activity/Gate instances — so reconciliation stays 11 findings 
     Sterigenics options; `resolutionWorkspace('seed_finding_412')` → CAPA-2026-0149 CORRECTIVE_IN_PROGRESS, 3 new
     options, 4-entry thread (Line Monitor/Kowalski/Planning/Haugen), 5 tasks. `npm run build` + lint + tsc green;
     `test_Reconciliation` 11/11; no critical Pkg.Issue.
+
+---
+
+## Pfizer NPI Launch Control Tower v2 — M1: traceability core + type skeleton (§4, §5)
+
+New build request (7 milestones, Mode A). Deliverable docs live at the **repo root** —
+`COVERAGE.md` (the R-BP-06 requirement matrix, appended each milestone), `ASSUMPTIONS.md`,
+`STATUS.md`, `DROPPED.md`. Read `COVERAGE.md` first: it maps every requirement ID to its
+file and its test.
+
+**14 types + 4 implementations, all new in `src/`:**
+
+| Concern | Types | Implementation |
+|---|---|---|
+| Audit trail | `AuditEvent`, `AuditService` | `AuditService.js` |
+| Bitemporal history | `Bitemporal` (mixin), `EntityVersion`, `TemporalQueryService` | `TemporalQueryService.js` |
+| Transactions | `IdempotencyRecord`, `TransactionService` | `TransactionService.js` |
+| RBAC | `AppRole`, `RoleAssignment`, `Team`, `AccessControlService` | `AccessControlService.js` |
+| Signatures / agents | `ESignature`, `AgentRunRecord`, `LineageRecord` | in `AuditService.js` |
+
+Seed: `seed/AppRole/` (6 roles), `seed/Team/` (13 teams), `seed/RoleAssignment/`
+(18 assignments), + 4 Pfizer sites appended to `seed/Site/Site.json`.
+
+### Things that will bite if not known
+
+- **`EntityVersion.versionNo`, not `version`.** Every C3 entity type already inherits a
+  platform `version` field; re-declaring it is a compile error. The API-facing JSON keys
+  are still `version`, so only the stored field differs. (ASSUMPTIONS A-19.)
+- **`RoleAssignment` and `Team` both compile.** The `Team is invalid!` error in
+  `gen/cache/Pkg.Issue/` was a cascade from the `EntityVersion.version` collision above;
+  both resolved, confirmed in the regenerated `gen/cache/TypeMetaDeps#dts`. That issue
+  file is stale cache, not a live error.
+- **Bitemporal history only covers the 10 types in `TemporalQueryService`'s `GOVERNED`
+  registry** (Launch, Gate, GateCriterion, Lot, MarketLaunch, Decision, Activity, Finding,
+  CAPA, ActionPlanTask). `TransactionService.begin` **throws** on anything else rather than
+  skipping the snapshot — an unsnapshotted target could not be rolled back. Adding a type
+  to that registry is the one step that grants it history + versioning + rollback.
+- **Writes go through `TransactionService.begin → … → commit | rollback`.** `commit` writes
+  one `AuditEvent` per changed field via `AuditService.recordBatch`, so a committed cascade
+  is audited by construction. `rollback` restores snapshots in **reverse** order (forward
+  order would leave the mid-cascade state) and audits itself against the txId.
+- **SHA-256 is pinned in `AuditService.js`**, deliberately not delegated to a platform
+  helper: a platform upgrade must not be able to silently change the digest and invalidate
+  seeded history. Both halves of the scheme are public (`digestOf` + `hashOf`) so the chain
+  is re-derivable without trusting `verifyChain` to grade itself.
+- **`vite build` needs `VITE_C3_PKG=jJDemo`** in the env when run by hand:
+  `cd ui/react && VITE_C3_PKG=jJDemo npm run build`. Lint and tsc do not.
+
+### Tests (`test/js-rhino/unit/`, 36 specs)
+
+`test_AuditDigest.js` (tamper detection, pure-function — no DB dependency, run this first),
+`test_AuditChain.js` (chain linking + R-DOD-07 + agent guard), `test_AccessControl.js`
+(R-DOD-08 refusals + as-of-date authority), `test_Transaction.js` (idempotency, concurrency,
+rollback).
+
+`runTest` currently returns `testsuite: []` for all of them — suite **discovery** is broken
+even though the app is in `dev` mode with the test overlay on. Not a product-code gap (the
+same logic passes the local harnesses and the live smoke tests); revisit in M7.
+
+### The app-runtime 500 — FIXED (read this before debugging any 500)
+
+Symptom: every path under `/gse67e2092/liveapp/` returned a bare, headerless, deterministic
+500, so `runJsCode` / `upsertSeedData` / the whole UI failed, while an *unknown* app cleanly
+400'd and `validatePkgs` succeeded. That combination is misleading — it looks like a platform
+outage, but routing succeeding while every path 500s points at **package resolution**.
+
+Cause: `MAIN_PKG_NAME=pkgbca8aec7` is the app's **root package**, but the checked-out branch
+(the jJDemo demo) contains **zero** `pkgbca8aec7` files, so checking it out deleted the root
+package's `.c3pkg.json`. A root package with no manifest cannot resolve → the app never boots.
+(Same deletion caused the earlier `npm install` 254 by removing `ui/react/package.json`.)
+
+Fix: recreated `pkgbca8aec7/pkgbca8aec7.c3pkg.json` depending on `jJDemo: "1.0"`, deleted the
+stale `.c3pkg.lock.json`, and pinned `mcpServer`/`testtools` to `8.11` in `jJDemo.c3pkg.json`.
+
+Two rules this establishes:
+- **Java Store packages must pin to the platform version** (`8.11`, currently 8.11.2+73) —
+  `"*"` is an invalid `SemanticVersion.MajorMinor` and became an ERROR as of 8.10.
+- **Dependency versions are MajorMinor** (`1.0`), never full semver (`1.0.0`).
+
+Both the manifest and the `ui/react` symlink are untracked on this branch and will not
+survive a fresh clone. Details and the verification table are in `STATUS.md`.
+
+`upsertSeedData` outruns the MCP timeout and holds a server-side lock — **poll for the row
+counts instead of re-invoking it**, or you get a "lock already exists" error.
+
+## Reset actions on refresh — the demo is re-runnable (R-TR-15)
+
+User: *"when I refresh I don't want the 'option approved' result to stay — reset to the button to approve
+option when refresh, same for every button."* This **reverses** the earlier "persistent banner" choice above.
+
+- **Why it had to be a backend rewind, not a UI reset.** `Decision#approve` genuinely persists an 8-step
+  cascade (gate re-baselined, exposure released, 21 tasks dispatched, notification re-stamped, CAPA closed,
+  DHF entry appended). Hiding the banner client-side would have left a dead grey Approve button — the
+  *original* complaint — over a page contradicting its own data, and a second click would still hit
+  `assertUserCanDecide`'s "Approve runs once".
+- **The pattern already existed in 3 of 4 branches** (`QualityDisruptionService.reset`,
+  `MarketWaveService.reset`, `CascadeReplanService.reset`). Execution was the only branch with no rewind,
+  so this **adds the missing fourth** rather than inventing a mechanism.
+- **`ExecutionService.resetDecision(decisionId)`** (`.c3typ` + `.js`, ~190 lines). Pass an id, or
+  null/empty to rewind **every USER-held decision** (what a refresh passes). Returns
+  `{reset:[ids], alreadyBaseline:[ids], recordsRestored:n}`. **Idempotent** — a decision with no
+  `approvedAt`/`selectedOption` early-returns to `alreadyBaseline` and writes nothing, so a refresh on an
+  untouched app is free. Undoes, in order: Gate forecast/slip/status → Launch `revenueAtRisk`/`healthStatus`
+  → **all** options' `ActionPlanTask`s back to "Not started" (not just the approved option's, so re-running
+  on a different option is clean) → `Notification.sentAt` re-stamp → CAPA reopen → drop the generated
+  `dhf_approve_<id>` entry → **the Decision row LAST**, so a failure upstream leaves the decision visibly
+  approved instead of clearing the marker over a half-applied cascade.
+- **Baselines are DECLARED, not derived.** A `BASELINE` table at the top of the file mirrors
+  `data/Gate/Gate.json` + `data/Launch/Launch.json`. Arithmetic inversion is impossible: `approve()` clamps
+  with `Math.max(0, oldSlip - recovered)` / `Math.max(0, released - kept)`, so the pre-approval exposure is
+  genuinely unrecoverable from post-approval state.
+- **⚠ `BASELINE.gates[].forecastDate` is the seeded FORECAST, not `baselineDate`.** On a slipped gate the two
+  differ by exactly `slipDays`. I got this wrong first time (transcribed `baselineDate`) and the reset
+  *appeared* to work while leaving the gate self-contradictory — forecast 2026-11-04 with "+47 days". A
+  runtime invariant now **throws** if `baselineDate + slipDays != forecastDate`, so a future bad
+  transcription fails loudly instead of silently.
+- **⚠ A sparse `merge()` CANNOT un-set a field** — the platform drops nulls rather than writing them. Five
+  approaches failed (`merge()` with nulls, `upsert({removeFields})`, `mergeBatch(…,{removeFields})`,
+  `Type.removeFields`, `instance.removeFields`). Only `removeAll({filter}, true)` + `make(snap).create()`
+  clears one. So `Decision` and `CAPA` are **rebuilt**, via a generic `rebuildCleared()` that snapshots
+  fields **off the live object** (rather than naming them) so a later-added field isn't silently blanked.
+  Child collections are unaffected — they point at the id, which is preserved. Related gotcha:
+  `Filter.ne(field, null)` throws; use `Filter.exists(field)`.
+- **This is why `TemporalQueryService.demoReset()` was NOT used** — it's dormant (`approve()` never
+  snapshots, so it reverts 0 records) and its `restorePayload()` uses `merge()`, so it could not clear
+  `approvedAt` even if it did.
+- **Frontend gate: `ui/react/src/hooks/useDemoReset.ts` + `App.tsx`.** Fires all four branch resets
+  concurrently via `Promise.allSettled` (one failing branch must not block the others), on a **module-level
+  promise** so it runs once per *page load* — surviving StrictMode's double-invoke and tab remounts; a
+  per-component guard would re-fire mid-session and wipe an approval the user was still looking at. It
+  **GATES** the tree (`if (!ready) return <Loading/>`) rather than running alongside it, because
+  `PortfolioCountsProvider` and every view fetch on mount would otherwise race the rewind and render
+  post-approval values with no later refresh to correct them. A failure **resolves** (never rejects) and the
+  app still boots with a non-blocking notice — stale scenario state beats a blank screen.
+- **Verified end-to-end in the browser:** approve Option C → toast + banner → refresh → DB fully rewound
+  (`selectedOption` null, gate 2026-12-21/+47d, €21.2M/OFF_TRACK, 21 tasks "Not started", DHF back to 4, all
+  31 child links intact) → UI shows the actionable "Approve Option A" button again → **a second approve
+  succeeds**, proving the cascade is re-runnable. Request ordering confirmed in the network panel: the four
+  resets land at #59–62, `openIssues` only at #64. Bonus: `DecisionHistoryEvent` derives RESOLVED via
+  `Filter.exists('approvedAt')` (line ~790), so it reverts RESOLVED→RUNNING for free. Build + lint clean,
+  `gen/cache/Pkg.Issue/` empty, app left at pristine baseline.
+- **⚠ Still inert:** "Reject all options", "Reassign owner" and "Escalate to Launch Board" have no `onClick`
+  and no backend. They write no state, so "reset every button" holds for them only **trivially** — they are
+  a separate unfilled gap, not something the reset covers.
+
+## The re-brand is visual only — the domain model is still a medical-device app
+
+Audited against a supplied six-product Pfizer NPI table. **Do not assume R-BASE-04 is done.**
+
+- **None of the six specified products exists as a record.** Berobenatide and Atirmociclib
+  appear only inside English sentences in `seed/Site/Site.json` / `seed/Team/Team.json`;
+  MET097, PF-3945, Sigvotatug vedotin and PF-08634404 appear **nowhere at all**.
+- **All 9 `Launch` records are J&J/Abbott device form factors with Pfizer names pasted on** —
+  `"Comirnaty Gen 2 PFA Catheter"`, `"Prevnar 20 Stapler"`, `"Litfulo Toric IOL"`,
+  `"Velsipity Robotic Platform Kit"`. A vaccine that is a catheter; a JAK inhibitor that is a lens.
+- **J&J operating companies survive as primary keys**: `seed_franchise_biosense`,
+  `_cerenovus`, `_abiomed`, `_shockwave`, `_ethicon`, `_digital_surgery`, `_vision` — relabelled
+  with Pfizer therapeutic-area *names* but keyed to the old companies.
+- **The field names are device-shaped, not just the values**: `Launch.deviceName`,
+  `deviceClass`, `sterilisationMethod`, `vacApprovalsFiled`, `fieldForceCertified`, and a
+  relation to `DesignHistoryFileEntry` (a 21 CFR 820.30 device artefact). There is **no**
+  `indication`, `modality` or trial-phase field, and no `Trial`/`Indication`/`Molecule` type —
+  so four of the six columns in the product table have nowhere to be stored.
+- **Regulatory routes are device routes** — `PMA + EU MDR`, `510(k)`, notified bodies, and gate
+  G4 "Clearance / CE Certificate". No BLA/NDA/MAA/EMA/CHMP/PDUFA anywhere.
+- Device vocabulary still present by file count: `notified body` 29, `sterilis*` 33, `device` 36,
+  `MDR` 13, `IOL` 13, `PMA` 13, `EO` 22, `VAC` 16, `DHF` 14, `loaner` 12, `510(k)` 9.
+- **Bright spot:** the four Pfizer sites added in M1 are genuine — Freiburg, Puurs, Kalamazoo,
+  Grange Castle. But 4 device-era sites remain (Steris Venlo, Sterigenics Grand Rapids, Cashel,
+  Neuss) and **all 4 suppliers are device suppliers** (EO sterilisation, ring electrodes, BSI).
+- **Cross-cutting consequence:** the only `BillOfMaterialItem` records are "Ring electrode
+  subassembly", so Scenario 1's stopper defect has no vial/stopper/closure part to attach to —
+  and the product it targets (Berobenatide) has no `Launch` record to attach to either.
+
+Full gap list and the 7-item M2 remediation plan: COVERAGE.md → "Product / master-data audit".

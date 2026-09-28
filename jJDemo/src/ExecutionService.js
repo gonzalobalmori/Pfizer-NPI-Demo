@@ -681,7 +681,7 @@ function copilot() {
 
   return {
     greeting: {
-      title: 'Hi Helena. What do you want to work through?',
+      title: 'Hi George. What do you want to work through?',
       body: 'Ask about any launch, gate, market, supplier or agent. Every answer opens the record behind it.',
       note: 'Grounded in the launch plan, the 107 activities, the agent log and the supplier ' +
         'and market data. Nothing here is a guess.'
@@ -690,4 +690,227 @@ function copilot() {
     groups: grouped,
     refusal: refusal
   };
+}
+
+/* ── R-TR-15 Demo rewind — resetDecision ────────────────────────────
+ *
+ * The Execution branch was the only one of the four scenario branches without a
+ * reset (Quality, Market-wave and Cascade each ship one), so the first approval in
+ * a walkthrough settled the decision permanently: the action bar showed the
+ * outcome instead of the Approve button, and re-approving is refused by
+ * assertUserCanDecide(). This restores the seeded baseline so the demo re-runs.
+ *
+ * Two constraints drive the implementation:
+ *
+ * 1. Baselines are declared, not derived. approve() clamps with Math.max(0, …)
+ *    when it releases the exposure and recomputes the slip, so the pre-approval
+ *    values are NOT recoverable from the post-approval row by adding the kept
+ *    revenue back on — once exposure hits 0 the original is gone. The baseline
+ *    therefore mirrors data/Gate + data/Launch, and BASELINE below is the one
+ *    place to update if those seeds change.
+ *
+ * 2. The Decision row is rebuilt, not merged. A sparse merge cannot un-set a
+ *    field — the platform drops nulls rather than writing them — so
+ *    selectedOption/approvedAt would survive a merge of nulls. Rebuilding
+ *    (remove + create, the technique QualityDisruptionService.reset uses for its
+ *    batches) genuinely clears them. Child collections reference the id, which is
+ *    preserved, so options/tasks/comments/notifications all stay attached.
+ */
+
+/* Seeded pre-approval state for everything approve() can touch, keyed by id.
+   Mirrors data/Gate/Gate.json and data/Launch/Launch.json. */
+var BASELINE = {
+  /* forecastDate is the SEEDED FORECAST, not the gate's baselineDate — the two differ
+     by exactly slipDays on a slipped gate. Restoring baselineDate here would leave the
+     gate self-contradictory (forecast == baseline while slipDays says 47), which is how
+     this was caught: the reset appeared to work but the pane read "+47 days" against an
+     unslipped date. The invariant is asserted at the bottom of this block. */
+  gates: {
+    seed_gate_varipulse_g3:  { forecastDate: '2026-12-21', slipDays: 47, status: 'late' },
+    seed_gate_varipulse_g4:  { forecastDate: '2027-05-18', slipDays: 0,  status: 'no' },
+    seed_gate_octaray_g2_g2: { forecastDate: '2026-09-30', slipDays: 14, status: 'late' }
+  },
+  launches: {
+    seed_launch_varipulse_g2: { revenueAtRisk: 21200000, healthStatus: 'OFF_TRACK' },
+    seed_launch_octaray_g2:   { revenueAtRisk: 6200000,  healthStatus: 'AT_RISK' }
+  },
+  /* seeded Notification.sentAt — the cards were already sent when the decision was
+     routed, so a reset restores that instant rather than clearing it. */
+  notificationSentAt: '2026-09-11T08:23:00',
+  /* CAPA status before approve() closed containment. */
+  capaStatus: { seed_capa_0412: 'CORRECTIVE_IN_PROGRESS' }
+};
+
+/* The gate approve() would re-baseline for a decision: same launch + phase. */
+function gateForDecision(launchId, phaseId) {
+  if (!launchId || !phaseId) return null;
+  var g = Gate.fetch({
+    filter: Filter.eq('launch', launchId).and().eq('phase', phaseId),
+    include: 'this', limit: 1
+  }).objs;
+  return (g && g.length) ? g.get(0) : null;
+}
+
+/*
+ * Rebuild a row with selected fields cleared.
+ *
+ * Copies every populated field off the live object rather than naming them, so a
+ * field added to Decision later is carried across instead of being silently
+ * dropped on the floor by this reset — the failure mode would be a blanked queue
+ * card. References are projected to {id} and meta/version are skipped (both are
+ * platform-managed and rejected on create).
+ */
+function rebuildCleared(typeObj, id, include, clearFields) {
+  var live = typeObj.fetch({ filter: Filter.eq('id', id), include: include, limit: 1 }).objs;
+  if (!live || !live.length) return false;
+  live = live.get(0);
+
+  var snap = {};
+  for (var k in live) {
+    if (k === 'meta' || k === 'version' || k === 'id') continue;
+    if (clearFields[k]) continue;
+    var v = live[k];
+    if (v === null || v === undefined) continue;
+    // reference → {id}; scalars and datetimes copy across as-is
+    if (typeof v === 'object' && v.id !== undefined && v.id !== null) snap[k] = { id: v.id };
+    else snap[k] = v;
+  }
+  snap.id = id;
+
+  typeObj.removeAll({ filter: Filter.eq('id', id) }, true);
+  typeObj.make(snap).create();
+  return true;
+}
+
+function resetOneDecision(d, out) {
+  /* Nothing to undo — an unapproved decision is already at baseline. Checked so a
+     refresh can call this unconditionally without writing on every page load. */
+  if (!d.approvedAt && !d.selectedOption) {
+    out.alreadyBaseline.push(d.id);
+    return;
+  }
+
+  var launchId = d.finding && d.finding.launch && d.finding.launch.id;
+  var phaseId = d.finding && d.finding.phase && d.finding.phase.id;
+  var findingId = d.finding && d.finding.id;
+
+  /* 1. Gate — restore the seeded forecast/slip/status. */
+  var gate = gateForDecision(launchId, phaseId);
+  if (gate && BASELINE.gates[gate.id]) {
+    var gb = BASELINE.gates[gate.id];
+    var restoredForecast = DateTime.fromString(gb.forecastDate);
+
+    /* Guard the forecast/slip invariant rather than trusting the table: a gate whose
+       forecast does not sit slipDays after its own baselineDate is incoherent, and
+       silently writing one produces a pane that contradicts itself. Fail loudly
+       instead — a wrong baseline is a code defect, not a runtime condition. */
+    var expected = DateTime.fromString('' + gate.baselineDate).plusDays(gb.slipDays);
+    if (('' + expected).substring(0, 10) !== ('' + restoredForecast).substring(0, 10)) {
+      throw new Error(
+        'BASELINE.gates["' + gate.id + '"] is inconsistent: baselineDate ' + gate.baselineDate +
+        ' + ' + gb.slipDays + ' days = ' + expected + ', but the table says forecastDate ' +
+        gb.forecastDate + '. Restoring it would leave the gate self-contradictory. ' +
+        'Fix the entry to match data/Gate/Gate.json.'
+      );
+    }
+
+    Gate.make({
+      id: gate.id,
+      forecastDate: restoredForecast,
+      slipDays: gb.slipDays,
+      status: gb.status
+    }).merge();
+    out.recordsRestored += 1;
+  }
+
+  /* 2. Launch — restore the exposure and health that approve() released. */
+  if (launchId && BASELINE.launches[launchId]) {
+    var lb = BASELINE.launches[launchId];
+    Launch.make({
+      id: launchId, revenueAtRisk: lb.revenueAtRisk, healthStatus: lb.healthStatus
+    }).merge();
+    out.recordsRestored += 1;
+  }
+
+  /* 3. Tasks — every option's tasks go back to "Not started". Not just the
+        approved option's: a reset must not leave a previously-approved option's
+        tasks dispatched if the demo is re-run on a different option. */
+  var tasks = ActionPlanTask.fetch({
+    filter: Filter.eq('decision', d.id), include: 'this', limit: -1
+  }).objs;
+  if (tasks && tasks.length) {
+    var back = [];
+    tasks.each(function (t) {
+      if (t.status !== 'Not started') back.push(ActionPlanTask.make({ id: t.id, status: 'Not started' }));
+    });
+    if (back.length) { ActionPlanTask.mergeBatch(back); out.recordsRestored += back.length; }
+  }
+
+  /* 4. Notifications — re-stamp the seeded sent instant. */
+  var notifs = Notification.fetch({
+    filter: Filter.eq('decision', d.id), include: 'this', limit: -1
+  }).objs;
+  if (notifs && notifs.length) {
+    var seeded = DateTime.fromString(BASELINE.notificationSentAt);
+    var restamp = [];
+    notifs.each(function (n) { restamp.push(Notification.make({ id: n.id, sentAt: seeded })); });
+    Notification.mergeBatch(restamp);
+    out.recordsRestored += restamp.length;
+  }
+
+  /* 5. CAPA — reopen the containment approve() closed. closedByDecision is a
+        reference that must genuinely clear, so the row is rebuilt. */
+  if (findingId) {
+    var capas = CAPA.fetch({
+      filter: Filter.eq('finding', findingId), include: 'this, closedByDecision.id', limit: -1
+    }).objs;
+    if (capas && capas.length) {
+      capas.each(function (cp) {
+        if (cp.status !== 'CONTAINED' && !cp.closedByDecision) return;
+        rebuildCleared(CAPA, cp.id, 'this, finding.id, launch.id, closedByDecision.id',
+          { closedByDecision: 1 });
+        var want = BASELINE.capaStatus[cp.id];
+        if (want) CAPA.make({ id: cp.id, status: want }).merge();
+        out.recordsRestored += 1;
+      });
+    }
+  }
+
+  /* 6. The generated DHF entry. Removed rather than kept because it is a record of
+        a decision that, after the rewind, did not happen — leaving it would show a
+        design-history entry for an unapproved decision. The seeded
+        seed_dhf_* entries are untouched. */
+  DesignHistoryFileEntry.removeAll({ filter: Filter.eq('id', 'dhf_approve_' + d.id) }, true);
+
+  /* 7. The decision itself, last — so a failure above leaves it approved and the
+        reset visibly incomplete, rather than clearing the marker while the cascade
+        it guards is still half-applied. */
+  rebuildCleared(Decision, d.id, 'this, finding.id, owner.id, escalation.id',
+    { selectedOption: 1, approvedAt: 1 });
+  out.recordsRestored += 1;
+  out.reset.push(d.id);
+}
+
+function resetDecision(decisionId) {
+  var out = { reset: [], alreadyBaseline: [], recordsRestored: 0 };
+
+  var filter = (decisionId && ('' + decisionId).length)
+    ? Filter.eq('id', decisionId)
+    : Filter.eq('heldBy', 'USER');
+
+  var ds = Decision.fetch({
+    filter: filter,
+    include: 'this, finding.id, finding.launch.id, finding.phase.id',
+    limit: -1
+  }).objs;
+
+  if (!ds || !ds.length) {
+    if (decisionId && ('' + decisionId).length) {
+      throw new Error('No decision ' + decisionId + ' to reset.');
+    }
+    return out;
+  }
+
+  ds.each(function (d) { resetOneDecision(d, out); });
+  return out;
 }

@@ -214,7 +214,7 @@
     "dependency": "TEAM",
     "daysAtStake": 20,
     "exposure": 7800000,
-    "exposureCause": "CPT code application pending — no US reimbursement path for the Prevnar 20 Stapler puts the full first-year US launch revenue at risk until a code is granted",
+    "exposureCause": "Paediatric reimbursement dossier pending — no US formulary path for Zavicefta paediatric presentations puts the full first-year US launch revenue at risk until access is granted",
     "phase": {
       "id": "seed_phase_p4"
     },

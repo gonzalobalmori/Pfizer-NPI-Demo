@@ -16,6 +16,8 @@ import { useNav } from '@/nav/NavContext';
 import { getResolutionWorkspace, approveDecision } from '@/api/execution';
 import { fmtDate, fmtDateTime, fmtEuro, fmtGate } from '@/lib/format';
 import type { Category, Outcome, ResolutionWorkspace } from '@/types/execution';
+import Glyph from '@/components/Brand/Glyph';
+import ActionToast from '@/components/Feedback/ActionToast';
 
 /** The recurring 4-point spark glyph used for agent avatars and the copilot CTA. */
 function Spark() {
@@ -53,9 +55,16 @@ function functionOf(detectedBy: string | null): string {
   return detectedBy.replace(/\s+agent$/i, '').trim() || 'Cross-functional';
 }
 
-/** "M. Okafor" → "MO"; falls back to first two letters / a bullet. */
-function initials(name: string | null): string {
-  if (!name) return '●';
+/**
+ * "M. Okafor" → "MO"; falls back to the first two letters, and to a drawn dot
+ * when there is no name at all.
+ *
+ * Returns a node rather than a string because the no-name fallback used to be the
+ * text character `●` (U+25CF), which has no glyph in any Noto Sans subset and
+ * rendered as a tofu box inside the avatar circle.
+ */
+function initials(name: string | null): React.ReactNode {
+  if (!name) return <Glyph name="dot" className="sm" />;
   const m = /([A-Z])\.\s*([A-Z])/.exec(name);
   if (m) return m[1] + m[2];
   const parts = name.trim().split(/\s+/);
@@ -69,6 +78,10 @@ export default function IssueView() {
   const [error, setError] = useState<string | null>(null);
   const [selectedKey, setSelectedKey] = useState<string | null>(null);
   const [approving, setApproving] = useState(false);
+  /* Set only by a click in THIS session, so the toast fires on the user's own
+     approval and not on every revisit of an already-approved finding (the
+     persistent banner below covers that case). */
+  const [justApproved, setJustApproved] = useState<string | null>(null);
 
   const load = useCallback(async () => {
     if (!param) return;
@@ -76,7 +89,23 @@ export default function IssueView() {
     try {
       const data = await getResolutionWorkspace(param);
       setWs(data);
-      if (data) setSelectedKey(data.recommendedOptionKey ?? data.options[0]?.optionKey ?? null);
+      if (data) {
+        /* Once a decision is approved the selection must follow what was ACTUALLY
+           approved (decision.selectedOption, e.g. "Option C"), not the agent's
+           recommendation. Defaulting to recommendedOptionKey here meant approving
+           Option C then re-rendered the bar reading "Option A" — the approval
+           looked like it had been ignored, or applied to the wrong option. */
+        const approvedKey = data.decision?.selectedOption
+          ? (data.decision.selectedOption.replace(/^option\s+/i, '').trim().toLowerCase() || null)
+          : null;
+        const approvedExists = approvedKey && data.options.some((o) => o.optionKey === approvedKey);
+        setSelectedKey(
+          (approvedExists ? approvedKey : null)
+            ?? data.recommendedOptionKey
+            ?? data.options[0]?.optionKey
+            ?? null,
+        );
+      }
     } catch (err) {
       setError(typeof err === 'string' ? err : 'Failed to load the resolution workspace.');
     }
@@ -88,13 +117,13 @@ export default function IssueView() {
 
   if (!param) {
     return (
-      <div className="view on" style={{ padding: 24 }}>
+      <div className="view on v-msg">
         No finding selected. Open an issue from My actions or the open-issues list.
       </div>
     );
   }
-  if (error) return <div className="view on" style={{ padding: 24, color: 'var(--red600)' }}>{error}</div>;
-  if (!ws) return <div className="view on" style={{ padding: 24 }}>Loading…</div>;
+  if (error) return <div className="view on v-msg v-err">{error}</div>;
+  if (!ws) return <div className="view on v-msg">Loading…</div>;
 
   const f = ws.finding;
   const decision = ws.decision;
@@ -114,13 +143,30 @@ export default function IssueView() {
   const agentTaskCount = planTasks.filter((t) => t.agentRunnable).length;
 
   const canApprove = !authorityBound && !held && !!decision && !decision.approvedAt && !!selectedOption && !approving;
+  /* The decision is settled — the cascade has run and re-approving is refused by
+     assertUserCanDecide, so the bar states the outcome instead of offering the
+     button again.
+
+     This is WITHIN-SESSION state only. A page refresh rewinds every decision to its
+     seeded baseline (see useDemoReset), so after a reload decision.approvedAt is null
+     again and the actionable "Approve Option X" button is back. That is deliberate:
+     the demo is meant to be re-runnable, and a permanently settled decision made the
+     walkthrough a one-shot. */
+  const approvedAt = decision?.approvedAt ?? null;
+  const approvedLabel = decision?.selectedOption ?? null;
 
   const handleApprove = async () => {
     if (!decision || !selectedOption) return;
+    const optionName = `Option ${(selectedOption.optionKey ?? '').toUpperCase()}`;
     setApproving(true);
+    setError(null);
     try {
       await approveDecision(decision.id, selectedOption.label ?? '');
+      /* Reload FIRST so the toast and the banner describe committed server state
+         rather than an optimistic guess; Decision#approve is atomic, so if it
+         resolved we know the cascade ran. */
       await load();
+      setJustApproved(optionName);
     } catch (err) {
       setError(typeof err === 'string' ? err : 'The approval could not be recorded.');
     } finally {
@@ -215,7 +261,7 @@ export default function IssueView() {
                     {ws.capa ? (
                       <div className="imr"><span className="iml">CAPA effectiveness</span><b className="mono">{fmtDate(gate.baselineDate) || '—'}</b><em>{slipDays} days late</em></div>
                     ) : null}
-                    <div className="imr"><span className="iml">{fmtGate(gate.code, gate.name)}</span><b className="mono">{fmtDate(gate.baselineDate) || '—'} → {fmtDate(gate.forecastDate) || '—'}</b><em>gate at risk</em></div>
+                    <div className="imr"><span className="iml">{fmtGate(gate.code, gate.name)}</span><b className="mono">{fmtDate(gate.baselineDate) || '—'} <Glyph name="arrow-right" className="sm" /> {fmtDate(gate.forecastDate) || '—'}</b><em>gate at risk</em></div>
                     <div className="imr tot"><span className="iml">Revenue at risk</span><b>{fmtEuro(f.exposure ?? f.revenueAtRisk)}</b><em>{slipDays} days of slip</em></div>
                   </>
                 ) : (
@@ -252,7 +298,7 @@ export default function IssueView() {
                 </div>
               ))}
               <div className="tm-add">
-                <div className="tm-av">HF</div>
+                <div className="tm-av">GH</div>
                 <input placeholder="Add a comment for the thread…" />
                 <button type="button" className="btn s sm">Comment</button>
               </div>
@@ -265,7 +311,7 @@ export default function IssueView() {
             <span className="sec-n" id="hd-sub" /></div>
           <div className="sec-b">
             <div className="hd-top">
-              <div className="hd-who"><span className={`hd-av${hold?.cls === 'agent' ? ' ag' : ''}`} id="hd-av">{hold?.cls === 'agent' ? <Spark /> : '⋮'}</span>
+              <div className="hd-who"><span className={`hd-av${hold?.cls === 'agent' ? ' ag' : ''}`} id="hd-av">{hold?.cls === 'agent' ? <Spark /> : <Glyph name="kebab" />}</span>
                 <div><b id="hd-who">—</b><em id="hd-role">{decision?.authorityThreshold ?? ''}</em></div></div>
               <div className="hd-f"><span>With them since</span><b id="hd-since">{fmtDate(decision?.dueAt ?? null) || '—'}</b></div>
               <div className="hd-f"><span>Open</span><b id="hd-open">—</b></div>
@@ -350,19 +396,46 @@ export default function IssueView() {
             <span className="is-sub" style={{ marginRight: 'auto' }}>
               Waiting on an outside authority — acting here won&apos;t move it
             </span>
-            <button type="button" className="btn s">View detail &#8594;</button>
+            <button type="button" className="btn s">View detail <Glyph name="arrow-right" /></button>
           </>
+        ) : approvedAt ? (
+          /* Settled: the cascade has run, so the approve/reject/reassign controls
+             are gone (re-approving is rejected server-side by
+             assertUserCanDecide) and the bar states the outcome instead. Without
+             this the only post-click change was the button turning grey, which
+             read as "nothing happened". */
+          <span className="is-approved" id="is-approved">
+            <span className="tag done">
+              <Glyph name="check" /> Approved
+            </span>
+            <span className="is-approved-t">
+              {approvedLabel ?? 'Option'} approved · {fmtDateTime(approvedAt)}
+              <em>
+                Gate re-baselined, exposure released and {planTasks.length}{' '}
+                {planTasks.length === 1 ? 'task' : 'tasks'} dispatched. Recorded in the design history file.
+              </em>
+            </span>
+          </span>
         ) : (
           <>
             <button type="button" className="btn q">Reject all options</button>
             <button type="button" className="btn s">Reassign owner</button>
             <button type="button" className="btn s">Escalate to Launch Board</button>
             <button type="button" className="btn p" id="btn-app" disabled={!canApprove} onClick={handleApprove}>
-              Approve Option {(selectedOption?.optionKey ?? '').toUpperCase()}
+              {approving
+                ? 'Approving…'
+                : `Approve Option ${(selectedOption?.optionKey ?? '').toUpperCase()}`}
             </button>
           </>
         )}
       </div>
+
+      <ActionToast
+        open={!!justApproved}
+        title={`${justApproved} approved`}
+        detail="Gate re-baselined · exposure released · tasks dispatched · DHF entry written"
+        onDismiss={() => setJustApproved(null)}
+      />
     </div>
   );
 }

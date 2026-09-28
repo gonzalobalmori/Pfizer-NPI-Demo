@@ -1,6 +1,6 @@
 /*
  * Landing MENU screen (prototype "SCREEN 0"). Ported verbatim from the #menu
- * markup — the Pfizer wordmark bar, the "Hi, Helena" hero, the three
+ * markup — the Pfizer wordmark bar, the "Hi, George" hero, the three
  * branch cards (Strategic Decisions / Pipeline Status / Execution) and the
  * right rail. Class names are the prototype's own (.m-*, .mc*, .mr-*).
  */
@@ -9,6 +9,7 @@ import React from 'react';
 import { useNav } from '@/nav/NavContext';
 import { usePortfolioCounts } from '@/contexts/PortfolioCountsProvider';
 import { startGuidedTour } from '@/shell/GuidedTour';
+import PfizerLogo from '@/components/Brand/PfizerLogo';
 
 export default function MenuScreen() {
   const { go } = useNav();
@@ -16,9 +17,8 @@ export default function MenuScreen() {
   return (
     <div id="menu" className="on">
       <div className="m-top">
-        <div className="m-wm">
-          Pfizer
-        </div>
+        {/* R-BASE-04: the real trademark, not a type-set approximation of it. */}
+        <PfizerLogo size="lg" />
         <div className="m-sub">NPI Launch Control</div>
         <button type="button" className="h-gd" onClick={startGuidedTour} title="Run the guided demo">
           <svg viewBox="0 0 24 24">
@@ -31,7 +31,7 @@ export default function MenuScreen() {
       <div className="m-shell">
         <div className="m-stage">
           <div className="m-hi">
-            Hi, <b>Helena</b>
+            Hi, <b>George</b>
           </div>
           <div className="m-hisub">NPI Launch Control · Biopharma · 24 September 2026</div>
 
@@ -202,8 +202,8 @@ export default function MenuScreen() {
         </div>
 
         <aside className="m-rail">
-          <div className="mr-av">HF</div>
-          <div className="mr-n">Helena Fossi</div>
+          <div className="mr-av">GH</div>
+          <div className="mr-n">George Hall</div>
           <div className="mr-r">
             Global NPI Lead
           </div>
@@ -224,7 +224,6 @@ export default function MenuScreen() {
         </aside>
       </div>
 
-      <div className="m-ft">Demo · Accenture for Pfizer Biopharma · all figures illustrative</div>
     </div>
   );
 }

@@ -30,5 +30,69 @@
     "auditValidUntil": "2028-01-31",
     "financialRiskRating": "Low",
     "singleSourceFlag": false
+  },
+  {
+    "id": "seed_supplier_west",
+    "name": "West Pharmaceutical Services",
+    "approvalStatus": "APPROVED",
+    "auditValidUntil": "2027-09-30",
+    "financialRiskRating": "Low",
+    "singleSourceFlag": true
+  },
+  {
+    "id": "seed_supplier_schott",
+    "name": "SCHOTT Pharma",
+    "approvalStatus": "APPROVED",
+    "auditValidUntil": "2028-02-28",
+    "financialRiskRating": "Low",
+    "singleSourceFlag": false
+  },
+  {
+    "id": "seed_supplier_bd",
+    "name": "Becton Dickinson (BD)",
+    "approvalStatus": "APPROVED",
+    "auditValidUntil": "2027-11-30",
+    "financialRiskRating": "Low",
+    "singleSourceFlag": true
+  },
+  {
+    "id": "seed_supplier_stevanato",
+    "name": "Stevanato Group",
+    "approvalStatus": "APPROVED",
+    "auditValidUntil": "2028-05-31",
+    "financialRiskRating": "Low",
+    "singleSourceFlag": false
+  },
+  {
+    "id": "seed_supplier_datwyler",
+    "name": "Datwyler Sealing Solutions",
+    "approvalStatus": "CONDITIONAL",
+    "auditValidUntil": "2027-04-30",
+    "financialRiskRating": "Medium",
+    "singleSourceFlag": false
+  },
+  {
+    "id": "seed_supplier_baxter",
+    "name": "Baxter Halle (CMO)",
+    "approvalStatus": "APPROVED",
+    "auditValidUntil": "2027-08-31",
+    "financialRiskRating": "Low",
+    "singleSourceFlag": false
+  },
+  {
+    "id": "seed_supplier_thermofisher",
+    "name": "Thermo Fisher Patheon (CMO)",
+    "approvalStatus": "APPROVED",
+    "auditValidUntil": "2028-01-31",
+    "financialRiskRating": "Low",
+    "singleSourceFlag": false
+  },
+  {
+    "id": "seed_supplier_dhl",
+    "name": "DHL Life Sciences (cold chain)",
+    "approvalStatus": "APPROVED",
+    "auditValidUntil": "2027-12-31",
+    "financialRiskRating": "Low",
+    "singleSourceFlag": false
   }
 ]

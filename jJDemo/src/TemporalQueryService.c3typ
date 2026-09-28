@@ -1,0 +1,190 @@
+/**
+ * Point-in-time replay over the bitemporal store — §5.2 (R-TR-04, R-TR-05) and the
+ * mechanism Demo Reset rewinds through (R-TR-15).
+ *
+ * The live entity rows always hold *today's* answer. {@link EntityVersion} holds every
+ * answer they used to give. This service is the only thing that reads the two together,
+ * so "the portfolio as it stood on 12 March" is computed in one place and the UI does
+ * no reconstruction of its own (R-BE-03).
+ *
+ * <h3>The two axes, concretely</h3>
+ * Callers pass `asOfTransaction` to ask *"what did we believe on that date"* and
+ * `asOfValid` to ask *"what was true of the business on that date"*. They are
+ * independent: on 20 March the system may believe that the February release date was
+ * always 14 March, because the correction landed late. Only a bitemporal store can
+ * distinguish the two, which is why R-TR-05 asks for both and why a single
+ * `lastModified` column is insufficient.
+ *
+ * <h3>Snapshots are taken before the write, not after</h3>
+ * {@link TemporalQueryService#snapshot} freezes the record as it reads *now* and stamps
+ * the snapshot's {@link Bitemporal#supersededAt}. A mutating action therefore calls it
+ * first, then writes. Taking the snapshot afterwards would capture the new state and
+ * lose the very version an auditor wants.
+ *
+ * <h3>Which types are replayable</h3>
+ * The governed set is declared in this service's implementation registry rather than
+ * discovered reflectively, so that adding history to a type is a deliberate, reviewable
+ * act — an accidental snapshot of a high-churn measurement table would bloat the store
+ * without serving any audit question.
+ *
+ * Stateless computation type. Read paths are UI-callable via {@code c3Action}.
+ */
+entity type TemporalQueryService {
+  /**
+   * Freeze a record's current field values into an {@link EntityVersion} and retire
+   * that snapshot (R-TR-04).
+   *
+   * Assigns the next {@link EntityVersion#version} for the record, stores the payload,
+   * stamps {@link Bitemporal#supersededAt} on the new row (it is by definition the
+   * *previous* state the moment the caller proceeds to write) and records which fields
+   * the impending change touches.
+   *
+   * @param spec `entityTypeName`, `entityId`, `correlationId`, `actorName`,
+   *             `reasonCode`, and `changedFields` — the dotted paths the caller is
+   *             about to change.
+   * @return JSON `{versionId, version, payload, changedFields}`.
+   * @throws When `entityTypeName` is not a governed, replayable type, or the record
+   *         does not exist.
+   */
+  snapshot: function(spec: json): json js
+
+  /**
+   * The record's current field values as a plain JSON object, using the same field
+   * projection {@link TemporalQueryService#snapshot} stores.
+   *
+   * Shared with signature verification: {@link AuditService#verifySignature} hashes
+   * this and compares against {@link ESignature#signedPayloadHash}, so both sides of
+   * that comparison must project identically — hence one function, not two.
+   *
+   * @param entityTypeName C3 type name of the record.
+   * @param entityId       Id of the record.
+   * @return The record's governed fields as JSON.
+   */
+  currentPayload: function(entityTypeName: string, entityId: string): json js
+
+  /**
+   * One record as it read at an instant — the drill-down behind "show me this as of"
+   * (R-TR-05).
+   *
+   * Selects the version whose transaction window contains `asOfTransaction` and whose
+   * valid window contains `asOfValid`; falls through to the live record when the
+   * instant is after the last snapshot, because the live row *is* the current version.
+   *
+   * @param spec `entityTypeName`, `entityId`, `asOfTransaction`, optional `asOfValid`
+   *             (defaults to `asOfTransaction`).
+   * @return JSON `{entityTypeName, entityId, version, payload, source, asOfTransaction,
+   *         asOfValid}` where `source` is `live` or `version`.
+   */
+  asOf: function(spec: json): json js
+
+  /**
+   * Every version of one record, newest first, with the change that retired each —
+   * the History tab's state axis alongside {@link AuditService#historyFor}'s
+   * narrative axis (R-UI-12).
+   *
+   * @param entityTypeName C3 type name of the record.
+   * @param entityId       Id of the record.
+   * @return JSON `{entityTypeName, entityId, currentVersion, versions: [...]}`.
+   */
+  historyOf: function(entityTypeName: string, entityId: string): json js
+
+  /**
+   * Diff two versions of one record, field by field — what the UI renders when a user
+   * expands an audit event (R-TR-06).
+   *
+   * @param entityTypeName C3 type name of the record.
+   * @param entityId       Id of the record.
+   * @param fromVersion    Earlier version number.
+   * @param toVersion      Later version number, or -1 for the live record.
+   * @return JSON `{changes: [{fieldPath, oldValue, newValue}], unchangedCount}`.
+   */
+  diffVersions: function(entityTypeName: string, entityId: string, fromVersion: int, toVersion: int): json js
+
+  /**
+   * Write a stored payload back onto a live record — the primitive the compensating
+   * rollback is built from (R-BE-07).
+   *
+   * Restores only the governed projection for the type, so a rollback cannot clobber
+   * fields the transaction never claimed to touch. Called by
+   * {@link TransactionService#rollback} with a snapshot taken by
+   * {@link TemporalQueryService#snapshot} before the cascade began, and by
+   * {@link TemporalQueryService#demoReset}.
+   *
+   * Deliberately *not* UI-callable: restoring a record is not a user gesture, it is the
+   * failure path of a transaction.
+   *
+   * @param spec `entityTypeName`, `entityId`, `payload` — a payload previously produced
+   *             by {@link TemporalQueryService#snapshot} for the same type.
+   * @return JSON `{entityTypeName, entityId, restoredFields}`.
+   * @throws When the type is not governed or the payload is missing.
+   */
+  restore: function(spec: json): json js
+
+  /**
+   * The current version token for a record — the value R-BE-06's optimistic
+   * concurrency check compares against.
+   *
+   * Derived from the count of stored snapshots rather than a column on each entity, so
+   * every governed type gets a concurrency token without a schema change. A record
+   * never snapshotted is at version 0.
+   *
+   * @param entityTypeName C3 type name of the record.
+   * @param entityId       Id of the record.
+   * @return The current version token.
+   */
+  versionTokenOf: function(entityTypeName: string, entityId: string): int js
+
+  /**
+   * Replay a whole screen's worth of records as of an instant (R-TR-05).
+   *
+   * Rather than N round trips from the UI, one call resolves a list of records to
+   * their as-of state. Used by the portfolio replay control.
+   *
+   * @param spec `entityTypeName`, `entityIds` (array; omit for all governed records of
+   *             the type), `asOfTransaction`, optional `asOfValid`.
+   * @return JSON `{asOfTransaction, asOfValid, records: [...]}`.
+   */
+  replay: function(spec: json): json js
+
+  /**
+   * The names of the types this service will version, with the fields it projects.
+   *
+   * Exposed so the data dictionary and the R-DOD referential-integrity test can assert
+   * the governed set is what the specification requires, instead of trusting a comment.
+   *
+   * @return JSON `{types: [{entityTypeName, fields: [...]}]}`.
+   */
+  governedTypes: function(): json js
+
+  /**
+   * Rewind the demo to its seeded baseline by restoring every record the scenarios
+   * touched to its earliest post-baseline snapshot (R-TR-15).
+   *
+   * This is a *bitemporal rewind*, not a re-seed: the records are restored from the
+   * version rows the cascade itself wrote, which is why the reset needs no seed reload
+   * and why running it twice is harmless.
+   *
+   * <h3>The rewind is append-only</h3>
+   * It deliberately does **not** delete the scenario's {@link EntityVersion}s,
+   * {@link AuditEvent}s, {@link ESignature}s or {@link AgentRunRecord}s. Purging them
+   * would be the obvious implementation and would violate R-TR-01's no-hard-deletes rule
+   * in the very service that exists to uphold it — and it would destroy the evidence that
+   * a reset occurred, which is precisely what a tamperer would want. Instead the live
+   * records go back to baseline, `DEMO_RESET` events are appended describing each
+   * restoration, and the counts of retained rows are returned so a caller can see the
+   * trail survived. The store therefore grows across resets, which for a demonstration
+   * environment is the correct trade.
+   *
+   * {@link IdempotencyRecord}s *are* released, because a claim is a concurrency token
+   * rather than a business fact: after a rewind the scenarios are meant to be re-runnable,
+   * so successful claims are marked `FAILED` (retryable) rather than deleted.
+   *
+   * @param spec Optional `baselineAt` (defaults to the seeded baseline instant),
+   *             `actorId`, `correlationId`, and `dryRun` — when true, reports what
+   *             would be reverted and writes nothing.
+   * @return JSON `{dryRun, baselineAt, recordsReverted, versionsRetained,
+   *         auditEventsRetained, signaturesRetained, agentRunsRetained, claimsReleased,
+   *         details: [...]}`.
+   */
+  demoReset: function(spec: json): json js
+}

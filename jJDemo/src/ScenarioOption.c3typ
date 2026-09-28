@@ -1,0 +1,106 @@
+/**
+ * ScenarioOption — one comparable response option, scored on the same axes as
+ * its rivals so a governed decision has something to actually compare.
+ *
+ * Both scenarios need this and neither had it: {@link DecisionOption} carries its
+ * quantities inside label prose ("Phased 2,600 units"), which cannot be summed,
+ * ranked or checked for feasibility. Every option here instead states its
+ * {@link #dosesServed}, {@link #dosesLost}, {@link #dayImpact},
+ * {@link #incrementalCost} and {@link #revenueProtected} as fields, plus a hard
+ * {@link #feasible} flag with an {@link #infeasibleReason} — so an option that
+ * cannot beat the clock is visibly ruled out rather than quietly ranked last.
+ *
+ * Attached to whichever scenario produced it via {@link #qualityEvent} or
+ * {@link #demandChange}; exactly one is set. {@link QualityEvent#approvedOption}
+ * and {@link DemandChange#approvedOption} point back at the winner.
+ *
+ * Written at runtime by both services' evaluate and decide steps, so no
+ * {@code SeedData} mixin — records live in {@code data/}.
+ */
+entity type ScenarioOption {
+
+  /** Seed key, e.g. {@code seed_sopt_qe_rework}. */
+  id: !string
+
+  /** The quality event this option responds to. Null on Scenario 2 options. */
+  qualityEvent: QualityEvent
+
+  /** The demand change this option responds to. Null on Scenario 1 options. */
+  demandChange: DemandChange
+
+  /** Short label as shown on the option card, e.g. {@code "Rework held batches"}. */
+  label: !string
+
+  /**
+   * Option family. Scenario 2's spec names four comparisons directly:
+   * {@code CONSTRAINED_LAUNCH}, {@code INVENTORY_REALLOCATION},
+   * {@code ADD_CAPACITY} and {@code WAVE_RESEQUENCE}.
+   */
+  optionKind: !string enum('REWORK', 'REJECT_AND_REFILL', 'ALTERNATE_COMPONENT', 'PARTIAL_RELEASE', 'CONSTRAINED_LAUNCH', 'INVENTORY_REALLOCATION', 'ADD_CAPACITY', 'WAVE_RESEQUENCE')
+
+  /** Display order, so the cards render in a stable, deliberate sequence. */
+  sortOrder: int
+
+  /** What the option does, in enough detail to defend in a governance meeting. */
+  description: string
+
+  /** Doses this option delivers against the requirement. */
+  dosesServed: int
+
+  /** Doses forfeited — scrapped, or promised and not delivered. */
+  dosesLost: int
+
+  /** Schedule impact in days. Positive slips first ship; zero holds the date. */
+  dayImpact: int
+
+  /** Incremental cost in euros, including component, capacity and freight spend. */
+  incrementalCost: double
+
+  /** Revenue preserved by this option, from the commitments it keeps whole. */
+  revenueProtected: double
+
+  /** Revenue forfeited. With {@link #revenueProtected} this frames the trade-off. */
+  revenueLost: double
+
+  /** Count of {@link MarketCommitment} records this option keeps intact. */
+  marketsProtected: int
+
+  /** Count of commitments it constrains, defers or reallocates. */
+  marketsImpacted: int
+
+  /** Which markets are protected, named, e.g. {@code "US, Germany, Japan"}. */
+  protectedMarkets: string
+
+  /** Which markets take the hit, named. */
+  impactedMarkets: string
+
+  /** Whether the option can actually be executed inside the clock and constraints. */
+  feasible: boolean
+
+  /** Why not, when {@link #feasible} is false — the specific constraint that kills it. */
+  infeasibleReason: string
+
+  /** Whether a regulatory variation or notification is required before execution. */
+  regulatoryImpact: boolean
+
+  /** The specific filing needed, e.g. {@code "Type IA variation — EMA"}. */
+  regulatoryDetail: string
+
+  /** Calendar days to execute, checked against the packaging or expiry clock. */
+  executionDays: int
+
+  /** Residual risk if this option is taken, for the governance record. */
+  residualRisk: string
+
+  /** Composite 0–100 score. The ranking the recommendation is drawn from. */
+  score: double
+
+  /** Whether the model recommends this option — advisory only; a person still signs. */
+  recommended: boolean
+
+  /** Where the option stands once a decision is taken. */
+  status: string enum('PROPOSED', 'APPROVED', 'REJECTED', 'RULED_OUT')
+
+  /** The capacity lane this option would book, when {@link #optionKind} is {@code ADD_CAPACITY}. */
+  capacitySource: CapacitySource
+}

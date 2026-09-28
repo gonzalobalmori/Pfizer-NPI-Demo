@@ -60,4 +60,37 @@ entity type ExecutionService {
    * prompt. §6 forbids softening the refusal.
    */
   copilot: function(): json js
+
+  /**
+   * Restore the Execution branch to its seeded baseline so the demo can be re-run
+   * (R-TR-15), mirroring {@link QualityDisruptionService#reset},
+   * {@link MarketWaveService#reset} and {@link CascadeReplanService#reset} — the
+   * Execution branch was the only one of the four without a rewind, which left an
+   * approved decision permanently settled after the first walkthrough.
+   *
+   * Undoes every write {@link Decision#approve} makes: clears
+   * {@link Decision#selectedOption} / {@link Decision#approvedAt}, restores the
+   * {@link Gate} forecast and slip, restores {@link Launch#revenueAtRisk} and
+   * {@link Launch#healthStatus}, returns the {@link ActionPlanTask} statuses to
+   * "Not started", re-stamps the seeded {@link Notification#sentAt}, reopens the
+   * {@link CAPA} containment and drops the generated `dhf_approve_*`
+   * {@link DesignHistoryFileEntry}.
+   *
+   * <p>Baselines come from the {@code data/} seed files rather than from arithmetic
+   * inversion of the live values: {@link Decision#approve} clamps with
+   * {@code Math.max(0, …)}, so the pre-approval exposure genuinely cannot be
+   * recovered by adding the kept revenue back on. Idempotent — resetting an
+   * unapproved decision is a no-op, so a refresh may call it unconditionally.
+   *
+   * <p>Because a sparse {@code merge()} cannot un-set a field (the platform drops
+   * nulls rather than writing them), the {@link Decision} row is rebuilt rather
+   * than merged — the same technique {@link QualityDisruptionService#reset} uses
+   * for its batches. Child collections are unaffected: they point at the id, which
+   * is preserved.
+   *
+   * @param decisionId  the decision to rewind, or null/empty to rewind every
+   *                    USER-held decision (what a page refresh passes).
+   * @return `{reset: [ids], recordsRestored: n, alreadyBaseline: [ids]}`.
+   */
+  resetDecision: function(decisionId: string): json js
 }

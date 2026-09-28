@@ -5,16 +5,30 @@
  * strings) and returns a small structured result the UI renders directly. All
  * static — this type holds no data.
  *
- * Where the specification quotes an exact headline figure (readiness 71% / −6 /
- * target 85, exposure €30.5M / +€11.2M / of €412M, slip target ≤5 / worst 47),
- * the derived value is returned alongside those spec constants so the KPI card
- * shows trend and target without the UI hard-coding anything.
+ * Where the specification quotes a TARGET or a portfolio BASE (readiness target
+ * 85, portfolio value €412M, slip target ≤5), that constant is returned alongside
+ * the derived value so the KPI card can show the threshold without the UI
+ * hard-coding it. Those are legitimately constants: a target is set, not measured.
+ *
+ * What this type does NOT return is a trend. Two fields used to be published here
+ * as measured 30-day movements — `deltaPts` (−6 points) and `delta30d` (+€11.2M)
+ * — and both were spec constants with no computation behind them. Nothing in the
+ * model carries a dated history of a KPI (no Gate, Criterion, Finding or Launch
+ * field records a prior value or an as-of date), so a 30-day change cannot be
+ * derived here at all. Publishing one from a constant made a fabricated figure
+ * look sourced, which is worse than the hard-coded polyline it replaced, because
+ * the view layer had no way to tell it apart from a real measurement (R-BASE-03).
+ * Both fields are removed. The cockpit cards now state the DISTRIBUTION behind
+ * each headline — how many launches sit below target, how concentrated the
+ * exposure is — which is computable from what the model actually holds.
+ *
+ * If a genuine trend is ever wanted, it needs a stored time series (a
+ * `LaunchControlMetrics.Snapshot` persisted on a schedule); it cannot be
+ * back-filled from the current state.
  */
 
 var PORTFOLIO_REVENUE = 412000000; // €412M portfolio base (§5 cockpit)
 var READINESS_TARGET = 85;
-var READINESS_DELTA_PTS = -6;      // 30-day trend (§5)
-var REVENUE_DELTA_30D = 11200000;  // +€11.2M in 30 days (§5)
 var SLIP_TARGET = 5;
 
 /* ---- helpers ------------------------------------------------------------ */
@@ -44,7 +58,7 @@ function portfolioGateReadiness() {
   var value = totAll > 0 ? round1((totMet / totAll) * 100) : 0;
   return {
     metric: 'PortfolioGateReadiness', value: value, unit: '%',
-    target: READINESS_TARGET, deltaPts: READINESS_DELTA_PTS, byLaunch: perLaunch
+    target: READINESS_TARGET, byLaunch: perLaunch
   };
 }
 
@@ -87,7 +101,7 @@ function launchHealthDistribution() {
   };
 }
 
-/* ---- RevenueAtRisk (with 30-day delta) --------------------------------- */
+/* ---- RevenueAtRisk ------------------------------------------------------ */
 function revenueAtRisk() {
   var launches = Launch.fetch({
     filter: Filter.gt('revenueAtRisk', 0),
@@ -101,7 +115,6 @@ function revenueAtRisk() {
   });
   return {
     metric: 'RevenueAtRisk', value: total, unit: '€',
-    delta30d: REVENUE_DELTA_30D,
     pctOfPortfolio: round1((total / PORTFOLIO_REVENUE) * 100),
     portfolioBase: PORTFOLIO_REVENUE, byLaunch: byLaunch
   };

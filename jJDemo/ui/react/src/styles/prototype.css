@@ -1,26 +1,253 @@
+/*
+ * ══ PFIZER DESIGN TOKENS (R-BASE-04) ══
+ *
+ * Brand and semantic colour are deliberately SEPARATE scales here, because the
+ * palette this file was ported from conflated them: one red served both as the
+ * wordmark colour and as the "critical" state. Re-pointing that single token at
+ * Pfizer Blue would have turned every critical gate, breached threshold and
+ * at-risk KPI blue — destroying the risk semantics this app exists to convey.
+ *
+ *   --brand-*  identity and interactive affordances (wordmark, primary button,
+ *              active tab, selection, focus). Pfizer Blue.
+ *   --red-*    RESERVED for danger/critical states only. Never brand.
+ *
+ * So: if it says "who we are" or "you can act here" it is --brand; if it says
+ * "this is going wrong" it is --red. Do not merge them again.
+ *
+ * ── THIS DESIGN SYSTEM IS LIGHT-MODE ONLY, ON PURPOSE ──
+ *
+ * There is no `.dark` block in this file and no `prefers-color-scheme` query.
+ * That is a decision, not an omission, and it was verified rather than assumed:
+ * with `.dark` forced onto <html>, all 166 elements of the running app were
+ * measured before and after. Result: 0 background changes, 0 text changes, 0
+ * visible changes. The 134 elements that reported a border-colour difference all
+ * did so on sides whose border-width is 0 — the global `* { border-color }` rule
+ * in globals.css resolves a token that HAS a dark value, but nothing paints it.
+ * So today `.dark` is an inert class over these screens, not a broken theme.
+ *
+ * It is also unreachable: the only consumer of `useTheme` is SideNav.tsx, which
+ * this app does not mount (it renders its own AppShell), so the hook that would
+ * add `.dark` from `prefers-color-scheme` never runs.
+ *
+ * DO NOT "add dark mode" by inverting this ramp mechanically. Two things here
+ * break under inversion, and both are load-bearing:
+ *   · The status ramp (--ok / --amber / --red*) was contrast-tuned against the
+ *     LIGHT surfaces below. Dark mode needs its own steps re-picked against the
+ *     dark surface and re-validated — a flipped hue fails both the lightness
+ *     band and the CVD separation it currently passes.
+ *   · --brand #0000C9 is a dark, fully-saturated blue. On a near-black surface it
+ *     has almost no luminance contrast, so every primary button, active tab and
+ *     focus ring would disappear. Pfizer Blue cannot be the interactive colour on
+ *     a dark background; that needs a lighter brand step, which is a brand
+ *     decision and not one to invent here.
+ * If dark mode is wanted, it is a deliberate second palette, validated on its own
+ * surface. Wiring up the existing toggle without that work would half-flip the
+ * shadcn primitives (which DO respond to `.dark`) while these screens stayed
+ * light — which is the one outcome worse than no dark mode at all.
+ */
 :root{
-  --red500:#EB1700; --red600:#D91500; --red700:#CC1400;
-  --coral:#FF6A52;
-  --g50:#F9F8F7; --g100:#F1EFED; --g200:#E8E6E3; --g300:#D5CFC9; --g400:#CBC4BC;
-  --g500:#A39992; --g600:#81766F; --g700:#6E6259; --g800:#312C2A; --g900:#1A1817;
+  /* Pfizer Blue — the primary brand colour. 600/700 are hover/active depths. */
+  --brand:#0000C9; --brand-600:#0000A8; --brand-700:#00008A;
+  /* Pfizer light blue — secondary brand accent, data viz, subtle fills. */
+  --sky:#0093D0; --sky-600:#0077AB;
+  --brand-bg:#EDEDFC; --brand-bd:#C3C3F2;
+
+  /* Danger scale — critical states ONLY (see note above). */
+  --red500:#D8232A; --red600:#C21B22; --red700:#A6151B;
+  --coral:#F26A5E;
+
+  /*
+   * Cool, blue-tinted neutral ramp. The previous ramp was warm taupe/beige,
+   * which is what made the shell read as another company's product even after
+   * the wordmark was changed — neutrals cover ~90% of the pixels on screen, so
+   * they carry brand identity more than any accent does. Luminance is matched
+   * step-for-step against the ramp it replaces, so every existing contrast
+   * pairing in this file keeps working.
+   */
+  --g50:#F7F9FC; --g100:#EFF2F8; --g200:#E2E8F1; --g300:#CBD4E3; --g400:#B4C0D3;
+  --g500:#8493AB; --g600:#63728C; --g700:#495871; --g800:#25303F; --g900:#121A25;
   --white:#fff;
-  --amber:#B45309; --amber-s:#E8A33D; --amber-bg:#FEF6EC; --amber-bd:#F3D5A8;
-  --red-bg:#FDF0EE; --red-bd:#F5C8C1;
+  /* Half-step between 100 and 200, for chart gridlines that must sit UNDER the
+     data without disappearing on white. Interpolated in sRGB between #EFF2F8 and
+     #E2E8F1 so it stays on the same blue-tinted ramp. */
+  --g150:#E9EDF5;
+
+  /* Right-arrow geometry for `.ga`, the mask-based arrow used where markup is
+     injected as an HTML string and React's <Glyph> cannot reach. Same path as
+     Glyph's `arrow-right`, so the two are indistinguishable on screen. */
+  --ga-svg:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 12"><path d="M1.6 6h8.2M6.6 2.9 9.9 6l-3.3 3.1" fill="none" stroke="black" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>');
+
+  /* --amber is the at-risk state everywhere in this file; it tracks --st-risk
+     exactly (see the measured rationale in the status block below). */
+  --amber:#8C5008; --amber-s:#E8A33D; --amber-bg:#FEF6EC; --amber-bd:#F3D5A8;
+  --red-bg:#FDEFEF; --red-bd:#F3C7C8;
   --ok:#15803D; --ok-bg:#F0F7F2; --ok-bd:#C6E0CE;
-  --purple:#A100FF; --purple-bg:#F8F0FF;
-  --font:-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-  --sh1:0 1px 2px rgba(26,24,23,.05);
-  --sh2:0 2px 8px rgba(26,24,23,.07),0 1px 2px rgba(26,24,23,.05);
-  --sh3:0 16px 48px rgba(26,24,23,.16),0 2px 8px rgba(26,24,23,.08);
+
+  /*
+   * Agent/AI accent. Kept visually distinct from --brand so an AI-authored
+   * artefact is never mistaken for a human action (R-TR-13), but shifted off
+   * the vivid magenta-purple it was, which is a partner firm's brand colour
+   * and does not belong in a Pfizer-branded deliverable.
+   */
+  --purple:#6C4BD8; --purple-bg:#F1EEFC; --purple-bd:#DAD2F7;
+
+  /*
+   * Noto Sans — the Pfizer brand typeface. The VARIABLE cut is loaded (see
+   * globals.css) because the weights below are fractional; with static cuts
+   * every 650/680/720/750 would snap to 700 and the hierarchy would flatten.
+   */
+  --font:'Noto Sans Variable','Noto Sans',ui-sans-serif,system-ui,sans-serif;
+
+  /*
+   * ── Elevation ──
+   * An analytical surface should feel like layered paper, not floating cards,
+   * so elevation is carried mostly by BORDER and a very tight ambient shadow.
+   * Two-layer shadows (a 1px contact edge + a soft ambient) read as crisp at
+   * 100% zoom instead of the grey haze a single large blur produces.
+   */
+  --sh1:0 1px 2px rgba(18,26,37,.05);
+  --sh2:0 2px 8px rgba(18,26,37,.07),0 1px 2px rgba(18,26,37,.05);
+  --sh3:0 16px 48px rgba(18,26,37,.16),0 2px 8px rgba(18,26,37,.08);
+  /* Focus ring — one token so keyboard focus is identical on every control. */
+  --ring:0 0 0 3px rgba(0,0,201,.18);
+
+  /*
+   * ── Data-visualisation series ramp ──
+   * Validated with the dataviz skill's checker (validate_palette.js) rather
+   * than chosen by eye. Ordered, never cycled: a 9th series folds into
+   * "Other" or becomes small multiples.
+   *
+   * Deliberately NOT the status colours below. A chart series answers "which
+   * one is this", a status colour answers "how bad is this" — sharing hexes
+   * between those two jobs is what makes a dashboard unreadable. (The holder-
+   * split bars in Open issues used --amber for a CATEGORY and so read as a
+   * severity signal; they now draw from this ramp.)
+   *
+   * TWO VALIDATOR "FAIL"s HERE ARE ACCEPTED, DELIBERATELY. Running the checker on
+   * the four slots the app currently plots (--s1,--s4,--s3,--s5):
+   *   PASS  CVD separation      worst adjacent ΔE 16.7 (deutan)
+   *   PASS  normal-vision       worst adjacent ΔE 21.4
+   *   PASS  contrast vs surface all >= 3:1
+   *   FAIL  lightness band      --s1 #0000C9 at L 0.378
+   *   FAIL  chroma floor        --s4, --s5 "read gray"
+   * The two discrimination checks — the ones that decide whether a reader can
+   * actually tell the bars apart — pass at roughly double the reference palette's
+   * own worst adjacent pair (ΔE 9.1). The two failures are not defects to fix:
+   *   · The lightness band is calibrated for a mid-tone blue (the reference
+   *     palette's slot 1 is #2a78d6). Pfizer Blue is darker than that band by
+   *     nature. It is mandated by R-BASE-04 and, by brand rule, is always series
+   *     1 — so this FAIL is a fixed constraint. DO NOT lighten --s1 to satisfy
+   *     the checker; that silently un-brands the app.
+   *   · --s5 is SUPPOSED to read grey — it is the inert "nobody can act on this"
+   *     bucket, and low chroma is the point. --s4 teal is muted so it never
+   *     competes with the status ramp it sits beside.
+   * If you add a fifth plotted series, re-run the checker and re-read this note
+   * before concluding the palette is broken.
+   */
+  --s1:#0000C9;  /* Pfizer Blue — always the primary/first series */
+  --s2:#0093D0;  /* Pfizer light blue */
+  --s3:#6C4BD8;  /* violet — also the agent/AI accent */
+  --s4:#0E7C7B;  /* teal */
+  --s5:#8493AB;  /* cool grey — for "waiting"/inert quantities */
+  --s6:#B45309;  /* ochre */
+
+  /*
+   * ── Status: on-plan / at-risk / off-track ──
+   *
+   * Two DIFFERENT accessibility limits apply here; both were measured with the
+   * dataviz validator, not eyeballed.
+   *
+   * 1. Colour-blind separation — IRREDUCIBLE. Green→amber→red cannot be made to
+   *    separate under deuteranopia/protanopia at ANY amber: eleven candidates
+   *    were tested and the best sits at ΔE 2.0–4.0, far below the ΔE 8 target.
+   *    The traffic-light metaphor is inherently colour-blind-hostile, so rather
+   *    than pretend a different hex fixes it, EVERY status in this app carries a
+   *    non-colour cue. The cues, and where each one lives:
+   *      · a DISTINCT SHAPE per state in .sst — octagon/bar = off track, clock =
+   *        at risk, circled check = on plan (see SstIcon in PortfolioView). Not
+   *        merely "an icon": for a while .sst drew the SAME triangle for off-track
+   *        and at-risk, which made the icon column colour-only and defeated the
+   *        point of having it.
+   *      · a DIAGONAL TEXTURE on live phase bars, at opposite angles so the two
+   *        bad states differ by stripe direction: .sg.cur.rk (45°) vs
+   *        .sg.cur.ct (135°).
+   *      · a TEXT LABEL — the slip column, the gate pills and every legend name
+   *        the state in words.
+   *    Do not remove those cues and leave hue to carry the meaning alone. If you
+   *    add a new status mark, it needs one of the three before it ships.
+   *
+   * 2. NORMAL-vision separation — this one WAS fixable, and was fixed. The
+   *    previous amber (#B45309) sat at ΔE 9.8 from --st-crit for a full-colour
+   *    reader: below the floor of 15, i.e. most users could not reliably tell
+   *    "at risk" from "off track" either. #8C5008 raises that to ΔE 16.0.
+   *    It also had to stay legible as TEXT, since these tones label "+47d" and
+   *    "at risk" on white — so candidates were additionally filtered on WCAG
+   *    contrast; #8C5008 reads 6.43:1 (the runner-up, #A8790B, scored a better
+   *    ΔE 16.9 but only 3.89:1 and would have failed AA).
+   *    If you change these, re-run BOTH checks — the two pull in opposite
+   *    directions and optimising either one alone regresses the other.
+   *
+   * WHERE THESE ACTUALLY LIVE: the app's status colours are --ok / --amber /
+   * --red500, declared at the top of this block. The --st-* names below are the
+   * canonical labels for the same three measured values and exist so this
+   * rationale has something to hang on; only --st-ok is referenced (by .hbb-f.ok).
+   * They are deliberately kept as ALIASES of the real tokens rather than repeated
+   * hexes — when the trio was written out longhand here, editing --amber silently
+   * left --st-risk behind, so the documented value and the rendered value could
+   * drift apart. Now they cannot.
+   */
+  --st-ok:var(--ok); --st-risk:var(--amber); --st-crit:var(--red500);
+
+  /* Height of the fixed synthetic-data disclaimer bar (.dsc, R-BASE-05).
+     6px top + 6px bottom padding + (10.5px * 1.5 line-height = 15.75) + 1px
+     border-top = 28.75px measured, rounded UP to 29 for a whole-pixel offset.
+     Round up, never down: at 28px the disclaimer still clipped the bottom
+     0.75px of the bar it is supposed to sit below.
+     Anything else pinned to the viewport bottom (e.g. the .is-bar decision
+     action bar) MUST sit at `bottom:var(--dsc-h)` rather than `bottom:0`,
+     otherwise the disclaimer — which has a HIGHER z-index (80) — paints over it
+     and covers the controls. Padding on scrolling containers cannot fix a
+     position:fixed sibling, so the offset has to live here. */
+  --dsc-h:29px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:var(--font);background:var(--g100);color:var(--g900);
-  font-size:13px;line-height:1.5;-webkit-font-smoothing:antialiased}
+  font-size:13px;line-height:1.5;-webkit-font-smoothing:antialiased;
+  /* Noto Sans renders slightly wider than Inter at the same size; opsz keeps
+     small UI text from looking loose, and the grade nudge restores the optical
+     weight Inter had at 13px so no existing layout reflows. */
+  font-optical-sizing:auto;text-rendering:optimizeLegibility;
+  /* Applies to the whole app: numerals must never change width while a value
+     animates or a table re-sorts, or columns visibly jitter. */
+  font-variant-numeric:tabular-nums}
 button{font-family:inherit;font-size:inherit;cursor:pointer;border:none;background:none;color:inherit}
+/* Keyboard focus must be visible on every control, but the ring should not
+   appear on mouse clicks — :focus-visible gives exactly that split. */
+:focus-visible{outline:none;box-shadow:var(--ring)}
 ::-webkit-scrollbar{width:9px;height:9px}
 ::-webkit-scrollbar-thumb{background:var(--g300);border-radius:9px}
+::-webkit-scrollbar-thumb:hover{background:var(--g400)}
 ::-webkit-scrollbar-track{background:transparent}
 .mono{font-variant-numeric:tabular-nums}
+
+/*
+ * ── The Pfizer logo lock-up ──
+ * Used wherever the product identifies itself (menu header, app header). The
+ * asset is the real trademark, recoloured from its CMYK master to the digital
+ * brand tokens and downscaled to 720px wide (the 6275px master decodes to
+ * ~65MB in the browser, which the preview cannot afford).
+ *
+ * height-only sizing + width:auto preserves the trademark's aspect ratio —
+ * a stretched logo is a brand violation, so never set both.
+ */
+.pfz{height:26px;width:auto;display:block;flex:none}
+.pfz-sm{height:19px}
+.pfz-lg{height:34px}
+/* The wordmark must never sit directly against a coloured or busy field. */
+.pfz-lock{display:flex;align-items:center;gap:13px;min-width:0}
+.pfz-rule{width:1px;height:26px;background:var(--g200);flex:none}
+.pfz-ctx{font-size:11px;color:var(--g600);letter-spacing:.2px;line-height:1.3;min-width:0}
+.pfz-ctx b{display:block;font-size:12.5px;font-weight:700;color:var(--g900);letter-spacing:-.2px}
 
 /* ══ SCREEN 0 — MENU ══ */
 #menu{display:none;min-height:100vh;flex-direction:column}
@@ -30,13 +257,12 @@ button{font-family:inherit;font-size:inherit;cursor:pointer;border:none;backgrou
 .m-sub{font-size:11px;color:var(--g500);padding-left:14px;
   border-left:1px solid var(--g300);letter-spacing:.2px}
 .m-top .h-gd{margin-left:auto}
-.m-wm{font-size:19px;font-weight:800;color:var(--red500);letter-spacing:-.5px}
-.m-wm i{font-style:normal;font-weight:400}
-.m-shell{flex:1;display:flex;gap:18px;padding:18px;align-items:stretch}
+/* bottom padding clears the fixed .dsc disclaimer bar (R-BASE-05) */
+.m-shell{flex:1;display:flex;gap:18px;padding:18px 18px 42px;align-items:stretch}
 .m-stage{flex:1;background:var(--white);border-radius:14px;padding:40px 36px 34px;
   display:flex;flex-direction:column;justify-content:center}
 .m-hi{font-size:42px;font-weight:300;letter-spacing:-1.5px;text-align:center;margin-bottom:7px}
-.m-hi b{font-weight:750;color:var(--red500)}
+.m-hi b{font-weight:750;color:var(--brand)}
 .m-hisub{text-align:center;font-size:12.5px;color:var(--g600);margin-bottom:32px}
 .m-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:1070px;margin:0 auto;width:100%}
 .mc{border:1px solid var(--g300);border-radius:12px;padding:20px;text-align:left;
@@ -46,7 +272,7 @@ button{font-family:inherit;font-size:inherit;cursor:pointer;border:none;backgrou
 .mc.dim{opacity:.6}.mc.dim:hover{opacity:1}
 .mc-go{position:absolute;top:17px;right:17px;width:25px;height:25px;border-radius:50%;
   background:var(--g100);color:var(--g600);display:grid;place-items:center;font-size:13px;font-weight:700}
-.mc:hover .mc-go{background:var(--red500);color:#fff}
+.mc:hover .mc-go{background:var(--brand);color:#fff}
 .mc-badge{position:absolute;top:15px;right:46px;width:24px;height:24px}
 .mc-badge::before{content:"";position:absolute;inset:0;border-radius:50%;
   background:var(--red500);animation:ring 3s ease-out infinite}
@@ -56,9 +282,9 @@ button{font-family:inherit;font-size:inherit;cursor:pointer;border:none;backgrou
 @keyframes ring{0%{transform:scale(1);opacity:.5}55%,100%{transform:scale(2.3);opacity:0}}
 @keyframes beat{0%,40%,100%{transform:scale(1)}8%{transform:scale(1.16)}16%{transform:scale(1)}
   24%{transform:scale(1.11)}32%{transform:scale(1)}}
-.mc-ic{width:46px;height:46px;border-radius:11px;background:var(--red-bg);display:grid;
+.mc-ic{width:46px;height:46px;border-radius:11px;background:var(--brand-bg);display:grid;
   place-items:center;margin-bottom:15px}
-.mc-ic svg{width:24px;height:24px;stroke:var(--red500);stroke-width:1.7;fill:none}
+.mc-ic svg{width:24px;height:24px;stroke:var(--brand);stroke-width:1.7;fill:none}
 .mc-n{font-size:10px;font-weight:700;letter-spacing:.6px;color:var(--g500);margin-bottom:4px}
 .mc-t{font-size:17.5px;font-weight:700;letter-spacing:-.4px;line-height:1.2;margin-bottom:8px;
   min-height:2.4em}
@@ -73,17 +299,23 @@ button{font-family:inherit;font-size:inherit;cursor:pointer;border:none;backgrou
   display:flex;flex-direction:column;align-items:center}
 .mr-av{width:70px;height:70px;border-radius:50%;border:2.5px solid var(--g900);display:grid;
   place-items:center;font-size:21px;font-weight:700;margin-bottom:12px}
-.mr-n{font-size:15px;font-weight:750;color:var(--red500);margin-bottom:2px}
+.mr-n{font-size:15px;font-weight:750;color:var(--brand);margin-bottom:2px}
 .mr-r{font-size:11px;color:var(--g600);text-align:center;margin-bottom:20px;line-height:1.45}
 .mr-b{width:100%;padding:10px 13px;background:var(--g100);border-radius:8px;font-size:12.5px;
   text-align:left;margin-bottom:7px;display:flex;align-items:center;gap:8px}
 .mr-b:hover{background:var(--g200)}
 .mr-b .bdg{margin-left:auto}
 .mr-img{margin-top:auto;width:100%;border-radius:11px;
-  background:linear-gradient(140deg,var(--g100),var(--red-bg) 55%,#FFDDD6);padding:17px 15px}
+  background:linear-gradient(140deg,var(--g100),var(--brand-bg) 55%,#DCDCFA);padding:17px 15px}
 .mr-it{font-size:13px;font-weight:650;line-height:1.3}
-.mr-ir{width:25px;height:2.5px;background:var(--red500);margin-top:10px}
-.m-ft{padding:0 18px 16px;text-align:center;font-size:10.5px;color:var(--g500)}
+.mr-ir{width:25px;height:2.5px;background:var(--brand);margin-top:10px}
+/* Persistent, non-dismissible synthetic-data disclaimer (R-BASE-05).
+   Fixed to the viewport bottom so it survives every screen/branch/tab change.
+   pointer-events:none keeps it from stealing clicks from content beneath it;
+   the .body / #menu bottom padding below reserves space so nothing is covered. */
+.dsc{position:fixed;left:0;right:0;bottom:0;z-index:80;pointer-events:none;
+  padding:6px 18px;text-align:center;font-size:10.5px;letter-spacing:.2px;
+  color:var(--g600);background:var(--g50);border-top:1px solid var(--g200)}
 .bdg{min-width:19px;height:18px;padding:0 6px;border-radius:9px;flex:none;font-size:10px;
   font-weight:700;display:grid;place-items:center;background:var(--g200);color:var(--g700)}
 .bdg.r{background:var(--red500);color:#fff}
@@ -99,14 +331,16 @@ button{font-family:inherit;font-size:inherit;cursor:pointer;border:none;backgrou
 html{scroll-padding-top:180px}
 [id]{scroll-margin-top:180px}
 .hdr-1{display:flex;align-items:center;gap:16px;padding:10px 26px}
-.h-logo{display:flex;align-items:center;gap:9px;padding:4px 10px 4px 4px;border-radius:8px}
+.h-logo{display:flex;align-items:center;gap:10px;padding:4px 11px 4px 4px;border-radius:8px;
+  transition:background .13s}
 .h-logo:hover{background:var(--g50)}
 .h-back{width:22px;height:22px;border-radius:6px;background:var(--g100);display:grid;
   place-items:center;flex:none;font-size:13px;color:var(--g700)}
-.h-logo:hover .h-back{background:var(--red500);color:#fff}
-.h-wm{font-size:14px;font-weight:800;color:var(--red500);letter-spacing:-.4px;line-height:1;text-align:left}
-.h-wm i{font-style:normal;font-weight:400}
-.h-wm span{display:block;font-size:9px;color:var(--g600);font-weight:500;margin-top:2px;letter-spacing:.2px}
+.h-logo:hover .h-back{background:var(--brand);color:#fff}
+/* Product name beside the trademark. Deliberately quiet — the mark carries the
+   identity, this only says which product you are in. */
+.h-ctx{font-size:11px;font-weight:600;color:var(--g600);letter-spacing:.1px;white-space:nowrap}
+.h-logo:hover .h-ctx{color:var(--g800)}
 .h-div{width:1px;height:26px;background:var(--g200)}
 .h-branch{font-size:9.5px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:var(--g500)}
 .h-branch b{display:block;font-size:15px;font-weight:700;letter-spacing:-.3px;
@@ -123,14 +357,21 @@ html{scroll-padding-top:180px}
 .tb{padding:11px 13px 10px;font-size:12.5px;color:var(--g600);white-space:nowrap;
   border-bottom:2.5px solid transparent;display:flex;align-items:center;gap:7px}
 .tb:hover{color:var(--g900)}
-.tb.on{color:var(--g900);font-weight:680;border-bottom-color:var(--red500)}
+.tb.on{color:var(--g900);font-weight:680;border-bottom-color:var(--brand)}
 .tb .bdg{height:16px;min-width:16px;font-size:9.5px}
 .flt{margin-left:auto;display:flex;align-items:flex-end;gap:9px;padding:6px 0}
 
-.body{flex:1;padding:20px 26px 44px}
+/* bottom padding clears the fixed .dsc disclaimer bar (R-BASE-05) */
+.body{flex:1;padding:20px 26px 68px}
 .view{display:none;animation:fi .2s ease}
 .view.on{display:block}
 @keyframes fi{from{opacity:0}to{opacity:1}}
+/* Loading / error placeholder for a whole view. One class instead of the inline
+   padding+colour each view repeated, so every view fails and loads identically.
+   R-BASE-03 note: .v-err must stay VISIBLE — after the c3Action wire-up there is
+   no mock fallback, so a failed fetch has to surface here, never hide. */
+.v-msg{padding:24px;font-size:12.5px;color:var(--g600)}
+.v-err{color:var(--red600);font-weight:600}
 .vhd{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:16px}
 .vt{font-size:17px;font-weight:700;letter-spacing:-.35px}
 .vs{font-size:11.5px;color:var(--g600);margin-top:3px;max-width:100ch}
@@ -147,7 +388,7 @@ html{scroll-padding-top:180px}
   text-align:center;display:inline-flex;align-items:center;gap:7px;justify-content:center;
   transition:background .13s,border-color .13s}
 .btn svg{width:14px;height:14px;stroke-width:1.9;fill:none}
-.btn.p{background:var(--red500);color:#fff}.btn.p:hover{background:var(--red700)}
+.btn.p{background:var(--brand);color:#fff}.btn.p:hover{background:var(--brand-700)}
 .btn.p svg{stroke:#fff}
 .btn.s{background:var(--white);color:var(--g800);border:1px solid var(--g300)}
 .btn.s:hover{background:var(--g50);border-color:var(--g500)}
@@ -162,7 +403,7 @@ html{scroll-padding-top:180px}
   display:flex;flex-direction:column}
 .kc-t{font-size:11.5px;font-weight:680;color:var(--g800);margin-bottom:12px}
 .gg circle{fill:none;stroke-width:6;stroke-linecap:round}
-.gg .fg{stroke:var(--purple);stroke-dasharray:144.5}
+.gg .fg{stroke:var(--sky);stroke-dasharray:144.5}
 .gg .fg.r{stroke:var(--red500)}.gg .fg.a{stroke:var(--amber-s)}.gg .fg.g{stroke:var(--ok)}
 .kn-v.r{color:var(--red600)}.kn-v.a{color:var(--amber)}.kn-v.g{color:var(--ok)}
 .kc-ft{margin-top:11px;padding-top:9px;border-top:1px solid var(--g100);font-size:10.5px;color:var(--g600)}
@@ -243,7 +484,41 @@ html{scroll-padding-top:180px}
    country code, optional lead tag, derived gate/phase, first-ship quarter */
 .atn-mk-cell{display:flex;align-items:center;gap:5px;white-space:nowrap}
 .atn-mk-cell b{font-weight:750;color:var(--g800)}
-.atn-mk-cell .mg-dot{width:8px;height:8px}
+/* 9px, not the old 8 — a triangle and a hollow ring need the extra pixel to be
+   tellable apart at a glance (see `MlDot.tsx`). */
+.atn-mk-cell .mg-dot{width:9px;height:9px}
+
+/* Affected-market chips (cockpit attention panel). The panel is now one row per
+   LAUNCH, so the markets that were 5 duplicate rows are 5 chips in one cell —
+   same information, a fifth of the vertical space, and the €M column beside them
+   is stated once so it reconciles to the portfolio headline. */
+.atn-mks{display:flex;flex-wrap:wrap;gap:4px;align-items:center}
+.atn-mk{display:inline-flex;align-items:center;gap:4px;font-size:10.5px;font-weight:750;
+  color:var(--g800);background:var(--g50);border:1px solid var(--g200);border-radius:4px;
+  padding:1px 5px;white-space:nowrap}
+.atn-mk .mg-dot{width:9px;height:9px}
+.atn-mk i{font-style:normal;font-size:8px;font-weight:700;letter-spacing:.3px;
+  text-transform:uppercase;color:var(--g500)}
+.atn-mk.ct{border-color:var(--red-bd)}
+.atn-mk-ok{font-size:10px;font-weight:600;color:var(--g500);white-space:nowrap}
+/* exposure figure — was an inline style branching on tone in the view */
+.atn-e{font-weight:750}
+.atn-e.r{color:var(--red600)}
+.atn-e.a{color:var(--amber)}
+.atn-empty{padding:6px 0;font-size:11.5px;color:var(--g600)}
+/* Gates-closing panel: the schedule slip now carries its own chip beside the date
+   it qualifies, instead of colouring the readiness bar (two measures, two marks). */
+.gc-slip{display:inline-block;margin-left:5px;font-size:9.5px;font-weight:750;
+  padding:0 3px;border-radius:3px;background:var(--g100);color:var(--g600)}
+.gc-slip.a{background:var(--amber-bg);color:var(--amber)}
+.gc-slip.r{background:var(--red-bg);color:var(--red700)}
+/* a gate with no criteria defined — stated, never drawn as an empty/full bar */
+.gc-nc{font-size:10.5px;font-style:italic;color:var(--g500)}
+/* panel-header roll-up: the column total, now that it is a true sum */
+.pnl-f{display:flex;flex-direction:column;align-items:flex-end;gap:1px;text-align:right;
+  white-space:nowrap}
+.pnl-f b{font-size:15px;font-weight:750;color:var(--g900);line-height:1.1}
+.pnl-f span{font-size:10px;font-weight:600;color:var(--g600)}
 /* Attention table is one of two side-by-side panels, so space is tight: trim the
    cell padding, keep launch name + gate code on one line, let only the gate NAME
    sub-line wrap, and keep the €M column from being clipped at the panel edge. */
@@ -256,10 +531,28 @@ html{scroll-padding-top:180px}
 .atn-t td.n{white-space:nowrap}
 .mg-rows{display:flex;flex-direction:column;gap:2px;margin-top:4px}
 .mg-row{display:flex;align-items:center;gap:5px;font-size:9.5px;line-height:1.3;flex-wrap:nowrap;white-space:nowrap;overflow:hidden}
-.mg-dot{width:7px;height:7px;border-radius:50%;flex:none;background:var(--g300)}
-.mg-dot.ct{background:var(--red500)}
-.mg-dot.rk{background:var(--amber)}
-.mg-dot.ok{background:var(--g500)}
+/* Market status mark. This used to be a 7px round div coloured by `background`,
+   with ct/rk separated by hue alone and `ok` (--g500) barely a lightness step
+   from the unknown default (--g300) — so "fine" and "nobody reported" looked
+   alike. It is now an <svg> from `MlDot.tsx` which carries the state in its
+   SHAPE (triangle off track / solid disc at risk / hollow ring on plan / dash
+   not reported) and names it in a <title>. Hue therefore reinforces a
+   distinction that already survives greyscale rather than being the only
+   carrier of it.
+
+   Colour comes through `currentColor` (`fill` for the solid marks, `stroke` for
+   the hollow ones), so the three context overrides below — which set only
+   width/height — keep working untouched. Do not re-add `background` rules here:
+   an <svg> ignores them, so a background would paint a square behind the glyph
+   rather than recolour it. */
+.mg-dot{width:9px;height:9px;flex:none;fill:currentColor;color:var(--g400);overflow:visible}
+.mg-dot.ct{color:var(--red500)}
+.mg-dot.rk{color:var(--amber)}
+.mg-dot.ok{color:var(--g500)}
+.mg-dot.nil{color:var(--g400)}
+/* inline variant: sits mid-line beside a market name in the launch record's
+   market table (replaces a repeated `style={{marginRight:6,verticalAlign}}`) */
+.mg-dot-in{margin-right:6px;vertical-align:middle}
 .mg-mk{font-weight:750;color:var(--g800);min-width:20px;flex:none}
 .mg-lead{font-size:8px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;
   color:var(--g500);background:var(--g100);border-radius:3px;padding:0 3px}
@@ -299,20 +592,19 @@ html{scroll-padding-top:180px}
 .lnm{font-size:12.5px;font-weight:680;letter-spacing:-.2px;line-height:1.25}
 .lmt{font-size:10px;color:var(--g600);margin-top:2px}
 .trk{flex:1;min-width:330px;display:flex;align-items:center;height:26px}
+/*
+ * NOTE: `.sg` is redefined further down this file (the "phase blocks" block) and
+ * THAT definition is what the Portfolio timeline renders — taller, bordered and
+ * rounded. Everything that used to sit here (`.sg.now`, `.sg.risk`, `.sg.crit`)
+ * matched no markup in the app: the views only ever emit `sg`, `sg done` and
+ * `sg cur ok|rk|ct`. The risk/crit diagonal textures were especially misleading,
+ * because the status block at the top of this file cites them BY NAME as one of
+ * the mandatory non-colour cues — while nothing could render them. The texture
+ * now lives on the selectors the app actually emits (see `.sg.cur.rk` /
+ * `.sg.cur.ct` below); only the shared base and `done` remain here.
+ */
 .sg{flex:1;height:8px;position:relative;background:var(--g100)}
-
 .sg.done{background:var(--g300)}
-.sg.now{background:var(--g100)}
-.sg.now::after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--f,50%);
-  background:var(--g800);border-radius:0 3px 3px 0}
-.sg.risk{background:var(--amber-bg)}
-.sg.risk::after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--f,50%);
-  background:repeating-linear-gradient(45deg,var(--amber-s),var(--amber-s) 4px,#F3C77E 4px,#F3C77E 8px);
-  border-radius:0 3px 3px 0}
-.sg.crit{background:var(--red-bg)}
-.sg.crit::after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--f,50%);
-  background:repeating-linear-gradient(45deg,var(--red500),var(--red500) 4px,var(--coral) 4px,var(--coral) 8px);
-  border-radius:0 3px 3px 0}
 .gt{width:22px;flex:none;display:grid;place-items:center}
 .gd{width:13px;height:13px;transform:rotate(45deg);border:1.6px solid var(--g300);
   background:var(--white);border-radius:2px}
@@ -348,7 +640,7 @@ html{scroll-padding-top:180px}
 .chip.crit{background:var(--red-bg);color:var(--red700);border-color:var(--red-bd)}
 .chip.risk{background:var(--amber-bg);color:var(--amber);border-color:var(--amber-bd)}
 .chip i{font-style:normal;font-weight:400;opacity:.8;display:block;font-size:9.5px;margin-top:1px}
-.mk-q.coll{background:rgba(235,23,0,.035);border-radius:6px}
+.mk-q.coll{background:rgba(0,0,201,.035);border-radius:6px}
 
 /* ══ BY BUSINESS UNIT ══ */
 .bu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
@@ -365,7 +657,7 @@ html{scroll-padding-top:180px}
 .bu-li{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--g100);
   width:100%;text-align:left}
 .bu-li:last-child{border-bottom:none}
-.bu-li:hover .bu-ln{color:var(--red600)}
+.bu-li:hover .bu-ln{color:var(--brand-600)}
 .bu-ln{font-size:12px;font-weight:650;flex:1}
 .bu-lp{font-size:9.5px;font-weight:700;color:var(--g600);background:var(--g100);padding:2px 6px;
   border-radius:3px;flex:none}
@@ -448,7 +740,9 @@ html{scroll-padding-top:180px}
 .ld-sup-m{font-size:10.5px;font-weight:650;color:var(--red600);letter-spacing:.2px}
 .ld-sup-sib{margin-top:7px;display:flex;flex-wrap:wrap;gap:6px;align-items:center}
 .ld-sup-sl{font-size:10px;color:var(--g500);width:100%;margin-bottom:1px}
-.ld-sup-lk{font-size:10.5px;font-weight:650;color:var(--blue600,#2563eb);background:var(--g50,#f6f7f9);
+/* --blue600 was a pre-rebrand token that no longer exists, so this was silently
+   rendering via its fallback; named directly now. Same for the hardcoded #f6f7f9. */
+.ld-sup-lk{font-size:10.5px;font-weight:650;color:var(--brand);background:var(--g50);
   border:1px solid var(--g200);border-radius:6px;padding:3px 8px;cursor:pointer}
 .ld-sup-lk:hover{background:var(--g100);text-decoration:underline}
 .ld-ws{display:flex;align-items:center;gap:9px;padding:5px 0}
@@ -480,9 +774,18 @@ html{scroll-padding-top:180px}
 .ch{display:flex;gap:11px;padding:8px 0;align-items:flex-start;position:relative}
 .ch::before{content:"";position:absolute;left:5px;top:18px;bottom:-8px;width:1.5px;background:var(--g300)}
 .ch:last-child::before{display:none}
+/* Downstream-impact timeline node. Three states that must be tellable apart
+   without colour: a gate holding its baseline (hollow), the FIRST gate the slip
+   hits (the direct hit), and the later gates that slip as a consequence.
+   `hit` and `warn` were both solid discs separated only by hue (brand blue vs
+   amber) — and the `.chm` line beside them shows a date change for BOTH, so no
+   text disambiguated them either. The direct hit now carries a halo ring, which
+   reads as emphasis at a glance and survives greyscale; each node also names its
+   state in a `title`. Hollow-vs-solid already separated "held" from "slipping",
+   so that pair needed nothing. */
 .chd{width:11px;height:11px;border-radius:50%;border:2px solid var(--g300);background:var(--white);
   flex:none;margin-top:4px;z-index:1}
-.chd.hit{border-color:var(--red500);background:var(--red500)}
+.chd.hit{border-color:var(--brand);background:var(--brand);box-shadow:0 0 0 2.5px var(--brand-bd)}
 .chd.warn{border-color:var(--amber-s);background:var(--amber-s)}
 .chn{font-size:12px;font-weight:650;line-height:1.3}
 .chm{font-size:10.5px;color:var(--g600);margin-top:2px}
@@ -496,7 +799,7 @@ html{scroll-padding-top:180px}
 .st-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
 .st-ic{width:37px;height:37px;border-radius:9px;background:var(--red-bg);display:grid;
   place-items:center;margin-bottom:12px}
-.st-ic svg{width:19px;height:19px;stroke:var(--red500);stroke-width:1.7;fill:none}
+.st-ic svg{width:19px;height:19px;stroke:var(--brand);stroke-width:1.7;fill:none}
 .st-t{font-size:14.5px;font-weight:700;letter-spacing:-.25px;margin-bottom:7px}
 .st-d{font-size:12px;color:var(--g700);line-height:1.6}
 .st-u{margin-top:12px;padding-top:11px;border-top:1px solid var(--g100);font-size:10.5px;
@@ -553,7 +856,7 @@ html{scroll-padding-top:180px}
 .blockedby b{color:var(--g900);font-weight:650}
 
 /* ══ RESOLUTION WORKSPACE ══ */
-.scrim{position:fixed;inset:0;background:rgba(26,24,23,.42);z-index:60;opacity:0;
+.scrim{position:fixed;inset:0;background:rgba(18,26,37,.42);z-index:60;opacity:0;
   pointer-events:none;transition:opacity .24s;backdrop-filter:blur(2px)}
 .scrim.on{opacity:1;pointer-events:auto}
 .rw{position:fixed;top:0;right:0;bottom:0;width:min(1000px,92vw);background:var(--g50);z-index:61;
@@ -576,14 +879,14 @@ html{scroll-padding-top:180px}
 .cn:last-child{padding-bottom:0}
 .cn::before{content:"";position:absolute;left:8px;top:20px;bottom:0;width:1.5px;background:var(--g300)}
 .cn:last-child::before{display:none}
-.cn.hit .cd{border-color:var(--red500);background:var(--red500)}
+.cn.hit .cd{border-color:var(--brand);background:var(--brand)}
 .cn.warn .cd{border-color:var(--amber-s);background:var(--amber-s)}
 .cqi b{color:var(--red600);font-weight:700}
 .cqi.ok b{color:var(--g800)}
 .opt{background:var(--white);border:1.5px solid var(--g200);border-radius:10px;padding:15px;
   text-align:left;transition:.15s;position:relative;display:flex;flex-direction:column}
 .opt:hover{border-color:var(--g500)}
-.opt.sel{border-color:var(--red500);box-shadow:0 0 0 3px rgba(235,23,0,.09)}
+.opt.sel{border-color:var(--brand);box-shadow:0 0 0 3px rgba(0,0,201,.10)}
 .opt.rec::after{content:"Agent recommends";position:absolute;top:-8px;left:13px;
   background:var(--purple);color:#fff;font-size:9px;font-weight:700;letter-spacing:.4px;
   text-transform:uppercase;padding:2.5px 7px;border-radius:4px}
@@ -593,7 +896,7 @@ html{scroll-padding-top:180px}
 .orisk.lo{background:var(--ok-bg);color:var(--ok)}
 .orisk.md{background:var(--amber-bg);color:var(--amber)}
 .orisk.hi{background:var(--red-bg);color:var(--red700)}
-.opt.sel .osel{background:var(--red500);color:#fff}
+.opt.sel .osel{background:var(--brand);color:#fff}
 .toast{position:fixed;bottom:24px;left:50%;transform:translate(-50%,130%);z-index:90;
   background:var(--g900);color:#fff;padding:13px 19px;border-radius:10px;box-shadow:var(--sh3);
   display:flex;gap:12px;align-items:center;max-width:600px;
@@ -632,10 +935,23 @@ html{scroll-padding-top:180px}
 .sg.cur::after{content:"";position:absolute;left:0;top:0;bottom:0;width:var(--f,50%)}
 .sg.cur.ok{border-color:var(--g800)}
 .sg.cur.ok::after{background:var(--g800)}
+/*
+ * At-risk and off-track phases differ by TEXTURE as well as hue, because amber
+ * and red are the pair this file's status block proves cannot be separated under
+ * deuteranopia/protanopia at any amber (measured ΔE 2.0–4.0). Without a second
+ * channel a red/green-colour-blind reader sees two identical bars.
+ *   rk — 45° diagonal hatch, gapped (reads as "moving, not settled")
+ *   ct — 135° hatch, tighter and denser, so it is distinguishable from rk by
+ *        STRIPE DIRECTION alone, which survives greyscale and forced-colors.
+ * Filling ::after (the progress portion) means the texture appears only on the
+ * elapsed part of the phase, so it still reads as a progress bar.
+ */
 .sg.cur.rk{border-color:var(--amber-s);background:#FDF4E6}
-.sg.cur.rk::after{background:var(--amber-s)}
+.sg.cur.rk::after{background:repeating-linear-gradient(45deg,
+  var(--amber-s),var(--amber-s) 3px,#F6D9A4 3px,#F6D9A4 6px)}
 .sg.cur.ct{border-color:var(--red500);background:var(--red-bg)}
-.sg.cur.ct::after{background:var(--red500)}
+.sg.cur.ct::after{background:repeating-linear-gradient(135deg,
+  var(--red500),var(--red500) 2.5px,var(--coral) 2.5px,var(--coral) 5px)}
 /* gate markers: numbered, big enough to read */
 .gt{width:26px;flex:none;display:grid;place-items:center}
 .gd{width:19px;height:19px;transform:rotate(45deg);border:1.5px solid var(--g300);
@@ -651,6 +967,12 @@ html{scroll-padding-top:180px}
 .tk-lg .sst{width:19px;height:19px}
 .tk-lg .sst svg{width:11px;height:11px}
 .tk-lg .sg{height:12px;margin:0}
+/* Legend swatch for the phase bars. `.sg` is a flex child in a real row, so the
+   legend has to opt out of growing — hence `flex:none` and a fixed width here
+   rather than on each of the three swatches in the view. The 55% fill is a fixed
+   illustration of "in progress", NOT a datum, so it belongs in CSS: setting it
+   from the view made a presentational constant look like a business value. */
+.tk-lg .sg-sw{width:26px;flex:none;--f:55%}
 .ms-sp.amb{background:repeating-linear-gradient(45deg,var(--amber-s),var(--amber-s) 3px,#F3C77E 3px,#F3C77E 6px)}
 .msr .tk-c0{align-self:center}
 
@@ -668,9 +990,9 @@ html{scroll-padding-top:180px}
 .mkr:last-of-type{border-bottom:none}
 .mkr:hover{background:var(--g50)}
 .mk-q{flex:1;padding:0 6px;border-left:1px solid var(--g100);position:relative;min-height:36px}
-.mkr .mk-q.cur{background:rgba(26,24,23,.022)}
+.mkr .mk-q.cur{background:rgba(18,26,37,.022)}
 .mk-hd .mk-q{border-left:1px solid var(--g200)}
-.mkr .mk-q.coll{background:rgba(235,23,0,.05);border-radius:5px}
+.mkr .mk-q.coll{background:rgba(0,0,201,.05);border-radius:5px}
 .mkh{display:flex;align-items:center;gap:7px}
 .cc{font-size:9px;font-weight:800;letter-spacing:.4px;color:var(--g600);background:var(--g100);
   border:1px solid var(--g200);border-radius:3px;padding:2px 5px;flex:none}
@@ -735,7 +1057,7 @@ html{scroll-padding-top:180px}
 .mk-c1{display:flex;flex-direction:column;justify-content:center}
 .mk-hd .mk-c1{justify-content:flex-end}
 .mkr .mk-q{padding-top:2px;padding-bottom:2px;display:flex;flex-direction:column;justify-content:center}
-.mkr .mk-q.coll{background:rgba(26,24,23,.05);box-shadow:inset 0 0 0 1px var(--g300)}
+.mkr .mk-q.coll{background:rgba(18,26,37,.05);box-shadow:inset 0 0 0 1px var(--g300)}
 .cai svg{width:12px;height:12px;fill:var(--purple);stroke:none}
 .cai:hover svg{fill:#fff}
 
@@ -745,7 +1067,7 @@ html{scroll-padding-top:180px}
 .ac{width:3px;height:14px;border-radius:2px;background:var(--g400);flex:none}
 .ac.a{background:var(--amber-s)}.ac.r{background:var(--red500)}
 .lg2.shade::before{content:"";width:16px;height:14px;border-radius:3px;
-  background:rgba(26,24,23,.05);box-shadow:inset 0 0 0 1px var(--g300);flex:none}
+  background:rgba(18,26,37,.05);box-shadow:inset 0 0 0 1px var(--g300);flex:none}
 
 /* ══ AI SPARK ══ */
 .ai-spark{display:inline-grid;place-items:center;width:18px;height:18px;flex:none}
@@ -757,7 +1079,7 @@ html{scroll-padding-top:180px}
 
 /* ══ COCKPIT — WHERE TO FOCUS band ══ */
 .focus{background:var(--white);border:1px solid var(--g200);border-radius:12px;
-  box-shadow:0 1px 3px rgba(26,24,23,.05);overflow:hidden;margin-bottom:14px}
+  box-shadow:0 1px 3px rgba(18,26,37,.05);overflow:hidden;margin-bottom:14px}
 .focus-ai:hover .ai-spark svg{fill:#fff}
 .ft-ic svg{width:14px;height:14px;stroke:var(--g600);stroke-width:1.9;fill:none}
 .ft.hot .ft-ic{background:var(--red-bg)}.ft.hot .ft-ic svg{stroke:var(--red600)}
@@ -768,7 +1090,7 @@ html{scroll-padding-top:180px}
 /* ══ COCKPIT — KPI cards, modern ══ */
 .kgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:14px}
 .kc{background:var(--white);border:1px solid var(--g200);border-radius:12px;padding:16px 18px 14px;
-  display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(26,24,23,.04)}
+  display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(18,26,37,.04)}
 .kc-t{font-size:10.5px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
   color:var(--g500);margin-bottom:0}
 .kc-hero{display:flex;align-items:flex-end;justify-content:space-between;gap:14px;
@@ -779,12 +1101,101 @@ html{scroll-padding-top:180px}
 .kc-v.r{color:var(--red600)}.kc-v.a{color:var(--amber)}
 .kc-u{font-size:15px;font-weight:550;color:var(--g500);letter-spacing:-.3px}
 .kc-u.pre{margin-right:1px}
-.spark{width:84px;height:30px;flex:none}
-.spark .sl{fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;stroke:var(--g400)}
-.spark .sl.a{stroke:var(--amber-s)}.spark .sl.r{stroke:var(--red500)}
-.spark .sd{fill:var(--g400)}.spark .sd.a{fill:var(--amber-s)}.spark .sd.r{fill:var(--red500)}
-.spark .sb{fill:var(--g300);rx:1.5}
-.spark .sb.a{fill:var(--amber-bd)}.spark .sb.r{fill:var(--red-bd)}
+/* KPI micro-chart (KpiDistribution) — the real breakdown behind the headline.
+   Bars are the app's actual series/status tones, not the faint BORDER tints they
+   used to use (--g300/--amber-bd), which were too low-contrast to read as data. */
+.spark{width:84px;height:30px;flex:none;overflow:visible}
+.spark .sb{fill:var(--g400);transition:fill .12s}
+.spark .sb.a{fill:var(--amber)}
+.spark .sb.r{fill:var(--red500)}
+/* Hover names the record via <title>; deepening the bar shows which one is read. */
+.spark .sb:hover{fill:var(--brand)}
+.spark .sb.a:hover{fill:var(--red700)}
+/* ══ CAPTURED-THIS-SESSION LIST ══
+   The findings a capture flow has just committed, offered as links back to each
+   one. Shared by the Copilot chat and the end-of-day capture panel, which had
+   byte-identical copies of this block inline — ~14 inline style properties each,
+   including a hardcoded `#fff` and two hex fallbacks that would silently diverge
+   from the tokens. One class, one definition. */
+.cap-l{border:1px solid var(--g200);border-radius:10px;padding:14px;margin-top:14px;
+  background:var(--white)}
+.cap-lt{font-size:12px;text-transform:uppercase;letter-spacing:.4px;color:var(--g600);
+  margin-bottom:8px}
+.cap-ll{display:flex;flex-direction:column;gap:6px}
+.cap-i{display:block;width:100%;text-align:left;border:none;background:none;cursor:pointer;
+  padding:4px 6px;margin:0 -6px;border-radius:6px;font-size:13px;color:var(--g800);
+  transition:background .12s}
+.cap-i:hover{background:var(--g50)}
+.cap-i b{color:var(--red600);font-weight:700}
+.cap-i i{font-style:normal;color:var(--g600);font-size:11px;display:inline-flex;
+  align-items:center;gap:3px}
+/* `ok` = the just-committed confirmation, on a success-tinted surface. The
+   end-of-day panel used a literal #F0F7F2 here; --ok-bg is the same intent as a
+   token, so it tracks the green the rest of the app uses. */
+.cap-l.ok{background:var(--ok-bg);border-color:var(--ok-bd);padding:12px;margin-top:12px;
+  border-radius:8px}
+.cap-l.ok .cap-lt{font-size:13px;font-weight:700;text-transform:none;letter-spacing:0;
+  color:var(--g900)}
+.cap-l.ok .cap-i:hover{background:#E2EFE6}
+
+/* Inline brand symbols (components/Brand/Glyph.tsx). Nine codepoints the UI used
+   as text — → ↳ ⋮ ▲ ▼ ◆ ● ✓ ✕ — have no glyph in any Noto Sans subset and were
+   measured rendering as the browser's .notdef "tofu" box; they are now SVG.
+   Sized in `em` so one rule serves an 8.5px chip and a 13px button alike, and
+   filled with currentColor so each picks up its context's tone unaided. */
+/* `display:inline-block` is LOAD-BEARING, not tidy-up. Tailwind's preflight sets
+ * `svg{display:block}`, which every other Glyph caller gets away with because it
+ * sits in a flex row — but GlyphText puts glyphs INSIDE a line of prose, where a
+ * block-level svg forces a line break. That shredded the copilot's handoff-chain
+ * subtitle from one 15.9px line into 115.8px across 9 stacked lines. Do not
+ * remove this, and do not trust a CSS grep to find the culprit: the offending
+ * rule is in the preflight, not in this file. */
+.gly{display:inline-block;width:1em;height:1em;flex:none;vertical-align:-0.115em}
+.gly.sm{width:.82em;height:.82em}
+
+/* `vertical-align` is INERT on a flex item, and `.dr-ai` (escalation summaries)
+ * is `display:flex; align-items:flex-start`. So the arrows GlyphText drops into
+ * that prose ignored the rule above and hung off the top of the line — measured
+ * 3.91px above the text's optical centre at 11.5px type, a third of the font
+ * size. `align-self` is the flex-context equivalent, and centring against the
+ * line box is what `vertical-align:-0.115em` was approximating for inline text.
+ *
+ * Scoped to the flex case on purpose: the inline callers (LaunchView's
+ * baseline→forecast, IssueView's avatar dot) are correctly served by the baseline
+ * shift, and `align-self` would do nothing for them anyway. */
+.dr-ai .gly{align-self:center}
+
+/* Screen-reader-only text (components/Brand/GlyphText.tsx).
+ *
+ * <Glyph> is aria-hidden because its callers pair it with a visible label that
+ * carries the meaning. GlyphText is the one case where that does not hold: it
+ * substitutes glyphs into backend PROSE, where the arrow is a word in the
+ * sentence, so hiding it with nothing in its place would read out "Raised
+ * accepted both scenarios prepared" — two ladder rungs welded together. This
+ * supplies the missing word to assistive tech only.
+ *
+ * Not `display:none` and not `visibility:hidden` — both remove the node from the
+ * accessibility tree, which is the opposite of the point. The 1px-clip idiom
+ * keeps it rendered (hence readable) while occupying no visual space.
+ *
+ * `display:inline` is explicit for the same reason `.gly` needs it: this span is
+ * injected into a line of prose, and anything block-level there forces a line
+ * break. Absolute positioning is what actually removes it from flow; the
+ * `inline` + zero box guarantee it cannot contribute a line box even before the
+ * absolute takes effect. Keep both. */
+.sr-t{display:inline;position:absolute;width:1px;height:1px;padding:0;margin:-1px;
+  overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}
+
+/* The same right-arrow for the guided tour's narration and spotlight labels,
+   which are injected through `innerHTML` (raw HTML strings) and so cannot use the
+   React <Glyph> component. An inline SVG data-URI mask gives identical geometry
+   with no font dependency, and `background:currentColor` keeps it in the colour of
+   the sentence it sits in. Written as `<span class="ga"></span>` in those strings. */
+.ga{display:inline-block;width:.78em;height:.78em;vertical-align:-0.06em;
+  background:currentColor;
+  -webkit-mask:var(--ga-svg) center/contain no-repeat;
+  mask:var(--ga-svg) center/contain no-repeat}
+
 .kc-delta{font-size:11px;color:var(--g600);margin-top:11px;display:flex;align-items:center;gap:5px}
 .kc-delta em{font-style:normal;color:var(--g500)}
 .kc-delta.up{color:var(--g700)}
@@ -797,13 +1208,18 @@ html{scroll-padding-top:180px}
 .ks span{font-size:10px;color:var(--g600);display:block;margin-top:6px}
 .kc-stack{display:flex;gap:3px;margin-top:12px;height:6px}
 .kb{border-radius:3px}
-.kb.g{background:var(--ok)}.kb.a{background:var(--amber-s)}.kb.r{background:var(--red500)}
+/* This stacked bar carries real launch status, so its at-risk segment must use
+   the VALIDATED data tone --amber (#8C5008), not the decorative --amber-s
+   (#E8A33D, 2.1:1 on white and never run through the palette validator). The
+   segments sit directly against --ok and --red500 here, which is exactly the
+   adjacent pair the ΔE separation floor governs. */
+.kb.g{background:var(--ok)}.kb.a{background:var(--amber)}.kb.r{background:var(--red500)}
 .kc-ft{margin-top:12px;padding-top:11px;border-top:1px solid var(--g100);font-size:10.5px;
   color:var(--g600);display:flex;justify-content:space-between;gap:10px}
 .kc-ft b{color:var(--g900);font-weight:650}
 .pnl-h{justify-content:space-between}
 .pnl-ai{display:inline-flex;align-items:center;gap:6px;font-size:11px;font-weight:650;
-  color:var(--purple);background:var(--purple-bg);border:1px solid #E9D2FB;
+  color:var(--purple);background:var(--purple-bg);border:1px solid var(--purple-bd);
   padding:5px 11px 5px 8px;border-radius:16px;flex:none}
 .pnl-ai:hover{background:var(--purple);color:#fff}
 .pnl-ai:hover .ai-spark svg{fill:#fff}
@@ -820,7 +1236,7 @@ html{scroll-padding-top:180px}
 /* BY BUSINESS UNIT v3 — card as a list of its launches */
 .bu-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:stretch}
 .bu-c{background:var(--white);border:1px solid var(--g200);border-radius:12px;overflow:hidden;
-  display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(26,24,23,.04);
+  display:flex;flex-direction:column;box-shadow:0 1px 3px rgba(18,26,37,.04);
   border-top:none;border-left:3px solid var(--g300)}
 .bu-c.ct{border-left-color:var(--red500)}
 .bu-c.rk{border-left-color:var(--amber-s)}
@@ -865,7 +1281,7 @@ html{scroll-padding-top:180px}
 .fb.rk.on{background:var(--amber);border-color:var(--amber)}
 .bu2-wrap{display:flex;flex-direction:column;gap:10px;margin-bottom:16px}
 .bu2-row{background:var(--white);border:1px solid var(--g200);border-radius:12px;overflow:hidden;
-  box-shadow:0 1px 3px rgba(26,24,23,.04);border-left:3px solid var(--g300)}
+  box-shadow:0 1px 3px rgba(18,26,37,.04);border-left:3px solid var(--g300)}
 .bu2-row.ct{border-left-color:var(--red500)}
 .bu2-row.rk{border-left-color:var(--amber-s)}
 .bu2-row.open{box-shadow:var(--sh1)}
@@ -916,7 +1332,7 @@ html{scroll-padding-top:180px}
 .tm-x{font-size:12px;line-height:1.6;color:var(--g700)}
 .tm-x b{color:var(--g900);font-weight:650}
 .tm-add{display:flex;gap:11px;align-items:center;padding:13px 0}
-.tm-add .tm-av{background:var(--red500)}
+.tm-add .tm-av{background:var(--brand)}
 .tm-add input{flex:1;border:1px solid var(--g300);border-radius:8px;padding:8px 11px;
   font-size:12px;font-family:inherit;outline:none}
 .tm-add input:focus{border-color:var(--g900)}
@@ -943,8 +1359,8 @@ html{scroll-padding-top:180px}
 .ot-r{border-bottom:1px solid var(--g100);cursor:pointer;transition:background .12s}
 .ot-r:last-child{border-bottom:none}
 .ot-r:hover{background:var(--g50)}
-.ot-r.sel{background:#FFF7F5;box-shadow:inset 3px 0 0 var(--red500)}
-.ot-r input{width:15px;height:15px;accent-color:var(--red500)}
+.ot-r.sel{background:var(--brand-bg);box-shadow:inset 3px 0 0 var(--brand)}
+.ot-r input{width:15px;height:15px;accent-color:var(--brand)}
 .ot-n{font-size:12.5px;font-weight:670;line-height:1.35;position:relative}
 .ot-n em{font-style:normal;display:block;font-size:10.5px;font-weight:400;color:var(--g600);margin-top:3px}
 .ot-rec{display:inline-block;font-size:8.5px;font-weight:800;letter-spacing:.4px;
@@ -980,7 +1396,7 @@ html{scroll-padding-top:180px}
 /* MY WORK panel */
 .scrim3.on{opacity:1;pointer-events:auto}
 .pn.on{transform:none}
-.pn-tb.on{color:var(--g900);font-weight:680;border-bottom-color:var(--red500)}
+.pn-tb.on{color:var(--g900);font-weight:680;border-bottom-color:var(--brand)}
 .pn-tb .bdg{height:16px;min-width:16px;font-size:9.5px}
 .pn-sec.on{display:block}
 .pw.crit{border-left-color:var(--red500)}
@@ -996,7 +1412,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .av.ag svg{width:11px;height:11px;fill:var(--purple);stroke:none}
 .pwd{width:18px;height:4px;border-radius:2px;background:var(--g200);flex:none}
 .pwd.done{background:var(--g500)}
-.pwd.now{background:var(--red500)}
+.pwd.now{background:var(--brand)}
 .pw-tl em{font-style:normal;font-size:9.5px;color:var(--g500);margin-left:6px}
 
 @media(max-width:1400px){.pb-facts{grid-template-columns:repeat(2,1fr)}
@@ -1008,7 +1424,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .ld-tb{padding:9px 13px 8px;font-size:12.5px;color:var(--g600);border-bottom:2.5px solid transparent;
   display:flex;align-items:center;gap:7px;white-space:nowrap}
 .ld-tb:hover{color:var(--g900)}
-.ld-tb.on{color:var(--g900);font-weight:680;border-bottom-color:var(--red500)}
+.ld-tb.on{color:var(--g900);font-weight:680;border-bottom-color:var(--brand)}
 .ld-tb .bdg{height:16px;min-width:16px;font-size:9.5px}
 
 /* ══════════ WORKFLOW DETAIL ══════════ */
@@ -1148,9 +1564,12 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .mlq{display:flex;align-items:center;gap:9px;padding:7px 0;border-bottom:1px solid var(--g100);
   width:100%;text-align:left}
 .mlq:last-child{border-bottom:none}
-.mlq:hover .mlq-n{color:var(--red600)}
-.mlq i{width:7px;height:7px;border-radius:50%;background:var(--g400);flex:none}
-.mlq i.ct{background:var(--red500)}.mlq i.rk{background:var(--amber-s)}
+.mlq:hover .mlq-n{color:var(--brand-600)}
+/* The first-ship list's status mark is the same `MlDot` the market rows use, so
+   the two cannot drift. It was a bare 7px round div whose `ok` state rendered as
+   the EMPTY class — meaning an on-plan launch and a launch with no status at all
+   were pixel-identical. Sizing only; shape and colour come from `.mg-dot`. */
+.mlq .mg-dot{width:9px;height:9px}
 .mlq-n{font-size:11.5px;font-weight:600;flex:1}
 .mlq-q{font-size:10.5px;color:var(--g600);font-variant-numeric:tabular-nums}
 
@@ -1163,7 +1582,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .map-grid{display:grid;grid-template-columns:minmax(0,1fr) 322px;gap:14px;
   align-items:start;justify-content:start}
 .map-box{background:var(--white);border:1px solid var(--g200);border-radius:12px;
-  padding:14px 16px 10px;box-shadow:0 1px 3px rgba(26,24,23,.04)}
+  padding:14px 16px 10px;box-shadow:0 1px 3px rgba(18,26,37,.04)}
 .map-hd{display:flex;align-items:baseline;gap:12px;margin-bottom:10px}
 .map-eb{font-size:9.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
   color:var(--red600)}
@@ -1180,7 +1599,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .wp-r2{animation-delay:1.4s}
 @keyframes wpp{0%{opacity:.6;transform:scale(.6)}100%{opacity:0;transform:scale(1.95)}}
 .wp-d{position:absolute;inset:0;border-radius:50%;background:var(--red500);
-  border:1.5px solid #fff;box-shadow:0 1px 4px rgba(26,24,23,.35);
+  border:1.5px solid #fff;box-shadow:0 1px 4px rgba(18,26,37,.35);
   display:grid;place-items:center;font-size:9px;font-weight:800;color:#fff;
   font-variant-numeric:tabular-nums;transition:transform .14s}
 /* the country only names itself when you reach for it — at world scale there
@@ -1197,13 +1616,13 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .wp.rk .wp-r1,.wp.rk .wp-r2{border-color:var(--amber-s)}
 .wp.rk .wp-d{background:var(--amber-s)}
 .wp.ok .wp-r1,.wp.ok .wp-r2{display:none}
-.wp.ok .wp-d{background:#7E9BB4;box-shadow:0 1px 4px rgba(26,24,23,.2)}
+.wp.ok .wp-d{background:var(--sky);box-shadow:0 1px 4px rgba(18,26,37,.2)}
 .wp:hover{z-index:6}
 .wp:hover .wp-d{transform:scale(1.12)}
-.wp.sel .wp-d{box-shadow:0 0 0 3px rgba(26,24,23,.3),0 2px 6px rgba(26,24,23,.32)}
+.wp.sel .wp-d{box-shadow:0 0 0 3px rgba(18,26,37,.3),0 2px 6px rgba(18,26,37,.32)}
 /* registration markets: a dot, not a label. The code shows on hover. */
 .wp.sm{--s:9px;z-index:1}
-.wp.sm .wp-d{border-width:1.5px;background:#7E9BB4;box-shadow:0 1px 3px rgba(26,24,23,.25)}
+.wp.sm .wp-d{border-width:1.5px;background:var(--sky);box-shadow:0 1px 3px rgba(18,26,37,.25)}
 .wp.sm .wp-r1,.wp.sm .wp-r2{display:none}
 .wp.sm:hover .wp-d,.wp.sm.sel .wp-d{transform:scale(1.55);background:var(--g900)}
 .ms-rg{font-size:11.5px;color:var(--g700);line-height:1.6}
@@ -1211,11 +1630,37 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
   border-top:1px solid var(--g100);flex-wrap:wrap}
 .wlg{display:flex;align-items:center;gap:7px;font-size:10.5px;color:var(--g600)}
 .wlg.dim{margin-left:auto;color:var(--g500)}
-.md{width:11px;height:11px;border-radius:50%;flex:none;background:#8FA9C0;border:1.5px solid #fff;
-  box-shadow:0 1px 2px rgba(26,24,23,.2)}
+/* Map legend swatch.
+ *
+ * MEASURED DRIFT, now fixed. The base was a raw `#8FA9C0` that appears nowhere
+ * else in the system, so the "On plan" swatch painted rgb(143,169,192) while the
+ * on-plan pins it claimed to explain painted `--sky` (#0093D0) — the legend
+ * disagreed with the map. It also made "On plan" and "Registration market" read
+ * as two different things when both pins are the same colour.
+ *
+ * Each swatch now draws from the SAME token as the pin it explains — `.wp.ok
+ * .wp-d`/`.wp.sm .wp-d` → --sky, `.wp.rk` → --amber-s, `.wp.ct` → --red500 — so
+ * the two cannot diverge again. If you retone a pin, retone it here in the same
+ * edit, or better: change the token.
+ *
+ * NOTE: a second `.md` rule exists earlier in this file (the ~9px status dot used
+ * by `.orisk`/`.rd` chips). This one wins by source order for the legend, which
+ * is the intent, but the name is overloaded — do not "tidy" one away without
+ * checking both call sites. */
+.md{width:11px;height:11px;border-radius:50%;flex:none;background:var(--sky);border:1.5px solid #fff;
+  box-shadow:0 1px 2px rgba(18,26,37,.2)}
 .md.ct{background:var(--red500)}.md.rk{background:var(--amber-s)}
+/* Registration markets are the same light blue as an on-plan launch market; the
+   pin differs by SIZE (9px `.wp.sm` vs 18px), not hue, so the swatch matches. */
+.md.reg{width:9px;height:9px}
 .map-sc{display:flex;align-items:center;gap:6px;font-size:10.5px;color:var(--g600)}
 .map-sc i{border-radius:50%;background:var(--g400);border:1.5px solid #fff;display:block}
+/* The size ramp, as classes rather than three repeated inline `style` objects. */
+.map-sc .sc1{width:11px;height:11px}
+.map-sc .sc2{width:15px;height:15px}
+.map-sc .sc3{width:19px;height:19px}
+/* qualifier on a legend entry whose swatch colour is intentionally shared */
+.wlg em{font-style:normal;color:var(--g500)}
 
 /* ══════════ MY DECISIONS ══════════ */
 .es-sum{font-size:11.5px;color:var(--g600);background:var(--g100);border-radius:16px;
@@ -1242,10 +1687,14 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .dr-ai b{font-weight:650;color:var(--g900)}
 .dr-r{display:flex;flex-direction:column;align-items:flex-end;gap:8px}
 .dr-fn{font-size:10px;color:var(--g500);text-align:right}
-.wtl{display:flex;gap:3px;flex:none;padding-top:4px}
+/* Escalation ladder. The CURRENT rung is taller as well as blue, so which step
+   the escalation has reached is readable without colour (see `pipTitle` in
+   ActionsView for the text channel). `align-items:flex-end` keeps the bars on a
+   common baseline while one of them grows. */
+.wtl{display:flex;gap:3px;flex:none;padding-top:4px;align-items:flex-end}
 .wtl .pwd{width:14px;height:4px;border-radius:2px;background:var(--g200)}
 .wtl .pwd.done{background:var(--g500)}
-.wtl .pwd.now{background:var(--red500)}
+.wtl .pwd.now{background:var(--brand);height:7px}
 .wtl.ok .pwd.now{background:var(--g800)}
 
 /* ══════════ HISTORY ══════════ */
@@ -1264,7 +1713,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .ev-sp{flex:1}
 .ev-find{display:inline-flex;align-items:center;gap:7px;background:var(--white);
   border:1px solid var(--g300);border-radius:8px;padding:0 11px;height:30px}
-.ev-find:focus-within{border-color:var(--g900);box-shadow:0 0 0 2px rgba(26,24,23,.07)}
+.ev-find:focus-within{border-color:var(--g900);box-shadow:0 0 0 2px rgba(18,26,37,.07)}
 .ev-find svg{width:13px;height:13px;stroke:var(--g500);stroke-width:2;fill:none;flex:none}
 .ev-find input{border:none;outline:none;background:none;font-family:var(--font);font-size:11.5px;
   width:150px;color:var(--g900)}
@@ -1339,10 +1788,10 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 /* business-unit issue links */
 .bu-fi{font-size:10.5px;color:var(--g600);text-align:left;padding:0;
   border-bottom:1px dashed var(--g400)}
-.bu-fi:hover{color:var(--red600);border-bottom-color:var(--red500)}
+.bu-fi:hover{color:var(--brand-600);border-bottom-color:var(--brand)}
 .bu-fi b{font-weight:750;color:var(--g900);font-variant-numeric:tabular-nums}
 .bu-fi b.r{color:var(--red600)}.bu-fi b.a{color:var(--amber)}
-.bu-fi:hover b{color:var(--red600)}
+.bu-fi:hover b{color:var(--brand-600)}
 
 /* resolution workspace: where this is tracked */
 
@@ -1356,7 +1805,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 
 /* ══════════ v7 — ALERTS TABLE ══════════ */
 .al-wrap{background:var(--white);border:1px solid var(--g200);border-radius:12px;overflow:hidden;
-  box-shadow:0 1px 3px rgba(26,24,23,.04)}
+  box-shadow:0 1px 3px rgba(18,26,37,.04)}
 .al{width:100%;border-collapse:collapse;table-layout:fixed}
 .al th{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--g600);
   padding:12px 14px;background:var(--g50);border-bottom:1px solid var(--g200);white-space:nowrap}
@@ -1377,7 +1826,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .al-id{font-size:9.5px;font-weight:700;letter-spacing:.4px;color:var(--g500);display:block}
 .al-t{font-size:12.5px;font-weight:660;line-height:1.35;display:block;margin-top:3px}
 .al-rc{font-size:10.5px;color:var(--g600);line-height:1.45;display:block;margin-top:4px}
-.al tbody tr:hover .al-t{color:var(--red600)}
+.al tbody tr:hover .al-t{color:var(--brand-600)}
 /* impact category — a column, not a separator */
 .cat{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.2px;padding:4px 9px;
   border-radius:20px;white-space:nowrap;line-height:1.25}
@@ -1392,8 +1841,10 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .al-st.esc i{background:var(--g900)}
 .al-st.auto i{background:var(--purple)}
 .al-st.done i{background:var(--ok)}
-.al-go{display:block;font-size:10.5px;font-weight:700;color:var(--red600);margin-top:5px;opacity:0;
-  transition:opacity .13s}
+/* inline-flex (was block) so the trailing arrow glyph sits on the text baseline
+   rather than being pushed onto its own line by the block context. */
+.al-go{display:inline-flex;align-items:center;gap:1px;font-size:10.5px;font-weight:700;
+  color:var(--red600);margin-top:5px;opacity:0;transition:opacity .13s}
 .al tbody tr:hover .al-go{opacity:1}
 .al tr.hide{display:none}
 .al .slp{font-size:12.5px}
@@ -1403,9 +1854,12 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .al td.n .mono{font-size:12.5px;font-weight:700;color:var(--g700)}
 
 /* ══════════ ISSUE DETAIL — full page ══════════ */
-#v-issue{padding-bottom:78px}
+/* Clears BOTH fixed bottom bars: the ~78px .is-bar action bar plus the
+   disclaimer it now sits on top of, so the last section of the pane can still
+   be scrolled clear of them. */
+#v-issue{padding-bottom:calc(78px + var(--dsc-h))}
 .is-hd{background:var(--white);border:1px solid var(--g200);border-radius:12px;
-  box-shadow:0 1px 3px rgba(26,24,23,.04);margin-bottom:16px;overflow:hidden}
+  box-shadow:0 1px 3px rgba(18,26,37,.04);margin-bottom:16px;overflow:hidden}
 .is-hd-top{display:flex;align-items:flex-start;gap:14px;padding:18px 20px 15px}
 .is-hd-b{flex:1;min-width:0}
 .is-crumb{font-size:10.5px;color:var(--g600);margin-bottom:5px}
@@ -1426,7 +1880,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 
 /* light section shell: a label and a rule, not a nested box */
 .sec{background:var(--white);border:1px solid var(--g200);border-radius:12px;overflow:hidden;
-  box-shadow:0 1px 3px rgba(26,24,23,.04)}
+  box-shadow:0 1px 3px rgba(18,26,37,.04)}
 .sec-h{display:flex;align-items:center;gap:12px;padding:13px 18px;font-size:11px;font-weight:700;
   letter-spacing:.6px;text-transform:uppercase;color:var(--g700);border-bottom:1px solid var(--g200)}
 .sec-n{margin-left:auto;font-size:10.5px;font-weight:500;letter-spacing:0;text-transform:none;
@@ -1442,13 +1896,27 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .sec .acts{border:none;border-radius:0}
 
 /* sticky decision bar */
-.is-bar{position:fixed;left:0;right:0;bottom:0;z-index:34;background:var(--white);
-  border-top:1px solid var(--g200);box-shadow:0 -3px 14px rgba(26,24,23,.07);
+/* Sits directly ON TOP of the fixed .dsc disclaimer, never under it: .dsc is
+   z-index 80 vs this bar's 34, so sharing `bottom:0` let the disclaimer paint
+   over the Approve / Escalate / Reassign controls. Offsetting by --dsc-h keeps
+   both bars fully visible and stacked. */
+.is-bar{position:fixed;left:0;right:0;bottom:var(--dsc-h);z-index:34;background:var(--white);
+  border-top:1px solid var(--g200);box-shadow:0 -3px 14px rgba(18,26,37,.07);
   display:flex;align-items:center;gap:12px;padding:12px 26px}
 #v-issue:not(.on) ~ .is-bar,.view:not(.on) .is-bar{display:none}
 .is-bar-l{flex:1;min-width:0}
 .is-sel{display:block;font-size:13px;font-weight:700;letter-spacing:-.2px}
 .is-sub{display:block;font-size:10.5px;color:var(--g600);margin-top:2px}
+/* Settled-decision state in the action bar — replaces the Approve/Reject/Reassign
+   controls once approvedAt is set, so the committed outcome stays legible instead
+   of the bar showing a greyed-out button that reads as a failed click. */
+.is-approved{display:flex;align-items:center;gap:11px;min-width:0}
+.is-approved .tag.done{display:inline-flex;align-items:center;gap:5px;flex:none;
+  font-size:10px;padding:4px 9px}
+.is-approved .tag.done svg{width:11px;height:11px;stroke:var(--ok);stroke-width:2.4;fill:none}
+.is-approved-t{font-size:12px;font-weight:680;letter-spacing:-.1px;color:var(--g900);min-width:0}
+.is-approved-t em{display:block;font-style:normal;font-size:10.5px;font-weight:500;
+  color:var(--g600);margin-top:2px}
 
 @media(max-width:1240px){.is-two{grid-template-columns:1fr}
   .is-meta{flex-wrap:wrap}.im{min-width:150px;border-top:1px solid var(--g200)}
@@ -1459,7 +1927,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .pol{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;background:none;border:none;
   border-radius:0;overflow:visible;margin-bottom:16px}
 .poli{background:var(--white);border:1px solid var(--g200);border-radius:12px;padding:15px 17px;
-  box-shadow:0 1px 3px rgba(26,24,23,.04)}
+  box-shadow:0 1px 3px rgba(18,26,37,.04)}
 .polt{font-size:10px;letter-spacing:.5px;margin-bottom:9px}
 .polk{font-size:9px;padding:2px 6px;border-radius:4px}
 .polv{font-size:26px;font-weight:650;letter-spacing:-1.1px}
@@ -1468,7 +1936,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 
 /* three columns: soft cards, banded headers, hairline rows */
 .cols{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;align-items:start}
-.cols .pnl{border:1px solid var(--g200);border-radius:12px;box-shadow:0 1px 3px rgba(26,24,23,.04);
+.cols .pnl{border:1px solid var(--g200);border-radius:12px;box-shadow:0 1px 3px rgba(18,26,37,.04);
   overflow:hidden}
 .colh{padding:13px 16px;background:var(--g50);border-bottom:1px solid var(--g200);gap:9px}
 .colh .pnl-t{font-size:12.5px;font-weight:700}
@@ -1486,9 +1954,9 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
   margin-top:9px;padding:8px 11px}
 
 /* my decisions: a touch more air, softer edges */
-.dr{border-radius:12px;padding:16px 18px;box-shadow:0 1px 3px rgba(26,24,23,.04);
+.dr{border-radius:12px;padding:16px 18px;box-shadow:0 1px 3px rgba(18,26,37,.04);
   border-color:var(--g200)}
-.dr:hover{box-shadow:0 4px 14px rgba(26,24,23,.09)}
+.dr:hover{box-shadow:0 4px 14px rgba(18,26,37,.09)}
 .dr-ai{color:var(--g600)}
 
 /* the action plan reads better without an inner frame */
@@ -1555,7 +2023,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
   display:grid;place-items:center;font-size:9.5px;font-weight:700;margin-top:1px}
 .cmt-av.ag{background:var(--purple-bg)}
 .cmt-av.ag svg{width:14px;height:14px;fill:var(--purple);stroke:none}
-.cmt-av.me{background:var(--red500)}
+.cmt-av.me{background:var(--brand)}
 .cmt-b{flex:1;min-width:0}
 .cmt-h{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:4px}
 .cmt-h b{font-size:11.5px;font-weight:700}
@@ -1566,7 +2034,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .cmt-add{display:flex;gap:11px;align-items:center;padding-top:12px;border-top:1px solid var(--g200)}
 .cmt-add input{flex:1;min-width:0;border:1px solid var(--g300);border-radius:8px;padding:9px 12px;
   font-size:12px;font-family:inherit;outline:none;background:var(--white)}
-.cmt-add input:focus{border-color:var(--g900);box-shadow:0 0 0 3px rgba(26,24,23,.06)}
+.cmt-add input:focus{border-color:var(--g900);box-shadow:0 0 0 3px rgba(18,26,37,.06)}
 .cmt.fresh{animation:cmtin .3s ease}
 @keyframes cmtin{from{opacity:0;transform:translateY(-5px)}to{opacity:1;transform:none}}
 
@@ -1575,12 +2043,12 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 /* ══════════ v9 — DOMAIN STRIP ══════════ */
 .dv-strip{display:flex;gap:10px;overflow-x:auto;padding:2px 2px 10px;margin-bottom:14px}
 .dvt{flex:0 0 168px;background:var(--white);border:1px solid var(--g200);border-radius:10px;
-  padding:12px 14px;text-align:left;box-shadow:0 1px 3px rgba(26,24,23,.04);
+  padding:12px 14px;text-align:left;box-shadow:0 1px 3px rgba(18,26,37,.04);
   transition:border-color .13s,box-shadow .13s;border-top:3px solid var(--g300)}
-.dvt:hover{border-color:var(--g400);box-shadow:0 3px 10px rgba(26,24,23,.08)}
+.dvt:hover{border-color:var(--g400);box-shadow:0 3px 10px rgba(18,26,37,.08)}
 .dvt.hot{border-top-color:var(--red500)}
 .dvt.warn{border-top-color:var(--amber-s)}
-.dvt.on{border-color:var(--g900);box-shadow:0 0 0 2px rgba(26,24,23,.1)}
+.dvt.on{border-color:var(--g900);box-shadow:0 0 0 2px rgba(18,26,37,.1)}
 .dvt-n{display:block;font-size:12px;font-weight:680;letter-spacing:-.15px;line-height:1.25;
   margin-bottom:9px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .dvt-b{display:block;height:5px;background:var(--g200);border-radius:3px;overflow:hidden}
@@ -1599,9 +2067,9 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 /* ══════════ v9 — DOCUMENT REGISTER ══════════ */
 .dc-k{display:flex;gap:10px;margin-bottom:14px;flex-wrap:wrap}
 .dc-ki{flex:1;min-width:118px;background:var(--white);border:1px solid var(--g200);
-  border-radius:10px;padding:13px 15px;text-align:left;box-shadow:0 1px 3px rgba(26,24,23,.04)}
+  border-radius:10px;padding:13px 15px;text-align:left;box-shadow:0 1px 3px rgba(18,26,37,.04)}
 .dc-ki:hover{border-color:var(--g500)}
-.dc-ki.on{border-color:var(--g900);box-shadow:0 0 0 2px rgba(26,24,23,.1)}
+.dc-ki.on{border-color:var(--g900);box-shadow:0 0 0 2px rgba(18,26,37,.1)}
 .dc-ki b{display:block;font-size:23px;font-weight:700;letter-spacing:-.8px;line-height:1;
   font-variant-numeric:tabular-nums}
 .dc-ki b.r{color:var(--red600)}.dc-ki b.a{color:var(--amber)}
@@ -1615,7 +2083,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .dc-f .fb2 i{font-style:normal;font-size:9.5px;color:var(--g500);margin-left:4px}
 .dc-f .fb2.on i{color:rgba(255,255,255,.6)}
 .dc-wrap{background:var(--white);border:1px solid var(--g200);border-radius:12px;overflow:hidden;
-  box-shadow:0 1px 3px rgba(26,24,23,.04)}
+  box-shadow:0 1px 3px rgba(18,26,37,.04)}
 .dc-g{border-bottom:1px solid var(--g200)}
 .dc-g:last-child{border-bottom:none}
 .dc-g.dhide{display:none}
@@ -1682,7 +2150,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .bk:hover{border-color:var(--g900);background:var(--g900);color:#fff}
 .bk:hover svg{stroke:#fff}
 
-.pk-scrim{position:fixed;inset:0;background:rgba(26,24,23,.4);opacity:0;pointer-events:none;
+.pk-scrim{position:fixed;inset:0;background:rgba(18,26,37,.4);opacity:0;pointer-events:none;
   transition:opacity .18s;z-index:80}
 .pk-scrim.on{opacity:1;pointer-events:auto}
 .pk{position:fixed;top:50%;left:50%;width:min(580px,calc(100vw - 40px));z-index:81;
@@ -1735,7 +2203,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .wl{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:640;color:var(--g700);
   background:var(--white);border:1px solid var(--g300);border-radius:8px;padding:7px 12px;white-space:nowrap}
 .wl i{width:7px;height:7px;border-radius:50%;background:var(--g400);flex:none}
-.wl.you i{background:var(--red500)}
+.wl.you i{background:var(--brand)}
 .wl.other i{background:var(--amber-s)}
 .wl.agent i{background:var(--purple)}
 .wl.authority i{background:var(--g500)}
@@ -1746,7 +2214,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .filt-l{font-size:10px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;
   color:var(--g500);margin-right:2px}
 .wo{display:block;font-weight:650}
-.wo.you{color:var(--red600);font-weight:750}
+.wo.you{color:var(--brand-600);font-weight:750}
 .wo.agent{color:var(--purple)}
 .wo.authority{color:var(--g600)}
 /* Time-impact chip in the Open-issues row: days on the critical path + whether
@@ -1764,7 +2232,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .hb{display:grid;grid-template-columns:repeat(4,minmax(0,1fr)) 1.55fr 1.55fr;gap:11px;
   margin-bottom:18px}
 .hb-m,.hb-c{background:var(--white);border:1px solid var(--g200);border-radius:12px;
-  box-shadow:0 1px 3px rgba(26,24,23,.04)}
+  box-shadow:0 1px 3px rgba(18,26,37,.04)}
 .hb-m{padding:14px 16px 13px;display:flex;flex-direction:column;min-width:0}
 .hb-lb{font-size:9.5px;font-weight:700;letter-spacing:.55px;text-transform:uppercase;
   color:var(--g600);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -1788,24 +2256,47 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .hb-ct i.g{color:var(--ok)}
 .hb-ct i svg{width:11px;height:11px;stroke:var(--ok);stroke-width:2.4;fill:none}
 .hb-bars{display:flex;align-items:flex-end;gap:3px;height:44px;margin-top:12px}
-.hb-bars i{flex:1;background:var(--g200);border-radius:2px;min-height:3px;transition:background .15s}
-.hb-bars i:hover{background:var(--g500)}
-.hb-bars i:last-child{background:var(--g900)}
-.hb-tr{width:100%;height:44px;margin-top:12px;overflow:visible}
-.hb-tr polyline{fill:none;stroke:var(--ok);stroke-width:1.8;stroke-linejoin:round;
-  stroke-linecap:round;vector-effect:non-scaling-stroke}
-.hb-ar{fill:rgba(21,128,61,.09);stroke:none}
-.hb-tr.am polyline{stroke:var(--amber-s)}
-.hb-ar.am{fill:rgba(232,163,61,.11)}
+/* .hb-tr / .hb-ar / .hb-bars are gone: they styled three fabricated charts (two
+   trend areas and a 13-bar weekly series) whose geometry was hard-coded in the
+   views. All three were replaced by .hb-br bars fed from real backend fields. */
 .hb-x{display:flex;justify-content:space-between;font-size:9px;color:var(--g500);margin-top:7px}
 .hb-w{grid-column:span 2}
+
+/* ── "Who is holding them" bars (replaces the fabricated trend area chart) ──
+   Every bar is a real filter: clicking one applies that holder lens to the table
+   below, so the chart is a control, not a picture. Each row is directly labelled
+   and shows its count, so hue is never the only encoding. Colours match the .wl
+   lens dots above the table — same concept, same colour, in both places. */
+.hb-br{display:flex;flex-direction:column;gap:5px;margin-top:11px}
+.hbb{display:grid;grid-template-columns:78px 1fr 22px;align-items:center;gap:9px;
+  padding:3px 5px;margin:0 -5px;border-radius:6px;text-align:left;transition:background .12s}
+.hbb:hover{background:var(--g50)}
+.hbb.on{background:var(--brand-bg)}
+.hbb-l{font-size:10.5px;color:var(--g700);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.hbb.on .hbb-l{color:var(--g900);font-weight:650}
+/* The track is an inert groove, not a series — it is meant to read as grey. */
+.hbb-t{height:7px;background:var(--g100);border-radius:4px;overflow:hidden}
+.hbb-f{display:block;height:100%;border-radius:4px;min-width:3px;transition:width .3s}
+/*
+ * The holder split is a CATEGORICAL chart — it answers "who is holding this
+ * exception", not "how bad is it" — so it draws from the series ramp (--s1..),
+ * never the status ramp. It used --amber for "Someone else", which is the
+ * reserved at-risk colour: an amber bar beside red/amber status marks reads as a
+ * severity signal and means nothing of the kind. Hues are assigned in fixed ramp
+ * order and each bar is directly labelled, so identity is never colour-alone.
+ * --s5 (cool grey) for "An authority" is deliberate: it is the inert bucket
+ *  nobody can act on, and the ramp reserves that grey for exactly that job.
+ */
+.hbb-f.you{background:var(--s1)}
+.hbb-f.other{background:var(--s4)}
+.hbb-f.agent{background:var(--s3)}
+.hbb-f.authority{background:var(--s5)}
+.hbb-n{font-size:11px;font-weight:700;color:var(--g900);text-align:right;
+  font-variant-numeric:tabular-nums}
+
 @media(max-width:1320px){.hb{grid-template-columns:repeat(4,minmax(0,1fr))}
   .hb-c{grid-column:span 2}}
 @media(max-width:820px){.hb{grid-template-columns:repeat(2,minmax(0,1fr))}}
-
-.hb-w{grid-column:span 2}
-.hb-tr.am polyline{stroke:var(--amber-s)}
-.hb-ar.am{fill:rgba(232,163,61,.11)}
 .al-lens{margin:0 0 12px}
 
 /* ══════ v17 — AN ISSUE YOU DO NOT HOLD IS READ-ONLY ══════ */
@@ -1953,10 +2444,10 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .sbb:hover{color:var(--g900)}
 .sbb.on{color:var(--g900);font-weight:700}
 .sbb.on:after{content:'';position:absolute;left:0;right:0;bottom:-1px;height:2px;
-  background:var(--red500)}
+  background:var(--brand)}
 .sbb i{font-style:normal;font-size:9.5px;font-weight:750;color:var(--g600);background:var(--g100);
   padding:2px 6px;border-radius:9px;font-variant-numeric:tabular-nums}
-.sbb.on i{background:var(--red-bg);color:var(--red700)}
+.sbb.on i{background:var(--brand-bg);color:var(--brand-700)}
 .sbb i.dot{background:none;padding:0;width:6px;height:6px;border-radius:50%;
   background:var(--ok);animation:bl 1.7s infinite}
 .sbb.on i.dot{background:var(--ok)}
@@ -2032,9 +2523,9 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 
 /* ── the card: an agent at work ── */
 .tbiz{background:var(--white);border:1px solid var(--g200);border-radius:10px;width:100%;
-  box-shadow:0 1px 2px rgba(26,24,23,.05);overflow:hidden;
+  box-shadow:0 1px 2px rgba(18,26,37,.05);overflow:hidden;
   transition:box-shadow .16s,border-color .16s,transform .16s}
-.tbiz:hover{border-color:var(--g500);box-shadow:0 5px 15px rgba(26,24,23,.1)}
+.tbiz:hover{border-color:var(--g500);box-shadow:0 5px 15px rgba(18,26,37,.1)}
 /* collapsed by default: the action and its status. Expand for the detail. */
 .tbiz .tbcx,.tbiz .tbwk,.tbiz .tbft{display:none}
 .tbiz.open .tbcx,.tbiz.open .tbwk{display:block}
@@ -2050,7 +2541,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .tbiz.new{animation:zin 2s}
 @keyframes zin{0%{opacity:0;transform:translateY(-11px);box-shadow:0 0 0 3px rgba(161,0,255,.32)}
   60%{box-shadow:0 0 0 3px rgba(161,0,255,.12)}100%{opacity:1;transform:none}}
-.tbiz.you{border-left:3px solid var(--red500)}
+.tbiz.you{border-left:3px solid var(--brand)}
 .tbiz.held{border-left:3px solid var(--amber-s)}
 .tbiz.auto{border-left:3px solid var(--ok)}
 .tbiz.run{border-left:3px solid var(--purple)}
@@ -2061,7 +2552,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .tbnw-k{font-size:8px;font-weight:800;letter-spacing:.5px;text-transform:uppercase;padding:2px 6px;
   border-radius:7px;white-space:nowrap;flex:none}
 .tbiz.run .tbnw-k{background:var(--purple);color:#fff}
-.tbiz.you .tbnw-k{background:var(--red500);color:#fff}
+.tbiz.you .tbnw-k{background:var(--brand);color:#fff}
 .tbiz.held .tbnw-k{background:var(--amber-s);color:var(--g900)}
 .tbiz.auto .tbnw-k{background:var(--ok);color:#fff}
 .tbnw-t{font-size:8.5px;color:var(--g500);margin-left:auto;flex:none;font-variant-numeric:tabular-nums}
@@ -2071,7 +2562,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .tbnw-b{height:3px;background:var(--g100);border-radius:2px;margin-top:8px;overflow:hidden}
 .tbnw-b i{display:block;height:100%;background:var(--purple);border-radius:2px;
   transition:width .95s linear}
-.tbiz.you .tbnw-b i{background:var(--red500)}
+.tbiz.you .tbnw-b i{background:var(--brand)}
 .tbiz.auto .tbnw-b,.tbiz.you .tbnw-b{display:none}
 .tbiz.held .tbnw-b i{background:var(--amber-s)}
 
@@ -2099,13 +2590,13 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .tbwr.now .tbwr-i{background:var(--purple);animation:pw 1.5s ease-in-out infinite}
 .tbwr.now .tbwr-i svg{stroke:#fff}
 @keyframes pw{0%,100%{box-shadow:0 0 0 0 rgba(161,0,255,.4)}70%{box-shadow:0 0 0 5px rgba(161,0,255,0)}}
-.tbwr.you .tbwr-i{background:var(--red500)}
+.tbwr.you .tbwr-i{background:var(--brand)}
 .tbwr.you .tbwr-i svg{stroke:#fff}
 .tbwr-b{min-width:0}
 .tbwr-v{font-size:10.5px;font-weight:700;line-height:1.45;color:var(--g800);
   display:block;margin-bottom:3px}
 .tbwr.now .tbwr-v{color:var(--purple)}
-.tbwr.you .tbwr-v{color:var(--red700)}
+.tbwr.you .tbwr-v{color:var(--brand-700)}
 .tbwr.wait .tbwr-v{color:var(--g500);font-weight:600}
 .tbwr-w{display:block;font-size:9px;color:var(--g600);line-height:1.5}
 .tbwr-w b{color:var(--g700);font-weight:700}
@@ -2114,7 +2605,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .tbwr-t em{display:block;font-style:normal;font-weight:500;font-size:8px;color:var(--g500);
   margin-top:1px}
 .tbwr.now .tbwr-t{color:var(--purple)}
-.tbwr.you .tbwr-t{color:var(--red700)}
+.tbwr.you .tbwr-t{color:var(--brand-700)}
 
 /* ══════════ the activity log ══════════
    What the fleet has executed. One row per action, newest first. */
@@ -2153,7 +2644,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .lg-p{font-size:8px;font-weight:800;letter-spacing:.45px;text-transform:uppercase;padding:2px 6px;
   border-radius:6px;white-space:nowrap;background:var(--ok-bg);color:var(--ok)}
 .lg-p.run{background:var(--purple);color:#fff}
-.lg-p.you{background:var(--red500);color:#fff}
+.lg-p.you{background:var(--brand);color:#fff}
 .lg-p.held{background:var(--amber-bg);color:var(--amber)}
 .lg-id{font-size:9px;color:var(--g500);font-variant-numeric:tabular-nums}
 .lg-e{padding:34px 16px;text-align:center;font-size:11.5px;color:var(--g500)}
@@ -2164,7 +2655,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .tbft{flex-direction:column}
 .tbft button{display:flex;align-items:center;gap:6px;width:100%;padding:8px 11px;text-align:left;
   font-size:9.5px;font-weight:700;color:var(--g700);border-top:1px solid var(--g100)}
-.tbft button:hover{background:var(--g50);color:var(--red500)}
+.tbft button:hover{background:var(--g50);color:var(--brand)}
 .tbft svg{width:11px;height:11px;stroke:currentColor;stroke-width:2.2;fill:none;margin-left:auto}
 
 /* ══════════ the activity board ══════════
@@ -2174,14 +2665,14 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
   font-variant-numeric:tabular-nums}
 .fl-st .tbfb.on i{color:rgba(255,255,255,.7)}
 .fl-st .tbfb[disabled]{opacity:.4}
-.fl-st .tbfb.exc{color:var(--red700);border-color:rgba(217,21,0,.28)}
+.fl-st .tbfb.exc{color:var(--red700);border-color:rgba(216,35,42,.28)}
 .fl-st .tbfb.exc.on{background:var(--red500);border-color:var(--red500);color:#fff}
 .fk-bar{height:3px;background:var(--g200);border-radius:2px;overflow:hidden;margin-top:8px}
 .fk-bar i{display:block;height:100%;background:var(--g600);border-radius:2px}
-.tbcol.live .fk-bar i{background:var(--red500)}
+.tbcol.live .fk-bar i{background:var(--brand)}
 
 .fk{background:var(--white);border:1px solid var(--g200);border-radius:9px;width:100%;
-  overflow:hidden;box-shadow:0 1px 2px rgba(26,24,23,.04);transition:border-color .15s}
+  overflow:hidden;box-shadow:0 1px 2px rgba(18,26,37,.04);transition:border-color .15s}
 .fk:hover{border-color:var(--g500)}
 .fk.rk{border-left:3px solid var(--amber-s)}
 .fk.late{border-left:3px solid var(--red500)}
@@ -2241,11 +2732,11 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 /* ══════════ GUIDED DEMO ══════════ */
 .h-gd{display:inline-flex;align-items:center;gap:7px;background:var(--g900);color:#fff;
   border-radius:9px;padding:7px 13px;font-size:11.5px;font-weight:650;white-space:nowrap}
-.h-gd:hover{background:var(--red500)}
+.h-gd:hover{background:var(--brand)}
 .h-gd svg{width:10px;height:10px;fill:#fff;stroke:none}
 
 .gdp{position:fixed;right:20px;bottom:20px;width:376px;background:var(--g900);color:#fff;
-  border-radius:14px;padding:17px 19px 0;box-shadow:0 18px 48px rgba(26,24,23,.4);z-index:120;
+  border-radius:14px;padding:17px 19px 0;box-shadow:0 18px 48px rgba(18,26,37,.4);z-index:120;
   opacity:0;pointer-events:none;transform:translateY(14px);
   transition:opacity .2s,transform .2s}
 .gdp.on{opacity:1;pointer-events:auto;transform:none}
@@ -2275,7 +2766,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .gdp-b.s:hover{background:rgba(255,255,255,.22)}
 .gdp-b.s[disabled]{opacity:.3}
 .gdp-b.p{background:#fff;color:var(--g900)}
-.gdp-b.p:hover{background:var(--red500);color:#fff}
+.gdp-b.p:hover{background:var(--brand);color:#fff}
 .gdp-bar{height:3px;background:rgba(255,255,255,.14);border-radius:0 0 14px 14px;
   margin:0 -19px;overflow:hidden}
 .gdp-bar i{display:block;height:100%;background:var(--red500);transition:width .3s}
@@ -2288,7 +2779,7 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
    offset here (the arrow direction is the only above/below distinction). */
 .gdp-mk{position:absolute;background:var(--purple);color:#fff;font-size:9px;font-weight:800;
   letter-spacing:.4px;text-transform:uppercase;border-radius:5px;padding:3px 7px;
-  white-space:nowrap;box-shadow:0 2px 8px rgba(26,24,23,.28)}
+  white-space:nowrap;box-shadow:0 2px 8px rgba(18,26,37,.28)}
 .gdp-mk:after{content:'';position:absolute;left:9px;bottom:-3px;width:6px;height:6px;
   background:var(--purple);transform:rotate(45deg)}
 /* below-variant: label sits beneath its box, so the little arrow points up. */
@@ -2320,15 +2811,15 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
   padding:0 4px}
 .cq-mode{background:var(--white);border:1px solid var(--g200);border-radius:12px;padding:12px 15px;
   text-align:left;display:flex;align-items:center;gap:12px;min-width:0;cursor:pointer;
-  box-shadow:0 1px 3px rgba(26,24,23,.05);
+  box-shadow:0 1px 3px rgba(18,26,37,.05);
   transition:border-color .15s,box-shadow .15s,background .15s}
 .cq-mode:hover{border-color:var(--g900)}
-.cq-mode.on{border-color:var(--red500);box-shadow:0 4px 14px rgba(235,23,0,.12)}
+.cq-mode.on{border-color:var(--brand);box-shadow:0 4px 14px rgba(0,0,201,.12)}
 .cq-mode-ic{width:30px;height:30px;border-radius:9px;background:var(--purple-bg);
   display:grid;place-items:center;flex:none}
 .cq-mode-ic svg{width:16px;height:16px;stroke:var(--purple);stroke-width:2;fill:none}
-.cq-mode.on .cq-mode-ic{background:rgba(235,23,0,.10)}
-.cq-mode.on .cq-mode-ic svg{stroke:var(--red600)}
+.cq-mode.on .cq-mode-ic{background:rgba(0,0,201,.10)}
+.cq-mode.on .cq-mode-ic svg{stroke:var(--brand-600)}
 .cq-mode-tx{min-width:0}
 .cq-mode-tx b{display:block;font-size:13.5px;font-weight:660;letter-spacing:-.15px;line-height:1.35;
   color:var(--g900)}
@@ -2357,9 +2848,9 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .cq-wrap:not(.home) .cq-sug{display:none}
 .cq-s{background:var(--white);border:1px solid var(--g200);border-radius:11px;padding:14px 16px;
   text-align:left;display:flex;align-items:flex-start;gap:12px;min-width:0;
-  box-shadow:0 1px 3px rgba(26,24,23,.05);
+  box-shadow:0 1px 3px rgba(18,26,37,.05);
   transition:border-color .15s,box-shadow .15s,transform .15s}
-.cq-s:hover{border-color:var(--g900);box-shadow:0 5px 16px rgba(26,24,23,.09);
+.cq-s:hover{border-color:var(--g900);box-shadow:0 5px 16px rgba(18,26,37,.09);
   transform:translateY(-1px)}
 .cq-si{width:26px;height:26px;border-radius:8px;background:var(--purple-bg);
   display:grid;place-items:center;flex:none;margin-top:1px}
@@ -2437,8 +2928,8 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .cq-b{font-size:11.5px;font-weight:650;border-radius:8px;padding:8px 14px;white-space:nowrap;
   display:inline-flex;align-items:center;gap:7px}
 .cq-b svg{width:13px;height:13px;stroke-width:2.2;fill:none}
-.cq-b.p{background:var(--red500);color:#fff}
-.cq-b.p:hover{background:var(--red700)}
+.cq-b.p{background:var(--brand);color:#fff}
+.cq-b.p:hover{background:var(--brand-700)}
 .cq-b.p svg{stroke:#fff}
 .cq-b.s{background:var(--white);color:var(--g800);border:1px solid var(--g300)}
 .cq-b.s:hover{border-color:var(--g900)}
@@ -2455,13 +2946,13 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
   border:1px solid var(--g300);border-radius:15px;padding:6px 13px;white-space:nowrap}
 .cq-ch:hover{border-color:var(--g900);color:var(--g900)}
 .cq-in{display:flex;align-items:center;gap:10px;background:var(--white);border:1px solid var(--g300);
-  border-radius:12px;padding:9px 10px 9px 14px;box-shadow:0 2px 10px rgba(26,24,23,.06)}
-.cq-in:focus-within{border-color:var(--g900);box-shadow:0 0 0 3px rgba(26,24,23,.06)}
+  border-radius:12px;padding:9px 10px 9px 14px;box-shadow:0 2px 10px rgba(18,26,37,.06)}
+.cq-in:focus-within{border-color:var(--g900);box-shadow:0 0 0 3px rgba(18,26,37,.06)}
 .cq-in input{flex:1;border:none;outline:none;background:none;font-family:var(--font);font-size:14px;
   color:var(--g900);min-width:0}
 .cq-send{width:32px;height:32px;border-radius:8px;background:var(--g900);display:grid;
   place-items:center;flex:none}
-.cq-send:hover{background:var(--red500)}
+.cq-send:hover{background:var(--brand)}
 .cq-send svg{width:15px;height:15px;stroke:#fff;stroke-width:2.2;fill:none}
 .cq-note{font-size:10px;color:var(--g500);margin-top:9px;line-height:1.5}
 @media(max-width:900px){.cq-sug{grid-template-columns:1fr}
@@ -2489,7 +2980,11 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .pm-ms .ms-chip{display:inline-flex;align-items:center;gap:5px;font-size:9.5px;font-weight:700;
   color:var(--purple);background:var(--purple-bg);border:1px solid #E6C8FF;border-radius:6px;
   padding:3px 7px;line-height:1.25}
-.pm-ms .ms-chip::before{content:"◆";font-size:8px}
+/* The milestone marker was `content:"◆"` (U+25C6) and rendered as a tofu box —
+   no Noto Sans subset covers it. A CSS ::before can't hold an SVG, so the
+   diamond is drawn as a rotated square: real geometry, no font dependency. */
+.pm-ms .ms-chip::before{content:"";width:6px;height:6px;flex:none;
+  background:currentColor;transform:rotate(45deg)}
 @media(max-width:1100px){.pm-flow{flex-wrap:wrap;gap:8px}.pm-step{flex:1 1 30%}
   .pm-g{width:auto}.pm-g .gn{display:none}}
 
@@ -2521,7 +3016,13 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .cs-item.hum{border-color:var(--amber-bd);background:var(--amber-bg)}
 .cs-item.hum.res{border-color:var(--ok-bd);background:var(--ok-bg);opacity:.9}
 .cs-item-h{display:flex;align-items:flex-start;gap:10px}
-.cs-ic{font-size:17px;line-height:1;flex:none;margin-top:1px}
+/* Domain icon: a drawn line mark (see DomainIcon.tsx) replacing the OS emoji that
+   used to sit here. It inherits the panel's ink via currentColor, so it can never
+   fight the status palette the way a full-colour emoji did. */
+.cs-ic{width:16px;height:16px;flex:none;margin-top:1px;color:var(--g500)}
+.cs-item.hum .cs-ic{color:var(--amber)}
+.cs-item.hum.res .cs-ic{color:var(--ok)}
+.dmi{display:block}
 .cs-item-hx{flex:1;min-width:0}
 .cs-item-t{font-size:12.5px;font-weight:700;letter-spacing:-.2px;color:var(--g900)}
 .cs-item-d{font-size:10.5px;color:var(--g600);margin-top:1px}
@@ -2537,3 +3038,176 @@ button.pw:hover{box-shadow:var(--sh2);border-color:var(--g400)}
 .cs-opts{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
 .cs-opt{white-space:normal;text-align:left}
 @media(max-width:980px){.cs-two{grid-template-columns:1fr}}
+
+/* ══ GUIDED SCENARIOS (#v-quality, #v-wave) ═══════════════════════════ */
+/*
+ * Both scenarios are the same shape — a governed sequence of five steps over a
+ * set of scored options — so they share one vocabulary: `.sr-*` for the step
+ * rail, `.oc-*` for an option card, `.sc-*` for the surrounding panels.
+ *
+ * Two deliberate choices here. First, the rail is the only thing on either screen
+ * that says "where we are", and it is fed by the BACKEND stage, so it cannot drift
+ * from the data the way a local wizard index would. Second, an option card puts
+ * its five quantities in fixed positions: a presenter comparing four cards reads
+ * down a column, which only works if "doses lost" is in the same place on all
+ * four. That is why `.oc-m` is a rigid five-track grid and not a flex wrap.
+ */
+
+/* ── the step rail ─────────────────────────────────────────────────── */
+.sr{margin-top:14px;background:var(--white);border:1px solid var(--g200);border-radius:11px;
+  padding:13px 16px;display:flex;flex-direction:column;gap:12px}
+.sr-steps{display:flex;align-items:center;gap:0;list-style:none;margin:0;padding:0;flex-wrap:wrap}
+.sr-step{display:flex;align-items:center;gap:7px;padding:0 16px 0 0;margin-right:10px;
+  position:relative;font-size:11.5px;color:var(--g500)}
+/* The connector between steps. Drawn on the step, not between them, so a wrapped
+   rail does not leave a rule pointing into empty space. */
+.sr-step:not(:last-child)::after{content:'';position:absolute;right:0;top:50%;width:10px;height:1px;
+  background:var(--g300)}
+.sr-dot{width:19px;height:19px;flex:none;border-radius:50%;display:inline-flex;align-items:center;
+  justify-content:center;font-size:10px;font-weight:750;border:1px solid var(--g300);
+  background:var(--g50);color:var(--g600);font-variant-numeric:tabular-nums}
+.sr-lbl{font-weight:600;white-space:nowrap}
+/* Done: the platform's own colour for a satisfied criterion, matching `.pill.g`. */
+.sr-step.done{color:var(--g700)}
+.sr-step.done .sr-dot{background:var(--ok-bg);border-color:var(--ok-bd);color:var(--ok)}
+/* Live: brand, because the live step is where the user can act. */
+.sr-step.live{color:var(--g900)}
+.sr-step.live .sr-lbl{font-weight:750}
+.sr-step.live .sr-dot{background:var(--brand);border-color:var(--brand);color:#fff}
+.sr-step.next{color:var(--g400)}
+.sr-step.next .sr-dot{color:var(--g400)}
+/* The action row: what this step does, then the buttons that do it. */
+.sr-act{display:flex;align-items:center;gap:10px;padding-top:11px;border-top:1px solid var(--g100)}
+.sr-hint{flex:1;min-width:0;font-size:11.5px;color:var(--g700);line-height:1.5}
+.sr-hint.sr-done{color:var(--ok);font-weight:650}
+
+/* ── the two-column scenario header ───────────────────────────────── */
+.sc-two{margin-top:14px;align-items:stretch}
+.sc-two>.pnl{display:flex;flex-direction:column}
+.sc-body{padding:13px 16px;display:flex;flex-direction:column;gap:12px;flex:1}
+.sc-p{font-size:11.5px;color:var(--g700);line-height:1.6;margin:0}
+.sc-p.sc-dim{color:var(--g600)}
+.sc-err{background:var(--red-bg);border-color:var(--red-bd);color:var(--red700)}
+/* A pill sitting inline in running text. */
+.sc-inl{margin-left:7px;vertical-align:1px}
+
+/* Four figures in a row — the scenario's headline quantities. */
+.sc-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.sc-kv{display:flex;flex-direction:column;gap:2px;padding:9px 11px;background:var(--g50);
+  border:1px solid var(--g200);border-radius:9px}
+.sc-kv-v{font-size:16px;font-weight:750;letter-spacing:-.4px;color:var(--g900);line-height:1.1;
+  font-variant-numeric:tabular-nums}
+.sc-kv-v.r{color:var(--red700)}
+.sc-kv-v.a{color:var(--amber)}
+.sc-kv-l{font-size:9.5px;font-weight:600;color:var(--g600);line-height:1.3}
+
+/* The escalation list: one line per consequence the assessment forces. A line is
+   toned only when it is actually triggered, so an untriggered line reads as
+   reassurance rather than as another alarm. */
+.sc-esc{display:flex;flex-direction:column;gap:7px}
+.sc-esc-i{display:flex;align-items:flex-start;gap:8px;font-size:11.5px;line-height:1.5;
+  color:var(--g600)}
+.sc-esc-i .gly{width:12px;height:12px;flex:none;margin-top:3px;color:var(--ok)}
+.sc-esc-i.on{color:var(--g800)}
+.sc-esc-i.on .gly{color:var(--amber)}
+
+/* The SKU / pack-mix change: old presentation → new one. */
+.sc-mix{padding:9px 11px;background:var(--brand-bg);border:1px solid var(--brand-bd);
+  border-radius:9px;display:flex;flex-direction:column;gap:5px}
+.sc-mix-r{display:flex;align-items:center;gap:11px}
+.sc-mix-r .gly{width:13px;height:13px;flex:none;color:var(--brand)}
+.sc-mix-o,.sc-mix-n{display:flex;flex-direction:column;gap:1px;min-width:0}
+.sc-mix-o b,.sc-mix-n b{font-size:12px;font-weight:700;color:var(--g900)}
+.sc-mix-o i,.sc-mix-n i{font-style:normal;font-size:10px;color:var(--g600);
+  font-variant-numeric:tabular-nums}
+.sc-mix-o{opacity:.6}
+
+/* ── the option grid ───────────────────────────────────────────────── */
+.sc-opnl{margin-top:14px}
+.oc-grid{padding:12px;display:grid;grid-template-columns:repeat(auto-fit,minmax(310px,1fr));gap:11px}
+.oc{border:1px solid var(--g200);border-radius:10px;padding:13px;background:var(--white);
+  display:flex;flex-direction:column;gap:10px;transition:border-color .12s,box-shadow .12s}
+.oc.rec{border-color:var(--brand-bd);background:var(--brand-bg)}
+.oc.sel{border-color:var(--brand);box-shadow:0 0 0 2px var(--brand-bg)}
+/* Ruled out: visibly struck, not quietly ranked last. */
+.oc.out{background:var(--g50);border-style:dashed;border-color:var(--g300)}
+.oc.out .oc-t{color:var(--g600)}
+.oc.app{border-color:var(--ok-bd);background:var(--ok-bg)}
+.oc.rej{opacity:.5}
+.oc-h{display:flex;align-items:flex-start;gap:9px}
+.oc-hx{flex:1;min-width:0}
+.oc-t{font-size:12.5px;font-weight:700;letter-spacing:-.2px;color:var(--g900);line-height:1.35}
+.oc-k{font-size:9px;font-weight:700;letter-spacing:.5px;text-transform:uppercase;color:var(--g500);
+  margin-top:2px}
+.oc-d{font-size:11px;color:var(--g700);line-height:1.55;margin:0}
+
+/* The score, with a bar so four cards can be ranked without reading digits. */
+.oc-score{display:flex;align-items:baseline;gap:5px;flex-wrap:wrap}
+.oc-score-v{font-size:19px;font-weight:750;letter-spacing:-.6px;color:var(--brand);line-height:1;
+  font-variant-numeric:tabular-nums}
+.oc-score-u{font-size:10px;font-weight:600;color:var(--g500)}
+.oc-bar{flex:1 0 100%;height:4px;border-radius:2px;background:var(--g200);overflow:hidden;
+  margin-top:5px}
+.oc-bar i{display:block;height:100%;border-radius:2px;background:var(--brand)}
+.oc.app .oc-score-v{color:var(--ok)}
+.oc.app .oc-bar i{background:var(--ok)}
+.oc-out-why{padding:8px 10px;border-radius:8px;background:var(--white);
+  border:1px solid var(--red-bd);display:flex;flex-direction:column;gap:2px}
+
+/* The five comparable quantities. Fixed five-track grid: a presenter reads DOWN a
+   column across cards, which requires the columns to line up. */
+.oc-m{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;padding:9px 0;
+  border-top:1px solid var(--g100);border-bottom:1px solid var(--g100)}
+.oc-mi{display:flex;flex-direction:column;gap:1px;min-width:0}
+.oc-mv{font-size:12px;font-weight:700;color:var(--g900);line-height:1.2;
+  font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.oc-mv.a{color:var(--amber)}
+.oc-mv-sub{font-style:normal;font-size:9.5px;font-weight:600;color:var(--g500)}
+.oc-ml{font-size:8.5px;font-weight:650;letter-spacing:.2px;color:var(--g600);line-height:1.25}
+
+/* Who takes the hit, and what filing it triggers. */
+.oc-f{margin:0;display:flex;flex-direction:column;gap:5px}
+.oc-fr{display:grid;grid-template-columns:96px 1fr;gap:9px;align-items:baseline}
+.oc-fr dt{font-size:9.5px;font-weight:700;letter-spacing:.2px;text-transform:uppercase;
+  color:var(--g500)}
+.oc-fr dd{margin:0;font-size:11px;color:var(--g800);line-height:1.5}
+.oc-a{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:2px}
+.oc-dec{margin-left:auto}
+
+/* ── the scenario tables ──────────────────────────────────────────── */
+/* Panel spacing is scoped to the two scenario views. `.pnl + .pnl` unqualified
+   would reach every other screen in the shell, where panels are already spaced by
+   their own grid gap. */
+#v-quality>.pnl+.pnl,#v-wave>.pnl+.pnl,
+#v-quality>.two+.pnl,#v-wave>.two+.pnl,
+#v-quality>.sc-pv+.pnl,#v-wave>.sc-pv+.pnl{margin-top:14px}
+.sc-dt td.n{text-align:right;white-space:nowrap}
+/* A figure that moved the wrong way, or a date that will not be met. */
+.sc-neg{color:var(--red700)}
+.sc-pos{color:var(--ok)}
+.sc-dim{color:var(--g500)}
+/* A note inside a cell, which must be allowed to wrap even though the cell's
+   numbers must not. */
+.sc-wrap{white-space:normal;max-width:190px;margin-top:3px}
+/* The one-line "what this option does to the whole book" summary under a table. */
+.sc-pv{margin-top:11px;padding:10px 14px;background:var(--g50);border:1px solid var(--g200);
+  border-radius:10px;display:flex;flex-direction:column;gap:2px}
+
+/* The definition list used for the decision record and the lot detail. */
+.sc-dl{margin:0;display:flex;flex-direction:column;gap:7px}
+.sc-dr{display:grid;grid-template-columns:118px 1fr;gap:11px;align-items:baseline}
+.sc-dr dt{font-size:9.5px;font-weight:700;letter-spacing:.3px;text-transform:uppercase;
+  color:var(--g500)}
+.sc-dr dd{margin:0;font-size:11.5px;color:var(--g800);line-height:1.55}
+
+@media(max-width:1200px){.sc-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:980px){
+  .sc-two{grid-template-columns:1fr}
+  .oc-grid{grid-template-columns:1fr}
+  .oc-m{grid-template-columns:repeat(3,1fr)}
+}
+/* The binding constraint in full, above the figures it explains. Red-toned
+   because it is the thing standing in the way, not a neutral note. */
+.sc-bind{padding:9px 11px;background:var(--red-bg);border:1px solid var(--red-bd);
+  border-radius:9px;display:flex;flex-direction:column;gap:2px}
+.sc-bind .cs-auto-lbl{color:var(--red700)}

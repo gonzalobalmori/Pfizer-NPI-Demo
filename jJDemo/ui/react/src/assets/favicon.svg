@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Pfizer NPI Launch Control">
+  <!--
+    Demo favicon for the Pfizer NPI Launch Control Tower.
+    Deliberately a simple brand-blue monogram rather than a reproduction of the
+    Pfizer corporate logotype: this is synthetic demonstration software, so it
+    carries the brand colour (Pfizer Blue #0000C9) without passing itself off as
+    the registered trademark artwork.
+  -->
+  <rect width="64" height="64" rx="14" fill="#0000C9"/>
+  <path d="M22 47V17h11.6c6.6 0 10.9 3.9 10.9 10.1 0 6.3-4.4 10.2-11.1 10.2h-4.7V47H22zm6.7-15.3h4.1c3 0 4.9-1.6 4.9-4.5 0-2.9-1.9-4.5-4.9-4.5h-4.1v9z" fill="#fff"/>
+</svg>

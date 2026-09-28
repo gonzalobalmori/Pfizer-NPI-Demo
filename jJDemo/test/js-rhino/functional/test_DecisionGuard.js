@@ -7,7 +7,7 @@
  *
  * Anchor case NPI-0417 (seed_decision_417) is held by the USER and unapproved,
  * so the guard must pass. Findings held by the fleet (AGENT) or by another person
- * (ESCALATED / DELEGATED) must be refused — Helena cannot decide those.
+ * (ESCALATED / DELEGATED) must be refused — George cannot decide those.
  */
 const filename = 'test_DecisionGuard';
 

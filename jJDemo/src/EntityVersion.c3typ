@@ -1,0 +1,80 @@
+/**
+ * One retired snapshot of one business record — the storage behind the bitemporal
+ * replay required by R-TR-04 / R-TR-05, and the mechanism Demo Reset rewinds through
+ * (R-TR-15).
+ *
+ * Every time a governed field changes, {@link TemporalQueryService#snapshot} freezes
+ * the record's pre-change field values into an instance of this type and stamps the
+ * outgoing row's {@link Bitemporal#supersededAt}. The live entity always holds the
+ * current values; this type holds everything the record used to say. Together they
+ * let the UI answer "show me the portfolio exactly as it stood on 12 March" without
+ * the live types carrying a version column each.
+ *
+ * <h3>Why a generic version row rather than per-type history tables</h3>
+ * <p>Note on naming: the monotonic counter is {@link EntityVersion#versionNo}, not
+ * `version`, because every C3 entity type already inherits a platform `version` field
+ * and re-declaring it is a compile error. See that field's documentation.</p>
+ * The demo must replay {@link Gate}, {@link Launch}, {@link BatchLot},
+ * {@link GateCriterion} and market commitments on the same axis. A single generic
+ * snapshot type keyed by (`entityTypeName`, `entityId`, `version`) means the replay
+ * service is written once and any newly-governed type gets history for free, at the
+ * cost of storing the payload as JSON rather than typed columns — an acceptable
+ * trade because these rows are read for display and diffing, never joined on.
+ *
+ * <h3>Relationship to {@link AuditEvent}</h3>
+ * They answer different questions and both are required. An {@link AuditEvent} says
+ * *"this field went from X to Y, by whom and why"* — it is the narrative. An
+ * `EntityVersion` says *"here is the entire record as it read at that moment"* — it
+ * is the state. Reconstructing a screen as-of a date needs whole records, which is
+ * why the audit trail alone is not sufficient.
+ *
+ * Operational type (no `SeedData`): written at runtime by every governed change.
+ */
+entity type EntityVersion mixes Bitemporal {
+  /** Version id — `ver_<entityTypeName>_<entityId>_<versionNo>`. */
+  id: !string
+
+  /** C3 type name of the versioned record, e.g. "Gate". */
+  entityTypeName: !string
+
+  /** Id of the versioned record, e.g. "seed_gate_bero_p5_g1". */
+  entityId: !string
+
+  /**
+   * Monotonic version number for this record, starting at 1 for its first snapshot.
+   * Ordering by this is stable even when several versions share a millisecond.
+   *
+   * Named `versionNo` rather than the more natural `version` because every C3 entity type
+   * already inherits a `version` field from the platform, and re-declaring it with a
+   * different value type is rejected at compile time. The platform's field counts
+   * revisions of *one live row*; this one counts snapshots of a record's history, which is
+   * a different quantity — so they coexist rather than one replacing the other.
+   */
+  versionNo: !int
+
+  /**
+   * The record's field values at this version, as a JSON object. Read for display
+   * and diffing; deliberately schemaless so one type serves every governed entity.
+   */
+  payload: !json
+
+  /**
+   * Dotted field paths that changed *in the revision that retired this snapshot* —
+   * i.e. what made it stale. Lets the History tab render "3 fields changed" without
+   * diffing two JSON blobs client-side.
+   */
+  changedFields: [string]
+
+  /**
+   * The {@link AuditEvent#correlationId} of the change that retired this snapshot,
+   * so a version row can be tied back to the gesture and the audit events that
+   * caused it.
+   */
+  correlationId: string
+
+  /** Who caused the revision that retired this snapshot. Denormalised for display. */
+  actorName: string
+
+  /** Coded reason for the revision that retired this snapshot, e.g. "REBASELINE". */
+  reasonCode: string
+}

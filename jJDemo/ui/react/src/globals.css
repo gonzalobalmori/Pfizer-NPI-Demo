@@ -7,8 +7,17 @@
  * This material may be covered by one or more patents or pending patent applications.
  */
 
-/* Import Inter font from Google Fonts */
-@import 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap' layer(base);
+/*
+ * Noto Sans — the Pfizer brand typeface (R-BASE-04).
+ *
+ * Bundled locally from @fontsource-variable rather than fetched from Google
+ * Fonts, for three reasons: the app must render identically in an air-gapped
+ * demo environment, a network webfont blocks first paint on the cockpit, and
+ * the VARIABLE cut is required — this design system uses fractional weights
+ * (650/680/720/750) to build its type hierarchy, and static weights would snap
+ * each of them to 400 or 700 and collapse that hierarchy into two steps.
+ */
+@import '@fontsource-variable/noto-sans/index.css' layer(base);
 
 /* C3 Theme CSS - Copied from c3ui repository */
 @import './c3ui/c3FoundationTokens.css' layer(base);

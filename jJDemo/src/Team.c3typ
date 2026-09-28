@@ -1,0 +1,53 @@
+/**
+ * A cross-functional team — a first-class entity with members and time-bounded RACI
+ * assignments, never free text (R-DM-01).
+ *
+ * The rule matters because the whole point of the control tower is that accountability
+ * is addressable: an issue routed to "GPLO" has to resolve to real people with real
+ * authority, and the Scenario 1 and 2 action plans assign work to functions that must
+ * then produce a named owner. A string column would make "GPLO" unjoinable and the
+ * action plans undeliverable.
+ *
+ * <h3>The nine seeded teams (R-DM-01)</h3>
+ * Digital Supply · Global Packaging &amp; Launch Operations (GPLO) · New Product
+ * Lifecycle Management · Global Supply Chain · PharmSci · Commercial · Sites
+ * (Freiburg, Puurs, KZO, GC) · ALIMS · External Supply. The Sites entry expands to
+ * one team per site, each linked to its {@link Site}, because a site's quality unit is
+ * accountable separately from global functions — Scenario 1 is raised by Site Quality
+ * Puurs specifically (R-S1-01).
+ *
+ * <h3>Membership</h3>
+ * Members are resolved through {@link RoleAssignment} rather than a static member
+ * list, so "who is in GPLO" is answerable as of a date and a re-assignment does not
+ * erase the previous answer (R-DM-03). {@link Team#members} is the inverse of those
+ * assignments.
+ */
+entity type Team mixes SeedData {
+  /** Team id, e.g. "team_gplo". */
+  id: !string
+
+  /** Stable key used in action plans and guardrail prose, e.g. "GPLO". */
+  teamKey: !string
+
+  /** Full display name, e.g. "Global Packaging & Launch Operations". */
+  name: !string
+
+  /**
+   * What the team is accountable for. Rendered on the team drawer and used by the
+   * Copilot when it explains why a function owns an action.
+   */
+  description: string
+
+  /**
+   * Which kind of function this is. `SITE` teams are bound to a {@link Site} and own
+   * site-local quality and planning decisions; `EXTERNAL` covers External Supply's
+   * CMO/CDMO-facing team; `GLOBAL` covers the enterprise functions.
+   */
+  teamType: !string enum('GLOBAL', 'SITE', 'EXTERNAL')
+
+  /** The site this team belongs to, when {@link Team#teamType} is `SITE`. */
+  site: Site
+
+  /** Role assignments that place people in this team. Inverse of {@link RoleAssignment#team}. */
+  members: [RoleAssignment](team)
+}

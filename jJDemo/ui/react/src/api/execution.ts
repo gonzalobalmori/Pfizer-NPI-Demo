@@ -45,6 +45,23 @@ export const getCopilot = (): Promise<CopilotData> =>
 export const approveDecision = (decisionId: string, optionLabel: string): Promise<{ id: string }> =>
   c3MemberAction('Decision', 'approve', { id: decisionId }, [optionLabel]);
 
+/** What {@link resetDecision} reports back — which decisions it rewound. */
+export interface DecisionResetResult {
+  reset: string[];
+  alreadyBaseline: string[];
+  recordsRestored: number;
+}
+
+/**
+ * Rewind the Execution branch to its seeded baseline (R-TR-15).
+ *
+ * Pass a decision id to rewind one, or omit it to rewind every USER-held decision
+ * — which is what the page refresh does. Idempotent: an unapproved decision is
+ * reported under `alreadyBaseline` and nothing is written.
+ */
+export const resetDecision = (decisionId?: string): Promise<DecisionResetResult> =>
+  c3Action('ExecutionService', 'resetDecision', [decisionId ?? null]);
+
 /* ── End-of-Day log (conversational capture) ──────────────────── */
 
 export const getEodDomains = (): Promise<EodDomainsData> =>

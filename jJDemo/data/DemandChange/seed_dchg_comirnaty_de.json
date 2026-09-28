@@ -1,0 +1,31 @@
+[
+  {
+    "id": "seed_dchg_comirnaty_de",
+    "requestNo": "DCR-26-0067",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "market": {
+      "id": "seed_market_de"
+    },
+    "marketCommitment": {
+      "id": "seed_mcom_comirnaty_de"
+    },
+    "requestedBy": {
+      "id": "seed_person_tb"
+    },
+    "requestedAt": "2026-09-09",
+    "weeksBeforePackaging": 8,
+    "packagingStartDate": "2026-11-04",
+    "baselineDoses": 420000,
+    "requestedDoses": 690000,
+    "upliftPercent": 64.3,
+    "baselinePresentation": "6-dose multi-dose vial",
+    "requestedPresentation": "1-dose prefilled syringe",
+    "baselineSku": "COM-DE-MDV-6",
+    "requestedSku": "COM-DE-PFS-1",
+    "rationale": "STIKO recommendation extended to the 60-plus cohort and two Länder have moved to pharmacy-led administration, which requires single-dose presentations. Commercial requests 690,000 doses with the pack mix moved to prefilled syringe.",
+    "incrementalRevenue": 7020000.0,
+    "stage": "RAISED"
+  }
+]

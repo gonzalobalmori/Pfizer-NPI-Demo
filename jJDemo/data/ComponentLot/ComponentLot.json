@@ -1,0 +1,47 @@
+[
+  {
+    "id": "seed_complot_west_4471",
+    "lotNo": "WPS-26-4471",
+    "supplier": {
+      "id": "seed_supplier_west"
+    },
+    "componentName": "13mm FluroTec-coated lyophilisation stopper",
+    "componentKind": "STOPPER",
+    "receivedAt": "2026-07-28",
+    "quantityReceived": 900000,
+    "quantityRemaining": 214000,
+    "defectRatePpm": 1240,
+    "acceptanceStatus": "ACCEPTED",
+    "certificateRef": "COA-WPS-4471-A"
+  },
+  {
+    "id": "seed_complot_west_4402",
+    "lotNo": "WPS-26-4402",
+    "supplier": {
+      "id": "seed_supplier_west"
+    },
+    "componentName": "13mm FluroTec-coated lyophilisation stopper",
+    "componentKind": "STOPPER",
+    "receivedAt": "2026-06-15",
+    "quantityReceived": 750000,
+    "quantityRemaining": 96000,
+    "defectRatePpm": 40,
+    "acceptanceStatus": "ACCEPTED",
+    "certificateRef": "COA-WPS-4402-A"
+  },
+  {
+    "id": "seed_complot_schott_8820",
+    "lotNo": "SCH-26-8820",
+    "supplier": {
+      "id": "seed_supplier_schott"
+    },
+    "componentName": "3mL Type I borosilicate lyophilisation vial",
+    "componentKind": "VIAL",
+    "receivedAt": "2026-07-02",
+    "quantityReceived": 1100000,
+    "quantityRemaining": 312000,
+    "defectRatePpm": 25,
+    "acceptanceStatus": "ACCEPTED",
+    "certificateRef": "COA-SCH-8820-A"
+  }
+]

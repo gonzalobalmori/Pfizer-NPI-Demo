@@ -1,0 +1,25 @@
+[
+  {
+    "id": "seed_qe_abrysvo_stopper",
+    "eventNo": "DEV-26-0881",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "site": {
+      "id": "seed_site_kzo"
+    },
+    "componentLot": {
+      "id": "seed_complot_west_4471"
+    },
+    "defectDescription": "Routine 100% visual inspection of ABR-26-0431 found stopper flange lift with partial seal displacement at 1,640 ppm against a 500 ppm action limit. Defect traced to West lot WPS-26-4471; batch placed on hold pending scope determination.",
+    "defectCategory": "STOPPER_DEFECT",
+    "detectionMethod": "VISUAL_INSPECTION",
+    "severity": "MAJOR",
+    "raisedAt": "2026-09-09",
+    "raisedBy": {
+      "id": "seed_person_ak"
+    },
+    "stage": "RAISED",
+    "capaRef": "CAPA-26-0114"
+  }
+]

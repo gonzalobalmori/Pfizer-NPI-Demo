@@ -1,0 +1,192 @@
+[
+  {
+    "id": "ra_hf_launchlead",
+    "person": { "id": "seed_person_hf" },
+    "role": { "id": "role_launch_lead" },
+    "team": { "id": "team_nplm" },
+    "raci": "A",
+    "reasonCode": "APPOINTMENT",
+    "validFrom": "2026-01-05T00:00:00Z",
+    "recordedAt": "2026-01-05T09:12:00Z"
+  },
+  {
+    "id": "ra_hf_executive",
+    "person": { "id": "seed_person_hf" },
+    "role": { "id": "role_executive" },
+    "team": { "id": "team_nplm" },
+    "raci": "A",
+    "reasonCode": "LAUNCH_BOARD_CHAIR",
+    "validFrom": "2026-01-05T00:00:00Z",
+    "recordedAt": "2026-01-05T09:12:00Z"
+  },
+  {
+    "id": "ra_ak_qp_global",
+    "person": { "id": "seed_person_ak" },
+    "role": { "id": "role_quality_qp" },
+    "team": { "id": "team_alims" },
+    "raci": "A",
+    "reasonCode": "QP_CERTIFICATION",
+    "validFrom": "2026-01-05T00:00:00Z",
+    "recordedAt": "2026-01-05T09:14:00Z"
+  },
+  {
+    "id": "ra_ak_qp_puurs",
+    "person": { "id": "seed_person_ak" },
+    "role": { "id": "role_quality_qp" },
+    "team": { "id": "team_site_puurs" },
+    "raci": "A",
+    "scopeEntityTypeName": "Site",
+    "scopeEntityId": "seed_site_puurs",
+    "reasonCode": "QP_SITE_DELEGATION",
+    "validFrom": "2026-02-01T00:00:00Z",
+    "recordedAt": "2026-02-01T08:30:00Z"
+  },
+  {
+    "id": "ra_lh_siteplanner_puurs",
+    "person": { "id": "seed_person_lh" },
+    "role": { "id": "role_site_planner" },
+    "team": { "id": "team_site_puurs" },
+    "raci": "R",
+    "scopeEntityTypeName": "Site",
+    "scopeEntityId": "seed_site_puurs",
+    "reasonCode": "APPOINTMENT",
+    "validFrom": "2026-01-05T00:00:00Z",
+    "recordedAt": "2026-01-05T09:16:00Z"
+  },
+  {
+    "id": "ra_lh_siteplanner_freiburg",
+    "person": { "id": "seed_person_lh" },
+    "role": { "id": "role_site_planner" },
+    "team": { "id": "team_site_freiburg" },
+    "raci": "R",
+    "scopeEntityTypeName": "Site",
+    "scopeEntityId": "seed_site_freiburg",
+    "reasonCode": "APPOINTMENT",
+    "validFrom": "2026-01-05T00:00:00Z",
+    "recordedAt": "2026-01-05T09:16:00Z"
+  },
+  {
+    "id": "ra_ap_launchlead",
+    "person": { "id": "seed_person_ap" },
+    "role": { "id": "role_launch_lead" },
+    "team": { "id": "team_gsc" },
+    "raci": "R",
+    "reasonCode": "APPOINTMENT",
+    "validFrom": "2026-01-05T00:00:00Z",
+    "recordedAt": "2026-01-05T09:18:00Z"
+  },
+  {
+    "id": "ra_tb_commercial",
+    "person": { "id": "seed_person_tb" },
+    "role": { "id": "role_commercial" },
+    "team": { "id": "team_commercial" },
+    "raci": "A",
+    "reasonCode": "APPOINTMENT",
+    "validFrom": "2026-01-05T00:00:00Z",
+    "recordedAt": "2026-01-05T09:20:00Z"
+  },
+  {
+    "id": "ra_dm_commercial",
+    "person": { "id": "seed_person_dm" },
+    "role": { "id": "role_commercial" },
+    "team": { "id": "team_commercial" },
+    "raci": "R",
+    "reasonCode": "APPOINTMENT",
+    "validFrom": "2026-01-05T00:00:00Z",
+    "recordedAt": "2026-01-05T09:20:00Z"
+  },
+  {
+    "id": "ra_sl_regulatory_consulted",
+    "person": { "id": "seed_person_sl" },
+    "role": { "id": "role_launch_lead" },
+    "team": { "id": "team_nplm" },
+    "raci": "C",
+    "reasonCode": "REGULATORY_CONSULT",
+    "validFrom": "2026-01-05T00:00:00Z",
+    "recordedAt": "2026-01-05T09:22:00Z"
+  },
+  {
+    "id": "ra_mo_external_supply",
+    "person": { "id": "seed_person_mo" },
+    "role": { "id": "role_site_planner" },
+    "team": { "id": "team_external_supply" },
+    "raci": "R",
+    "reasonCode": "APPOINTMENT",
+    "validFrom": "2026-01-05T00:00:00Z",
+    "recordedAt": "2026-01-05T09:24:00Z"
+  },
+  {
+    "id": "ra_kt_pharmsci",
+    "person": { "id": "seed_person_kt" },
+    "role": { "id": "role_site_planner" },
+    "team": { "id": "team_pharmsci" },
+    "raci": "C",
+    "reasonCode": "APPOINTMENT",
+    "validFrom": "2026-01-05T00:00:00Z",
+    "recordedAt": "2026-01-05T09:26:00Z"
+  },
+  {
+    "id": "ra_rd_gplo",
+    "person": { "id": "seed_person_rd" },
+    "role": { "id": "role_site_planner" },
+    "team": { "id": "team_gplo" },
+    "raci": "R",
+    "reasonCode": "APPOINTMENT",
+    "validFrom": "2026-01-05T00:00:00Z",
+    "recordedAt": "2026-01-05T09:28:00Z"
+  },
+  {
+    "id": "ra_rm_digital_supply",
+    "person": { "id": "seed_person_rm" },
+    "role": { "id": "role_site_planner" },
+    "team": { "id": "team_digital_supply" },
+    "raci": "I",
+    "reasonCode": "APPOINTMENT",
+    "validFrom": "2026-01-05T00:00:00Z",
+    "recordedAt": "2026-01-05T09:30:00Z"
+  },
+  {
+    "id": "ra_jr_auditor",
+    "person": { "id": "seed_person_jr" },
+    "role": { "id": "role_auditor" },
+    "team": { "id": "team_nplm" },
+    "raci": "I",
+    "reasonCode": "AUDIT_MANDATE",
+    "validFrom": "2026-01-05T00:00:00Z",
+    "recordedAt": "2026-01-05T09:32:00Z"
+  },
+  {
+    "id": "ra_board_executive",
+    "person": { "id": "seed_person_board" },
+    "role": { "id": "role_executive" },
+    "team": { "id": "team_nplm" },
+    "raci": "A",
+    "reasonCode": "GOVERNANCE_BODY",
+    "validFrom": "2026-01-05T00:00:00Z",
+    "recordedAt": "2026-01-05T09:34:00Z"
+  },
+  {
+    "id": "ra_jt_qp_puurs_cover_ended",
+    "person": { "id": "seed_person_jt" },
+    "role": { "id": "role_quality_qp" },
+    "team": { "id": "team_site_puurs" },
+    "raci": "A",
+    "scopeEntityTypeName": "Site",
+    "scopeEntityId": "seed_site_puurs",
+    "reasonCode": "SECONDMENT_COVER",
+    "validFrom": "2026-03-02T00:00:00Z",
+    "validTo": "2026-04-13T00:00:00Z",
+    "recordedAt": "2026-02-24T11:05:00Z",
+    "supersededAt": "2026-04-13T00:00:00Z"
+  },
+  {
+    "id": "ra_jt_clinical_current",
+    "person": { "id": "seed_person_jt" },
+    "role": { "id": "role_site_planner" },
+    "team": { "id": "team_pharmsci" },
+    "raci": "C",
+    "reasonCode": "RETURN_FROM_SECONDMENT",
+    "validFrom": "2026-04-13T00:00:00Z",
+    "recordedAt": "2026-04-13T08:00:00Z"
+  }
+]

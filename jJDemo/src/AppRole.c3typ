@@ -1,0 +1,63 @@
+/**
+ * An application role and the privileges it carries — the server-side half of
+ * R-UI-13 and the type {@link AccessControlService} consults on every privileged
+ * action.
+ *
+ * R-UI-13 is explicit that access is "enforced server-side, not by hiding UI", and
+ * R-DOD-08 demands a passing test proving a low-privilege caller gets a 403. That
+ * means privileges have to be *data* the backend can check, not a list of
+ * conditions baked into React. Each instance names one role and enumerates the
+ * privilege keys it holds; {@link AccessControlService#assertCan} refuses the action
+ * when the acting user's roles do not include the required key.
+ *
+ * <h3>The six seeded roles</h3>
+ * Executive, Launch Lead, Site Planner, Quality/QP, Commercial and Auditor
+ * (R-UI-13). Auditor is the interesting one: it reads everything *including* the
+ * audit trail and writes nothing, which is why read and write privileges are
+ * separate keys rather than one "access level" integer — a monotonic level could not
+ * express "sees more than a Site Planner, may change less".
+ *
+ * <h3>Relationship to {@link RoleAssignment}</h3>
+ * This type is the *definition* of a role. {@link RoleAssignment} binds a role to a
+ * {@link Person} for a time window, because R-DM-03 requires the system to answer
+ * "who owned this on 12 March" after a re-assignment. Authority is therefore always
+ * evaluated as of an instant, never as a static property of a user.
+ */
+entity type AppRole mixes SeedData {
+  /** Role id, e.g. "role_quality_qp". */
+  id: !string
+
+  /** Stable role key used in code and in {@link AuditEvent#actorRoleAtTime}, e.g. "QualityQP". */
+  roleKey: !string
+
+  /** Display name, e.g. "Quality / Qualified Person". */
+  name: !string
+
+  /** What this role is accountable for, shown on the RBAC admin screen. */
+  description: string
+
+  /**
+   * Privilege keys this role holds, e.g. `["gate.read", "batch.disposition.sign"]`.
+   * Checked by {@link AccessControlService#assertCan}. A role that holds
+   * `audit.read` but no `*.write` key is a read-only auditor.
+   */
+  privileges: [string]
+
+  /**
+   * True when the role may sign batch dispositions under EU GMP Annex 16 — the
+   * authority Scenario 1's autonomy band routes to (R-S1-06 check 7). Modelled as a
+   * flag as well as a privilege key because the guardrail check renders the reason
+   * in prose and needs to name the constraint.
+   */
+  canSignDisposition: boolean
+
+  /** True when the role may approve a governance reversal at the Launch Board (Scenario 2, R-S2-05 check 7). */
+  canApproveGovernanceReversal: boolean
+
+  /**
+   * Monetary authority in USD above which this role must escalate. Scenario 2's
+   * autonomy band trips on a commitment over $1M (R-S2-05 check 7), so the limit is
+   * data the check reads rather than a literal in the check's code.
+   */
+  spendAuthorityUsd: double
+}

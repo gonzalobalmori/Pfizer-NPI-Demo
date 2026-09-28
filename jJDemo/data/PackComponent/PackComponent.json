@@ -1,0 +1,156 @@
+[
+  {
+    "id": "seed_pkc_com_vial",
+    "partNo": "PKG-VIAL-2ML-MDV",
+    "name": "2mL Type I borosilicate multi-dose vial",
+    "componentClass": "PRIMARY",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "presentation": "6-dose multi-dose vial",
+    "supplier": {
+      "id": "seed_supplier_schott"
+    },
+    "onHandUnits": 340000,
+    "allocatedUnits": 262000,
+    "onOrderUnits": 180000,
+    "onOrderArrival": "2026-10-12",
+    "leadTimeDays": 42,
+    "unitsPerDose": 0.1667,
+    "unitCost": 0.41,
+    "dualSourced": true,
+    "inRegulatoryDossier": true
+  },
+  {
+    "id": "seed_pkc_com_stopper",
+    "partNo": "PKG-STOP-13-CB",
+    "name": "13mm chlorobutyl serum stopper",
+    "componentClass": "PRIMARY",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "presentation": "6-dose multi-dose vial",
+    "supplier": {
+      "id": "seed_supplier_west"
+    },
+    "onHandUnits": 410000,
+    "allocatedUnits": 262000,
+    "onOrderUnits": 200000,
+    "onOrderArrival": "2026-10-05",
+    "leadTimeDays": 35,
+    "unitsPerDose": 0.1667,
+    "unitCost": 0.09,
+    "dualSourced": true,
+    "inRegulatoryDossier": true
+  },
+  {
+    "id": "seed_pkc_com_pfs",
+    "partNo": "PKG-PFS-1ML-SN",
+    "name": "1mL long prefillable glass syringe, staked needle",
+    "componentClass": "PRIMARY",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "presentation": "1-dose prefilled syringe",
+    "supplier": {
+      "id": "seed_supplier_bd"
+    },
+    "onHandUnits": 45000,
+    "allocatedUnits": 30000,
+    "onOrderUnits": 120000,
+    "onOrderArrival": "2026-12-14",
+    "leadTimeDays": 84,
+    "unitsPerDose": 1.0,
+    "unitCost": 0.62,
+    "dualSourced": false,
+    "inRegulatoryDossier": true
+  },
+  {
+    "id": "seed_pkc_com_plunger",
+    "partNo": "PKG-PLNG-1ML-FT",
+    "name": "1mL PFS plunger stopper, FluroTec-coated",
+    "componentClass": "PRIMARY",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "presentation": "1-dose prefilled syringe",
+    "supplier": {
+      "id": "seed_supplier_west"
+    },
+    "onHandUnits": 62000,
+    "allocatedUnits": 30000,
+    "onOrderUnits": 150000,
+    "onOrderArrival": "2026-11-23",
+    "leadTimeDays": 63,
+    "unitsPerDose": 1.0,
+    "unitCost": 0.11,
+    "dualSourced": false,
+    "inRegulatoryDossier": true
+  },
+  {
+    "id": "seed_pkc_com_carton",
+    "partNo": "PKG-CTN-DE-6",
+    "name": "German-language 6-dose carton",
+    "componentClass": "SECONDARY",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "presentation": "6-dose multi-dose vial",
+    "supplier": {
+      "id": "seed_supplier_datwyler"
+    },
+    "onHandUnits": 58000,
+    "allocatedUnits": 41000,
+    "onOrderUnits": 90000,
+    "onOrderArrival": "2026-10-19",
+    "leadTimeDays": 28,
+    "unitsPerDose": 0.1667,
+    "unitCost": 0.22,
+    "dualSourced": true,
+    "inRegulatoryDossier": false
+  },
+  {
+    "id": "seed_pkc_com_coldchain",
+    "partNo": "PKG-CC-ULT-M",
+    "name": "Ultra-cold shipper, medium",
+    "componentClass": "COLD_CHAIN",
+    "launch": {
+      "id": "seed_launch_varipulse_g2"
+    },
+    "presentation": "6-dose multi-dose vial",
+    "supplier": {
+      "id": "seed_supplier_dhl"
+    },
+    "onHandUnits": 4200,
+    "allocatedUnits": 3100,
+    "onOrderUnits": 1800,
+    "onOrderArrival": "2026-10-26",
+    "leadTimeDays": 21,
+    "unitsPerDose": 0.002,
+    "unitCost": 118.0,
+    "dualSourced": true,
+    "inRegulatoryDossier": false
+  },
+  {
+    "id": "seed_pkc_abr_stopper",
+    "partNo": "PKG-STOP-13-FT",
+    "name": "13mm FluroTec-coated lyophilisation stopper",
+    "componentClass": "PRIMARY",
+    "launch": {
+      "id": "seed_launch_octaray_g2"
+    },
+    "presentation": "Lyophilised vial, 13mm stopper",
+    "supplier": {
+      "id": "seed_supplier_west"
+    },
+    "onHandUnits": 310000,
+    "allocatedUnits": 0,
+    "onOrderUnits": 650000,
+    "onOrderArrival": "2026-11-09",
+    "leadTimeDays": 56,
+    "unitsPerDose": 1.0,
+    "unitCost": 0.14,
+    "dualSourced": false,
+    "inRegulatoryDossier": true
+  }
+]

@@ -1,0 +1,67 @@
+/**
+ * The record of a mutating action that already ran — the store behind R-BE-05's
+ * requirement that every write be idempotent under a client-supplied key.
+ *
+ * Why this is not optional in a control tower: the Scenario 1 and 2 cascades each
+ * write dozens of records across many types. A retried request — a double-clicked
+ * Approve button, a network timeout the client retries, a job re-run after a pod
+ * restart — must not produce a second re-baseline, a second CAPA and a second set of
+ * ten actions. So every mutating action takes an idempotency key, and the first thing
+ * it does is claim that key here.
+ *
+ * <h3>Semantics</h3>
+ * {@link TransactionService#claim} inserts a row for (`actionName`, `idempotencyKey`)
+ * before any business write. If the row already exists the action does not run again:
+ * the stored {@link IdempotencyRecord#resultJson} is returned, so a retry is
+ * indistinguishable from the original call to the caller. This is replay, not
+ * rejection — rejecting a retry would leave the client unable to learn the outcome of
+ * a call it never saw the response to.
+ *
+ * <h3>In-flight and failed calls</h3>
+ * {@link IdempotencyRecord#status} distinguishes a claim that is still running from
+ * one that completed. A retry arriving while the first attempt is `IN_PROGRESS` is
+ * rejected with a conflict rather than replayed, because the result does not exist
+ * yet. A `FAILED` claim is retryable: the compensating rollback (A-13) has already
+ * restored the pre-state, so re-running is safe.
+ *
+ * Operational type (no `SeedData`): written at runtime on every mutating call.
+ */
+entity type IdempotencyRecord {
+  /** Record id — `idem_<actionName>_<idempotencyKey>`, making the pair unique by construction. */
+  id: !string
+
+  /** The action that was invoked, e.g. "Decision.approve". */
+  actionName: !string
+
+  /** The client-supplied key identifying this logical attempt. */
+  idempotencyKey: !string
+
+  /**
+   * Where the claim stands. `IN_PROGRESS` means an attempt is running and a
+   * concurrent retry must be refused; `SUCCEEDED` means
+   * {@link IdempotencyRecord#resultJson} is authoritative and replayable;
+   * `FAILED` means the attempt rolled back and the key may be retried.
+   */
+  status: !string enum('IN_PROGRESS', 'SUCCEEDED', 'FAILED')
+
+  /** UTC instant the key was claimed. */
+  claimedAt: !datetime
+
+  /** UTC instant the attempt finished, successfully or not. Null while `IN_PROGRESS`. */
+  completedAt: datetime
+
+  /**
+   * The original call's return value, replayed verbatim to any later retry so the
+   * retry sees exactly what the first caller would have seen.
+   */
+  resultJson: json
+
+  /** Error message when {@link IdempotencyRecord#status} is `FAILED`, for diagnosis. */
+  errorMessage: string
+
+  /** Correlation id of the originating request (R-BE-08), tying the claim to its audit events. */
+  correlationId: string
+
+  /** Who invoked the action. */
+  actorId: string
+}

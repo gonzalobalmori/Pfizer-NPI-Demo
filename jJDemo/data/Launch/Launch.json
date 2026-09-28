@@ -1,12 +1,13 @@
 [
   {
     "id": "seed_launch_varipulse_g2",
-    "deviceName": "Comirnaty Gen 2 PFA Catheter",
+    "deviceName": "Comirnaty 2026\u201327 Formula",
+    "shortName": "Comirnaty",
     "franchise": {
       "id": "seed_franchise_biosense"
     },
-    "deviceClass": "Class III",
-    "regulatoryRoute": "PMA + EU MDR",
+    "deviceClass": "Vaccine \u2014 mRNA",
+    "regulatoryRoute": "BLA supplement (FDA) + Art. 17 annual update (EMA)",
     "leadMarket": {
       "id": "seed_market_de"
     },
@@ -18,8 +19,8 @@
     "firstShipDate": "2027-06-29",
     "readinessPct": 83,
     "launchValue": 96000000,
-    "sterilisationMethod": "EO",
-    "manufactureSite": "Irvine + CMO",
+    "sterilisationMethod": "Aseptic fill \u2014 sterile filtration",
+    "manufactureSite": "Puurs + Baxter Halle (CMO)",
     "registrationsFiled": 11,
     "registrationsTotal": 14,
     "launchBuildUnits": 4200,
@@ -30,12 +31,13 @@
   },
   {
     "id": "seed_launch_octaray_g2",
-    "deviceName": "Abrysvo Gen 2 Mapping Catheter",
+    "deviceName": "Abrysvo Maternal Indication Expansion",
+    "shortName": "Abrysvo",
     "franchise": {
       "id": "seed_franchise_biosense"
     },
-    "deviceClass": "Class III",
-    "regulatoryRoute": "PMA + EU MDR",
+    "deviceClass": "Vaccine \u2014 bivalent RSVpreF",
+    "regulatoryRoute": "BLA efficacy supplement (FDA) + Type II variation (EMA)",
     "leadMarket": {
       "id": "seed_market_de"
     },
@@ -47,8 +49,8 @@
     "firstShipDate": "2027-07-15",
     "readinessPct": 86,
     "launchValue": 42000000,
-    "sterilisationMethod": "EO",
-    "manufactureSite": "Irvine + CMO",
+    "sterilisationMethod": "Aseptic fill \u2014 lyophilised",
+    "manufactureSite": "Kalamazoo (KZO)",
     "registrationsFiled": 8,
     "registrationsTotal": 14,
     "launchBuildUnits": 3100,
@@ -59,12 +61,12 @@
   },
   {
     "id": "seed_launch_embotrap_iv",
-    "deviceName": "Elrexfio IV Revascularisation Device",
+    "deviceName": "Hympavzi Paediatric Extension",
     "franchise": {
       "id": "seed_franchise_cerenovus"
     },
-    "deviceClass": "Class III",
-    "regulatoryRoute": "PMA + EU MDR",
+    "deviceClass": "Rare disease \u2014 anti-TFPI mAb",
+    "regulatoryRoute": "BLA supplement (FDA) + Type II variation (EMA)",
     "leadMarket": {
       "id": "seed_market_de"
     },
@@ -76,24 +78,25 @@
     "firstShipDate": "2026-09-26",
     "readinessPct": 67,
     "launchValue": 55000000,
-    "sterilisationMethod": "Gamma",
-    "manufactureSite": "Galway",
+    "sterilisationMethod": "Aseptic fill \u2014 prefilled pen",
+    "manufactureSite": "Grange Castle (GC)",
     "registrationsFiled": 12,
     "registrationsTotal": 14,
     "launchBuildUnits": 5200,
     "fieldForceCertified": 55,
     "fieldForceTotal": 70,
     "vacApprovalsFiled": 12,
-    "vacApprovalsTotal": 24
+    "vacApprovalsTotal": 24,
+    "shortName": "Hympavzi"
   },
   {
     "id": "seed_launch_impella_ecp",
-    "deviceName": "Genotropin ECP+ Console v3",
+    "deviceName": "Cibinqo Adolescent Indication",
     "franchise": {
       "id": "seed_franchise_abiomed"
     },
-    "deviceClass": "Class III",
-    "regulatoryRoute": "PMA",
+    "deviceClass": "Immunology \u2014 JAK1 inhibitor",
+    "regulatoryRoute": "NDA supplement (FDA) + Type II variation (EMA)",
     "leadMarket": {
       "id": "seed_market_us"
     },
@@ -106,24 +109,25 @@
     "readinessPct": 92,
     "scheduleFloatDays": 31,
     "launchValue": 120000000,
-    "sterilisationMethod": "N/A (capital)",
-    "manufactureSite": "Danvers",
+    "sterilisationMethod": "N/A \u2014 oral solid dose",
+    "manufactureSite": "Freiburg",
     "registrationsFiled": 6,
     "registrationsTotal": 8,
     "launchBuildUnits": 900,
     "fieldForceCertified": 70,
     "fieldForceTotal": 80,
     "vacApprovalsFiled": 15,
-    "vacApprovalsTotal": 28
+    "vacApprovalsTotal": 28,
+    "shortName": "Cibinqo"
   },
   {
     "id": "seed_launch_javelin_xl",
-    "deviceName": "Somavert XL IVL Catheter",
+    "deviceName": "Velsipity Line Extension",
     "franchise": {
       "id": "seed_franchise_shockwave"
     },
-    "deviceClass": "Class III",
-    "regulatoryRoute": "PMA + EU MDR",
+    "deviceClass": "Internal medicine \u2014 S1P modulator",
+    "regulatoryRoute": "NDA supplement (FDA) + Type II variation (EMA)",
     "leadMarket": {
       "id": "seed_market_us"
     },
@@ -136,24 +140,25 @@
     "readinessPct": 88,
     "scheduleFloatDays": 18,
     "launchValue": 88000000,
-    "sterilisationMethod": "e-beam",
-    "manufactureSite": "Santa Clara",
+    "sterilisationMethod": "N/A \u2014 oral solid dose",
+    "manufactureSite": "Freiburg",
     "registrationsFiled": 5,
     "registrationsTotal": 6,
     "launchBuildUnits": 6400,
     "fieldForceCertified": 66,
     "fieldForceTotal": 72,
     "vacApprovalsFiled": 18,
-    "vacApprovalsTotal": 26
+    "vacApprovalsTotal": 26,
+    "shortName": "Velsipity"
   },
   {
     "id": "seed_launch_ethicon_4000",
-    "deviceName": "Prevnar 20 Stapler",
+    "deviceName": "Zavicefta Paediatric Launch",
     "franchise": {
       "id": "seed_franchise_ethicon"
     },
-    "deviceClass": "Class II",
-    "regulatoryRoute": "510(k) + EU MDR",
+    "deviceClass": "Hospital \u2014 beta-lactam/BLI combination",
+    "regulatoryRoute": "Type II variation (EMA) + national tender filings",
     "leadMarket": {
       "id": "seed_market_us"
     },
@@ -165,24 +170,25 @@
     "firstShipDate": "2027-03-15",
     "readinessPct": 80,
     "launchValue": 74000000,
-    "sterilisationMethod": "EO",
-    "manufactureSite": "Cincinnati + CMO",
+    "sterilisationMethod": "Terminal \u2014 powder for infusion",
+    "manufactureSite": "Kalamazoo (KZO)",
     "registrationsFiled": 9,
     "registrationsTotal": 14,
     "launchBuildUnits": 8800,
     "fieldForceCertified": 48,
     "fieldForceTotal": 90,
     "vacApprovalsFiled": 14,
-    "vacApprovalsTotal": 30
+    "vacApprovalsTotal": 30,
+    "shortName": "Zavicefta"
   },
   {
     "id": "seed_launch_dualto",
-    "deviceName": "Zavzpret Energy System",
+    "deviceName": "Fragmin Prefilled Syringe Refresh",
     "franchise": {
       "id": "seed_franchise_ethicon"
     },
-    "deviceClass": "Class II",
-    "regulatoryRoute": "EU MDR",
+    "deviceClass": "Hospital \u2014 low molecular weight heparin",
+    "regulatoryRoute": "Type IB variation (EMA)",
     "leadMarket": {
       "id": "seed_market_us"
     },
@@ -194,24 +200,25 @@
     "firstShipDate": "2026-01-01",
     "readinessPct": 100,
     "launchValue": 210000000,
-    "sterilisationMethod": "N/A (capital)",
-    "manufactureSite": "Cincinnati",
+    "sterilisationMethod": "Aseptic fill \u2014 prefilled syringe",
+    "manufactureSite": "Puurs",
     "registrationsFiled": 14,
     "registrationsTotal": 14,
     "launchBuildUnits": 320,
     "fieldForceCertified": 88,
     "fieldForceTotal": 88,
     "vacApprovalsFiled": 26,
-    "vacApprovalsTotal": 26
+    "vacApprovalsTotal": 26,
+    "shortName": "Fragmin"
   },
   {
     "id": "seed_launch_ottava",
-    "deviceName": "Velsipity Robotic Platform Kit",
+    "deviceName": "Zavzpret EU Launch",
     "franchise": {
       "id": "seed_franchise_digital_surgery"
     },
-    "deviceClass": "Class II",
-    "regulatoryRoute": "EU MDR",
+    "deviceClass": "Neuroscience \u2014 CGRP antagonist nasal spray",
+    "regulatoryRoute": "MAA centralised procedure (EMA)",
     "leadMarket": {
       "id": "seed_market_de"
     },
@@ -224,24 +231,25 @@
     "readinessPct": 95,
     "scheduleFloatDays": 24,
     "launchValue": 260000000,
-    "sterilisationMethod": "N/A (capital)",
-    "manufactureSite": "Santa Clara",
+    "sterilisationMethod": "Aseptic fill \u2014 nasal spray device",
+    "manufactureSite": "Puurs",
     "registrationsFiled": 3,
     "registrationsTotal": 12,
     "launchBuildUnits": 40,
     "fieldForceCertified": 20,
     "fieldForceTotal": 40,
     "vacApprovalsFiled": 4,
-    "vacApprovalsTotal": 18
+    "vacApprovalsTotal": 18,
+    "shortName": "Zavzpret"
   },
   {
     "id": "seed_launch_puresee",
-    "deviceName": "Litfulo Toric IOL",
+    "deviceName": "Zirabev Additional Strength",
     "franchise": {
       "id": "seed_franchise_vision"
     },
-    "deviceClass": "Class III",
-    "regulatoryRoute": "PMA + EU MDR",
+    "deviceClass": "Biosimilar \u2014 bevacizumab-bvzr",
+    "regulatoryRoute": "351(k) BLA supplement (FDA) + Type II variation (EMA)",
     "leadMarket": {
       "id": "seed_market_de"
     },
@@ -253,14 +261,15 @@
     "firstShipDate": "2027-09-30",
     "readinessPct": 83,
     "launchValue": 64000000,
-    "sterilisationMethod": "Autoclave",
-    "manufactureSite": "Groningen",
+    "sterilisationMethod": "Aseptic fill \u2014 single-dose vial",
+    "manufactureSite": "Grange Castle (GC)",
     "registrationsFiled": 9,
     "registrationsTotal": 14,
     "launchBuildUnits": 12000,
     "fieldForceCertified": 44,
     "fieldForceTotal": 58,
     "vacApprovalsFiled": 10,
-    "vacApprovalsTotal": 22
+    "vacApprovalsTotal": 22,
+    "shortName": "Zirabev"
   }
 ]

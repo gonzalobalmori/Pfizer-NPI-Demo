@@ -1,5 +1,5 @@
 {
-  "vault": "jnjmedtech-qms.veevavault.com",
+  "vault": "pfizer-qms.veevavault.com",
   "object": "audit__v",
   "extracted_at": "2026-09-11T06:15:00Z",
   "records": [

@@ -38,5 +38,93 @@
     "supplier": {
       "id": "seed_supplier_heraeus"
     }
+  },
+  {
+    "id": "seed_site_freiburg",
+    "name": "Freiburg",
+    "location": "Freiburg im Breisgau, DE",
+    "capabilities": "Oral solid dose manufacture and packaging; multi-pack-size lines; Atirmociclib primary and secondary packaging",
+    "capacityAvailableFrom": "2026-10-05"
+  },
+  {
+    "id": "seed_site_puurs",
+    "name": "Puurs",
+    "location": "Puurs, BE",
+    "capabilities": "Sterile injectable fill-finish; prefilled syringe and vial lines; Berobenatide drug product and finished product",
+    "capacityAvailableFrom": "2026-09-14"
+  },
+  {
+    "id": "seed_site_kzo",
+    "name": "Kalamazoo (KZO)",
+    "location": "Kalamazoo, Michigan, US",
+    "capabilities": "Active pharmaceutical ingredient and sterile injectable manufacture; US-market finished product",
+    "capacityAvailableFrom": "2026-10-19"
+  },
+  {
+    "id": "seed_site_gc",
+    "name": "Grange Castle (GC)",
+    "location": "Grange Castle, Dublin, IE",
+    "capabilities": "Biologics drug substance and drug product; antibody-drug conjugate conjugation suite",
+    "capacityAvailableFrom": "2026-11-02"
+  },
+  {
+    "id": "seed_site_west_kinston",
+    "name": "West Kinston",
+    "location": "Kinston, North Carolina, US",
+    "capabilities": "Elastomeric closures; Flurotec-coated lyophilisation stoppers; serum stoppers",
+    "capacityAvailableFrom": "2026-10-12",
+    "supplier": {
+      "id": "seed_supplier_west"
+    }
+  },
+  {
+    "id": "seed_site_west_eschweiler",
+    "name": "West Eschweiler",
+    "location": "Eschweiler, DE",
+    "capabilities": "Elastomeric closures; plunger stoppers; European supply",
+    "capacityAvailableFrom": "2026-11-09",
+    "supplier": {
+      "id": "seed_supplier_west"
+    }
+  },
+  {
+    "id": "seed_site_schott_mullheim",
+    "name": "SCHOTT M\u00fcllheim",
+    "location": "M\u00fcllheim, DE",
+    "capabilities": "Type I borosilicate glass vials; ready-to-use vial supply",
+    "capacityAvailableFrom": "2026-09-21",
+    "supplier": {
+      "id": "seed_supplier_schott"
+    }
+  },
+  {
+    "id": "seed_site_bd_pontderoyans",
+    "name": "BD Pont-de-Claix",
+    "location": "Pont-de-Claix, FR",
+    "capabilities": "Prefillable glass syringes; staked-needle syringe barrels",
+    "capacityAvailableFrom": "2026-12-07",
+    "supplier": {
+      "id": "seed_supplier_bd"
+    }
+  },
+  {
+    "id": "seed_site_baxter_halle",
+    "name": "Baxter Halle",
+    "location": "Halle/Westfalen, DE",
+    "capabilities": "Contract sterile fill-finish; vial and syringe lines; EU-market finished product",
+    "capacityAvailableFrom": "2026-10-26",
+    "supplier": {
+      "id": "seed_supplier_baxter"
+    }
+  },
+  {
+    "id": "seed_site_patheon_ferentino",
+    "name": "Thermo Fisher Patheon Ferentino",
+    "location": "Ferentino, IT",
+    "capabilities": "Contract sterile fill-finish and secondary packaging; multi-SKU pack lines",
+    "capacityAvailableFrom": "2026-11-16",
+    "supplier": {
+      "id": "seed_supplier_thermofisher"
+    }
   }
 ]

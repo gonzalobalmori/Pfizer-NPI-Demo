@@ -1,0 +1,77 @@
+/**
+ * FillBatch — one fill-finish batch of finished drug product, carrying the quantity
+ * that makes a quality hold computable.
+ *
+ * This is the unit a {@link QualityEvent} places on hold, and the reason
+ * Scenario 1 can state a scope in doses rather than in prose: summing
+ * {@link #doseCount} over the batches whose {@link #state} is {@code HOLD}
+ * yields the affected volume, and joining those batches to
+ * {@link MarketCommitment} yields the affected markets.
+ *
+ * Distinct from {@link Lot}, which models an in-process MES micro-batch with an
+ * SPC measurement series ({@link Lot#spcViolation}). A {@code FillBatch} is the
+ * released-or-held commercial batch a Qualified Person dispositions, so it
+ * carries {@link #disposition}, {@link #dispositionBy} and {@link #dispositionAt}
+ * rather than process measurements.
+ *
+ * Mutated at runtime by {@link QualityDisruptionService} (hold, disposition,
+ * release), so it deliberately carries no {@code SeedData} mixin and its records
+ * live in {@code data/}, which loads without locking field values against
+ * updates.
+ */
+entity type FillBatch {
+
+  /** Seed key, e.g. {@code seed_batch_abrysvo_2601}. */
+  id: !string
+
+  /** The GMP batch number as printed on the batch record, e.g. {@code ABR-26-0412}. */
+  batchNo: !string
+
+  /** The launch this batch was filled for. */
+  launch: Launch
+
+  /** The site that filled it — the {@link Site} whose visual-inspection line raised the defect. */
+  site: Site
+
+  /** Set when a {@link QualityEvent} sweeps this batch into its hold. Null on clean batches. */
+  qualityEvent: QualityEvent
+
+  /** Presentation filled, e.g. {@code "Lyophilised vial, 13mm stopper"}. Drives which {@link PackComponent} applies. */
+  presentation: string
+
+  /**
+   * Doses in the batch. The quantity everything in Scenario 1 is computed from —
+   * {@link QualityEvent#scopeDoses} is the sum of this field over held batches.
+   */
+  doseCount: !int
+
+  /** Fill date. With {@link #expiryDate} this bounds how long a rework option can take. */
+  fillDate: datetime
+
+  /** Expiry. A rework option that lands past this date forfeits the batch outright. */
+  expiryDate: datetime
+
+  /** Where the batch stands. {@code HOLD} is what a quality event applies; {@code REJECTED} is terminal. */
+  state: !string enum('RELEASED', 'HOLD', 'QUARANTINE', 'REJECTED', 'REWORKED')
+
+  /** The Qualified Person's batch disposition. {@code PENDING} until a QP signs. */
+  disposition: string enum('PENDING', 'RELEASE', 'REJECT', 'REWORK')
+
+  /** The QP who dispositioned it — the signer of record for 21 CFR Part 11 purposes. */
+  dispositionBy: Person
+
+  /** When the disposition was signed. */
+  dispositionAt: datetime
+
+  /** Why the batch is held, in the inspector's own words. */
+  holdReason: string
+
+  /** The component lot used — how a defect traces from one supplier lot to every batch it touched. */
+  componentLot: ComponentLot
+
+  /**
+   * Visual-inspection reject rate in parts per million. The measured signal that
+   * distinguishes an affected batch from a clean one filled the same week.
+   */
+  inspectionRejectPpm: int
+}

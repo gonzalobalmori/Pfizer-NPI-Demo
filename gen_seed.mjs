@@ -229,7 +229,7 @@ Object.keys(AL).forEach(k => { AGENTNAME2CODE[decode(AL[k])] = k; });
 
 /* ============================ PEOPLE ==================================== */
 const PEOPLE = [
-  ['Helena Fossi', 'Global NPI Lead', 'Governance', 'HF', false],
+  ['George Hall', 'Global NPI Lead', 'Governance', 'GH', false, 'hf'],
   ['M. Okafor', 'Sourcing Lead', 'Sourcing', 'MO', false],
   ['A. Kowalski', 'Quality Lead', 'Quality', 'AK', false],
   ['S. Lindqvist', 'Regulatory Affairs', 'Regulatory', 'SL', false],
@@ -788,7 +788,7 @@ write('Comment', comments);
 /* ---- Notifications (anchor case fires 3 Teams cards) ------------------- */
 [['M. Okafor'], ['A. Kowalski'], ['S. Lindqvist']].forEach((n, i) => notifications.push({
   id: `seed_notification_417_${i + 1}`, recipient: n[0], channel: 'Teams', sentAt: '2026-09-11T08:23:00',
-  subject: 'NPI-0417 — decision routed to Helena Fossi: dual-source EO sterilisation to Sterigenics',
+  subject: 'NPI-0417 — decision routed to George Hall: dual-source EO sterilisation to Sterigenics',
   decision: ref('seed_decision_417'),
 }));
 write('Notification', notifications);

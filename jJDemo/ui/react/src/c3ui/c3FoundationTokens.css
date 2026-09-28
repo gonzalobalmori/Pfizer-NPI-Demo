@@ -333,8 +333,8 @@
   --c3-style-whitespace-nowrap: nowrap;
   --c3-style-theme-category-light: light;
   --c3-style-theme-category-dark: dark;
-  --c3-style-font-family-default: 'Inter';
-  --c3-style-font-family-heading: 'Inter';
+  --c3-style-font-family-default: 'Noto Sans Variable', 'Noto Sans';
+  --c3-style-font-family-heading: 'Noto Sans Variable', 'Noto Sans';
   --c3-style-font-family-monospace: 'Roboto Mono';
   --c3-style-font-family-icon: Font Awesome 6 Pro;
   --c3-style-font-size-10: 2.25rem;

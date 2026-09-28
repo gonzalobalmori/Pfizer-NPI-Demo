@@ -1,0 +1,206 @@
+/**
+ * The only sanctioned way to write the audit trail, and the tamper-evidence
+ * verifier — §5.1, §5.4 and §5.5.
+ *
+ * Every governed change in the application funnels through
+ * {@link AuditService#record}, which appends an {@link AuditEvent}, links it into that
+ * entity's hash chain and returns the event. Nothing else computes hashes; keeping the
+ * chain arithmetic in one place is what makes {@link AuditService#verifyChain}
+ * meaningful, because a second writer with its own digest rule would silently fork the
+ * chain.
+ *
+ * <h3>The chain (R-TR-03)</h3>
+ * Events for one (`entityTypeName`, `entityId`) form a linked list ordered by
+ * {@link AuditEvent#sequence}. Each event's {@link AuditEvent#eventHash} is SHA-256
+ * over a canonical digest that *includes* the previous event's hash, so altering any
+ * historical row invalidates every hash after it. The first event on an entity chains
+ * from the literal `GENESIS`.
+ *
+ * <h3>Agent accountability (§5.5)</h3>
+ * {@link AuditService#recordAgentAction} captures the extra fields R-TR-13 demands —
+ * model id, tool calls, confidence, whether a human approved and who. R-TR-14 is
+ * enforced by {@link AuditService#assertAgentMayNotCommit}, which refuses an
+ * agent-actored event that would move a date, pass a gate, allocate supply or change a
+ * batch disposition unless a human approval is present under the same correlation id.
+ * Batch disposition is refused outright for agents, with no approval override.
+ *
+ * Stateless computation type — holds no data of its own. Callable from other server
+ * actions and, for the read paths, from the UI via {@code c3Action}.
+ */
+entity type AuditService {
+  /**
+   * Append one audit event and link it into its entity's hash chain (R-TR-01, R-TR-02).
+   *
+   * Computes {@link AuditEvent#sequence} and {@link AuditEvent#previousHash} from the
+   * existing chain for the same entity, hashes the canonical digest, and creates the
+   * row. The returned event carries the assigned sequence and hash so a caller writing
+   * a cascade can thread further events behind it.
+   *
+   * @param spec Event fields: `entityTypeName`, `entityId`, `changeType`, `actorId`,
+   *             `actorType`, `sourceChannel`, `correlationId` are required; `fieldPath`,
+   *             `oldValue`, `newValue`, `actorName`, `actorRoleAtTime`, `reasonCode`,
+   *             `justification`, `sourceSystem`, `sessionId` are optional.
+   * @return The created {@link AuditEvent} as JSON, including its assigned hash.
+   */
+  record: function(spec: json): json js
+
+  /**
+   * Append several audit events under one correlation id, in order (R-BE-07).
+   *
+   * The approval cascades change many records at once and every one of those changes
+   * needs its own event. Writing them through one call keeps them contiguous in each
+   * entity's chain and lets the whole burst share a correlation id, so the History tab
+   * can collapse fifty events back to the single gesture that caused them.
+   *
+   * @param specs Array of event specs in the shape {@link AuditService#record} accepts.
+   * @return JSON with `count` and the created events' ids and hashes.
+   */
+  recordBatch: function(specs: json): json js
+
+  /**
+   * Re-walk one entity's hash chain and report whether it is intact (R-TR-03, R-DOD-07).
+   *
+   * Recomputes every event's hash from its stored payload and predecessor and compares
+   * with the stored {@link AuditEvent#eventHash}. Detects an edited field, a removed
+   * row (a sequence gap) and a re-pointed link.
+   *
+   * @param entityTypeName C3 type name of the entity whose chain to verify.
+   * @param entityId       Id of the entity whose chain to verify.
+   * @return JSON `{entityTypeName, entityId, eventCount, valid, brokenAtSequence, reason}`.
+   *         `valid` is true and `brokenAtSequence` null for an intact chain.
+   */
+  verifyChain: function(entityTypeName: string, entityId: string): json js
+
+  /**
+   * Verify every hash chain in the store — the R-DOD-07 gate over the full seed.
+   *
+   * Groups all {@link AuditEvent}s by entity and verifies each chain, so a single call
+   * proves the whole trail is sound rather than one record at a time.
+   *
+   * @return JSON `{chainsChecked, chainsValid, chainsBroken, eventsChecked, broken: [...]}`.
+   */
+  verifyAllChains: function(): json js
+
+  /**
+   * The canonical digest string an event is hashed over — exposed so a reviewer (or a
+   * test) can reproduce the hash by hand and confirm the scheme.
+   *
+   * Field order is fixed and every value is rendered explicitly, including nulls, so
+   * that two events differing only in a null-versus-empty-string field hash
+   * differently. Changing this function invalidates every stored hash, which is why it
+   * is documented as the scheme rather than treated as an internal detail.
+   *
+   * @param spec An event spec or a stored event.
+   * @return The digest input string.
+   */
+  digestOf: function(spec: json): string js
+
+  /**
+   * SHA-256 of an arbitrary string, using the implementation pinned inside this service.
+   *
+   * Exposed for two reasons, both about trust rather than convenience. First, it lets a
+   * test assert the hash function against published known-answer vectors: the chain is
+   * worthless if the digest arithmetic is subtly wrong, so that has to be provable
+   * independently of any stored data. Second, combined with
+   * {@link AuditService#digestOf} it lets a reviewer or an offline script recompute any
+   * stored {@link AuditEvent#eventHash} from the event's own fields and confirm the
+   * chain without trusting {@link AuditService#verifyChain} to grade its own homework.
+   *
+   * The implementation is deliberately in-repo rather than delegated to a platform
+   * helper — see the note at the top of the implementation file. Callers must not use
+   * this to write hashes; {@link AuditService#record} is the only sanctioned writer.
+   *
+   * @param message The string to hash.
+   * @return Lower-case hex SHA-256 digest, 64 characters.
+   */
+  hashOf: function(message: string): string js
+
+  /**
+   * Record an agent's action with the full provenance §5.5 requires (R-TR-13).
+   *
+   * Writes an {@link AuditEvent} with `actorType = AGENT` plus an
+   * {@link AgentRunRecord} holding the model id, the input-context summary, the tool
+   * calls, the output, the confidence and the human-approval state — the fields that
+   * let a reviewer judge whether the agent should have been trusted.
+   *
+   * @param spec Agent-run fields: `agentName`, `agentVersion`, `modelId`,
+   *             `inputSummary`, `toolCalls`, `output`, `confidence`,
+   *             `humanApproved`, `approvedByPersonId`, `approvedAt`, plus the
+   *             entity and correlation fields {@link AuditService#record} needs.
+   * @return JSON with the created audit event and agent-run record ids.
+   */
+  recordAgentAction: function(spec: json): json js
+
+  /**
+   * Refuse an agent-committed change that requires human approval (R-TR-14).
+   *
+   * Batch disposition is never agent-decidable and is refused unconditionally. Moving a
+   * date, passing a gate and allocating supply are refused *unless* a human approval
+   * event exists under the same correlation id. Called by the guarded actions before
+   * they write, so the rule is enforced at the service layer rather than trusted to
+   * the caller.
+   *
+   * @param changeClass    One of `DATE_MOVE`, `GATE_PASS`, `SUPPLY_ALLOCATION`,
+   *                       `BATCH_DISPOSITION`.
+   * @param actorType      The acting actor's type; only `AGENT` is constrained.
+   * @param correlationId  Correlation id whose events are searched for a human approval.
+   * @return True when the change is permitted.
+   * @throws When an agent attempts a disposition, or any other guarded class with no
+   *         logged human approval.
+   */
+  assertAgentMayNotCommit: function(changeClass: string, actorType: string, correlationId: string): boolean js
+
+  /**
+   * Bind an {@link ESignature} to the exact version of a record (R-TR-10, R-TR-11).
+   *
+   * Snapshots the record, hashes its canonical payload, verifies the re-authentication
+   * window (A-08), creates the immutable signature and writes a `SIGNATURE` audit
+   * event. Refuses a signer whose roles at signing time do not carry the privilege the
+   * meaning requires — a `disposition` signature demands
+   * {@link AppRole#canSignDisposition}.
+   *
+   * @param spec Signature fields: `entityTypeName`, `entityId`, `signerPersonId`,
+   *             `meaning`, `reauthChallengeRef`, `reasonCode`, `justification`,
+   *             `correlationId`.
+   * @return The created {@link ESignature} as JSON.
+   */
+  sign: function(spec: json): json js
+
+  /**
+   * Check a signature still matches the record it signed (R-TR-11).
+   *
+   * Re-hashes the current record and compares with
+   * {@link ESignature#signedPayloadHash}. A mismatch does not invalidate the signature
+   * — it proves the record moved on after signing, which is exactly what an auditor
+   * needs to see.
+   *
+   * @param signatureId The signature to check.
+   * @return JSON `{signatureId, intact, signedHash, currentHash, drifted}`.
+   */
+  verifySignature: function(signatureId: string): json js
+
+  /**
+   * The audit trail for one record, newest first — the History tab's data (R-UI-12).
+   *
+   * @param entityTypeName C3 type name of the record.
+   * @param entityId       Id of the record.
+   * @param limit          Maximum events to return; -1 for all.
+   * @return JSON `{entityTypeName, entityId, events: [...], chainValid}`.
+   */
+  historyFor: function(entityTypeName: string, entityId: string, limit: int): json js
+
+  /**
+   * Export an audit trail to CSV with the filter criteria embedded in the header
+   * (R-TR-12).
+   *
+   * The embedded criteria matter for a regulated export: a CSV of events with no
+   * statement of what was asked for cannot be reconciled later against the system.
+   * The header therefore carries the entity, the date range, the requesting user and
+   * the export instant before the column row.
+   *
+   * @param spec Export criteria: `entityTypeName`, `entityId`, `fromDate`, `toDate`,
+   *             optional `actorId` and `changeType`.
+   * @return JSON `{filename, header, csv, rowCount}`.
+   */
+  exportAuditCsv: function(spec: json): json js
+}

@@ -1,0 +1,147 @@
+/**
+ * The write envelope every mutating action runs inside — idempotency (R-BE-05),
+ * optimistic concurrency (R-BE-06) and all-or-nothing multi-entity transitions (R-BE-07).
+ *
+ * R-BE-07 is the requirement that shapes this type: "the Scenario 1 and 2 approval
+ * cascades are single transactions: all of it commits, or none". Each cascade writes
+ * dozens of records across many types — a re-baselined gate, a CAPA, ten action-plan
+ * tasks, market-commitment changes, notifications — and a partial cascade is worse than
+ * no cascade, because the control tower would then be asserting a plan that half exists.
+ *
+ * <h3>How atomicity is actually achieved here</h3>
+ * A C3 server action does not span one ACID transaction across many entity writes, so
+ * atomicity is implemented as a **saga with compensating rollback** (A-13): the envelope
+ * snapshots every record before it is touched, runs the caller's steps, and on any failure
+ * restores each snapshot in reverse order and marks the attempt `FAILED`. The
+ * externally-observable contract R-BE-07 asks for is met — a caller either sees the whole
+ * cascade or sees none of it — and the mechanism is honest about the fact that the
+ * guarantee is compensation rather than a database transaction. The rollback itself is
+ * audited, because a silent rollback would leave an operator unable to explain why the
+ * plan they authorised did not appear.
+ *
+ * <h3>Idempotency and concurrency are the same problem seen twice</h3>
+ * Idempotency defends against the *same* caller arriving twice (a double-clicked Approve,
+ * a client retry after a timeout): the key is claimed in {@link IdempotencyRecord} and a
+ * replay returns the stored result. Optimistic concurrency defends against *two different*
+ * callers racing on one record: the caller passes the version token it read, and a
+ * mismatch raises a conflict rather than overwriting the other user's change. R-BE-06 is
+ * explicit that this must "never [be] a silent overwrite".
+ *
+ * Stateless computation type. Not UI-callable — this is infrastructure that server actions
+ * wrap themselves in; the UI calls the business action, which calls this.
+ */
+entity type TransactionService {
+  /**
+   * Claim an idempotency key before any business write (R-BE-05).
+   *
+   * Returns `{claimed: true}` for a first call, which the caller proceeds on. Returns
+   * `{claimed: false, replayed: true, result}` when the key already succeeded — the
+   * stored result, so a retry is indistinguishable from the original call. Raises a
+   * conflict when a claim is still `IN_PROGRESS`, because the result does not exist yet
+   * and inventing one would be a lie.
+   *
+   * @param spec `actionName`, `idempotencyKey`, `actorId`, `correlationId`.
+   * @return JSON `{claimed, replayed, recordId, result}`.
+   * @throws When a concurrent attempt on the same key is in flight.
+   */
+  claim: function(spec: json): json js
+
+  /**
+   * Mark a claim succeeded and store its result for replay (R-BE-05).
+   *
+   * @param spec `actionName`, `idempotencyKey`, `result`.
+   * @return JSON `{recordId, status}`.
+   */
+  complete: function(spec: json): json js
+
+  /**
+   * Mark a claim failed so the key can be retried (R-BE-05).
+   *
+   * A failed claim is retryable precisely because the compensating rollback has already
+   * restored the pre-state, so a retry starts from the same place the first attempt did.
+   *
+   * @param spec `actionName`, `idempotencyKey`, `errorMessage`.
+   * @return JSON `{recordId, status}`.
+   */
+  fail: function(spec: json): json js
+
+  /**
+   * Refuse the write when the caller's version token is stale (R-BE-06).
+   *
+   * The caller passes the token it read with the record. If the stored version has moved
+   * on, another user changed the record in between and this write would silently discard
+   * their change, so it is refused with a conflict naming both versions.
+   *
+   * A null or negative `expectedVersion` means the caller is deliberately not asserting a
+   * version — permitted for server-initiated writes such as a job, and never for a UI
+   * gesture, which always has a token because it always read the record first.
+   *
+   * @param entityTypeName  C3 type name of the record.
+   * @param entityId        Id of the record.
+   * @param expectedVersion The version token the caller read.
+   * @return True when the token is current.
+   * @throws A conflict error when the record has moved on.
+   */
+  assertVersion: function(entityTypeName: string, entityId: string, expectedVersion: int): boolean js
+
+  /**
+   * Open a transaction envelope: register the records a cascade is about to change and
+   * snapshot each one (R-BE-07).
+   *
+   * Snapshotting up front — before any write — is what makes the rollback possible. The
+   * returned handle carries the snapshots and is passed to
+   * {@link TransactionService#commit} or {@link TransactionService#rollback}.
+   *
+   * @param spec `actionName`, `correlationId`, `actorId`, `actorName`, `reasonCode`, and
+   *             `targets`: an array of `{entityTypeName, entityId, changedFields}`.
+   * @return A transaction handle as JSON: `{txId, actionName, correlationId, snapshots}`.
+   */
+  begin: function(spec: json): json js
+
+  /**
+   * Close a transaction envelope successfully, recording one audit event per changed
+   * field (R-TR-02) under the shared correlation id (R-BE-08).
+   *
+   * The events are written here rather than by each step so a cascade cannot half-audit
+   * itself: if the cascade committed, its trail is complete by construction.
+   *
+   * @param spec The handle from {@link TransactionService#begin}, plus `changes`: an array
+   *             of `{entityTypeName, entityId, fieldPath, oldValue, newValue, changeType}`.
+   * @return JSON `{txId, committed: true, auditEventCount, records}`.
+   */
+  commit: function(spec: json): json js
+
+  /**
+   * Restore every snapshot taken by {@link TransactionService#begin}, in reverse order,
+   * and audit the rollback (R-BE-07).
+   *
+   * Reverse order matters when two steps touched the same record: replaying the
+   * restorations forwards would leave the *later* snapshot in place, which is the state
+   * the cascade created rather than the state it started from.
+   *
+   * @param spec The handle from {@link TransactionService#begin}, plus `errorMessage`.
+   * @return JSON `{txId, rolledBack: true, recordsRestored, errorMessage}`.
+   */
+  rollback: function(spec: json): json js
+
+  /**
+   * The current version tokens for a set of records, for the UI to hold alongside the
+   * data it renders so it can pass them back on write (R-BE-06).
+   *
+   * @param spec `targets`: an array of `{entityTypeName, entityId}`.
+   * @return JSON `{tokens: [{entityTypeName, entityId, version}]}`.
+   */
+  versionTokens: function(spec: json): json js
+
+  /**
+   * Generate a correlation id for a UI gesture (R-BE-08).
+   *
+   * Every event, version row, signature and agent run produced by one gesture shares this
+   * id, which is what lets the History tab collapse a fifty-event cascade back to the
+   * single click that caused it.
+   *
+   * @param prefix Short context prefix, e.g. `"approve"`.
+   * @return The correlation id.
+   */
+  newCorrelationId: function(prefix: string): string js
+}

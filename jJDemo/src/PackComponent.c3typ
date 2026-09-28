@@ -1,0 +1,74 @@
+/**
+ * PackComponent — a primary or secondary packaging component with an on-hand
+ * quantity and a lead time, so a pack-mix change can be shown to fail on
+ * components rather than on fill capacity.
+ *
+ * This is what makes Scenario 2's constraint assessment honest. Switching a
+ * market from a multi-dose vial to a prefilled syringe does not just move volume
+ * between lanes — it consumes a different component set, and the new set has its
+ * own {@link #onHandUnits} and {@link #leadTimeDays}. When
+ * {@link #leadTimeDays} exceeds {@link DemandChange#weeksBeforePackaging}
+ * converted to days, no amount of added fill capacity helps, and the option that
+ * looked cheapest is simply not executable.
+ *
+ * Distinct from {@link ComponentLot}, which is one physical received lot with an
+ * inspection verdict. This type is the aggregate supply position for a component
+ * across lots.
+ *
+ * Mutated at runtime when an option books or reallocates components, so no
+ * {@code SeedData} mixin — records live in {@code data/}.
+ */
+entity type PackComponent {
+
+  /** Seed key, e.g. {@code seed_pkc_pfs_plunger}. */
+  id: !string
+
+  /** Part number as carried in the item master. */
+  partNo: !string
+
+  /** Component name, e.g. {@code "1mL long glass prefillable syringe"}. */
+  name: !string
+
+  /** Component class. {@code PRIMARY} components sit in the dossier and cannot be swapped freely. */
+  componentClass: string enum('PRIMARY', 'SECONDARY', 'DEVICE', 'COLD_CHAIN')
+
+  /** The launch that consumes it. */
+  launch: Launch
+
+  /** Presentation it belongs to, so a pack-mix change selects the right component set. */
+  presentation: string
+
+  /** Approved supplier. */
+  supplier: Supplier
+
+  /** Units on hand. Checked directly against the doses an option needs. */
+  onHandUnits: int
+
+  /** Units already allocated to committed markets — only the remainder is really available. */
+  allocatedUnits: int
+
+  /** Units on order but not yet received. */
+  onOrderUnits: int
+
+  /** Expected receipt date for {@link #onOrderUnits}. */
+  onOrderArrival: datetime
+
+  /**
+   * Replenishment lead time in calendar days. Compared against the packaging
+   * clock in {@link DemandChange#weeksBeforePackaging}; when it is longer, the
+   * component is the binding constraint.
+   */
+  leadTimeDays: int
+
+  /** Components consumed per dose — usually 1, but multi-dose vials serve several doses per vial. */
+  unitsPerDose: double
+
+  /** Unit cost, so component spend can be rolled into an option's total cost. */
+  unitCost: double
+
+  /** Whether a qualified second source exists — the difference between a risk and a dead end. */
+  dualSourced: boolean
+
+  /** Whether this component is named in the regulatory dossier, so substituting it needs a variation. */
+  inRegulatoryDossier: boolean
+}

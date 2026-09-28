@@ -1,0 +1,117 @@
+/**
+ * Server-side authority checks — R-UI-13's "enforced server-side, not by hiding UI" and
+ * the service that resolves *who held which role when* (R-DM-03).
+ *
+ * The distinction this type exists to enforce: hiding a button is a courtesy to the user,
+ * not a control. A control tower that lets a Commercial user POST a batch disposition
+ * because the React build happened not to render the button has no access control at all.
+ * Every privileged action therefore calls {@link AccessControlService#assertCan} before it
+ * writes, and R-DOD-08 requires a passing test proving a low-privilege caller is refused.
+ *
+ * <h3>Authority is resolved as of an instant, never as a property of a user</h3>
+ * Roles are held through {@link RoleAssignment}s with validity windows, so
+ * {@link AccessControlService#rolesFor} takes a time. This is what lets the audit trail
+ * record {@link AuditEvent#actorRoleAtTime} honestly: an event from March must name the
+ * authority in force in March, even if the person has since moved teams. A `Person.role`
+ * string could not answer that, because re-assigning it destroys the previous answer.
+ *
+ * <h3>Privileges are data</h3>
+ * {@link AppRole#privileges} enumerates privilege keys; this service tests membership. No
+ * role logic is compiled into the checks, which means the RBAC matrix is inspectable as
+ * seed data and a reviewer can diff it.
+ *
+ * Stateless computation type. The read paths are UI-callable via {@code c3Action} so the
+ * frontend can *also* hide what a user cannot do — as a convenience layered on top of the
+ * enforcement, never as a substitute for it.
+ */
+entity type AccessControlService {
+  /**
+   * Refuse the call unless the person holds the privilege right now (R-UI-13, R-DOD-08).
+   *
+   * @param personId  The acting user.
+   * @param privilege The privilege key required, e.g. `"batch.disposition.sign"`.
+   * @return True when permitted.
+   * @throws A typed authorization error naming the privilege and the roles the person
+   *         actually holds — an error a support engineer can act on without server logs.
+   */
+  assertCan: function(personId: string, privilege: string): boolean js
+
+  /**
+   * Non-throwing form of {@link AccessControlService#assertCan}, for the UI to grey out
+   * controls and for callers that need to branch rather than fail.
+   *
+   * @param personId  The acting user.
+   * @param privilege The privilege key to test.
+   * @return True when the person holds the privilege.
+   */
+  can: function(personId: string, privilege: string): boolean js
+
+  /**
+   * The roles a person held at an instant — the answer to R-DM-03's "who owned this on
+   * 12 March".
+   *
+   * Selects the {@link RoleAssignment}s whose valid window contains the instant. An
+   * assignment that has been ended still answers for the period it covered, because
+   * ending one stamps {@link Bitemporal#validTo} instead of deleting the row.
+   *
+   * @param personId The person whose authority to resolve.
+   * @param asOf     UTC instant to resolve at; null for now.
+   * @return JSON `{personId, asOf, roles: [{roleKey, name, raci, teamKey, privileges}]}`.
+   */
+  rolesFor: function(personId: string, asOf: datetime): json js
+
+  /**
+   * The role key stamped into {@link AuditEvent#actorRoleAtTime} for an actor.
+   *
+   * Returns the person's highest-authority role key at the current instant, or
+   * `"Unassigned"` when they hold none — never null, because an audit event with a blank
+   * role is an audit event that cannot be interpreted later.
+   *
+   * @param personId The acting user.
+   * @return The role key.
+   */
+  primaryRoleKeyFor: function(personId: string): string js
+
+  /**
+   * Every privilege key a person currently holds, unioned across their roles.
+   *
+   * @param personId The person to resolve.
+   * @return JSON `{personId, privileges: [...], roleKeys: [...]}`.
+   */
+  privilegesFor: function(personId: string): json js
+
+  /**
+   * Who was accountable for a record at an instant, by RACI facet — the drawer field
+   * R-DM-03 requires on every activity, gate, risk, issue, decision and document.
+   *
+   * @param entityTypeName C3 type name of the record.
+   * @param entityId       Id of the record.
+   * @param asOf           UTC instant to resolve at; null for now.
+   * @return JSON `{responsible: [...], accountable: [...], consulted: [...], informed: [...]}`.
+   */
+  raciFor: function(entityTypeName: string, entityId: string, asOf: datetime): json js
+
+  /**
+   * The full RBAC matrix — roles down, privileges across — for the admin screen and for
+   * the R-DOD-08 test to assert against.
+   *
+   * @return JSON `{roles: [...], privileges: [...], matrix: {roleKey: {privilege: bool}}}`.
+   */
+  roleMatrix: function(): json js
+
+  /**
+   * Refuse a spend commitment above the acting role's monetary authority (R-S2-05 check 7).
+   *
+   * Scenario 2's autonomy band trips on a commitment over $1M. The limit lives on
+   * {@link AppRole#spendAuthorityUsd} so the guardrail reads it as data rather than
+   * carrying a literal, and so raising a role's authority is a seed-data change with an
+   * audit trail rather than a code change.
+   *
+   * @param personId  The acting user.
+   * @param amountUsd The commitment in USD.
+   * @return True when the commitment is within authority.
+   * @throws When the amount exceeds the person's authority, naming the limit and the
+   *         role that must approve instead.
+   */
+  assertSpendAuthority: function(personId: string, amountUsd: double): boolean js
+}

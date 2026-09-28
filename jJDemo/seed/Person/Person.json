@@ -1,10 +1,10 @@
 [
   {
     "id": "seed_person_hf",
-    "name": "Helena Fossi",
+    "name": "George Hall",
     "role": "Global NPI Lead",
     "functionName": "Governance",
-    "initials": "HF",
+    "initials": "GH",
     "isBoard": false
   },
   {
@@ -108,7 +108,7 @@
     "name": "the Launch Board",
     "role": "Collective decision body",
     "functionName": "Governance",
-    "initials": "●",
+    "initials": "LB",
     "isBoard": true
   }
 ]

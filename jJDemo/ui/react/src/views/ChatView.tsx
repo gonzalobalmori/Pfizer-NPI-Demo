@@ -30,6 +30,8 @@ import type {
   EodCommittedFinding,
 } from '@/types/execution';
 import EodCapture from '@/components/EodCapture';
+import Glyph from '@/components/Brand/Glyph';
+import GlyphText from '@/components/Brand/GlyphText';
 
 type CopilotMode = 'ask' | 'eod';
 
@@ -126,8 +128,8 @@ export default function ChatView() {
     setInput('');
   };
 
-  if (error) return <div className="view on" style={{ padding: 24, color: 'var(--red600)' }}>{error}</div>;
-  if (!data) return <div className="view on" style={{ padding: 24 }}>Loading&hellip;</div>;
+  if (error) return <div className="view on v-msg v-err">{error}</div>;
+  if (!data) return <div className="view on v-msg">Loading&hellip;</div>;
 
   const home = turns.length === 0;
 
@@ -172,9 +174,9 @@ export default function ChatView() {
                   <Spark />
                 </span>
                 <h2>
-                  Hi Helena. <span>What do you want to work through?</span>
+                  Hi George. <span>What do you want to work through?</span>
                 </h2>
-                <p>{data.greeting.body}</p>
+                <p><GlyphText text={data.greeting.body} /></p>
               </div>
             ) : (
               turns.map((t) => (
@@ -210,10 +212,10 @@ export default function ChatView() {
               <span className="ai-spark">
                 <Spark />
               </span>
-              <label
-                htmlFor="cq-input"
-                style={{ position: 'absolute', width: 1, height: 1, overflow: 'hidden', clip: 'rect(0 0 0 0)' }}
-              >
+              {/* Was four inline style properties hand-rolling the
+                  screen-reader-only idiom; `.sr-t` in prototype.css is the same
+                  clip, with clip-path for browsers that dropped `clip`. */}
+              <label htmlFor="cq-input" className="sr-t">
                 Ask about any launch, gate, market or agent
               </label>
               <input
@@ -249,7 +251,10 @@ export default function ChatView() {
                       </span>
                       <span className="cq-sb">
                         <b>{p.question}</b>
-                        <em>{p.subtitle}</em>
+                        {/* Backend prose — one seeded subtitle is a handoff chain
+                            ("Line monitor → Quality → Sourcing → Planning → you"),
+                            i.e. four tofu boxes before this. */}
+                        <em><GlyphText text={p.subtitle} /></em>
                       </span>
                     </button>
                   )),
@@ -299,35 +304,15 @@ function EodMode({
       <EodCapture onCommitted={onCommitted} />
 
       {committed.length > 0 && (
-        <div
-          style={{
-            border: '1px solid var(--g200, #eae6e1)',
-            borderRadius: 10,
-            padding: 14,
-            marginTop: 14,
-            background: '#fff',
-          }}
-        >
-          <div style={{ fontSize: 12, textTransform: 'uppercase', letterSpacing: 0.4, color: 'var(--g600)', marginBottom: 8 }}>
-            Captured this session ({committed.length})
-          </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+        <div className="cap-l">
+          <div className="cap-lt">Captured this session ({committed.length})</div>
+          <div className="cap-ll">
             {committed.map((c) => (
-              <button
-                key={c.id}
-                type="button"
-                onClick={() => open('issue', c.id)}
-                style={{
-                  textAlign: 'left',
-                  border: 'none',
-                  background: 'transparent',
-                  cursor: 'pointer',
-                  padding: '4px 0',
-                  fontSize: 13,
-                }}
-              >
-                <b style={{ color: 'var(--red600, #c11400)' }}>{c.displayId}</b> — {c.headline}{' '}
-                <span style={{ color: 'var(--g600)', fontSize: 11 }}>(open →)</span>
+              <button key={c.id} type="button" className="cap-i" onClick={() => open('issue', c.id)}>
+                <b>{c.displayId}</b> &mdash; {c.headline}{' '}
+                <i>
+                  open <Glyph name="arrow-right" className="sm" />
+                </i>
               </button>
             ))}
           </div>
@@ -351,9 +336,17 @@ function Refusal({ refusal }: { refusal: { prose: string; hint: string } }) {
 function AnswerBody({ answer }: { answer: CopilotAnswer }) {
   return (
     <>
+      {/* Every field below is backend prose, so each goes through GlyphText
+          rather than being interpolated raw. One seeded `steps[].body` already
+          contains "G3 moves 04 Nov → 21 Dec if you do nothing" — a tofu box in
+          the middle of the copilot's central recommendation. Wrapping the whole
+          answer (not just that one field) is the point: the copilot's text is
+          authored content that changes, and a bare {t} silently breaks the next
+          time an author writes an arrow. GlyphText returns the string untouched
+          when there is nothing to substitute. */}
       {answer.prose?.map((t, i) => (
         <div className="cq-p" key={`p${i}`}>
-          {t}
+          <GlyphText text={t} />
         </div>
       ))}
 
@@ -361,8 +354,8 @@ function AnswerBody({ answer }: { answer: CopilotAnswer }) {
         <div className="cq-ev">
           {answer.evidence.map((r, i) => (
             <div className="cq-evr" key={`e${i}`}>
-              <span>{r.label}</span>
-              <b>{r.value}</b>
+              <span><GlyphText text={r.label} /></span>
+              <b><GlyphText text={r.value} /></b>
             </div>
           ))}
         </div>
@@ -374,8 +367,8 @@ function AnswerBody({ answer }: { answer: CopilotAnswer }) {
             <div className="cq-pr" key={`s${i}`}>
               <span className="cq-pn">{i + 1}</span>
               <span className="cq-pb">
-                <b>{s.title}</b>
-                <em>{s.body}</em>
+                <b><GlyphText text={s.title} /></b>
+                <em><GlyphText text={s.body} /></em>
               </span>
               <span className={`cq-pt${s.flag === 'a' ? ' a' : ''}`}>{s.when}</span>
             </div>
@@ -385,20 +378,20 @@ function AnswerBody({ answer }: { answer: CopilotAnswer }) {
 
       {answer.prose2?.map((t, i) => (
         <div className="cq-p" key={`p2${i}`}>
-          {t}
+          <GlyphText text={t} />
         </div>
       ))}
 
       {answer.rec && (
         <div className="cq-rec">
           <div className="cq-rl">What I would do</div>
-          <div className="cq-rt">{answer.rec}</div>
+          <div className="cq-rt"><GlyphText text={answer.rec} /></div>
           <div className="cq-rw">
             {answer.why?.map((w, i) => (
-              <div key={`w${i}`}>{w}</div>
+              <div key={`w${i}`}><GlyphText text={w} /></div>
             ))}
           </div>
-          <div className="cq-cf">{answer.confidence}</div>
+          <div className="cq-cf"><GlyphText text={answer.confidence} /></div>
         </div>
       )}
 

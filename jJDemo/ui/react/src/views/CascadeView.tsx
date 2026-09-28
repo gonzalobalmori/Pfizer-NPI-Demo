@@ -4,7 +4,7 @@
  * clearance date; the platform fans the impact across every downstream
  * commitment — manufacturing schedule, loaner-kit deployment, commercial comms,
  * carrying cost — auto-adjusting what it safely can and surfacing only the items
- * that genuinely need a human. The screen IS the exception dashboard Jordan/Helena
+ * that genuinely need a human. The screen IS the exception dashboard Jordan/George
  * gets: "N auto-adjusted, M require a human decision."
  *
  * Every figure is live from the backend CascadeReplanService (plan / cascadeReplan
@@ -23,27 +23,20 @@ import {
 } from '@/api/cascade';
 import { fmtDate, fmtEuro } from '@/lib/format';
 import type { CascadePlan, CascadeItem } from '@/types/portfolio';
+import Glyph from '@/components/Brand/Glyph';
+import DomainIcon from '@/components/Brand/DomainIcon';
 
 /* The six-week FDA slip the scenario describes, applied against the milestone
  * baseline (2026-11-02 → 2026-12-14 = +42 days). Kept here so the "book the slip"
  * button is a single, explicit gesture the presenter controls. */
 const SLIP_TARGET_ISO = '2026-12-14';
 
-const DOMAIN_ICON: Record<string, string> = {
-  MANUFACTURING: '🏭',
-  LOGISTICS: '📦',
-  COMMERCIAL: '📣',
-  FINANCE: '💶',
-  QUALITY: '🔬',
-  REGULATORY: '⚖️',
-};
-
 function AutoItem({ item }: { item: CascadeItem }) {
   const adjusted = item.status === 'AUTO_ADJUSTED';
   return (
     <div className="cs-item" data-item={item.id}>
       <div className="cs-item-h">
-        <span className="cs-ic" aria-hidden>{DOMAIN_ICON[item.domain] ?? '•'}</span>
+        <DomainIcon domain={item.domain} className="cs-ic" />
         <div className="cs-item-hx">
           <div className="cs-item-t">{item.targetLabel}</div>
           <div className="cs-item-d">{item.domainLabel}</div>
@@ -76,7 +69,7 @@ function HumanItem({
   return (
     <div className={`cs-item hum${resolved ? ' res' : ''}`} data-item={item.id}>
       <div className="cs-item-h">
-        <span className="cs-ic" aria-hidden>{DOMAIN_ICON[item.domain] ?? '•'}</span>
+        <DomainIcon domain={item.domain} className="cs-ic" />
         <div className="cs-item-hx">
           <div className="cs-item-t">{item.targetLabel}</div>
           <div className="cs-item-d">
@@ -210,8 +203,8 @@ export default function CascadeView() {
     [plan],
   );
 
-  if (error) return <div className="view on" style={{ padding: 24, color: 'var(--red600)' }}>{error}</div>;
-  if (!plan) return <div className="view on" style={{ padding: 24 }}>Loading…</div>;
+  if (error) return <div className="view on v-msg v-err">{error}</div>;
+  if (!plan) return <div className="view on v-msg">Loading…</div>;
 
   const m = plan.milestone;
   const s = plan.summary;
@@ -253,7 +246,7 @@ export default function CascadeView() {
             </div>
           </div>
           <div className="kc-ft">
-            {fmtDate(m.baselineDate)} → <b>{fmtDate(m.currentDate)}</b>
+            {fmtDate(m.baselineDate)} <Glyph name="arrow-right" className="sm" /> <b>{fmtDate(m.currentDate)}</b>
             {slipped ? ` · +${m.slipDays} days` : ''}
           </div>
         </div>

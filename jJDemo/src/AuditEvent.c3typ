@@ -1,0 +1,141 @@
+/**
+ * The append-only audit event store — the spine of §5.1 and the record a regulator
+ * or an internal auditor actually reads.
+ *
+ * One instance per observed change to one field path on one entity. Nothing in this
+ * application mutates a governed field without writing one of these first: the
+ * write helpers in {@link AuditService} are the only sanctioned path, and they
+ * refuse to record an event that would break the hash chain.
+ *
+ * <h3>Append-only (R-TR-01)</h3>
+ * Instances are never updated and never deleted. A retraction is expressed by
+ * appending a further event with {@link AuditEvent#changeType} `TOMBSTONE` and a
+ * populated {@link AuditEvent#reasonCode} — so the fact that something was
+ * withdrawn, and why, survives in the trail. {@link AuditService#verifyChain}
+ * fails loudly if a row was edited or removed out from under the chain.
+ *
+ * <h3>Tamper evidence (R-TR-03)</h3>
+ * Events form a per-entity hash chain: each event stores the
+ * {@link AuditEvent#previousHash} of the preceding event for the same
+ * (`entityTypeName`, `entityId`) pair and its own {@link AuditEvent#eventHash}
+ * over a canonically-ordered digest of its payload. Re-walking the chain
+ * recomputes every hash and compares; a single altered byte anywhere in the
+ * history breaks every link after it. See {@link AuditService#verifyChain}.
+ *
+ * <h3>Why these fields</h3>
+ * R-TR-02 fixes the field list: an auditor must be able to answer *what changed,
+ * on which record, from what to what, who did it, under what authority, why, and
+ * through which channel* from a single row without joining anything. The
+ * {@link AuditEvent#correlationId} threads one user gesture across UI, action and
+ * downstream job (R-BE-08), so a cascade of fifty events can be collapsed back to
+ * the one click that caused it.
+ *
+ * Operational type (no `SeedData` mixin): the audit trail is written at runtime by
+ * the cascade, so seed rows live in `data/AuditEvent/` where load updates are
+ * permitted rather than seed-locked.
+ */
+entity type AuditEvent {
+  /**
+   * Event id — `evt_<entityTypeName>_<entityId>_<sequence>` for seeded history and
+   * a generated UUID for runtime events. Unique across the store.
+   */
+  id: !string
+
+  /**
+   * Position of this event within its own per-entity chain, starting at 1. The
+   * chain walk orders by this rather than by {@link AuditEvent#occurredAt} so that
+   * two events written inside the same millisecond still have a defined
+   * predecessor and the hash chain stays single-threaded.
+   */
+  sequence: !int
+
+  /** UTC instant the change was observed. Always UTC; render site-local via {@link Site#timeZone}. */
+  occurredAt: !datetime
+
+  /** The C3 type name of the changed record, e.g. "Gate", "BatchLot", "GateCriterion". */
+  entityTypeName: !string
+
+  /** The id of the changed record, e.g. "seed_gate_bero_p5_g1". */
+  entityId: !string
+
+  /**
+   * Dotted path of the field that changed, e.g. "forecastDate" or
+   * "disposition.state". Null for whole-record events such as `CREATE`.
+   */
+  fieldPath: string
+
+  /** Value before the change, rendered as a string. Null on `CREATE`. */
+  oldValue: string
+
+  /** Value after the change, rendered as a string. Null on `TOMBSTONE`. */
+  newValue: string
+
+  /**
+   * What kind of change this was. `CREATE`/`UPDATE`/`TOMBSTONE` describe record
+   * lifecycle; `STATE_TRANSITION` marks a governed status move (a gate passing, a
+   * lot going on hold); `REBASELINE` marks a date movement that retains a prior
+   * baseline (R-BE-04e); `SIGNATURE` records that an {@link ESignature} was bound;
+   * `DEMO_RESET` marks a bitemporal rewind (R-TR-15).
+   */
+  changeType: !string enum('CREATE', 'UPDATE', 'TOMBSTONE', 'STATE_TRANSITION', 'REBASELINE', 'SIGNATURE', 'DEMO_RESET')
+
+  /** Who acted — a person id, a service name, a job name or an agent id. */
+  actorId: !string
+
+  /** Human-readable actor name as shown in the History tab, e.g. "M. Okafor", "Quality agent". */
+  actorName: string
+
+  /**
+   * What kind of actor this was. Separating `AGENT` from `USER` is what makes
+   * R-TR-13/R-TR-14 checkable: an agent may never be the actor on an event whose
+   * {@link AuditEvent#changeType} moves a date or passes a gate unless a human
+   * approval event with the same {@link AuditEvent#correlationId} exists.
+   */
+  actorType: !string enum('USER', 'SERVICE', 'JOB', 'AGENT')
+
+  /**
+   * The role the actor held **at the moment of the action**, e.g. "QualifiedPerson".
+   * Captured at write time rather than resolved later, because role assignments are
+   * time-bounded (R-DM-03) and an auditor needs the authority that was actually in
+   * force, not today's.
+   */
+  actorRoleAtTime: string
+
+  /** Coded reason for the change, e.g. "QUALITY_HOLD", "WAVE_RESEQUENCE". Required on governed transitions. */
+  reasonCode: string
+
+  /** Free-text justification in the actor's own words. */
+  justification: string
+
+  /** How the change entered the system (R-TR-02). */
+  sourceChannel: !string enum('UI', 'API', 'INTEGRATION', 'BATCH', 'AGENT')
+
+  /** The source system when {@link AuditEvent#sourceChannel} is `INTEGRATION`, e.g. "ALIMS". */
+  sourceSystem: string
+
+  /**
+   * Correlation id threading this event to every other event caused by the same
+   * originating gesture, across UI → action → job (R-BE-08). The Scenario 1 and 2
+   * cascades write dozens of events under one correlation id.
+   */
+  correlationId: !string
+
+  /** Session the action was taken in, for tying a burst of events to one sitting. */
+  sessionId: string
+
+  /** Application version at write time, so a replay can account for logic changes. */
+  appVersion: string
+
+  /**
+   * Hash of the preceding event in this entity's chain, or the literal
+   * `GENESIS` for the first event on an entity. Compared during verification.
+   */
+  previousHash: !string
+
+  /**
+   * SHA-256 over this event's canonical digest (see {@link AuditService#digestOf}),
+   * which includes {@link AuditEvent#previousHash}. Recomputing it is how tampering
+   * is detected.
+   */
+  eventHash: !string
+}

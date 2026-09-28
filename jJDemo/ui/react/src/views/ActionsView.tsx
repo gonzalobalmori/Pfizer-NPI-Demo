@@ -5,7 +5,7 @@
  * word-for-word; every data value is fed by the live ExecutionService read
  * methods (pendingQueue / escalatedQueue / decisionHistory).
  *
- * This is Helena's own work — pending decisions, escalations she raised, and her
+ * This is George's own work — pending decisions, escalations he raised, and his
  * decision history. It is deliberately kept separate from the fleet-wide agent
  * action log (Agent orchestration). An escalation can never be withdrawn, so
  * there is no withdraw/cancel affordance. Timestamps are always absolute (§6).
@@ -13,6 +13,7 @@
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNav } from '@/nav/NavContext';
+import GlyphText from '@/components/Brand/GlyphText';
 import { getPendingQueue, getEscalatedQueue, getDecisionHistory } from '@/api/execution';
 import { fmtDateTime } from '@/lib/format';
 import type {
@@ -37,6 +38,22 @@ function pipClass(state: string): string {
   if (state === 'now') return 'pwd now';
   return 'pwd';
 }
+/*
+ * The escalation ladder's pips are three identical 14×4 bars separated only by
+ * fill (grey done / Pfizer Blue current / pale grey not-yet), and `pips[].label`
+ * — the name of each rung, e.g. "Owner", "Function lead" — was carried in the
+ * payload and rendered nowhere. So the ladder said "step 2 of 4" in colour and
+ * never said WHICH step, to anyone.
+ *
+ * Two fixes, no layout change: each pip states its rung and state in a `title`,
+ * and the current rung is marked with a height bump in CSS (`.pwd.now`) so the
+ * position is visible without colour. `progressSummary` already summarises the
+ * row, so this is the per-rung detail underneath it.
+ */
+function pipTitle(p: EscalationPip): string {
+  const state = p.state === 'done' ? 'done' : p.state === 'now' ? 'current step' : 'not yet reached';
+  return `${p.label} — ${state}`;
+}
 /** History status → the prototype's .ev-st chip class. */
 function histStatusClass(s: HistoryRow['status']): string {
   if (s === 'RESOLVED') return 'ok';
@@ -49,6 +66,40 @@ function histStatusLabel(s: HistoryRow['status']): string {
   if (s === 'ESCALATED') return 'Escalated';
   return 'Pending action';
 }
+/*
+ * Escalated-queue summary line, DERIVED from the cards.
+ *
+ * This line used to read "N open · oldest raised <b>6 days ago</b> · 1 already
+ * chased once" with both the 6 and the 1 written into the JSX — hard-coded
+ * business value in the view layer (R-BASE-03), and wrong the moment the seed
+ * dates or the queue changed. Both are now computed from fields the backend does
+ * return: `raisedAt` on every card gives the age of the oldest, and the pip
+ * labelled "Reminder sent" (state `done`) is the record of a chase, so the chased
+ * count is a count of cards carrying that pip, not a constant.
+ */
+function escalatedSummary(cards: EscalatedCard[], now: Date): string {
+  if (cards.length === 0) return 'Nothing escalated.';
+  const parts = [`${cards.length} open`];
+
+  const ages = cards
+    .map((c) => (c.raisedAt ? new Date(c.raisedAt) : null))
+    .filter((d): d is Date => d != null && !isNaN(d.getTime()))
+    .map((d) => Math.max(0, Math.round((now.getTime() - d.getTime()) / 86_400_000)));
+  if (ages.length > 0) {
+    const oldest = Math.max(...ages);
+    parts.push(
+      oldest === 0 ? 'oldest raised today' : `oldest raised ${oldest} day${oldest === 1 ? '' : 's'} ago`,
+    );
+  }
+
+  const chased = cards.filter((c) =>
+    c.pips.some((p) => p.state === 'done' && /remind|chase/i.test(p.label)),
+  ).length;
+  if (chased > 0) parts.push(`${chased} already chased`);
+
+  return parts.join(' · ');
+}
+
 /** Two-letter initials for the note avatar (no initials field on the note). */
 function initials(name: string | null): string {
   if (!name) return '';
@@ -109,18 +160,38 @@ export default function ActionsView() {
     [],
   );
 
-  if (error)
-    return (
-      <div className="view on" style={{ padding: 24, color: 'var(--red600)' }}>
-        {error}
-      </div>
-    );
-  if (!pending || !escalated || !history)
-    return (
-      <div className="view on" style={{ padding: 24 }}>
-        Loading&hellip;
-      </div>
-    );
+  /*
+   * The real status mix of this decision log, counted from the same rows the
+   * table below renders (so the chart and the table can never disagree). Fixed
+   * order — a bar keeps its position and colour as counts change. Tone matches
+   * the status language used elsewhere: resolved = on-plan green, escalated =
+   * at-risk amber, still-open = neutral brand.
+   */
+  const statusSplit = useMemo(() => {
+    const rows = history?.rows ?? [];
+    const n = (s: string) => rows.filter((x) => x.status === s).length;
+    return [
+      { key: 'RESOLVED', label: 'Resolved', n: n('RESOLVED'), tone: 'ok' },
+      { key: 'RUNNING', label: 'Still open', n: n('RUNNING'), tone: 'you' },
+      { key: 'ESCALATED', label: 'Escalated', n: n('ESCALATED'), tone: 'other' },
+    ];
+  }, [history]);
+
+  /*
+   * Share of delegated actions that came back done. Parsed from the backend's
+   * own note ("54 came back done") against its own total rather than restated as
+   * a literal here — if the backend figure changes, this follows it. Falls back
+   * to hiding the bar (0) rather than showing a made-up share.
+   */
+  const delegatedReturnPct = useMemo(() => {
+    const total = history?.kpis.actionsDelegated ?? 0;
+    const done = Number(/(\d+)/.exec(history?.kpis.actionsDelegatedNote ?? '')?.[1] ?? NaN);
+    if (!total || !Number.isFinite(done)) return 0;
+    return Math.round((done / total) * 100);
+  }, [history]);
+
+  if (error) return <div className="view on v-msg v-err">{error}</div>;
+  if (!pending || !escalated || !history) return <div className="view on v-msg">Loading&hellip;</div>;
 
   return (
     <div className="view on" id="v-actions">
@@ -203,9 +274,7 @@ export default function ActionsView() {
             <div>
               <div className="vt">Escalated activities</div>
             </div>
-            <div className="es-sum">
-              {escalated.count} open &middot; oldest raised <b>6 days ago</b> &middot; 1 already chased once
-            </div>
+            <div className="es-sum">{escalatedSummary(escalated.cards, new Date())}</div>
           </div>
 
           {escalated.cards.map((c: EscalatedCard) => (
@@ -223,10 +292,14 @@ export default function ActionsView() {
                 <span className="dr-ai">
                   <span className={`wtl${c.tagClass === 'auto' ? ' ok' : ''}`}>
                     {c.pips.map((p: EscalationPip) => (
-                      <i key={p.sequence} className={pipClass(p.state)} />
+                      <i key={p.sequence} className={pipClass(p.state)} title={pipTitle(p)} />
                     ))}
                   </span>
-                  {c.progressSummary}
+                  {/* Backend prose, so it goes through GlyphText: the seeded
+                      summaries read "Assigned → in progress → signed →
+                      submitted", and U+2192 has no glyph in Noto Sans — this was
+                      rendering as "Assigned □ in progress □ …" on screen. */}
+                  <GlyphText text={c.progressSummary} />
                 </span>
               </span>
               <span className="dr-r">
@@ -273,29 +346,32 @@ export default function ActionsView() {
               <span className="hb-sb">{history.kpis.escalationsOpenNote}</span>
               <span className="hb-d a">both moving</span>
             </div>
+            {/*
+              * Where this decision log currently stands. This replaced a
+              * "Decisions closed per week" chart of 13 hard-coded bars — they
+              * were invented (no weekly series exists on the backend) and their
+              * heights summed to 24, contradicting the real `closed` count
+              * beside them. The status split IS real, and is read from the same
+              * rows the table below renders, so the two can never disagree.
+              */}
             <div className="hb-c">
               <div className="hb-ct">
-                <span>Decisions closed per week</span>
-                <i>13 weeks</i>
+                <span>Where they stand</span>
+                <i>{history.rows.length} on this log</i>
               </div>
-              <div className="hb-bars">
-                <i style={{ height: '33%' }} title="1 decision" />
-                <i style={{ height: '67%' }} title="2 decisions" />
-                <i style={{ height: '33%' }} title="1 decision" />
-                <i style={{ height: '100%' }} title="3 decisions" />
-                <i style={{ height: '67%' }} title="2 decisions" />
-                <i style={{ height: '33%' }} title="1 decision" />
-                <i style={{ height: '67%' }} title="2 decisions" />
-                <i style={{ height: '33%' }} title="1 decision" />
-                <i style={{ height: '100%' }} title="3 decisions" />
-                <i style={{ height: '67%' }} title="2 decisions" />
-                <i style={{ height: '33%' }} title="1 decision" />
-                <i style={{ height: '67%' }} title="2 decisions" />
-                <i style={{ height: '67%' }} title="2 decisions" />
-              </div>
-              <div className="hb-x">
-                <span>13 w</span>
-                <span>this w</span>
+              <div className="hb-br">
+                {statusSplit.map((ss) => (
+                  <div className="hbb" key={ss.key}>
+                    <span className="hbb-l">{ss.label}</span>
+                    <span className="hbb-t">
+                      <span
+                        className={`hbb-f ${ss.tone}`}
+                        style={{ width: `${history.rows.length > 0 ? (ss.n / history.rows.length) * 100 : 0}%` }}
+                      />
+                    </span>
+                    <span className="hbb-n">{ss.n}</span>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="hb-c">
@@ -308,16 +384,22 @@ export default function ActionsView() {
                   {history.kpis.medianTimeToDecide}
                 </i>
               </div>
-              <svg className="hb-tr" viewBox="0 0 260 40" preserveAspectRatio="none">
-                <polygon
-                  className="hb-ar"
-                  points="0,38 0.0,13.8 21.7,6.0 43.3,18.4 65.0,10.7 86.7,21.6 108.3,15.3 130.0,26.2 151.7,20.0 173.3,29.3 195.0,23.1 216.7,30.9 238.3,24.7 260.0,34.0 260,38"
-                />
-                <polyline points="0.0,13.8 21.7,6.0 43.3,18.4 65.0,10.7 86.7,21.6 108.3,15.3 130.0,26.2 151.7,20.0 173.3,29.3 195.0,23.1 216.7,30.9 238.3,24.7 260.0,34.0" />
-              </svg>
+              {/* The trend area chart that sat here was fabricated, and its
+                  "3.6 d now" endpoint contradicted the real median above it.
+                  With no time series on the backend there is nothing honest to
+                  plot, so the figure stands on its own with the delegation split
+                  that context actually needs. */}
+              <div className="hb-br">
+                <div className="hbb">
+                  <span className="hbb-l">Delegated</span>
+                  <span className="hbb-t">
+                    <span className="hbb-f agent" style={{ width: `${delegatedReturnPct}%` }} />
+                  </span>
+                  <span className="hbb-n">{delegatedReturnPct}%</span>
+                </div>
+              </div>
               <div className="hb-x">
-                <span>5.4 d worst</span>
-                <span>3.6 d now</span>
+                <span>{history.kpis.actionsDelegatedNote}</span>
               </div>
             </div>
           </div>
@@ -369,7 +451,7 @@ export default function ActionsView() {
                     onClick={() => hasNote && toggleRow(r.id)}
                     disabled={!hasNote}
                   >
-                    <span className="ev-av">HF</span>
+                    <span className="ev-av">GH</span>
                     <span className="ev-b">
                       <span className="ev-l">
                         {r.label}

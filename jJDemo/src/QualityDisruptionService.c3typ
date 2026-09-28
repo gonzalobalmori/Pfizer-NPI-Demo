@@ -1,0 +1,106 @@
+/**
+ * QualityDisruptionService — the quality-disruption scenario end to end: a launch
+ * batch is placed on hold after visual inspection identifies a stopper-related
+ * defect, and the launch ecosystem must determine the scope, evaluate recovery
+ * and supply options, protect priority markets, make the Quality and launch
+ * decisions, and coordinate the approved response.
+ *
+ * The five methods map one-to-one onto the five things the scenario demands, and
+ * each one writes its result to the database rather than returning a narrative:
+ *
+ * <ol>
+ *   <li>{@link #determineScope} — sweeps every {@link FillBatch} filled from the
+ *       suspect {@link ComponentLot} and quantifies the hold in doses, batches,
+ *       markets and revenue.</li>
+ *   <li>{@link #evaluateOptions} — scores four recovery and supply options
+ *       against real component, capacity and expiry data, ruling out the ones
+ *       that cannot beat the clock.</li>
+ *   <li>{@link #allocation} — applies priority order to show which markets
+ *       supply can actually protect.</li>
+ *   <li>{@link #decide} — records the governed Quality decision with a
+ *       21 CFR Part 11 electronic signature.</li>
+ *   <li>{@link #coordinate} — issues the response as owned, dated work.</li>
+ * </ol>
+ *
+ * Stateless computation type: it holds no data of its own, reading and mutating
+ * {@link QualityEvent} / {@link FillBatch} / {@link ScenarioOption} /
+ * {@link MarketCommitment} at call time and returning plain JSON the React view
+ * renders directly.
+ */
+entity type QualityDisruptionService {
+
+  /**
+   * The quality-disruption dashboard: the event with its defect and detection
+   * detail, the suspect component lot, every batch in and out of scope, the
+   * scored options, the market allocation, and the decision and coordination
+   * state. Read-only — reflects whatever {@link QualityEvent#stage} the event is
+   * currently at, so the view can render any point in the scenario.
+   */
+  plan: function(eventId: string): json js
+
+  /**
+   * Determine the scope (scenario step 1). Finds every {@link FillBatch} filled from
+   * the event's {@link QualityEvent#componentLot}, places the unreleased ones on
+   * {@code HOLD}, and writes the quantified blast radius onto the event:
+   * {@link QualityEvent#scopeDoses}, {@link QualityEvent#scopeBatchCount},
+   * {@link QualityEvent#scopeMarketCount} and
+   * {@link QualityEvent#scopeRevenueAtRisk}. Sets
+   * {@link QualityEvent#recallAssessmentRequired} when a batch from the suspect
+   * lot has already been released to a market, which escalates the event beyond a
+   * hold. Advances the stage to {@code SCOPED}. Idempotent.
+   */
+  determineScope: function(eventId: string): json js
+
+  /**
+   * Evaluate recovery and supply options (scenario step 2). Computes four
+   * {@link ScenarioOption} rows — rework, reject and refill, alternate approved
+   * component, and partial release of conforming stock — scoring each on doses
+   * served, days of delay, incremental cost, revenue protected and markets kept
+   * whole. Options whose execution time runs past the batch expiry or the
+   * component lead time are marked {@link ScenarioOption#feasible} false with an
+   * {@link ScenarioOption#infeasibleReason}, so an option that cannot work is
+   * visibly ruled out rather than quietly ranked last. Advances the stage to
+   * {@code OPTIONS_EVALUATED}. Idempotent — recomputes in place.
+   */
+  evaluateOptions: function(eventId: string): json js
+
+  /**
+   * Protect priority markets (scenario step 3). Walks the launch's
+   * {@link MarketCommitment} records in ascending
+   * {@link MarketCommitment#priorityRank}, allocating the doses the given option
+   * makes available until supply is exhausted, and returns which markets are
+   * served whole, which are constrained and which are deferred. Pure projection
+   * when {@code commit} is false, so the view can preview an allocation before
+   * anyone signs; writes {@link MarketCommitment#status} and
+   * {@link MarketCommitment#revisedDoses} when true.
+   */
+  allocation: function(eventId: string, optionId: string, commit: boolean): json js
+
+  /**
+   * Make the Quality and launch decision (scenario step 4). Approves one
+   * {@link ScenarioOption}, records the signer, the governance body and the
+   * rationale on the event, writes an {@link ESignature} for the 21 CFR Part 11
+   * audit trail, and commits the resulting market allocation. Refuses an option
+   * that {@link #evaluateOptions} marked infeasible, and refuses a signer whose
+   * function is not Quality — the two guardrails that make the decision governed
+   * rather than merely recorded. Advances the stage to {@code DECIDED}.
+   */
+  decide: function(eventId: string, optionId: string, signerId: string, rationale: string): json js
+
+  /**
+   * Coordinate the approved response (scenario step 5). Turns the decision into
+   * owned, dated work: creates the {@link ActionPlanTask} records the approved
+   * option implies across Quality, Supply, Regulatory, Commercial and the
+   * affected markets, raises the supplier {@link CAPA}, and stamps
+   * {@link QualityEvent#coordinationComplete}. Advances the stage to
+   * {@code COORDINATED}. Idempotent — will not duplicate tasks on a second call.
+   */
+  coordinate: function(eventId: string): json js
+
+  /**
+   * Restore the event, its batches, its options and its market commitments to
+   * their pre-hold baseline so the scenario can be demoed repeatedly. Returns the
+   * refreshed plan bundle.
+   */
+  reset: function(eventId: string): json js
+}

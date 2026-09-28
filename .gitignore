@@ -48,6 +48,9 @@ eggs/
 .eggs/
 lib/
 lib64/
+# The bare `lib/` rule above (Python build dir) must not swallow React source dirs
+!**/ui/react/src/lib/
+!**/ui/react/src/lib/**
 parts/
 sdist/
 var/
@@ -105,6 +108,7 @@ bower_components
 *.tgz
 .yarn-integrity
 .parcel-cache
+.vite/
 .next
 out
 .nuxt

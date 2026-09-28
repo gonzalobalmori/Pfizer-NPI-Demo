@@ -147,8 +147,8 @@ export default function TowerView() {
     }
   }, [intent]);
 
-  if (error) return <div className="view on" style={{ padding: 24, color: 'var(--red600)' }}>{error}</div>;
-  if (!board || !log) return <div className="view on" style={{ padding: 24 }}>Loading&hellip;</div>;
+  if (error) return <div className="view on v-msg v-err">{error}</div>;
+  if (!board || !log) return <div className="view on v-msg">Loading&hellip;</div>;
 
   const k = board.kpis;
   const findingWord = k.findingCount === 1 ? 'finding and ' : 'findings and ';

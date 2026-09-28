@@ -20,7 +20,8 @@ export interface GateReadinessKpi {
   value: number;
   unit: string;
   target: number;
-  deltaPts: number;
+  /* No trend field: `deltaPts` was removed from LaunchControlMetrics because it was
+     a constant masquerading as a 30-day measurement. `byLaunch` is the real spread. */
   byLaunch: { launch: string; gate: string; met: number; total: number; pct: number }[];
 }
 export interface LaunchHealthKpi {
@@ -37,7 +38,7 @@ export interface RevenueKpi {
   metric: string;
   value: number;
   unit: string;
-  delta30d: number;
+  /* `delta30d` removed — see the note on GateReadinessKpi.byLaunch. */
   pctOfPortfolio: number;
   portfolioBase: number;
   byLaunch: { launch: string; exposure: number }[];

@@ -1,0 +1,50 @@
+/**
+ * Two independent time axes on a business fact — the mixin behind §5.2.
+ *
+ * A launch control tower is asked two different questions about the past and they
+ * have different answers:
+ *
+ * <ul>
+ *   <li><b>Valid time</b> — "what was the Puurs FP release date *for the month of
+ *       March*?" This is when the fact was true in the world, carried by
+ *       {@link Bitemporal#validFrom} / {@link Bitemporal#validTo}.</li>
+ *   <li><b>Transaction time</b> — "when did *we first know* Puurs would slip?"
+ *       This is when the system learned the fact, carried by
+ *       {@link Bitemporal#recordedAt} / {@link Bitemporal#supersededAt}.</li>
+ * </ul>
+ *
+ * Both are required by R-TR-04, and R-TR-05 turns them into two UI capabilities:
+ * replaying the whole portfolio as it stood on a date (valid time), and dating the
+ * moment a slip became known (transaction time). A single `lastModified` column
+ * cannot answer either question, which is why this mixin exists.
+ *
+ * <h3>How rows retire</h3>
+ * The *current* version of a fact has a null {@link Bitemporal#supersededAt}: it is
+ * what the system believes today. Superseding never edits history — it stamps the
+ * outgoing row's `supersededAt` and appends a new row. A point-in-time query is
+ * therefore "the row whose valid window contains the business date and whose
+ * `recordedAt` ≤ the as-of instant and whose `supersededAt` is null or later than
+ * it", which is exactly what {@link TemporalQueryService#asOf} implements.
+ *
+ * Mixed into {@link EntityVersion}, which stores the retired snapshots, and into
+ * the governed business entities whose history the demo replays.
+ */
+type Bitemporal {
+  /** UTC instant from which this fact is true in the world. */
+  validFrom: datetime
+
+  /**
+   * UTC instant at which this fact stops being true in the world. Null means "still
+   * true" — an open-ended valid window.
+   */
+  validTo: datetime
+
+  /** UTC instant the system recorded this fact. Never back-dated; this is the audit-honest one. */
+  recordedAt: datetime
+
+  /**
+   * UTC instant a later revision replaced this fact. Null marks the row the system
+   * currently believes. Set — never cleared — when a new version is appended.
+   */
+  supersededAt: datetime
+}

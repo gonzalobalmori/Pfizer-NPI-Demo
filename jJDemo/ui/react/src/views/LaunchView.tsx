@@ -12,6 +12,8 @@ import { useNav } from '@/nav/NavContext';
 import { getLaunchRecord } from '@/api/portfolio';
 import { fmtEuro, fmtDateYear, fmtGate } from '@/lib/format';
 import type { LaunchRecord, RecordGate, MlStatus } from '@/types/portfolio';
+import Glyph from '@/components/Brand/Glyph';
+import MlDot from '@/components/Brand/MlDot';
 
 /* MarketLaunch.status → the pill colour class (shared tone source: same field
  * the Cockpit rows and Market tab colour by, so a market reads the same colour
@@ -68,16 +70,16 @@ export default function LaunchView() {
   }, [param]);
 
   if (!param) {
-    return <div className="view on" style={{ padding: 24 }}>Select a launch from the Cockpit or Portfolio.</div>;
+    return <div className="view on v-msg">Select a launch from the Cockpit or Portfolio.</div>;
   }
   if (error) {
-    return <div className="view on" style={{ padding: 24, color: 'var(--red600)' }}>{error}</div>;
+    return <div className="view on v-msg v-err">{error}</div>;
   }
   if (loading) {
-    return <div className="view on" style={{ padding: 24 }}>Loading…</div>;
+    return <div className="view on v-msg">Loading…</div>;
   }
   if (!record) {
-    return <div className="view on" style={{ padding: 24 }}>Select a launch from the Cockpit or Portfolio.</div>;
+    return <div className="view on v-msg">Select a launch from the Cockpit or Portfolio.</div>;
   }
 
   const o = record.overview;
@@ -277,7 +279,12 @@ export default function LaunchView() {
               <div className="ld-gr"><span className="ld-grv" id="ld-grv">{met}</span><span className="ld-grt">of {total} met</span></div>
             </div>
             {(nextGate?.criteria ?? []).map((c, i) => (
-              <div className={`cr${c.met ? '' : ' bad'}`} key={i}><span className={`cx ${c.met ? 'ok' : 'no'}`}>{c.met ? '✓' : '✗'}</span>
+              <div className={`cr${c.met ? '' : ' bad'}`} key={i}>{/* met/unmet was `✓`/`✗` (U+2713/U+2717) — both tofu in Noto Sans. The
+                    tone on .cx says the same thing, and .crn names the criterion, so
+                    the mark stays a secondary cue. */}
+                <span className={`cx ${c.met ? 'ok' : 'no'}`}>
+                  <Glyph name={c.met ? 'check' : 'close'} className="sm" />
+                </span>
                 <div className="crb"><div className="crn">{c.name}</div>
                   {c.outstandingReason ? <div className="crm">{c.outstandingReason}</div> : null}</div>
                 {c.met ? <span className="pill g">Met</span> : <button className="btn p sm" type="button">Resolve</button>}</div>
@@ -299,7 +306,7 @@ export default function LaunchView() {
                       <tr key={`${m.marketCode}-${m.gateCode ?? 'live'}`}>
                         <td>
                           <div className="nm">
-                            <span className={`mg-dot ${m.mlStatus}`} aria-hidden style={{ marginRight: 6, verticalAlign: 'middle' }} />
+                            <MlDot status={m.mlStatus} label={m.marketName ?? m.marketCode} className="mg-dot-in" />
                             {m.marketName ?? m.marketCode}
                             {m.isLead ? <span className="mg-lead" style={{ marginLeft: 6 }}>lead</span> : null}
                           </div>
@@ -333,15 +340,34 @@ export default function LaunchView() {
                 // First slipping gate is the direct hit; later slipping gates are
                 // downstream warnings; a gate holding baseline reads neutral.
                 const dot = !slipping ? '' : i === 0 ? 'hit' : 'warn';
-                const change =
-                  g.baselineDate && g.forecastDate && slipping
-                    ? `${fmtDateYear(g.baselineDate)} → ${fmtDateYear(g.forecastDate)}`
-                    : g.forecastDate
-                      ? `${fmtDateYear(g.forecastDate)} · held`
-                      : 'Held';
+                /* The node's state in words. `hit` and `warn` are both solid
+                   discs distinguished by a halo ring (see `.chd` in
+                   prototype.css); the date change beside them reads the same for
+                   either, so without this the difference between "the gate the
+                   slip lands on" and "a gate that slips as a consequence" was
+                   carried by hue alone. */
+                const dotTitle =
+                  dot === 'hit'
+                    ? 'Directly hit by the slip'
+                    : dot === 'warn'
+                      ? 'Slips as a downstream consequence'
+                      : 'Holds its baseline';
+                /* A node, not a string, so the baseline→forecast arrow can be a
+                   drawn glyph — `→` is tofu in Noto Sans. */
+                const change: React.ReactNode =
+                  g.baselineDate && g.forecastDate && slipping ? (
+                    <>
+                      {fmtDateYear(g.baselineDate)} <Glyph name="arrow-right" className="sm" />{' '}
+                      {fmtDateYear(g.forecastDate)}
+                    </>
+                  ) : g.forecastDate ? (
+                    `${fmtDateYear(g.forecastDate)} · held`
+                  ) : (
+                    'Held'
+                  );
                 return (
                   <div className="ch" key={g.code}>
-                    <span className={`chd${dot ? ` ${dot}` : ''}`}></span>
+                    <span className={`chd${dot ? ` ${dot}` : ''}`} title={dotTitle} />
                     <div><div className="chn">{fmtGate(g.code, g.name)}</div>
                       <div className="chm mono">{change}</div></div>
                   </div>

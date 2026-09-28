@@ -20,6 +20,8 @@ import {
 } from '@/api/portfolio';
 import { fmtDate, fmtDateYear, fmtGate } from '@/lib/format';
 import { MK_MARKETS, MK_SMALL } from './marketDetail';
+import Glyph from '@/components/Brand/Glyph';
+import MlDot from '@/components/Brand/MlDot';
 import type {
   ProductLens,
   ProductRow,
@@ -52,23 +54,57 @@ function slpClass(h: Health): 'r' | 'a' | 'n' {
   return 'n';
 }
 
-/** The status glyph used across every lens: triangle for ct/rk, check for ok. */
+/*
+ * The status glyph used across every lens — ONE SHAPE PER STATE.
+ *
+ * This used to draw the SAME warning triangle for both `ct` (off track) and
+ * `rk` (at risk), leaving hue as the only difference between them. That is the
+ * exact failure the status block in prototype.css documents as irreducible:
+ * green→amber→red cannot be separated under deuteranopia/protanopia at any
+ * amber (measured ΔE 2.0–4.0 against a target of 8), which is why that comment
+ * requires every status in this app to carry a non-colour cue. Here the cue was
+ * missing — the icon was identical, the phase bar had no texture, and neither
+ * carried a label — so a red/green-colour-blind reader could not tell a blocked
+ * launch from a slipping one anywhere in the Portfolio view.
+ *
+ * Now the shape itself is the cue and works in pure greyscale:
+ *   ok  — check, in a circle: nothing to do.
+ *   rk  — CLOCK. At risk is a TIME problem (float being consumed, a gate
+ *         drifting), so a clock says what the state means rather than shouting
+ *         generically. Round, open, visually quiet.
+ *   ct  — OCTAGON with a bar (a stop sign). Off track is a blocked commitment.
+ *         Angular and dense, so it reads as more severe than the clock at a
+ *         glance and is unmistakable beside it even in one colour.
+ * Round-vs-angular is the discriminator, which survives greyscale printing and
+ * forced-colors mode. The `title` gives the state in words on hover, and each
+ * lens also names the state in its legend and its adjacent slip column, so hue
+ * is now the third redundant channel rather than the only one.
+ */
+const SST_TITLE: Record<Tone, string> = {
+  ok: 'On plan',
+  rk: 'At risk',
+  ct: 'Off track',
+};
+
 function SstIcon({ tone }: { tone: Tone }) {
-  if (tone === 'ok') {
-    return (
-      <span className="sst ok">
-        <svg viewBox="0 0 24 24">
-          <path d="M20 6 9 17l-5-5" />
-        </svg>
-      </span>
-    );
-  }
   return (
-    <span className={`sst ${tone}`}>
-      <svg viewBox="0 0 24 24">
-        <path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z" />
-        <path d="M12 9v4M12 17h.01" />
-      </svg>
+    <span className={`sst ${tone}`} title={SST_TITLE[tone]}>
+      {tone === 'ok' ? (
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9.2" />
+          <path d="M16.6 9.1 10.8 15l-3.4-3.3" />
+        </svg>
+      ) : tone === 'rk' ? (
+        <svg viewBox="0 0 24 24">
+          <circle cx="12" cy="12" r="9.2" />
+          <path d="M12 6.9V12l3.5 2.2" />
+        </svg>
+      ) : (
+        <svg viewBox="0 0 24 24">
+          <path d="M8.2 2.9h7.6l5.3 5.3v7.6l-5.3 5.3H8.2l-5.3-5.3V8.2z" />
+          <path d="M8.4 12h7.2" />
+        </svg>
+      )}
     </span>
   );
 }
@@ -123,59 +159,56 @@ function ProductPane({ data, open }: { data: ProductLens; open: (id: string) => 
           <ProductRowView key={r.launchId} row={r} open={open} />
         ))}
 
+        {/* The legend renders the SAME <SstIcon> the rows do, rather than its own
+            copy of the paths — a legend that disagrees with the marks it explains
+            is worse than none, and these had already drifted apart. Size comes
+            from the existing `.tk-lg .sst` rule, so the inline width/height that
+            used to be repeated on each swatch is gone. */}
         <div className="tk-lg">
           <div className="lgi">
-            <span className="sst ct" style={{ width: '19px', height: '19px' }}>
-              <svg viewBox="0 0 24 24">
-                <path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z" />
-                <path d="M12 9v4M12 17h.01" />
-              </svg>
-            </span>
+            <SstIcon tone="ct" />
             Off track
           </div>
           <div className="lgi">
-            <span className="sst rk" style={{ width: '19px', height: '19px' }}>
-              <svg viewBox="0 0 24 24">
-                <path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z" />
-                <path d="M12 9v4M12 17h.01" />
-              </svg>
-            </span>
+            <SstIcon tone="rk" />
             At risk
           </div>
           <div className="lgi">
-            <span className="sst ok" style={{ width: '19px', height: '19px' }}>
-              <svg viewBox="0 0 24 24">
-                <path d="M20 6 9 17l-5-5" />
-              </svg>
-            </span>
+            <SstIcon tone="ok" />
             On plan
           </div>
           <div className="lgd2"></div>
+          {/* Swatch sizing lives in `.tk-lg .sg-sw` / `.tk-lg .gd` rather than six
+              copies of the same inline style object. The in-progress swatch's 55%
+              fill is a fixed illustration of the mark, not a data value, so it is
+              a CSS default on `.sg-sw` instead of a `--f` set from the view. */}
           <div className="lgi">
-            <span className="sg done" style={{ width: '26px', flex: 'none' }}></span>Phase complete
+            <span className="sg done sg-sw" />
+            Phase complete
           </div>
           <div className="lgi">
-            <span className="sg cur ok" style={{ width: '26px', flex: 'none', ['--f' as string]: '55%' } as React.CSSProperties}></span>
+            <span className="sg cur ok sg-sw" />
             Phase in progress
           </div>
           <div className="lgi">
-            <span className="sg" style={{ width: '26px', flex: 'none' }}></span>Not started
+            <span className="sg sg-sw" />
+            Not started
           </div>
           <div className="lgd2"></div>
           <div className="lgi">
-            <span className="gd done" style={{ display: 'inline-grid' }}>
+            <span className="gd done">
               <span>1</span>
             </span>
             Gate closed
           </div>
           <div className="lgi">
-            <span className="gd rk" style={{ display: 'inline-grid' }}>
+            <span className="gd rk">
               <span>2</span>
             </span>
             Gate at risk
           </div>
           <div className="lgi">
-            <span className="gd ct" style={{ display: 'inline-grid' }}>
+            <span className="gd ct">
               <span>3</span>
             </span>
             Gate blocked
@@ -559,7 +592,7 @@ function MapSide({
           <div className="ms-lb">First ship by launch</div>
           {market.launches.map((l, i) => (
             <div className="mlq" key={i}>
-              <i className={l.status === 'ok' ? '' : l.status}></i>
+              <MlDot status={l.status} label={l.name} />
               <span className="mlq-n">{l.name}</span>
               <span className="mlq-q">{l.quarter}</span>
             </div>
@@ -692,12 +725,18 @@ function MarketPane({
               </span>
               <span className="map-sc">
                 Bubble size = launches
-                <i style={{ width: '11px', height: '11px' }}></i>
-                <i style={{ width: '15px', height: '15px' }}></i>
-                <i style={{ width: '19px', height: '19px' }}></i>
+                <i className="sc1" />
+                <i className="sc2" />
+                <i className="sc3" />
               </span>
+              {/* A registration market is the SAME light blue as an on-plan launch
+                  market — the pin differs by size (9px vs up to 19px), not hue. The
+                  swatch therefore matches the pin and the label carries the
+                  distinction; it used to hardcode `background:'#0093D0'`, a copy of
+                  `--sky` that had already drifted from the `.md` base beside it. */}
               <span className="wlg">
-                <i className="md" style={{ background: '#7E9BB4', width: '9px', height: '9px' }}></i>Registration market
+                <i className="md reg" />
+                Registration market <em>smaller bubble</em>
               </span>
               <span className="wlg dim">{data.markets.length} markets &middot; click a bubble for its detail</span>
             </div>
@@ -1050,7 +1089,9 @@ function BuLaunchView({ launch, open }: { launch: BuLaunch; open: (id: string) =
         {launch.currentPhase && <i className="bu-lp">{launch.currentPhase}</i>}
         {ng && (
           <>
-            {' '}&#8594; {ng.code} <b className="mono">{fmtDate(ng.forecastDate)}</b>
+            {' '}
+            <Glyph name="arrow-right" className="sm" /> {ng.code}{' '}
+            <b className="mono">{fmtDate(ng.forecastDate)}</b>
           </>
         )}
       </span>
@@ -1226,7 +1267,7 @@ function MarketTimelineRow({ mk }: { mk: MarketGate }) {
     <div className="msr-mk">
       <div className="tk-c0" aria-hidden />
       <div className="mk-c1 msr-mk-lbl">
-        <span className={`mg-dot ${mk.mlStatus}`} aria-hidden />
+        <MlDot status={mk.mlStatus} label={mk.marketName ?? mk.marketCode} />
         <b className="mg-mk">{mk.marketCode}</b>
         <span className="msr-mk-nm">{mk.marketName ?? mk.marketCode}</span>
         {mk.isLead ? <span className="mg-lead">lead</span> : null}
@@ -1244,7 +1285,7 @@ function MarketTimelineRow({ mk }: { mk: MarketGate }) {
             style={{ left: '2%' }}
             title={`${mk.marketName ?? mk.marketCode} · live in market`}
           >
-            ✓
+            <Glyph name="check" className="sm" />
           </span>
         ) : forePos != null ? (
           <>
@@ -1414,8 +1455,8 @@ export default function PortfolioView() {
   const openIssue = useCallback((findingId: string) => open('issue', findingId), [open]);
   const askCopilot = useCallback(() => drive({ view: 'chat' }), [drive]);
 
-  if (error) return <div className="view on" style={{ padding: 24, color: 'var(--red600)' }}>{error}</div>;
-  if (!product || !market || !bu || !timeline) return <div className="view on" style={{ padding: 24 }}>Loading…</div>;
+  if (error) return <div className="view on v-msg v-err">{error}</div>;
+  if (!product || !market || !bu || !timeline) return <div className="view on v-msg">Loading…</div>;
 
   return (
     <div className="view on" id="v-portfolio">

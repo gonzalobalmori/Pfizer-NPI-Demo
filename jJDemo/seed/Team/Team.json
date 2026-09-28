@@ -1,0 +1,90 @@
+[
+  {
+    "id": "team_digital_supply",
+    "teamKey": "Digital Supply",
+    "name": "Digital Supply",
+    "description": "Owns the control tower itself — the data feeds, the canonical model, the agent fleet and the traceability store. Accountable for whether a number shown in the tower can be trusted, not for the operational decision the number drives.",
+    "teamType": "GLOBAL"
+  },
+  {
+    "id": "team_gplo",
+    "teamKey": "GPLO",
+    "name": "Global Packaging & Launch Operations",
+    "description": "Owns packaging design, artwork, serialization readiness and pack-mix execution across sites. The function that absorbs a late pack-mix change, which is why Scenario 2's action plan routes most of its work here.",
+    "teamType": "GLOBAL"
+  },
+  {
+    "id": "team_nplm",
+    "teamKey": "NPLM",
+    "name": "New Product Lifecycle Management",
+    "description": "Runs the nine-phase NPI process and the gate governance behind it. Owns phase and gate definitions, chairs the Launch Board, and is accountable for the integrity of a gate decision — including refusing to pass a gate whose criteria are unmet.",
+    "teamType": "GLOBAL"
+  },
+  {
+    "id": "team_gsc",
+    "teamKey": "Global Supply Chain",
+    "name": "Global Supply Chain",
+    "description": "Owns network planning, supply allocation between markets, launch build and logistics. The function that decides which market loses units when there are not enough, subject to commercial commitment and regulatory constraint.",
+    "teamType": "GLOBAL"
+  },
+  {
+    "id": "team_pharmsci",
+    "teamKey": "PharmSci",
+    "name": "PharmSci",
+    "description": "Pharmaceutical sciences — formulation, process development, analytical methods, stability and technical transfer. Owns whether a process is qualified at a site and what a deviation means for product quality.",
+    "teamType": "GLOBAL"
+  },
+  {
+    "id": "team_commercial",
+    "teamKey": "Commercial",
+    "name": "Commercial",
+    "description": "Owns demand forecast, market prioritisation, launch sequence and revenue commitment. Scenario 2 begins with a Commercial signal — a +64% Germany forecast revision — and ends by reversing a Commercial decision taken in Phase 1.",
+    "teamType": "GLOBAL"
+  },
+  {
+    "id": "team_alims",
+    "teamKey": "ALIMS",
+    "name": "ALIMS",
+    "description": "The quality and laboratory information management function. Owns analytical results, specification compliance, deviation records and the release testing data that a Qualified Person disposition depends on.",
+    "teamType": "GLOBAL"
+  },
+  {
+    "id": "team_external_supply",
+    "teamKey": "External Supply",
+    "name": "External Supply",
+    "description": "Manages contract manufacturers and external suppliers — CMO and CDMO capacity, component supply, quality agreements and supplier audits. Scenario 1's stopper defect originates in an externally-supplied component, which makes this team the owner of the containment at source.",
+    "teamType": "EXTERNAL"
+  },
+  {
+    "id": "team_site_freiburg",
+    "teamKey": "Site Freiburg",
+    "name": "Site Quality & Planning — Freiburg",
+    "description": "Site-local quality unit and planning team at Freiburg. Accountable separately from global functions: a site quality unit can hold a batch that global supply chain would rather ship, and that independence is the point.",
+    "teamType": "SITE",
+    "site": { "id": "seed_site_freiburg" }
+  },
+  {
+    "id": "team_site_puurs",
+    "teamKey": "Site Puurs",
+    "name": "Site Quality & Planning — Puurs",
+    "description": "Site-local quality unit and planning team at Puurs. Raises Scenario 1: the stopper dimensional non-conformance on the Berobenatide line is detected and escalated by this team, not by a global function.",
+    "teamType": "SITE",
+    "site": { "id": "seed_site_puurs" }
+  },
+  {
+    "id": "team_site_kzo",
+    "teamKey": "Site KZO",
+    "name": "Site Quality & Planning — Kalamazoo",
+    "description": "Site-local quality unit and planning team at Kalamazoo. Holds the alternate US-market fill capacity that Scenario 1's options weigh against a Puurs recovery.",
+    "teamType": "SITE",
+    "site": { "id": "seed_site_kzo" }
+  },
+  {
+    "id": "team_site_gc",
+    "teamKey": "Site GC",
+    "name": "Site Quality & Planning — Grange Castle",
+    "description": "Site-local quality unit and planning team at Grange Castle. Owns biologics drug substance and the conjugation suite that feeds the antibody-drug conjugate programmes.",
+    "teamType": "SITE",
+    "site": { "id": "seed_site_gc" }
+  }
+]

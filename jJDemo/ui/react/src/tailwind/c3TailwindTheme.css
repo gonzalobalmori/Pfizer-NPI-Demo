@@ -292,10 +292,12 @@
   --border-width-lg: var(--c3-style-border-width-lg);
   --border-width-xl: var(--c3-style-border-width-xl);
 
-  /* Font Family */
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-  --font-default: 'Inter', sans-serif;
-  --font-heading: 'Inter', sans-serif;
+  /* Font Family — Noto Sans is the Pfizer brand typeface (R-BASE-04).
+     'Noto Sans Variable' is the family name @fontsource-variable registers; the
+     static 'Noto Sans' follows it so a cached static cut still resolves. */
+  --font-sans: 'Noto Sans Variable', 'Noto Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --font-default: 'Noto Sans Variable', 'Noto Sans', sans-serif;
+  --font-heading: 'Noto Sans Variable', 'Noto Sans', sans-serif;
   --font-mono: 'Roboto Mono', monospace;
   --font-icon: 'Font Awesome 6 Pro', sans-serif;
 

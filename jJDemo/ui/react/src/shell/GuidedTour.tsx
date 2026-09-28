@@ -1,44 +1,51 @@
 /*
- * Guided demo (#gdp) — a faithful port of the click-through's GUIDED DEMO
- * engine (its GD step array + gdStart/gdShow/gdGo/gdSpot/gdPlace/gdBring/gdTrack
- * globals). Each step DRIVES the app itself, so the presenter only ever presses
- * Next.
+ * Guided demo (#gdp) — the presenter's autopilot. Each step DRIVES the app
+ * itself, so the presenter only ever presses Next: the step publishes a
+ * DriveTarget through the nav model's drive(), the destination view lands on the
+ * exact pane/lens/step it names, and the spotlight then highlights real DOM nodes
+ * by selector — retried until the (async, c3Action-fed) view has rendered them —
+ * with floating labels that track the boxes as the page scrolls.
  *
- * There are THREE demos, chosen from a small picker overlay when the
- * "Guided demo" button is pressed (the button dispatches `gd:open`; picking a
- * demo dispatches `gd:start` carrying its id). All three walk the SAME journey
- * end to end (menu → cockpit → portfolio → open issues → my actions → agent
- * tower → the record → history → fleet log → copilot); they differ only in the
- * case that is threaded through it, so any one on its own shows the whole app:
- *   • Demo 1 — a contract steriliser drops a booked chamber slot: an agent finds
- *     it, five agents work it, and exactly one decision reaches a person (the
- *     original 16-step tour). This is a supplier/scheduling shock, NOT a quality
- *     defect — so it opens no CAPA; the quality-system record is reserved for the
- *     manufacturing case in Demo 3.
- *   • Demo 2 — the regulatory-authority thread: the questions the FDA and the
- *     Notified Body are asking, the BSI review slot that is the real deadline,
- *     the one signature that is actually Helena's, and the site-visit dossier.
- *   • Demo 3 — a manufacturing defect puts commercial batches at risk: Comirnaty
- *     runs commercial output on lines 3 and 5, line 3 gives three out-of-spec
- *     batches, and an overdue CAPA (its DMAIC still in progress) is open on it.
- *     The three routes are re-prioritise markets, drive the DMAIC to close, or
- *     move output to another qualified site on the same modality.
+ * There are exactly TWO demos, one per scenario this demo is configured around.
+ * They are chosen from a small picker overlay when the "Guided demo" button is
+ * pressed (the button dispatches `gd:open`; picking a demo dispatches `gd:start`
+ * carrying its id):
  *
- * The prototype navigated with imperative globals (go/pane/pickMk/openRW/…). Here
- * every step's `target` is a DriveTarget published through the nav model's
- * drive(), and each destination view reads that intent to land on the exact
- * lens/pane/filter/card/prompt. The spotlight then highlights DOM nodes by the
- * prototype's own selectors — retried until the (async, c3Action-fed) view has
- * rendered them — and floating labels track the boxes as the page scrolls or a
- * pane re-renders beneath them.
+ *   • Demo 1 — QUALITY DISRUPTION. A launch batch is placed on hold after visual
+ *     inspection identifies a stopper-related defect. Determine the scope,
+ *     evaluate recovery and supply options, protect priority markets, make the
+ *     Quality and launch decisions, and coordinate the approved response.
  *
- * Every demo drives ONLY already-reconciled records — Demo 2 and Demo 3 add no
- * findings and touch no Comirnaty activities (the reconciliation lock), so all
- * data still ties out across every tab and view.
+ *   • Demo 2 — DEMAND AND MARKET-WAVE CHANGE. Eight weeks before packaging,
+ *     Commercial increases demand for a priority market and changes the pack mix.
+ *     Supply, site and CMO capacity, packaging components and logistics cannot
+ *     support every market as planned. Compare a constrained launch, inventory
+ *     reallocation, added capacity and market-wave resequencing; make a governed
+ *     decision; and update all affected plans, owners, sites, partners and market
+ *     commitments.
+ *
+ * Both walk the same shape — frame the disruption on the cockpit, work the
+ * scenario screen end to end, then show where the result landed — because that is
+ * the shape of the work. Each is self-contained: one on its own tells a whole
+ * story, and the two together are the whole demo.
+ *
+ * THE NUMBERS IN THIS COPY ARE NOT DECORATIVE. Every figure quoted below was read
+ * back from the live services (QualityDisruptionService / MarketWaveService) with
+ * the scenario at its seeded baseline. If a service or its data changes, these
+ * strings must be re-read from the app rather than adjusted by eye — a tour that
+ * narrates one number while the screen behind it shows another is worse than no
+ * tour at all.
+ *
+ * A step whose `target` carries `qualityStep` / `waveStep` asks the view to have
+ * already REACHED that step when the tour lands, so a stop about the options table
+ * does not open on an empty one. The views advance the backend stage to get there
+ * and never step past it: the decision and the commit always stay a deliberate
+ * click, made on camera.
  */
 
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { useNav, type DriveTarget } from '@/nav/NavContext';
+import Glyph from '@/components/Brand/Glyph';
 
 type Spot = [selector: string, label: string];
 
@@ -49,11 +56,11 @@ interface Step {
   p: string;
   /** the presenter aside (inline HTML). Optional — omitted steps render no aside. */
   say?: string;
-  /** where the step drives the app; null keeps the current view (issue sub-steps). */
+  /** where the step drives the app; null keeps the current view (sub-steps). */
   target: DriveTarget | null;
   /** [selector, label] pairs to spotlight. */
   spot: Spot[];
-  /** whether to scroll the first target into view (prototype's gdSpot second arg). */
+  /** whether to scroll the first target into view. */
   scroll?: boolean;
 }
 
@@ -70,1077 +77,436 @@ interface Demo {
   steps: Step[];
 }
 
-/* ── Demo 1 — the 16 steps, verbatim from the prototype's GD array ────── */
-const GD: Step[] = [
+/* ── Demo 1 — quality disruption: a stopper defect holds a launch batch ──
+ *
+ * Scenario 1, clause by clause. The five spec clauses map onto steps 3–9 below;
+ * the first two frame it from the portfolio so the batch hold arrives as
+ * something the business already felt, and the last two show that the decision
+ * actually landed somewhere.
+ *
+ * Live figures, read back from QualityDisruptionService at baseline:
+ *   scope           4 batches · 612,000 doses · 8 markets · €29.4M at risk
+ *   suspect lot     WPS-26-4471, 13mm FluroTec-coated lyophilisation stopper,
+ *                   West Pharmaceutical Services, single source,
+ *                   1,240 ppm against a 500 ppm action limit, 214,000 units left
+ *   released        96,000 doses already shipped from the suspect lot → recall
+ *                   assessment required
+ *   clean stock     190,000 doses against 802,000 committed
+ *   options         rework RULED OUT (container-closure integrity) ·
+ *                   reject-and-refill 59.6 (85 days) ·
+ *                   alternate closure RULED OUT (Type II variation, 90 days) ·
+ *                   partial release 70.4 RECOMMENDED (12 days)
+ *   under partial   530,000 served · US/DE/JP whole · UK constrained to 2,000 ·
+ *                   FR/IT/ES/AU deferred · ready 21 Sep 2026 · €11.95M forgone
+ *   coordination    5 Release / 2 Reject dispositions · CAPA-26-0114 · 8 actions
+ */
+const GD_QUALITY: Step[] = [
   {
-    t: 'Three ways in, and we use two',
+    t: 'A batch hold is a portfolio event',
     p:
-      'Helena Fossi runs nine Biopharma launches across three franchises. Three entry points: ' +
-      '<b>01 define</b> the launch &mdash; sourcing strategy, supplier qualification, supply-chain ' +
-      'risk, digital twins. <b>02 see</b> it. <b>03 execute</b> it. 01 is a design workspace and is ' +
-      'not built out in this demo; the screen says so itself. Today is 02 and 03.',
-    say: 'Click <b>02 Pipeline Status Overview</b>, or press Next &mdash; the demo goes there either way.',
-    target: { screen: 'menu' },
-    scroll: false,
-    spot: [
-      ['.mc.dim', '01 &middot; not built out in this demo'],
-      ['.mc:nth-of-type(2)', '02 &middot; we start here &rarr;'],
-      ['.mc:last-of-type', '03 &middot; and we finish here'],
-    ],
-  },
-  {
-    t: 'Helena starts her day here',
-    p:
-      'A screening pass, not a report. Gate readiness at <b>87%</b>, six points down on last month ' +
-      'against a target of 85. <b>Three launches on plan, four at risk, one off track.</b> ' +
-      '<b>&euro;40.6M exposed</b> &mdash; and that is <b>&euro;11.2M more than thirty days ago</b>. Average ' +
-      'slip at gate close is <b>20 days</b> against a target of five, and the worst case is <b>47</b>.',
+      'Start where the launch leadership starts. Gate readiness, the launches at risk, and the ' +
+      'money exposed &mdash; one screening pass over nine Biopharma launches. Nothing here says ' +
+      '&ldquo;stopper defect&rdquo; yet, and that is the point: a defect found at visual inspection ' +
+      'on one filling line arrives as <b>revenue at risk and markets in doubt</b>, not as a lab ' +
+      'result.',
     say:
-      'She is not reading status, she is deciding where to look. The exposure climbed &euro;11.2M this ' +
-      'month and the worst slip is 47 days &mdash; that 47 is the thread she follows.',
+      'Set the altitude first. In the next ten minutes we go from this screen to a signed Quality ' +
+      'decision and a coordinated response &mdash; without leaving the platform.',
     target: { branch: 'pipeline', view: 'cockpit' },
     scroll: false,
     spot: [
-      ['#v-cockpit .kc:nth-child(2)', 'three on plan, four at risk, one off track'],
-      ['#v-cockpit .kc:nth-child(3)', '&euro;40.6M exposed &middot; &euro;11.2M worse in a month'],
-      ['#v-cockpit .kc:nth-child(4)', 'avg slip 20d &middot; worst case 47 days'],
+      ['#v-cockpit .kc:nth-child(2)', 'which launches are at risk'],
+      ['#v-cockpit .kc:nth-child(3)', 'and what it is worth'],
     ],
   },
   {
-    t: 'Which launch is the 47 days?',
+    t: 'The disruption, on its own screen',
     p:
-      'Portfolio, product lens. Nine launches, one line each, <b>always sorted worst first</b> ' +
-      '&mdash; so the answer is the top row. <b>Comirnaty Gen 2</b>, in P3, design V&amp;V and ' +
-      'supplier qualification, with <b>G3 Submission Commit at +47 days</b>. Hollow markers are the ' +
-      'gates ahead; solid ones have closed.',
+      '<b>DEV-26-0881</b> &mdash; a deviation raised at <b>Kalamazoo</b> on the <b>Abrysvo</b> ' +
+      'launch. Visual inspection found a <b>stopper-related defect</b>, and the batch is on hold. ' +
+      'The rail across the top is the whole governed sequence: <b>scope</b>, <b>options</b>, ' +
+      '<b>markets</b>, <b>decision</b>, <b>coordinate</b>. Every step is a real service call ' +
+      'against real records &mdash; nothing on this screen is staged.',
     say:
-      'Four lenses on one screen &mdash; product, market, business unit, timeline. She takes ' +
-      'product because her question is <i>which device</i>.',
-    target: { branch: 'pipeline', view: 'portfolio', lens: 'product' },
-    spot: [
-      ['#v-portfolio .pf-sw', 'four lenses, one screen'],
-      ['.tkr', 'Comirnaty Gen 2 &middot; P3 &middot; +47d, worst first'],
-    ],
-  },
-  {
-    t: 'And which market is carrying it?',
-    p:
-      'Same portfolio, market lens. <b>Germany is six launches and the only one off track, with ' +
-      '&euro;24.1M at risk.</b> Click it and the risk is named for her: <i>Comirnaty G2 has missed ' +
-      'the Q2 2027 tender window</i> &mdash; <b>NPI-0417, sterilisation slip</b>. That is the thread ' +
-      'she pulls.',
-    say:
-      'The map sizes by launches and colours by status. Three clicks in, she has the device, the ' +
-      'market and the record number, without opening a single document.',
-    target: { branch: 'pipeline', view: 'portfolio', lens: 'market', marketView: 'map', marketPick: 'DE' },
+      'This screen is Scenario 1 in five steps. I will run them in order, and each one will change ' +
+      'the numbers underneath it.',
+    target: { branch: 'pipeline', view: 'quality' },
     scroll: false,
     spot: [
-      ['.wp[data-m=DE]', 'Germany'],
-      ['#map-side .ms-k', '6 launches &middot; 1 off track &middot; &euro;24.1M'],
-      ['#map-side .mrk', 'and the record behind it: NPI-0417'],
+      ['#v-quality .sr-steps', 'five governed steps, in the order the work happens'],
+      ['#q-defect', 'what the inspector actually found'],
     ],
   },
   {
-    t: 'The ones that are actually hers',
+    t: 'Step 1 — determine the scope',
     p:
-      'Execution, My actions. <b>Five decisions</b>, sorted by when they have to be taken &mdash; ' +
-      'and there it is: <b>NPI-0417</b>, the EO sterilisation validation slot, <b>due at 17:00 ' +
-      'today</b>.',
+      'The defect is not the batch, it is the <b>lot</b>. Lot <b>WPS-26-4471</b> &mdash; a 13mm ' +
+      'FluroTec-coated lyophilisation stopper from <b>West Pharmaceutical Services</b>, ' +
+      '<b>single-sourced</b> &mdash; tested at <b>1,240 ppm</b> against a <b>500 ppm</b> action ' +
+      'limit. So the sweep is: every batch filled from that lot. The answer is <b>4 batches, ' +
+      '612,000 doses, 8 markets, &euro;29.4M at risk</b>.',
     say:
-      'She did not have to find this in a mailbox. The screening walked her to the record that ' +
-      'owns it.',
-    target: { branch: 'exec', view: 'actions', actionsPane: 'pending' },
+      'This is the difference between a deviation and a disruption. One batch failed inspection; ' +
+      'four batches share its cause. The platform finds the other three because it knows which lot ' +
+      'each batch was filled from.',
+    target: { branch: 'pipeline', view: 'quality', qualityStep: 1 },
     spot: [
-      ['#v-actions .sb-r', 'pending &middot; escalated &middot; her own history'],
-      ['#v-actions .sb-p.on .dr', 'NPI-0417 &middot; due 17:00 today'],
+      ['#q-scope .sc-grid', '4 batches &middot; 612,000 doses &middot; 8 markets &middot; &euro;29.4M'],
+      ['#q-defect .sc-dl', 'lot WPS-26-4471 &middot; single source &middot; 1,240 ppm'],
     ],
   },
   {
-    t: 'How did this even reach me?',
+    t: 'And two things escalate on their own',
     p:
-      'Agent orchestration. The finding sits in <b>P3</b>, the phase where it was raised, and the ' +
-      'card carries the clock. <b>08:14</b> the Quality agent read the cancellation off the Steris ' +
-      'supplier portal. <b>08:16</b> Planning recomputed the ' +
-      'critical path. <b>08:20</b> Sourcing priced three alternative EO sites. <b>08:23</b> ' +
-      'Regulatory checked the dossier against a nine-day shift.',
+      '<b>96,000 doses from the suspect lot are already released to market</b> &mdash; so this is ' +
+      'no longer only a hold, it is a <b>recall assessment</b>, and the platform says so without ' +
+      'being asked. Underneath it, the supply arithmetic: <b>190,000 doses of clean stock against ' +
+      '802,000 committed</b>. Clean stock alone keeps <b>none</b> of the eight markets whole.',
     say:
-      'Twenty-eight minutes, four agents, no meeting. This is the traceability: what was done, by ' +
-      'which agent, at what time. Nobody was watching that portal.',
-    target: { branch: 'exec', view: 'tower', towerPane: 'live', towerFranchise: 'Vaccines', towerOpenCard: 'seed_finding_417' },
-    spot: [['#c-seed_finding_417 .tbwk', 'agent, action, and the time it happened']],
+      'Two escalations nobody had to remember. The recall trigger is a fact about released stock, ' +
+      'and the supply gap is a fact about the order book &mdash; both computed, neither typed in.',
+    target: null,
+    spot: [['#q-scope .sc-esc', 'recall assessment &middot; and the supply gap underneath it']],
   },
   {
-    t: 'Why this one reached her, and most never do',
+    t: 'Step 2 — evaluate recovery and supply options',
     p:
-      'This is one of her <b>five</b>, and the reason it is hers is the whole point. Most of what ' +
-      'runs on this launch never lands on her desk: the agents close what they are allowed to close, ' +
-      'and the rest waits with whoever owns the next step &mdash; another person, a supplier, a ' +
-      'regulator. This one moves a gate date and commits <b>&euro;340k</b>, which is outside the band ' +
-      'an agent may approve on its own &mdash; so the chain stopped and the last step became hers. ' +
-      'The boundary is configured, not improvised.',
-    say: 'This is the answer to the question every client asks: what decides what reaches me?',
-    target: { branch: 'exec', view: 'tower', towerPane: 'live' },
+      'Four options, scored on the same axes so they are actually comparable: doses served, doses ' +
+      'lost, days, cost, markets kept whole. <b>Two are ruled out on the data, not on opinion.</b> ' +
+      'Rework fails <b>container-closure integrity</b> &mdash; a lyophilised vial cannot be ' +
+      'de-stoppered and re-stoppered. An alternate closure needs a <b>Type II variation, 90 days</b>, ' +
+      'which lands after the earliest committed ship date.',
+    say:
+      'Note what the ruled-out cards do. They are not hidden and not ranked last &mdash; they are ' +
+      'struck, with the constraint that kills them written on the card. That is the auditable ' +
+      'part: we can show why we did not do the obvious thing.',
+    target: { branch: 'pipeline', view: 'quality', qualityStep: 2 },
     spot: [
-      ['#kpi .tbkc:nth-child(3)', 'stopped and waiting on her'],
-      ['#kpi .tbkc:nth-child(5)', 'closed with no human at all'],
+      ['#q-options .oc-grid', 'four options, one scale'],
+      ['#q-options .oc.out', 'ruled out &mdash; and the reason is on the card'],
+      ['#q-options .oc.rec', 'recommended &middot; 70.4 / 100'],
     ],
   },
   {
-    t: 'The case, in plain words',
+    t: 'Two real options, and the trade they represent',
     p:
-      'The problem stated plainly: the <b>12 Oct EO chamber slot at Steris Venlo was cancelled by ' +
-      'the supplier</b>. This is a scheduling and supply shock, not a quality defect &mdash; so it ' +
-      'opens <b>no CAPA</b> (the quality system is reserved for a manufacturing or product problem). ' +
-      'Without the ISO 11135 validation report, section 4.3 of the EU MDR Technical Documentation ' +
-      'cannot close &mdash; <b>and it is the only open section of the dossier</b>.',
+      '<b>Reject and refill</b> scores <b>59.6</b>: it serves the most doses &mdash; 634,000 ' +
+      '&mdash; but it takes <b>85 days</b>, and the tender windows do not wait 85 days. ' +
+      '<b>Partial release</b> scores <b>70.4</b>: fewer doses, <b>12 days</b>. The recommendation ' +
+      'is not the option that serves the most product; it is the option that <b>protects the most ' +
+      'priority market inside the clock</b>.',
     say:
-      'Point at the meta strip. This is a decision about a cancelled slot on the critical path, not ' +
-      'a quality record &mdash; note there is no CAPA chip here.',
-    target: { view: 'issue', param: 'seed_finding_417' },
-    spot: [
-      ['#pb-txt', 'a cancelled slot &mdash; a supply shock, not a defect'],
-      ['.is-meta', 'gate &middot; slip &middot; exposure &middot; clock'],
-    ],
-  },
-  {
-    t: 'What the decision actually needs from her',
-    p:
-      'The task is not &ldquo;get the slot back&rdquo; &mdash; the agent already read the contract ' +
-      'and there is no claim. It is <b>get this validation executed in time</b>, and these three ' +
-      'options are the three ways to do it. <b>Dual-sourcing to Sterigenics recovers 38 of the 47 ' +
-      'days for &euro;340k</b>, and it is that fast because the site is already on the approved list, ' +
-      'audit current to 2028, already qualified for two other catheters.',
-    say:
-      'This is the link people miss: the decision does not fix the cancelled slot, it takes the ' +
-      'cancelled slot off the critical path. What follows is a permanent second-source ' +
-      'qualification and a committed-capacity clause so this cannot recur.',
+      'This is the sentence the room needs to hear: the score is advisory and the clock is what ' +
+      'ranks these. A person still signs, and they can sign against the recommendation.',
     target: null,
     spot: [
-      ['#opt-a', 'recommended &middot; +9d for &euro;340k'],
-      ['#opt-b', '+62d and &euro;1.1M'],
-      ['#opt-c', 'needs a G1 reversal'],
+      ['#q-options .oc:nth-child(2)', '634,000 doses &mdash; but 85 days'],
+      ['#q-options .oc.rec', '530,000 doses in 12 days'],
     ],
   },
   {
-    t: 'And the guardrails ran first',
+    t: 'Step 3 — protect the priority markets',
     p:
-      'Six checks before anything was proposed. The one that decides it: the <b>BSI Q4 review slot ' +
-      'holds at +9 days and does not hold at +47</b>. Miss that window and the next confirmed slot ' +
-      'is February &mdash; another 31 days on top of the 47.',
+      'Press <b>Preview this plan</b> on the recommended card. The allocation runs in priority ' +
+      'order against the doses that option actually frees: <b>US, Germany and Japan stay whole</b>; ' +
+      '<b>the UK is constrained to 2,000 doses</b>; <b>France, Italy, Spain and Australia are ' +
+      'deferred</b>. Stock ready <b>21 September</b>, <b>&euro;11.95M</b> of revenue forgone.',
     say:
-      'This is why the recommendation is safe to act on, and it is the part a quality audience ' +
-      'cares about most.',
-    target: null,
-    spot: [['#run-all', 'six checks, none breached']],
-  },
-  {
-    t: 'Why it came to her, in her colleagues&rsquo; own words',
-    p:
-      'Four entries, three functions and one agent. <b>M. Okafor</b> pushed back on Steris by phone ' +
-      '&mdash; a genuine chamber deviation, nothing earlier anywhere. The <b>Sourcing agent</b> read ' +
-      'the master agreement: clause 7.3, non-committed capacity, reallocable on 30 days notice, ' +
-      '<b>no claim and no penalty</b>. <b>A. Kowalski</b> confirmed a site move is a half-cycle ' +
-      'revalidation, not a full one. <b>S. Lindqvist</b> named the real deadline &mdash; not the 47 ' +
-      'days, the BSI window.',
-    say:
-      'This is the answer to &ldquo;why me&rdquo;. Not a workflow rule: four people and an agent ' +
-      'converging on a decision that needs authority. And clause 7.3 is the root cause the ' +
-      'follow-through has to remove &mdash; a committed-capacity clause so a slot cannot be pulled again.',
-    target: null,
-    spot: [['#thr-417', 'four entries, three functions, one agent']],
-  },
-  {
-    t: 'One decision',
-    p:
-      'She approves the dual-source. <b>That is the only thing a human does in this entire ' +
-      'case.</b>',
-    say: 'Click Approve on the screen, then come back and press Next.',
-    target: null,
-    spot: [['#btn-app', 'click this, then press Next']],
-  },
-  {
-    t: 'What one decision moved',
-    p:
-      'Comirnaty&rsquo;s <b>G3 goes back to 13 November</b> &mdash; its own slip drops 47 &rarr; 9 days &mdash; ' +
-      'and <b>&euro;18.4M is released</b>, so it is off the at-risk list. Watch the cockpit&rsquo;s worst-case ' +
-      'slip too: it falls <b>47 &rarr; 21</b>, not to 9. Comirnaty was the worst launch in the portfolio; with ' +
-      'it fixed, the <b>Prevnar 20 Stapler&rsquo;s G4 at 21 days</b> is now the top of the list. Nothing is off ' +
-      'track any more. Seven tasks assigned, BSI notified, the Design History File updated, the launch plan ' +
-      're-baselined &mdash; and the same numbers changed on every other screen at the same time.',
-    target: { branch: 'pipeline', view: 'cockpit' },
-    scroll: false,
+      'Press Preview on the recommended card, then come back and press Next. Watch the market ' +
+      'table rewrite itself &mdash; and watch the regulatory body on each row. FDA, G-BA, PMDA, ' +
+      'MHRA. This is who has to be told, market by market.',
+    target: { branch: 'pipeline', view: 'quality', qualityStep: 2 },
     spot: [
-      ['#v-cockpit .kc:nth-child(2)', 'nothing off track'],
-      ['#v-cockpit .kc:nth-child(3)', '&euro;18.4M released'],
-      ['#v-cockpit .kc:nth-child(4)', 'worst case 47 &rarr; 21'],
+      ['#q-options .oc.rec .oc-a', 'press Preview here, then Next'],
+      ['#q-markets', 'the markets, in priority order'],
     ],
   },
   {
-    t: 'Her own record',
+    t: 'Step 4 — make the Quality decision',
     p:
-      'My actions, History. Every decision she took, with its outcome, and where somebody else ' +
-      'closed it, in their words. <b>Twenty-three decisions in ninety days</b> &mdash; and this one ' +
-      'is now on it.',
+      'The decision is <b>Approve &mdash; Quality Council</b> on the option in front of us. Two ' +
+      'guardrails are enforced by the service, not by the screen: <b>an option ruled out on the ' +
+      'data cannot be approved at all</b>, and <b>the signer must hold the Quality function</b>. ' +
+      'The signature is <b>21 CFR Part 11</b> &mdash; attributable, reason-coded, and hashed ' +
+      'against the exact plan it approves.',
     say:
-      'This is what she shows her manager. Her decisions only. What the agents did on their own ' +
-      'is kept separate, on purpose.',
+      'Press Approve on the recommended card, then press Next. The allocation is committed and ' +
+      'signed in one move on purpose &mdash; so the market commitments and the signature describe ' +
+      'the same plan, and cannot drift apart.',
+    target: null,
+    spot: [['#q-options .oc.rec .oc-dec', 'press Approve, then Next']],
+  },
+  {
+    t: 'Step 5 — coordinate the approved response',
+    p:
+      'This is the clause most demos skip: a decision that lands nowhere is not a decision. ' +
+      'Coordinating writes it into the record &mdash; <b>every batch dispositioned</b> (the two ' +
+      'over the 500 ppm action limit, at <b>1,180</b> and <b>1,640 ppm</b>, are rejected; the rest ' +
+      'released), <b>CAPA-26-0114</b> raised against the root cause, and <b>8 owned actions</b> ' +
+      'issued across Quality, Supply Chain, Regulatory, Commercial, Market Access and Logistics ' +
+      '&mdash; each with a named owner and a due date.',
+    say:
+      'Press &ldquo;Coordinate the response&rdquo;, then Next. Then look at the disposition column: ' +
+      'the platform did not release everything it could have. It rejected exactly the two batches ' +
+      'that failed on their own merits.',
+    target: { branch: 'pipeline', view: 'quality' },
+    spot: [
+      ['#sr-run', 'press this, then Next'],
+      ['#q-decision', 'the signed record &middot; CAPA &middot; the owned actions'],
+    ],
+  },
+  {
+    t: 'What the decision left behind',
+    p:
+      'The batch table is now dispositioned end to end &mdash; and the two rejections are the two ' +
+      'batches that exceeded the action limit on their own inspection result, not merely the two ' +
+      'that shared a lot. <b>The hold was scoped by cause; the disposition was decided by ' +
+      'evidence.</b> Both are recorded, and both are defensible to an inspector.',
+    say:
+      'This is the screen a regulator asks for: what did you hold, what did you release, and on ' +
+      'what basis for each one.',
+    target: null,
+    spot: [['#q-batches', 'held by lot &middot; dispositioned by result']],
+  },
+  {
+    t: 'And it is a decision she can account for',
+    p:
+      'Every decision a person took, with its outcome &mdash; and this one is now on it. The ' +
+      'Quality signature, the option approved, the markets it protected and the ones it did not. ' +
+      'Separate from what the agents did on their own, on purpose.',
+    say:
+      'Two records, one for the person and one for the fleet, and they reconcile. Press Finish to ' +
+      'return to the menu &mdash; and if you are handing over to another presenter, press ' +
+      '&ldquo;Reset scenario&rdquo; on the quality screen first.',
     target: { branch: 'exec', view: 'actions', actionsPane: 'history' },
     spot: [['#v-actions .sb-p.on .hb', 'her decisions, with their outcomes']],
   },
-  {
-    t: 'And the fleet&rsquo;s record',
-    p:
-      'Agent orchestration, activity log. Every action the agents executed &mdash; timestamped, ' +
-      'attributed, tied to the finding and the launch. <b>The approval is the newest line</b>, and ' +
-      'the follow-through is now their work: qualify the second site permanently, add the ' +
-      'committed-capacity clause, and confirm the validation report lands by 06 Nov.',
-    say:
-      'This is the screen a Notified Body auditor asks for. Two records &mdash; one for the ' +
-      'person, one for the fleet &mdash; and they reconcile.',
-    target: { branch: 'exec', view: 'tower', towerPane: 'past' },
-    spot: [
-      ['.lg-n', '32 actions, 13 agents'],
-      ['#lg-b .lg-r:first-child', 'her approval, newest line'],
-    ],
-  },
-  {
-    t: 'Or she could have just asked',
-    p:
-      'Everything we clicked through, the copilot answers from the same record &mdash; the launch ' +
-      'plan, the 107 activities, the agent log, the supplier and market data. Every answer ends in a ' +
-      'button that opens the thing it is talking about.',
-    say:
-      'She could have started here. Ask it to diagnose Comirnaty Gen 2 and it says in one answer ' +
-      'what took us five screens: four findings, one cause &mdash; Heraeus.',
-    target: { branch: 'exec', view: 'chat', chatAsk: 'varipulse' },
-    scroll: false,
-    spot: [
-      ['#cq-thread .cq-ev', 'the evidence it used'],
-      ['#cq-thread .cq-rec', 'the recommendation and its confidence'],
-      ['#cq-thread .cq-act', 'buttons that open the record'],
-    ],
-  },
 ];
 
-/* ── Demo 2 — the regulatory-authority thread (16 steps, end to end) ────
- * Same journey as Demo 1 — menu → cockpit → portfolio (product then market)
- * → open issues → my actions → agent tower → the record → the record's detail
- * → history → fleet log → copilot — but the casuistry is regulatory. It drives
- * existing, already-reconciled records ONLY: NPI-0420 (FDA deficiency letter, a
- * view-only REGULATOR finding on Comirnaty) and NPI-0365 (BSI Notified Body
- * query-cycle 2 + the signatory escalation on Prevnar 20), plus the Comirnaty
- * dossier register (reg/cert groups) and the `regulatory` copilot answer. No
- * finding is added or changed, so every count still ties out. */
-const GD2: Step[] = [
+/* ── Demo 2 — demand and market-wave change ─────────────────────────────
+ *
+ * Scenario 2, clause by clause: the uplift and the pack-mix change, the four
+ * constraint families that cannot all be satisfied, the four named options, the
+ * governed decision, and the commit that rewrites every affected plan.
+ *
+ * Live figures, read back from MarketWaveService at baseline:
+ *   request         DCR-26-0067 · Comirnaty · T. Bergmann (Commercial) ·
+ *                   420,000 → 690,000 doses (+270,000, +64.3%) · €7M at stake
+ *   pack mix        6-dose multi-dose vial (COM-DE-MDV-6)
+ *                   → 1-dose prefilled syringe (COM-DE-PFS-1)
+ *   clock           56 days = 8.0 weeks of runway before packaging starts 4 Nov
+ *   binds first     BD 1mL long prefillable glass syringe, staked needle —
+ *                   84-day lead time against a 56-day runway, so only 15,000 of
+ *                   690,000 doses are servable as prefilled syringe
+ *   the gap         200,000 of the uplift servable · 70,000 short ·
+ *                   8,750/week · €0.76 marginal conversion per dose
+ *   internal        fill headroom 3,120,000 but pack headroom only 200,000 —
+ *                   packaging, not filling, is the bottleneck
+ *   components      support 641,871 doses; the German-language 6-dose carton
+ *                   binds, 675,000 units short
+ *   cold chain      1,450,000 doses on 1,100 free ultra-cold shippers — not binding
+ *   options         constrained 82.3 · reallocation 83.2 · add capacity 90.5 ·
+ *                   wave resequencing 91.2 RECOMMENDED
+ *   under resequence  DE takes 690,000 (270,000 of 270,000 served, 0 short) ·
+ *                   8 markets whole, 1 changed · 0 tenders breached ·
+ *                   max slip 14 days · €7M incremental for €205k added cost ·
+ *                   IT moves Wave 2 → Wave 3, first ship 4 Jan 2027 (+14 days)
+ */
+const GD_WAVE: Step[] = [
   {
-    t: 'Three ways in — today it is the agencies',
+    t: 'Eight weeks before packaging',
     p:
-      'The same three entry points Helena always has: <b>01 define</b> the launch, <b>02 see</b> it, ' +
-      '<b>03 execute</b> it. This walkthrough is a regulatory read of the portfolio &mdash; what the FDA ' +
-      'and the Notified Body are asking, and which of those clocks she can actually move. 01 is a design ' +
-      'workspace and is not built out here; today is 02 and 03.',
+      'Same cockpit, a different kind of shock. Nothing has broken: <b>Commercial has won more ' +
+      'demand</b>. <b>DCR-26-0067</b> on the <b>Comirnaty</b> launch &mdash; Germany wants ' +
+      '<b>690,000 doses instead of 420,000</b>, and wants them in a <b>different presentation</b>. ' +
+      'The request arrives <b>eight weeks before packaging starts</b>.',
     say:
-      'Today the question is regulatory. Click <b>02 Pipeline Status Overview</b>, or press Next &mdash; the ' +
-      'demo goes there either way.',
-    target: { screen: 'menu' },
-    scroll: false,
-    spot: [
-      ['.mc.dim', '01 &middot; not built out in this demo'],
-      ['.mc:nth-of-type(2)', '02 &middot; we start here &rarr;'],
-      ['.mc:last-of-type', '03 &middot; and we finish here'],
-    ],
-  },
-  {
-    t: 'Where the schedule time actually is',
-    p:
-      'The morning read on the portfolio. Gate readiness at <b>87%</b>, four launches at risk and one off track, ' +
-      '<b>&euro;40.6M exposed</b>. But the number that decides today is on this panel: of all the slip across the ' +
-      'portfolio, exactly <b>one</b> thread is a fixed wait on an authority &mdash; <b>Comirnaty Gen 2</b>, the grey ' +
-      'bar, an open FDA deficiency letter. Everything else, including the Prevnar 20 signature, is schedule time she ' +
-      'can win back by acting.',
-    say:
-      'She is not reading status, she is deciding where to look. The grey is the only clock a regulator holds; the ' +
-      'green is hers to pull in. So the honest question is: which slip is the FDA&rsquo;s, and can I move it?',
-    target: { branch: 'pipeline', view: 'cockpit' },
-    spot: [
-      ['#v-cockpit .ti-pnl', 'where you can recover schedule time'],
-      ['#v-cockpit .ti-card.reg', 'the one fixed wait on an authority — FDA, grey'],
-      ['#v-cockpit .ti-card.rec', 'everything else is recoverable by acting'],
-    ],
-  },
-  {
-    t: 'The one clock a regulator holds',
-    p:
-      'Click the grey bar and it opens the launch behind it &mdash; <b>Comirnaty Gen 2</b>, not a product-lens ' +
-      'list. Its slip and exposure are on the strip, and the reason is a single <b>FDA</b> thread: a PMA under ' +
-      'review with a deficiency letter open. This is the launch this tour follows: the FDA clock she can only ' +
-      'wait on, and a Notified Body review slot she has to protect.',
-    say:
-      'One click from the cockpit chart to the launch itself. The slip you just saw as the grey bar is right ' +
-      'here, named &mdash; and it is the FDA&rsquo;s to move, not hers.',
-    target: { view: 'launch', param: 'seed_launch_varipulse_g2' },
-    spot: [
-      ['#ld-slip', 'the slip you saw as the grey bar'],
-      ['#ld-rev', 'the exposure behind it'],
-    ],
-  },
-  {
-    t: 'Two jurisdictions, two very different clocks',
-    p:
-      'Back to the portfolio, market lens. The FDA thread lives under <b>the United States</b> &mdash; that is ' +
-      'Comirnaty Gen 2&rsquo;s jurisdiction and the one authority clock on the board. <b>The United Kingdom</b> ' +
-      'carries the Notified Body thread on <b>Prevnar 20</b> (NPI-0365) &mdash; same word, ' +
-      '&ldquo;regulatory&rdquo;, but that one is a signature she can move, not an agency wait.',
-    say:
-      'The map colours by status and sizes by launches. The US is where the fixed FDA clock sits; the UK is ' +
-      'where the movable BSI signature sits &mdash; two agencies, two jurisdictions, only one of them a wait.',
-    target: { branch: 'pipeline', view: 'portfolio', lens: 'market', marketView: 'map', marketPick: 'US' },
-    scroll: false,
-    spot: [
-      ['.wp[data-m=US]', 'United States · FDA · the one fixed authority clock (Comirnaty)'],
-      ['.wp[data-m=UK]', 'United Kingdom · BSI Notified Body · the movable signature (Prevnar 20)'],
-      ['#map-side .ms-k', 'the launches under FDA jurisdiction'],
-    ],
-  },
-  {
-    t: 'The one launch an agency is holding',
-    p:
-      'Open issues, filtered to <b>Waiting on an authority</b>. This bucket holds exactly <b>one</b> row, and ' +
-      'that is the whole point: everything else on this screen is work someone can accelerate. <b>NPI-0420</b> ' +
-      '&mdash; Comirnaty Gen 2 is under FDA review with a <b>deficiency letter open</b>, and it is <b>blocking a ' +
-      'gate</b>. Acting faster does not move it: the next step is with the agency. The Prevnar 20 signature is ' +
-      'not here &mdash; it is recoverable work, and it lives on the escalated queue instead.',
-    say:
-      'This is the honest distinction most tools blur. Only one thread is genuinely on a regulator. The system ' +
-      'marks who owns the next move &mdash; and when it is an authority, it says so and offers <i>View detail</i>, ' +
-      'never <i>Resolve</i>.',
-    target: { branch: 'pipeline', view: 'alerts' },
-    spot: [
-      ['#v-alerts .al-lens .wl.authority', 'exactly one thread is on an authority'],
-      ['#v-alerts tr[data-npi="NPI-0420"]', 'NPI-0420 · FDA · not yours to pull in'],
-    ],
-  },
-  {
-    t: 'The one that is actually hers to move',
-    p:
-      'Execution, My actions &mdash; the Escalated pane. The FDA clock is not here, because it is not ' +
-      'hers to push. <b>NPI-0365</b> is: the Notified Body response pack has been <b>drafted and unsigned ' +
-      'for 6 days</b>, chased twice, and raised to the director yesterday. An escalation travels upward ' +
-      'only &mdash; she cannot pull it back and sign it herself.',
-    say:
-      'Same word, two opposite situations. 0420 is on the FDA and waits. 0365 is on us: a signature we owe, ' +
-      'and every unsigned day is a day of G4.',
-    target: { branch: 'exec', view: 'actions', actionsPane: 'escalated' },
-    spot: [
-      ['#v-actions .sb-r', 'pending · escalated · her own history'],
-      ['#v-actions .sb-p.on .dr[data-npi="NPI-0365"]', 'NPI-0365 · chased twice, escalated to sign'],
-    ],
-  },
-  {
-    t: 'How the agent worked the query, then stopped',
-    p:
-      'Agent orchestration, filtered to <b>Hospital</b>. The card for <b>NPI-0365</b> shows the fleet&rsquo;s ' +
-      'work verb by verb: the Regulatory agent <b>detected</b> the second query cycle, the Clinical agent ' +
-      '<b>assembled</b> a response pack from the CER and the equivalence rationale &mdash; and then it ' +
-      '<b>stopped on a human</b>, because a submission cannot go out without a qualified signatory.',
-    say:
-      'This is the traceability a Notified Body cares about: what was drafted, by which agent, and exactly ' +
-      'where the chain handed off to a person. The agent did everything except the signature.',
-    target: { branch: 'exec', view: 'tower', towerPane: 'live', towerFranchise: 'Hospital', towerOpenCard: 'seed_finding_365' },
-    spot: [['#c-seed_finding_365 .tbwk', 'detected → assembled → stopped on a human']],
-  },
-  {
-    t: 'What reaches a person, and why',
-    p:
-      'The autonomy band, on the board KPIs. Most activities run without asking anyone. A regulatory ' +
-      'submission is <b>never</b> inside the autonomous band &mdash; it always stops for a qualified ' +
-      'signatory &mdash; so this one shows as <b>held by a person</b>, not closed by the fleet. That ' +
-      'boundary is configured, not improvised.',
-    say:
-      'This is the answer to the question every regulatory reviewer asks: what can the agents sign, and what ' +
-      'can they not? The FDA thread is one of those held cards &mdash; open it and you land on the record itself.',
-    target: { branch: 'exec', view: 'tower', towerPane: 'live' },
-    spot: [
-      ['#kpi .tbkc:nth-child(3)', 'stopped and waiting on a person'],
-      ['#kpi .tbkc:nth-child(4)', 'held by a human — a signature is required'],
-      ['#c-seed_finding_420', 'the FDA thread, held — click to open the record'],
-    ],
-  },
-  {
-    t: 'What the FDA is actually asking',
-    p:
-      'The FDA thread, opened. Because the next step is the agency&rsquo;s, the workspace is ' +
-      '<b>view-only</b> &mdash; no Approve, no Reassign, only the record. Comirnaty Gen 2&rsquo;s PMA is ' +
-      'under review with a deficiency letter open, and until the agency responds the gate does not move.',
-    say:
-      'Point at the bar: &ldquo;Waiting on an outside authority &mdash; acting here won&rsquo;t move ' +
-      'it.&rdquo; That sentence is the whole regulatory posture in one line.',
-    target: { view: 'issue', param: 'seed_finding_420' },
-    spot: [
-      ['#is-t', 'the deficiency letter, in the quality record'],
-      ['.is-bar', 'view-only — the next move is the agency’s'],
-    ],
-  },
-  {
-    t: 'The two open questions, already answered',
-    p:
-      'The problem in plain words. The deficiency letter has two open questions &mdash; ' +
-      '<b>sterilisation-residual limits</b> and the <b>biocompatibility bridge</b> &mdash; and the ' +
-      'Regulatory agent has already assembled a traced response pack against each, from the CER and the ' +
-      'DMR. The meta strip carries the gate, the exposure and who owns the next move.',
-    say:
-      'The work is done; what is left is the agency&rsquo;s clock. So the job here is not to act &mdash; it ' +
-      'is to keep the thread un-blocked and be ready the moment they respond.',
-    target: null,
-    spot: [
-      ['#pb-txt', 'the deficiency letter, in plain words'],
-      ['.is-meta', 'the gate, the exposure, and who owns the next move'],
-    ],
-  },
-  {
-    t: 'The Notified Body clock you CAN move',
-    p:
-      'Now the second agency thread, opened. <b>NPI-0365</b> &mdash; BSI opened query cycle 2 on the ' +
-      'clinical evaluation. This is not waiting on the authority; it is <b>held with a person</b> for a ' +
-      'qualified signatory. The escalation thread shows it in her colleagues&rsquo; own words: drafted, ' +
-      'chased twice, then raised to <b>S. Lindqvist</b>.',
-    say:
-      'This is the movable one. The FDA thread waits; this thread just needs a name on it &mdash; which is ' +
-      'exactly why it is on the escalated queue and not the authority bucket.',
-    target: { view: 'issue', param: 'seed_finding_365' },
-    spot: [
-      ['#thr-417', 'chased twice, then escalated to sign'],
-      ['#is-held', 'held with S. Lindqvist — a signature, not the agency'],
-    ],
-  },
-  {
-    t: 'The chain that stopped on a signature',
-    p:
-      'The held panel carries the chain the fleet ran: the Regulatory agent <b>detected</b> the query, the ' +
-      'Clinical agent <b>assembled</b> the response pack &mdash; and the Orchestrator <b>stopped on a ' +
-      'human</b>, because it cannot submit without a qualified signatory. The BSI review slot is the real ' +
-      'deadline behind all of this, and every unsigned day spends it.',
-    say:
-      'A clean agent handoff that stops at a hard boundary: not a cost threshold this time, but a ' +
-      'signature the standard requires. The agents took it as far as they are allowed to, and no further.',
-    target: null,
-    spot: [['#hd-chain', 'detected → assembled → stopped on a human']],
-  },
-  {
-    t: 'Ready for the site visit',
-    p:
-      'The dossier register for Comirnaty, narrowed to <b>Regulatory submissions</b> and ' +
-      '<b>Certificates &amp; licences</b>. An unannounced BSI site visit is expected this quarter &mdash; ' +
-      'a gemba walk of Heraeus line 3 and the Neuss second source. Everything an auditor asks for is here, ' +
-      'versioned and attributed: the submissions, the certificates, the validation reports.',
-    say:
-      'This is the screen you open when the Notified Body walks in. The dossier here and the agent activity ' +
-      'log reconcile, so the answer to &ldquo;show me&rdquo; is one click, not a scramble.',
-    target: { view: 'docs', param: 'seed_launch_varipulse_g2' },
-    spot: [
-      ['#v-docs .dc-g[data-c=reg] .dc-gh', 'the regulatory submissions'],
-      ['#v-docs .dc-g[data-c=cert] .dc-gh', 'certificates, licences & registrations'],
-    ],
-  },
-  {
-    t: 'Her own record',
-    p:
-      'My actions, History. Every decision she took, with its outcome, and where somebody else closed it, ' +
-      'in their words. The regulatory escalation she raised on NPI-0365 is on it &mdash; an escalation is a ' +
-      'decision too, and it is logged the same way.',
-    say:
-      'This is what she shows her manager. Her decisions and escalations only. What the agents did on their ' +
-      'own is kept separate, on purpose.',
-    target: { branch: 'exec', view: 'actions', actionsPane: 'history' },
-    spot: [
-      ['#v-actions .fb2[data-f=esc]', 'filter to the escalations she raised'],
-      ['#v-actions .sb-p.on .ev[data-npi="NPI-0365"]', 'the Prevnar 20 signature she escalated — the very thread from this tour'],
-    ],
-  },
-  {
-    t: 'And the fleet’s record',
-    p:
-      'Agent orchestration, activity log &mdash; the whole fleet, all franchises. Every action the agents ' +
-      'executed against the agency threads is here: timestamped, attributed, tied to the finding and the ' +
-      'launch. The response packs the agents assembled are their work; the signatures are not.',
-    say:
-      'This is the screen a Notified Body auditor asks for. Two records &mdash; one for the person, one for ' +
-      'the fleet &mdash; and they reconcile.',
-    target: { branch: 'exec', view: 'tower', towerPane: 'past', towerFranchise: 'all' },
-    spot: [
-      ['.lg-n', 'every action, every agent'],
-      ['#lg-b .lg-r:first-child', 'newest first'],
-    ],
-  },
-  {
-    t: 'Or she could have just asked',
-    p:
-      'Everything we clicked through, the copilot answers from the same record. Ask it what the regulators ' +
-      'need right now and it says it in one answer: <b>one clock the FDA holds</b> and she can only wait on ' +
-      '(NPI-0420), <b>one signature that is hers to push today</b> (NPI-0365), the <b>BSI review slot</b> to ' +
-      'protect, and the <b>site visit</b> to be ready for. Every answer ends in a button that opens the record.',
-    say:
-      'She could have started here. The recommendation is the honest one: push the signature today, keep the ' +
-      'FDA clock and the BSI slot un-blocked, and do not chase what the agency owns.',
-    target: { branch: 'exec', view: 'chat', chatAsk: 'regulatory' },
-    scroll: false,
-    spot: [
-      ['#cq-thread .cq-ev', 'the FDA clock, the signature, the slot and the visit'],
-      ['#cq-thread .cq-rec', 'the one thread that is yours to push'],
-      ['#cq-thread .cq-act', 'buttons that open the record'],
-    ],
-  },
-];
-
-/* ── Demo 3 — a manufacturing defect puts commercial batches at risk ────
- * (16 steps, end to end — the same journey as Demo 1, anchored on a different
- * case.) Drives NPI-0412: Comirnaty runs commercial output on lines 3 and 5,
- * line 3 has produced 3 batches out of spec on the dimensional check, and an
- * overdue CAPA (CAPA-2026-0149, its DMAIC still in progress) is open on it. It
- * is a fully-modelled USER decision with three options a/b/c — re-prioritise
- * markets, drive the DMAIC to close, or move output to another qualified site on
- * the same modality — a 4-entry thread and an action plan. The only backing data
- * added for this demo are TEST-INVISIBLE records (a manufacturing CAPA, a third
- * decision option, the comment thread and five ActionPlanTasks on decision_412);
- * no finding is added or changed, so every count still ties out. */
-const GD3: Step[] = [
-  {
-    t: 'Three ways in — today it is manufacturing',
-    p:
-      'The same three entry points: <b>01 define</b>, <b>02 see</b>, <b>03 execute</b>. This walkthrough ' +
-      'follows a single manufacturing signal all the way to a decision &mdash; a <b>line defect that ' +
-      'puts commercial launch batches at risk</b>. 01 is a design workspace and is not built out here; ' +
-      'today is 02 and 03.',
-    say:
-      'Today the question is manufacturing. Click <b>02 Pipeline Status Overview</b>, or press Next &mdash; ' +
-      'the demo goes there either way.',
-    target: { screen: 'menu' },
-    scroll: false,
-    spot: [
-      ['.mc.dim', '01 &middot; not built out in this demo'],
-      ['.mc:nth-of-type(2)', '02 &middot; we start here &rarr;'],
-      ['.mc:last-of-type', '03 &middot; and we finish here'],
-    ],
-  },
-  {
-    t: 'Where a manufacturing problem shows up',
-    p:
-      'The screening pass. Gate readiness at <b>87%</b>, <b>&euro;40.6M exposed</b>, four launches at risk. One of ' +
-      'those is <b>Comirnaty G2</b>, and behind its number is a manufacturing problem: it builds commercial ' +
-      'output on two lines, and one of them is producing out-of-spec batches. The cockpit is where that ' +
-      'first shows as a launch drifting the wrong way.',
-    say:
-      'She is deciding where to look. A manufacturing problem shows here as at-risk launch volume &mdash; ' +
-      'not a schedule slip, a shortfall in the batches the launch was counting on.',
+      'Start here so the room understands the class of problem. This is not a failure to recover ' +
+      'from. It is an opportunity the supply chain cannot absorb as planned &mdash; which is harder, ' +
+      'because saying no has a price too.',
     target: { branch: 'pipeline', view: 'cockpit' },
     scroll: false,
+    spot: [['#v-cockpit .kc:nth-child(3)', 'the money already committed across the portfolio']],
+  },
+  {
+    t: 'What Commercial is actually asking for',
+    p:
+      '<b>+270,000 doses, +64.3%</b>, worth <b>&euro;7M</b>. And the part that makes it hard: the ' +
+      'pack mix changes too &mdash; from the <b>6-dose multi-dose vial</b> (COM-DE-MDV-6) to the ' +
+      '<b>1-dose prefilled syringe</b> (COM-DE-PFS-1). That is not a bigger version of the same ' +
+      'plan. It is <b>different components, a different fill line and a different carton</b>.',
+    say:
+      'Two changes in one request, and the second one is the expensive one. More doses is a capacity ' +
+      'question. A different presentation is a qualification-and-components question.',
+    target: { branch: 'pipeline', view: 'wave' },
+    scroll: false,
     spot: [
-      ['#v-cockpit .kc:nth-child(2)', 'four at risk — one is a manufacturing problem'],
-      ['#v-cockpit .kc:nth-child(3)', '&euro;40.6M exposed across the portfolio'],
-      ['#v-cockpit .kc:nth-child(4)', 'worst-case slip: 47 days'],
+      ['#v-wave .sr-steps', 'the same five governed steps'],
+      ['#w-ask', '+270,000 doses &mdash; and the pack mix changes'],
     ],
   },
   {
-    t: 'Find the launch that is building at risk',
+    t: 'Step 1 — assess every constraint at once',
     p:
-      'Portfolio, product lens. Nine launches, <b>sorted worst first</b>. <b>Comirnaty G2</b> is in P3, and ' +
-      'its commercial build runs on <b>two manufacturing lines &mdash; line 3 and line 5</b>. Line 3 has ' +
-      'gone out of spec, so a share of the launch volume is at risk. Hollow markers are the gates ahead; ' +
-      'solid ones have closed.',
+      'The runway is <b>56 days &mdash; 8.0 weeks</b>. Against that clock the platform tests ' +
+      'internal fill and packaging headroom, every CMO and packaging-partner lane including whether ' +
+      'it is <b>qualified in time</b>, every packaging component against its <b>lead time</b>, and ' +
+      'the cold-chain shippers. Four constraint families, one pass.',
     say:
-      'Product lens first, because the question is <i>which device</i> is building at risk. Comirnaty is ' +
-      'the one &mdash; its commercial batches, not its design work, are the problem.',
-    target: { branch: 'pipeline', view: 'portfolio', lens: 'product' },
-    spot: [
-      ['#v-portfolio .pf-sw', 'four lenses, one screen'],
-      ['.tkr', 'Comirnaty G2 · commercial build on lines 3 and 5'],
-    ],
+      'Watch what this step does not do. It does not ask which constraint to check. It checks all of ' +
+      'them and then tells us which one binds &mdash; which is the only question that matters.',
+    target: { branch: 'pipeline', view: 'wave', waveStep: 1 },
+    spot: [['#w-constraints', 'four constraint families, tested against one clock']],
   },
   {
-    t: 'Open the launch and see the build at risk',
+    t: 'And here is what binds first',
     p:
-      'Click into <b>Comirnaty G2</b>. Its record shows the launch scope &mdash; the commercial build that ' +
-      'is committed for first ship. That build runs on lines 3 and 5, and with line 3 out of spec the ' +
-      'launch is short of the batches it planned for. This is not a schedule line; it is real commercial ' +
-      'volume that now has to be re-planned.',
+      'Not capacity. <b>A component lead time.</b> The <b>1mL long prefillable glass syringe with ' +
+      'staked needle</b> from <b>Becton Dickinson</b> has an <b>84-day lead time against a 56-day ' +
+      'runway</b> &mdash; so only <b>15,000</b> of the requested 690,000 doses can be served as ' +
+      'prefilled syringe. <b>No amount of money shortens that</b>, which is why it outranks every ' +
+      'capacity gap underneath it.',
     say:
-      'Open the detail and point at the launch scope. The problem is not the gate date &mdash; it is that ' +
-      'the launch is building fewer good commercial batches than the plan assumed.',
-    target: { view: 'launch', param: 'seed_launch_varipulse_g2' },
-    spot: [
-      ['#ld-phase', 'P3 · commercial build for launch'],
-      ['#ld-strip', 'the launch scope now short of planned batches'],
-    ],
-  },
-  {
-    t: 'A defect the line found by itself',
-    p:
-      'Execution, My decisions. <b>NPI-0412</b> &mdash; a line monitor broke an SPC rule on <b>line 3</b>: ' +
-      '<b>3 commercial batches out of spec</b> on the dimensional check. Line 5 is clean. Nobody asked it ' +
-      'to look. The card already carries the agent&rsquo;s read: hold the 3 batches, keep supply on line 5, ' +
-      'and re-plan the shortfall.',
-    say:
-      'This is where a manufacturing signal becomes a decision. Watch what it turns into &mdash; not a ' +
-      'schedule slip, a question about which markets get the reduced volume.',
-    target: { branch: 'exec', view: 'actions', actionsPane: 'pending' },
-    spot: [
-      ['#v-actions .sb-r', 'pending · escalated · her own history'],
-      ['#v-actions .sb-p.on .dr[data-npi="NPI-0412"]', 'NPI-0412 · line 3, found by an agent'],
-    ],
-  },
-  {
-    t: 'How it reached her — agent by agent',
-    p:
-      'Agent orchestration, filtered to <b>Vaccines</b>. The card for <b>NPI-0412</b> shows the ' +
-      'chain verb by verb: the <b>Line Monitor</b> flagged the drift, the <b>Quality agent</b> re-measured ' +
-      'the commercial batches and confirmed 3 out of tolerance, the <b>Planning agent</b> modelled the ' +
-      'volume shortfall against the launch plan &mdash; and then it <b>stopped on her</b>, because ' +
-      're-prioritising which markets get the reduced volume is not the fleet&rsquo;s call.',
-    say:
-      'Several agents, minutes, no meeting. The clearest example of the handoff in the fleet: a dimensional ' +
-      'drift on a line becomes a commercial-priority decision on her desk.',
-    target: { branch: 'exec', view: 'tower', towerPane: 'live', towerFranchise: 'Vaccines', towerOpenCard: 'seed_finding_412' },
-    spot: [['#c-seed_finding_412 .tbwk', 'line monitor → quality → planning → you']],
-  },
-  {
-    t: 'What the fleet may not do on its own',
-    p:
-      'The autonomy band, on the board KPIs. Most activities run without asking anyone. <b>Prioritising ' +
-      'markets is deliberately outside that band</b> &mdash; deciding which markets get less product is a ' +
-      'commercial and planning trade-off, not a rule an agent can apply. So the chain did the analysis and ' +
-      'then <b>stopped for her decision</b>. That boundary is configured, not improvised.',
-    say: 'This is the answer to &ldquo;what decides what reaches me?&rdquo; &mdash; a market-priority call always does.',
-    target: { branch: 'exec', view: 'tower', towerPane: 'live' },
-    spot: [
-      ['#kpi .tbkc:nth-child(3)', 'stopped and waiting on her'],
-      ['#kpi .tbkc:nth-child(5)', 'closed with no human at all'],
-    ],
-  },
-  {
-    t: 'Three good batches, and why they matter',
-    p:
-      'The record, opened. Line 3 produced <b>3 commercial batches out of spec</b> on the dimensional ' +
-      'check. For scale: <b>V&amp;V produces 3 batches as the norm</b> (a validation run was 12 at one ' +
-      'site), so three affected commercial batches is a full run&rsquo;s worth of launch supply. There is ' +
-      'an <b>overdue CAPA</b> open on line 3 &mdash; overdue because its <b>DMAIC is still in progress</b>. ' +
-      'Line 5 is holding supply, so this is a volume question, not a stoppage.',
-    say:
-      'Point at the problem statement. &ldquo;A full run&rsquo;s worth of commercial batches, and the CAPA ' +
-      'is overdue&rdquo; is the phrase that turns a quality event into a market-priority decision.',
-    target: { view: 'issue', param: 'seed_finding_412' },
-    spot: [
-      ['#pb-txt', 'three commercial batches — a full V&V run’s worth'],
-      ['#is-capa', 'CAPA overdue — its DMAIC still in progress'],
-    ],
-  },
-  {
-    t: 'Three ways to handle it',
-    p:
-      'The options, modelled against the live plan. <b>Option A &mdash; re-prioritise markets</b> and ' +
-      'redistribute the reduced commercial volume: protect the lead markets, defer the lower-priority ' +
-      'ones. It is the recommendation. <b>Option B &mdash; drive the in-progress DMAICs</b> to close the ' +
-      'overdue CAPA and re-operate line 3 quickly. <b>Option C &mdash; move output to another qualified ' +
-      'site</b>, same modality &mdash; viable only if the agents confirm regulatory/engineering clearance ' +
-      'and that the site actually has capacity.',
-    say:
-      'Three options, one trade-off table, each modelled against the live plan. All three hold G3 &mdash; ' +
-      'the difference is where the reduced volume lands and how fast line 3 comes back.',
+      'This is the single most important frame in the scenario. A capacity gap is a budget problem ' +
+      'you can buy your way out of. A lead time longer than your runway is arithmetic. The platform ' +
+      'ranks them in that order deliberately.',
     target: null,
     spot: [
-      ['#opt-a', 'recommended · re-prioritise markets'],
-      ['#opt-b', 'drive the DMAIC to close the CAPA'],
-      ['#opt-c', 'another site, same modality — if capacity'],
+      ['#w-constraints .sc-bind', '84-day lead time against a 56-day runway'],
+      ['#w-components', 'every component, against its own lead time'],
     ],
   },
   {
-    t: 'The plan the agents can run',
+    t: 'The gap, and the bottleneck nobody expected',
     p:
-      'The recommended option builds an action plan: <b>quarantine the 3 out-of-spec batches</b>, ' +
-      '<b>continue commercial supply from line 5</b>, <b>re-weight the allocation across markets</b>, and ' +
-      '<b>re-baseline P3 to hold G3</b> &mdash; four of the five steps the agents can run themselves. The ' +
-      'fifth, approving the revised market priority, is a person&rsquo;s call.',
+      '<b>200,000 of the uplift is servable; 70,000 doses are short</b> &mdash; a gap of ' +
+      '<b>8,750 a week</b> at a marginal conversion cost of <b>&euro;0.76 a dose</b>. And note ' +
+      'which internal constraint binds: <b>fill headroom is 3,120,000 doses but packaging headroom ' +
+      'is only 200,000</b>. <b>Packaging, not filling, is the bottleneck</b> &mdash; the opposite ' +
+      'of where most people look first.',
     say:
-      'This is the &ldquo;what happens after I approve&rdquo; part. Four steps go straight to the fleet; ' +
-      'the market-priority approval is flagged for a human, because it is a commercial trade-off.',
+      'Cold chain supports 1,450,000 doses on 1,100 free ultra-cold shippers, so logistics is not ' +
+      'binding here &mdash; and the platform says so rather than staying silent. A constraint that ' +
+      'is fine is worth showing.',
     target: null,
-    spot: [['#run-all', 'four of the five steps the agents can run']],
+    spot: [
+      ['#w-constraints .sc-grid', '200,000 servable &middot; 70,000 short'],
+      ['#w-constraints .sc-esc', 'packaging binds, not filling &middot; cold chain is fine'],
+    ],
   },
   {
-    t: 'The agents converge on a market call',
+    t: 'The five lanes, including the one that is not qualified',
     p:
-      'The escalation thread, in their own words. The <b>Line Monitor</b> scoped it to 3 commercial ' +
-      'batches on line 3, line 5 clean. <b>A. Kowalski</b> confirmed the line-3 CAPA is overdue because its ' +
-      'DMAIC is still in progress, so line 3 cannot be re-qualified yet. The <b>Planning agent</b> then ' +
-      'modelled the shortfall: redistribute across markets, or move output to another qualified site.',
+      'Every lane that could carry this, internal and external: <b>Baxter Halle</b> and ' +
+      '<b>Thermo Fisher Patheon</b> as CMOs, and Pfizer <b>Puurs</b> lines 4 and 7 plus its ' +
+      'secondary packaging hall. The interesting row is <b>Patheon Ferentino contract pack line 3</b>: ' +
+      'capacity is there, but it is <b>Unqualified &mdash; 42 days to qualify and a regulatory ' +
+      'variation required</b>. So it is capacity we cannot legally use in this window.',
     say:
-      'Four entries, three functions and an agent, handed cleanly from one to the next &mdash; and here it lands on ' +
-      'a question no single owner can answer: which markets take the reduced volume?',
+      'This is the distinction that separates a real plan from a spreadsheet. Capacity that exists is ' +
+      'not capacity you may use. Qualification status and the variation are part of the number.',
     target: null,
-    spot: [['#thr-417', 'line monitor → quality → planning']],
+    spot: [['#w-lanes', 'capacity that exists &ne; capacity you may use']],
   },
   {
-    t: 'Why the CAPA is overdue',
+    t: 'Step 2 — compare the four options the spec names',
     p:
-      'Back on the record, the overdue CAPA is the crux of the timing. It is open on line 3 for the ' +
-      'dimensional drift, and it is <b>overdue because its DMAIC is still in progress</b>: Measure and ' +
-      'Analyse are complete and point at tool wear, but <b>Improve and Control are not signed</b>. Until ' +
-      'the DMAIC closes, line 3 cannot be re-qualified for commercial output &mdash; which is exactly what ' +
-      'Option B sets out to accelerate.',
+      'Exactly the four the business asks for: <b>constrained launch</b> (82.3), <b>inventory ' +
+      'reallocation</b> (83.2), <b>added capacity</b> (90.5), and <b>market-wave resequencing</b> ' +
+      '(<b>91.2, recommended</b>). All four are executable inside the 56-day runway, so this is a ' +
+      'genuine choice rather than a single survivor &mdash; and they are scored on <b>the change ' +
+      'each one creates</b>, not on the book it inherits.',
     say:
-      'This is why the recommendation is to re-prioritise markets rather than wait: line 3 comes back only ' +
-      'when the DMAIC signs off, and that is not a date she can force from here.',
-    target: { view: 'issue', param: 'seed_finding_412' },
+      'Four live options within nine points of each other. That is what makes this a decision worth ' +
+      'governing: there is no obviously right answer, so the reasoning has to be recorded.',
+    target: { branch: 'pipeline', view: 'wave', waveStep: 2 },
     spot: [
-      ['#is-capa', 'CAPA-2026-0149 · overdue'],
-      ['.is-meta', 'the DMAIC in progress behind it'],
+      ['#w-options .oc-grid', 'four options, all executable, nine points apart'],
+      ['#w-options .oc.rec', 'recommended &middot; 91.2 / 100'],
     ],
   },
   {
-    t: 'One decision',
+    t: 'Step 3 — project the book before anyone signs',
     p:
-      'She approves the recommended route &mdash; <b>re-prioritise markets and redistribute the reduced ' +
-      'commercial volume</b>, protecting the lead markets and deferring the lower-priority ones. That is ' +
-      'the only thing a human does in this case; the four agent steps run from it.',
-    say: 'Click Approve on the screen, then come back and press Next.',
-    target: { view: 'issue', param: 'seed_finding_412' },
-    spot: [['#btn-app', 'click this, then press Next']],
-  },
-  {
-    t: 'Her own record',
-    p:
-      'My actions, History. Every decision she took, with its outcome &mdash; and the <b>NPI-0412</b> ' +
-      'market-priority call she just approved is now the newest row on it, marked <b>Decision taken</b>. ' +
-      'The four agent steps are already running against it.',
+      'Press <b>Preview this plan</b> on the recommended card. Resequencing serves ' +
+      '<b>270,000 of the 270,000 doses requested &mdash; nothing short</b> &mdash; by moving ' +
+      '<b>Italy from Wave 2 to Wave 3</b>, first ship <b>4 January 2027, +14 days</b>. ' +
+      '<b>8 markets stay whole, 1 changes, and zero tender windows are breached.</b> ' +
+      '<b>&euro;7M</b> of incremental revenue for <b>&euro;205k</b> of added cost.',
     say:
-      'This is what she shows her manager. Point at the NPI-0412 row at the top &mdash; the exact decision ' +
-      'from this demo, now on her record. Her decisions only; what the agents did on their own is kept ' +
-      'separate, on purpose.',
-    target: { branch: 'exec', view: 'actions', actionsPane: 'history' },
-    spot: [['#ev-list .ev[data-npi="NPI-0412"]', 'the market-priority call she just approved']],
-  },
-  {
-    t: 'And the fleet’s record',
-    p:
-      'Agent orchestration, activity log &mdash; the whole fleet. The same <b>NPI-0412</b> decision she ' +
-      'just took shows here from the other side: the line-monitor detection, the re-measure, the CAPA/DMAIC ' +
-      'status, the shortfall model &mdash; timestamped, attributed, tied to the finding and the launch. Her ' +
-      'record shows the decision; the fleet&rsquo;s record shows the work under it.',
-    say:
-      'This is the screen an auditor asks for. Point at the NPI-0412 rows &mdash; the exact same event as ' +
-      'the row on her history, seen from the fleet side. Two records that reconcile on one id.',
-    target: { branch: 'exec', view: 'tower', towerPane: 'past', towerFranchise: 'all' },
+      'Press Preview, then come back and press Next. And watch the &ldquo;in contested window&rdquo; ' +
+      'note: only the Wave 1 and Wave 2 markets carry it. The Wave 3 markets are not competing for ' +
+      'the same packaging hours, so the platform does not pretend they are.',
+    target: null,
     spot: [
-      ['#lg-b .lg-r[data-npi="NPI-0412"]', 'the same NPI-0412 event, from the fleet side'],
-      ['.lg-n', 'every action, every agent'],
+      ['#w-options .oc.rec .oc-a', 'press Preview here, then Next'],
+      ['#w-book', 'the whole book, market by market'],
     ],
   },
   {
-    t: 'Two lines, three batches, one decision',
+    t: 'Why resequencing beats simply buying capacity',
     p:
-      'Ask the copilot what is putting Comirnaty&rsquo;s commercial batches at risk and it says it in one ' +
-      'answer: line 3 has produced <b>3 batches out of spec</b> while line 5 is clean, an <b>overdue ' +
-      'CAPA</b> is open because its <b>DMAIC is still in progress</b>, and &mdash; since V&amp;V produces ' +
-      '<b>3 batches as the norm</b> &mdash; that is a full run&rsquo;s worth of launch volume. The three ' +
-      'routes are re-prioritise markets, drive the DMAIC to close, or move to another qualified site. Every ' +
-      'answer ends in a button that opens the record.',
+      'Adding capacity scores <b>90.5</b> and resequencing <b>91.2</b> &mdash; close, and the ' +
+      'reason is instructive. Qualifying Patheon costs money <i>and</i> <b>42 days and a ' +
+      'variation</b>. Resequencing costs <b>one market 14 days</b>, breaches <b>no tender</b>, and ' +
+      'needs <b>no filing</b>. The platform prefers the option that spends <b>schedule we own</b> ' +
+      'over the option that spends <b>regulatory runway we do not</b>.',
     say:
-      'That is the whole case in one answer: a manufacturing defect that becomes a market-priority call ' +
-      '&mdash; and the redistribution Helena just approved is the move that protects the lead markets while ' +
-      'line 3 comes back.',
-    target: { branch: 'exec', view: 'chat', chatAsk: 'supplier' },
-    scroll: false,
+      'If someone in the room disagrees with that trade, they can approve a different card. The ' +
+      'score does not lock the decision &mdash; it just makes the comparison honest.',
+    target: null,
     spot: [
-      ['#cq-thread .cq-ev', 'line 3 out of spec, line 5 clean'],
-      ['#cq-thread .cq-rec', 're-prioritise markets and redistribute'],
-      ['#cq-thread .cq-act', 'buttons that open the record'],
-    ],
-  },
-];
-
-/* ── Demo 4 — a regulator moves a date and the plan re-plans itself ─────
- * (16 steps, end to end — the same journey shape as the other three, anchored
- * on the connected-milestone / dynamic-cascade case.) The FDA slips Velsipity's
- * 510(k) clearance six weeks; the platform cascades the impact across five
- * downstream commitments, auto-adjusting the three it safely can and surfacing
- * the two that need a human. Drives its own self-contained subsystem
- * (RegulatoryMilestone + CascadeImpactItem via CascadeReplanService) plus the
- * already-modelled Velsipity launch record and the `cascade` copilot answer. It
- * adds NO finding and touches NO Comirnaty activity, so the reconciliation lock
- * holds and every count still ties out. The Milestone-replan screen is
- * repeatable — its reset restores the pre-slip baseline — so the tour can be
- * run again and again from a clean state. */
-const GD4: Step[] = [
-  {
-    t: 'Three ways in — today a regulator moves a date',
-    p:
-      'The same three entry points Helena always has: <b>01 define</b> the launch, <b>02 see</b> it, ' +
-      '<b>03 execute</b> it. This walkthrough follows a single outside event &mdash; the <b>FDA slips ' +
-      'Velsipity&rsquo;s clearance six weeks</b> &mdash; all the way through to a plan that re-plans itself. ' +
-      '01 is a design workspace and is not built out here; today is 02 and 03.',
-    say:
-      'Today the trigger is a regulator, and the story is what happens <i>downstream</i> of a date nobody ' +
-      'controls. Click <b>02 Pipeline Status Overview</b>, or press Next &mdash; the demo goes there either way.',
-    target: { screen: 'menu' },
-    scroll: false,
-    spot: [
-      ['.mc.dim', '01 &middot; not built out in this demo'],
-      ['.mc:nth-of-type(2)', '02 &middot; we start here &rarr;'],
-      ['.mc:last-of-type', '03 &middot; and we finish here'],
+      ['#w-options .oc:nth-child(3)', 'add capacity &mdash; 42 days and a variation'],
+      ['#w-options .oc.rec', 'resequence &mdash; 14 days, no filing'],
     ],
   },
   {
-    t: 'The launch that is waiting on a clearance',
+    t: 'Step 4 — a governed decision, and who may take it',
     p:
-      'The screening pass. Most of the portfolio is in-market work, but <b>Velsipity</b> &mdash; the robotic ' +
-      'surgical platform &mdash; is <b>pre-market</b>, first ship targeted at Q2 2027, its whole plan hung off ' +
-      'one FDA 510(k) clearance date. Nothing is on fire yet: manufacturing has built launch stock, the loaner ' +
-      'kits are staged, the field is trained. That is exactly the calm before a date moves.',
+      'Press <b>Approve &mdash; launch S&amp;OP</b>. The service enforces that the signer holds a ' +
+      '<b>Commercial or Governance</b> function, because reallocating doses between markets is a ' +
+      'cross-market trade-off, not a Quality call. It is signed by <b>George Hall, Global NPI ' +
+      'Lead</b> &mdash; deliberately <b>not</b> T. Bergmann, who raised the request. <b>The market ' +
+      'asking for more cannot be the authority that grants it.</b>',
     say:
-      'She is deciding where to look. A pre-market launch with everything staged is the one most exposed to a ' +
-      'clearance slip &mdash; every downstream commitment is already committed against the old date.',
-    target: { branch: 'pipeline', view: 'cockpit' },
-    scroll: false,
+      'Press Approve, then Next. That separation is the whole governance story in one field: ' +
+      'requester and approver are different people, and the platform will not let them be the same.',
+    target: null,
+    spot: [['#w-options .oc.rec .oc-dec', 'press Approve, then Next']],
+  },
+  {
+    t: 'Step 5 — update every affected plan',
+    p:
+      'The last clause of the spec, in full: <b>all affected plans, owners, sites, partners and ' +
+      'market commitments</b>. Commit rewrites the book &mdash; <b>Germany at 690,000</b>, ' +
+      '<b>Italy at Wave 3</b>, the capacity booked on the lanes that will carry it, and the ' +
+      'components drawn down. The three rejected options are marked <b>Not taken</b> and kept, ' +
+      'because the options you declined are part of the record.',
+    say:
+      'Press &ldquo;Commit the plan changes&rdquo;, then Next. Commit is idempotent for the ' +
+      'commitments but increments the capacity booking once &mdash; so a second press cannot ' +
+      'double-book the line. That detail matters more than it sounds in a live demo.',
+    target: { branch: 'pipeline', view: 'wave' },
     spot: [
-      ['#v-cockpit .kc:nth-child(2)', 'the portfolio at a glance'],
-      ['#v-cockpit .kc:nth-child(4)', 'schedule discipline — before the slip'],
+      ['#sr-run', 'press this, then Next'],
+      ['#w-decision', 'signed, attributable, reason-coded'],
     ],
   },
   {
-    t: 'Find Velsipity in the portfolio',
+    t: 'The book, rewritten',
     p:
-      'Portfolio, product lens. Nine launches, one line each. <b>Velsipity Robotic Platform Kit</b> is the ' +
-      'pre-market line &mdash; Neuroscience, Class II, lead market Germany, first ship Q2 2027. Its gates are ' +
-      'still ahead of it; the clearance milestone is the one that sets everything after it.',
+      'Germany holds <b>690,000</b>. Italy reads <b>Wave 2 &rarr; Wave 3</b> with ' +
+      '<b>+14 days</b>. Every other market is untouched and still reads <b>Committed</b> against ' +
+      'its own regulatory body &mdash; G-BA, FDA, MHRA/NICE, HAS/CEPS, AIFA, AEMPS, AOTMiT. ' +
+      '<b>One market moved, eight protected, no tender lost, &euro;7M captured.</b>',
     say:
-      'Product lens, because the question is <i>which device</i> is exposed to the clearance date. It is the ' +
-      'capital platform, not a catheter &mdash; a launch where one regulatory date gates the whole rollout.',
-    target: { branch: 'pipeline', view: 'portfolio', lens: 'product' },
+      'That is Scenario 2 end to end. Press Finish to return to the menu &mdash; and press ' +
+      '&ldquo;Reset scenario&rdquo; on this screen before you hand over, so the next run starts from ' +
+      'the same baseline.',
+    target: null,
     spot: [
-      ['#v-portfolio .pf-sw', 'four lenses, one screen'],
-      ['.tkr[data-launch="seed_launch_ottava"]', 'Velsipity · pre-market · one clearance date gates it all'],
-    ],
-  },
-  {
-    t: 'Everything hangs off one clearance date',
-    p:
-      'Open Velsipity. The record shows what is already committed against the original clearance: a ' +
-      '<b>launch build of 40 units</b>, a <b>field force part-certified</b>, registrations filed. This is the ' +
-      'point of the case &mdash; the plan is real, physical and staged, so a six-week slip is not a line on a ' +
-      'chart, it is stock in a warehouse and reps trained for the wrong month.',
-    say:
-      'Point at the launch-scope card. Build stock, loaner kits, a certified field &mdash; every one of these is ' +
-      'a downstream commitment that assumed the old date. That is what has to re-plan when the date moves.',
-    target: { view: 'launch', param: 'seed_launch_ottava' },
-    spot: [
-      ['#ld-phase', 'pre-market — clearance is the gating milestone'],
-      ['#ld-supply', 'critical supply, staged against the old date'],
-    ],
-  },
-  {
-    t: 'The connected-milestone screen',
-    p:
-      'Pipeline, <b>Milestone replan</b>. This is the exception dashboard for Velsipity&rsquo;s ' +
-      '<b>FDA 510(k) clearance</b>. Right now the milestone is <b>on track</b> at 02 Nov, and the panel spells ' +
-      'out the situation in plain words: launch stock built, kits at the 3PL, field trained for the original ' +
-      'go-live. Nothing has moved &mdash; yet.',
-    say:
-      'This screen exists to answer one question the moment a date slips: <i>what now depends on it, and which ' +
-      'of those can move themselves?</i> Watch the KPI band &mdash; on track, zero slip, nothing waiting on a person.',
-    target: { branch: 'pipeline', view: 'cascade' },
-    scroll: false,
-    spot: [
-      ['#cs-kpis .kc:nth-child(1)', 'the FDA clearance milestone — on track, for now'],
-      ['.cs-hint', 'stock built, kits staged, field trained — against the old date'],
-    ],
-  },
-  {
-    t: 'The FDA slips it six weeks',
-    p:
-      'The clearance moves from <b>02 Nov to 14 Dec</b> &mdash; a <b>six-week slip</b> on a date Helena cannot ' +
-      'pull in. Press the button and the platform does in one pass what used to be three days of manual rework: ' +
-      'it walks every downstream commitment, moves the ones that follow a rule, and stops on the ones that need a ' +
-      'judgement. Watch the KPI band change.',
-    say:
-      'Press <b>&ldquo;FDA slips 6 weeks &mdash; run cascade replan&rdquo;</b> on the screen, then press Next. ' +
-      'The demo also runs it for you &mdash; either way, the six weeks fan out across the whole plan.',
-    target: { branch: 'pipeline', view: 'cascade', cascadeRun: true },
-    scroll: false,
-    spot: [
-      ['#cs-run', 'one button — the six-week slip, cascaded'],
-      ['#cs-kpis .kc:nth-child(1)', '+6 wks · 02 Nov → 14 Dec'],
-    ],
-  },
-  {
-    t: 'Three auto-adjusted, two need a human',
-    p:
-      'The slip has fanned out. The exception summary is the whole story in three numbers: ' +
-      '<b>five downstream commitments</b>, <b>three auto-adjusted</b> by the platform, <b>two that need a human ' +
-      'decision</b> &mdash; and the <b>working-capital impact leadership sees in real time</b>. This is the ' +
-      'exception-based decision surface: the plan re-planned itself, and only the genuine judgement calls ' +
-      'surfaced.',
-    say:
-      'This is the number that matters. The six-week slip did not become a ten-week scramble &mdash; it became ' +
-      'three automatic re-times and two decisions, both on one screen, both takeable in the same meeting.',
-    target: { branch: 'pipeline', view: 'cascade' },
-    scroll: false,
-    spot: [
-      ['#cs-auto-kpi', '3 auto-adjusted · no human needed'],
-      ['#cs-human-kpi', '2 need a decision · exception surface'],
-      ['#cs-kpis .kc:nth-child(4)', 'working-capital impact, in real time'],
-    ],
-  },
-  {
-    t: 'What the platform moved on its own',
-    p:
-      'The left column &mdash; the three commitments that follow a rule, so the platform re-timed them and ' +
-      '<b>recorded what it did rather than asking</b>. <b>Production Run 2</b> is held to the new clearance. ' +
-      'The <b>loaner-kit deployment</b> across US geographies is re-timed to the new go-live. The ' +
-      '<b>KOL pre-announcement accounts</b> are flagged for proactive outreach, so nobody is selling a date the ' +
-      'FDA just moved.',
-    say:
-      'This is the manual rework that used to eat three days &mdash; manufacturing, logistics and commercial, ' +
-      'each re-planned by hand. Here each one carries a one-line &ldquo;what the platform did&rdquo;, timestamped ' +
-      'and auditable.',
-    target: { branch: 'pipeline', view: 'cascade' },
-    scroll: false,
-    spot: [
-      ['#cs-auto-list', 'held · re-timed · flagged — automatically'],
-      ['#cs-auto-list .cs-item:first-child', 'Run 2 held to the new clearance date'],
-    ],
-  },
-  {
-    t: 'The first call that is genuinely hers',
-    p:
-      'The right column &mdash; the two the cascade <b>cannot</b> make for her. The first is <b>Finance</b>: six ' +
-      'extra weeks of finished-goods storage. <b>Extend the 3PL slot</b> (+&euro;48k carrying cost, zero re-stage ' +
-      'risk) or <b>repatriate to the regional DC</b> (saves &euro;36k but adds a 9-day re-stage before go-live). ' +
-      'That is a real trade-off &mdash; carrying cost against schedule risk &mdash; and it is <b>J. Ruiz&rsquo;s</b> to own.',
-    say:
-      'This is why it stopped for a human. There is no rule that says cash-vs-risk; it depends on how confident ' +
-      'the team is the new date holds. The platform frames the choice and the cost, and leaves the judgement to her.',
-    target: { branch: 'pipeline', view: 'cascade' },
-    scroll: false,
-    spot: [
-      ['#cs-human-list .cs-item:first-child', 'storage: €48k carrying cost vs a 9-day re-stage'],
-      ['#cs-human-list .cs-item:first-child .cs-prompt', 'the trade-off, in one line'],
-    ],
-  },
-  {
-    t: 'And the second — a trained field going stale',
-    p:
-      'The second decision is <b>field readiness</b>. The field was certified for the original go-live, and a ' +
-      'six-week slip pushes certification currency past the new date. <b>Recertify now</b> (everyone current ' +
-      'today, but risks a second lapse if clearance moves again) or <b>schedule one refresh two weeks out</b> ' +
-      '(a single touch, tighter margin). <b>T. Bergmann</b> owns the call.',
-    say:
-      'Same shape as the finance call: a genuine judgement the cascade will not fake. Recertify-now buys ' +
-      'certainty and spends effort; a single late refresh is leaner but assumes the date holds. Her call, not a rule&rsquo;s.',
-    target: { branch: 'pipeline', view: 'cascade' },
-    scroll: false,
-    spot: [
-      ['#cs-human-list .cs-item:nth-child(2)', 'field certification currency vs the new go-live'],
-      ['#cs-human-list .cs-item:nth-child(2) .cs-opts', 'recertify now, or one refresh close to go-live'],
-    ],
-  },
-  {
-    t: 'She resolves both in the same meeting',
-    p:
-      'She takes the finance call &mdash; <b>extend the 3PL storage</b>, six weeks, &euro;48k, no re-stage risk ' +
-      'so close to a launch. The moment she does, the exception count drops: <b>two needing a decision becomes ' +
-      'one</b>, and the resolved item moves to <b>Decided</b>, its choice recorded on the card.',
-    say:
-      'Click the <b>&ldquo;Extend 3PL storage&rdquo;</b> option on the finance card, then press Next. This is the ' +
-      'whole promise of the screen &mdash; a decision taken in seconds, on the same surface that surfaced it.',
-    target: { branch: 'pipeline', view: 'cascade' },
-    scroll: false,
-    spot: [
-      ['#cs-human-list .cs-item:first-child .cs-opts', 'pick "Extend 3PL storage", then press Next'],
-      ['#cs-human-kpi', 'watch this fall 2 → 1'],
-    ],
-  },
-  {
-    t: 'One decision left, and the cost is booked',
-    p:
-      'After the finance call the board reads <b>one decision resolved, one still open</b>, and the ' +
-      '<b>working-capital number is now committed</b>, not a hypothetical &mdash; leadership sees the &euro;48k ' +
-      'carrying cost the instant she decides. The field-readiness call is the only human item still waiting.',
-    say:
-      'This is the exception surface doing its job across a meeting: what was five commitments and a three-day ' +
-      'scramble is now one open decision and a cost everyone can see. Nothing is hidden and nothing is waiting on rework.',
-    target: { branch: 'pipeline', view: 'cascade' },
-    scroll: false,
-    spot: [
-      ['#cs-human-kpi', 'one resolved, one open'],
-      ['#cs-kpis .kc:nth-child(4)', 'the €48k, now committed and visible'],
-    ],
-  },
-  {
-    t: 'The milestone, re-planned',
-    p:
-      'The milestone card carries the new reality: <b>clearance 02 Nov &rarr; 14 Dec, +42 days</b>, status ' +
-      '<b>re-planned</b>. Everything downstream now references this date &mdash; the held run, the re-timed kits, ' +
-      'the flagged accounts, the extended storage &mdash; instead of the original one. One date changed, and the ' +
-      'whole connected plan moved with it.',
-    say:
-      'This is connected milestone management in one line: the authority date is the anchor, and every commitment ' +
-      'is wired to it. Change the anchor and the plan re-plans &mdash; the manual part is only the judgement calls.',
-    target: { branch: 'pipeline', view: 'cascade' },
-    scroll: false,
-    spot: [
-      ['#cs-kpis .kc:nth-child(1)', '02 Nov → 14 Dec · +42 days · re-planned'],
-      ['#cs-auto-kpi', 'the three that moved with it'],
-    ],
-  },
-  {
-    t: 'The commitments, re-timed against the new date',
-    p:
-      'Back on the Velsipity record, the launch scope now reads against the <b>new clearance</b>: the build is ' +
-      'held for the later date, the kit deployment and field plan reference the new go-live. The record and the ' +
-      'replan screen reconcile &mdash; one date, one connected plan, the same numbers on every screen.',
-    say:
-      'This is the reconciliation point. The replan dashboard is not a separate spreadsheet &mdash; it is the ' +
-      'same launch, so what she decided on the exception surface is what the record shows.',
-    target: { view: 'launch', param: 'seed_launch_ottava' },
-    spot: [
-      ['#ld-strip', 'the launch, now against the new clearance'],
-      ['#ld-phase', 'still pre-market — but re-planned, not scrambled'],
-    ],
-  },
-  {
-    t: 'Or she could have just asked',
-    p:
-      'Everything we clicked through, the copilot answers from the same connected plan. Ask it what Velsipity&rsquo;s ' +
-      'six-week slip moves and it says it in one answer: <b>three commitments re-timed themselves</b> ' +
-      '(manufacturing, logistics, commercial), <b>two need a human</b> (the &euro;48k storage call and the field ' +
-      'refresh), and the working-capital impact is visible now. Every answer ends in a button that opens the record.',
-    say:
-      'She could have started here. The honest read is the same one the screen gave her: take the two judgement ' +
-      'calls, and let the three rule-bound commitments re-plan themselves.',
-    target: { branch: 'exec', view: 'chat', chatAsk: 'cascade' },
-    scroll: false,
-    spot: [
-      ['#cq-thread .cq-ev', 'three auto-adjusted, two that need you'],
-      ['#cq-thread .cq-rec', 'take the two calls; the rest re-planned itself'],
-      ['#cq-thread .cq-act', 'buttons that open the record'],
-    ],
-  },
-  {
-    t: 'One date moved, and the plan kept up',
-    p:
-      'That is the case. A regulator moved a date Helena could not control, and instead of three days of manual ' +
-      'rework across manufacturing, logistics and commercial, the plan re-planned itself: <b>three commitments ' +
-      'auto-adjusted, two decisions surfaced, both taken in one sitting</b>, and the carrying-cost impact visible ' +
-      'to leadership from the first minute. Connected milestones, automated downstream re-planning, and an ' +
-      'exception-based decision surface &mdash; on one screen.',
-    say:
-      'The slip was six weeks; the response was one meeting. To run the whole cascade again from a clean slate, ' +
-      'press <b>Reset scenario</b> on this screen &mdash; it restores the pre-slip baseline. Then press Finish.',
-    target: { branch: 'pipeline', view: 'cascade' },
-    scroll: false,
-    spot: [
-      ['#cs-auto-kpi', 'three re-timed automatically'],
-      ['#cs-human-kpi', 'two decisions, taken in one sitting'],
-      ['#cs-kpis .kc:nth-child(4)', 'working capital, visible from minute one'],
+      ['#w-book tr.res', 'Germany &middot; 690,000'],
+      ['#w-book', 'one market moved, eight protected'],
     ],
   },
 ];
@@ -1148,36 +514,20 @@ const GD4: Step[] = [
 /* ── The demo registry the picker chooses from ────────────────────────── */
 const DEMOS: Demo[] = [
   {
-    id: 'capa',
-    chip: 'STERILISATION SLOT',
-    title: 'A steriliser drops a booked slot',
+    id: 'quality',
+    chip: 'QUALITY DISRUPTION',
+    title: 'A stopper defect holds a launch batch',
     blurb:
-      'A supply shock. A contract steriliser cancels a booked chamber slot; an agent catches it, five agents work it, and exactly one decision — worth €18.4M — reaches Helena.',
-    steps: GD,
+      'Scenario 1. Visual inspection finds a stopper-related defect and a launch batch goes on hold. Scope the lot across 4 batches and €29.4M, rule two recovery options out on the data, protect US, Germany and Japan, sign it under the Quality Council, and coordinate the response.',
+    steps: GD_QUALITY,
   },
   {
-    id: 'regulatory',
-    chip: 'REGULATORY',
-    title: 'Two agencies, two clocks',
+    id: 'wave',
+    chip: 'DEMAND & WAVE CHANGE',
+    title: 'Commercial changes the demand and the pack mix',
     blurb:
-      'A regulatory read. An open FDA deficiency letter she can only wait on, a Notified Body signature that is hers to push today, and the site visit to be ready for.',
-    steps: GD2,
-  },
-  {
-    id: 'supplier',
-    chip: 'MANUFACTURING',
-    title: 'Commercial batches at risk',
-    blurb:
-      'A manufacturing call. Comirnaty builds on two lines; line 3 gives three out-of-spec commercial batches and its CAPA is overdue with the DMAIC still open, so Helena re-prioritises markets while line 3 comes back.',
-    steps: GD3,
-  },
-  {
-    id: 'cascade',
-    chip: 'MILESTONE REPLAN',
-    title: 'A regulator slips a date',
-    blurb:
-      'A dynamic cascade replan. The FDA slips Velsipity’s clearance six weeks; the plan re-plans itself — three downstream commitments auto-adjust, two decisions reach Helena, and she resolves both in one meeting.',
-    steps: GD4,
+      'Scenario 2. Eight weeks before packaging, Germany wants +64% and a different presentation. A component lead time binds before any capacity gap; compare a constrained launch, reallocation, added capacity and wave resequencing, then commit the one that captures €7M and breaches no tender.',
+    steps: GD_WAVE,
   },
 ];
 
@@ -1463,14 +813,38 @@ export default function GuidedTour() {
 
   /* the labels + spotlight classes follow the page. A frame loop rather than a
      scroll listener: the boxes also move when a pane re-renders under them, and
-     React may drop the additive class on re-render, so we re-assert both. */
+     React may drop the additive class on re-render, so we re-assert both.
+
+     It also has to survive a step whose own action button REBUILDS the view. When
+     the presenter presses "Coordinate the response" on step 5, the pane re-renders
+     and two things break at once: the run button we were pointing at unmounts (the
+     rail swaps it for "Run complete"), and the panel we also point at slides far
+     below the fold, where place() correctly suppresses its label. What is left is a
+     callout highlighting nothing — the worst possible state to be in on camera.
+     So when the resolved set stops matching the DOM, re-run the whole step spot:
+     that re-queries the selectors and scrolls the first survivor back into view.
+     This is a one-shot reaction to a re-render, NOT a continuous pull — while the
+     DOM is stable the check is two cheap comparisons and the presenter keeps their
+     own scroll position. */
   const track = useCallback(() => {
     if (!marksRef.current.length) return;
+    const st = demoRef.current.steps[iRef.current];
+    if (st) {
+      /* did the view change under us? Either a node we hold is now detached, or
+         the count of resolvable selectors moved (a panel arrived, or one left). */
+      const stale =
+        marksRef.current.some((m) => !document.contains(m.el)) ||
+        st.spot.filter(([sel]) => document.querySelector(sel)).length !== marksRef.current.length;
+      if (stale) {
+        applySpot(st.spot, st.scroll !== false);
+        return;
+      }
+    }
     marksRef.current.forEach((m) => {
       if (!m.el.classList.contains('gdp-spot')) m.el.classList.add('gdp-spot');
     });
     place();
-  }, [place]);
+  }, [applySpot, place]);
 
   /* show step n: drive the app, then spotlight — retried until the async,
      c3Action-fed view has actually rendered the targets (up to ~2.5s). */
@@ -1530,9 +904,13 @@ export default function GuidedTour() {
     clear();
   }, [clear]);
 
-  /* FINISH (the last step's button): the demo is genuinely over, so tear it
-     down AND reset — give the fleet back, return to the menu, and rewind to the
-     first step so the next launch starts clean. */
+  /* FINISH (the last step's button): the demo is genuinely over, so tear it down
+     AND rewind to step 0, then return to the menu so the next run starts clean.
+     Note what this does NOT do: it does not reset the scenario itself. The
+     backend stage is deliberately left where the presenter drove it, because
+     after a run the room usually wants to look around the committed result. The
+     "Reset scenario" button on each scenario screen is the way back to baseline,
+     and the last step of each demo says so out loud. */
   const finish = useCallback(() => {
     setOn(false);
     if (trackTimer.current) {
@@ -1546,9 +924,7 @@ export default function GuidedTour() {
     clear();
     iRef.current = 0;
     setI(0);
-    /* the demo narrowed the tower to one franchise; give the fleet back. */
-    drive({ branch: 'exec', view: 'tower', towerPane: 'live', towerFranchise: 'all' });
-    setTimeout(() => drive({ screen: 'menu' }), 0);
+    drive({ screen: 'menu' });
   }, [clear, drive]);
 
   /* open (or re-open) the demo at wherever we last were — 0 on a fresh start,
@@ -1642,7 +1018,7 @@ export default function GuidedTour() {
             onClick={() => setPick(false)}
             title="Close"
           >
-            &#10005;
+            <Glyph name="close" />
           </button>
           <div className="gdp-hd">
             <span className="gdp-c">GUIDED DEMO</span>
@@ -1666,7 +1042,7 @@ export default function GuidedTour() {
 
       <div className={`gdp${on ? ' on' : ''}`} id="gdp">
         <button type="button" className="gdp-x" onClick={pause} title="Hide (resumes where you left off)">
-          &#10005;
+          <Glyph name="close" />
         </button>
         <div className="gdp-hd">
           <span className="gdp-c" id="gdp-c">

@@ -1,0 +1,57 @@
+/**
+ * A time-bounded binding of an {@link AppRole} to a {@link Person} — the record that
+ * makes ownership *versioned* rather than a mutable field, as R-DM-03 requires.
+ *
+ * The requirement is specific: the system must be able to answer "who owned this on
+ * 12 March" *after* a re-assignment. A `Person.role` field cannot answer that,
+ * because re-assigning it destroys the previous answer. So authority is modelled as
+ * assignments with validity windows, and every authority question is asked as of an
+ * instant: {@link AccessControlService#rolesFor} resolves the roles a person held at
+ * a given time by selecting the assignments whose window contains it.
+ *
+ * <h3>RACI</h3>
+ * R-DM-03 also requires every activity, gate, risk, issue, decision and document to
+ * carry an accountable team, a named owner and a RACI set. {@link RoleAssignment#raci}
+ * expresses which RACI facet this assignment confers, and
+ * {@link RoleAssignment#scopeEntityTypeName} / {@link RoleAssignment#scopeEntityId}
+ * optionally narrow it to one record — so "Responsible for the Puurs packaging
+ * activity" and "globally Accountable as QP" are the same shape of statement at
+ * different scopes.
+ *
+ * <h3>Open-ended windows</h3>
+ * A null {@link Bitemporal#validTo} means the assignment is still in force. Ending an
+ * assignment stamps `validTo` rather than deleting the row, so the historical answer
+ * survives — consistent with R-TR-01's no-hard-deletes rule.
+ */
+entity type RoleAssignment mixes SeedData, Bitemporal {
+  /** Assignment id, e.g. "ra_qp_puurs_vandenberghe". */
+  id: !string
+
+  /** The person holding the role. */
+  person: !Person
+
+  /** The role held. */
+  role: !AppRole
+
+  /** The team the person acts for in this assignment, e.g. Site Quality Puurs. */
+  team: Team
+
+  /**
+   * Which RACI facet this assignment confers. `A` (Accountable) is the signer of
+   * record; `R` (Responsible) does the work; `C` (Consulted) must be asked;
+   * `I` (Informed) must be told. Null for a plain role grant with no RACI meaning.
+   */
+  raci: string enum('R', 'A', 'C', 'I')
+
+  /**
+   * C3 type name this assignment is scoped to, e.g. "Activity", "Launch". Null for a
+   * global grant such as "QP for the Puurs site".
+   */
+  scopeEntityTypeName: string
+
+  /** Id of the record this assignment is scoped to. Null for a global grant. */
+  scopeEntityId: string
+
+  /** Why the assignment was made or ended, e.g. "MATERNITY_COVER", "REORG_2026Q2". */
+  reasonCode: string
+}

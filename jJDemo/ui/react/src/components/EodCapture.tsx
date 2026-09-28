@@ -20,6 +20,7 @@
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNav } from '@/nav/NavContext';
+import Glyph from '@/components/Brand/Glyph';
 import {
   getEodDomains,
   getEodPrompts,
@@ -198,7 +199,7 @@ export default function EodCapture({ onCommitted, onCancel }: EodCaptureProps) {
     <div
       className="eod-cap"
       style={{
-        border: '1px solid var(--g200, #eae6e1)',
+        border: '1px solid var(--g200, #E2E8F1)',
         borderRadius: 10,
         padding: 14,
         marginTop: 8,
@@ -224,9 +225,9 @@ export default function EodCapture({ onCommitted, onCancel }: EodCaptureProps) {
                 style={{
                   padding: '5px 11px',
                   borderRadius: 16,
-                  border: on ? '1px solid var(--red500)' : '1px solid var(--g300, #d8d2cc)',
+                  border: on ? '1px solid var(--brand)' : '1px solid var(--g300, #CBD4E3)',
                   background: on ? 'var(--red500)' : '#fff',
-                  color: on ? '#fff' : 'var(--g700, #3a3532)',
+                  color: on ? '#fff' : 'var(--g700, #495871)',
                   fontSize: 12,
                   fontWeight: on ? 600 : 500,
                   cursor: 'pointer',
@@ -240,7 +241,7 @@ export default function EodCapture({ onCommitted, onCancel }: EodCaptureProps) {
       </div>
 
       {/* mode toggle */}
-      <div style={{ display: 'flex', gap: 4, marginBottom: 12, borderBottom: '1px solid var(--g200, #eae6e1)' }}>
+      <div style={{ display: 'flex', gap: 4, marginBottom: 12, borderBottom: '1px solid var(--g200, #E2E8F1)' }}>
         {(['free', 'guided'] as Mode[]).map((m) => (
           <button
             key={m}
@@ -254,7 +255,7 @@ export default function EodCapture({ onCommitted, onCancel }: EodCaptureProps) {
               border: 'none',
               borderBottom: mode === m ? '2px solid var(--red500)' : '2px solid transparent',
               background: 'transparent',
-              color: mode === m ? 'var(--red600, #c11400)' : 'var(--g600)',
+              color: mode === m ? 'var(--brand)' : 'var(--g600)',
               fontWeight: mode === m ? 700 : 500,
               fontSize: 13,
               cursor: 'pointer',
@@ -281,7 +282,7 @@ export default function EodCapture({ onCommitted, onCancel }: EodCaptureProps) {
               width: '100%',
               padding: 11,
               borderRadius: 8,
-              border: '1px solid var(--g300, #d8d2cc)',
+              border: '1px solid var(--g300, #CBD4E3)',
               fontSize: 13,
               fontFamily: 'inherit',
               resize: 'vertical',
@@ -314,7 +315,7 @@ export default function EodCapture({ onCommitted, onCancel }: EodCaptureProps) {
                     width: '100%',
                     padding: '8px 10px',
                     borderRadius: 6,
-                    border: '1px solid var(--g300, #d8d2cc)',
+                    border: '1px solid var(--g300, #CBD4E3)',
                     fontSize: 13,
                     fontFamily: 'inherit',
                     boxSizing: 'border-box',
@@ -335,7 +336,7 @@ export default function EodCapture({ onCommitted, onCancel }: EodCaptureProps) {
             padding: '8px 16px',
             borderRadius: 6,
             border: 'none',
-            background: canExtract ? 'var(--red500)' : 'var(--g300, #d8d2cc)',
+            background: canExtract ? 'var(--brand)' : 'var(--g300, #CBD4E3)',
             color: '#fff',
             fontWeight: 600,
             fontSize: 13,
@@ -351,9 +352,9 @@ export default function EodCapture({ onCommitted, onCancel }: EodCaptureProps) {
             style={{
               padding: '8px 14px',
               borderRadius: 6,
-              border: '1px solid var(--g300, #d8d2cc)',
+              border: '1px solid var(--g300, #CBD4E3)',
               background: '#fff',
-              color: 'var(--g700, #3a3532)',
+              color: 'var(--g700, #495871)',
               fontSize: 13,
               cursor: 'pointer',
             }}
@@ -370,7 +371,7 @@ export default function EodCapture({ onCommitted, onCancel }: EodCaptureProps) {
       </div>
 
       {error && (
-        <div style={{ color: 'var(--red600, #c11400)', fontSize: 13, marginTop: 10 }}>{error}</div>
+        <div style={{ color: 'var(--red600, #C21B22)', fontSize: 13, marginTop: 10 }}>{error}</div>
       )}
 
       {/* review drafts */}
@@ -384,13 +385,13 @@ export default function EodCapture({ onCommitted, onCancel }: EodCaptureProps) {
               <div
                 key={d._key}
                 style={{
-                  border: '1px solid var(--g200, #eae6e1)',
+                  border: '1px solid var(--g200, #E2E8F1)',
                   borderLeft: `3px solid ${
                     d.category === 'ct'
                       ? 'var(--red500)'
                       : d.category === 'rk'
-                        ? 'var(--amber, #e08600)'
-                        : 'var(--g400, #b7afa8)'
+                        ? 'var(--amber, #B45309)'
+                        : 'var(--g400, #B4C0D3)'
                   }`,
                   borderRadius: 8,
                   padding: 11,
@@ -411,13 +412,13 @@ export default function EodCapture({ onCommitted, onCancel }: EodCaptureProps) {
                     {KIND_LABEL[d.kind] ?? d.kind}
                   </span>
                   {d.launchName && (
-                    <span style={{ fontSize: 11, color: 'var(--g700, #3a3532)' }}>· {d.launchName}</span>
+                    <span style={{ fontSize: 11, color: 'var(--g700, #495871)' }}>· {d.launchName}</span>
                   )}
                   <span style={{ fontSize: 11, color: 'var(--g600)' }}>
                     · confidence {Math.round(d.confidence * 100)}%
                   </span>
                   {d.needsReview && (
-                    <span style={{ fontSize: 10, color: 'var(--amber, #e08600)', fontWeight: 700 }}>
+                    <span style={{ fontSize: 10, color: 'var(--amber, #B45309)', fontWeight: 700 }}>
                       NEEDS REVIEW
                     </span>
                   )}
@@ -439,7 +440,7 @@ export default function EodCapture({ onCommitted, onCancel }: EodCaptureProps) {
                     width: '100%',
                     padding: '6px 8px',
                     borderRadius: 4,
-                    border: '1px solid var(--g200, #eae6e1)',
+                    border: '1px solid var(--g200, #E2E8F1)',
                     fontSize: 13,
                     fontWeight: 600,
                     fontFamily: 'inherit',
@@ -458,7 +459,7 @@ export default function EodCapture({ onCommitted, onCancel }: EodCaptureProps) {
                     style={{
                       padding: '4px 8px',
                       borderRadius: 4,
-                      border: '1px solid var(--g200, #eae6e1)',
+                      border: '1px solid var(--g200, #E2E8F1)',
                       fontSize: 12,
                       fontFamily: 'inherit',
                     }}
@@ -483,7 +484,7 @@ export default function EodCapture({ onCommitted, onCancel }: EodCaptureProps) {
                 padding: '8px 16px',
                 borderRadius: 6,
                 border: 'none',
-                background: approvedCount > 0 ? 'var(--red500)' : 'var(--g300, #d8d2cc)',
+                background: approvedCount > 0 ? 'var(--brand)' : 'var(--g300, #CBD4E3)',
                 color: '#fff',
                 fontWeight: 600,
                 fontSize: 13,
@@ -501,35 +502,17 @@ export default function EodCapture({ onCommitted, onCancel }: EodCaptureProps) {
 
       {/* committed confirmation (also mirrored into the thread by the copilot) */}
       {committed && committed.length > 0 && (
-        <div
-          style={{
-            border: '1px solid var(--g200, #eae6e1)',
-            borderRadius: 8,
-            padding: 12,
-            marginTop: 12,
-            background: '#f7fbf5',
-          }}
-        >
-          <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 8 }}>
-            Captured {committed.length} finding{committed.length === 1 ? '' : 's'} — now on the tower
+        <div className="cap-l ok">
+          <div className="cap-lt">
+            Captured {committed.length} finding{committed.length === 1 ? '' : 's'} &mdash; now on the tower
           </div>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+          <div className="cap-ll">
             {committed.map((c) => (
-              <button
-                key={c.id}
-                type="button"
-                onClick={() => open('issue', c.id)}
-                style={{
-                  textAlign: 'left',
-                  border: 'none',
-                  background: 'transparent',
-                  cursor: 'pointer',
-                  padding: '4px 0',
-                  fontSize: 13,
-                }}
-              >
-                <b style={{ color: 'var(--red600, #c11400)' }}>{c.displayId}</b> — {c.headline}{' '}
-                <span style={{ color: 'var(--g600)', fontSize: 11 }}>(open →)</span>
+              <button key={c.id} type="button" className="cap-i" onClick={() => open('issue', c.id)}>
+                <b>{c.displayId}</b> &mdash; {c.headline}{' '}
+                <i>
+                  open <Glyph name="arrow-right" className="sm" />
+                </i>
               </button>
             ))}
           </div>

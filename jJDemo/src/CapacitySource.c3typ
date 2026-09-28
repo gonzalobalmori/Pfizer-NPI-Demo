@@ -1,0 +1,72 @@
+/**
+ * CapacitySource — a site, CMO or packaging partner expressed as a rate that can
+ * be exceeded.
+ *
+ * Scenario 2 requires deciding whether "existing supply, site and CMO capacity
+ * … cannot support every market as planned". That is only answerable if capacity
+ * is a number. {@link Site#capacityAvailableFrom} is a datetime — it answers
+ * "is the site free yet?", never "can it make 64% more?" — and a CMO existed
+ * only as a substring inside {@link Launch#manufactureSite}. This type fixes
+ * both: {@link #dosesPerWeek} is the throughput, {@link #committedDosesPerWeek}
+ * is what is already spoken for, and the difference is the headroom an option
+ * can draw on.
+ *
+ * {@link #sourceKind} distinguishes an internal Pfizer site from a contract
+ * manufacturer, which matters because adding CMO volume may need a regulatory
+ * variation ({@link #regulatoryVariationRequired}) and a qualification lead time
+ * ({@link #qualificationLeadDays}) that a site already named in the dossier does
+ * not.
+ *
+ * Mutated at runtime when an added-capacity option books a lane, so no
+ * {@code SeedData} mixin — records live in {@code data/}.
+ */
+entity type CapacitySource {
+
+  /** Seed key, e.g. {@code seed_cap_puurs_ff}. */
+  id: !string
+
+  /** Display name, e.g. {@code "Puurs — fill-finish line 4"}. */
+  name: !string
+
+  /** Whether this is Pfizer's own plant or a partner's. Drives the regulatory and contractual path. */
+  sourceKind: !string enum('INTERNAL_SITE', 'CMO', 'PACKAGING_PARTNER')
+
+  /** The internal site, when {@link #sourceKind} is {@code INTERNAL_SITE}. */
+  site: Site
+
+  /** The partner, when {@link #sourceKind} is {@code CMO} or {@code PACKAGING_PARTNER}. */
+  supplier: Supplier
+
+  /** The launch this capacity is qualified for. */
+  launch: Launch
+
+  /** Which step in the chain this rate describes. A packaging constraint binds independently of fill capacity. */
+  operation: string enum('DRUG_SUBSTANCE', 'FILL_FINISH', 'PACKAGING', 'LABELLING')
+
+  /** Presentation this lane runs. A vial lane cannot absorb a prefilled-syringe switch. */
+  presentation: string
+
+  /** Throughput in doses per week — the capacity number an option is checked against. */
+  dosesPerWeek: !int
+
+  /** Already committed to other products or markets. Headroom is {@link #dosesPerWeek} less this. */
+  committedDosesPerWeek: int
+
+  /** Earliest date the lane can start on this launch. */
+  availableFrom: datetime
+
+  /** Whether the lane is already qualified and in the dossier for this launch. */
+  qualifiedForLaunch: boolean
+
+  /** Calendar days to qualify if it is not — the lead time that can make added capacity too slow to help. */
+  qualificationLeadDays: int
+
+  /** Marginal cost per thousand doses, so options compare on cost as well as volume. */
+  costPerThousandDoses: double
+
+  /** The governing contract clause, including whether capacity is {@link ContractTerm#capacityCommitment}. */
+  contractTerm: ContractTerm
+
+  /** Whether using this lane needs a regulatory variation filed before first ship. */
+  regulatoryVariationRequired: boolean
+}

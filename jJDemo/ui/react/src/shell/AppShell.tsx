@@ -23,6 +23,9 @@ import TowerView from '@/views/TowerView';
 import ChatView from '@/views/ChatView';
 import AlertsView from '@/views/AlertsView';
 import CascadeView from '@/views/CascadeView';
+import QualityEventView from '@/views/QualityEventView';
+import MarketWaveView from '@/views/MarketWaveView';
+import PfizerLogo from '@/components/Brand/PfizerLogo';
 
 export default function AppShell() {
   const { branch, view, tab, toMenu, go } = useNav();
@@ -33,11 +36,12 @@ export default function AppShell() {
     <div id="app" className="on">
       <header className="hdr">
         <div className="hdr-1">
-          <button className="h-logo" onClick={toMenu}>
+          <button className="h-logo" onClick={toMenu} title="Back to the menu">
             <div className="h-back">‹</div>
-            <div className="h-wm">
-              Pfizer<span>NPI Launch Control</span>
-            </div>
+            {/* R-BASE-04: real trademark. The product name sits beside it as
+                context rather than being set in the wordmark's own type. */}
+            <PfizerLogo size="sm" />
+            <span className="h-ctx">NPI Launch Control</span>
           </button>
           <div className="h-div" />
           <div className="h-branch">
@@ -58,7 +62,7 @@ export default function AppShell() {
             </svg>
             My decisions<span className="bdg r">4</span>
           </button>
-          <div className="h-av">HF</div>
+          <div className="h-av">GH</div>
         </div>
         <div className="hdr-2">
           <div className="tabs" id="tabs">
@@ -97,6 +101,8 @@ export default function AppShell() {
         {view === 'chat' && <ChatView />}
         {view === 'alerts' && <AlertsView />}
         {view === 'cascade' && <CascadeView />}
+        {view === 'quality' && <QualityEventView />}
+        {view === 'wave' && <MarketWaveView />}
       </div>
     </div>
   );

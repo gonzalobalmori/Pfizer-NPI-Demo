@@ -26,7 +26,10 @@ export type ViewId =
   | 'tower'
   | 'chat'
   | 'alerts'
-  | 'cascade';
+  | 'cascade'
+  /* The two guided scenarios. */
+  | 'quality'
+  | 'wave';
 
 export interface TabDef {
   v: ViewId;
@@ -63,6 +66,11 @@ export const BRANCH: Record<BranchId, BranchDef> = {
       // so the badge is never a hardcoded dashboard number.
       { v: 'alerts', l: 'Open issues', bc: 'a' },
       { v: 'cascade', l: 'Milestone replan' },
+      // The two scenarios the demo is configured around. They live under
+      // Pipeline because both start from a live launch and end by rewriting its
+      // plan — the same place a planner would meet them.
+      { v: 'quality', l: 'Quality disruption' },
+      { v: 'wave', l: 'Demand & wave change' },
     ],
   },
   exec: {
@@ -111,6 +119,14 @@ export interface DriveTarget {
   chatAsk?: string;
   /** Milestone replan (cascade) view: when true, land already showing the run cascade result. */
   cascadeRun?: boolean;
+  /**
+   * Scenario rails. A number is the step the view should already have REACHED
+   * when the tour lands, so a tour stop about the options table does not open on
+   * an empty one. The views advance the backend stage to get there and never
+   * step past it — the decision and the commit always stay a deliberate click.
+   */
+  qualityStep?: number;
+  waveStep?: number;
 }
 export interface DriveIntent extends DriveTarget {
   seq: number;

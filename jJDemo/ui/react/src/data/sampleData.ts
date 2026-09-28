@@ -27,7 +27,7 @@ export const programs = [
 ];
 
 export const owners = [
-  { text: 'Alice Johnson', value: 'alice' },
+  { text: 'George Hall', value: 'alice' },
   { text: 'Michael Brown', value: 'michael' },
   { text: 'Emma Davis', value: 'emma' },
   { text: 'James Wilson', value: 'james' },
@@ -48,7 +48,7 @@ export const checklists = [
 
 export const uploadedBy = [
   { text: 'Michael Brown', value: 'michael' },
-  { text: 'Sarah Johnson', value: 'sarah' },
+  { text: 'A. Kowalski', value: 'sarah' },
   { text: 'David Lee', value: 'david' },
   { text: 'Emily Davis', value: 'emily' },
   { text: 'John Smith', value: 'john' },
@@ -61,7 +61,7 @@ export const documents = [
   {
     documentName: 'GA-39582',
     program: 'NJ EDA Product',
-    owner: 'Alice Johnson',
+    owner: 'George Hall',
     checklistApplied: 'Receipt Checklist',
     attachments: 4,
     uploadedBy: 'Michael Brown',
@@ -73,7 +73,7 @@ export const documents = [
     owner: 'Michael Brown',
     checklistApplied: 'Event Checklist 2025',
     attachments: 3,
-    uploadedBy: 'Sarah Johnson',
+    uploadedBy: 'A. Kowalski',
     uploadedAt: '12/15/2025 09:30AM'
   },
   {

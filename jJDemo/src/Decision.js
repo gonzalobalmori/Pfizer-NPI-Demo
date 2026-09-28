@@ -165,7 +165,7 @@ function approve(optionLabel) {
   if (launchId) {
     DesignHistoryFileEntry.make({
       id: 'dhf_approve_' + d.id,
-      entryAt: now, actor: 'Helena Fossi (Global NPI Lead)',
+      entryAt: now, actor: 'George Hall (Global NPI Lead)',
       action: optionLabelText + ' approved for ' + d.finding.displayId + ' — ' +
         (dhfLines.length ? dhfLines.join('; ') : 'decision recorded'),
       recordRef: d.finding.displayId, immutable: true, launch: { id: launchId }

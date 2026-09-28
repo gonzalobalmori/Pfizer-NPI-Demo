@@ -1,0 +1,123 @@
+/**
+ * MarketWaveService — the demand and market-wave change scenario end to end:
+ * eight weeks before packaging, Commercial increases demand for a priority market
+ * and changes the required SKU or pack mix; existing supply, site and CMO
+ * capacity, packaging components and logistics cannot support every market as
+ * planned; and the team must compare a constrained launch, inventory
+ * reallocation, added capacity and market-wave resequencing, make a governed
+ * decision, and update all affected plans, owners, sites, partners and market
+ * commitments.
+ *
+ * The methods map one-to-one onto what the scenario demands, and each writes its
+ * result to the database rather than returning a narrative:
+ *
+ * <ol>
+ *   <li>{@link #assessConstraints} — tests the uplift against real
+ *       {@link CapacitySource} headroom, {@link PackComponent} lead times and
+ *       cold-chain units, and names the one constraint that binds first.</li>
+ *   <li>{@link #evaluateOptions} — scores the four options the spec names, each
+ *       computed against that same data, so an option that cannot be executed
+ *       inside the packaging clock is visibly ruled out.</li>
+ *   <li>{@link #allocation} — projects the resulting market-by-market plan in
+ *       priority order, before anyone signs.</li>
+ *   <li>{@link #decide} — records the governed decision with a 21 CFR Part 11
+ *       electronic signature.</li>
+ *   <li>{@link #commit} — updates every affected plan, owner, site, partner and
+ *       market commitment, which is the clause most demos skip.</li>
+ * </ol>
+ *
+ * Stateless computation type: it holds no data of its own, reading and mutating
+ * {@link DemandChange} / {@link MarketCommitment} / {@link CapacitySource} /
+ * {@link PackComponent} / {@link ScenarioOption} at call time and returning plain
+ * JSON the React view renders directly.
+ */
+entity type MarketWaveService {
+
+  /**
+   * The demand-change dashboard: the request with its uplift and pack-mix change,
+   * the constraint assessment, the scored options, the market-by-market plan, and
+   * the decision and commit state. Read-only — reflects whatever
+   * {@link DemandChange#stage} the request is at, so the view can render any point
+   * in the scenario.
+   */
+  plan: function(changeId: string): json js
+
+  /**
+   * Assess the constraints (scenario step 1). Tests the requested uplift against
+   * three independent limits and records which one binds first in
+   * {@link DemandChange#bindingConstraint}:
+   *
+   * <ul>
+   *   <li>fill-finish and packaging headroom from {@link CapacitySource}, per week,
+   *       for the <em>requested</em> presentation rather than the planned one;</li>
+   *   <li>{@link PackComponent} availability, where a
+   *       {@link PackComponent#leadTimeDays} longer than the runway in
+   *       {@link DemandChange#weeksBeforePackaging} cannot be bought at any
+   *       price;</li>
+   *   <li>cold-chain shipper units, which bind on top of manufacturing.</li>
+   * </ul>
+   *
+   * Writes {@link DemandChange#capacityShortfall},
+   * {@link DemandChange#capacityGapDosesPerWeek},
+   * {@link DemandChange#componentShortfall}, {@link DemandChange#componentGapUnits}
+   * and {@link DemandChange#logisticsShortfall}. Advances the stage to
+   * {@code CONSTRAINTS_ASSESSED}. Idempotent.
+   */
+  assessConstraints: function(changeId: string): json js
+
+  /**
+   * Evaluate the four options (scenario step 2). Computes one
+   * {@link ScenarioOption} per comparison the spec names —
+   * {@code CONSTRAINED_LAUNCH}, {@code INVENTORY_REALLOCATION},
+   * {@code ADD_CAPACITY} and {@code WAVE_RESEQUENCE} — each scored on doses
+   * served, days of slip, incremental cost, revenue protected and markets kept
+   * whole, all derived from the same capacity and component rows the constraint
+   * assessment read. An option whose lead time or qualification runs past
+   * {@link DemandChange#packagingStartDate} is marked
+   * {@link ScenarioOption#feasible} false with an
+   * {@link ScenarioOption#infeasibleReason}. Advances the stage to
+   * {@code OPTIONS_EVALUATED}. Idempotent — recomputes in place.
+   */
+  evaluateOptions: function(changeId: string): json js
+
+  /**
+   * Project the market plan (scenario step 3). Returns the market-by-market
+   * consequence of one option in ascending
+   * {@link MarketCommitment#priorityRank} — revised doses, revised wave and
+   * revised first-ship date per market — so the trade-off can be inspected before
+   * anyone signs. Pure projection; {@link #commit} is what writes it.
+   */
+  allocation: function(changeId: string, optionId: string): json js
+
+  /**
+   * Make the governed decision (scenario step 4). Approves one
+   * {@link ScenarioOption}, records the signer, the governance body and the
+   * rationale, and writes an {@link ESignature} for the 21 CFR Part 11 audit
+   * trail. Refuses an option that {@link #evaluateOptions} ruled out, and refuses
+   * a signer who does not hold a Commercial or Governance function — a supply
+   * trade-off across markets is not a Quality signature. Advances the stage to
+   * {@code DECIDED}.
+   */
+  decide: function(changeId: string, optionId: string, signerId: string, rationale: string): json js
+
+  /**
+   * Update all affected plans, owners, sites, partners and market commitments
+   * (scenario step 5). Writes {@link MarketCommitment#revisedDoses},
+   * {@link MarketCommitment#revisedWave},
+   * {@link MarketCommitment#revisedFirstShipDate} and
+   * {@link MarketCommitment#status} for every market the approved option touches;
+   * books the {@link CapacitySource} lane when the option adds capacity; consumes
+   * the {@link PackComponent} units it commits; and issues an
+   * {@link ActionPlanTask} per owning function so the change lands as dated work
+   * rather than a decision record. Advances the stage to {@code COMMITTED}.
+   * Idempotent — will not duplicate tasks or double-book capacity.
+   */
+  commit: function(changeId: string): json js
+
+  /**
+   * Restore the request, its options, the capacity bookings, the component
+   * balances and the market commitments to their pre-request baseline so the
+   * scenario can be demoed repeatedly. Returns the refreshed plan bundle.
+   */
+  reset: function(changeId: string): json js
+}

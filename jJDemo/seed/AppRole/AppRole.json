@@ -1,0 +1,142 @@
+[
+  {
+    "id": "role_executive",
+    "roleKey": "Executive",
+    "name": "Executive",
+    "description": "Portfolio-level accountability. Sees every launch, approves commitments above launch-lead authority, and is the only role that may approve a governance reversal at the Launch Board.",
+    "privileges": [
+      "launch.read",
+      "gate.read",
+      "decision.read",
+      "decision.approve",
+      "decision.escalate",
+      "batch.read",
+      "supply.read",
+      "market.read",
+      "capa.read",
+      "task.read",
+      "audit.read",
+      "audit.export",
+      "record.review",
+      "governance.reversal.approve",
+      "agent.approve"
+    ],
+    "canSignDisposition": false,
+    "canApproveGovernanceReversal": true,
+    "spendAuthorityUsd": 50000000
+  },
+  {
+    "id": "role_launch_lead",
+    "roleKey": "LaunchLead",
+    "name": "Launch Lead",
+    "description": "Owns delivery of an NPL end to end. May re-baseline a launch date with a reason code and impact assessment, approve resolution options within authority, and dispatch action plans. Cannot sign a batch disposition — that authority is reserved to the Qualified Person.",
+    "privileges": [
+      "launch.read",
+      "launch.rebaseline",
+      "gate.read",
+      "gate.approve",
+      "decision.read",
+      "decision.approve",
+      "decision.escalate",
+      "batch.read",
+      "supply.read",
+      "supply.allocate",
+      "market.read",
+      "capa.read",
+      "capa.open",
+      "task.read",
+      "task.dispatch",
+      "record.review",
+      "agent.approve"
+    ],
+    "canSignDisposition": false,
+    "canApproveGovernanceReversal": false,
+    "spendAuthorityUsd": 5000000
+  },
+  {
+    "id": "role_site_planner",
+    "roleKey": "SitePlanner",
+    "name": "Site Planner",
+    "description": "Plans and allocates capacity at one manufacturing site. May allocate supply and dispatch site tasks, but cannot re-baseline a launch date or approve a resolution option — those are cross-site consequences owned above the site.",
+    "privileges": [
+      "launch.read",
+      "gate.read",
+      "decision.read",
+      "batch.read",
+      "supply.read",
+      "supply.allocate",
+      "task.read",
+      "task.dispatch",
+      "capa.read"
+    ],
+    "canSignDisposition": false,
+    "canApproveGovernanceReversal": false,
+    "spendAuthorityUsd": 250000
+  },
+  {
+    "id": "role_quality_qp",
+    "roleKey": "QualityQP",
+    "name": "Quality / Qualified Person",
+    "description": "The Qualified Person under EU GMP Annex 16. The only role that may sign a batch disposition or a finished-product release, and the only role that may waive a gate criterion or close a CAPA. No agent and no other role can delegate this authority.",
+    "privileges": [
+      "launch.read",
+      "gate.read",
+      "gate.waive",
+      "decision.read",
+      "decision.escalate",
+      "batch.read",
+      "batch.disposition.sign",
+      "fp.release.sign",
+      "supply.read",
+      "capa.read",
+      "capa.open",
+      "capa.close",
+      "task.read",
+      "record.review",
+      "audit.read"
+    ],
+    "canSignDisposition": true,
+    "canApproveGovernanceReversal": false,
+    "spendAuthorityUsd": 1000000
+  },
+  {
+    "id": "role_commercial",
+    "roleKey": "Commercial",
+    "name": "Commercial",
+    "description": "Owns market commitments, launch sequence and pack-mix decisions. May commit a market and change a launch wave, but has no quality or supply-allocation authority — a commercial commitment cannot move a batch.",
+    "privileges": [
+      "launch.read",
+      "gate.read",
+      "decision.read",
+      "decision.escalate",
+      "market.read",
+      "market.commit",
+      "task.read",
+      "record.review"
+    ],
+    "canSignDisposition": false,
+    "canApproveGovernanceReversal": false,
+    "spendAuthorityUsd": 1000000
+  },
+  {
+    "id": "role_auditor",
+    "roleKey": "Auditor",
+    "name": "Auditor",
+    "description": "Reads everything, including the immutable audit trail and the e-signature register, and writes nothing. Holds strictly more read privilege than a Site Planner and strictly less write privilege than any other role — which is why privileges are separate keys rather than one access level, since a monotonic level could not express that shape.",
+    "privileges": [
+      "launch.read",
+      "gate.read",
+      "decision.read",
+      "batch.read",
+      "supply.read",
+      "market.read",
+      "capa.read",
+      "task.read",
+      "audit.read",
+      "audit.export"
+    ],
+    "canSignDisposition": false,
+    "canApproveGovernanceReversal": false,
+    "spendAuthorityUsd": 0
+  }
+]

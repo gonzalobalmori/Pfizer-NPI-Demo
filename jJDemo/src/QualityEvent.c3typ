@@ -1,0 +1,107 @@
+/**
+ * QualityEvent — the deviation record that drives Scenario 1 end to end: a batch
+ * hold raised by visual inspection, its determined scope, the recovery option
+ * chosen, and the governed decision that approved it.
+ *
+ * One {@code QualityEvent} is the spine of the whole scenario. It starts at
+ * {@code stage} {@code RAISED} carrying only {@link #defectDescription} and the
+ * suspect {@link #componentLot}. {@link QualityDisruptionService#determineScope}
+ * then sweeps every {@link FillBatch} filled from that lot, writes the totals into
+ * {@link #scopeBatchCount}, {@link #scopeDoses} and {@link #scopeMarketCount},
+ * and advances the stage. Options are scored into {@link ScenarioOption} rows,
+ * one is approved under {@link #decisionAuthority}, and
+ * {@link #coordinationComplete} closes the loop.
+ *
+ * Deliberately not a {@code SeedData} type: every field after
+ * {@link #defectDescription} is written at runtime, and {@code SeedData} locks
+ * provisioned values against update. Records live in {@code data/}.
+ */
+entity type QualityEvent {
+
+  /** Seed key, e.g. {@code seed_qe_abrysvo_stopper}. */
+  id: !string
+
+  /** Deviation number as raised in the quality system, e.g. {@code DEV-26-0881}. */
+  eventNo: !string
+
+  /** The launch whose supply is at risk. */
+  launch: Launch
+
+  /** The site whose inspection line raised it. */
+  site: Site
+
+  /** The suspect component lot — the common cause linking the held batches. */
+  componentLot: ComponentLot
+
+  /** What the inspector saw, in inspection-record language. */
+  defectDescription: !string
+
+  /** Defect class. {@code STOPPER_DEFECT} is the Scenario 1 mode. */
+  defectCategory: string enum('STOPPER_DEFECT', 'PARTICULATE', 'SEAL_INTEGRITY', 'FILL_VOLUME', 'LABELLING', 'COSMETIC')
+
+  /** How it was found, e.g. {@code VISUAL_INSPECTION}. */
+  detectionMethod: string enum('VISUAL_INSPECTION', 'AUTOMATED_INSPECTION', 'STABILITY_TESTING', 'CUSTOMER_COMPLAINT', 'INCOMING_QC')
+
+  /** Severity. {@code CRITICAL} forces a recall assessment as well as a hold. */
+  severity: string enum('CRITICAL', 'MAJOR', 'MINOR')
+
+  /** When the event was raised. Anchors every day-count in the scenario. */
+  raisedAt: datetime
+
+  /** The inspector or QA reviewer who raised it. */
+  raisedBy: Person
+
+  /**
+   * How far the scenario has progressed. The view reads this to decide which
+   * panel is live, so the stage gate is enforced in data rather than in the UI.
+   */
+  stage: !string enum('RAISED', 'SCOPED', 'OPTIONS_EVALUATED', 'DECIDED', 'COORDINATED')
+
+  /** Held batches found by scope determination. Null until scope runs. */
+  scopeBatchCount: int
+
+  /** Doses held — the sum of {@link FillBatch#doseCount} over the held batches. */
+  scopeDoses: int
+
+  /** Distinct markets touched by those batches. */
+  scopeMarketCount: int
+
+  /** Revenue carried by the affected commitments, from {@link MarketCommitment#committedRevenue}. */
+  scopeRevenueAtRisk: double
+
+  /** Whether any held batch was already released to a market, which escalates to a recall assessment. */
+  recallAssessmentRequired: boolean
+
+  /** Whether a regulator must be notified before the response can be executed. */
+  regulatoryNotificationRequired: boolean
+
+  /** The approved option, once a decision is signed. */
+  approvedOption: ScenarioOption
+
+  /** The governance body that owns the call, e.g. {@code "Quality Council"}. */
+  decisionAuthority: string
+
+  /** The signer of record. */
+  decidedBy: Person
+
+  /** When the decision was signed, for the Part 11 audit trail. */
+  decidedAt: datetime
+
+  /** The signer's stated rationale — the justification the audit trail requires. */
+  decisionRationale: string
+
+  /** Whether coordination of the approved response has finished. */
+  coordinationComplete: boolean
+
+  /** Count of coordination actions issued, so the view can show progress without re-deriving it. */
+  coordinationActionCount: int
+
+  /** The CAPA raised against the supplier, e.g. {@code CAPA-26-0114}. */
+  capaRef: string
+
+  /** Batches swept into this hold. */
+  batches: [FillBatch](qualityEvent)
+
+  /** Options scored for this event. */
+  options: [ScenarioOption](qualityEvent)
+}

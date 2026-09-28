@@ -67,16 +67,16 @@ export default function DocsView() {
   }, [allDocs]);
 
   if (!param) {
-    return <div className="view on" style={{ padding: 24 }}>Select a launch from the Cockpit or Portfolio.</div>;
+    return <div className="view on v-msg">Select a launch from the Cockpit or Portfolio.</div>;
   }
   if (error) {
-    return <div className="view on" style={{ padding: 24, color: 'var(--red600)' }}>{error}</div>;
+    return <div className="view on v-msg v-err">{error}</div>;
   }
   if (loading) {
-    return <div className="view on" style={{ padding: 24 }}>Loading…</div>;
+    return <div className="view on v-msg">Loading…</div>;
   }
   if (!record) {
-    return <div className="view on" style={{ padding: 24 }}>Select a launch from the Cockpit or Portfolio.</div>;
+    return <div className="view on v-msg">Select a launch from the Cockpit or Portfolio.</div>;
   }
 
   const o = record.overview;

@@ -3,8 +3,8 @@
   "name": "jJDemo",
   "description": "{{description}}",
   "dependencies": {
-    "mcpServer": "8.10",
-    "testtools": "*"
+    "mcpServer": "8.11",
+    "testtools": "8.11"
   },
   "version": "1.0.0"
 }

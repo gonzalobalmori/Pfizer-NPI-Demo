@@ -10,6 +10,7 @@
 
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNav } from '@/nav/NavContext';
+import Glyph from '@/components/Brand/Glyph';
 import { getOpenIssues } from '@/api/portfolio';
 import { fmtEuro } from '@/lib/format';
 import type { OpenIssues, IssueRow, WaitingOn } from '@/types/portfolio';
@@ -68,8 +69,8 @@ export default function AlertsView() {
     });
   }, [data, waiting, impact]);
 
-  if (error) return <div className="view on" style={{ padding: 24, color: 'var(--red600)' }}>{error}</div>;
-  if (!data) return <div className="view on" style={{ padding: 24 }}>Loading&hellip;</div>;
+  if (error) return <div className="view on v-msg v-err">{error}</div>;
+  if (!data) return <div className="view on v-msg">Loading&hellip;</div>;
 
   const total = data.total;
   const youN = data.counts.YOU ?? 0;
@@ -80,6 +81,19 @@ export default function AlertsView() {
   const ctN = data.rows.filter((r) => r.category === 'ct').length;
   const rkN = data.rows.filter((r) => r.category === 'rk').length;
   const okN = data.rows.filter((r) => r.category === 'ok').length;
+
+  /*
+   * The holder split, in a FIXED order (never re-sorted by size) so a bar keeps
+   * its position and colour as the data changes — re-ranking on every refresh is
+   * what makes a dashboard unreadable. Tone follows who must act: "you" is the
+   * one the user can clear personally, an authority is an unmovable wait.
+   */
+  const holderSplit: { key: WaitingFilter; label: string; n: number; tone: string }[] = [
+    { key: 'you', label: 'You', n: youN, tone: 'you' },
+    { key: 'other', label: 'Someone else', n: otherN, tone: 'other' },
+    { key: 'agent', label: 'An agent', n: agentN, tone: 'agent' },
+    { key: 'authority', label: 'An authority', n: authorityN, tone: 'authority' },
+  ];
 
   /* Every roll-up below reads the SERVER-computed totals (PortfolioService.
      openIssues.totals), NOT a local re-sum of the visible rows. This is the fix
@@ -163,24 +177,44 @@ export default function AlertsView() {
         <div className="hb-m">
           <span className="hb-lb">Waiting on an authority</span>
           <b>{regulatorDays} d</b>
-          <span className="hb-sb">FDA &middot; Notified Body &middot; payer</span>
+          {/* Pharma authorities. "Notified Body" is a medical-device conformity
+              assessor under EU MDR and has no role in a pharmaceutical launch — the
+              EU reviewer is EMA/CHMP. Corrected as part of the device→pharma
+              vocabulary pass; the wider sweep is tracked for M2. */}
+          <span className="hb-sb">FDA &middot; EMA &middot; payer</span>
           <span className="hb-d">acting won&apos;t move it</span>
         </div>
+        {/*
+          * Who is actually holding these exceptions. This replaced an 8-week
+          * "trend" area chart whose polyline coordinates, its "peak 15" and its
+          * "8 w ago · 14" endpoint were all hard-coded in the view — no backend
+          * field feeds a weekly history, so the trend could not be made true
+          * (R-BASE-03). The holder split IS real (openIssues.counts) and answers
+          * the more useful question: is this queue mine to clear or someone
+          * else's? Bars are labelled and ordered, so colour carries nothing
+          * alone.
+          */}
         <div className="hb-c hb-w">
           <div className="hb-ct">
-            <span>Open exceptions</span>
-            <i>8 weeks &middot; peak 15</i>
+            <span>Who is holding them</span>
+            <i>{total} open</i>
           </div>
-          <svg className="hb-tr am" viewBox="0 0 260 40" preserveAspectRatio="none">
-            <polygon
-              className="hb-ar am"
-              points="0,38 0.0,13.0 37.1,20.0 74.3,6.0 111.4,27.0 148.6,20.0 185.7,34.0 222.9,27.0 260.0,34.0 260,38"
-            />
-            <polyline points="0.0,13.0 37.1,20.0 74.3,6.0 111.4,27.0 148.6,20.0 185.7,34.0 222.9,27.0 260.0,34.0" />
-          </svg>
-          <div className="hb-x">
-            <span>8 w ago &middot; 14</span>
-            <span>now &middot; {total}</span>
+          <div className="hb-br">
+            {holderSplit.map((hs) => (
+              <button
+                type="button"
+                key={hs.key}
+                className={`hbb${waiting === hs.key ? ' on' : ''}`}
+                onClick={() => setWaiting(hs.key)}
+                title={`${hs.label} — ${hs.n} of ${total}; click to filter`}
+              >
+                <span className="hbb-l">{hs.label}</span>
+                <span className="hbb-t">
+                  <span className={`hbb-f ${hs.tone}`} style={{ width: `${total > 0 ? (hs.n / total) * 100 : 0}%` }} />
+                </span>
+                <span className="hbb-n">{hs.n}</span>
+              </button>
+            ))}
           </div>
         </div>
       </div>
@@ -260,7 +294,8 @@ function AlertRow({ row, onOpen }: { row: IssueRow; onOpen: () => void }) {
               pending on the user, so it offers "View progress", never "Resolve".
             · everyone else — a call the user (or a named person) owes → "Resolve". */}
         <span className="al-go">
-          {row.waitingOn === 'AUTHORITY' ? 'View detail' : row.waitingOn === 'AGENT' ? 'View progress' : 'Resolve'} &#8594;
+          {row.waitingOn === 'AUTHORITY' ? 'View detail' : row.waitingOn === 'AGENT' ? 'View progress' : 'Resolve'}{' '}
+          <Glyph name="arrow-right" className="sm" />
         </span>
       </td>
     </tr>

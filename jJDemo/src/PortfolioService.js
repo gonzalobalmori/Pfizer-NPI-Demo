@@ -706,11 +706,16 @@ function portfolioTimeline() {
  * this is the time you cannot pull in by acting faster. That distinction is the
  * whole point of the time-recovery view, so it wins over USER/HELD/AUTO. */
 /* The signed-in user. There is exactly ONE human identity in this demo — the NPI
- * lead viewing the app IS Helena Fossi — so her own findings must always read as
- * "You" and NEVER as "Helena Fossi". Showing both labels for the same person (a
- * call owed by "You" next to one owed by "Helena Fossi") is the contradiction the
- * user flagged: they are the same person. */
-var SELF_PERSON_NAME = 'Helena Fossi';
+ * lead viewing the app IS George Hall — so his own findings must always read as
+ * "You" and NEVER as "George Hall". Showing both labels for the same person (a
+ * call owed by "You" next to one owed by "George Hall") is the contradiction the
+ * user flagged: they are the same person.
+ *
+ * NOTE: this must stay in sync with the `name` of `seed_person_hf` in
+ * seed/Person/Person.json — the match is by literal name, so renaming the seeded
+ * person without updating this constant silently reintroduces the duplicate
+ * "You" / "<full name>" identity bug. */
+var SELF_PERSON_NAME = 'George Hall';
 
 function waitingOnFor(outcome, heldBy, ownerName, agentName, dependency) {
   /* An outside authority (FDA, Notified Body, payer) overrides everything: acting
@@ -725,7 +730,7 @@ function waitingOnFor(outcome, heldBy, ownerName, agentName, dependency) {
   if (outcome === 'RUNNING' || dependency === 'AGENT') return { kind: 'AGENT', label: agentName || 'An agent' };
   /* A call the signed-in user owes — heldBy USER, or the owner IS the signed-in
      user. Collapse the self-owner case to "You" so the same person is never shown
-     as both "You" and "Helena Fossi". */
+     as both "You" and "George Hall". */
   if (heldBy === 'USER' || outcome === 'USER' || ownerName === SELF_PERSON_NAME) {
     return { kind: 'YOU', label: 'You' };
   }
