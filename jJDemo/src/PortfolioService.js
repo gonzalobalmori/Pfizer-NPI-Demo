@@ -17,14 +17,17 @@ function healthRank(h) {
   return HEALTH_RANK[h] != null ? HEALTH_RANK[h] : 9;
 }
 
-var PHASE_ORDER = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6'];
+var PHASE_ORDER = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8', 'P9'];
 var PHASE_META = {
-  P1: ['Early NPI readiness (strategic definition)', 'closed'],
-  P2: ['NPI planning (supply & CMC definition)', 'closed'],
-  P3: ['PPQ execution & filing preparation', 'live'],
-  P4: ['Regulatory & access execution', 'live'],
-  P5: ['Launch readiness', 'queued'],
-  P6: ['Post-launch intelligence', 'queued']
+  P1: ['Portfolio & Launch Strategy', 'closed'],
+  P2: ['NPL Initiation & Planning', 'closed'],
+  P3: ['Drug Substance (DS) Readiness', 'closed'],
+  P4: ['Drug Product (DP) Readiness', 'live'],
+  P5: ['Finished Product Readiness', 'live'],
+  P6: ['Launch Readiness & Market Enablement', 'live'],
+  P7: ['Global Launch Execution', 'queued'],
+  P8: ['Market Launch', 'queued'],
+  P9: ['Post-Launch Monitoring & Continuous Improvement', 'queued']
 };
 
 /*
@@ -38,12 +41,15 @@ var PHASE_META = {
  * at G4, which the reviewer flagged as missing from the phase overview).
  */
 var PHASE_MODEL = [
-  { code: 'P1', short: 'NPI Strategy', full: 'Early NPI readiness (strategic definition)', gate: 'G1', gateName: 'NPI Readiness Gate', milestone: null },
-  { code: 'P2', short: 'NPI Planning', full: 'NPI planning (supply & CMC definition)', gate: 'G2', gateName: 'CMC Lock', milestone: null },
-  { code: 'P3', short: 'PPQ', full: 'PPQ execution & filing preparation', gate: 'G3', gateName: 'Submission Commit', milestone: 'Regulatory Submission Filed — full dossier to FDA' },
-  { code: 'P4', short: 'Reg review', full: 'Regulatory & access execution, tech transfer & at-risk build', gate: 'G4', gateName: 'Approval / Marketing Authorisation', milestone: 'FDA Approved / EMA Authorised' },
-  { code: 'P5', short: 'Ready', full: 'Launch readiness', gate: 'G5', gateName: 'Launch Go / No-Go — First Ship', milestone: 'First Ship' },
-  { code: 'P6', short: 'Post-launch', full: 'Post-launch intelligence & BAU transfer', gate: 'BAU', gateName: 'BAU handover', milestone: null }
+  { code: 'P1', short: 'Strategy', full: 'Portfolio & Launch Strategy', gate: 'G1', gateName: 'Launch Strategy Approved', milestone: null },
+  { code: 'P2', short: 'Planning', full: 'NPL Initiation & Planning', gate: 'G2', gateName: 'NPL Plan Approved', milestone: null },
+  { code: 'P3', short: 'DS', full: 'Drug Substance (DS) Readiness', gate: 'G3', gateName: 'DS Released', milestone: 'DS received at the DP site' },
+  { code: 'P4', short: 'DP', full: 'Drug Product (DP) Readiness', gate: 'G4', gateName: 'DP Released', milestone: 'DP delivered to the packaging site' },
+  { code: 'P5', short: 'Finished', full: 'Finished Product Readiness', gate: 'G5', gateName: 'Finished Product Released', milestone: 'Serialisation ready' },
+  { code: 'P6', short: 'Readiness', full: 'Launch Readiness & Market Enablement', gate: 'G6', gateName: 'Launch Readiness Confirmed', milestone: null },
+  { code: 'P7', short: 'Execution', full: 'Global Launch Execution', gate: 'G7', gateName: 'Launch Go / No-Go', milestone: null },
+  { code: 'P8', short: 'Launch', full: 'Market Launch', gate: 'G8', gateName: 'Commercial Availability', milestone: 'Commercial availability achieved' },
+  { code: 'P9', short: 'Post-launch', full: 'Post-Launch Monitoring & Continuous Improvement', gate: 'BAU', gateName: 'BAU handover', milestone: null }
 ];
 
 /* the current-phase code marks which phase column a launch is executing in */
@@ -68,19 +74,22 @@ function phaseStateFor(phaseCode, currentPhaseCode) {
  * without a schema change. */
 
 /* Ordinal rank so gates sort/compare numerically (string sort puts BAU first). */
-var GATE_RANK = { G1: 1, G2: 2, G3: 3, G4: 4, G5: 5, BAU: 6 };
+var GATE_RANK = { G1: 1, G2: 2, G3: 3, G4: 4, G5: 5, G6: 6, G7: 7, G8: 8, BAU: 9 };
 /* The gate that CLOSES each phase — a finding in P4 puts the P4-closing gate
    (G4) at risk. Kept identical to ExecutionService.PHASE_GATE so the Open-issues
    row, the resolution workspace and the finding card all name the same gate. */
-var PHASE_GATE = { P1: 'G1', P2: 'G2', P3: 'G3', P4: 'G4', P5: 'G5', P6: 'BAU' };
+var PHASE_GATE = { P1: 'G1', P2: 'G2', P3: 'G3', P4: 'G4', P5: 'G5', P6: 'G6', P7: 'G7', P8: 'G8', P9: 'BAU' };
 /* Which phase a launch is executing in while driving toward a given gate. */
 var GATE_PHASE = {
-  G1: ['P1', 'NPI Strategy'],
-  G2: ['P2', 'NPI Planning'],
-  G3: ['P3', 'PPQ'],
-  G4: ['P4', 'Reg review'],
-  G5: ['P5', 'Ready'],
-  BAU: ['P6', 'Post-launch']
+  G1: ['P1', 'Strategy'],
+  G2: ['P2', 'Planning'],
+  G3: ['P3', 'DS'],
+  G4: ['P4', 'DP'],
+  G5: ['P5', 'Finished'],
+  G6: ['P6', 'Readiness'],
+  G7: ['P7', 'Execution'],
+  G8: ['P8', 'Launch'],
+  BAU: ['P9', 'Post-launch']
 };
 
 /* Quarter index (year*4 + quarter-1) from a "Q2 27" / "Q2 2027" label. */

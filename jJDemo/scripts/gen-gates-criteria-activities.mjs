@@ -45,129 +45,60 @@ const Comirnaty = 'seed_launch_varipulse_g2';
 
 /* ── canonical gate metadata ────────────────────────────────────────── */
 const GATE_NAME = {
-  G1: 'NPI Readiness Gate',
-  G2: 'CMC Lock',
-  G3: 'Submission Commit',
-  G4: 'Approval / Marketing Authorisation',
-  G5: 'Launch Go / No-Go — First Ship',
+  G1: 'Launch Strategy Approved',
+  G2: 'NPL Plan Approved',
+  G3: 'DS Released',
+  G4: 'DP Released',
+  G5: 'Finished Product Released',
+  G6: 'Launch Readiness Confirmed',
+  G7: 'Launch Go / No-Go',
+  G8: 'Commercial Availability',
   BAU: 'BAU handover'
 };
-const GATE_PHASE = { G1: 'p1', G2: 'p2', G3: 'p3', G4: 'p4', G5: 'p5', BAU: 'p6' };
+const GATE_PHASE = {
+  G1: 'p1', G2: 'p2', G3: 'p3', G4: 'p4', G5: 'p5',
+  G6: 'p6', G7: 'p7', G8: 'p8', BAU: 'p9'
+};
+const GATE_ORDER = ['G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'BAU'];
 
 /*
- * Per-launch identity + full gate ladder. Each ladder is complete and consistent
- * with the launch's currentPhase (see header). Existing gate dates/slips/statuses
- * are reproduced exactly; missing gates get plausible monotonic dates; the three
- * inconsistent ladders (impella P4, javelin P5, ottava P1) are corrected so early
- * gates read closed and the live gate is the one at the current phase.
- *
- * slug   -> the gate-id slug, matching the ALREADY-SEEDED ids exactly.
- * project-> PPM ProjectId (kept for source realism; not used by the projection).
- * next   -> the code of the launch's live gate (gets the GateCriterion set).
+ * Per-launch identity plus the gate its programme is currently driving toward.
+ * The nine-gate ladder is derived from `start` on a fixed cadence so the table
+ * stays small and every ladder is monotonic by construction: gates before the
+ * live one read closed, the live gate carries the launch's real slip, later
+ * gates are pending. One launch sits in each phase so the portfolio exercises
+ * the whole process model.
  */
 const LAUNCHES = [
-  {
-    launchId: Comirnaty, slug: 'varipulse', project: 'PRJ-Comirnaty_G2',
-    readiness: 83, troubled: true, next: 'G3',
-    ladder: [
-      { code: 'G1', baseline: '2024-09-24', forecast: '2024-09-24', slip: 0, status: 'ok' },
-      { code: 'G2', baseline: '2026-06-19', forecast: '2026-06-19', slip: 0, status: 'ok' },
-      { code: 'G3', baseline: '2026-11-04', forecast: '2026-12-21', slip: 47, status: 'late' },
-      { code: 'G4', baseline: '2027-05-18', forecast: '2027-05-18', slip: 0, status: 'no' },
-      { code: 'G5', baseline: '2027-06-29', forecast: '2027-06-29', slip: 0, status: 'no' }
-    ]
-  },
-  {
-    launchId: 'seed_launch_octaray_g2', slug: 'octaray_g2', project: 'PRJ-Abrysvo_G2',
-    readiness: 86, troubled: true, next: 'G2',
-    ladder: [
-      { code: 'G1', baseline: '2024-11-15', forecast: '2024-11-15', slip: 0, status: 'ok' },
-      { code: 'G2', baseline: '2026-09-16', forecast: '2026-09-30', slip: 14, status: 'late' },
-      { code: 'G3', baseline: '2027-03-15', forecast: '2027-03-15', slip: 0, status: 'no' },
-      { code: 'G4', baseline: '2027-08-15', forecast: '2027-08-15', slip: 0, status: 'no' },
-      { code: 'G5', baseline: '2027-12-15', forecast: '2027-12-15', slip: 0, status: 'no' }
-    ]
-  },
-  {
-    launchId: 'seed_launch_embotrap_iv', slug: 'embotrap_iv', project: 'PRJ-Elrexfio_IV',
-    readiness: 67, troubled: true, next: 'G5',
-    ladder: [
-      { code: 'G1', baseline: '2023-06-15', forecast: '2023-06-15', slip: 0, status: 'ok' },
-      { code: 'G2', baseline: '2024-03-15', forecast: '2024-03-15', slip: 0, status: 'ok' },
-      { code: 'G3', baseline: '2024-11-15', forecast: '2024-11-15', slip: 0, status: 'ok' },
-      { code: 'G4', baseline: '2025-07-15', forecast: '2025-07-15', slip: 0, status: 'ok' },
-      { code: 'G5', baseline: '2026-09-17', forecast: '2026-09-26', slip: 9, status: 'late' },
-      { code: 'BAU', baseline: '2026-10-30', forecast: '2026-10-30', slip: 0, status: 'no' }
-    ]
-  },
-  {
-    launchId: 'seed_launch_impella_ecp', slug: 'impella_ecp', project: 'PRJ-IMPELLA_ECP',
-    readiness: 92, troubled: false, next: 'G4',
-    ladder: [
-      { code: 'G1', baseline: '2024-05-15', forecast: '2024-05-15', slip: 0, status: 'ok' },
-      { code: 'G2', baseline: '2025-01-19', forecast: '2025-01-19', slip: 0, status: 'ok' },
-      { code: 'G3', baseline: '2025-09-15', forecast: '2025-09-15', slip: 0, status: 'ok' },
-      { code: 'G4', baseline: '2027-06-15', forecast: '2027-06-15', slip: 0, status: 'no' },
-      { code: 'G5', baseline: '2027-12-15', forecast: '2027-12-15', slip: 0, status: 'no' }
-    ]
-  },
-  {
-    launchId: 'seed_launch_javelin_xl', slug: 'javelin_xl', project: 'PRJ-JAVELIN_XL',
-    readiness: 88, troubled: false, next: 'G5',
-    ladder: [
-      { code: 'G1', baseline: '2023-09-15', forecast: '2023-09-15', slip: 0, status: 'ok' },
-      { code: 'G2', baseline: '2024-06-15', forecast: '2024-06-15', slip: 0, status: 'ok' },
-      { code: 'G3', baseline: '2025-03-12', forecast: '2025-03-12', slip: 0, status: 'ok' },
-      { code: 'G4', baseline: '2025-11-15', forecast: '2025-11-15', slip: 0, status: 'ok' },
-      { code: 'G5', baseline: '2027-12-15', forecast: '2027-12-15', slip: 0, status: 'no' }
-    ]
-  },
-  {
-    launchId: 'seed_launch_ethicon_4000', slug: 'ethicon_4000', project: 'PRJ-PREVNAR20_4000',
-    readiness: 80, troubled: true, next: 'G4',
-    ladder: [
-      { code: 'G1', baseline: '2024-02-15', forecast: '2024-02-15', slip: 0, status: 'ok' },
-      { code: 'G2', baseline: '2024-10-15', forecast: '2024-10-15', slip: 0, status: 'ok' },
-      { code: 'G3', baseline: '2025-06-15', forecast: '2025-06-15', slip: 0, status: 'ok' },
-      { code: 'G4', baseline: '2026-10-12', forecast: '2026-11-02', slip: 21, status: 'late' },
-      { code: 'G5', baseline: '2026-12-14', forecast: '2026-12-14', slip: 0, status: 'no' }
-    ]
-  },
-  {
-    launchId: 'seed_launch_dualto', slug: 'dualto', project: 'PRJ-Zavzpret',
-    readiness: 100, troubled: false, next: 'BAU',
-    ladder: [
-      { code: 'G1', baseline: '2022-06-15', forecast: '2022-06-15', slip: 0, status: 'ok' },
-      { code: 'G2', baseline: '2023-03-15', forecast: '2023-03-15', slip: 0, status: 'ok' },
-      { code: 'G3', baseline: '2023-11-15', forecast: '2023-11-15', slip: 0, status: 'ok' },
-      { code: 'G4', baseline: '2024-07-15', forecast: '2024-07-15', slip: 0, status: 'ok' },
-      { code: 'G5', baseline: '2026-08-12', forecast: '2026-08-12', slip: 0, status: 'ok' },
-      { code: 'BAU', baseline: '2026-10-30', forecast: '2026-10-30', slip: 0, status: 'no' }
-    ]
-  },
-  {
-    launchId: 'seed_launch_ottava', slug: 'ottava', project: 'PRJ-Velsipity',
-    readiness: 95, troubled: false, next: 'G1',
-    ladder: [
-      { code: 'G1', baseline: '2026-11-15', forecast: '2026-11-15', slip: 0, status: 'no' },
-      { code: 'G2', baseline: '2027-04-15', forecast: '2027-04-15', slip: 0, status: 'no' },
-      { code: 'G3', baseline: '2027-10-15', forecast: '2027-10-15', slip: 0, status: 'no' },
-      { code: 'G4', baseline: '2028-04-15', forecast: '2028-04-15', slip: 0, status: 'no' },
-      { code: 'G5', baseline: '2028-08-15', forecast: '2028-08-15', slip: 0, status: 'no' }
-    ]
-  },
-  {
-    launchId: 'seed_launch_puresee', slug: 'puresee', project: 'PRJ-LITFULO',
-    readiness: 83, troubled: false, next: 'G3',
-    ladder: [
-      { code: 'G1', baseline: '2024-08-15', forecast: '2024-08-15', slip: 0, status: 'ok' },
-      { code: 'G2', baseline: '2025-06-15', forecast: '2025-06-15', slip: 0, status: 'ok' },
-      { code: 'G3', baseline: '2026-11-03', forecast: '2026-11-03', slip: 0, status: 'no' },
-      { code: 'G4', baseline: '2027-06-15', forecast: '2027-06-15', slip: 0, status: 'no' },
-      { code: 'G5', baseline: '2027-12-15', forecast: '2027-12-15', slip: 0, status: 'no' }
-    ]
-  }
-];
+  { launchId: Comirnaty,                 slug: 'varipulse',    project: 'PRJ-Comirnaty_G2', readiness: 83, troubled: true,  next: 'G4',  start: '2024-09-24', slip: 47 },
+  { launchId: 'seed_launch_octaray_g2',  slug: 'octaray_g2',      project: 'PRJ-Abrysvo_G2',   readiness: 46, troubled: true,  next: 'G2',  start: '2025-03-11', slip: 18 },
+  { launchId: 'seed_launch_puresee',     slug: 'puresee',      project: 'PRJ-Zirabev',      readiness: 38, troubled: true,  next: 'G3',  start: '2025-01-20', slip: 24 },
+  { launchId: 'seed_launch_impella_ecp', slug: 'impella_ecp',      project: 'PRJ-Cibinqo',      readiness: 61, troubled: false, next: 'G5',  start: '2024-06-03', slip: 0  },
+  { launchId: 'seed_launch_ethicon_4000',slug: 'ethicon_4000',      project: 'PRJ-Zavicefta',    readiness: 57, troubled: true,  next: 'G6',  start: '2024-04-15', slip: 12 },
+  { launchId: 'seed_launch_javelin_xl',  slug: 'javelin_xl',      project: 'PRJ-Velsipity',    readiness: 74, troubled: false, next: 'G7',  start: '2024-02-12', slip: 0  },
+  { launchId: 'seed_launch_embotrap_iv', slug: 'embotrap_iv',     project: 'PRJ-Hympavzi',     readiness: 69, troubled: true,  next: 'G8',  start: '2023-11-06', slip: 9  },
+  { launchId: 'seed_launch_ottava',      slug: 'ottava',       project: 'PRJ-Zavzpret',     readiness: 21, troubled: false, next: 'G1',  start: '2025-09-08', slip: 0  },
+  { launchId: 'seed_launch_dualto',      slug: 'dualto',       project: 'PRJ-Fragmin',      readiness: 96, troubled: false, next: 'BAU', start: '2023-05-15', slip: 0  }
+].map((L) => {
+  /* ~5 months per phase, so a full programme runs a little over three years. */
+  const CADENCE_DAYS = 152;
+  const liveIdx = GATE_ORDER.indexOf(L.next);
+  const t0 = new Date(L.start + 'T00:00:00Z').getTime();
+  const iso = (ms) => new Date(ms).toISOString().slice(0, 10);
+  L.ladder = GATE_ORDER.map((code, i) => {
+    const baseMs = t0 + (i + 1) * CADENCE_DAYS * 86400000;
+    const slip = i === liveIdx ? L.slip : 0;
+    const status = i < liveIdx ? 'ok' : i > liveIdx ? 'no' : (L.slip > 30 ? 'late' : L.slip > 0 ? 'rk' : 'run');
+    return {
+      code,
+      baseline: iso(baseMs),
+      forecast: iso(baseMs + slip * 86400000),
+      slip,
+      status
+    };
+  });
+  return L;
+});
 
 /*
  * Per-launch commercial scope + device facts (the "Launch scope" and "Device"
@@ -177,44 +108,44 @@ const LAUNCHES = [
  * 4200, 62/78, 9/22). Numbers are phase-appropriate: pre-market programmes have
  * little commercial scope built yet; launched programmes are complete.
  *
- * fields: launchValue, fill-finish, manufacture, regsFiled/regsTotal,
+ * fields: launchValue, fillFinish, manufacture, regsFiled/regsTotal,
  *         buildUnits, ffCertified/ffTotal, vacFiled/vacTotal.
  */
 const SCOPE = {
   seed_launch_varipulse_g2: {
-    launchValue: 96000000, fill-finish: 'EO', manufacture: 'Irvine + CMO',
+    launchValue: 96000000, fillFinish: 'Aseptic fill', manufacture: 'Puurs + Vetter Ravensburg',
     regsFiled: 11, regsTotal: 14, buildUnits: 4200, ffCertified: 62, ffTotal: 78, vacFiled: 9, vacTotal: 22
   },
   seed_launch_octaray_g2: {
-    launchValue: 54000000, fill-finish: 'EO', manufacture: 'Irwindale',
+    launchValue: 54000000, fillFinish: 'Aseptic fill', manufacture: 'Puurs',
     regsFiled: 3, regsTotal: 12, buildUnits: 0, ffCertified: 0, ffTotal: 64, vacFiled: 0, vacTotal: 18
   },
   seed_launch_embotrap_iv: {
-    launchValue: 41000000, fill-finish: 'e-beam', manufacture: 'Galway',
+    launchValue: 41000000, fillFinish: 'Lyophilised', manufacture: 'Grange Castle',
     regsFiled: 9, regsTotal: 11, buildUnits: 6800, ffCertified: 44, ffTotal: 52, vacFiled: 12, vacTotal: 19
   },
   seed_launch_impella_ecp: {
-    launchValue: 120000000, fill-finish: 'EO', manufacture: 'Danvers',
+    launchValue: 120000000, fillFinish: 'Aseptic fill', manufacture: 'Kalamazoo (KZO)',
     regsFiled: 2, regsTotal: 6, buildUnits: 900, ffCertified: 18, ffTotal: 70, vacFiled: 2, vacTotal: 15
   },
   seed_launch_javelin_xl: {
-    launchValue: 88000000, fill-finish: 'EO', manufacture: 'Santa Clara',
+    launchValue: 88000000, fillFinish: 'Aseptic fill', manufacture: 'Freiburg',
     regsFiled: 7, regsTotal: 9, buildUnits: 5200, ffCertified: 58, ffTotal: 66, vacFiled: 14, vacTotal: 20
   },
   seed_launch_ethicon_4000: {
-    launchValue: 76000000, fill-finish: 'Gamma', manufacture: 'Cincinnati + CMO',
+    launchValue: 76000000, fillFinish: 'Terminal sterile', manufacture: 'Freiburg + Baxter Halle',
     regsFiled: 6, regsTotal: 12, buildUnits: 3100, ffCertified: 31, ffTotal: 84, vacFiled: 5, vacTotal: 24
   },
   seed_launch_dualto: {
-    launchValue: 62000000, fill-finish: 'N/A', manufacture: 'Cincinnati',
+    launchValue: 62000000, fillFinish: 'Oral solid dose', manufacture: 'Freiburg',
     regsFiled: 9, regsTotal: 9, buildUnits: 480, ffCertified: 112, ffTotal: 112, vacFiled: 28, vacTotal: 28
   },
   seed_launch_ottava: {
-    launchValue: 210000000, fill-finish: 'N/A', manufacture: 'Santa Clara',
+    launchValue: 210000000, fillFinish: 'Oral solid dose', manufacture: 'Freiburg',
     regsFiled: 0, regsTotal: 8, buildUnits: 0, ffCertified: 0, ffTotal: 90, vacFiled: 0, vacTotal: 30
   },
   seed_launch_puresee: {
-    launchValue: 47000000, fill-finish: 'Gamma', manufacture: 'Groningen',
+    launchValue: 47000000, fillFinish: 'Terminal sterile', manufacture: 'Siegfried Hameln',
     regsFiled: 4, regsTotal: 13, buildUnits: 1200, ffCertified: 12, ffTotal: 48, vacFiled: 3, vacTotal: 21
   }
 };
@@ -225,49 +156,78 @@ const SCOPE = {
  * so this G3 template is used only for the other G3 launches (puresee). */
 const CRIT_TEMPLATE = {
   G1: [
-    ['Development & CMC Plan approved', 'Development plan in review with the core team'],
-    ['Risk Management File opened (ICH Q9)', 'Initial hazard analysis still being compiled'],
-    ['Regulatory strategy and pathway confirmed', 'Pathway pending a pre-submission meeting'],
-    ['Clinical Development Plan drafted', 'Clinical plan awaiting KOL input'],
-    ['Programme budget and RACI approved', 'Budget approval pending the portfolio review']
+    ['Launch scope agreed (product / indication / market)', 'Indication list still open with the brand team'],
+    ['Regulatory strategy approved', 'Pathway pending a health-authority meeting'],
+    ['Manufacturing and inventory strategy set', 'Make-vs-buy decision outstanding'],
+    ['Supply chain sourcing strategy defined', 'Sourcing options still being costed'],
+    ['Market prioritisation and wave plan agreed', 'Wave sequencing under review with the affiliates'],
+    ['Leadership endorsement recorded', 'Endorsement pending the portfolio committee']
   ],
   G2: [
-    ['Target product profile signed off', 'Two of the target product profile remain unsigned'],
-    ['Design FMEA complete', 'FMEA review actions still open'],
-    ['Analytical verification & validation plan approved', 'V&V plan in second review cycle'],
-    ['Extractables and leachables evaluation plan complete', 'Extractables and leachables strategy under review'],
-    ['Critical suppliers qualified / second-sourced', 'Single-source supplier not yet dual-sourced'],
-    ['Design review minutes closed', 'Design review actions being closed out']
+    ['NPL created in the NPL Data Repository', 'NPL record raised but not yet complete'],
+    ['Product Passport established', 'Passport attributes incomplete for two markets'],
+    ['Project plan created in DLPP', 'DLPP plan awaiting workstream inputs'],
+    ['Pfizer Connect programmes linked', 'Programme links not yet confirmed'],
+    ['Governance and milestones configured', 'Milestone calendar pending sign-off'],
+    ['Sourcing grid built', 'Sourcing grid missing secondary packaging lanes']
   ],
   G3: [
-    ['Analytical verification complete', 'Verification report awaiting sign-off'],
-    ['Process validation complete', 'Validation runs in progress'],
-    ['Clinical Evaluation Report approved', 'CER in CHMP rapporteur query cycle'],
-    ['Fill-finish validation report (PPQ)', 'Fill-finish validation slot cancelled; report slips'],
-    ['Risk management file current', 'Risk file update pending latest test data'],
-    ['CTD Module 3 quality dossier complete', 'Technical documentation 96% complete']
+    ['DS demand forecast approved', 'Forecast awaiting the latest market inputs'],
+    ['BOM and standard cost complete', 'Standard cost pending finance review'],
+    ['DS manufacturing approved', 'Manufacturing approval in the quality queue'],
+    ['Raw material procurement complete', 'One long-lead raw material still open'],
+    ['DS manufactured', 'API campaign not yet complete'],
+    ['DS released', 'Quality review open on the API campaign'],
+    ['DS received at DP site', 'Shipment to the DP site not yet booked']
   ],
   G4: [
-    ['CHMP rapporteur / FDA review closed', 'Query cycle 2 open on the clinical section'],
-    ['Process validation complete (IQ/OQ/PQ)', 'PQ runs not yet complete on the transfer line'],
-    ['Design transfer to manufacturing complete', 'Design transfer package being finalised'],
-    ['Labelling and IFU approved', 'IFU artwork in MLR review'],
-    ['CAPAs and non-conformances closed', 'Two CAPAs remain open from the at-risk build'],
-    ['QP Declaration ready', 'DoC held pending certificate issuance']
+    ['DP demand forecast approved', 'DP forecast pending the supply review'],
+    ['Packaging components ready', 'Primary packaging components not yet released'],
+    ['Manufacturing scheduled', 'Fill-finish slot not yet confirmed with the CMO'],
+    ['DP manufactured', 'Production run not yet executed'],
+    ['DP released', 'Batch release pending QP disposition'],
+    ['Transportation validated', 'Cold-chain lane validation outstanding'],
+    ['DP delivered to packaging site', 'Delivery to the packaging site not yet scheduled']
   ],
   G5: [
-    ['Launch build and safety stock complete', 'At-risk build authorisation above delegated authority'],
-    ['Field-force certification >= 95%', 'Certification at 91% against a 95% target'],
-    ['Country registrations filed', 'Country dossiers pending final registration'],
-    ['Distribution and 3PL agreements signed', '3PL agreement in legal review'],
-    ['payer listings and reimbursement secured', 'CPT code application pending — no US reimbursement path yet'],
-    ['First-case launch stock units certified', 'Pre-launch stock not certified for launch supply coverage']
+    ['Artwork approved', 'Artwork in MLR review for two markets'],
+    ['Labelling approved', 'Label text pending health-authority confirmation'],
+    ['Printed components released', 'Printed component release pending artwork lock'],
+    ['Packaging complete', 'Packaging campaign not yet run'],
+    ['Serialisation ready', 'Serialisation master data not yet loaded'],
+    ['Finished product released', 'Quality approval pending packaging release'],
+    ['Transfer pricing complete', 'Transfer price not yet set for two affiliates']
+  ],
+  G6: [
+    ['Enterprise systems set up via Pfizer Connect', 'Two market system configurations still open'],
+    ['Market readiness assessments complete', 'Three affiliates have not returned their assessment'],
+    ['Market approvals managed and tracked', 'Approval outstanding in the lead market'],
+    ['Product listings prepared', 'Listing data incomplete for the wave-two markets'],
+    ['Artwork samples submitted', 'Sample submissions pending in two markets'],
+    ['Distribution centre readiness confirmed', 'DC readiness check not yet signed off']
+  ],
+  G7: [
+    ['Launch command centre governance live', 'Command centre cadence not yet stood up'],
+    ['Site-to-site coordination confirmed', 'Handover plan between sites still in draft'],
+    ['Internal and external manufacturers aligned', 'CMO alignment call outstanding'],
+    ['Supply allocation decisions taken', 'Allocation across markets not yet agreed'],
+    ['Readiness milestones tracked green', 'Two milestones remain amber'],
+    ['Exceptions cleared', 'One open exception awaiting a decision']
+  ],
+  G8: [
+    ['Finished product shipped to DC', 'First shipment not yet despatched'],
+    ['Launch supplies received at DC', 'Receipt confirmation pending at two DCs'],
+    ['Market ready to order', 'Order enablement not yet switched on'],
+    ['Product listing activated', 'Listing activation pending in the lead market'],
+    ['First commercial shipment complete', 'First commercial order not yet shipped'],
+    ['Commercial availability achieved', 'Availability not yet confirmed in all wave-one markets']
   ],
   BAU: [
-    ['Pharmacovigilance system master file active', 'PMS plan being handed to the BAU team'],
-    ['Complaint handling and vigilance live', 'Vigilance procedure transfer in progress'],
-    ['First production lots released', 'First lots released to distribution'],
-    ['Surveillance ownership transferred to BAU', 'Final BAU handover sign-off outstanding']
+    ['Launch KPI monitoring live', 'KPI pack being handed to the BAU team'],
+    ['Inventory health tracking active', 'Inventory dashboards not yet transferred'],
+    ['Supply continuity review complete', 'Continuity review scheduled but not held'],
+    ['Lessons learned captured', 'Retrospective not yet run'],
+    ['Playbook updated', 'Playbook revision outstanding']
   ]
 };
 
@@ -276,49 +236,98 @@ const CRIT_TEMPLATE = {
  * every launch shows a populated, phase-appropriate Workflow board. */
 const ACT_TEMPLATE = {
   P1: [
-    ['Activate NPI governance and assign workstream owners', 'gov'],
-    ['Open the CTD dossier and draft the development plan', 'rnd'],
-    ['Confirm device classification and regulatory pathway', 'reg'],
-    ['Draft the clinical evidence plan', 'cli'],
-    ['Approve the programme budget and business case', 'fin']
+    ['Define launch scope: product, indication and market', 'gov'],
+    ['Develop the regulatory strategy', 'reg'],
+    ['Establish the manufacturing and inventory strategy', 'mfg'],
+    ['Create the supply chain sourcing strategy', 'src'],
+    ['Identify launch risks and mitigation plans', 'gov'],
+    ['Run market wave planning', 'com'],
+    ['Obtain leadership endorsements', 'gov']
   ],
   P2: [
-    ['Freeze target product profile and requirements', 'rnd'],
-    ['Complete the design FMEA and risk analysis', 'rnd'],
-    ['Approve the design verification & validation plan', 'qua'],
-    ['Qualify critical suppliers and activate second sources', 'src'],
-    ['Compile the pre-submission (Q-Sub) package', 'reg']
+    ['Create the NPL in the NPL Data Repository', 'it'],
+    ['Establish the Product Passport', 'it'],
+    ['Create the project plan in DLPP', 'gov'],
+    ['Link the Pfizer Connect programmes', 'it'],
+    ['Configure governance and milestones', 'gov'],
+    ['Build the sourcing grid', 'src'],
+    ['Establish the launch readiness timeline', 'gov'],
+    ['Align cross-functional stakeholders', 'gov']
   ],
   P3: [
-    ['Execute design verification testing', 'rnd'],
-    ['Execute design validation and extractables and leachables', 'qua'],
-    ['Complete process validation (PPQ)', 'qua'],
-    ['Finalise the clinical evidence report', 'cli'],
-    ['Assemble the MAA (EMA) technical documentation', 'reg']
+    ['Run drug substance demand forecasting', 'sc'],
+    ['Complete the BOM and standard cost', 'fin'],
+    ['Obtain manufacturing approval', 'qua'],
+    ['Procure raw materials', 'src'],
+    ['Execute API production', 'mfg'],
+    ['Complete quality review and release', 'qua'],
+    ['Set up the transfer price', 'fin'],
+    ['Set up and validate the route', 'sc'],
+    ['Ship drug substance to the DP site', 'sc']
   ],
   P4: [
-    ['Complete process validation (IQ/OQ/PQ)', 'mfg'],
-    ['Execute tech transfer to manufacturing', 'mfg'],
-    ['Respond to CHMP rapporteur / FDA queries', 'reg'],
-    ['Approve labelling and IFU artwork', 'com'],
-    ['Close CAPAs and non-conformances', 'qua']
+    ['Run drug product demand forecasting', 'sc'],
+    ['Confirm packaging component readiness', 'src'],
+    ['Schedule manufacturing', 'mfg'],
+    ['Execute drug product production', 'mfg'],
+    ['Complete batch release', 'qua'],
+    ['Validate transportation lanes', 'sc'],
+    ['Ship drug product to the packaging site', 'sc'],
+    ['Align inventory planning', 'sc']
   ],
   P5: [
-    ['Complete the launch build and safety stock', 'sc'],
-    ['Certify the field force and complete training', 'com'],
-    ['File country registrations', 'reg'],
-    ['Secure payer listings and reimbursement', 'ma'],
-    ['Sign distribution and 3PL agreements', 'sc']
+    ['Execute packaging', 'mfg'],
+    ['Approve artwork', 'com'],
+    ['Approve labelling', 'reg'],
+    ['Release printed components', 'qua'],
+    ['Set up serialisation', 'it'],
+    ['Obtain quality approval', 'qua'],
+    ['Complete packaging release', 'qua'],
+    ['Complete transfer pricing', 'fin'],
+    ['Plan global distribution', 'sc']
   ],
   P6: [
-    ['Activate the pharmacovigilance plan', 'pm'],
-    ['Stand up complaint handling and vigilance', 'pm'],
-    ['Release the first production lots', 'mfg'],
-    ['Complete the BAU handover', 'gov']
+    ['Set up enterprise systems through Pfizer Connect', 'it'],
+    ['Run market readiness assessments', 'com'],
+    ['Hold launch readiness reviews', 'gov'],
+    ['Manage market approvals', 'reg'],
+    ['Prepare product listings', 'com'],
+    ['Submit artwork samples', 'reg'],
+    ['Confirm distribution centre readiness', 'sc'],
+    ['Run launch risk reviews', 'gov']
+  ],
+  P7: [
+    ['Run launch command centre governance', 'gov'],
+    ['Coordinate site to site', 'mfg'],
+    ['Align internal and external manufacturers', 'src'],
+    ['Take supply allocation decisions', 'sc'],
+    ['Track readiness milestones', 'gov'],
+    ['Manage exceptions', 'gov'],
+    ['Produce executive reporting', 'fin'],
+    ['Issue launch communications', 'com']
+  ],
+  P8: [
+    ['Ship finished product to the DC', 'sc'],
+    ['Receive inventory at the DC', 'sc'],
+    ['Enable market ordering', 'it'],
+    ['Activate the product listing', 'com'],
+    ['Execute the first commercial shipment', 'sc'],
+    ['Monitor demand', 'ma'],
+    ['Track supply performance', 'sc']
+  ],
+  P9: [
+    ['Monitor launch KPIs', 'gov'],
+    ['Track inventory health', 'sc'],
+    ['Monitor service levels', 'sc'],
+    ['Review supply continuity', 'src'],
+    ['Capture lessons learned', 'gov'],
+    ['Assess launch agility', 'gov'],
+    ['Update the launch playbook', 'gov'],
+    ['Make recommendations for future launches', 'gov']
   ]
 };
 
-const PHASE_ORDER = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6'];
+const PHASE_ORDER = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8', 'P9'];
 const PERSONS = ['hf', 'mo', 'ak', 'sl', 'kt', 'lh', 'ap', 'tb', 'dm', 'rm', 'jt', 'rd', 'jr'];
 const STATUS_LABEL = { ok: 'Complete', run: 'In progress', rk: 'At risk', late: 'Late', no: 'Not started' };
 
@@ -352,18 +361,11 @@ for (const L of LAUNCHES) {
 }
 
 /* ── build GateCriterion.json ───────────────────────────────────────── */
-/* Preserve Comirnaty's authored 6 (they reference seed_doc_varipulse_44). */
-const existingCrit = JSON.parse(readFileSync(CRIT_JSON, 'utf8'));
-const varipulseCrit = existingCrit.filter(
-  (c) => c.gate && c.gate.id === 'seed_gate_varipulse_g3'
-);
-if (varipulseCrit.length !== 6) {
-  throw new Error(`Expected 6 Comirnaty G3 criteria to preserve, found ${varipulseCrit.length}`);
-}
-
-const critOut = [...varipulseCrit];
+/* Every launch, Comirnaty included, is scored from the nine-phase CRIT_TEMPLATE.
+ * The previously authored G3 set described the old design-control process and
+ * no longer matches the gate it now sits on. */
+const critOut = [];
 for (const L of LAUNCHES) {
-  if (L.launchId === Comirnaty) continue; // authored, already carried through
   const tmpl = CRIT_TEMPLATE[L.next];
   const total = tmpl.length;
   // met count reflects readiness; a still-open gate keeps at least one unmet.
@@ -387,12 +389,8 @@ for (const L of LAUNCHES) {
 }
 
 /* ── build Activity.json ────────────────────────────────────────────── */
-/* Preserve Comirnaty's authored 107 activities verbatim. */
-const existingActs = JSON.parse(readFileSync(ACT_JSON, 'utf8'));
-const varipulseActs = existingActs.filter((a) => a.launch && a.launch.id === Comirnaty);
-if (varipulseActs.length !== 107) {
-  throw new Error(`Expected 107 Comirnaty activities to preserve, found ${varipulseActs.length}`);
-}
+/* Activities are generated for every launch from ACT_TEMPLATE so the whole
+ * portfolio speaks the nine-phase process. */
 
 function autonomyFor(n) {
   // mostly autonomous, a scatter of recommend / human-led (mirrors 95A/10R/2H).
@@ -429,7 +427,7 @@ function detailFor(status) {
   }
 }
 
-const actOut = [...varipulseActs];
+const actOut = [];
 let personCursor = 0;
 let autoCounter = 0;
 
@@ -467,7 +465,7 @@ for (const L of launches) {
   const s = SCOPE[L.id];
   if (!s) throw new Error(`No SCOPE entry for launch ${L.id}`);
   L.launchValue = s.launchValue;
-  L.sterilisationMethod = s.fill-finish;
+  L.sterilisationMethod = s.fillFinish;
   L.manufactureSite = s.manufacture;
   L.registrationsFiled = s.regsFiled;
   L.registrationsTotal = s.regsTotal;
@@ -487,8 +485,8 @@ writeFileSync(ACT_JSON, JSON.stringify(actOut, null, 2) + '\n');
 
 /* ── summary ────────────────────────────────────────────────────────── */
 console.log(`Gates: ${gateOut.length}  (CSV rows ${csvRows.length - 1})`);
-console.log(`GateCriterion: ${critOut.length}  (Comirnaty preserved ${varipulseCrit.length})`);
-console.log(`Activities: ${actOut.length}  (Comirnaty preserved ${varipulseActs.length})`);
+console.log(`GateCriterion: ${critOut.length}`);
+console.log(`Activities: ${actOut.length}`);
 const perLaunchCrit = {};
 critOut.forEach((c) => {
   const g = c.gate.id;

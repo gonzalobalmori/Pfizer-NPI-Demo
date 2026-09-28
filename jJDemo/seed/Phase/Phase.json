@@ -2,43 +2,64 @@
   {
     "id": "seed_phase_p1",
     "code": "P1",
-    "name": "Early NPI readiness (strategic definition)",
-    "window": "Mar 2024 – Sep 2024",
+    "name": "Portfolio & Launch Strategy",
+    "window": "Mar 2024 - Aug 2024",
     "state": "closed"
   },
   {
     "id": "seed_phase_p2",
     "code": "P2",
-    "name": "NPI planning (supply & CMC definition)",
-    "window": "Oct 2024 – Jun 2026",
+    "name": "NPL Initiation & Planning",
+    "window": "Aug 2024 - Jan 2025",
     "state": "closed"
   },
   {
     "id": "seed_phase_p3",
     "code": "P3",
-    "name": "PPQ execution & filing preparation",
-    "window": "Jun 2026 – Nov 2026",
-    "state": "live"
+    "name": "Drug Substance (DS) Readiness",
+    "window": "Jan 2025 - Jun 2025",
+    "state": "closed"
   },
   {
     "id": "seed_phase_p4",
     "code": "P4",
-    "name": "Regulatory & access execution",
-    "window": "Nov 2026 – May 2027",
+    "name": "Drug Product (DP) Readiness",
+    "window": "Jun 2025 - Nov 2025",
     "state": "live"
   },
   {
     "id": "seed_phase_p5",
     "code": "P5",
-    "name": "Launch readiness",
-    "window": "May 2027 – Jun 2027",
-    "state": "queued"
+    "name": "Finished Product Readiness",
+    "window": "Nov 2025 - Apr 2026",
+    "state": "live"
   },
   {
     "id": "seed_phase_p6",
     "code": "P6",
-    "name": "Post-launch intelligence",
-    "window": "from Jun 2027",
+    "name": "Launch Readiness & Market Enablement",
+    "window": "Apr 2026 - Sep 2026",
+    "state": "live"
+  },
+  {
+    "id": "seed_phase_p7",
+    "code": "P7",
+    "name": "Global Launch Execution",
+    "window": "Sep 2026 - Feb 2027",
+    "state": "queued"
+  },
+  {
+    "id": "seed_phase_p8",
+    "code": "P8",
+    "name": "Market Launch",
+    "window": "Feb 2027 - Jul 2027",
+    "state": "queued"
+  },
+  {
+    "id": "seed_phase_p9",
+    "code": "P9",
+    "name": "Post-Launch Monitoring & Continuous Improvement",
+    "window": "from Jul 2027",
     "state": "queued"
   }
 ]

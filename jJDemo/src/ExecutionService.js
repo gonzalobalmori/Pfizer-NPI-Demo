@@ -194,20 +194,23 @@ function decisionHistory() {
 /* ── §2.2 Agent orchestration — Live board ──────────────────────── */
 
 var PHASE_META = {
-  seed_phase_p1: ['P1', 'Early NPI readiness (strategic definition)', 'closed'],
-  seed_phase_p2: ['P2', 'NPI planning (supply & CMC definition)', 'closed'],
-  seed_phase_p3: ['P3', 'PPQ execution & filing preparation', 'live'],
-  seed_phase_p4: ['P4', 'Regulatory & access execution', 'live'],
-  seed_phase_p5: ['P5', 'Launch readiness', 'queued'],
-  seed_phase_p6: ['P6', 'Post-launch intelligence', 'queued']
+  seed_phase_p1: ['P1', 'Portfolio & Launch Strategy', 'closed'],
+  seed_phase_p2: ['P2', 'NPL Initiation & Planning', 'closed'],
+  seed_phase_p3: ['P3', 'Drug Substance (DS) Readiness', 'closed'],
+  seed_phase_p4: ['P4', 'Drug Product (DP) Readiness', 'live'],
+  seed_phase_p5: ['P5', 'Finished Product Readiness', 'live'],
+  seed_phase_p6: ['P6', 'Launch Readiness & Market Enablement', 'live'],
+  seed_phase_p7: ['P7', 'Global Launch Execution', 'queued'],
+  seed_phase_p8: ['P8', 'Market Launch', 'queued'],
+  seed_phase_p9: ['P9', 'Post-Launch Monitoring & Continuous Improvement', 'queued']
 };
-var PHASE_ORDER = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6'];
+var PHASE_ORDER = ['P1', 'P2', 'P3', 'P4', 'P5', 'P6', 'P7', 'P8', 'P9'];
 /* Ordinal rank so gates compare numerically (a plain string sort puts "BAU"
    before "G5"). Mirrors PortfolioService.GATE_RANK. */
-var GATE_RANK = { G1: 1, G2: 2, G3: 3, G4: 4, G5: 5, BAU: 6 };
+var GATE_RANK = { G1: 1, G2: 2, G3: 3, G4: 4, G5: 5, G6: 6, G7: 7, G8: 8, BAU: 9 };
 /* The gate that CLOSES each phase — a finding in P4 puts the P4-closing gate
    (G4) at risk, which is what its card meta states. */
-var PHASE_GATE = { P1: 'G1', P2: 'G2', P3: 'G3', P4: 'G4', P5: 'G5', P6: 'BAU' };
+var PHASE_GATE = { P1: 'G1', P2: 'G2', P3: 'G3', P4: 'G4', P5: 'G5', P6: 'G6', P7: 'G7', P8: 'G8', P9: 'BAU' };
 
 /* The Finding<->Chain link is stored on Chain.finding (Finding.chain is a
  * non-inverse ref that does not resolve), so we build a findingId -> chainId
@@ -307,7 +310,7 @@ function liveBoard(franchise, market) {
     c.products.forEach(function (p) { products[p] = 1; });
   });
 
-  /* six phase columns */
+  /* one column per NPI phase */
   var columns = PHASE_ORDER.map(function (code) {
     var meta = null;
     for (var key in PHASE_META) { if (PHASE_META[key][0] === code) meta = PHASE_META[key]; }

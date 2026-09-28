@@ -1,48 +1,82 @@
 GateId,ProjectId,GateCode,GateName,BaselineDate,ForecastDate,SlipDays,Status
-G-Comirnaty_G1,PRJ-Comirnaty_G2,G1,NPI Readiness Gate,2024-09-24,2024-09-24,0,ok
-G-Comirnaty_G2,PRJ-Comirnaty_G2,G2,CMC Lock,2026-06-19,2026-06-19,0,ok
-G-Comirnaty_G3,PRJ-Comirnaty_G2,G3,Submission Commit,2026-11-04,2026-12-21,47,late
-G-Comirnaty_G4,PRJ-Comirnaty_G2,G4,Approval / Marketing Authorisation,2027-05-18,2027-05-18,0,no
-G-Comirnaty_G5,PRJ-Comirnaty_G2,G5,Launch Go / No-Go — First Ship,2027-06-29,2027-06-29,0,no
-G-Abrysvo_G2_G1,PRJ-Abrysvo_G2,G1,NPI Readiness Gate,2024-11-15,2024-11-15,0,ok
-G-Abrysvo_G2_G2,PRJ-Abrysvo_G2,G2,CMC Lock,2026-09-16,2026-09-30,14,late
-G-Abrysvo_G2_G3,PRJ-Abrysvo_G2,G3,Submission Commit,2027-03-15,2027-03-15,0,no
-G-Abrysvo_G2_G4,PRJ-Abrysvo_G2,G4,Approval / Marketing Authorisation,2027-08-15,2027-08-15,0,no
-G-Abrysvo_G2_G5,PRJ-Abrysvo_G2,G5,Launch Go / No-Go — First Ship,2027-12-15,2027-12-15,0,no
-G-Elrexfio_IV_G1,PRJ-Elrexfio_IV,G1,NPI Readiness Gate,2023-06-15,2023-06-15,0,ok
-G-Elrexfio_IV_G2,PRJ-Elrexfio_IV,G2,CMC Lock,2024-03-15,2024-03-15,0,ok
-G-Elrexfio_IV_G3,PRJ-Elrexfio_IV,G3,Submission Commit,2024-11-15,2024-11-15,0,ok
-G-Elrexfio_IV_G4,PRJ-Elrexfio_IV,G4,Approval / Marketing Authorisation,2025-07-15,2025-07-15,0,ok
-G-Elrexfio_IV_G5,PRJ-Elrexfio_IV,G5,Launch Go / No-Go — First Ship,2026-09-17,2026-09-26,9,late
-G-Elrexfio_IV_BAU,PRJ-Elrexfio_IV,BAU,BAU handover,2026-10-30,2026-10-30,0,no
-G-IMPELLA_ECP_G1,PRJ-IMPELLA_ECP,G1,NPI Readiness Gate,2024-05-15,2024-05-15,0,ok
-G-IMPELLA_ECP_G2,PRJ-IMPELLA_ECP,G2,CMC Lock,2025-01-19,2025-01-19,0,ok
-G-IMPELLA_ECP_G3,PRJ-IMPELLA_ECP,G3,Submission Commit,2025-09-15,2025-09-15,0,ok
-G-IMPELLA_ECP_G4,PRJ-IMPELLA_ECP,G4,Approval / Marketing Authorisation,2027-06-15,2027-06-15,0,no
-G-IMPELLA_ECP_G5,PRJ-IMPELLA_ECP,G5,Launch Go / No-Go — First Ship,2027-12-15,2027-12-15,0,no
-G-JAVELIN_XL_G1,PRJ-JAVELIN_XL,G1,NPI Readiness Gate,2023-09-15,2023-09-15,0,ok
-G-JAVELIN_XL_G2,PRJ-JAVELIN_XL,G2,CMC Lock,2024-06-15,2024-06-15,0,ok
-G-JAVELIN_XL_G3,PRJ-JAVELIN_XL,G3,Submission Commit,2025-03-12,2025-03-12,0,ok
-G-JAVELIN_XL_G4,PRJ-JAVELIN_XL,G4,Approval / Marketing Authorisation,2025-11-15,2025-11-15,0,ok
-G-JAVELIN_XL_G5,PRJ-JAVELIN_XL,G5,Launch Go / No-Go — First Ship,2027-12-15,2027-12-15,0,no
-G-PREVNAR20_4000_G1,PRJ-PREVNAR20_4000,G1,NPI Readiness Gate,2024-02-15,2024-02-15,0,ok
-G-PREVNAR20_4000_G2,PRJ-PREVNAR20_4000,G2,CMC Lock,2024-10-15,2024-10-15,0,ok
-G-PREVNAR20_4000_G3,PRJ-PREVNAR20_4000,G3,Submission Commit,2025-06-15,2025-06-15,0,ok
-G-PREVNAR20_4000_G4,PRJ-PREVNAR20_4000,G4,Approval / Marketing Authorisation,2026-10-12,2026-11-02,21,late
-G-PREVNAR20_4000_G5,PRJ-PREVNAR20_4000,G5,Launch Go / No-Go — First Ship,2026-12-14,2026-12-14,0,no
-G-Zavzpret_G1,PRJ-Zavzpret,G1,NPI Readiness Gate,2022-06-15,2022-06-15,0,ok
-G-Zavzpret_G2,PRJ-Zavzpret,G2,CMC Lock,2023-03-15,2023-03-15,0,ok
-G-Zavzpret_G3,PRJ-Zavzpret,G3,Submission Commit,2023-11-15,2023-11-15,0,ok
-G-Zavzpret_G4,PRJ-Zavzpret,G4,Approval / Marketing Authorisation,2024-07-15,2024-07-15,0,ok
-G-Zavzpret_G5,PRJ-Zavzpret,G5,Launch Go / No-Go — First Ship,2026-08-12,2026-08-12,0,ok
-G-Zavzpret_BAU,PRJ-Zavzpret,BAU,BAU handover,2026-10-30,2026-10-30,0,no
-G-Velsipity_G1,PRJ-Velsipity,G1,NPI Readiness Gate,2026-11-15,2026-11-15,0,no
-G-Velsipity_G2,PRJ-Velsipity,G2,CMC Lock,2027-04-15,2027-04-15,0,no
-G-Velsipity_G3,PRJ-Velsipity,G3,Submission Commit,2027-10-15,2027-10-15,0,no
-G-Velsipity_G4,PRJ-Velsipity,G4,Approval / Marketing Authorisation,2028-04-15,2028-04-15,0,no
-G-Velsipity_G5,PRJ-Velsipity,G5,Launch Go / No-Go — First Ship,2028-08-15,2028-08-15,0,no
-G-LITFULO_G1,PRJ-LITFULO,G1,NPI Readiness Gate,2024-08-15,2024-08-15,0,ok
-G-LITFULO_G2,PRJ-LITFULO,G2,CMC Lock,2025-06-15,2025-06-15,0,ok
-G-LITFULO_G3,PRJ-LITFULO,G3,Submission Commit,2026-11-03,2026-11-03,0,no
-G-LITFULO_G4,PRJ-LITFULO,G4,Approval / Marketing Authorisation,2027-06-15,2027-06-15,0,no
-G-LITFULO_G5,PRJ-LITFULO,G5,Launch Go / No-Go — First Ship,2027-12-15,2027-12-15,0,no
+G-VARIPULSE_G1,PRJ-Comirnaty_G2,G1,Launch Strategy Approved,2025-02-23,2025-02-23,0,ok
+G-VARIPULSE_G2,PRJ-Comirnaty_G2,G2,NPL Plan Approved,2025-07-25,2025-07-25,0,ok
+G-VARIPULSE_G3,PRJ-Comirnaty_G2,G3,DS Released,2025-12-24,2025-12-24,0,ok
+G-VARIPULSE_G4,PRJ-Comirnaty_G2,G4,DP Released,2026-05-25,2026-07-11,47,late
+G-VARIPULSE_G5,PRJ-Comirnaty_G2,G5,Finished Product Released,2026-10-24,2026-10-24,0,no
+G-VARIPULSE_G6,PRJ-Comirnaty_G2,G6,Launch Readiness Confirmed,2027-03-25,2027-03-25,0,no
+G-VARIPULSE_G7,PRJ-Comirnaty_G2,G7,Launch Go / No-Go,2027-08-24,2027-08-24,0,no
+G-VARIPULSE_G8,PRJ-Comirnaty_G2,G8,Commercial Availability,2028-01-23,2028-01-23,0,no
+G-VARIPULSE_BAU,PRJ-Comirnaty_G2,BAU,BAU handover,2028-06-23,2028-06-23,0,no
+G-OCTARAY_G2_G1,PRJ-Abrysvo_G2,G1,Launch Strategy Approved,2025-08-10,2025-08-10,0,ok
+G-OCTARAY_G2_G2,PRJ-Abrysvo_G2,G2,NPL Plan Approved,2026-01-09,2026-01-27,18,rk
+G-OCTARAY_G2_G3,PRJ-Abrysvo_G2,G3,DS Released,2026-06-10,2026-06-10,0,no
+G-OCTARAY_G2_G4,PRJ-Abrysvo_G2,G4,DP Released,2026-11-09,2026-11-09,0,no
+G-OCTARAY_G2_G5,PRJ-Abrysvo_G2,G5,Finished Product Released,2027-04-10,2027-04-10,0,no
+G-OCTARAY_G2_G6,PRJ-Abrysvo_G2,G6,Launch Readiness Confirmed,2027-09-09,2027-09-09,0,no
+G-OCTARAY_G2_G7,PRJ-Abrysvo_G2,G7,Launch Go / No-Go,2028-02-08,2028-02-08,0,no
+G-OCTARAY_G2_G8,PRJ-Abrysvo_G2,G8,Commercial Availability,2028-07-09,2028-07-09,0,no
+G-OCTARAY_G2_BAU,PRJ-Abrysvo_G2,BAU,BAU handover,2028-12-08,2028-12-08,0,no
+G-PURESEE_G1,PRJ-Zirabev,G1,Launch Strategy Approved,2025-06-21,2025-06-21,0,ok
+G-PURESEE_G2,PRJ-Zirabev,G2,NPL Plan Approved,2025-11-20,2025-11-20,0,ok
+G-PURESEE_G3,PRJ-Zirabev,G3,DS Released,2026-04-21,2026-05-15,24,rk
+G-PURESEE_G4,PRJ-Zirabev,G4,DP Released,2026-09-20,2026-09-20,0,no
+G-PURESEE_G5,PRJ-Zirabev,G5,Finished Product Released,2027-02-19,2027-02-19,0,no
+G-PURESEE_G6,PRJ-Zirabev,G6,Launch Readiness Confirmed,2027-07-21,2027-07-21,0,no
+G-PURESEE_G7,PRJ-Zirabev,G7,Launch Go / No-Go,2027-12-20,2027-12-20,0,no
+G-PURESEE_G8,PRJ-Zirabev,G8,Commercial Availability,2028-05-20,2028-05-20,0,no
+G-PURESEE_BAU,PRJ-Zirabev,BAU,BAU handover,2028-10-19,2028-10-19,0,no
+G-IMPELLA_ECP_G1,PRJ-Cibinqo,G1,Launch Strategy Approved,2024-11-02,2024-11-02,0,ok
+G-IMPELLA_ECP_G2,PRJ-Cibinqo,G2,NPL Plan Approved,2025-04-03,2025-04-03,0,ok
+G-IMPELLA_ECP_G3,PRJ-Cibinqo,G3,DS Released,2025-09-02,2025-09-02,0,ok
+G-IMPELLA_ECP_G4,PRJ-Cibinqo,G4,DP Released,2026-02-01,2026-02-01,0,ok
+G-IMPELLA_ECP_G5,PRJ-Cibinqo,G5,Finished Product Released,2026-07-03,2026-07-03,0,run
+G-IMPELLA_ECP_G6,PRJ-Cibinqo,G6,Launch Readiness Confirmed,2026-12-02,2026-12-02,0,no
+G-IMPELLA_ECP_G7,PRJ-Cibinqo,G7,Launch Go / No-Go,2027-05-03,2027-05-03,0,no
+G-IMPELLA_ECP_G8,PRJ-Cibinqo,G8,Commercial Availability,2027-10-02,2027-10-02,0,no
+G-IMPELLA_ECP_BAU,PRJ-Cibinqo,BAU,BAU handover,2028-03-02,2028-03-02,0,no
+G-ETHICON_4000_G1,PRJ-Zavicefta,G1,Launch Strategy Approved,2024-09-14,2024-09-14,0,ok
+G-ETHICON_4000_G2,PRJ-Zavicefta,G2,NPL Plan Approved,2025-02-13,2025-02-13,0,ok
+G-ETHICON_4000_G3,PRJ-Zavicefta,G3,DS Released,2025-07-15,2025-07-15,0,ok
+G-ETHICON_4000_G4,PRJ-Zavicefta,G4,DP Released,2025-12-14,2025-12-14,0,ok
+G-ETHICON_4000_G5,PRJ-Zavicefta,G5,Finished Product Released,2026-05-15,2026-05-15,0,ok
+G-ETHICON_4000_G6,PRJ-Zavicefta,G6,Launch Readiness Confirmed,2026-10-14,2026-10-26,12,rk
+G-ETHICON_4000_G7,PRJ-Zavicefta,G7,Launch Go / No-Go,2027-03-15,2027-03-15,0,no
+G-ETHICON_4000_G8,PRJ-Zavicefta,G8,Commercial Availability,2027-08-14,2027-08-14,0,no
+G-ETHICON_4000_BAU,PRJ-Zavicefta,BAU,BAU handover,2028-01-13,2028-01-13,0,no
+G-JAVELIN_XL_G1,PRJ-Velsipity,G1,Launch Strategy Approved,2024-07-13,2024-07-13,0,ok
+G-JAVELIN_XL_G2,PRJ-Velsipity,G2,NPL Plan Approved,2024-12-12,2024-12-12,0,ok
+G-JAVELIN_XL_G3,PRJ-Velsipity,G3,DS Released,2025-05-13,2025-05-13,0,ok
+G-JAVELIN_XL_G4,PRJ-Velsipity,G4,DP Released,2025-10-12,2025-10-12,0,ok
+G-JAVELIN_XL_G5,PRJ-Velsipity,G5,Finished Product Released,2026-03-13,2026-03-13,0,ok
+G-JAVELIN_XL_G6,PRJ-Velsipity,G6,Launch Readiness Confirmed,2026-08-12,2026-08-12,0,ok
+G-JAVELIN_XL_G7,PRJ-Velsipity,G7,Launch Go / No-Go,2027-01-11,2027-01-11,0,run
+G-JAVELIN_XL_G8,PRJ-Velsipity,G8,Commercial Availability,2027-06-12,2027-06-12,0,no
+G-JAVELIN_XL_BAU,PRJ-Velsipity,BAU,BAU handover,2027-11-11,2027-11-11,0,no
+G-EMBOTRAP_IV_G1,PRJ-Hympavzi,G1,Launch Strategy Approved,2024-04-06,2024-04-06,0,ok
+G-EMBOTRAP_IV_G2,PRJ-Hympavzi,G2,NPL Plan Approved,2024-09-05,2024-09-05,0,ok
+G-EMBOTRAP_IV_G3,PRJ-Hympavzi,G3,DS Released,2025-02-04,2025-02-04,0,ok
+G-EMBOTRAP_IV_G4,PRJ-Hympavzi,G4,DP Released,2025-07-06,2025-07-06,0,ok
+G-EMBOTRAP_IV_G5,PRJ-Hympavzi,G5,Finished Product Released,2025-12-05,2025-12-05,0,ok
+G-EMBOTRAP_IV_G6,PRJ-Hympavzi,G6,Launch Readiness Confirmed,2026-05-06,2026-05-06,0,ok
+G-EMBOTRAP_IV_G7,PRJ-Hympavzi,G7,Launch Go / No-Go,2026-10-05,2026-10-05,0,ok
+G-EMBOTRAP_IV_G8,PRJ-Hympavzi,G8,Commercial Availability,2027-03-06,2027-03-15,9,rk
+G-EMBOTRAP_IV_BAU,PRJ-Hympavzi,BAU,BAU handover,2027-08-05,2027-08-05,0,no
+G-OTTAVA_G1,PRJ-Zavzpret,G1,Launch Strategy Approved,2026-02-07,2026-02-07,0,run
+G-OTTAVA_G2,PRJ-Zavzpret,G2,NPL Plan Approved,2026-07-09,2026-07-09,0,no
+G-OTTAVA_G3,PRJ-Zavzpret,G3,DS Released,2026-12-08,2026-12-08,0,no
+G-OTTAVA_G4,PRJ-Zavzpret,G4,DP Released,2027-05-09,2027-05-09,0,no
+G-OTTAVA_G5,PRJ-Zavzpret,G5,Finished Product Released,2027-10-08,2027-10-08,0,no
+G-OTTAVA_G6,PRJ-Zavzpret,G6,Launch Readiness Confirmed,2028-03-08,2028-03-08,0,no
+G-OTTAVA_G7,PRJ-Zavzpret,G7,Launch Go / No-Go,2028-08-07,2028-08-07,0,no
+G-OTTAVA_G8,PRJ-Zavzpret,G8,Commercial Availability,2029-01-06,2029-01-06,0,no
+G-OTTAVA_BAU,PRJ-Zavzpret,BAU,BAU handover,2029-06-07,2029-06-07,0,no
+G-DUALTO_G1,PRJ-Fragmin,G1,Launch Strategy Approved,2023-10-14,2023-10-14,0,ok
+G-DUALTO_G2,PRJ-Fragmin,G2,NPL Plan Approved,2024-03-14,2024-03-14,0,ok
+G-DUALTO_G3,PRJ-Fragmin,G3,DS Released,2024-08-13,2024-08-13,0,ok
+G-DUALTO_G4,PRJ-Fragmin,G4,DP Released,2025-01-12,2025-01-12,0,ok
+G-DUALTO_G5,PRJ-Fragmin,G5,Finished Product Released,2025-06-13,2025-06-13,0,ok
+G-DUALTO_G6,PRJ-Fragmin,G6,Launch Readiness Confirmed,2025-11-12,2025-11-12,0,ok
+G-DUALTO_G7,PRJ-Fragmin,G7,Launch Go / No-Go,2026-04-13,2026-04-13,0,ok
+G-DUALTO_G8,PRJ-Fragmin,G8,Commercial Availability,2026-09-12,2026-09-12,0,ok
+G-DUALTO_BAU,PRJ-Fragmin,BAU,BAU handover,2027-02-11,2027-02-11,0,run
