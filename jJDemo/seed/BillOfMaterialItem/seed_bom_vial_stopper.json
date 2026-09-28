@@ -24,24 +24,24 @@
     }
   },
   {
-    "id": "seed_bom_vial_stopper_berobenatide_osa",
+    "id": "seed_bom_vial_stopper_sigvotatug_nsclc",
     "partName": "Lyophilisation stopper",
     "sourcingMode": "SINGLE_SOURCE",
     "frozenAtGate": "G2",
     "launch": {
-      "id": "seed_launch_berobenatide_osa"
+      "id": "seed_launch_sigvotatug_nsclc"
     },
     "supplier": {
       "id": "seed_supplier_aptar"
     }
   },
   {
-    "id": "seed_bom_vial_stopper_berobenatide_knee_oa",
+    "id": "seed_bom_vial_stopper_pf08634404_crc",
     "partName": "Lyophilisation stopper",
     "sourcingMode": "SINGLE_SOURCE",
     "frozenAtGate": "G2",
     "launch": {
-      "id": "seed_launch_berobenatide_knee_oa"
+      "id": "seed_launch_pf08634404_crc"
     },
     "supplier": {
       "id": "seed_supplier_aptar"

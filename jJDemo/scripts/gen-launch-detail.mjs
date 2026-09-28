@@ -1,6 +1,6 @@
 /*
  * Reproducible generator for the Product-detail data layer, so EVERY launch's
- * drill-down page is as complete and connected as Berobenatide OB's.
+ * drill-down page is as complete and connected as Berobenatide's.
  *
  * It writes four files, deterministically (no randomness → re-running is a
  * no-op diff):
@@ -19,13 +19,13 @@
  *                                     clean gate shows criteria met / in-hand
  *                                     with no risk flag. met count tracks the
  *                                     launch's readinessPct.
- *   4. seed/Activity/Activity.json  — a full Berobenatide OB-shaped activity board for
+ *   4. seed/Activity/Activity.json  — a full Berobenatide-shaped activity board for
  *                                     every launch, statuses shifted to each
  *                                     launch's phase (closed behind, in-flight
  *                                     at, not-started ahead).
  *
  * INVARIANTS honoured:
- *   - Berobenatide OB (seed_launch_berobenatide_obesity) is preserved VERBATIM across gates,
+ *   - Berobenatide (seed_launch_berobenatide_obesity) is preserved VERBATIM across gates,
  *     its 6 G3 criteria (incl. seed_gc_berobenatide_obesity_g3_sterilisation → evidence
  *     seed_doc_berobenatide_obesity_44) and its 107 authored activities (the reconciliation
  *     fixture §3.6.7–8). We only ADD scope fields to its Launch record.
@@ -223,10 +223,10 @@ writeFileSync(P_GATE, JSON.stringify(outGates, null, 2) + '\n');
 
 /* ════════════════════════ 3. GATE CRITERIA ══════════════════════ */
 const existingCrit = JSON.parse(readFileSync(P_CRIT, 'utf8'));
-/* preserve Berobenatide OB's 6 authored criteria verbatim (incl. evidence link). */
+/* preserve Berobenatide's 6 authored criteria verbatim (incl. evidence link). */
 const berobenatide_obesityCrit = existingCrit.filter((c) => c.gate && c.gate.id === 'seed_gate_berobenatide_obesity_g3');
 if (berobenatide_obesityCrit.length !== 6) {
-  throw new Error(`Expected 6 Berobenatide OB criteria to preserve, found ${berobenatide_obesityCrit.length}`);
+  throw new Error(`Expected 6 Berobenatide criteria to preserve, found ${berobenatide_obesityCrit.length}`);
 }
 const outCrit = [...berobenatide_obesityCrit];
 
@@ -262,7 +262,7 @@ writeFileSync(P_CRIT, JSON.stringify(outCrit, null, 2) + '\n');
 const existingActs = JSON.parse(readFileSync(P_ACT, 'utf8'));
 const berobenatide_obesityActs = existingActs.filter((a) => a.launch && a.launch.id === BERO_OB);
 if (berobenatide_obesityActs.length !== 107) {
-  throw new Error(`Expected 107 Berobenatide OB activities to preserve, found ${berobenatide_obesityActs.length}`);
+  throw new Error(`Expected 107 Berobenatide activities to preserve, found ${berobenatide_obesityActs.length}`);
 }
 const outActs = [...berobenatide_obesityActs];
 

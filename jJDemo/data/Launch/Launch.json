@@ -1,14 +1,14 @@
 [
   {
     "id": "seed_launch_berobenatide_obesity",
-    "productName": "Berobenatide — Obesity",
-    "shortName": "Berobenatide OB",
+    "productName": "Berobenatide",
+    "shortName": "Berobenatide",
     "molecule": "Berobenatide",
-    "indication": "Obesity",
+    "indication": "Obesity, knee OA, sleep apnoea, T2D",
     "franchise": {
       "id": "seed_franchise_internal_medicine"
     },
-    "modality": "Monthly GLP-1 receptor agonist",
+    "modality": "Monthly GLP-1 agonist",
     "developmentPhase": "Phase 3",
     "trialCount": 10,
     "estimatedLaunch": "~2028",
@@ -37,19 +37,18 @@
   },
   {
     "id": "seed_launch_berobenatide_t2d",
-    "productName": "Berobenatide — Type 2 Diabetes",
-    "shortName": "Berobenatide T2D",
-    "molecule": "Berobenatide",
-    "indication": "Type 2 diabetes",
+    "productName": "Sasanlimab",
+    "shortName": "Sasanlimab",
+    "molecule": "Sasanlimab",
+    "indication": "Non-muscle-invasive bladder cancer",
     "franchise": {
-      "id": "seed_franchise_internal_medicine"
+      "id": "seed_franchise_oncology"
     },
-    "modality": "Monthly GLP-1 receptor agonist",
+    "modality": "Anti-PD-1 monoclonal antibody",
     "developmentPhase": "Phase 3",
-    "trialCount": 10,
-    "estimatedLaunch": "~2028",
-    "targetMarkets": "US, EU, Global",
-    "regulatoryRoute": "NDA (FDA) + MAA centralised procedure (EMA)",
+    "estimatedLaunch": "2027–2028",
+    "targetMarkets": "US, EU",
+    "regulatoryRoute": "BLA (FDA) + MAA centralised procedure (EMA)",
     "leadMarket": {
       "id": "seed_market_de"
     },
@@ -61,7 +60,7 @@
     "firstShipDate": "2028-03-31",
     "readinessPct": 46,
     "launchValue": 54000000,
-    "fillFinishRoute": "Aseptic fill — prefilled syringe",
+    "fillFinishRoute": "Aseptic fill — single-use vial",
     "manufactureSite": "Puurs",
     "registrationsFiled": 3,
     "registrationsTotal": 12,
@@ -73,19 +72,18 @@
   },
   {
     "id": "seed_launch_berobenatide_osa",
-    "productName": "Berobenatide — Obstructive Sleep Apnoea",
-    "shortName": "Berobenatide OSA",
-    "molecule": "Berobenatide",
-    "indication": "Obstructive sleep apnoea",
+    "productName": "Vepdegestrant",
+    "shortName": "Vepdegestrant",
+    "molecule": "Vepdegestrant",
+    "indication": "HR+/HER2− advanced breast cancer",
     "franchise": {
-      "id": "seed_franchise_internal_medicine"
+      "id": "seed_franchise_oncology"
     },
-    "modality": "Monthly GLP-1 receptor agonist",
+    "modality": "Oral ER degrader (PROTAC)",
     "developmentPhase": "Phase 3",
-    "trialCount": 10,
-    "estimatedLaunch": "~2028",
+    "estimatedLaunch": "2027–2028",
     "targetMarkets": "US, EU",
-    "regulatoryRoute": "NDA supplement (FDA) + Type II variation (EMA)",
+    "regulatoryRoute": "NDA (FDA) + MAA centralised procedure (EMA)",
     "leadMarket": {
       "id": "seed_market_us"
     },
@@ -97,8 +95,8 @@
     "firstShipDate": "2028-06-30",
     "readinessPct": 57,
     "launchValue": 76000000,
-    "fillFinishRoute": "Aseptic fill — prefilled syringe",
-    "manufactureSite": "Puurs + Baxter Halle",
+    "fillFinishRoute": "Oral solid dose — film-coated tablet",
+    "manufactureSite": "Freiburg",
     "registrationsFiled": 6,
     "registrationsTotal": 12,
     "launchBuildUnits": 3100,
@@ -109,19 +107,18 @@
   },
   {
     "id": "seed_launch_berobenatide_knee_oa",
-    "productName": "Berobenatide — Knee Osteoarthritis",
-    "shortName": "Berobenatide OA",
-    "molecule": "Berobenatide",
-    "indication": "Knee osteoarthritis",
+    "productName": "PF-07817883",
+    "shortName": "PF-07817883",
+    "molecule": "PF-07817883",
+    "indication": "COVID-19 (oral antiviral)",
     "franchise": {
-      "id": "seed_franchise_internal_medicine"
+      "id": "seed_franchise_vaccines"
     },
-    "modality": "Monthly GLP-1 receptor agonist",
+    "modality": "Oral 3CL protease inhibitor",
     "developmentPhase": "Phase 3",
-    "trialCount": 10,
-    "estimatedLaunch": "~2028",
+    "estimatedLaunch": "2027–2028",
     "targetMarkets": "US, EU",
-    "regulatoryRoute": "NDA supplement (FDA) + Type II variation (EMA)",
+    "regulatoryRoute": "NDA (FDA) + MAA centralised procedure (EMA)",
     "leadMarket": {
       "id": "seed_market_us"
     },
@@ -134,8 +131,8 @@
     "readinessPct": 74,
     "scheduleFloatDays": 18,
     "launchValue": 88000000,
-    "fillFinishRoute": "Aseptic fill — prefilled syringe",
-    "manufactureSite": "Puurs",
+    "fillFinishRoute": "Oral solid dose — film-coated tablet",
+    "manufactureSite": "Freiburg",
     "registrationsFiled": 7,
     "registrationsTotal": 9,
     "launchBuildUnits": 5200,
@@ -146,14 +143,14 @@
   },
   {
     "id": "seed_launch_met097_obesity",
-    "productName": "MET097 — Obesity",
+    "productName": "MET097",
     "shortName": "MET097",
     "molecule": "MET097",
     "indication": "Obesity",
     "franchise": {
       "id": "seed_franchise_internal_medicine"
     },
-    "modality": "Monthly injectable GLP-1 receptor agonist",
+    "modality": "Monthly injectable GLP-1",
     "developmentPhase": "Phase 3",
     "trialCount": 9,
     "estimatedLaunch": "~2028",
@@ -183,14 +180,14 @@
   },
   {
     "id": "seed_launch_pf3945_obesity",
-    "productName": "PF-3945 — Obesity",
+    "productName": "PF-3945",
     "shortName": "PF-3945",
     "molecule": "PF-3945",
     "indication": "Obesity",
     "franchise": {
       "id": "seed_franchise_internal_medicine"
     },
-    "modality": "Amylin analogue fixed-dose combination (with berobenatide)",
+    "modality": "Amylin-based combo (w/ berobenatide)",
     "developmentPhase": "Phase 2",
     "estimatedLaunch": "Post-2028",
     "targetMarkets": "US, EU",
@@ -219,14 +216,14 @@
   },
   {
     "id": "seed_launch_atirmociclib_mbc",
-    "productName": "Atirmociclib — HR+/HER2− Metastatic Breast Cancer (1L)",
+    "productName": "Atirmociclib",
     "shortName": "Atirmociclib",
     "molecule": "Atirmociclib",
-    "indication": "HR+/HER2− metastatic breast cancer (first line)",
+    "indication": "HR+/HER2− metastatic breast cancer (1L)",
     "franchise": {
       "id": "seed_franchise_oncology"
     },
-    "modality": "Selective CDK4 inhibitor",
+    "modality": "CDK4 inhibitor",
     "developmentPhase": "Late Phase 3",
     "estimatedLaunch": "2027–2028",
     "targetMarkets": "US, EU",
@@ -254,14 +251,14 @@
   },
   {
     "id": "seed_launch_sigvotatug_nsclc",
-    "productName": "Sigvotatug vedotin — Metastatic NSCLC",
+    "productName": "Sigvotatug vedotin",
     "shortName": "Sigvotatug",
     "molecule": "Sigvotatug vedotin",
-    "indication": "Metastatic non-small cell lung cancer",
+    "indication": "Metastatic NSCLC",
     "franchise": {
       "id": "seed_franchise_oncology"
     },
-    "modality": "Antibody-drug conjugate (integrin β-6 targeted)",
+    "modality": "Antibody-drug conjugate (ADC)",
     "developmentPhase": "Late Phase 3",
     "estimatedLaunch": "2027–2028",
     "targetMarkets": "US, EU",
@@ -289,14 +286,14 @@
   },
   {
     "id": "seed_launch_pf08634404_crc",
-    "productName": "PF-08634404 — Metastatic Colorectal Cancer / 1L NSCLC",
+    "productName": "PF-08634404",
     "shortName": "PF-08634404",
     "molecule": "PF-08634404",
-    "indication": "Metastatic colorectal cancer; first-line NSCLC",
+    "indication": "Metastatic colorectal cancer; 1L NSCLC",
     "franchise": {
       "id": "seed_franchise_oncology"
     },
-    "modality": "Bispecific antibody — dual PD-1/VEGF inhibitor",
+    "modality": "Dual PD-1/VEGF inhibitor",
     "developmentPhase": "Phase 3",
     "trialCount": 2,
     "estimatedLaunch": "2028+",

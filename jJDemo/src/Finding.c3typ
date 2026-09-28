@@ -68,7 +68,7 @@ entity type Finding mixes HasExposure {
   /** The launch this finding is raised against. */
   launch: Launch
 
-  /** Additional launches the finding hits (e.g. NPI-0388 hits all four berobenatide programmes). */
+  /** Additional launches the finding hits (e.g. NPI-0388 hits all four sterile-injectable programmes). */
   otherLaunches: [Launch]
 
   /** The market rollout the finding is specific to, where applicable. */

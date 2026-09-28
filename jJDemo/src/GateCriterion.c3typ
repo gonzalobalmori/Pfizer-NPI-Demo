@@ -1,6 +1,6 @@
 /**
  * A single criterion that must be met for a {@link Gate} to close. G3 Submission
- * Commit for Berobenatide OB stands at "5 of 6 criteria met" — the PPQ
+ * Commit for Berobenatide stands at "5 of 6 criteria met" — the PPQ
  * process validation is the only one outstanding, which is precisely what
  * holds the gate in the anchor case.
  *

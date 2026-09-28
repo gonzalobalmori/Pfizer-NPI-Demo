@@ -40,20 +40,20 @@ Building the **Pfizer Biopharma agentic NPI Launch Control** app (Mode A, full-s
   {daysAtStake, recoverableDays, regulatorDays, pctRecoverable, openCount} + per-launch breakdown
   (worst-first); `openIssues()` enriched with `dependency, daysAtStake, recoverableDays, regulatorDays,
   recoverable`, adds an **AUTHORITY** waiting-on bucket + counts, and sorts by recoverableDays first.
-  New regulator-bound finding NPI-0420 (Berobenatide OB, FDA deficiency letter, 45d). **Cockpit** (`CockpitView.tsx`)
+  New regulator-bound finding NPI-0420 (Berobenatide, FDA deficiency letter, 45d). **Cockpit** (`CockpitView.tsx`)
   shows a full-width Recharts horizontal stacked bar (green recoverable / grey authority-fixed) per launch,
   headline + legend. **Open issues** (`AlertsView.tsx` — the LIVE view; `pages/OpenIssues/OpenIssues.tsx`
   is dead/unrouted) gained an "On an authority" lens, two live header tiles (Recoverable-by-acting /
   Waiting-on-authority replacing the old hardcoded "Worst slip"/"Agents resolving"), and a **Time impact**
   column with a "You can accelerate" (green) vs "Waiting on authority" (grey) chip. Verified reconciling:
-  totals 131d = 51 recoverable + 80 authority (39%); Berobenatide OB 43%, Berobenatide OSA 0% (all authority), others 100%;
+  totals 131d = 51 recoverable + 80 authority (39%); Berobenatide 43%, Vepdegestrant 0% (all authority), others 100%;
   openIssues counts YOU5/PERSON2/AGENT0/AUTHORITY3, total 10. Build green.
 
 - **Post-market removal + cockpit metric reconciliation (tasks #38–43):** ✅ DONE. (1) **Removed all
   post-market (P6) agent activity**: the two AUTO findings on the LAUNCHED PF-3945 — I-331 (Cashel yield)
   & I-328 (EU FMD) — and every dependent (chains chn01/chn02, 7 AgentActions, 5 Handoffs, 2 Decisions,
   CAPA-2026-0139, 2 GuardrailChecks, 4 Comments, the Veeva V0Q…139 source row). In-flight AUTO finding
-  I-319 (Berobenatide OA XL) KEPT. Live DB orphans purged via `removeAll`. Findings now **11** (USER5/HELD3/**AUTO1**/
+  I-319 (PF-07817883 XL) KEPT. Live DB orphans purged via `removeAll`. Findings now **11** (USER5/HELD3/**AUTO1**/
   RUNNING2); chains **11** (all in-flight); CAPAs **2** (0148, 0151). (2) **Cockpit top metrics now
   reconcile with portfolio**: `LaunchControlMetrics.launchHealthDistribution()` returns `active`
   (= total − LAUNCHED = 8) + `rollup {onPlan: ON_PLAN+PRE_MARKET=3, atRisk:4, offTrack:1, launched:1}`;
@@ -127,9 +127,9 @@ Feedback doc `.attachments/docx_extract/` (~28 items, Spanish, 11 screenshots). 
   (Regulatory Submission Filed @ G3, FDA Approved/CE @ G4, First Ship @ G5). Verified rendering.
 - **Cockpit "Next gate" column:** was showing markets; now shows the launch's actual next open gate via
   `nextGateByLaunch` lookup (`cockpit()`), with a code-vs-name dedup so "BAU handover" doesn't double.
-- **Item 1 — IssueView false CAPA framing:** `IssueView.tsx` hard-coded Berobenatide OB-G2 supplier-quality/CAPA copy
+- **Item 1 — IssueView false CAPA framing:** `IssueView.tsx` hard-coded Berobenatide-G2 supplier-quality/CAPA copy
   (CAPA-2026-0148, "Quality agent opened CAPA…", G3/+47d, validation/CHMP impact) that rendered for ANY finding —
-  so Berobenatide OA's commercial NPI-0319 showed a false quality/CAPA story. Now data-driven: `resolutionWorkspace()` returns
+  so PF-07817883's commercial NPI-0319 showed a false quality/CAPA story. Now data-driven: `resolutionWorkspace()` returns
   `capa` (from `CAPA.fetch` by finding) + `gateAtRisk` (launch's next open gate); the CAPA chip, quality tag, CAPA
   paragraph, gate meta, and impact block render conditionally on `ws.capa`/slip. Verified: 0319 → no CAPA, "Commercial"
   tag, "on schedule"; 417 → CAPA-2026-0148, G3, +47d.
@@ -140,7 +140,7 @@ Feedback doc `.attachments/docx_extract/` (~28 items, Spanish, 11 screenshots). 
 - **Item 3 — Manufacturing count confusion:** no data bug (whole-launch "4 Not started" vs P3-only "1/3" answer different
   questions). Clarified the FlowView Status strip label to "… across all phases" so the scope is explicit.
 - **Item 4 — India timeline empty:** `MK_QUARTERS` ended Q4 2027 but India ships Q2/Q3 2028 → row said "2" with no chips.
-  Extended window contiguously through Q3 2028. Verified: India now shows Berobenatide OSA (Q2 28) + Berobenatide OA XL (Q3 28).
+  Extended window contiguously through Q3 2028. Verified: India now shows Vepdegestrant (Q2 28) + PF-07817883 XL (Q3 28).
 
 Runtime gotcha: after editing backend `.js`, `runJsCode` can be stale — call `clearCaches({workspaceId})` then retry.
 `Filter.and` here is a member (`Filter.eq(...).and(...)`), NOT varargs-array.
@@ -156,7 +156,7 @@ Runtime gotcha: after editing backend `.js`, `runJsCode` can be stale — call `
   (88.8%; H merged into R), handoffs 24/9 chains (max 4), breaches 0, 12 domains/107 acts, openFindings 5 USER/2 HELD/3 AUTO/2 RUNNING,
   health 9 launches. `guardrailBreachCount(days)` & `decisionsTakenTrailing90Days(days)` take an `int` param.
 - **DEVIATION (§6, documented):** the prototype's per-launch exposure figures do NOT reconcile to its own €30.5M
-  headline (cockpit attention table sums to €44.1M; resolution narratives to €38M; only Berobenatide OB €18.4M is stated
+  headline (cockpit attention table sums to €44.1M; resolution narratives to €38M; only Berobenatide €18.4M is stated
   consistently). Per §3.6.1 (one source, derive don't store) we keep each launch's attested `revenueAtRisk` and
   DERIVE the portfolio total (€38M) rather than hard-coding €30.5M. Spec constants (Δ+€11.2M/30d, €412M base,
   readiness target 85/−6pts, slip target ≤5/worst 47) are returned as context alongside the derived value.
@@ -249,12 +249,12 @@ The React app reproduces the prototype's **screen model**, not React-Router rout
   covered by an OCH chain (Chain 9→13, AgentAction 33→44; activity log 24→32 completed fleet actions, 13
   agents). Reconciliation tests still 11/11. TowerView `agentLabel`/`agentBase` helpers dedupe the "agent"
   suffix (seed names carry "… agent"; prototype AL map appends it).
-- **Timeline gate data — FIXED.** The Timeline (Milestones) lens previously showed markers for Berobenatide OB
+- **Timeline gate data — FIXED.** The Timeline (Milestones) lens previously showed markers for Berobenatide
   only; the other 8 launches rendered as empty lines ("can barely see any information"). Root cause: only
-  Berobenatide OB had `Gate` seed records. Added `OTHER_GATES` in `gen_seed.mjs` (block just before
+  Berobenatide had `Gate` seed records. Added `OTHER_GATES` in `gen_seed.mjs` (block just before
   `write('Gate', gates)`) seeding gates for all 8 remaining launches with the **prototype's own §2.4
-  milestone dates** (Sigvotatug G5 17→26 Sep +9d, Berobenatide OSA G4 12 Oct→02 Nov +21d, Berobenatide T2D G2 16→30 Sep +14d,
-  PF-08634404 G3 03→14 Nov +11d, plus on-plan/future markers for MET097/Berobenatide OA/Berobenatide OA/PF-3945 and BAU
+  milestone dates** (Sigvotatug G5 17→26 Sep +9d, Vepdegestrant G4 12 Oct→02 Nov +21d, Sasanlimab G2 16→30 Sep +14d,
+  PF-08634404 G3 03→14 Nov +11d, plus on-plan/future markers for MET097/PF-07817883/PF-07817883/PF-3945 and BAU
   handovers). Gate count 5→22, all 9 timeline rows now carry markers (verified: `rowsWithNoGates:0`).
   Non-slipped gates set `baselineDate = forecastDate` so `monthPos` plots the single forecast marker.
 - **BU cards + Timeline slip bars — FIXED (readiness/float/next-gate/slip visuals).** BU cards previously
@@ -268,36 +268,36 @@ The React app reproduces the prototype's **screen model**, not React-Router rout
   scheduleFloatDays/nextGate/openIssues, each franchise carries summed openIssues. (3) `BuLaunchView` renders
   `bu-rd` bar (`bar-f r/a/g` by health, width=readinessPct%), `slp` pill (+Nd | Nd float | launched | on plan),
   next-gate (`bu-lp` phase → code + fmtDate). (4) `monthPos()` now uses fractional day-of-month so a +9d/+11d
-  in-month slip draws a visible striped `ms-sp` bar. **Data-difference note:** Berobenatide OB BU next gate is
+  in-month slip draws a visible striped `ms-sp` bar. **Data-difference note:** Berobenatide BU next gate is
   self-consistent **G3 21 Dec / +47d** (04 Nov baseline + 47d; matches issue-workspace "04 Nov → 21 Dec" and
   worst-slip KPI). The prototype's BU card hardcodes "13 Nov" text while labeling +47d — an internal prototype
   inconsistency; per §3.6.1 (one source, derive don't store) we keep the derived 21 Dec. All other 8 launches'
   BU dates/slips/readiness match the prototype exactly. Verified via browser (bu-view.png, timeline-view.png).
 - **Timeline per-market coherence — FIXED (color ↔ slip-bar ↔ launch-status agreement).** The expanded
   Timeline showed markets with `mlStatus:'ok'` (green/no slip bar) that nonetheless inherited the lead
-  gate's slip (Berobenatide OB ES/UK/US +47, Sigvotatug DE/FR/UK, Berobenatide OSA ES +21, PF-08634404 DE +11) — color/graph
-  said "on plan" while the data carried a delay — and Berobenatide T2D had **zero** MarketLaunch rows (empty expand)
+  gate's slip (Berobenatide ES/UK/US +47, Sigvotatug DE/FR/UK, Vepdegestrant ES +21, PF-08634404 DE +11) — color/graph
+  said "on plan" while the data carried a delay — and Sasanlimab had **zero** MarketLaunch rows (empty expand)
   despite a 14-day G2 slip. Root cause = incoherent **seed** (`seed/MarketLaunch/MarketLaunch.json`), NOT a
   render bug: `mlStatus` is the single shared tone source across Cockpit / Market lens / Timeline, so the
   fix belongs in the authored data (fixing only `deriveMarketGates` would desync the Timeline from the
   Market lens). **Coherence invariant now held:** a non-live market has slip>0 ⟺ status≠ok, and severity
   reconciles with launch health (OFF_TRACK→lead `ct`, exposed followers `rk`; AT_RISK→`rk`; on-time/live→`ok`).
-  Edits: Berobenatide OB ES/UK/US ok→rk; Sigvotatug DE/FR/UK ok→rk; Berobenatide OSA ES ok→rk and DE/UK moved Q1 27→Q3 27
+  Edits: Berobenatide ES/UK/US ok→rk; Sigvotatug DE/FR/UK ok→rk; Vepdegestrant ES ok→rk and DE/UK moved Q1 27→Q3 27
   (they shipped *before* the US lead → `deltaQ<0` spuriously projected them "live"; now same-quarter as lead
-  so they share the 21d G4 slip); PF-08634404 DE ok→rk; **added 5 Berobenatide T2D MarketLaunch rows** (DE-lead+US Q3 27
+  so they share the 21d G4 slip); PF-08634404 DE ok→rk; **added 5 Sasanlimab MarketLaunch rows** (DE-lead+US Q3 27
   `rk` on the late G2, FR/UK/JP later `ok`). Verified: `portfolioTimeline()` reports **0 incoherences**,
   Cockpit-vs-Timeline marketGates signatures match exactly, all 11 `test_Reconciliation` cases pass, build+
   lint green. Browser-verified (timeline-berobenatide_obesity-expanded.png): DE/FR red dot+red G3+red slip bar, ES/UK/US
   amber dot+amber G3+amber slip bar, AU/BR/CA/CN/JP grey dot+grey G2+no bar.
 - **Msg 8 — three coherence fixes (identity / authority / timeline-cohort) — FIXED.**
-  - **(8a) Timeline cohort tone.** Berobenatide OB (OFF_TRACK) was the only launch whose slipped-gate cohort was
+  - **(8a) Timeline cohort tone.** Berobenatide (OFF_TRACK) was the only launch whose slipped-gate cohort was
     two-toned: DE/FR `ct` but ES/UK/US `rk`, despite all five sharing the *identical* cohort (G3 / +47d /
     Q4 26 forecast) — same marker position, different colour, so a per-country difference was *always* shown
     even when the markets are in the same situation. Every other launch already renders its slipped cohort
-    uniformly. Fix (seed, `MarketLaunch.json`): Berobenatide OB US/UK/ES `rk`→`ct` so all five delayed markets read
+    uniformly. Fix (seed, `MarketLaunch.json`): Berobenatide US/UK/ES `rk`→`ct` so all five delayed markets read
     one tone. Coherence invariant still holds (0 incoherences).
     - **CLARIFIED INTENT (Msg 9, w/ screenshots):** the user CONFIRMED that all-same-colour + all-same-delay
-      (Berobenatide OB's 5 red markets each with an identical red striped slip bar) is exactly what they want — the
+      (Berobenatide's 5 red markets each with an identical red striped slip bar) is exactly what they want — the
       uniform-cohort change above is correct. The real defect they flagged is **(8a-fix) small slips were
       invisible** on the per-country rows: Sigvotatug's +9d G5 cohort (DE/ES/FR/UK) showed the amber G5 marker
       but NO slip bar. Root cause was a **positioning bug**, not just a floor: `MarketTimelineRow` positioned
@@ -314,7 +314,7 @@ The React app reproduces the prototype's **screen model**, not React-Router rout
          small to-scale slip is still drawn wide enough to separate the hollow baseline marker from the
          forecast marker. Applied to both `MarketTimelineRow` (per-country) and `MilestoneRowView` (lead row).
       Browser-verified: Sigvotatug DE/ES/FR/UK now render `ms-sp amb` bar (`width:5%`, baseline `left:0.95%` →
-      forecast `left:5.95%`); Berobenatide OB +47d bars unchanged (wide, red `ms-sp`, to-scale); on-plan markets show
+      forecast `left:5.95%`); Berobenatide +47d bars unchanged (wide, red `ms-sp`, to-scale); on-plan markets show
       no bar. 11/11 reconciliation tests still pass; build+lint green.
   - **(8b) Identity — "You" vs the signed-in user's name.** The signed-in user *is* George Hall
     (`seed_person_hf` owns all 12 Decisions), so `waitingOnFor` (PortfolioService.js) showed his USER findings
@@ -409,15 +409,15 @@ The React app reproduces the prototype's **screen model**, not React-Router rout
   a second reconciling finding → decision/approve → My-actions history → fleet activity log → Copilot answer),
   anchored on a DIFFERENT case for a DIFFERENT audience. Sharing screens between demos is by design. Picker
   auto-shows `d.steps.length` (all read "16 steps"); browser-verified the picker renders 3 cards each at 16.
-  - **Demo 1 `capa` (16 steps, chip CAPA-2026-0148):** the original Berobenatide OB sterilisation-slot CAPA
+  - **Demo 1 `capa` (16 steps, chip CAPA-2026-0148):** the original Berobenatide sterilisation-slot CAPA
     (NPI-0417), verbatim — the template arc all three mirror.
   - **Demo 2 `regulatory` (16 steps, chip REGULATORY):** regulatory-agency angle, anchored on **FDA 0420**
-    (Berobenatide OB G2 deficiency letter, view-only / authority-bound — no Approve) + **CHMP 0365** (Hospital 4000+,
+    (Berobenatide G2 deficiency letter, view-only / authority-bound — no Approve) + **CHMP 0365** (Hospital 4000+,
     CHMP rapporteur signature we owe, movable). **INVARIANT (post-review): there is exactly ONE authority-bound
     thread — NPI-0420/FDA (45 fixed/grey days in `PortfolioService.timeImpact()`). NPI-0365/CHMP is 100%
     recoverable (a signature Helena owes, not an agency wait). No card may claim "two agency clocks/threads on
     the authority."** Arc: menu → cockpit **time-recovery panel** (card 2 spots `.ti-pnl` / `.ti-card.reg`
-    "Waiting on an authority" 45d / `.ti-card.rec`; the ONE authority thread, FDA) → **Berobenatide OB launch detail**
+    "Waiting on an authority" 45d / `.ti-card.rec`; the ONE authority thread, FDA) → **Berobenatide launch detail**
     (card 3, `view:'launch', param:'seed_launch_berobenatide_obesity'`; `#ld-slip`/`#ld-rev` — reached in one click from
     the grey bar, NOT the product-lens list) → portfolio market lens **US** (card 4, `.wp[data-m=US]` FDA/the one
     fixed clock + `.wp[data-m=UK]` BSI/movable) → open issues **authority** filter (card 5, exactly ONE row:
@@ -428,21 +428,21 @@ The React app reproduces the prototype's **screen model**, not React-Router rout
     → 0365 issue (`#is-held`, held) → 0365 chain (`#hd-chain`) → dossier register (card 13 spots the SHORT group
     **headers** `#v-docs .dc-g[data-c=reg] .dc-gh` / `[data-c=cert] .dc-gh` — not the tall `.dc-g`, whose outline
     scrolled off) → history (card 14 spots `.fb2[data-f=esc]` + `#v-actions .sb-p.on .ev[data-npi="NPI-0365"]` —
-    the Berobenatide OSA escalation from THIS tour; ActionsView history rows now carry `data-npi`) → fleet log (all
+    the Vepdegestrant escalation from THIS tour; ActionsView history rows now carry `data-npi`) → fleet log (all
     franchises) → Copilot `chatAsk='regulatory'` (`.cq-ev`/`.cq-rec`/`.cq-act`; card 16 copy = "one FDA clock +
     one signature + CHMP slot + site visit", NOT "two agency clocks"). **Data:** `hist_0365` ESCALATED
     `DecisionHistoryEvent` seeded so History genuinely contains the NPI-0365 escalation
     (`decisionHistory().counts` = {taken:6, escalations:2, total:8}); reconciles History escalations with the KPI
     band ("Escalations open: 2") and the Escalated pane (0344 + 0365). `test_Reconciliation` unaffected (11/11).
   - **Demo 3 `supplier` (16 steps, chip SUPPLIER CHANGE):** shared-component supplier-reallocation, anchored on
-    **NPI-0412** (Heraeus line-3 dimensional-drift SPC defect on Berobenatide OB — a fully-modelled USER decision:
-    options a\*/b/c, 4-entry thread, **5 tower work steps**, 5 action-plan tasks) + **NPI-0388** (Berobenatide T2D G2
+    **NPI-0412** (Heraeus line-3 dimensional-drift SPC defect on Berobenatide — a fully-modelled USER decision:
+    options a\*/b/c, 4-entry thread, **5 tower work steps**, 5 action-plan tasks) + **NPI-0388** (Sasanlimab G2
     single-source, owns the reserved Neuss capacity). Arc: menu → cockpit → portfolio product lens (four
     launches share the ring electrode) → portfolio market lens **DE** (`.wp[data-m=DE]`, the concentration) →
     my actions pending (`.dr[data-npi="NPI-0412"]`) → agent tower **Vaccines**
     (`#c-seed_finding_412 .tbwk`, 5 steps) → tower autonomy KPIs → 0412 issue (`#pb-txt`/`.is-meta`) → three
     options (`#opt-a` reroute-line-5 recommended / `#opt-b` 100%-inspection / `#opt-c` Neuss diversion) →
-    action plan (`#run-all`, 4 of 5 steps agent-runnable) → thread (`#thr-417`) → 0388 Berobenatide T2D side
+    action plan (`#run-all`, 4 of 5 steps agent-runnable) → thread (`#thr-417`) → 0388 Sasanlimab side
     (`#is-t`/`#opt-a`, ships later w/ longer FDA path so it can lend) → approve (`#btn-app`) → history → fleet
     log → Copilot `chatAsk='supplier'` (`.cq-ev`/`.cq-rec`/`.cq-act`).
     - **Tower vs workspace chain — IMPORTANT:** `resolutionWorkspace('seed_finding_412').chain` returns **0**
@@ -514,18 +514,18 @@ registrations, Manufacturing & quality, Labelling & commercial, Supply chain & o
 surveillance).
 
 **Document register (COMPLETE per launch):** every launch now carries the full industry-standard Pfizer
-Biopharma checklist (81 items × 8 launches + Berobenatide OB's 83 = **731** total). The full set is always present
+Biopharma checklist (81 items × 8 launches + Berobenatide's 83 = **731** total). The full set is always present
 (manager: "que esten todos porque son cosas que hay que subir"); only `status` varies by how far the launch
-has progressed. Berobenatide OB keeps its 78 bespoke docs verbatim (incl. `seed_doc_berobenatide_obesity_44`, a GateCriterion
+has progressed. Berobenatide keeps its 78 bespoke docs verbatim (incl. `seed_doc_berobenatide_obesity_44`, a GateCriterion
 evidence link) + a new 5-doc supply-chain section. The other 8 launches are generated deterministically by
 `scripts/gen-documents.mjs` (in-repo, re-runnable), grading each doc's status from the launch's current phase
-vs the doc's expected-completion phase — PF-3945/P6 ≈ all approved, Berobenatide OA/P1 ≈ all not-started, mid-phase
+vs the doc's expected-completion phase — PF-3945/P6 ≈ all approved, PF-07817883/P1 ≈ all not-started, mid-phase
 graded in between; AT_RISK/OFF_TRACK launches surface a few `miss` gaps. Verified in-browser (200 OK) for
-PF-3945 + Berobenatide OA.
+PF-3945 + PF-07817883.
 
 **Product-detail consistency (manager review — "all data connected end-to-end, nothing hardcoded"):**
-Previously only Berobenatide OB was fully seeded and LaunchView hard-coded Berobenatide OB's scope/workstreams/issues
-for every product (PF-3945's detail was empty; Berobenatide OSA showed no at-risk steps; downstream/issues tables
+Previously only Berobenatide was fully seeded and LaunchView hard-coded Berobenatide's scope/workstreams/issues
+for every product (PF-3945's detail was empty; Vepdegestrant showed no at-risk steps; downstream/issues tables
 missing). Fixed end-to-end:
 - **Scope + gate ladders + criteria + activities generated for all 9 launches** by the single consolidated
   `scripts/gen-launch-detail.mjs` (deterministic, re-runnable; supersedes the earlier split
@@ -538,7 +538,7 @@ missing). Fixed end-to-end:
   short-slug ids were the bug that created orphan duplicate gates + broke the SrcPpmGate→Gate transform. An
   `AUTHORED` table in the script is the source of truth for narrative late/slip gates (berobenatide_obesity G3 +47, berobenatide_t2d
   G2 +14, sigvotatug_nsclc G5 +9, ethicon G4 +21, pf08634404_crc G3 +11, atirmociclib_mbc G5 ok) so re-runs never lose a late gate to file
-  drift. Berobenatide OB's 5 gates / 6 G3 criteria / 107 activities preserved verbatim (guard-checked, asserts counts).
+  drift. Berobenatide's 5 gates / 6 G3 criteria / 107 activities preserved verbatim (guard-checked, asserts counts).
   NOTE: an earlier bad-id upsert left 27 orphan short-slug gates in the DB (ethicon/met097_obesity g1-g5, berobenatide_t2d g1-g5,
   sigvotatug_nsclc/berobenatide_knee_oa g1-g5+bau) that shadowed the real active gate → "0/0 criteria"; these were removed via
   `Gate.removeAll` and the live total is back to 48. This made `LaunchControlMetrics.portfolioGateReadiness` a
@@ -555,7 +555,7 @@ missing). Fixed end-to-end:
   issues" when empty). Verified via launchRecord replay across ALL 9 launches: at-risk/late products surface
   risks in the center Gate-readiness table (berobenatide_obesity G3 5/6+1rk, berobenatide_t2d G2 5/6+1rk, sigvotatug_nsclc G5 4/6+2rk,
   ethicon G4 5/6+1rk, pf08634404_crc G3 5/6+1rk); on-plan/launched/pre-market are clean (met097_obesity G4 6/6, berobenatide_knee_oa G5 5/6,
-  atirmociclib_mbc BAU 6/6, pf3945_obesity G1 6/6 — 0 risks, 0 blocking). PF-3945 now fully populated (was empty); Berobenatide OSA now shows
+  atirmociclib_mbc BAU 6/6, pf3945_obesity G1 6/6 — 0 risks, 0 blocking). PF-3945 now fully populated (was empty); Vepdegestrant now shows
   its G4 at-risk criteria + full ladder. All carry 8 workstream bars + attested scope (launchValue, build units,
   field force, VAC, registrations, sterilisation, site).
 - **Portfolio legend** already carries all three gate states: "Gate closed" (gray `gd done`), "Gate at risk"
@@ -606,11 +606,11 @@ missing). Fixed end-to-end:
 - **"Missing products" in BU view** — NOT reproduced. All 9 launches are present and identical (health/slip/
   revenue) across product, timeline, and BU lenses at both the data and rendered-DOM level (BuPane renders
   3 segments / 7 franchise cards / 9 launches). No change needed beyond the PF-08634404 health alignment above.
-- **Berobenatide OA XL commercial-vs-quality incoherence** — NOT present in the live app. `seed_finding_319` and its
+- **PF-07817883 XL commercial-vs-quality incoherence** — NOT present in the live app. `seed_finding_319` and its
   `resolutionWorkspace` are fully commercial (field-force certification, reps, lab-session cohort), `capa: null`;
   IssueView gates ALL CAPA/Quality copy on `ws.capa`. Swept all 12 findings — every one is coherent
   (function/category/thread/CAPA aligned). The mixed CAPA/supplier narrative lives only in the DEAD
-  `ui/react/src/pages/Resolution/Resolution.tsx` (hardcoded Berobenatide OB CAPA-2026-0148 port), which is not
+  `ui/react/src/pages/Resolution/Resolution.tsx` (hardcoded Berobenatide CAPA-2026-0148 port), which is not
   imported anywhere (`pages/*` is unused; the live app uses `views/*`). No change needed.
 
 **Set C — per-market phase/gate (Scope C, derived)**
@@ -646,7 +646,7 @@ missing). Fixed end-to-end:
   `.mg-row`/`.mg-dot`/`.mg-mk`/`.mg-lead`/`.mg-gate`/`.mg-q` + `.msr-name`/`.msr-cv`/`.msr-mks`/`.msr-mk*` in
   `prototype.css`. Tone map: ct→red, rk→amber, ok→green (danger scale only; brand blue is never a health tone).
 - **Verified live (all four tabs reconcile):** cockpit shows 40 per-country rows; timeline expands 0→10 sub-rows on
-  click; launch record shows 10-market rollout — same `mlStatus` colours across all (e.g. Berobenatide OB Gen2 PFA: DE/FR=ct
+  click; launch record shows 10-market rollout — same `mlStatus` colours across all (e.g. Berobenatide Gen2 PFA: DE/FR=ct
   red, ES/UK/US/AU/BR/CA/CN/JP=ok green). Build+lint green, no critical pkg issues, 0 console errors.
 
 **Set E — cockpit attention panel flattened to one line per slipping market (supersedes Set D's grouped sub-rows)**
@@ -659,7 +659,7 @@ missing). Fixed end-to-end:
   slip. Panel renamed "Markets needing attention"; the `<MarketGateRows>` sub-row component was removed. Market shown
   as an `.atn-mk` chip next to the product name + `lead` tag; row toned by `mlStatus`. `healthTone` helper removed
   (unused). The Timeline expand and Launch-record rollout (Set D) are UNCHANGED — those keep the full per-market list.
-- **Verified live:** Berobenatide OB→DE+FR only (not ES/UK/US), Berobenatide OSA→US+FR+DE+UK, PF-08634404→IT, Sigvotatug→ES, Berobenatide T2D→DE.
+- **Verified live:** Berobenatide→DE+FR only (not ES/UK/US), Vepdegestrant→US+FR+DE+UK, PF-08634404→IT, Sigvotatug→ES, Sasanlimab→DE.
   Build+lint green, 0 console errors.
 - **Layout follow-up:** market moved to its OWN column (headers: Launch · Market · Gate · Slip · €M). Product name +
   `franchise · phaseCode` sub-line stays one line; Market cell = `.atn-mk-cell` (dot + code + `lead`); Gate = code bold
@@ -675,8 +675,8 @@ missing). Fixed end-to-end:
 User rule: "los datos tienen que cuadrar" — same product/market/person/issue/gate reads identically everywhere.
 All fixes touched only `dependency`/`owner`/`launch` refs + derivation logic — NEVER a finding `outcome`, so the
 11-spec `test_Reconciliation.js` (13 findings USER5/HELD3/AUTO3/RUNNING2, 107 activities, A95/R12) still passes.
-- **A — NPI-0388 re-attributed Berobenatide OB→Berobenatide T2D** (`data/Finding/Finding.json`): its Decision card already read
-  "Berobenatide T2D G2 and 3 others", phase p2 matches Berobenatide T2D. Result: Berobenatide OB open 5→4/blocking 3, Berobenatide T2D 1→2/blocking 1.
+- **A — NPI-0388 re-attributed Berobenatide→Sasanlimab** (`data/Finding/Finding.json`): its Decision card already read
+  "Sasanlimab G2 and 3 others", phase p2 matches Sasanlimab. Result: Berobenatide open 5→4/blocking 3, Sasanlimab 1→2/blocking 1.
 - **B — NPI-0412 given a USER Decision + 2 options** (`data/Decision`, `seed/DecisionOption`): it was a YOU finding
   with no Decision, so "on you" (5) ≠ Pending queue (4). Now Pending = 5 = YOU count. `seed_decision_412`/`seed_option_412_a,b`.
 - **C — authority-vs-escalation fix:** NPI-0344 & 0365 were internal escalations mis-tagged `dependency=REGULATOR`
@@ -708,8 +708,8 @@ All fixes touched only `dependency`/`owner`/`launch` refs + derivation logic —
   mis-wired to `row.exposureCause` (also null) instead of the gate slip the backend already computes. The "€30.5M exposed"
   band was hardcoded.
 - **Fix (data):** seeded `exposure`/`exposureCause` on the 4 gate-blocking (`ct`) findings so the €M column matches the
-  cards and sums to the band: NPI-0417 €18.4M (Berobenatide OB G3), NPI-0388 €6.2M (Berobenatide T2D G2), NPI-0402 €2.8M (Berobenatide OB G4),
-  NPI-0351 €3.1M (Sigvotatug G5) → **Σ = €30.5M**. NPI-0420 stays null (its Berobenatide OB revenue is already counted via 0417 —
+  cards and sums to the band: NPI-0417 €18.4M (Berobenatide G3), NPI-0388 €6.2M (Sasanlimab G2), NPI-0402 €2.8M (Berobenatide G4),
+  NPI-0351 €3.1M (Sigvotatug G5) → **Σ = €30.5M**. NPI-0420 stays null (its Berobenatide revenue is already counted via 0417 —
   no double-count; its real cost is the 45-day authority wait). `rk`/`ok` findings stay null (they consume float/are
   monitored, cards cite days not €). **No `outcome` touched → 11/11 reconciliation specs still pass.**
 - **Fix (AlertsView.tsx):** "Slip" column rewired from `exposureCause` to a new `GateSlipChip` reading `row.gateAtRisk`
@@ -728,9 +728,9 @@ model now enforced everywhere:
   launch's open-finding exposures **sum exactly to that launch's `revenueAtRisk`**, and Open Issues now reads a
   **server-computed total** (`PortfolioService.openIssues().totals.exposureOpen`) instead of re-summing visible rows.
   - Data edits: `data/Finding/Finding.json` — added `exposure` 2.3M (NPI-0359 PF-08634404, RUNNING) and 7.8M
-    (NPI-0344 Berobenatide OSA, HELD) + `exposureCause` prose; `data/Launch/Launch.json` — Berobenatide OB `revenueAtRisk`
+    (NPI-0344 Vepdegestrant, HELD) + `exposureCause` prose; `data/Launch/Launch.json` — Berobenatide `revenueAtRisk`
     18.4M→**21.2M** (= its open findings 0417 18.4M + 0402 2.8M). Per-launch check (all match): Sigvotatug 3.1M,
-    Berobenatide OSA 7.8M, Berobenatide T2D 6.2M, PF-08634404 2.3M, Berobenatide OB 21.2M → **Σ = €40.6M**.
+    Vepdegestrant 7.8M, Sasanlimab 6.2M, PF-08634404 2.3M, Berobenatide 21.2M → **Σ = €40.6M**.
   - **`exposureBlocking` €30.5M** is the gate-blocking (`ct`) subset, shown as the "of €X blocking a gate" subtitle —
     never as a rival headline. AlertsView 2nd header tile relabelled "Blocking a gate" → **"Revenue exposed"** €40.6M
     with "€30.5M blocking a gate" subtitle.
@@ -764,7 +764,7 @@ descripcion de las distintas demos … da a entender que solo la primera te ense
   demos (Demo 1 `capa`, Demo 2 `regulatory`, Demo 3 `supplier`) — previously they read the stale 83% / three at
   risk / €38M. Demo 1 step 5 "Four decisions"→"Five decisions" (matches Pending 5 = YOU). Demo 1 step 13 ("€18.4M
   released, launch slip 47→9, cockpit worst 47→21") verified CORRECT and left unchanged (NPI-0417 = €18.4M;
-  Berobenatide OSA G4 = 21d is next-worst after Berobenatide OB's 47). "107 activities / 32 actions / 28 minutes / €340k"
+  Vepdegestrant G4 = 21d is next-worst after Berobenatide's 47). "107 activities / 32 actions / 28 minutes / €340k"
   are narrative-only (no on-screen KPI conflict) — kept as story detail.
 - **Descriptions rewritten** so each demo advertises a FULL end-to-end tour (no longer implying only Demo 1 shows
   everything). Parallel three-blurb structure in the `DEMOS` registry: titles "A steriliser drops a booked slot" /
@@ -809,7 +809,7 @@ Governing rule reaffirmed: each client sees only ONE demo, so no demo may say "t
 Core theme fixed across Demo 2: there is exactly ONE authority-bound thread — **NPI-0420/FDA** (45 fixed grey
 days); **NPI-0365/CHMP is a recoverable signature Helena owes** (drafted, unsigned 6 days), NOT an agency wait.
 All "two agency clocks/threads" over-claims corrected. Edited GD2 cards 2,3,4,5,8,13,14,16: card 2 → cockpit
-time-recovery panel (`.ti-pnl`/`.ti-card.reg` 45d/`.ti-card.rec`); card 3 lands on Berobenatide OB launch detail; card 4
+time-recovery panel (`.ti-pnl`/`.ti-card.reg` 45d/`.ti-card.rec`); card 3 lands on Berobenatide launch detail; card 4
 market lens UK→US with both pins; card 5 singularised to one authority row; card 8 board card `#c-seed_finding_420`;
 card 13 short `.dc-gh` headers; card 14 spots `.fb2[data-f=esc]` + `.ev[data-npi="NPI-0365"]`; card 16 "one FDA
 clock + one signature + CHMP slot + site visit". Verified: 11/11 reconciliation, build/lint green, browser confirmed.
@@ -819,7 +819,7 @@ User (verbatim): "en la demo tres donde veo yo que tienen el mismo supplier, deb
 haga click en el detalle de los 4 y vea que es el mismo … el mapa no aplica. asegurate … las decisiones tomadas
 se vean reflejadas en el historico del humano y … en el del agent tambien." Three fixes, all done + verified:
 - **D3-1 · Shared supplier verifiable in launch detail.** `seed/BillOfMaterialItem/seed_bom_ring_electrode.json`
-  expanded from 1 row (Berobenatide OB only) to **4 rows** — all Heraeus (`seed_supplier_heraeus`), SINGLE_SOURCE, frozen
+  expanded from 1 row (Berobenatide only) to **4 rows** — all Heraeus (`seed_supplier_heraeus`), SINGLE_SOURCE, frozen
   at G2, part "Ring electrode subassembly" — for berobenatide_obesity/berobenatide_t2d/sigvotatug_nsclc/berobenatide_knee_oa. New `criticalSupply` projection
   in `PortfolioService.launchRecord()`: fetches this launch's BOM, then all BOM once, groups siblings by
   `supplier.id + partName`, returns `{partName, sourcingMode, frozenAtGate, supplierId, supplierName, sharedAcross,
@@ -827,10 +827,10 @@ se vean reflejadas en el historico del humano y … en el del agent tambien." Th
   `CriticalSupplySibling`, `LaunchOverview.criticalSupply`). `LaunchView.tsx` left rail renders a **"Critical supply"**
   card (`#ld-supply`, `.ld-sup*` styles in `prototype.css`): part, Heraeus, "Single-source · frozen at G2 · shared
   across 4 launches", and clickable sibling chips (`.ld-sup-lk` → `open('launch', siblingId)`). Verified runtime:
-  `sharedAcross:4`, 3 siblings (Berobenatide T2D/Sigvotatug/Berobenatide OA). NOTE: no launch has a `shortName` in seed → chips show
+  `sharedAcross:4`, 3 siblings (Sasanlimab/Sigvotatug/PF-07817883). NOTE: no launch has a `shortName` in seed → chips show
   full device names (still concrete + clickable).
 - **D3-2 · Map removed from Demo 3.** GD3 card 4 was the DE market-map step (user: "el mapa no aplica"). Replaced
-  with an **"Open one launch and see the same supplier"** step that drives to Berobenatide OB launch detail
+  with an **"Open one launch and see the same supplier"** step that drives to Berobenatide launch detail
   (`view:'launch', param:'seed_launch_berobenatide_obesity'`) and spotlights `#ld-supply` + `.ld-sup-sib` — the viewer
   clicks the sibling chips to confirm the same Heraeus part on each of the 4 launches.
 - **D3-3 · NPI-0412 decision reflected in BOTH records, spotlighted for this demo.** Added `hist_0412` MY/RUNNING
@@ -868,8 +868,8 @@ exagerado."
 
 New end-to-end feature: an outside authority (the FDA) moves a launch's clearance date; the platform fans the
 impact across every downstream commitment, auto-adjusting what it safely can and surfacing ONLY the items that
-need a human. Anchored on **Berobenatide OA** (robotic surgical platform, keyed on its FDA NDA clearance). The demo
-story: FDA slips Berobenatide OA's clearance six weeks; three downstream commitments auto-adjust, two decisions reach
+need a human. Anchored on **PF-07817883** (robotic surgical platform, keyed on its FDA NDA clearance). The demo
+story: FDA slips PF-07817883's clearance six weeks; three downstream commitments auto-adjust, two decisions reach
 Helena, she resolves both in one meeting.
 
 - **Backend types (`src/`):**
@@ -898,16 +898,16 @@ Helena, she resolves both in one meeting.
   `types/portfolio.ts`; `| 'cascade'` ViewId; pipeline-branch tab `{v:'cascade', l:'Milestone replan'}` in
   NavContext; `cascadeRun?: boolean` on DriveTarget; view registered in AppShell body. CSS `.cs-*` block appended
   to `prototype.css`. Added `data-launch={row.launchId}` to PortfolioView product-lens rows so the tour can
-  spotlight Berobenatide OA.
+  spotlight PF-07817883.
 - **4th guided demo (`shell/GuidedTour.tsx`):** `GD4` (16 steps), registered in DEMOS as `{id:'cascade', chip:
   'MILESTONE REPLAN', title:'A regulator slips a date'}`. Arc: menu → cockpit → portfolio product lens (spotlight
-  `.tkr[data-launch="seed_launch_pf3945_obesity"]`) → Berobenatide OA launch record → cascade view (on-track) → cascade with
+  `.tkr[data-launch="seed_launch_pf3945_obesity"]`) → PF-07817883 launch record → cascade view (on-track) → cascade with
   `cascadeRun:true` → exception summary → auto column → human finance card → human field card → resolve → cost
   booked → milestone re-planned → launch record re-timed → Copilot `chatAsk:'cascade'` → close (points at the
   on-screen Reset scenario button). New `cascade` CopilotPrompt (`seed/CopilotPrompt/CopilotPrompt.json`,
-  sortOrder 10, group "Diagnose a launch"): Q "The FDA slipped Berobenatide OA's clearance six weeks — what moves?", 5
+  sortOrder 10, group "Diagnose a launch"): Q "The FDA slipped PF-07817883's clearance six weeks — what moves?", 5
   evidence items (3 auto-adjusted / 2 need-you), rec + why bullets, actions [open the replan dashboard `cascade:`
-  / open the Berobenatide OA record `launch:seed_launch_pf3945_obesity`].
+  / open the PF-07817883 record `launch:seed_launch_pf3945_obesity`].
 - **Verified:** `runJsCode` full circuit (replan/resolve/reset) green; CascadeView renders live seed data +
   cascade c3Actions 200 OK (Playwright: run replan → KPIs +6 wks / 3 auto / 2 human / €48k, all 3
   CascadeReplanService calls 200 OK, then reset to clean baseline). Reconciliation lock intact — new types are
@@ -932,7 +932,7 @@ are not Finding/Activity/Gate instances — so reconciliation stays 11 findings 
   action"), and the "why me" aside. DEMOS chip `CAPA-2026-0148`→`STERILISATION SLOT`. `Decision.js` needs no change
   (its CAPA-closure step is guarded by a length check → no-op when no CAPA on the finding).
 - **Demo 3 (`supplier`, NPI-0412) — full manufacturing reframe.** Was a Heraeus shared-component supplier-change /
-  Neuss-diversion story; now: **Berobenatide OB builds commercial output on two lines (3 and 5); line 3 produced 3 batches
+  Neuss-diversion story; now: **Berobenatide builds commercial output on two lines (3 and 5); line 3 produced 3 batches
   out of spec on the dimensional check; a CAPA IS appropriate here (manufacturing defect) and is overdue because its
   DMAIC is open/in-progress.** Data fact encoded: V&V produces **3 batches as the norm** (12 at one site), so 3 bad
   commercial batches = a full run's worth. Changes:
@@ -944,17 +944,17 @@ are not Finding/Activity/Gate instances — so reconciliation stays 11 findings 
   - 3 DecisionOptions rewritten (`seed_option_412_a/b/c`): **A = prioritise markets & redistribute reduced volume
     (recommended); B = drive the in-progress DMAICs to close the CAPA & re-operate line 3; C = move output to another
     qualified site, same modality (contingent on agents confirming regulatory/engineering clearance + capacity).**
-    All Neuss/Berobenatide T2D/supplier-change content removed.
+    All Neuss/Sasanlimab/supplier-change content removed.
   - Comment thread `seed_comment_412_1..4` rewritten to Line Monitor → A. Kowalski (Quality, overdue CAPA/DMAIC) →
     Planning agent (shortfall model) → L. Haugen (three routes, market-priority is above his line). **M. Okafor
-    sourcing comment and all Neuss/Berobenatide T2D-diversion content removed** (per user screenshot).
+    sourcing comment and all Neuss/Sasanlimab-diversion content removed** (per user screenshot).
   - ActionPlanTasks `seed_task_412_a_1..5` realigned to Option A (quarantine 3 batches, supply from line 5, re-weight
     market allocation, re-baseline P3, manual approve revised market priority — Neuss hedge removed).
-  - `supplier` CopilotPrompt reframed: Q "What is putting Berobenatide OB's commercial batches at risk?", evidence =
+  - `supplier` CopilotPrompt reframed: Q "What is putting Berobenatide's commercial batches at risk?", evidence =
     line 3 vs line 5 / overdue CAPA-DMAIC / V&V-3-norm / G3 holds / three routes; rec = re-prioritise markets;
     actions → open NPI-0412. Heraeus-concentration framing gone.
   - GuidedTour `GD3` (16 steps) fully rewritten to the manufacturing arc; **dropped the `#ld-supply` Critical-supply
-    step, the NPI-0388/Berobenatide T2D "other side of the same part" step, and the "one part, four catheters" framing.** New
+    step, the NPI-0388/Sasanlimab "other side of the same part" step, and the "one part, four catheters" framing.** New
     steps land on the launch scope (`#ld-phase`/`#ld-strip`), spotlight the overdue CAPA (`#is-capa`), the 3 rewritten
     options (`#opt-a/b/c`), and a dedicated "Why the CAPA is overdue" DMAIC step. DEMOS chip `SUPPLIER CHANGE`→
     `MANUFACTURING`, title "One part, four catheters"→"Commercial batches at risk".
@@ -1115,7 +1115,7 @@ franchise primary keys, and none of the six supplied pipeline products existed a
 **That has been remediated.** What to know now:
 
 - **The portfolio is the six supplied molecules, as nine launch programmes** — one per
-  indication, because berobenatide runs four in parallel (obesity, T2D, sleep apnoea, knee OA)
+  indication, because the injectable programmes share one fill line (obesity, T2D, sleep apnoea, knee OA)
   off one drug substance. One programme sits in each of the nine phases.
 - **Ids carry no J&J asset name.** `seed_launch_berobenatide_obesity`, `_t2d`, `_osa`,
   `_knee_oa`, `_met097_obesity`, `_pf3945_obesity`, `_atirmociclib_mbc`, `_sigvotatug_nsclc`,

@@ -43,7 +43,7 @@ entity type CascadeImpactItem {
    */
   resolution: !string enum('AUTO', 'HUMAN')
 
-  /** For {@code AUTO} items: the action the platform takes (past-tense, for the log), e.g. "Held Run 2; released line for Berobenatide OB top-up". */
+  /** For {@code AUTO} items: the action the platform takes (past-tense, for the log), e.g. "Held Run 2; released line for Berobenatide top-up". */
   autoAction: string
 
   /** For {@code HUMAN} items: the question put to the owner, e.g. "Extend 3PL storage 6 weeks or repatriate kits?". */

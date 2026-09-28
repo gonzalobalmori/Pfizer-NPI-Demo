@@ -14,6 +14,7 @@ import { getLaunchRecord } from '@/api/portfolio';
 import { fmtDateYear } from '@/lib/format';
 import type { LaunchRecord, ActivityCard, WorkflowColumn } from '@/types/portfolio';
 import Glyph, { type GlyphName } from '@/components/Brand/Glyph';
+import { labelFor } from '@/productLabel';
 
 /* Status → label + pip glyph, verbatim from the prototype's FLST / FLPIP. */
 const ST_LABEL: Record<string, string> = {
@@ -147,7 +148,7 @@ export default function FlowView() {
     <div className="view on" id="v-flow">
       <div className="ld-top">
         <button className="bk" type="button" onClick={() => open('portfolio')}><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7" /></svg><span className="bk-lbl">Back</span></button>
-        <div><div className="ld-n">{o.product}</div>
+        <div><div className="ld-n">{labelFor(o)}</div>
           <div className="ld-s">{total} activities &middot; {columns.length} phases &middot; {gateCount} gates</div></div>
         <div className="h-sp"></div>
       </div>

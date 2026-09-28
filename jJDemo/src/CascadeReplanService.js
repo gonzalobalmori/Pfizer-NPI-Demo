@@ -38,7 +38,7 @@ function dayDiff(a, b) {
   return dir * n;
 }
 
-/* the milestone for a launch, or the anchor Berobenatide OA milestone by default. */
+/* the milestone for a launch, or the anchor PF-07817883 milestone by default. */
 function findMilestone(launchId, milestoneId) {
   if (milestoneId) {
     var byId = RegulatoryMilestone.fetch({

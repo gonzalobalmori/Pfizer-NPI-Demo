@@ -3,7 +3,7 @@
     "id": "seed_finding_412",
     "displayId": "NPI-0412",
     "headline": "Commercial batches at risk on line 3?",
-    "description": "Manufacturing at-risk commercial batches — Berobenatide OB runs commercial output on lines 3 and 5, and line 3 has produced 3 batches out of spec on the dimensional check. PPQ produces 3 batches as the norm, so the 3 affected batches are a full validation run's worth of commercial supply. An overdue CAPA is open on line 3 with a DMAIC still in progress.",
+    "description": "Manufacturing at-risk commercial batches — Berobenatide runs commercial output on lines 3 and 5, and line 3 has produced 3 batches out of spec on the dimensional check. PPQ produces 3 batches as the norm, so the 3 affected batches are a full validation run's worth of commercial supply. An overdue CAPA is open on line 3 with a DMAIC still in progress.",
     "signalSource": "Line 3 — 3 commercial batches out of spec on the dimensional check; CAPA overdue, DMAIC in progress",
     "detectedAt": null,
     "outcome": "USER",
@@ -40,7 +40,7 @@
     "dependency": "SELF",
     "daysAtStake": 12,
     "exposure": 18400000,
-    "exposureCause": "G3 Submission Commit slip — full Berobenatide OB first-year launch revenue at risk if the aseptic fill-finish window is missed",
+    "exposureCause": "G3 Submission Commit slip — full Berobenatide first-year launch revenue at risk if the aseptic fill-finish window is missed",
     "phase": {
       "id": "seed_phase_p3"
     },
@@ -64,7 +64,7 @@
     "dependency": "SELF",
     "daysAtStake": 9,
     "exposure": 6200000,
-    "exposureCause": "Single-source lyophilisation stopper supplier — Berobenatide T2D CMC Lock exposure if the second source is not activated before the gate",
+    "exposureCause": "Single-source lyophilisation stopper supplier — Sasanlimab CMC Lock exposure if the second source is not activated before the gate",
     "phase": {
       "id": "seed_phase_p2"
     },
@@ -190,7 +190,7 @@
     "dependency": "SELF",
     "daysAtStake": 7,
     "exposure": 2800000,
-    "exposureCause": "At-risk build write-off exposure — 2,600 Berobenatide OB units authorised above delegated authority ahead of G4 Marketing Authorisation",
+    "exposureCause": "At-risk build write-off exposure — 2,600 Berobenatide units authorised above delegated authority ahead of G4 Marketing Authorisation",
     "phase": {
       "id": "seed_phase_p4"
     },
@@ -214,7 +214,7 @@
     "dependency": "TEAM",
     "daysAtStake": 20,
     "exposure": 7800000,
-    "exposureCause": "Paediatric reimbursement dossier pending — no US formulary path for Berobenatide OSA paediatric presentations puts the full first-year US launch revenue at risk until access is granted",
+    "exposureCause": "Paediatric reimbursement dossier pending — no US formulary path for Vepdegestrant paediatric presentations puts the full first-year US launch revenue at risk until access is granted",
     "phase": {
       "id": "seed_phase_p4"
     },

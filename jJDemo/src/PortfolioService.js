@@ -1157,7 +1157,7 @@ function launchRecord(launchId) {
    * Findings raised against this launch, mapped to the Product-detail "Open
    * issues on this launch" table. Open = outcome USER / HELD / RUNNING (a call
    * you owe, a held item, or an in-flight agent action); AUTO = resolved. This
-   * replaces the hard-coded Berobenatide OB-only issues list so every product's issue
+   * replaces the hard-coded Berobenatide-only issues list so every product's issue
    * table reflects its own findings — and an on-plan launch with no open
    * findings reads clean (empty). blockingCount = open findings whose category
    * is 'ct' (critical — blocks the gate).

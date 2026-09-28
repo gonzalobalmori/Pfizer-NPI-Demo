@@ -14,6 +14,7 @@ import { fmtEuro, fmtDateYear, fmtGate } from '@/lib/format';
 import type { LaunchRecord, RecordGate, MlStatus } from '@/types/portfolio';
 import Glyph from '@/components/Brand/Glyph';
 import MlDot from '@/components/Brand/MlDot';
+import { labelFor } from '@/productLabel';
 
 /* MarketLaunch.status → the pill colour class (shared tone source: same field
  * the Cockpit rows and Market tab colour by, so a market reads the same colour
@@ -91,7 +92,7 @@ export default function LaunchView() {
   const slipText = nextGate && nextGate.slipDays != null ? `+${nextGate.slipDays}d` : '—';
 
   // Derive the US/EU regulatory pathways from the live route rather than
-  // hardcoding Berobenatide OB's NDA/MAA (fixes the PF-3945 biologic/small-molecule mismatch).
+  // hardcoding Berobenatide's NDA/MAA (fixes the PF-3945 biologic/small-molecule mismatch).
   // Supplement/variation forms are tested before their base form, since
   // "NDA supplement" also contains "NDA".
   const route = o.regulatoryRoute ?? '';
@@ -166,7 +167,7 @@ export default function LaunchView() {
       <div className="ld-top">
         <button className="bk" type="button" onClick={() => open('portfolio')}><svg viewBox="0 0 24 24"><path d="M19 12H5M12 19l-7-7 7-7" /></svg><span className="bk-lbl">Back</span></button>
         <div>
-          <div className="ld-n">{o.product}</div>
+          <div className="ld-n">{labelFor(o)}</div>
           <div className="ld-s">{o.franchise} &middot; {o.segment} &middot; {o.modality} &middot; {o.regulatoryRoute} &middot; lead market {o.leadMarketCode ?? o.leadMarket}</div>
         </div>
         <div className="h-sp"></div>
@@ -251,7 +252,7 @@ export default function LaunchView() {
                           key={s.launchId}
                           onClick={() => open('launch', s.launchId)}
                         >
-                          {s.shortName ?? s.product}
+                          {labelFor(s)}
                         </button>
                       ))}
                     </div>

@@ -122,7 +122,7 @@ const GD_QUALITY: Step[] = [
   {
     t: 'The disruption, on its own screen',
     p:
-      '<b>DEV-26-0881</b> &mdash; a deviation raised at <b>Kalamazoo</b> on the <b>Berobenatide T2D</b> ' +
+      '<b>DEV-26-0881</b> &mdash; a deviation raised at <b>Kalamazoo</b> on the <b>Sasanlimab</b> ' +
       'launch. Visual inspection found a <b>stopper-related defect</b>, and the batch is on hold. ' +
       'The rail across the top is the whole governed sequence: <b>scope</b>, <b>options</b>, ' +
       '<b>markets</b>, <b>decision</b>, <b>coordinate</b>. Every step is a real service call ' +
@@ -290,7 +290,7 @@ const GD_QUALITY: Step[] = [
  * governed decision, and the commit that rewrites every affected plan.
  *
  * Live figures, read back from MarketWaveService at baseline:
- *   request         DCR-26-0067 · Berobenatide OB · T. Bergmann (Commercial) ·
+ *   request         DCR-26-0067 · Berobenatide · T. Bergmann (Commercial) ·
  *                   420,000 → 690,000 doses (+270,000, +64.3%) · €7M at stake
  *   pack mix        6-dose multi-dose vial (BER-DE-MDV-6)
  *                   → 1-dose prefilled syringe (BER-DE-PFS-1)
@@ -317,7 +317,7 @@ const GD_WAVE: Step[] = [
     t: 'Eight weeks before packaging',
     p:
       'Same cockpit, a different kind of shock. Nothing has broken: <b>Commercial has won more ' +
-      'demand</b>. <b>DCR-26-0067</b> on the <b>Berobenatide OB</b> launch &mdash; Germany wants ' +
+      'demand</b>. <b>DCR-26-0067</b> on the <b>Berobenatide</b> launch &mdash; Germany wants ' +
       '<b>690,000 doses instead of 420,000</b>, and wants them in a <b>different presentation</b>. ' +
       'The request arrives <b>eight weeks before packaging starts</b>.',
     say:

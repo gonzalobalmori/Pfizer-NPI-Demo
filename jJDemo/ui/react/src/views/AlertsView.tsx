@@ -14,6 +14,7 @@ import Glyph from '@/components/Brand/Glyph';
 import { getOpenIssues } from '@/api/portfolio';
 import { fmtEuro } from '@/lib/format';
 import type { OpenIssues, IssueRow, WaitingOn } from '@/types/portfolio';
+import { labelFor } from '@/productLabel';
 
 type WaitingFilter = 'all' | 'you' | 'other' | 'agent' | 'authority';
 type ImpactFilter = 'all' | 'ct' | 'rk' | 'ok';
@@ -268,7 +269,7 @@ function AlertRow({ row, onOpen }: { row: IssueRow; onOpen: () => void }) {
         <span className={`cat ${cat}`}>{CAT_LABEL[cat]}</span>
       </td>
       <td className="l">
-        <b>{row.shortName ?? row.product}</b>
+        <b>{labelFor(row)}</b>
         <span className="sub">{row.franchise}</span>
       </td>
       <td className="l">

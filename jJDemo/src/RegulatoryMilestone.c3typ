@@ -6,7 +6,7 @@
  * RegulatoryMilestone is a date owned by an authority that the programme cannot
  * move — it can only react when the authority moves it.
  *
- * The anchor case is Berobenatide OA's US market rollout: the EU marketing
+ * The anchor case is PF-07817883's US market rollout: the EU marketing
  * authorisation (MAA, EMA) is the lead train, and the FDA NDA approval is a
  * separate milestone the US launch — manufacturing build, launch stock staging,
  * field certification and commercial pre-announcement — is all committed
@@ -22,7 +22,7 @@ entity type RegulatoryMilestone {
   /** Milestone id, e.g. "seed_milestone_pf3945_obesity_fda". */
   id: !string
 
-  /** Display id shown on cards, e.g. "REG-Berobenatide OA-FDA". */
+  /** Display id shown on cards, e.g. "REG-PF-07817883-FDA". */
   displayId: string
 
   /** The launch this milestone gates. */

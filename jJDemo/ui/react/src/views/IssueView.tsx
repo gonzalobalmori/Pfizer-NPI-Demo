@@ -18,6 +18,7 @@ import { fmtDate, fmtDateTime, fmtEuro, fmtGate } from '@/lib/format';
 import type { Category, Outcome, ResolutionWorkspace } from '@/types/execution';
 import Glyph from '@/components/Brand/Glyph';
 import ActionToast from '@/components/Feedback/ActionToast';
+import { labelFor } from '@/productLabel';
 
 /** The recurring 4-point spark glyph used for agent avatars and the copilot CTA. */
 function Spark() {
@@ -191,7 +192,7 @@ export default function IssueView() {
           </button>
           <div className="is-hd-b">
             <div className="is-crumb">
-              <span id="is-id">{f.displayId}</span> · <span id="is-asset">{f.shortName ?? f.productName}</span> ·{' '}
+              <span id="is-id">{f.displayId}</span> · <span id="is-asset">{labelFor(f)}</span> ·{' '}
               <span id="is-phase">Phase {f.phaseCode} · {f.phaseName}</span>
             </div>
             <div className="is-t" id="is-t">{f.headline}</div>

@@ -567,8 +567,9 @@ html{scroll-padding-top:180px}
   border-bottom:1px solid var(--g200);font-size:9px;font-weight:700;letter-spacing:.45px;
   text-transform:uppercase;color:var(--g600)}
 .tk-c1{width:250px;flex:none}
-.tk-c2{flex:1;min-width:330px;display:flex;align-items:flex-end}
-.tk-c3{width:132px;flex:none;padding-left:14px}
+/* nine phase segments + eight gate dots — needs the room the old
+   "current phase" column used to take, which is why that column went */
+.tk-c2{flex:1;min-width:470px;display:flex;align-items:flex-end}
 .tk-c4{width:118px;flex:none}
 .tk-c5{width:90px;flex:none;text-align:right}
 .tk-c6{width:104px;flex:none;display:flex;justify-content:flex-end;align-items:center;
@@ -612,8 +613,6 @@ html{scroll-padding-top:180px}
 .gd.risk{background:var(--amber-s);border-color:var(--amber-s)}
 .gd.crit{background:var(--red500);border-color:var(--red500);box-shadow:0 0 0 3px var(--red-bg)}
 .gd.next{border-color:var(--g800);border-width:2px}
-.cph{font-size:11.5px;font-weight:650;line-height:1.3}
-.cph .p{font-size:9.5px;color:var(--g500);font-weight:700;letter-spacing:.3px;display:block}
 .ngt{font-size:11.5px;font-weight:700;font-variant-numeric:tabular-nums}
 .ngl{font-size:9.5px;color:var(--g600);margin-top:1px}
 .slp{font-size:14px;font-weight:750;font-variant-numeric:tabular-nums;letter-spacing:-.3px}

@@ -10,7 +10,7 @@
  *   §3.6.7  Activities reconcile:
  *             by phase    P1..P6  = 16 / 19 / 27 / 22 / 14 / 9  (= 107)
  *             by status   ok/run/rk/late/no = 49 / 8 / 4 / 2 / 44  (= 107)
- *               (Berobenatide OB P2_12 corrected rk→ok: a CLOSED phase cannot hold an
+ *               (Berobenatide P2_12 corrected rk→ok: a CLOSED phase cannot hold an
  *                at-risk deliverable — manager feedback; residual risk lives in P3)
  *             by domain   12 functional domains, counts sum to 107
  *   §3.6.8  Autonomy split A / R = 95 / 12  (= 107)
@@ -24,10 +24,10 @@ describe(filename, function () {
   beforeAll(function () {
     this.TOTAL = 107;
 
-    // Read Berobenatide OB's authored activity set once (statusCode + phase code +
+    // Read Berobenatide's authored activity set once (statusCode + phase code +
     // domain code + autonomy class code), then derive every tally from that one
     // collection so all four reconciliations are proven against the same 107
-    // rows. Scoped to Berobenatide OB: the §3.6.7–8 fixture is the Berobenatide OB board;
+    // rows. Scoped to Berobenatide: the §3.6.7–8 fixture is the Berobenatide board;
     // the other launches carry their own phase-shifted activity boards.
     var acts = Activity.fetch({
       filter: Filter.eq('launch.id', 'seed_launch_berobenatide_obesity'),

@@ -8,7 +8,7 @@
  * but the full checklist is present for every product.
  *
  * INVARIANTS honoured:
- *  - Berobenatide OB's 78 bespoke, hand-authored documents are preserved VERBATIM
+ *  - Berobenatide's 78 bespoke, hand-authored documents are preserved VERBATIM
  *    (including seed_doc_berobenatide_obesity_44, which a GateCriterion references as
  *    evidence). We only ADD the new Supply-chain & operations section to it.
  *  - The catalog maps the manager's 8 industry categories onto the 9 group codes
@@ -50,7 +50,7 @@ const LAUNCHES = [
  *   7 Commercial & Market Access ....... com
  *   8 Supply Chain & Operations ........ sco
  * Verification & validation (vv) is split out of Design as its own section,
- * matching Berobenatide OB's authored structure.
+ * matching Berobenatide's authored structure.
  */
 const CATALOG = [
   // ── Development & CMC (CTD) ──
@@ -145,8 +145,8 @@ const CATALOG = [
   ['Periodic Safety Update Report (PSUR)', 'Report', 'pm', 6],
 ];
 
-/* The Supply-chain section Berobenatide OB is currently missing — added so it too is
- * complete across all nine groups. Statuses reflect Berobenatide OB at P3, OFF_TRACK. */
+/* The Supply-chain section Berobenatide is currently missing — added so it too is
+ * complete across all nine groups. Statuses reflect Berobenatide at P3, OFF_TRACK. */
 const BERO_OB_SCO = [
   ['Demand forecast and launch build plan — 4,200 units', 'Plan', 'sco', 'dft'],
   ['Safety stock and inventory policy', 'Policy', 'sco', 'na'],
@@ -211,12 +211,12 @@ function sizeFor(seed) {
 const existing = JSON.parse(readFileSync(SEED, 'utf8'));
 const berobenatide_obesityDocs = existing.filter((d) => d.launch && d.launch.id === BERO_OB);
 if (berobenatide_obesityDocs.length !== 78) {
-  throw new Error(`Expected 78 Berobenatide OB docs to preserve, found ${berobenatide_obesityDocs.length}`);
+  throw new Error(`Expected 78 Berobenatide docs to preserve, found ${berobenatide_obesityDocs.length}`);
 }
 
 const out = [...berobenatide_obesityDocs];
 
-// Add Berobenatide OB's missing Supply-chain section.
+// Add Berobenatide's missing Supply-chain section.
 BERO_OB_SCO.forEach(([name, docType, group, status], i) => {
   const seed = hash(BERO_OB + name);
   out.push({

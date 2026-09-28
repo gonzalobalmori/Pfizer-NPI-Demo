@@ -14,11 +14,11 @@ entity type Launch mixes HasExposure {
   /** Programme id, e.g. "seed_launch_berobenatide_obesity". */
   id: !string
 
-  /** Full programme name, e.g. "Berobenatide — Obesity". */
+  /** Full programme name, e.g. "Berobenatide". */
   productName: !string
 
   /**
-   * Short board/pill label, e.g. "Berobenatide OB". Used on the Live board
+   * Short board/pill label, e.g. "Berobenatide". Used on the Live board
    * cards and the Activity log rows (§2.2, §2.3) where the full
    * {@link Launch#productName} is too long. Kept as attested data, not derived.
    */

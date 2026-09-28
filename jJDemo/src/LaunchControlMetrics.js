@@ -123,8 +123,8 @@ function revenueAtRisk() {
 /* ---- AverageSlipAtGateClose --------------------------------------------
  * The headline "average slip" must reconcile with what the portfolio actually
  * shows: the gates that have SLIPPED. The portfolio timeline / launch cards only
- * ever surface gates that moved on the calendar (Berobenatide OB G3 +47, Berobenatide OSA G4
- * +21, Berobenatide T2D +14, PF-08634404 G3 +11, Sigvotatug G5 +9); a gate sitting exactly on
+ * ever surface gates that moved on the calendar (Berobenatide G3 +47, Vepdegestrant G4
+ * +21, Sasanlimab +14, PF-08634404 G3 +11, Sigvotatug G5 +9); a gate sitting exactly on
  * baseline is not a "slip". Averaging over ALL open gates (most with slipDays=0)
  * silently diluted the figure to ~4d and did not match any per-launch number the
  * user could see — the discrepancy flagged. So the average is taken over gates

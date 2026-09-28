@@ -19,7 +19,7 @@ or replay it through the app. The three demos are independent — run any subset
 **Proves:** every figure on screen has provenance — it traces to one row in one
 file from one source system.
 
-1. **Open the app** on the cockpit. Point at Berobenatide OB G4 (DP Released):
+1. **Open the app** on the cockpit. Point at Berobenatide G4 (DP Released):
    **"+47 days slip"**.
    Say: *"This number drives the whole escalation. Where does it come from?"*
 2. **Run the lineage lookup:**

@@ -19,6 +19,8 @@ import {
   getPortfolioTimeline,
 } from '@/api/portfolio';
 import { fmtDate, fmtDateYear, fmtGate } from '@/lib/format';
+import { labelFor, franchiseLabel, modalityLabel, rawName } from '@/productLabel';
+import { PHASE_AXIS, normalizePhases } from '@/phaseModel';
 import { MK_MARKETS, MK_SMALL } from './marketDetail';
 import Glyph from '@/components/Brand/Glyph';
 import MlDot from '@/components/Brand/MlDot';
@@ -112,6 +114,9 @@ function SstIcon({ tone }: { tone: Tone }) {
 /* ═════════════════════════ 2.1 BY PRODUCT ═════════════════════════ */
 
 function ProductPane({ data, open }: { data: ProductLens; open: (id: string) => void }) {
+  /* Always the full nine — the rows normalise onto the same model, so the
+     labels cannot end up sitting over the wrong bars. */
+  const axis = PHASE_AXIS;
   return (
     <div className="pf-l sb-p on" data-l="product" data-p="product">
       <div className="vhd">
@@ -124,32 +129,19 @@ function ProductPane({ data, open }: { data: ProductLens; open: (id: string) => 
         <div className="tk-hd">
           <div className="tk-c0"></div>
           <div className="tk-c1">Launch</div>
+          {/* One label per phase the rows actually draw, with a gate between
+              each pair — so nine phases render nine columns and eight gates. */}
           <div className="tk-c2">
-            <span className="ax">
-              P1<i>NPI Strategy</i>
-            </span>
-            <span className="axg">G1</span>
-            <span className="ax">
-              P2<i>NPI Planning</i>
-            </span>
-            <span className="axg">G2</span>
-            <span className="ax">
-              P3<i>PPQ</i>
-            </span>
-            <span className="axg">G3</span>
-            <span className="ax">
-              P4<i>Reg review</i>
-            </span>
-            <span className="axg">G4</span>
-            <span className="ax">
-              P5<i>Ready</i>
-            </span>
-            <span className="axg">G5</span>
-            <span className="ax">
-              P6<i>Post-launch</i>
-            </span>
+            {axis.map((p, i) => (
+              <React.Fragment key={p.code}>
+                <span className="ax">
+                  {p.code}
+                  <i>{p.short}</i>
+                </span>
+                {i < axis.length - 1 && <span className="axg">{`G${i + 1}`}</span>}
+              </React.Fragment>
+            ))}
           </div>
-          <div className="tk-c3">Current phase</div>
           <div className="tk-c4">Next gate</div>
           <div className="tk-c5">Slip</div>
           <div className="tk-c6">Overview &amp; detail</div>
@@ -227,8 +219,9 @@ function ProductRowView({ row, open }: { row: ProductRow; open: (id: string) => 
   const baseTone = healthTone(row.health);
   const hasSlip = row.gates.some((g) => (g.slipDays ?? 0) > 0 || g.status === 'late');
   const tone: Tone = baseTone === 'ok' && row.health !== 'LAUNCHED' && hasSlip ? 'rk' : baseTone;
-  const livePhase = row.phases.find((p) => p.state === 'live');
   const phaseNum = row.currentPhase ? parseInt(row.currentPhase.replace(/\D/g, ''), 10) : 0;
+  /* Nine slots regardless of how many the backend sent (see phaseModel). */
+  const phases = normalizePhases(row.phases, row.currentPhase);
 
   // Next gate: the first gate not yet met (when the backend returns them), else
   // derive the code from the current phase and fall back to first-ship date.
@@ -260,26 +253,32 @@ function ProductRowView({ row, open }: { row: ProductRow; open: (id: string) => 
         <SstIcon tone={tone} />
       </div>
       <div className="tk-c1">
-        <div className="lnm">{row.product}</div>
+        <div className="lnm">{labelFor(row)}</div>
         <div className="lmt">
-          {row.franchise} · {row.modality} · {row.regulatoryRoute}
+          {[
+            franchiseLabel(row.launchId, rawName(row), row.franchise),
+            modalityLabel(row.launchId, rawName(row), row.modality),
+            row.regulatoryRoute,
+          ]
+            .filter(Boolean)
+            .join(' · ')}
         </div>
       </div>
       <div className="trk">
-        {row.phases.map((p, i) => {
+        {phases.map((p, i) => {
           const segTone = p.state === 'live' ? tone : '';
           const segCls =
             p.state === 'closed' ? 'sg done' : p.state === 'live' ? `sg cur ${segTone}` : 'sg';
           const segStyle: React.CSSProperties =
             p.state === 'live' ? ({ ['--f' as string]: '55%' } as React.CSSProperties) : {};
-          // Gate dot after phases P1..P5 (indices 0..4).
+          // A gate closes every phase but the last, so there are n-1 dots.
           let gateCls = 'gd';
-          if (row.phases[i]?.state === 'closed') gateCls = 'gd done';
-          else if (row.phases[i]?.state === 'live' && tone !== 'ok') gateCls = `gd ${tone}`;
+          if (p.state === 'closed') gateCls = 'gd done';
+          else if (p.state === 'live' && tone !== 'ok') gateCls = `gd ${tone}`;
           return (
             <React.Fragment key={p.code}>
               <div className={segCls} style={segStyle}></div>
-              {i < 5 && (
+              {i < phases.length - 1 && (
                 <div className="gt">
                   <div className={gateCls}>
                     <span>{i + 1}</span>
@@ -289,12 +288,6 @@ function ProductRowView({ row, open }: { row: ProductRow; open: (id: string) => 
             </React.Fragment>
           );
         })}
-      </div>
-      <div className="tk-c3">
-        <div className="cph">
-          <span className="p">{row.currentPhase}</span>
-          {livePhase?.name ?? ''}
-        </div>
       </div>
       <div className="tk-c4">
         <div className="ngt mono">{fmtDateYear(ngDate)}</div>
@@ -1083,7 +1076,7 @@ function BuLaunchView({ launch, open }: { launch: BuLaunch; open: (id: string) =
 
   return (
     <button className="bu-li" type="button" onClick={() => open(launch.launchId)}>
-      <span className="bu-ln">{launch.product}</span>
+      <span className="bu-ln">{labelFor(launch)}</span>
       <span className={`slp ${slpTone}`}>{slpTxt}</span>
       <span className="bu-lg">
         {launch.currentPhase && <i className="bu-lp">{launch.currentPhase}</i>}
@@ -1222,10 +1215,10 @@ function slipWidthPct(slipDays: number | null): number {
 }
 
 /* Minimum on-axis width (%) for a drawn slip bar. A small slip (Sigvotatug +9d ≈ 2%,
- * PF-08634404 +11d, Berobenatide T2D +14d, Berobenatide OSA +21d) is narrower than the gate marker itself
+ * PF-08634404 +11d, Sasanlimab +14d, Vepdegestrant +21d) is narrower than the gate marker itself
  * (~20-26px), so a to-scale bar hides entirely behind the forecast marker and the
  * delay reads as "no slip". Floor the DRAWN width so the baseline marker separates
- * from the forecast marker and the striped bar is visible; large slips (Berobenatide OB
+ * from the forecast marker and the striped bar is visible; large slips (Berobenatide
  * +47d ≈ 11%) already exceed this floor and stay to-scale. */
 const MIN_SLIP_BAR_PCT = 5;
 
@@ -1349,7 +1342,7 @@ function MilestoneRowView({ row, open }: { row: TimelineRow; open: (id: string) 
                 <svg viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" /></svg>
               </span>
             ) : null}
-            {row.shortName ?? row.product}
+            {labelFor(row)}
           </div>
           <div className="lmt">{lmt}</div>
         </button>

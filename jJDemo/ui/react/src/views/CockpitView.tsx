@@ -23,6 +23,7 @@ import { fmtDate, fmtGate } from '@/lib/format';
 import KpiDistribution, { type KpiDatum } from '@/components/Brand/KpiDistribution';
 import MlDot from '@/components/Brand/MlDot';
 import type { Cockpit, GateClosingRow, Health, MlStatus, TimeImpact } from '@/types/portfolio';
+import { labelFor } from '@/productLabel';
 
 /*
  * Time-recovery chart palette. Recharts needs real colour values (it writes
@@ -64,7 +65,7 @@ function mlStatusTone(s: MlStatus): 'r' | 'a' | '' {
  *
  * This was previously one row per launch × market, which is the grain the data
  * does NOT support and it produced a table that misled three ways at once:
- *   1. Five rows for Berobenatide OB were byte-identical apart from the market code —
+ *   1. Five rows for Berobenatide were byte-identical apart from the market code —
  *      same status, same 47d slip, same G3 gate — because the backend gives every
  *      flagged market of a launch the same gate projection. Four of the five rows
  *      carried no information.
@@ -135,8 +136,8 @@ interface TimeImpactDatum {
  * green segment is labelled inside it only when a grey segment exists to tell it
  * apart from. Without that test four of five rows printed the same number twice
  * about 8px apart ("35d 35d", "13d 13d", "8d 8d", "5d 5d"), which reads as a
- * rendering fault rather than as data. Only Berobenatide OB is really split (25 green +
- * 45 grey = 70), so only Berobenatide OB gets the inside label; every bar still shows
+ * rendering fault rather than as data. Only Berobenatide is really split (25 green +
+ * 45 grey = 70), so only Berobenatide gets the inside label; every bar still shows
  * the full breakdown on hover.
  *
  * This is written as a `valueAccessor` rather than a `formatter` because Recharts
@@ -300,7 +301,7 @@ export default function CockpitView() {
       return [{
         key: a.launchId,
         launchId: a.launchId,
-        product: a.product,
+        product: labelFor(a),
         franchise: a.franchise,
         phaseCode: worst.phaseCode ?? a.phaseCode,
         phaseName: a.phaseName,
@@ -321,7 +322,7 @@ export default function CockpitView() {
       return [{
         key: a.launchId,
         launchId: a.launchId,
-        product: a.product,
+        product: labelFor(a),
         franchise: a.franchise,
         phaseCode: a.phaseCode,
         phaseName: a.phaseName,
@@ -355,7 +356,7 @@ export default function CockpitView() {
      worst-first (the backend already sorts byLaunch that way). */
   const tiRows: TimeImpactDatum[] = (timeImpact?.byLaunch ?? []).map((b) => ({
     launchId: b.launchId,
-    label: b.shortName ?? b.product,
+    label: labelFor(b),
     recoverableDays: b.recoverableDays,
     regulatorDays: b.regulatorDays,
     daysAtStake: b.daysAtStake,
@@ -721,7 +722,7 @@ export default function CockpitView() {
                   return (
                     <tr key={f.key} onClick={() => open('launch', f.launchId)}>
                       <td>
-                        <div className="nm">{f.product}</div>
+                        <div className="nm">{labelFor(f)}</div>
                         <div className="sub">{f.franchise}{f.phaseCode ? ` · ${f.phaseCode}` : ''}</div>
                       </td>
                       <td>
@@ -815,7 +816,7 @@ export default function CockpitView() {
                       <div className="sub">Go / No-Go</div>
                     </td>
                     <td>
-                      <div className="nm">{g.shortName ?? g.product}</div>
+                      <div className="nm">{labelFor(g)}</div>
                     </td>
                     <td>
                       <div className="nm mono">{fmtDate(g.forecastDate)}</div>

@@ -111,12 +111,12 @@
     "id": "berobenatide_obesity",
     "groupLabel": "Diagnose a launch",
     "sortOrder": 3,
-    "question": "Diagnose the Berobenatide OB launch",
+    "question": "Diagnose the Berobenatide launch",
     "subtitle": "P3, G3 on 04 Nov, and the one cause behind four findings",
     "showsGuardrails": false,
     "answer": {
       "prose": [
-        "Berobenatide OB is in P3 — process validation and supplier qualification, with G3 Submission Commit on 04 Nov 2026. The design work is not the problem. Both live threats are supplier threats, and both are the same supplier."
+        "Berobenatide is in P3 — process validation and supplier qualification, with G3 Submission Commit on 04 Nov 2026. The design work is not the problem. Both live threats are supplier threats, and both are the same supplier."
       ],
       "evidence": [
         {
@@ -257,7 +257,7 @@
         },
         {
           "title": "It is yours — stop line 3 at Aptar?",
-          "body": "Quarantine the 4 lots and switch to Neuss. Hits Berobenatide OB, Berobenatide T2D and Sigvotatug in Germany, France and Spain.",
+          "body": "Quarantine the 4 lots and switch to Neuss. Hits Berobenatide, Sasanlimab and Sigvotatug in Germany, France and Spain.",
           "when": "Now",
           "flag": "r"
         }
@@ -296,7 +296,7 @@
       ],
       "evidence": [
         {
-          "label": "Berobenatide OA · Iberia",
+          "label": "PF-07817883 · Iberia",
           "value": "Field-force certification at 91% against a 95% target. 14 reps rebooked into the 22 Sep lab-session cohort, which clears 97% before first ship."
         },
         {
@@ -338,11 +338,11 @@
       ],
       "evidence": [
         {
-          "label": "Berobenatide OB",
+          "label": "Berobenatide",
           "value": "G3 Submission Commit · €18.4M exposed on the fill-finish slot. The CHMP Q4 slot is the constraint, not the validation work."
         },
         {
-          "label": "Berobenatide T2D",
+          "label": "Sasanlimab",
           "value": "G2 CMC Lock 30 Sep · two unsigned target product profile and the Aptar single source. Both are yours this week."
         },
         {
@@ -354,15 +354,15 @@
           "value": "Transit packaging failed cold-chain transit protocol Sequence D. Re-test 14 Sep."
         },
         {
-          "label": "Berobenatide OA",
-          "value": "First ship Q2 2027, same quarter as Berobenatide OB. 14 of 22 German reps are dual-certified, which is the real constraint."
+          "label": "PF-07817883",
+          "value": "First ship Q2 2027, same quarter as Berobenatide. 14 of 22 German reps are dual-certified, which is the real constraint."
         }
       ],
       "rec": "The German constraint is field force, not regulatory",
       "why": [
         "Four of the five clear their regulatory path on current dates",
         "Two launches want the same 22 German reps in the same quarter, and only 14 are dual-certified",
-        "Moving Berobenatide OA first ship to Q3 2027 uses its float; Berobenatide OB has none"
+        "Moving PF-07817883 first ship to Q3 2027 uses its float; Berobenatide has none"
       ],
       "confidence": "Medium-high · certification throughput is modelled from the last 6 EP launches.",
       "actions": [
@@ -392,15 +392,15 @@
       ],
       "evidence": [
         {
-          "label": "FDA · Berobenatide OB",
+          "label": "FDA · Berobenatide",
           "value": "NPI-0420 — BLA under review, a deficiency letter is open. 45 days at stake, no approval until the agency responds. This is on the authority, not on us: acting here will not move the date."
         },
         {
-          "label": "CHMP CHMP rapporteur · Berobenatide OB",
+          "label": "CHMP CHMP rapporteur · Berobenatide",
           "value": "Q4 review slot holds only while G3 stays at +9 days. Miss the window and the next confirmed slot is February — another 31 days. The slot is the real regulatory deadline, not the validation work."
         },
         {
-          "label": "CHMP CHMP rapporteur · Berobenatide OSA",
+          "label": "CHMP CHMP rapporteur · Vepdegestrant",
           "value": "NPI-0365 — a query-cycle-2 response has been drafted and unsigned for 6 days. The 21-day clock-stop is running. This is the one thread you can move: it needs a qualified signatory, S. Lindqvist, and it is already escalated."
         },
         {
@@ -442,12 +442,12 @@
     "id": "supplier",
     "groupLabel": "Slice the portfolio",
     "sortOrder": 8,
-    "question": "What is putting Berobenatide OB's commercial batches at risk?",
+    "question": "What is putting Berobenatide's commercial batches at risk?",
     "subtitle": "Two lines, three batches out of spec, and an overdue CAPA",
     "showsGuardrails": false,
     "answer": {
       "prose": [
-        "Manufacturing, not supply. Berobenatide OB runs commercial output on two lines — line 3 and line 5 — and line 3 has produced 3 batches out of spec on the dimensional check. Line 5 is clean and is holding commercial supply for now."
+        "Manufacturing, not supply. Berobenatide runs commercial output on two lines — line 3 and line 5 — and line 3 has produced 3 batches out of spec on the dimensional check. Line 5 is clean and is holding commercial supply for now."
       ],
       "prose2": [
         "The reason line 3 is not simply back yet is a CAPA that is overdue: the DMAIC behind it is still in progress. Measure and Analyse are complete and point at tool wear, but Improve and Control are not signed, so line 3 cannot be re-qualified for commercial output. For scale: PPQ produces 3 batches as the norm, so 3 affected commercial batches is a full run's worth of the launch quantity."
@@ -499,12 +499,12 @@
     "id": "cascade",
     "groupLabel": "Diagnose a launch",
     "sortOrder": 10,
-    "question": "The FDA slipped Berobenatide OA's clearance six weeks — what moves?",
+    "question": "The FDA slipped PF-07817883's clearance six weeks — what moves?",
     "subtitle": "One authority date, five downstream commitments, two calls that are yours",
     "showsGuardrails": false,
     "answer": {
       "prose": [
-        "The FDA moved Berobenatide OA's NDA clearance from 02 Nov to 14 Dec — a six-week slip on a date you don't control. Manufacturing has already built launch stock, the launch stock are staged at the 3PL, and the field is trained for the original go-live. The old way, that slip becomes a ten-week scramble across three teams. Here it cascades in one pass: three commitments re-time themselves, and exactly two need a human."
+        "The FDA moved PF-07817883's NDA clearance from 02 Nov to 14 Dec — a six-week slip on a date you don't control. Manufacturing has already built launch stock, the launch stock are staged at the 3PL, and the field is trained for the original go-live. The old way, that slip becomes a ten-week scramble across three teams. Here it cascades in one pass: three commitments re-time themselves, and exactly two need a human."
       ],
       "evidence": [
         {
@@ -542,7 +542,7 @@
           "target": "cascade:"
         },
         {
-          "label": "Open the Berobenatide OA record",
+          "label": "Open the PF-07817883 record",
           "style": "s",
           "target": "launch:seed_launch_pf3945_obesity"
         }

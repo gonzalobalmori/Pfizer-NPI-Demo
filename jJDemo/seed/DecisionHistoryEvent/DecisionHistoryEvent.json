@@ -11,7 +11,7 @@
     "noteAuthor": "Sourcing agent",
     "noteRole": "",
     "noteAt": "2026-09-11T08:15:00",
-    "noteBody": "Line 3 SPC rule broken: 4 of 12 lots out of tolerance on the dimensional check. Line 5 in-house can absorb the 4 lots and hold G3 if it stops inside 5 days. Neuss is qualified on the identical spec but its tranche is reserved for Berobenatide T2D."
+    "noteBody": "Line 3 SPC rule broken: 4 of 12 lots out of tolerance on the dimensional check. Line 5 in-house can absorb the 4 lots and hold G3 if it stops inside 5 days. Neuss is qualified on the identical spec but its tranche is reserved for Sasanlimab."
   },
   {
     "id": "hist_0417",
@@ -61,7 +61,7 @@
     "kind": "ESC",
     "status": "ESCALATED",
     "sortOrder": 4,
-    "label": "You escalated the unsigned CHMP rapporteur response pack on Berobenatide OSA for a qualified signature",
+    "label": "You escalated the unsigned CHMP rapporteur response pack on Vepdegestrant for a qualified signature",
     "subLine": "Drafted by the agents and unsigned for 6 days, chased twice. Raised to S. Lindqvist — still open.",
     "occurredAt": "2026-09-08T09:05:00",
     "noteAuthor": "S. Lindqvist",
@@ -117,7 +117,7 @@
     "kind": "MY",
     "status": "RESOLVED",
     "sortOrder": 8,
-    "label": "You approved the G1 gate package for Berobenatide OA",
+    "label": "You approved the G1 gate package for PF-07817883",
     "subLine": "Charter, budget and market sequence. Gate closed on its baseline date.",
     "occurredAt": "2026-08-29T15:20:00",
     "noteAuthor": "",

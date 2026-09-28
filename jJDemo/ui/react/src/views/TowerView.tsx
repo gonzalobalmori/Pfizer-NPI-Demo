@@ -22,6 +22,7 @@ import type {
   ChainStep,
   Outcome,
 } from '@/types/execution';
+import { labelFor } from '@/productLabel';
 
 /* outcome → the prototype's short class used on the "now" strip and cards */
 const OUT_CLASS: Record<Outcome, 'you' | 'held' | 'auto' | 'run'> = {
@@ -312,7 +313,7 @@ export default function TowerView() {
                       {r.detail ? <span className="lg-d">{r.detail}</span> : null}
                     </span>
                     <span className="lg-tg">
-                      {r.product}
+                      {labelFor(r)}
                       {r.otherProductCount > 0 ? ` +${r.otherProductCount}` : ''}
                       <em>
                         {r.phaseCode} &middot; {r.franchise}

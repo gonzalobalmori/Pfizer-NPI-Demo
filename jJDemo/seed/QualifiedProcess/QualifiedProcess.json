@@ -2,7 +2,7 @@
   {
     "id": "seed_qp_grandrapids_eo",
     "processType": "aseptic fill-finish",
-    "qualifiedForLaunches": "Berobenatide T2D, Sigvotatug",
+    "qualifiedForLaunches": "Sasanlimab, Sigvotatug",
     "qualificationDepth": "bracketed",
     "site": {
       "id": "seed_site_grandrapids"
@@ -11,7 +11,7 @@
   {
     "id": "seed_qp_venlo_eo",
     "processType": "aseptic fill-finish",
-    "qualifiedForLaunches": "Berobenatide OB",
+    "qualifiedForLaunches": "Berobenatide",
     "qualificationDepth": "full",
     "site": {
       "id": "seed_site_venlo"
@@ -20,7 +20,7 @@
   {
     "id": "seed_qp_neuss_electrode",
     "processType": "Lyophilisation stopper",
-    "qualifiedForLaunches": "Berobenatide OB, Berobenatide T2D",
+    "qualifiedForLaunches": "Berobenatide, Sasanlimab",
     "qualificationDepth": "full",
     "site": {
       "id": "seed_site_neuss"

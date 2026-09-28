@@ -385,7 +385,7 @@ this system exists to support.
 
 **Status: RESOLVED (2026-09-28).** The portfolio is now the six supplied pipeline molecules,
 modelled as **nine launch programmes — one per indication**, because an NPI launch is scoped per
-indication and berobenatide runs four in parallel off one drug substance. That shared drug
+indication and the injectable programmes share one fill line off one drug substance. That shared drug
 substance is deliberate: it is what lets one drug-product event cascade across several
 programmes at once.
 
@@ -424,7 +424,7 @@ One launch sits in each of the nine phases, so the portfolio exercises the whole
 6. **Suppliers rekeyed.** The vendor *names* were already pharma (Aptar, West, SCHOTT,
    Stevanato, Datwyler, Vetter, Siegfried, Baxter Halle, Patheon); their ids and the
    Ariba / QMS / SRM cross-system keys now agree with them. The single-source Aptar vial
-   stopper spans exactly the four berobenatide programmes, which is what gives Scenario 1 its
+   stopper spans exactly the four sterile-injectable programmes, which is what gives Scenario 1 its
    blast radius.
 7. **Target markets** carried per launch (US / EU / Global / China).
 
@@ -564,7 +564,7 @@ tooltip *rounds* 5/6 = 83.33 % for display while the breach test uses the true v
 
 Four of five rows printed the same number twice ~8px apart ("35d 35d", "13d 13d", "8d 8d", "5d 5d"):
 the inside segment label and the end-of-bar total coincide whenever `regulatorDays === 0`. Only
-Berobenatide OB is genuinely split (25 green + 45 grey = 70).
+Berobenatide is genuinely split (25 green + 45 grey = 70).
 
 The fix had to go through `valueAccessor`, **not** `formatter`: Recharts' `LabelList` types
 `formatter?: Function` (untyped) and passes it the resolved value only, whereas
@@ -594,8 +594,8 @@ receives the whole row — and only when `dataKey` is absent. Verified at runtim
 - Density: "Markets needing attention" duplicates rows 5×.
 - Text leftovers: "Notified Body" (device regulatory) in `AlertsView`; hardcoded "oldest raised
   **6 days ago** · 1 already chased once" in `ActionsView`.
-- **The product names in every screenshot above are still device form factors** — "Berobenatide OB Gen 2
-  PFA Catheter", "Berobenatide — Sleep Apnoea", "PF-08634404". R-DM-04 (M2) is the fix; no amount of
+- **The product names in every screenshot above are still device form factors** — "Berobenatide Gen 2
+  PFA Catheter", "Vepdegestrant", "PF-08634404". R-DM-04 (M2) is the fix; no amount of
   visual work resolves it.
 
 ### C-7 · Colour-only status marks replaced with a shape vocabulary

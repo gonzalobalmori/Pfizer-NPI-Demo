@@ -16,7 +16,7 @@
     "author": "Sourcing agent",
     "authorRole": "Automated check",
     "commentedAt": "2026-09-11T06:05:00",
-    "body": "Checked the master agreement: the booking was a non-committed capacity reservation, clause 7.3 permits reallocation on 30 days notice. No contractual claim and no penalty available. Scanned the ASL for alternative fill-finish capacity — Siegfried Hameln is approved, audit current to Mar 2028, already qualified for Berobenatide T2D and Sigvotatug, and has capacity from 29 Sep.",
+    "body": "Checked the master agreement: the booking was a non-committed capacity reservation, clause 7.3 permits reallocation on 30 days notice. No contractual claim and no penalty available. Scanned the ASL for alternative fill-finish capacity — Siegfried Hameln is approved, audit current to Mar 2028, already qualified for Sasanlimab and Sigvotatug, and has capacity from 29 Sep.",
     "isAutomatedCheck": true,
     "sourcesRead": "master agreement clause 7.3, Approved Supplier List, audit validity",
     "decision": {
@@ -28,7 +28,7 @@
     "author": "A. Kowalski",
     "authorRole": "Quality",
     "commentedAt": "2026-09-11T07:12:00",
-    "body": "If we move site, it is a bracketed revalidation, not a full one, because the modality is unchanged. Realistically 21 days of protocol plus execution. I would want the protocol drafted against the Berobenatide T2D precedent so we are not writing it from scratch. Flagging that media-fill qualification on a new fill line has overrun 5–8 days on two of our last seven transfers.",
+    "body": "If we move site, it is a bracketed revalidation, not a full one, because the modality is unchanged. Realistically 21 days of protocol plus execution. I would want the protocol drafted against the Sasanlimab precedent so we are not writing it from scratch. Flagging that media-fill qualification on a new fill line has overrun 5–8 days on two of our last seven transfers.",
     "isAutomatedCheck": false,
     "sourcesRead": "",
     "decision": {
@@ -220,7 +220,7 @@
     "author": "Sourcing agent",
     "authorRole": "Automated check",
     "commentedAt": "2026-09-07T06:12:00",
-    "body": "Aptar downgraded to High financial risk — 34-day payables extension, second consecutive quarter. They are single source on the lyophilisation stopper across Berobenatide OB, Berobenatide T2D and two other Vaccines presentations.",
+    "body": "Aptar downgraded to High financial risk — 34-day payables extension, second consecutive quarter. They are single source on the lyophilisation stopper across Berobenatide, Sasanlimab and two other Vaccines presentations.",
     "isAutomatedCheck": true,
     "sourcesRead": "",
     "decision": {
@@ -256,7 +256,7 @@
     "author": "Line Monitor agent",
     "authorRole": "Automated check",
     "commentedAt": "2026-09-15T08:14:00",
-    "body": "Berobenatide OB runs commercial output on lines 3 and 5. SPC rule 2 broken on line 3 — pulled and re-measured the commercial batches in the window and confirmed 3 out of spec on the dimensional check. For context, PPQ produces 3 batches as the norm (a validation run was 12 at one site), so 3 affected commercial batches is a full run's worth of supply. Line 5 is unaffected. Raised without anyone asking it to look.",
+    "body": "Berobenatide runs commercial output on lines 3 and 5. SPC rule 2 broken on line 3 — pulled and re-measured the commercial batches in the window and confirmed 3 out of spec on the dimensional check. For context, PPQ produces 3 batches as the norm (a validation run was 12 at one site), so 3 affected commercial batches is a full run's worth of supply. Line 5 is unaffected. Raised without anyone asking it to look.",
     "isAutomatedCheck": true,
     "sourcesRead": "Line 3 MES, SPC control chart, commercial batch dimensional records",
     "decision": {

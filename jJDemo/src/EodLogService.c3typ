@@ -11,7 +11,7 @@
  *   • Free dump — the owner types everything that happened; the service
  *     extracts and classifies each sentence into a candidate signal.
  *   • Guided — {@link #guidedPrompts} reads the domain's own open gates and
- *     open findings and returns targeted questions ("G3 on Berobenatide OB is +47d
+ *     open findings and returns targeted questions ("G3 on Berobenatide is +47d
  *     late — any change today?"), so the owner is prompted about the specific
  *     work in flight instead of facing a blank box.
  *
@@ -43,7 +43,7 @@ entity type EodLogService {
    * The guided-mode question set for one domain. Reads the domain's live state —
    * the open {@link Gate}s that are slipping and the open {@link Finding}s that
    * are still waiting — and turns each into a specific, answerable prompt
-   * ("G3 Submission Commit on Berobenatide OB is +47d late — any change today?").
+   * ("G3 Submission Commit on Berobenatide is +47d late — any change today?").
    * This is what stops the "I didn't log anything because I didn't know what to
    * say" failure: the owner is asked about the exact work in flight.
    *
