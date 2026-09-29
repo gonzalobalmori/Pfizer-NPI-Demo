@@ -310,7 +310,15 @@ export default function LaunchView() {
                 </span>
                 <div className="crb"><div className="crn">{pharma(c.name)}</div>
                   {c.outstandingReason ? <div className="crm">{pharma(c.outstandingReason)}</div> : null}</div>
-                {c.met ? <span className="pill g">Met</span> : <button className="btn p sm" type="button">Resolve</button>}</div>
+                {c.met ? <span className="pill g">Met</span> : (
+                  <button
+                    className="btn p sm"
+                    type="button"
+                    title="Open the resolution workspace for this launch's blocking issue"
+                    onClick={() => (resolveFindingId ? open('issue', resolveFindingId) : open('flow', param))}
+                  >
+                    Resolve</button>
+                )}</div>
             ))}
           </div>
 

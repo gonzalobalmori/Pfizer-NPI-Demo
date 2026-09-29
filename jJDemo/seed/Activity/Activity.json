@@ -13641,9 +13641,9 @@
   {
     "id": "seed_activity_berobenatide_obesity_p3_2",
     "name": "Obtain manufacturing approval",
-    "status": "At risk",
-    "statusCode": "rk",
-    "detail": "holding for data",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
     "phase": {
       "id": "seed_phase_p3"
     },
@@ -13710,9 +13710,9 @@
   {
     "id": "seed_activity_berobenatide_obesity_p3_5",
     "name": "Complete quality review and release",
-    "status": "Late",
-    "statusCode": "late",
-    "detail": "behind plan",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
     "phase": {
       "id": "seed_phase_p3"
     },
@@ -13779,9 +13779,9 @@
   {
     "id": "seed_activity_berobenatide_obesity_p3_8",
     "name": "Ship drug substance to the DP site",
-    "status": "Not started",
-    "statusCode": "no",
-    "detail": "not started",
+    "status": "Late",
+    "statusCode": "late",
+    "detail": "behind plan",
     "phase": {
       "id": "seed_phase_p3"
     },
