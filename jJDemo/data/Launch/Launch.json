@@ -18,12 +18,12 @@
       "id": "seed_market_de"
     },
     "currentPhase": {
-      "id": "seed_phase_p4"
+      "id": "seed_phase_p3"
     },
     "healthStatus": "OFF_TRACK",
     "revenueAtRisk": 21200000,
     "firstShipDate": "2028-06-29",
-    "readinessPct": 83,
+    "readinessPct": 57,
     "launchValue": 96000000,
     "fillFinishRoute": "Aseptic fill — prefilled syringe",
     "manufactureSite": "Puurs + Vetter Ravensburg",

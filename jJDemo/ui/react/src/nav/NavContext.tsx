@@ -66,11 +66,6 @@ export const BRANCH: Record<BranchId, BranchDef> = {
       // so the badge is never a hardcoded dashboard number.
       { v: 'alerts', l: 'Open issues', bc: 'a' },
       { v: 'cascade', l: 'Milestone replan' },
-      // The two scenarios the demo is configured around. They live under
-      // Pipeline because both start from a live launch and end by rewriting its
-      // plan — the same place a planner would meet them.
-      { v: 'quality', l: 'Quality disruption' },
-      { v: 'wave', l: 'Demand & wave change' },
     ],
   },
   exec: {

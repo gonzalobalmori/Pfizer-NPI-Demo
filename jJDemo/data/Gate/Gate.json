@@ -34,9 +34,9 @@
     "code": "G3",
     "name": "DS Released",
     "baselineDate": "2025-12-24",
-    "forecastDate": "2025-12-24",
-    "slipDays": 0,
-    "status": "ok",
+    "forecastDate": "2026-02-09",
+    "slipDays": 47,
+    "status": "late",
     "launch": {
       "id": "seed_launch_berobenatide_obesity"
     },
@@ -49,9 +49,9 @@
     "code": "G4",
     "name": "DP Released",
     "baselineDate": "2026-05-25",
-    "forecastDate": "2026-07-11",
-    "slipDays": 47,
-    "status": "late",
+    "forecastDate": "2026-05-25",
+    "slipDays": 0,
+    "status": "no",
     "launch": {
       "id": "seed_launch_berobenatide_obesity"
     },

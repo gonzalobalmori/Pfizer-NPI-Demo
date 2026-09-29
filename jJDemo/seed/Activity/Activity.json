@@ -13641,9 +13641,9 @@
   {
     "id": "seed_activity_berobenatide_obesity_p3_2",
     "name": "Obtain manufacturing approval",
-    "status": "Complete",
-    "statusCode": "ok",
-    "detail": "closed",
+    "status": "At risk",
+    "statusCode": "rk",
+    "detail": "holding for data",
     "phase": {
       "id": "seed_phase_p3"
     },
@@ -13710,9 +13710,9 @@
   {
     "id": "seed_activity_berobenatide_obesity_p3_5",
     "name": "Complete quality review and release",
-    "status": "Complete",
-    "statusCode": "ok",
-    "detail": "closed",
+    "status": "Late",
+    "statusCode": "late",
+    "detail": "behind plan",
     "phase": {
       "id": "seed_phase_p3"
     },
@@ -13756,9 +13756,9 @@
   {
     "id": "seed_activity_berobenatide_obesity_p3_7",
     "name": "Set up and validate the route",
-    "status": "Complete",
-    "statusCode": "ok",
-    "detail": "closed",
+    "status": "In progress",
+    "statusCode": "run",
+    "detail": "in progress",
     "phase": {
       "id": "seed_phase_p3"
     },
@@ -13779,9 +13779,9 @@
   {
     "id": "seed_activity_berobenatide_obesity_p3_8",
     "name": "Ship drug substance to the DP site",
-    "status": "Complete",
-    "statusCode": "ok",
-    "detail": "closed",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
     "phase": {
       "id": "seed_phase_p3"
     },
@@ -13802,9 +13802,9 @@
   {
     "id": "seed_activity_berobenatide_obesity_p4_0",
     "name": "Run drug product demand forecasting",
-    "status": "Complete",
-    "statusCode": "ok",
-    "detail": "closed",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
     "phase": {
       "id": "seed_phase_p4"
     },
@@ -13825,9 +13825,9 @@
   {
     "id": "seed_activity_berobenatide_obesity_p4_1",
     "name": "Confirm packaging component readiness",
-    "status": "Late",
-    "statusCode": "late",
-    "detail": "behind plan",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
     "phase": {
       "id": "seed_phase_p4"
     },
@@ -13848,9 +13848,9 @@
   {
     "id": "seed_activity_berobenatide_obesity_p4_2",
     "name": "Schedule manufacturing",
-    "status": "Late",
-    "statusCode": "late",
-    "detail": "behind plan",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
     "phase": {
       "id": "seed_phase_p4"
     },
@@ -13871,9 +13871,9 @@
   {
     "id": "seed_activity_berobenatide_obesity_p4_3",
     "name": "Execute drug product production",
-    "status": "At risk",
-    "statusCode": "rk",
-    "detail": "holding for data",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
     "phase": {
       "id": "seed_phase_p4"
     },
@@ -13894,9 +13894,9 @@
   {
     "id": "seed_activity_berobenatide_obesity_p4_4",
     "name": "Complete batch release",
-    "status": "At risk",
-    "statusCode": "rk",
-    "detail": "holding for data",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
     "phase": {
       "id": "seed_phase_p4"
     },
@@ -13917,9 +13917,9 @@
   {
     "id": "seed_activity_berobenatide_obesity_p4_5",
     "name": "Validate transportation lanes",
-    "status": "In progress",
-    "statusCode": "run",
-    "detail": "in progress",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
     "phase": {
       "id": "seed_phase_p4"
     },
@@ -13963,9 +13963,9 @@
   {
     "id": "seed_activity_berobenatide_obesity_p4_7",
     "name": "Align inventory planning",
-    "status": "At risk",
-    "statusCode": "rk",
-    "detail": "holding for data",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
     "phase": {
       "id": "seed_phase_p4"
     },

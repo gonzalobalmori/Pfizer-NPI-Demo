@@ -71,7 +71,7 @@ const GATE_ORDER = ['G1', 'G2', 'G3', 'G4', 'G5', 'G6', 'G7', 'G8', 'BAU'];
  * the whole process model.
  */
 const LAUNCHES = [
-  { launchId: LEAD,                               slug: 'berobenatide_obesity',  project: 'PRJ-BERO',        readiness: 83, troubled: true,  next: 'G4',  start: '2024-09-24', slip: 47 },
+  { launchId: LEAD,                               slug: 'berobenatide_obesity',  project: 'PRJ-BERO',        readiness: 57, troubled: true,  next: 'G3',  start: '2024-09-24', slip: 47 },
   { launchId: 'seed_launch_berobenatide_t2d',     slug: 'berobenatide_t2d',      project: 'PRJ-SASA',       readiness: 46, troubled: true,  next: 'G2',  start: '2025-03-11', slip: 18 },
   { launchId: 'seed_launch_pf08634404_crc',       slug: 'pf08634404_crc',        project: 'PRJ-PF08634404_CRC', readiness: 38, troubled: true,  next: 'G3',  start: '2025-01-20', slip: 24 },
   { launchId: 'seed_launch_met097_obesity',       slug: 'met097_obesity',        project: 'PRJ-MET097_OB',      readiness: 61, troubled: false, next: 'G5',  start: '2024-06-03', slip: 0  },
@@ -435,8 +435,11 @@ const actOut = [];
 let personCursor = 0;
 let autoCounter = 0;
 
+/* The lead programme is generated like every other launch. It used to be
+   skipped here on the assumption its activities were authored by hand, but that
+   authored set was lost in the device-to-pharma rename, which left the demo's
+   anchor launch as the only one with an empty Workflow board. */
 for (const L of LAUNCHES) {
-  if (L.launchId === LEAD) continue;
   const curPhase = phaseIdx(L); // 1-based
   const launched = L.launchId === 'seed_launch_atirmociclib_mbc';
   PHASE_ORDER.forEach((pcode, pi) => {

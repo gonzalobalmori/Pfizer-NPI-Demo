@@ -1,60 +1,62 @@
 [
   {
-    "id": "seed_gc_berobenatide_obesity_g4_1",
-    "name": "DP demand forecast approved",
+    "id": "seed_gc_berobenatide_obesity_g3_1",
+    "name": "DS demand forecast approved",
     "met": true,
     "gate": {
-      "id": "seed_gate_berobenatide_obesity_g4"
+      "id": "seed_gate_berobenatide_obesity_g3"
     }
   },
   {
-    "id": "seed_gc_berobenatide_obesity_g4_2",
-    "name": "Packaging components ready",
+    "id": "seed_gc_berobenatide_obesity_g3_2",
+    "name": "BOM and standard cost complete",
     "met": true,
     "gate": {
-      "id": "seed_gate_berobenatide_obesity_g4"
+      "id": "seed_gate_berobenatide_obesity_g3"
     }
   },
   {
-    "id": "seed_gc_berobenatide_obesity_g4_3",
-    "name": "Manufacturing scheduled",
-    "met": true,
-    "gate": {
-      "id": "seed_gate_berobenatide_obesity_g4"
-    }
-  },
-  {
-    "id": "seed_gc_berobenatide_obesity_g4_4",
-    "name": "DP manufactured",
-    "met": true,
-    "gate": {
-      "id": "seed_gate_berobenatide_obesity_g4"
-    }
-  },
-  {
-    "id": "seed_gc_berobenatide_obesity_g4_5",
-    "name": "DP released",
-    "met": true,
-    "gate": {
-      "id": "seed_gate_berobenatide_obesity_g4"
-    }
-  },
-  {
-    "id": "seed_gc_berobenatide_obesity_g4_6",
-    "name": "Transportation validated",
-    "met": true,
-    "gate": {
-      "id": "seed_gate_berobenatide_obesity_g4"
-    }
-  },
-  {
-    "id": "seed_gc_berobenatide_obesity_g4_7",
-    "name": "DP delivered to packaging site",
+    "id": "seed_gc_berobenatide_obesity_g3_3",
+    "name": "DS manufacturing approved",
     "met": false,
     "gate": {
-      "id": "seed_gate_berobenatide_obesity_g4"
+      "id": "seed_gate_berobenatide_obesity_g3"
     },
-    "outstandingReason": "Delivery to the packaging site not yet scheduled"
+    "outstandingReason": "CAPA overdue on line 3 — DMAIC still in progress"
+  },
+  {
+    "id": "seed_gc_berobenatide_obesity_g3_4",
+    "name": "Raw material procurement complete",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_berobenatide_obesity_g3"
+    }
+  },
+  {
+    "id": "seed_gc_berobenatide_obesity_g3_5",
+    "name": "DS manufactured",
+    "met": true,
+    "gate": {
+      "id": "seed_gate_berobenatide_obesity_g3"
+    }
+  },
+  {
+    "id": "seed_gc_berobenatide_obesity_g3_6",
+    "name": "DS released",
+    "met": false,
+    "gate": {
+      "id": "seed_gate_berobenatide_obesity_g3"
+    },
+    "outstandingReason": "Quality review held — 3 commercial batches out of spec on the dimensional check"
+  },
+  {
+    "id": "seed_gc_berobenatide_obesity_g3_7",
+    "name": "DS received at DP site",
+    "met": false,
+    "gate": {
+      "id": "seed_gate_berobenatide_obesity_g3"
+    },
+    "outstandingReason": "DS not released, and the aseptic fill-finish slot at Vetter Ravensburg was cancelled"
   },
   {
     "id": "seed_gc_berobenatide_t2d_g2_1",

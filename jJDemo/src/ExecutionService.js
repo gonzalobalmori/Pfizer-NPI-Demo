@@ -196,7 +196,7 @@ function decisionHistory() {
 var PHASE_META = {
   seed_phase_p1: ['P1', 'Portfolio & Launch Strategy', 'closed'],
   seed_phase_p2: ['P2', 'NPL Initiation & Planning', 'closed'],
-  seed_phase_p3: ['P3', 'Drug Substance (DS) Readiness', 'closed'],
+  seed_phase_p3: ['P3', 'Drug Substance (DS) Readiness', 'live'],
   seed_phase_p4: ['P4', 'Drug Product (DP) Readiness', 'live'],
   seed_phase_p5: ['P5', 'Finished Product Readiness', 'live'],
   seed_phase_p6: ['P6', 'Launch Readiness & Market Enablement', 'live'],
@@ -735,8 +735,8 @@ var BASELINE = {
      this was caught: the reset appeared to work but the pane read "+47 days" against an
      unslipped date. The invariant is asserted at the bottom of this block. */
   gates: {
-    seed_gate_berobenatide_obesity_g3:  { forecastDate: '2025-12-24', slipDays: 0,  status: 'ok' },
-    seed_gate_berobenatide_obesity_g4:  { forecastDate: '2026-07-11', slipDays: 47, status: 'late' },
+    seed_gate_berobenatide_obesity_g3:  { forecastDate: '2026-02-09', slipDays: 47, status: 'late' },
+    seed_gate_berobenatide_obesity_g4:  { forecastDate: '2026-05-25', slipDays: 0,  status: 'no' },
     seed_gate_berobenatide_t2d_g2: { forecastDate: '2026-01-27', slipDays: 18, status: 'rk' }
   },
   launches: {
