@@ -561,7 +561,7 @@
   },
   {
     "id": "seed_doc_berobenatide_obesity_41",
-    "name": "MDSAP certificate",
+    "name": "WHO GMP certificate",
     "docType": "Certificate",
     "group": "cert",
     "revision": "valid",
@@ -883,7 +883,7 @@
   },
   {
     "id": "seed_doc_berobenatide_obesity_64",
-    "name": "QSIT and MDSAP inspection readiness self-audit",
+    "name": "Pre-Approval Inspection (PAI) readiness self-assessment",
     "docType": "Self-audit",
     "group": "mfg",
     "revision": "2 of 3",
@@ -1723,7 +1723,7 @@
   },
   {
     "id": "seed_doc_atirmociclib_mbc_41",
-    "name": "MDSAP certificate",
+    "name": "WHO GMP certificate",
     "docType": "Certificate",
     "group": "cert",
     "revision": "rev 4",
@@ -2003,7 +2003,7 @@
   },
   {
     "id": "seed_doc_atirmociclib_mbc_61",
-    "name": "QSIT / MDSAP inspection readiness self-audit",
+    "name": "Pre-Approval Inspection (PAI) readiness self-assessment",
     "docType": "Self-audit",
     "group": "mfg",
     "revision": "rev 5",
@@ -2857,7 +2857,7 @@
   },
   {
     "id": "seed_doc_sigvotatug_nsclc_41",
-    "name": "MDSAP certificate",
+    "name": "WHO GMP certificate",
     "docType": "Certificate",
     "group": "cert",
     "revision": "rev 1",
@@ -3137,7 +3137,7 @@
   },
   {
     "id": "seed_doc_sigvotatug_nsclc_61",
-    "name": "QSIT / MDSAP inspection readiness self-audit",
+    "name": "Pre-Approval Inspection (PAI) readiness self-assessment",
     "docType": "Self-audit",
     "group": "mfg",
     "revision": "rev 6",
@@ -3991,7 +3991,7 @@
   },
   {
     "id": "seed_doc_berobenatide_osa_41",
-    "name": "MDSAP certificate",
+    "name": "WHO GMP certificate",
     "docType": "Certificate",
     "group": "cert",
     "revision": "rev 2",
@@ -4271,7 +4271,7 @@
   },
   {
     "id": "seed_doc_berobenatide_osa_61",
-    "name": "QSIT / MDSAP inspection readiness self-audit",
+    "name": "Pre-Approval Inspection (PAI) readiness self-assessment",
     "docType": "Self-audit",
     "group": "mfg",
     "revision": "rev 5",
@@ -5125,7 +5125,7 @@
   },
   {
     "id": "seed_doc_met097_obesity_41",
-    "name": "MDSAP certificate",
+    "name": "WHO GMP certificate",
     "docType": "Certificate",
     "group": "cert",
     "revision": "rev 6",
@@ -5405,7 +5405,7 @@
   },
   {
     "id": "seed_doc_met097_obesity_61",
-    "name": "QSIT / MDSAP inspection readiness self-audit",
+    "name": "Pre-Approval Inspection (PAI) readiness self-assessment",
     "docType": "Self-audit",
     "group": "mfg",
     "revision": "rev 5",
@@ -6259,7 +6259,7 @@
   },
   {
     "id": "seed_doc_berobenatide_knee_oa_41",
-    "name": "MDSAP certificate",
+    "name": "WHO GMP certificate",
     "docType": "Certificate",
     "group": "cert",
     "revision": "rev 3",
@@ -6539,7 +6539,7 @@
   },
   {
     "id": "seed_doc_berobenatide_knee_oa_61",
-    "name": "QSIT / MDSAP inspection readiness self-audit",
+    "name": "Pre-Approval Inspection (PAI) readiness self-assessment",
     "docType": "Self-audit",
     "group": "mfg",
     "revision": "rev 2",
@@ -7393,7 +7393,7 @@
   },
   {
     "id": "seed_doc_berobenatide_t2d_41",
-    "name": "MDSAP certificate",
+    "name": "WHO GMP certificate",
     "docType": "Certificate",
     "group": "cert",
     "revision": "rev 6",
@@ -7673,7 +7673,7 @@
   },
   {
     "id": "seed_doc_berobenatide_t2d_61",
-    "name": "QSIT / MDSAP inspection readiness self-audit",
+    "name": "Pre-Approval Inspection (PAI) readiness self-assessment",
     "docType": "Self-audit",
     "group": "mfg",
     "revision": "rev 5",
@@ -8527,7 +8527,7 @@
   },
   {
     "id": "seed_doc_pf3945_obesity_41",
-    "name": "MDSAP certificate",
+    "name": "WHO GMP certificate",
     "docType": "Certificate",
     "group": "cert",
     "revision": "rev 6",
@@ -8807,7 +8807,7 @@
   },
   {
     "id": "seed_doc_pf3945_obesity_61",
-    "name": "QSIT / MDSAP inspection readiness self-audit",
+    "name": "Pre-Approval Inspection (PAI) readiness self-assessment",
     "docType": "Self-audit",
     "group": "mfg",
     "revision": "rev 1",
@@ -9661,7 +9661,7 @@
   },
   {
     "id": "seed_doc_pf08634404_crc_41",
-    "name": "MDSAP certificate",
+    "name": "WHO GMP certificate",
     "docType": "Certificate",
     "group": "cert",
     "revision": "rev 6",
@@ -9941,7 +9941,7 @@
   },
   {
     "id": "seed_doc_pf08634404_crc_61",
-    "name": "QSIT / MDSAP inspection readiness self-audit",
+    "name": "Pre-Approval Inspection (PAI) readiness self-assessment",
     "docType": "Self-audit",
     "group": "mfg",
     "revision": "rev 1",

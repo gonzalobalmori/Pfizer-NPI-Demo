@@ -13246,5 +13246,1661 @@
       "id": "seed_person_sl"
     },
     "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p1_0",
+    "name": "Define launch scope: product, indication and market",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p1"
+    },
+    "domain": {
+      "id": "seed_domain_gov"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_hf"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p1_1",
+    "name": "Develop the regulatory strategy",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p1"
+    },
+    "domain": {
+      "id": "seed_domain_reg"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_mo"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p1_2",
+    "name": "Establish the manufacturing and inventory strategy",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p1"
+    },
+    "domain": {
+      "id": "seed_domain_mfg"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_ak"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p1_3",
+    "name": "Create the supply chain sourcing strategy",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p1"
+    },
+    "domain": {
+      "id": "seed_domain_src"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_r"
+    },
+    "owningPerson": {
+      "id": "seed_person_sl"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p1_4",
+    "name": "Identify launch risks and mitigation plans",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p1"
+    },
+    "domain": {
+      "id": "seed_domain_gov"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_kt"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p1_5",
+    "name": "Run market wave planning",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p1"
+    },
+    "domain": {
+      "id": "seed_domain_com"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_h"
+    },
+    "owningPerson": {
+      "id": "seed_person_lh"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p1_6",
+    "name": "Obtain leadership endorsements",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p1"
+    },
+    "domain": {
+      "id": "seed_domain_gov"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_ap"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p2_0",
+    "name": "Create the NPL in the NPL Data Repository",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p2"
+    },
+    "domain": {
+      "id": "seed_domain_it"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_tb"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p2_1",
+    "name": "Establish the Product Passport",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p2"
+    },
+    "domain": {
+      "id": "seed_domain_it"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_r"
+    },
+    "owningPerson": {
+      "id": "seed_person_dm"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p2_2",
+    "name": "Create the project plan in DLPP",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p2"
+    },
+    "domain": {
+      "id": "seed_domain_gov"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_rm"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p2_3",
+    "name": "Link the Pfizer Connect programmes",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p2"
+    },
+    "domain": {
+      "id": "seed_domain_it"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_jt"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p2_4",
+    "name": "Configure governance and milestones",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p2"
+    },
+    "domain": {
+      "id": "seed_domain_gov"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_rd"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p2_5",
+    "name": "Build the sourcing grid",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p2"
+    },
+    "domain": {
+      "id": "seed_domain_src"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_jr"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p2_6",
+    "name": "Establish the launch readiness timeline",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p2"
+    },
+    "domain": {
+      "id": "seed_domain_gov"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_r"
+    },
+    "owningPerson": {
+      "id": "seed_person_hf"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p2_7",
+    "name": "Align cross-functional stakeholders",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p2"
+    },
+    "domain": {
+      "id": "seed_domain_gov"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_mo"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p3_0",
+    "name": "Run drug substance demand forecasting",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p3"
+    },
+    "domain": {
+      "id": "seed_domain_sc"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_ak"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p3_1",
+    "name": "Complete the BOM and standard cost",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p3"
+    },
+    "domain": {
+      "id": "seed_domain_fin"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_sl"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p3_2",
+    "name": "Obtain manufacturing approval",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p3"
+    },
+    "domain": {
+      "id": "seed_domain_qua"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_kt"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p3_3",
+    "name": "Procure raw materials",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p3"
+    },
+    "domain": {
+      "id": "seed_domain_src"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_h"
+    },
+    "owningPerson": {
+      "id": "seed_person_lh"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p3_4",
+    "name": "Execute API production",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p3"
+    },
+    "domain": {
+      "id": "seed_domain_mfg"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_ap"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p3_5",
+    "name": "Complete quality review and release",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p3"
+    },
+    "domain": {
+      "id": "seed_domain_qua"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_tb"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p3_6",
+    "name": "Set up the transfer price",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p3"
+    },
+    "domain": {
+      "id": "seed_domain_fin"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_dm"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p3_7",
+    "name": "Set up and validate the route",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p3"
+    },
+    "domain": {
+      "id": "seed_domain_sc"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_rm"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p3_8",
+    "name": "Ship drug substance to the DP site",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p3"
+    },
+    "domain": {
+      "id": "seed_domain_sc"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_r"
+    },
+    "owningPerson": {
+      "id": "seed_person_jt"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p4_0",
+    "name": "Run drug product demand forecasting",
+    "status": "Complete",
+    "statusCode": "ok",
+    "detail": "closed",
+    "phase": {
+      "id": "seed_phase_p4"
+    },
+    "domain": {
+      "id": "seed_domain_sc"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_rd"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p4_1",
+    "name": "Confirm packaging component readiness",
+    "status": "Late",
+    "statusCode": "late",
+    "detail": "behind plan",
+    "phase": {
+      "id": "seed_phase_p4"
+    },
+    "domain": {
+      "id": "seed_domain_src"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_jr"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p4_2",
+    "name": "Schedule manufacturing",
+    "status": "Late",
+    "statusCode": "late",
+    "detail": "behind plan",
+    "phase": {
+      "id": "seed_phase_p4"
+    },
+    "domain": {
+      "id": "seed_domain_mfg"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_hf"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p4_3",
+    "name": "Execute drug product production",
+    "status": "At risk",
+    "statusCode": "rk",
+    "detail": "holding for data",
+    "phase": {
+      "id": "seed_phase_p4"
+    },
+    "domain": {
+      "id": "seed_domain_mfg"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_mo"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p4_4",
+    "name": "Complete batch release",
+    "status": "At risk",
+    "statusCode": "rk",
+    "detail": "holding for data",
+    "phase": {
+      "id": "seed_phase_p4"
+    },
+    "domain": {
+      "id": "seed_domain_qua"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_r"
+    },
+    "owningPerson": {
+      "id": "seed_person_ak"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p4_5",
+    "name": "Validate transportation lanes",
+    "status": "In progress",
+    "statusCode": "run",
+    "detail": "in progress",
+    "phase": {
+      "id": "seed_phase_p4"
+    },
+    "domain": {
+      "id": "seed_domain_sc"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_sl"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p4_6",
+    "name": "Ship drug product to the packaging site",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p4"
+    },
+    "domain": {
+      "id": "seed_domain_sc"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_kt"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p4_7",
+    "name": "Align inventory planning",
+    "status": "At risk",
+    "statusCode": "rk",
+    "detail": "holding for data",
+    "phase": {
+      "id": "seed_phase_p4"
+    },
+    "domain": {
+      "id": "seed_domain_sc"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_h"
+    },
+    "owningPerson": {
+      "id": "seed_person_lh"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p5_0",
+    "name": "Execute packaging",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p5"
+    },
+    "domain": {
+      "id": "seed_domain_mfg"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_ap"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p5_1",
+    "name": "Approve artwork",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p5"
+    },
+    "domain": {
+      "id": "seed_domain_com"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_r"
+    },
+    "owningPerson": {
+      "id": "seed_person_tb"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p5_2",
+    "name": "Approve labelling",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p5"
+    },
+    "domain": {
+      "id": "seed_domain_reg"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_dm"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p5_3",
+    "name": "Release printed components",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p5"
+    },
+    "domain": {
+      "id": "seed_domain_qua"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_rm"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p5_4",
+    "name": "Set up serialisation",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p5"
+    },
+    "domain": {
+      "id": "seed_domain_it"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_jt"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p5_5",
+    "name": "Obtain quality approval",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p5"
+    },
+    "domain": {
+      "id": "seed_domain_qua"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_rd"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p5_6",
+    "name": "Complete packaging release",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p5"
+    },
+    "domain": {
+      "id": "seed_domain_qua"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_r"
+    },
+    "owningPerson": {
+      "id": "seed_person_jr"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p5_7",
+    "name": "Complete transfer pricing",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p5"
+    },
+    "domain": {
+      "id": "seed_domain_fin"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_hf"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p5_8",
+    "name": "Plan global distribution",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p5"
+    },
+    "domain": {
+      "id": "seed_domain_sc"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_mo"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p6_0",
+    "name": "Set up enterprise systems through Pfizer Connect",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p6"
+    },
+    "domain": {
+      "id": "seed_domain_it"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_ak"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p6_1",
+    "name": "Run market readiness assessments",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p6"
+    },
+    "domain": {
+      "id": "seed_domain_com"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_sl"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p6_2",
+    "name": "Hold launch readiness reviews",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p6"
+    },
+    "domain": {
+      "id": "seed_domain_gov"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_r"
+    },
+    "owningPerson": {
+      "id": "seed_person_kt"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p6_3",
+    "name": "Manage market approvals",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p6"
+    },
+    "domain": {
+      "id": "seed_domain_reg"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_h"
+    },
+    "owningPerson": {
+      "id": "seed_person_lh"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p6_4",
+    "name": "Prepare product listings",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p6"
+    },
+    "domain": {
+      "id": "seed_domain_com"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_ap"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p6_5",
+    "name": "Submit artwork samples",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p6"
+    },
+    "domain": {
+      "id": "seed_domain_reg"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_tb"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p6_6",
+    "name": "Confirm distribution centre readiness",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p6"
+    },
+    "domain": {
+      "id": "seed_domain_sc"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_dm"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p6_7",
+    "name": "Run launch risk reviews",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p6"
+    },
+    "domain": {
+      "id": "seed_domain_gov"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_r"
+    },
+    "owningPerson": {
+      "id": "seed_person_rm"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p7_0",
+    "name": "Run launch command centre governance",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p7"
+    },
+    "domain": {
+      "id": "seed_domain_gov"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_jt"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p7_1",
+    "name": "Coordinate site to site",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p7"
+    },
+    "domain": {
+      "id": "seed_domain_mfg"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_rd"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p7_2",
+    "name": "Align internal and external manufacturers",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p7"
+    },
+    "domain": {
+      "id": "seed_domain_src"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_jr"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p7_3",
+    "name": "Take supply allocation decisions",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p7"
+    },
+    "domain": {
+      "id": "seed_domain_sc"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_hf"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p7_4",
+    "name": "Track readiness milestones",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p7"
+    },
+    "domain": {
+      "id": "seed_domain_gov"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_r"
+    },
+    "owningPerson": {
+      "id": "seed_person_mo"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p7_5",
+    "name": "Manage exceptions",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p7"
+    },
+    "domain": {
+      "id": "seed_domain_gov"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_ak"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p7_6",
+    "name": "Produce executive reporting",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p7"
+    },
+    "domain": {
+      "id": "seed_domain_fin"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_sl"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p7_7",
+    "name": "Issue launch communications",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p7"
+    },
+    "domain": {
+      "id": "seed_domain_com"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_kt"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p8_0",
+    "name": "Ship finished product to the DC",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p8"
+    },
+    "domain": {
+      "id": "seed_domain_sc"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_h"
+    },
+    "owningPerson": {
+      "id": "seed_person_lh"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p8_1",
+    "name": "Receive inventory at the DC",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p8"
+    },
+    "domain": {
+      "id": "seed_domain_sc"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_r"
+    },
+    "owningPerson": {
+      "id": "seed_person_ap"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p8_2",
+    "name": "Enable market ordering",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p8"
+    },
+    "domain": {
+      "id": "seed_domain_it"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_tb"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p8_3",
+    "name": "Activate the product listing",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p8"
+    },
+    "domain": {
+      "id": "seed_domain_com"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_dm"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p8_4",
+    "name": "Execute the first commercial shipment",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p8"
+    },
+    "domain": {
+      "id": "seed_domain_sc"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_rm"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p8_5",
+    "name": "Monitor demand",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p8"
+    },
+    "domain": {
+      "id": "seed_domain_ma"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_jt"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p8_6",
+    "name": "Track supply performance",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p8"
+    },
+    "domain": {
+      "id": "seed_domain_sc"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_r"
+    },
+    "owningPerson": {
+      "id": "seed_person_rd"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p9_0",
+    "name": "Monitor launch KPIs",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p9"
+    },
+    "domain": {
+      "id": "seed_domain_gov"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_jr"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p9_1",
+    "name": "Track inventory health",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p9"
+    },
+    "domain": {
+      "id": "seed_domain_sc"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_hf"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p9_2",
+    "name": "Monitor service levels",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p9"
+    },
+    "domain": {
+      "id": "seed_domain_sc"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_mo"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p9_3",
+    "name": "Review supply continuity",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p9"
+    },
+    "domain": {
+      "id": "seed_domain_src"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_ak"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p9_4",
+    "name": "Capture lessons learned",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p9"
+    },
+    "domain": {
+      "id": "seed_domain_gov"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_r"
+    },
+    "owningPerson": {
+      "id": "seed_person_sl"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p9_5",
+    "name": "Assess launch agility",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p9"
+    },
+    "domain": {
+      "id": "seed_domain_gov"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_kt"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p9_6",
+    "name": "Update the launch playbook",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p9"
+    },
+    "domain": {
+      "id": "seed_domain_gov"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_h"
+    },
+    "owningPerson": {
+      "id": "seed_person_lh"
+    },
+    "owningAgent": null
+  },
+  {
+    "id": "seed_activity_berobenatide_obesity_p9_7",
+    "name": "Make recommendations for future launches",
+    "status": "Not started",
+    "statusCode": "no",
+    "detail": "not started",
+    "phase": {
+      "id": "seed_phase_p9"
+    },
+    "domain": {
+      "id": "seed_domain_gov"
+    },
+    "launch": {
+      "id": "seed_launch_berobenatide_obesity"
+    },
+    "autonomyClass": {
+      "id": "seed_autonomy_a"
+    },
+    "owningPerson": {
+      "id": "seed_person_ap"
+    },
+    "owningAgent": null
   }
 ]
